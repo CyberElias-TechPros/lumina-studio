@@ -110,7 +110,7 @@ fun CeaNativeApp(state: CatalogState, refresh: () -> Unit, favorite: (String) ->
                     item { Text("Available now", style = MaterialTheme.typography.titleLarge) }
                     item { Text("Browse and search courses, read course information and save a shortlist on this phone. Previously fetched public catalogue information remains readable offline. The Lessons tab includes public learning notes and illustrations from the website, bundled for offline reading.") }
                     item { Text("Not rebuilt yet", style = MaterialTheme.typography.titleLarge) }
-                    item { Text("Account sign-in, MFA verification and sign-out are available with optional encrypted session storage. Registration, recovery, role workspaces, applications, payments, private learning, messaging and push notifications are not available in this native preview. The existing CEA app remains separate during migration.") }
+                    item { Text("Account sign-in, MFA verification and sign-out are available with optional encrypted session storage. Students can view enrolled courses and published text lessons, and confirm reading completion. Registration, recovery, assignments, interactive assessments, video playback, other role workspaces, applications, payments, messaging and push notifications are still being implemented. The existing CEA app remains separate during migration.") }
                     item { Text("Saved courses are a local shortlist—not enrolment, downloaded lessons or proof of payment.") }
                     item { OutlinedButton(onClick = callAcademy) { Text("Call the Academy") } }
                 } else {

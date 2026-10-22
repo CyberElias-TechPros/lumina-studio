@@ -27,9 +27,12 @@ fun interface AuthTransport {
 /** Fixed API only; no browser cookie jar, redirects, response cache or credential logging. */
 class HttpsAuthTransport : AuthTransport {
     override suspend fun request(path: String, body: JsonObject?, token: String?): AuthReply = withContext(Dispatchers.IO) {
-        require(path in setOf("sign-in", "mfa/verify", "session", "refresh", "sign-out"))
-        require((path == "session") == (body == null))
-        val connection = URL("https://cea-api.cyber-e54.workers.dev/v1/auth/$path").openConnection() as HttpsURLConnection
+        val auth = path in setOf("sign-in", "mfa/verify", "session", "refresh", "sign-out")
+        val completion = path.matches(Regex("courses/[a-zA-Z0-9_-]{1,120}/lessons/[a-zA-Z0-9_-]{1,120}/complete"))
+        require(auth || path == "dashboard/student" || completion)
+        require((path == "session" || path == "dashboard/student") == (body == null))
+        val route = if (auth) "auth/$path" else path
+        val connection = URL("https://cea-api.cyber-e54.workers.dev/v1/$route").openConnection() as HttpsURLConnection
         try {
             connection.instanceFollowRedirects = false
             connection.useCaches = false
@@ -58,7 +61,7 @@ class HttpsAuthTransport : AuthTransport {
                     check(System.nanoTime() < deadline)
                     val count = input.read(buffer)
                     if (count < 0) break
-                    check(output.size() + count <= 65536)
+                    check(output.size() + count <= if (path == "dashboard/student") 2 * 1024 * 1024 else 65536)
                     output.write(buffer, 0, count)
                 }
                 output.toString("UTF-8")
@@ -106,6 +109,16 @@ class NativeAuthClient(private val transport: AuthTransport = HttpsAuthTransport
     }
     suspend fun checkSession(): NativeSession = accept(call("session", null), requireCookie = false)
     suspend fun refresh(): NativeSession = accept(call("refresh", buildJsonObject {}), requireCookie = true)
+    suspend fun studentDashboard(): StudentDashboard {
+        require(session.user?.roleKey == "student" && !session.mfaRequired)
+        return StudentDashboard.decode(call("dashboard/student", null).body)
+    }
+    suspend fun completeLesson(course: String, lesson: String) {
+        require(session.user?.roleKey == "student" && !session.mfaRequired)
+        require(course.matches(Regex("[a-zA-Z0-9_-]{1,120}")) && lesson.matches(Regex("[a-zA-Z0-9_-]{1,120}")))
+        val reply = call("courses/$course/lessons/$lesson/complete", buildJsonObject {})
+        require(json.parseToJsonElement(reply.body).jsonObject["ok"]?.jsonPrimitive?.booleanOrNull == true)
+    }
     suspend fun signOut(): Boolean {
         if (token == null) return true
         return try {

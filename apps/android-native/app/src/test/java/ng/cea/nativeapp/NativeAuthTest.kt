@@ -129,4 +129,18 @@ class NativeAuthTest {
         assertNull(store.read())
         assertTrue(fake.requests.isEmpty())
     }
+
+    @Test fun studentRequestsUseCurrentBearerAndMfaCannotFetchPrivateLearning() = runBlocking {
+        val fake = Fake(mutableListOf(AuthReply(200, pendingBody, listOf(cookie())), AuthReply(200, userBody), AuthReply(200, """{"courses":[]}"""), AuthReply(200, """{"ok":true}""")))
+        val client = NativeAuthClient(fake)
+        client.signIn("test@example.com", "password")
+        try { client.studentDashboard(); fail("MFA pending accessed learning") } catch (_: IllegalArgumentException) { }
+        assertEquals(1, fake.requests.size)
+        client.verify("123456")
+        assertTrue(client.studentDashboard().courses.isEmpty())
+        client.completeLesson("course", "lesson")
+        assertEquals("dashboard/student", fake.requests[2].first)
+        assertEquals(token, fake.requests[2].third)
+        assertEquals("courses/course/lessons/lesson/complete", fake.requests[3].first)
+    }
 }

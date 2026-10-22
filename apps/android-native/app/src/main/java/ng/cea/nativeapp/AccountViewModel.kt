@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-data class AccountState(val session: NativeSession = NativeSession(), val busy: Boolean = false, val message: String? = null, val needsCheck: Boolean = false)
+data class AccountState(val session: NativeSession = NativeSession(), val busy: Boolean = false, val message: String? = null, val needsCheck: Boolean = false, val dashboard: StudentDashboard? = null)
 class AccountViewModel(application: Application) : AndroidViewModel(application) {
     private val client = NativeAuthClient(store = KeystoreSessionStore(application))
     private val mutable = MutableStateFlow(AccountState())
@@ -24,7 +24,7 @@ class AccountViewModel(application: Application) : AndroidViewModel(application)
             }
         }
     }
-    private fun action(block: suspend () -> Unit) {
+    private fun action(failureMessage: String? = null, block: suspend () -> Unit) {
         if (mutable.value.busy) return
         mutable.value = mutable.value.copy(busy = true, message = null)
         viewModelScope.launch {
@@ -36,7 +36,7 @@ class AccountViewModel(application: Application) : AndroidViewModel(application)
                     403 -> "Access is unavailable for this account. Contact the Academy."
                     400, 422 -> "Check your details or verification code and try again."
                     429 -> "Too many attempts. Wait before trying again."
-                    else -> "Could not verify your account. Check your connection and try again."
+                    else -> failureMessage ?: "Could not verify your account. Check your connection and try again."
                 }
                 mutable.value = AccountState(session = if (client.session.mfaRequired) client.session else NativeSession(), message = message, needsCheck = client.hasSession() && !client.session.mfaRequired)
             } finally { mutable.value = mutable.value.copy(busy = false) }
@@ -69,6 +69,21 @@ class AccountViewModel(application: Application) : AndroidViewModel(application)
             mutable.value = AccountState(busy = true, needsCheck = true)
             accepted(client.checkSession())
         }
+    }
+    fun loadDashboard() = action {
+        mutable.value = AccountState(busy = true, needsCheck = true)
+        accepted(client.checkSession())
+        val dashboard = client.studentDashboard()
+        mutable.value = mutable.value.copy(dashboard = dashboard)
+    }
+    fun completeLesson(course: String, lesson: String) = action("Could not confirm the updated progress. Verify your session and reload your courses before trying again.") {
+        val item = mutable.value.dashboard?.courses?.firstOrNull { it.slug == course }
+            ?.modules?.flatMap { it.lessons }?.firstOrNull { it.id == lesson }
+        require(item?.completable() == true)
+        client.completeLesson(course, lesson)
+        // No optimistic completion: display only the refreshed server record.
+        val dashboard = client.studentDashboard()
+        mutable.value = mutable.value.copy(dashboard = dashboard, message = "Completion saved. Learning records refreshed.")
     }
     fun signOut() = action {
         // Hide account details immediately, including when the device is offline.
