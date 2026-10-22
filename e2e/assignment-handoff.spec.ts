@@ -32,6 +32,26 @@ async function fixture(page: Page, role: "student" | "instructor", latest = true
       return reply({ user, expiresAt: "2099-01-01T00:00:00.000Z" });
     if (url.pathname === "/v1/account")
       return reply({ ...user, emailVerified: true, hasPassword: true });
+    if (url.pathname === "/v1/assignments")
+      return reply({
+        items: [
+          {
+            id: url.searchParams.has("cursor") ? "next" : "task",
+            title: url.searchParams.has("cursor")
+              ? "Another writing task"
+              : "Explain your approach",
+            course: "Course",
+            description: "Write your own reasoning.",
+            due: "2026-11-01",
+            max: 20,
+            weight: 10,
+            status: "pending",
+            rubric: [],
+          },
+        ],
+        nextCursor: url.searchParams.has("cursor") ? null : "next",
+        total: 2,
+      });
     if (url.pathname === "/v1/assignments/task")
       return reply({
         id: "task",
@@ -145,4 +165,14 @@ test("a superseded attempt cannot be graded from the UI", async ({ page }) => {
     "newer attempt",
   );
   expect(result.writes()).toBe(0);
+});
+
+test("students can reach assignments beyond the first page", async ({ page }) => {
+  await fixture(page, "student");
+  await page.goto("/app/assignments");
+  await expect(page.getByText("Another writing task", { exact: true })).toHaveCount(0);
+  await page.getByRole("button", { name: "Load more assignments" }).click();
+  await expect(page.getByText("Another writing task", { exact: true })).toBeVisible();
+  await expect(page.getByText("Explain your approach", { exact: true })).toHaveCount(1);
+  await expect(page.getByRole("button", { name: "Load more assignments" })).toHaveCount(0);
 });

@@ -207,6 +207,14 @@ function AssignmentsCenter() {
           </>
         )}
       </QueryState>
+      {assignmentsQuery.hasNextPage && (
+        <Button
+          onClick={() => void assignmentsQuery.fetchNextPage()}
+          disabled={assignmentsQuery.isFetchingNextPage}
+        >
+          {assignmentsQuery.isFetchingNextPage ? "Loading…" : "Load more assignments"}
+        </Button>
+      )}
     </AppShell>
   );
 }
