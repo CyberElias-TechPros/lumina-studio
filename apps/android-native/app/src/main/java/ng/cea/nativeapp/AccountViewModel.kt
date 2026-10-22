@@ -1,6 +1,7 @@
 package ng.cea.nativeapp
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
@@ -10,11 +11,19 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 data class AccountState(val session: NativeSession = NativeSession(), val busy: Boolean = false, val message: String? = null, val needsCheck: Boolean = false)
-class AccountViewModel : ViewModel() {
-    private val client = NativeAuthClient()
+class AccountViewModel(application: Application) : AndroidViewModel(application) {
+    private val client = NativeAuthClient(store = KeystoreSessionStore(application))
     private val mutable = MutableStateFlow(AccountState())
     val state = mutable.asStateFlow()
     private var expiryJob: Job? = null
+    init {
+        action {
+            if (client.restore()) {
+                mutable.value = AccountState(busy = true, needsCheck = true)
+                accepted(client.checkSession())
+            }
+        }
+    }
     private fun action(block: suspend () -> Unit) {
         if (mutable.value.busy) return
         mutable.value = mutable.value.copy(busy = true, message = null)
@@ -41,12 +50,17 @@ class AccountViewModel : ViewModel() {
             // Do not race an in-flight refresh; each completed response is expiry validated.
             while (mutable.value.busy) delay(100)
             if (client.session.expiresAt <= System.currentTimeMillis()) {
-                client.forget()
-                mutable.value = AccountState(message = "Your session expired. Sign in again.")
+                mutable.value = AccountState(busy = true)
+                try {
+                    client.forget()
+                    mutable.value = AccountState(message = "Your session expired. Sign in again.")
+                } catch (_: Exception) {
+                    mutable.value = AccountState(message = "Your session expired. Secure storage could not be cleared; clear this app’s storage in Android settings before sharing this phone.")
+                }
             }
         }
     }
-    fun signIn(email: String, password: String) = action { accepted(client.signIn(email, password)) }
+    fun signIn(email: String, password: String, remember: Boolean) = action { accepted(client.signIn(email, password, remember)) }
     fun verify(code: String) = action { accepted(client.verify(code)) }
     fun refresh() = action { accepted(client.refresh()) }
     fun checkSession() {
@@ -67,5 +81,5 @@ class AccountViewModel : ViewModel() {
         client.forget(); expiryJob?.cancel()
         mutable.value = AccountState(message = "Verification cancelled on this phone. The unverified server session has not been revoked; it cannot access your account without MFA.")
     }
-    override fun onCleared() { client.forget(); super.onCleared() }
+    override fun onCleared() { client.dropMemory(); super.onCleared() }
 }

@@ -11,7 +11,7 @@ class NativeAccountUiTest {
     @get:Rule val compose = createComposeRule()
     @Test fun signInIsExplicitAndClearsPasswordField() {
         var submitted: Pair<String, String>? = null
-        compose.setContent { MaterialTheme { AccountScreen(AccountState(), { email, password -> submitted = email to password }, {}, {}, {}, {}, {}) } }
+        compose.setContent { MaterialTheme { AccountScreen(AccountState(), { email, password, _ -> submitted = email to password }, {}, {}, {}, {}, {}) } }
         compose.onNodeWithText("Sign in").assertIsNotEnabled()
         compose.onNodeWithText("Email address").performTextInput("learner@example.com")
         compose.onNodeWithText("Password").performTextInput("not-a-real-password")
@@ -20,7 +20,7 @@ class NativeAccountUiTest {
         compose.onNodeWithText("Sign in").assertIsNotEnabled()
     }
     @Test fun pendingMfaDoesNotShowSignedInAccount() {
-        compose.setContent { MaterialTheme { AccountScreen(AccountState(session = NativeSession(mfaRequired = true)), { _, _ -> }, {}, {}, {}, {}, {}) } }
+        compose.setContent { MaterialTheme { AccountScreen(AccountState(session = NativeSession(mfaRequired = true)), { _, _, _ -> }, {}, {}, {}, {}, {}) } }
         compose.onNodeWithText("Two-step verification").assertExists()
         compose.onNodeWithText("Renew session").assertDoesNotExist()
         compose.onNodeWithText("Verify code").performScrollTo().assertIsNotEnabled()

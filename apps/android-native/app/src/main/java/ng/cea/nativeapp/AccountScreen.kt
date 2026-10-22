@@ -27,15 +27,16 @@ fun NativeAccount() {
 }
 
 @Composable
-fun AccountScreen(state: AccountState, signIn: (String, String) -> Unit, verify: (String) -> Unit,
+fun AccountScreen(state: AccountState, signIn: (String, String, Boolean) -> Unit, verify: (String) -> Unit,
                   checkSession: () -> Unit, refresh: () -> Unit, signOut: () -> Unit, cancelMfa: () -> Unit) {
     // Secrets deliberately do not use rememberSaveable or SavedStateHandle.
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var code by remember { mutableStateOf("") }
+    var rememberSession by remember { mutableStateOf(false) }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(20.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
         Text("Your CEA account", style = MaterialTheme.typography.headlineMedium)
-        Text("Use your existing Academy account. This preview keeps your session only in app memory; restarting the process requires sign-in again.")
+        Text("Use your existing Academy account. You can opt in to encrypted sign-in storage on this phone. Saved sessions must be verified online before account details are shown.")
         if (state.busy) { LinearProgressIndicator(Modifier.fillMaxWidth()); Text("Checking with the Academy…") }
         state.message?.let { Text(it, modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite }) }
         when {
@@ -57,6 +58,7 @@ fun AccountScreen(state: AccountState, signIn: (String, String) -> Unit, verify:
                 val user = state.session.user
                 Text("Signed in as ${user.name}", style = MaterialTheme.typography.titleLarge)
                 Text(user.email)
+                Text(if (state.session.remembered) "Sign-in saved with Android Keystore protection on this phone." else "Session is in app memory only. Restarting requires sign-in again.")
                 Text("Account role: ${user.roleKey}")
                 Text("This role comes from the Academy server. Private courses, assignments and role workspaces are not implemented in this preview yet.")
                 OutlinedButton(onClick = refresh, enabled = !state.busy) { Text("Renew session") }
@@ -68,7 +70,11 @@ fun AccountScreen(state: AccountState, signIn: (String, String) -> Unit, verify:
                 OutlinedTextField(value = password, onValueChange = { password = it }, label = { Text("Password") },
                     visualTransformation = PasswordVisualTransformation(), keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                     enabled = !state.busy, singleLine = true, modifier = Modifier.fillMaxWidth())
-                Button(onClick = { val submitted = password; password = ""; signIn(email, submitted) }, enabled = !state.busy && email.trim().contains('@') && password.isNotEmpty()) { Text("Sign in") }
+                Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
+                    Checkbox(checked = rememberSession, onCheckedChange = { rememberSession = it }, enabled = !state.busy)
+                    Text("Keep me signed in on this phone. Do not enable on a shared phone.")
+                }
+                Button(onClick = { val submitted = password; password = ""; signIn(email, submitted, rememberSession) }, enabled = !state.busy && email.trim().contains('@') && password.isNotEmpty()) { Text("Sign in") }
                 Text("New account, forgotten password or email verification? These flows are not native yet. Use the existing CEA website for account creation or recovery; no website is embedded in this app.")
             }
         }

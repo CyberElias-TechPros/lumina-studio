@@ -1,6 +1,8 @@
 package ng.cea.nativeapp
 
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.withContext
@@ -13,9 +15,11 @@ import java.util.TimeZone
 import javax.net.ssl.HttpsURLConnection
 
 @Serializable data class NativeUser(val id: String, val name: String, val email: String, val roleKey: String, val permissions: List<String> = emptyList())
-data class NativeSession(val user: NativeUser? = null, val mfaRequired: Boolean = false, val expiresAt: Long = 0)
+data class NativeSession(val user: NativeUser? = null, val mfaRequired: Boolean = false, val expiresAt: Long = 0, val remembered: Boolean = false)
 class AuthFailure(val status: Int) : Exception("Native authentication request failed")
-data class AuthReply(val status: Int, val body: String, val cookies: List<String> = emptyList())
+data class AuthReply(val status: Int, val body: String, val cookies: List<String> = emptyList()) {
+    override fun toString() = "AuthReply(status=$status, content=[redacted])"
+}
 fun interface AuthTransport {
     suspend fun request(path: String, body: JsonObject?, token: String?): AuthReply
 }
@@ -34,7 +38,7 @@ class HttpsAuthTransport : AuthTransport {
             connection.requestMethod = if (body == null) "GET" else "POST"
             connection.setRequestProperty("Accept", "application/json")
             connection.setRequestProperty("Cache-Control", "no-store")
-            connection.setRequestProperty("User-Agent", "CEA-Native-Android/0.3")
+            connection.setRequestProperty("User-Agent", "CEA-Native-Android/0.4")
             if (token != null) connection.setRequestProperty("Authorization", "Bearer $token")
             if (body != null) {
                 connection.doOutput = true
@@ -64,20 +68,36 @@ class HttpsAuthTransport : AuthTransport {
     }
 }
 
-/** Process-memory-only credentials for this increment. Calls are serialized by the ViewModel.
- * No token/password is placed in preferences, saved instance state, public cache or backups.
- */
-class NativeAuthClient(private val transport: AuthTransport = HttpsAuthTransport(), private val now: () -> Long = System::currentTimeMillis) {
+/** Calls are serialized by the ViewModel. Optional storage holds only an encrypted verified
+ * credential, never identity, permissions, passwords, MFA codes or private learning content. */
+class NativeAuthClient(private val transport: AuthTransport = HttpsAuthTransport(), private val store: SessionStore = MemorySessionStore(), private val now: () -> Long = System::currentTimeMillis) {
     private var token: String? = null
     var session = NativeSession()
         private set
     private val json = Json { ignoreUnknownKeys = true }
-    fun forget() { token = null; session = NativeSession() }
+    private var remember = false
+    fun dropMemory() { token = null; session = NativeSession(); remember = false }
+    suspend fun forget() {
+        dropMemory()
+        withContext(NonCancellable + Dispatchers.IO) { store.clear() }
+    }
+    suspend fun restore(): Boolean {
+        check(token == null)
+        val saved = withContext(Dispatchers.IO) { store.read() } ?: return false
+        if (!saved.token.matches(Regex("[a-f0-9]{64}")) || saved.expiresAt <= now()) { forget(); return false }
+        token = saved.token
+        remember = true
+        // No stored user/permissions: callers MUST verify /session before displaying identity.
+        session = NativeSession(expiresAt = saved.expiresAt, remembered = true)
+        return true
+    }
     fun hasSession() = token != null
 
-    suspend fun signIn(email: String, password: String): NativeSession {
+    suspend fun signIn(email: String, password: String, rememberSession: Boolean = false): NativeSession {
         check(token == null) // Account switching must first go through local/server sign-out.
-        val body = buildJsonObject { put("email", email.trim()); put("password", password); put("remember", false) }
+        remember = rememberSession
+        withContext(Dispatchers.IO) { store.clear() }
+        val body = buildJsonObject { put("email", email.trim()); put("password", password); put("remember", rememberSession) }
         return accept(call("sign-in", body), requireCookie = true)
     }
     suspend fun verify(code: String): NativeSession {
@@ -107,7 +127,7 @@ class NativeAuthClient(private val transport: AuthTransport = HttpsAuthTransport
         }
         return reply
     }
-    private fun accept(reply: AuthReply, requireCookie: Boolean): NativeSession {
+    private suspend fun accept(reply: AuthReply, requireCookie: Boolean): NativeSession {
         try {
             val data = json.parseToJsonElement(reply.body).jsonObject
             val expiryText = data.getValue("expiresAt").jsonPrimitive.content
@@ -122,9 +142,14 @@ class NativeAuthClient(private val transport: AuthTransport = HttpsAuthTransport
             require(!requireCookie || next != null)
             require(next != null || token != null)
             token = next ?: token
-            session = NativeSession(user, pending, expiry)
+            if (remember && !pending) {
+                val credential = StoredSession(token!!, expiry)
+                withContext(Dispatchers.IO) { store.write(credential) }
+            }
+            session = NativeSession(user, pending, expiry, remembered = remember && !pending)
             return session
-        } catch (error: Exception) { forget(); throw AuthFailure(502) }
+        } catch (error: CancellationException) { dropMemory(); throw error }
+        catch (error: Exception) { forget(); throw AuthFailure(502) }
     }
     companion object {
         fun sessionCookie(headers: List<String>): String? {

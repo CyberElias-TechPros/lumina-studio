@@ -80,4 +80,53 @@ class NativeAuthTest {
         try { client.signIn("test@example.com", "password"); fail("Malformed session accepted") } catch (_: AuthFailure) { }
         assertFalse(client.hasSession())
     }
+
+    @Test fun rememberedSessionRestoresCredentialButNotIdentityUntilServerValidation() = runBlocking {
+        val store = MemorySessionStore()
+        val fake = Fake(mutableListOf(AuthReply(200, userBody, listOf(cookie())), AuthReply(200, userBody), AuthReply(200, "{}")))
+        val first = NativeAuthClient(fake, store)
+        first.signIn("test@example.com", "password", true)
+        assertNotNull(store.read())
+        first.dropMemory()
+        val second = NativeAuthClient(fake, store)
+        assertTrue(second.restore())
+        assertNull(second.session.user)
+        assertNotNull(second.checkSession().user)
+        second.signOut()
+        assertNull(store.read())
+        assertFalse(NativeAuthClient(fake, store).restore())
+    }
+    @Test fun pendingMfaIsNeverPersistedEvenWhenRememberWasRequested() = runBlocking {
+        val store = MemorySessionStore()
+        val fake = Fake(mutableListOf(AuthReply(200, pendingBody, listOf(cookie())), AuthReply(200, userBody)))
+        val client = NativeAuthClient(fake, store)
+        client.signIn("test@example.com", "password", true)
+        assertNull(store.read())
+        client.verify("123456")
+        assertEquals(token, store.read()!!.token)
+    }
+    @Test fun rotationUpdatesStoredTokenAndRejectionErasesIt() = runBlocking {
+        val store = MemorySessionStore()
+        val fake = Fake(mutableListOf(AuthReply(200, userBody, listOf(cookie())), AuthReply(200, userBody, listOf(cookie(rotated))), AuthReply(401, "")))
+        val client = NativeAuthClient(fake, store)
+        client.signIn("test@example.com", "password", true)
+        client.refresh()
+        assertEquals(rotated, store.read()!!.token)
+        try { client.checkSession(); fail("Expected rejection") } catch (_: AuthFailure) { }
+        assertNull(store.read())
+    }
+    @Test fun noOptInMeansNoStoredCredential() = runBlocking {
+        val store = MemorySessionStore()
+        val client = NativeAuthClient(Fake(mutableListOf(AuthReply(200, userBody, listOf(cookie())))), store)
+        client.signIn("test@example.com", "password")
+        assertNull(store.read())
+        assertFalse(client.session.remembered)
+    }
+    @Test fun expiredStoredCredentialIsErasedWithoutNetworkRequest() = runBlocking {
+        val store = MemorySessionStore().apply { write(StoredSession(token, 1)) }
+        val fake = Fake(mutableListOf())
+        assertFalse(NativeAuthClient(fake, store).restore())
+        assertNull(store.read())
+        assertTrue(fake.requests.isEmpty())
+    }
 }
