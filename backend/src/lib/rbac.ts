@@ -220,6 +220,11 @@ export const RBAC_RULES: RbacRule[] = [
     path: "/v1/instructor/submissions/:id",
     roles: ["instructor", "admin"],
   },
+  {
+    methods: ["POST"],
+    path: "/v1/instructor/submissions/:id/grade",
+    roles: ["instructor", "admin"],
+  },
 
   /* HR portal */
   { methods: ["GET"], path: "/v1/hr/employees", roles: ["hr", "admin"] },

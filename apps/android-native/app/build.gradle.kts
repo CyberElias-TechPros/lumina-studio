@@ -7,14 +7,44 @@ plugins {
 android {
     namespace = "ng.cea.nativeapp"
     compileSdk = 35
+
+    val releaseKeystorePath = System.getenv("CEA_KEYSTORE_PATH")?.trim()?.takeIf { it.isNotEmpty() }
+    val releaseKeystorePassword = System.getenv("CEA_KEYSTORE_PASSWORD")?.takeIf { it.isNotEmpty() }
+    val releaseKeyAlias = System.getenv("CEA_KEY_ALIAS")?.trim()?.takeIf { it.isNotEmpty() }
+    val releaseKeyPassword = System.getenv("CEA_KEY_PASSWORD")?.takeIf { it.isNotEmpty() }
+    val hasReleaseSigning =
+        releaseKeystorePath != null &&
+            releaseKeystorePassword != null &&
+            releaseKeyAlias != null &&
+            releaseKeyPassword != null
+
     defaultConfig {
-        // Separate install while native feature coverage is being built.
-        applicationId = "ng.cea.app.nativepreview"
+        applicationId = System.getenv("CEA_APPLICATION_ID")?.trim()?.takeIf { it.isNotEmpty() }
+            ?: "ng.cea.app.nativepreview"
         minSdk = 23
         targetSdk = 35
-        versionCode = 5
-        versionName = "0.5.0-native-preview"
+        versionCode = System.getenv("CEA_VERSION_CODE")?.trim()?.toIntOrNull() ?: 6
+        versionName = System.getenv("CEA_VERSION_NAME")?.trim()?.takeIf { it.isNotEmpty() }
+            ?: "0.6.0-native-preview"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        if (hasReleaseSigning) {
+            create("release") {
+                storeFile = file(releaseKeystorePath!!)
+                storePassword = releaseKeystorePassword
+                keyAlias = releaseKeyAlias
+                keyPassword = releaseKeyPassword
+            }
+        }
+    }
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = false
+            if (hasReleaseSigning) {
+                signingConfig = signingConfigs.getByName("release")
+            }
+        }
     }
     buildFeatures { compose = true }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }

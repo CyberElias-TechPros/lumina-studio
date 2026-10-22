@@ -206,4 +206,40 @@ describe("written assignment handoff", () => {
       body: "Native Compose written answer",
     });
   });
+
+  it("supports native Bearer POST /v1/instructor/submissions/:id/grade with latest-attempt enforcement", async () => {
+    const f = await fixture();
+    const instructorBearer = {
+      Authorization: `Bearer ${f.teacher.cookie}`,
+      "Content-Type": "application/json",
+    };
+
+    const firstRes = await f.submit("First attempt");
+    expect(firstRes.status).toBe(201);
+    const { id: firstId } = (await firstRes.json()) as { id: string };
+
+    const secondRes = await f.submit("Second native attempt");
+    expect(secondRes.status).toBe(201);
+    const { id: secondId } = (await secondRes.json()) as { id: string };
+
+    const staleGrade = await api(`/v1/instructor/submissions/${firstId}/grade`, {
+      method: "POST",
+      headers: instructorBearer,
+      body: JSON.stringify({ score: 15, feedback: "Stale" }),
+    });
+    expect(staleGrade.status).toBe(409);
+
+    const validGrade = await api(`/v1/instructor/submissions/${secondId}/grade`, {
+      method: "POST",
+      headers: instructorBearer,
+      body: JSON.stringify({ score: 18, feedback: "Graded from native instructor workspace." }),
+    });
+    expect(validGrade.status).toBe(200);
+    expect(await validGrade.json()).toMatchObject({
+      id: secondId,
+      status: "graded",
+      score: 18,
+      feedback: "Graded from native instructor workspace.",
+    });
+  });
 });

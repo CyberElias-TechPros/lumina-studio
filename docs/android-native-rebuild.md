@@ -94,18 +94,17 @@ backend permissions or weaker MFA policy are introduced.
 
 This supersedes the storage limitation in the historical 0.3 section above.
 
-| Workflow | Implemented in source | Remaining acceptance / implementation |
+| Workflow | Implemented in source (`0.6.0-native-preview`) | Remaining external / future scope |
 | --- | --- | --- |
 | Sign-in / MFA | Native password, authenticator and recovery-code challenge | Real-account/physical-device acceptance |
-| Session persistence | Opt-in Keystore AES-GCM vault; verified online restore; rotation, expiry and local clearing | Physical-device key invalidation, device migration and multi-OS acceptance |
-| Student reading | Server-owned enrolment list, modules, published lesson text | Actual populated academy content; video/interactive lesson types |
-| Reading progress | Explicit confirmation, server-authorized completion, refetched records | Production student/instructor handoff acceptance |
-| Website lesson viewer | Actual published text and confirmed completion replace inert controls and fabricated lesson material | Media, assessment, materials and discussion APIs/workflows |
-| Native account lifecycle | Sign-in and logout implemented | Registration, email verification/recovery links, deletion |
-| Native & web written submissions / feedback | Paginated student assignments, confirmed written submission, instructor text review/grading, returned score (`score / max`) and feedback | Native/web file upload & download, native instructor grading workspace, production acceptance |
-| Native admissions / payments | Not implemented | Drafts, canonical offers, payment confirmation and receipts |
-| Other native roles / messaging / FCM | Not implemented | Role-by-role read/write and denied-action coverage |
-| Production release | Not ready | Resolve Cloudflare build failure, physical-device acceptance, signing and store requirements |
+| Session persistence | Opt-in Keystore AES-GCM vault (`KeystoreSessionStore`); verified online restore; rotation, expiry and local clearing | Physical-device key invalidation, device migration and multi-OS acceptance |
+| Native account lifecycle | Registration (`sign-up`), password reset (`forgot-password` / `reset-password`), 6-digit email verification, password change, device session list/revoke, and `"DELETE"`-confirmed account deletion | Production email delivery & physical-device acceptance |
+| Student reading & progress | Server-owned enrolment list, modules, published lesson text, confirmed completion, refetched records | Video/media lesson playback and downloadable materials |
+| Website lesson viewer | Actual published text and confirmed completion replace inert controls and fabricated lesson material | Media, materials and discussion APIs/workflows |
+| Written submissions, instructor grading & assessments | Student assignments + feedback, server-scored interactive assessments (`/v1/assessments`), and native instructor grading queue/detail (`POST /v1/instructor/submissions/:id/grade`) + courses | File-attachment upload & download; remote D1 `0069_submission_text.sql` + Worker deployment |
+| Native admissions, offers, receipts & staff finance | Free application (`POST /v1/enrollments` + `KeystoreDraftStore` + UUID `submissionKey`), `enrollments/mine`, canonical offer acceptance (`tuition-2026-10-17`), transfer-proof claim (`pending_review`), official receipts, and staff finance `confirm`/`reject` | In-app card checkout SDK; live finance ops signoff |
+| Native messaging & notifications | Direct message threads/replies (`/v1/messages/threads`) and in-app notifications (`/v1/notifications`, `read`, `read-all`) | Production Firebase (`ng.cea.app` / `FCM_SERVICE_ACCOUNT_JSON`) push delivery |
+| Release pipeline & lint gate | Blocking repo-wide `npm run lint` CI gate; Gradle optional `CEA_*` signing config + `.github/workflows/android-native-release.yml` (Play `.aab` + direct `.apk` + SHA-256) | Cloudflare `Workers Builds: cea-api` dashboard config, owner Play upload keystore secrets in `android-release`, physical-device & Play Console review |
 
 No private coursework is written to the public offline bundle. No new local
 role assignment, free enrolment bypass, fabricated grades, automatic completion

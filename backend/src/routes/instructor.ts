@@ -1,4 +1,4 @@
-import { Hono } from "hono";
+import { Hono, type Context } from "hono";
 import type { AppEnv } from "../types";
 import { z } from "zod";
 import { ApiError } from "../lib/errors";
@@ -290,7 +290,7 @@ const gradeSchema = z.object({
  * Grade a submission (instructor/admin). The grader must own the submission
  * or teach a course the submitting student is enrolled in.
  */
-instructor.patch("/submissions/:id", requireAuth, requireInstructorOrAdmin, async (c) => {
+async function gradeSubmissionHandler(c: Context<{ Bindings: AppEnv }>) {
   const grader = c.get("authUser");
   const { score, feedback } = await parseBody(c, gradeSchema);
   const id = c.req.param("id");
@@ -374,7 +374,15 @@ instructor.patch("/submissions/:id", requireAuth, requireInstructorOrAdmin, asyn
     gradedBy: grader.id,
     gradedAt: now,
   });
-});
+}
+
+instructor.patch("/submissions/:id", requireAuth, requireInstructorOrAdmin, gradeSubmissionHandler);
+instructor.post(
+  "/submissions/:id/grade",
+  requireAuth,
+  requireInstructorOrAdmin,
+  gradeSubmissionHandler,
+);
 
 /* ---------------- Publish assignments (schedulable deadlines) ---------------- */
 

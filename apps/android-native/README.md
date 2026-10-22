@@ -100,27 +100,48 @@ sign-out endpoint cannot revoke a pending MFA session, so cancellation does not
 claim server revocation. Pending sessions still require MFA to authorize access.
 No automatic credential retries or test logins against production are performed.
 
-## Current increment: 0.5 (supersedes the 0.3 storage limitation)
+## Current increment: 0.6 (`0.6.0-native-preview`, `versionCode = 6`)
 
-- Optional **Keep me signed in** is off by default. A verified session token and
-  expiry can be encrypted with an Android Keystore AES-GCM key in
-  `noBackupFilesDir`; no user identity, roles, password or MFA code is persisted.
-- Restored credentials never restore an authenticated UI by themselves: the
-  API must verify the session online. Pending MFA is never persisted. Refresh
-  updates the stored token; logout, rejection and expiry remove it. Key loss or
-  ciphertext tampering requires sign-in again, with no plaintext fallback.
-- Cloud backup and device-transfer exclusion rules supplement `allowBackup=false`.
-  Keystore hardware backing is device-dependent; biometric authentication is not
-  part of this increment. Physical-device/OS-version acceptance remains required.
-- Students can load their actual enrolled courses, read instructor-supplied text
-  and explicitly confirm completion of published article lessons. Progress is
-  displayed from refreshed server records, never optimistic local completion.
-- Students can browse their published assignments (with cursor pagination), read
-  rubrics and instructions, submit written answers with explicit confirmation,
-  and view server-returned points (`score / max`) and instructor feedback.
-  Drafts and coursework remain memory-only; transient conflict/network failures
-  keep the typed draft in memory instead of discarding it, while `401`/`403`/logout
-  clear private records immediately.
-- File uploads, video playback, interactive assessments, other role workspaces,
-  admissions/payments, recovery/registration/deletion and notifications still
-  need native workflows.
+- **Account & security lifecycle**: Native registration (`POST /v1/auth/sign-up`),
+  existing-account sign-in, 2FA/recovery-code verification, password recovery
+  (`forgot-password` + `reset-password`), 6-digit email verification
+  (`account/verify-email/send` + `account/verify-email`), password updates,
+  active device session inspection & revocation (`auth/devices` + `revoke`),
+  and `"DELETE"`-confirmed permanent account deletion (`account/delete`).
+- **Opt-in Keystore AES-GCM vaults**:
+  - `KeystoreSessionStore` stores only a verified 64-hex session token + expiry
+    in `noBackupFilesDir`, requiring online `/v1/auth/session` verification before
+    any identity or private data is displayed.
+  - `KeystoreDraftStore` stores opt-in local unsubmitted course application drafts
+    encrypted on device, cleared on explicit user action or application submission.
+- **Learner journey**: Enrolled courses, published text lessons with confirmed
+  completion, written assignment submissions with returned scores (`score / max`)
+  and instructor feedback, and server-scored interactive assessments
+  (`/v1/assessments`, `/v1/assessments/:id/submit`).
+- **Admissions, tuition & official receipts**: Free course application submission
+  (`POST /v1/enrollments` with UUID `submissionKey` idempotency and short/long
+  programme payment-plan normalization), verified-applicant enrolment tracking
+  (`GET /v1/enrollments/mine`, `GET /v1/enrollments/:ref`), canonical tuition
+  offer acceptance (`POST /v1/enrollments/:ref/offer/accept` under
+  `tuition-2026-10-17`), bank-transfer proof reporting (`pending_review` claim
+  only), and official server-verified receipts (`GET /v1/enrollments/:ref/receipt`).
+- **Role workspaces & communications**:
+  - Native **Instructor** workspace (`instructor` / `admin`): assigned courses,
+    paginated submission queue, full learner text inspection, and confirmed
+    score + feedback grading (`POST /v1/instructor/submissions/:id/grade`).
+  - Native **Admissions & Finance** workspace (`admin` / `admissions` / `finance`):
+    enrolment status overview plus confirmed finance bank-transfer verification
+    (`confirm` / `reject`).
+  - Native **Messages** (`/v1/messages/threads`) and **Notifications**
+    (`/v1/notifications`, `read`, `read-all`).
+- **Owner-controlled release pipeline**:
+  - `app/build.gradle.kts` supports optional `CEA_APPLICATION_ID`,
+    `CEA_VERSION_CODE`, `CEA_VERSION_NAME`, and `CEA_KEYSTORE_*` signing env vars.
+  - `.github/workflows/android-native-release.yml` builds signed Google Play
+    `.aab` + direct `.apk` + `SHA256SUMS.txt` when owner upload-key secrets are
+    supplied in the `android-release` GitHub Environment.
+- **Remaining scope & external prerequisites**: Video playback, file-attachment
+  uploads, in-app card checkout, Cloudflare `Workers Builds: cea-api` dashboard
+  root/build settings, applying `0069_submission_text.sql` to remote D1 `cea-db`,
+  production Firebase push credentials, owner Play signing credentials, and
+  physical-device / Play Console acceptance remain external or future milestones.

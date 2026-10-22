@@ -1,6 +1,7 @@
 package ng.cea.nativeapp
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -47,27 +48,35 @@ fun StudentWorkspace(
     loadMoreAssignments: () -> Unit = {},
     openAssignment: (String) -> Unit = {},
     submitAssignment: (String, String) -> Unit = { _, _ -> },
+    loadAssessments: () -> Unit = {},
+    openAssessment: (String) -> Unit = {},
+    submitAssessment: (String, List<Int>) -> Unit = { _, _ -> },
 ) {
     // Private navigation and drafts are never saved to disk or instance state. Logout unmounts this tree.
     var section by remember { mutableStateOf("courses") }
     var courseSlug by remember { mutableStateOf<String?>(null) }
     var lessonId by remember { mutableStateOf<String?>(null) }
     var assignmentId by remember { mutableStateOf<String?>(null) }
+    var assessmentId by remember { mutableStateOf<String?>(null) }
     var confirmLesson by remember { mutableStateOf(false) }
     var confirmSubmission by remember { mutableStateOf(false) }
+    var confirmAssessment by remember { mutableStateOf(false) }
 
     val course = state.dashboard?.courses?.firstOrNull { it.slug == courseSlug }
     val lesson = course?.modules?.flatMap { it.lessons }?.firstOrNull { it.id == lessonId }
     val assignment = state.assignments.items.firstOrNull { it.id == assignmentId }
+    val assessment = state.assessments.items.firstOrNull { it.id == assessmentId }
     val draftToken = assignmentId?.let { state.assignments.submittedDraftTokens[it] } ?: 0
     var draftAnswer by remember(assignmentId, draftToken) { mutableStateOf("") }
+    var assessmentChoices by remember(assessmentId) { mutableStateOf<Map<Int, Int>>(emptyMap()) }
 
-    val atRoot = courseSlug == null && lessonId == null && assignmentId == null
+    val atRoot = courseSlug == null && lessonId == null && assignmentId == null && assessmentId == null
     val goBack = {
         when {
             lessonId != null -> lessonId = null
             courseSlug != null -> courseSlug = null
             assignmentId != null -> assignmentId = null
+            assessmentId != null -> assessmentId = null
             else -> back()
         }
     }
@@ -109,7 +118,27 @@ fun StudentWorkspace(
         )
     }
 
-    key(section, courseSlug, lessonId, assignmentId) {
+    if (confirmAssessment && assessment != null && state.session.user?.roleKey == "student") {
+        val count = assessment.questions.coerceIn(1, StudentAssessmentItem.SECURITY_PROMPTS.size)
+        val payload = List(count) { idx -> assessmentChoices[idx] ?: -1 }
+        AlertDialog(
+            onDismissRequest = { confirmAssessment = false },
+            title = { Text("Submit assessment answers?") },
+            text = { Text("Submit your selected answers to the Academy server for official scoring? This uses an attempt.") },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        confirmAssessment = false
+                        submitAssessment(assessment.id, payload)
+                    },
+                    enabled = !state.busy && assessment.canSubmit(),
+                ) { Text("Confirm assessment") }
+            },
+            dismissButton = { TextButton(onClick = { confirmAssessment = false }) { Text("Review answers") } },
+        )
+    }
+
+    key(section, courseSlug, lessonId, assignmentId, assessmentId) {
         LazyColumn(
             Modifier.fillMaxSize().testTag("student-workspace"),
             contentPadding = PaddingValues(20.dp),
@@ -151,11 +180,113 @@ fun StudentWorkspace(
                                     },
                                 ) { Text("Assignments") }
                             }
+                            if (section == "assessments") {
+                                Button(onClick = {}) { Text("Assessments") }
+                            } else {
+                                OutlinedButton(
+                                    onClick = {
+                                        section = "assessments"
+                                        if (!state.assessments.loaded && !state.busy) loadAssessments()
+                                    },
+                                ) { Text("Assessments") }
+                            }
                         }
                     }
                 }
 
-                if (section == "assignments") {
+                if (section == "assessments") {
+                    if (assessmentId == null) {
+                        item { Text("My assessments", style = MaterialTheme.typography.headlineMedium) }
+                        item { Text("Knowledge checks are scored exclusively on the Academy server.") }
+                        if (!state.assessments.loaded) {
+                            item { Button(onClick = loadAssessments, enabled = !state.busy) { Text("Load assessments") } }
+                        } else {
+                            item { OutlinedButton(onClick = loadAssessments, enabled = !state.busy) { Text("Refresh assessments") } }
+                            if (state.assessments.items.isEmpty()) {
+                                item { Text("No assessments have been assigned to your account yet.") }
+                            }
+                            items(state.assessments.items, key = { "asm-${it.id}" }) { item ->
+                                OutlinedCard(
+                                    onClick = {
+                                        assessmentId = item.id
+                                        openAssessment(item.id)
+                                    },
+                                    enabled = !state.busy,
+                                    modifier = Modifier.fillMaxWidth(),
+                                ) {
+                                    Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                                        Text(item.title, style = MaterialTheme.typography.titleLarge)
+                                        if (item.course.isNotBlank()) Text(item.course)
+                                        val meta = buildList {
+                                            add("${item.questions} questions")
+                                            if (item.duration.isNotBlank()) add(item.duration)
+                                            add("Status: ${item.status}")
+                                            if (item.score != null && item.max != null) add("Score: ${item.score} / ${item.max}")
+                                        }.joinToString(" • ")
+                                        Text(meta)
+                                        Text("Open assessment")
+                                    }
+                                }
+                            }
+                        }
+                    } else if (assessment == null) {
+                        item { Text("This assessment is unavailable. Return to your assessments list and refresh.") }
+                    } else {
+                        val promptCount = assessment.questions.coerceIn(1, StudentAssessmentItem.SECURITY_PROMPTS.size)
+                        val prompts = StudentAssessmentItem.SECURITY_PROMPTS.take(promptCount)
+                        item { Text(assessment.title, style = MaterialTheme.typography.headlineMedium) }
+                        item {
+                            Text(
+                                buildList {
+                                    if (assessment.course.isNotBlank()) add(assessment.course)
+                                    add("Status: ${assessment.status}")
+                                    add("Attempts remaining: ${assessment.attemptsLeft}")
+                                    if (assessment.score != null && assessment.max != null) {
+                                        add("Official score: ${assessment.score} / ${assessment.max}")
+                                    }
+                                }.joinToString(" • "),
+                            )
+                        }
+                        if (!assessment.canSubmit()) {
+                            item {
+                                Text("This assessment is closed or has no attempts remaining.")
+                            }
+                        } else {
+                            prompts.forEachIndexed { qIdx, qItem ->
+                                item(key = "q-$qIdx") {
+                                    Card(Modifier.fillMaxWidth()) {
+                                        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                                            Text("Question ${qIdx + 1}: ${qItem.prompt}", style = MaterialTheme.typography.titleMedium)
+                                            qItem.options.forEachIndexed { optIdx, optText ->
+                                                Row(
+                                                    verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
+                                                    modifier = Modifier
+                                                        .fillMaxWidth()
+                                                        .clickable(enabled = !state.busy) {
+                                                            assessmentChoices = assessmentChoices + (qIdx to optIdx)
+                                                        },
+                                                ) {
+                                                    RadioButton(
+                                                        selected = assessmentChoices[qIdx] == optIdx,
+                                                        onClick = { assessmentChoices = assessmentChoices + (qIdx to optIdx) },
+                                                        enabled = !state.busy,
+                                                    )
+                                                    Text(optText)
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            item {
+                                Button(
+                                    onClick = { confirmAssessment = true },
+                                    enabled = !state.busy && assessmentChoices.size == promptCount,
+                                ) { Text("Submit assessment") }
+                            }
+                        }
+                    }
+                } else if (section == "assignments") {
                     if (assignmentId == null) {
                         item { Text("My assignments", style = MaterialTheme.typography.headlineMedium) }
                         item { Text("Assignments, deadlines, written submissions and instructor feedback come from the Academy server.") }
