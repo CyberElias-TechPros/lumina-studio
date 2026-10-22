@@ -99,3 +99,22 @@ active. Cancelling pending MFA forgets the local token; the existing server
 sign-out endpoint cannot revoke a pending MFA session, so cancellation does not
 claim server revocation. Pending sessions still require MFA to authorize access.
 No automatic credential retries or test logins against production are performed.
+
+## Current increment: 0.4 (supersedes the 0.3 storage limitation)
+
+- Optional **Keep me signed in** is off by default. A verified session token and
+  expiry can be encrypted with an Android Keystore AES-GCM key in
+  `noBackupFilesDir`; no user identity, roles, password or MFA code is persisted.
+- Restored credentials never restore an authenticated UI by themselves: the
+  API must verify the session online. Pending MFA is never persisted. Refresh
+  updates the stored token; logout, rejection and expiry remove it. Key loss or
+  ciphertext tampering requires sign-in again, with no plaintext fallback.
+- Cloud backup and device-transfer exclusion rules supplement `allowBackup=false`.
+  Keystore hardware backing is device-dependent; biometric authentication is not
+  part of this increment. Physical-device/OS-version acceptance remains required.
+- Students can load their actual enrolled courses, read instructor-supplied text
+  and explicitly confirm completion of published article lessons. Progress is
+  displayed from refreshed server records, never optimistic local completion.
+  Private coursework remains memory-only and requires a verified student session.
+- Video, interactive assessments, submissions, other roles, admissions/payments,
+  recovery/registration/deletion and notifications still need native workflows.

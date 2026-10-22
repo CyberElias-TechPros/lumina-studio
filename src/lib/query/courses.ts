@@ -1,5 +1,6 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useApiQuery, usePaginatedQuery, flattenPages } from "@/lib/query/hooks";
-import { fetchCourses, fetchCourse, fetchGradebook } from "@/lib/api/courses";
+import { fetchCourses, fetchCourse, fetchGradebook, completeLesson } from "@/lib/api/courses";
 import type { LearningCourse, GradebookCourse } from "@/data/learning";
 
 export const courseKeys = {
@@ -27,4 +28,20 @@ export function useGradebook() {
 
 export function useGradebookItems(): GradebookCourse[] {
   return flattenPages(useGradebook().data?.pages);
+}
+
+/** Progress is server-confirmed, never inferred from pressing a button. */
+export function useCompleteLesson(course: string, lesson: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationKey: ["complete-lesson", course, lesson],
+    mutationFn: () => completeLesson(course, lesson),
+    retry: false,
+    onSuccess: async () => {
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: courseKeys.all }),
+        queryClient.invalidateQueries({ queryKey: ["dashboard", "student"] }),
+      ]);
+    },
+  });
 }

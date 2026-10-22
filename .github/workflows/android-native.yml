@@ -1,11 +1,14 @@
 name: Native Android preview
 on:
   push:
-    branches: [main, 'arena/c309a00c-lumina-studio']
+    branches: [main]
     paths: ['apps/android-native/**', 'src/data/blog.ts', 'public/images/blog/**', 'package.json', 'package-lock.json', '.github/workflows/android-native.yml']
   pull_request:
     paths: ['apps/android-native/**', 'src/data/blog.ts', 'public/images/blog/**', 'package.json', 'package-lock.json', '.github/workflows/android-native.yml']
   workflow_dispatch:
+concurrency:
+  group: native-android-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:

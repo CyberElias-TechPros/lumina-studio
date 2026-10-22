@@ -1,6 +1,8 @@
 package ng.cea.nativeapp
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.selection.toggleable
+import androidx.compose.ui.semantics.Role
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.text.KeyboardOptions
@@ -76,8 +78,8 @@ fun AccountScreen(state: AccountState, signIn: (String, String, Boolean) -> Unit
                 OutlinedTextField(value = password, onValueChange = { password = it }, label = { Text("Password") },
                     visualTransformation = PasswordVisualTransformation(), keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                     enabled = !state.busy, singleLine = true, modifier = Modifier.fillMaxWidth())
-                Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
-                    Checkbox(checked = rememberSession, onCheckedChange = { rememberSession = it }, enabled = !state.busy)
+                Row(modifier = Modifier.fillMaxWidth().toggleable(value = rememberSession, enabled = !state.busy, role = Role.Checkbox, onValueChange = { rememberSession = it }), verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
+                    Checkbox(checked = rememberSession, onCheckedChange = null, enabled = !state.busy)
                     Text("Keep me signed in on this phone. Do not enable on a shared phone.")
                 }
                 Button(onClick = { val submitted = password; password = ""; signIn(email, submitted, rememberSession) }, enabled = !state.busy && email.trim().contains('@') && password.isNotEmpty()) { Text("Sign in") }

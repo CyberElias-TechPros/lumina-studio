@@ -85,7 +85,7 @@ class AccountViewModel(application: Application) : AndroidViewModel(application)
         val dashboard = client.studentDashboard()
         mutable.value = mutable.value.copy(dashboard = dashboard, message = "Completion saved. Learning records refreshed.")
     }
-    fun signOut() = action {
+    fun signOut() = action("Secure sign-out could not be completed. Clear this app’s storage in Android settings before sharing this phone.") {
         // Hide account details immediately, including when the device is offline.
         mutable.value = AccountState(busy = true)
         val revoked = client.signOut()

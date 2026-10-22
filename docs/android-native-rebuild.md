@@ -89,3 +89,24 @@ response size and disables caching. Password/code/token material is not stored
 in saved instance state, public caches or logs. Offline sign-out and MFA cancel
 state exactly what was cleared locally versus revoked at the server. No new
 backend permissions or weaker MFA policy are introduced.
+
+## Current implementation ledger — 22 October 2026
+
+This supersedes the storage limitation in the historical 0.3 section above.
+
+| Workflow | Implemented in source | Remaining acceptance / implementation |
+| --- | --- | --- |
+| Sign-in / MFA | Native password, authenticator and recovery-code challenge | Real-account/physical-device acceptance |
+| Session persistence | Opt-in Keystore AES-GCM vault; verified online restore; rotation, expiry and local clearing | Physical-device key invalidation, device migration and multi-OS acceptance |
+| Student reading | Server-owned enrolment list, modules, published lesson text | Actual populated academy content; video/interactive lesson types |
+| Reading progress | Explicit confirmation, server-authorized completion, refetched records | Production student/instructor handoff acceptance |
+| Website lesson viewer | Actual published text and confirmed completion replace inert controls and fabricated lesson material | Media, assessment, materials and discussion APIs/workflows |
+| Native account lifecycle | Sign-in and logout implemented | Registration, email verification/recovery links, deletion |
+| Native submissions / feedback | Not implemented | Assignment/file submission, instructor review and feedback loop |
+| Native admissions / payments | Not implemented | Drafts, canonical offers, payment confirmation and receipts |
+| Other native roles / messaging / FCM | Not implemented | Role-by-role read/write and denied-action coverage |
+| Production release | Not ready | Resolve Cloudflare build failure, physical-device acceptance, signing and store requirements |
+
+No private coursework is written to the public offline bundle. No new local
+role assignment, free enrolment bypass, fabricated grades, automatic completion
+or production test writes are introduced. CI fixtures are not live acceptance.
