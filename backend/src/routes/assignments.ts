@@ -92,11 +92,16 @@ assignments.get("/:id", async (c) => {
   return c.json(mapRow(row));
 });
 
-const submitSchema = z.object({
-  body: z.string().trim().max(20_000, "Submission is too long.").optional(),
-  file: z.string().trim().max(2_000, "Invalid file reference.").optional(),
-  size: z.string().trim().max(100, "Invalid size.").optional(),
-});
+const submitSchema = z
+  .object({
+    body: z.string().trim().max(20_000, "Submission is too long.").optional(),
+    file: z.string().trim().max(2_000, "Invalid file reference.").optional(),
+    size: z.string().trim().max(100, "Invalid size.").optional(),
+  })
+  .refine(
+    (input) => Boolean(input.body || input.file),
+    "Add a written answer or file reference before submitting.",
+  );
 
 /** Student submits work for their own assignment. Creates/updates a submission row. */
 assignments.post("/:id/submit", async (c) => {
@@ -116,14 +121,23 @@ assignments.post("/:id/submit", async (c) => {
   // free-text dues ("Sun · 23:59") are never compared as strings.
   const late = row.due_at && row.due_at < now ? 1 : 0;
   const submissionId = crypto.randomUUID();
-  await c.env.DB.prepare(
-    `INSERT INTO submissions
-       (id, user_id, student_user_id, assignment_id, student, title, submitted, status, late, file, size, feedback)
-     VALUES (?, ?, ?, ?, ?, ?, ?, 'submitted', ?, ?, ?, '')`,
-  )
-    .bind(
+  // One transaction: no partial queue entry and no lost history on resubmission.
+  // The guarded insert rechecks grading state inside the write transaction.
+  const history = JSON.stringify({
+    id: submissionId,
+    at: now,
+    file: input.file ?? "",
+    size: input.size ?? "",
+    body: input.body ?? "",
+  });
+  const result = await c.env.DB.batch([
+    c.env.DB.prepare(
+      `INSERT INTO submissions
+       (id, user_id, student_user_id, assignment_id, student, title, submitted, status, late, file, size, feedback, body)
+       SELECT ?, ?, ?, ?, ?, ?, ?, 'submitted', ?, ?, ?, '', ?
+       WHERE EXISTS (SELECT 1 FROM assignments WHERE id = ? AND user_id = ? AND status != 'graded')`,
+    ).bind(
       submissionId,
-      // Route the submission to the authoring instructor's queue when known.
       row.created_by ?? user.id,
       user.id,
       assignmentId,
@@ -133,21 +147,19 @@ assignments.post("/:id/submit", async (c) => {
       late,
       input.file ?? "",
       input.size ?? "",
-    )
-    .run();
-
-  const submissions = JSON.parse(row.submissions) as unknown[];
-  submissions.push({
-    at: now,
-    file: input.file ?? "",
-    size: input.size ?? "",
-    body: input.body ?? "",
-  });
-  await c.env.DB.prepare(
-    `UPDATE assignments SET status = 'submitted', submitted_at = ?, submissions = ? WHERE id = ?`,
-  )
-    .bind(now, JSON.stringify(submissions), assignmentId)
-    .run();
+      input.body ?? "",
+      assignmentId,
+      user.id,
+    ),
+    c.env.DB.prepare(
+      `UPDATE assignments SET status = 'submitted', submitted_at = ?,
+         submissions = json_insert(submissions, '$[#]', json(?))
+       WHERE id = ? AND user_id = ? AND status != 'graded'
+         AND EXISTS (SELECT 1 FROM submissions WHERE id = ?)`,
+    ).bind(now, history, assignmentId, user.id, submissionId),
+  ]);
+  if (result[0]?.meta.changes === 0)
+    throw ApiError.conflict("This assignment is no longer accepting submissions.");
 
   return c.json(
     {
@@ -168,8 +180,9 @@ assignments.get("/:id/submission", async (c) => {
   const user = c.get("authUser");
   const assignmentId = c.req.param("id");
   const row = await c.env.DB.prepare(
-    `SELECT id, status, score, feedback, submitted, graded_at, late, file, size
-       FROM submissions WHERE assignment_id = ? AND student_user_id = ?`,
+    `SELECT id, status, score, feedback, submitted, graded_at, late, file, size, body
+       FROM submissions WHERE assignment_id = ? AND student_user_id = ?
+       ORDER BY submitted DESC, rowid DESC LIMIT 1`,
   )
     .bind(assignmentId, user.id)
     .first<{
@@ -182,6 +195,7 @@ assignments.get("/:id/submission", async (c) => {
       late: number;
       file: string;
       size: string;
+      body: string;
     }>();
   if (!row) throw ApiError.notFound("No submission yet for this assignment.");
   return c.json({
@@ -194,5 +208,6 @@ assignments.get("/:id/submission", async (c) => {
     late: row.late === 1,
     file: row.file,
     size: row.size,
+    body: row.body,
   });
 });

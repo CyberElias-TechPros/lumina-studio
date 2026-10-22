@@ -67,6 +67,7 @@ import assistantQuestionsSql from "../migrations/0065_assistant_questions.sql?ra
 import businessIntakeSql from "../migrations/0066_business_intake.sql?raw";
 import protectedTuitionSql from "../migrations/0067_protected_tuition.sql?raw";
 import nativePushSql from "../migrations/0068_native_push_devices.sql?raw";
+import submissionTextSql from "../migrations/0069_submission_text.sql?raw";
 import { seedContentSql } from "../seeds/content";
 import { seedLmsSql } from "../seeds/lms";
 import { seedDomainSql } from "../seeds/domain";
@@ -185,6 +186,7 @@ export async function setupDb(): Promise<void> {
     businessIntakeSql,
     protectedTuitionSql,
     nativePushSql,
+    submissionTextSql,
   ]) {
     const statements = sql
       .split("\n")

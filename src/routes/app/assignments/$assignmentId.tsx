@@ -1,291 +1,163 @@
 "use client";
-
+import { useState } from "react";
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
-import { useState } from "react";
-import {
-  ArrowLeft,
-  ArrowRight,
-  CalendarDays,
-  CheckCircle2,
-  FileDown,
-  FileText,
-  Link2,
-  ListChecks,
-  Loader2,
-  Paperclip,
-  UploadCloud,
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { useAssignment, useSubmitAssignment } from "@/lib/query/assignments";
+import { QueryState } from "@/components/ui/query-state";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  useAssignment,
+  useAssignmentSubmission,
+  useSubmitAssignment,
+} from "@/lib/query/assignments";
 import type { StudentAssignment } from "@/data/learning";
-import { cn } from "@/lib/utils";
+import { getErrorMessage } from "@/lib/errors";
+import { isMockMode } from "@/lib/env";
 
 export const Route = createFileRoute("/app/assignments/$assignmentId")({
-  head: () => ({
-    meta: [{ title: "Assignment — CEA-OS" }],
-  }),
-  component: AssignmentDetail,
+  head: () => ({ meta: [{ title: "Assignment — CEA-OS" }] }),
+  component: AssignmentPage,
 });
-
-function AssignmentDetail() {
+function AssignmentPage() {
   const { assignmentId } = Route.useParams();
-  const aQuery = useAssignment(assignmentId);
-
+  const query = useAssignment(assignmentId);
   return (
-    <AppShell
-      roleKey="assignments"
-      title="Assignment"
-      subtitle="Loading…"
-      actions={
-        <>
-          <Badge variant="secondary" className="font-semibold">
-            Assignment detail
-          </Badge>
-        </>
-      }
-    >
-      <QueryState<StudentAssignment> query={aQuery} error={{ title: "Assignment unavailable" }}>
-        {(a) => (
-          <>
-            <div className="grid gap-5 xl:grid-cols-[1.5fr_1fr]">
-              <div className="space-y-5">
-                <Card className="bg-card shadow-soft border">
-                  <CardContent className="p-6">
-                    <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                      Brief
-                    </p>
-                    <p className="mt-2 text-sm leading-relaxed">{a.description}</p>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {["Express", "PostgreSQL", "JWT", "Supertest"].map((t) => (
-                        <Badge key={t} variant="secondary" className="font-semibold">
-                          {t}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-card shadow-soft border">
-                  <CardHeader className="flex-row items-center justify-between">
-                    <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                      <ListChecks className="text-primary size-4" /> Rubric
-                    </CardTitle>
-                    <Badge variant="secondary" className="font-semibold">
-                      {a.max} marks
-                    </Badge>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    {a.rubric.map((r, i) => (
-                      <div
-                        key={r.criterion}
-                        className="flex items-center gap-3 rounded-xl border p-3.5"
-                      >
-                        <span className="bg-gradient-brand text-white font-display grid size-8 shrink-0 place-items-center rounded-lg text-xs font-bold">
-                          {r.weight}
-                        </span>
-                        <div className="min-w-0 flex-1">
-                          <p className="text-sm font-bold">
-                            {i + 1}. {r.criterion}
-                          </p>
-                          <p className="text-muted-foreground text-xs">{r.detail}</p>
-                        </div>
-                        <span className="text-muted-foreground text-xs font-semibold">
-                          {r.weight}%
-                        </span>
-                      </div>
-                    ))}
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-card shadow-soft border">
-                  <CardContent className="p-6">
-                    <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                      Attachments
-                    </p>
-                    <div className="mt-3 space-y-2">
-                      {[
-                        {
-                          name: "starter-repo-link",
-                          meta: "GitHub · clone and push your fork",
-                          icon: Link2,
-                        },
-                        { name: "acceptance-criteria.pdf", meta: "PDF · 240 KB", icon: FileDown },
-                      ].map((f) => (
-                        <div
-                          key={f.name}
-                          className="flex items-center gap-3 rounded-xl border p-3.5"
-                        >
-                          <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                            <f.icon className="size-4" />
-                          </span>
-                          <div className="min-w-0 flex-1">
-                            <p className="truncate text-sm font-bold">{f.name}</p>
-                            <p className="text-muted-foreground text-xs">{f.meta}</p>
-                          </div>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            className="text-primary text-xs font-semibold"
-                          >
-                            Open
-                          </Button>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-
-              <div className="space-y-5">
-                {a.status === "graded" && a.score !== undefined ? (
-                  <Card className="bg-gradient-ink text-ink-foreground shadow-elevated border-0">
-                    <CardContent className="p-6">
-                      <p className="text-ink-foreground/60 text-xs font-bold tracking-[0.16em] uppercase">
-                        Grade
-                      </p>
-                      <p className="font-display mt-2 text-3xl font-extrabold">{a.score}%</p>
-                      <p className="text-ink-foreground/70 mt-1 text-sm">
-                        A- · rubric feedback attached. Dispute window closes Aug 28.
-                      </p>
-                      <Button size="sm" className="bg-gradient-brand shadow-glow mt-4 border-0">
-                        View feedback <ArrowRight className="ml-1 size-3.5" />
-                      </Button>
-                    </CardContent>
-                  </Card>
-                ) : (
-                  <Card className="bg-card shadow-soft border">
-                    <CardHeader>
-                      <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                        <UploadCloud className="text-primary size-4" /> Submission
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      {a.submissions?.length ? (
-                        a.submissions.map((s) => (
-                          <div
-                            key={s.file}
-                            className="flex items-center gap-3 rounded-xl border p-3.5"
-                          >
-                            <span className="bg-success/10 text-success grid size-9 shrink-0 place-items-center rounded-lg">
-                              <Paperclip className="size-4" />
-                            </span>
-                            <div className="min-w-0 flex-1">
-                              <p className="truncate text-sm font-bold">{s.file}</p>
-                              <p className="text-muted-foreground text-xs">
-                                {s.size} · {s.uploaded}
-                              </p>
-                            </div>
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              className="text-primary text-xs font-semibold"
-                            >
-                              View
-                            </Button>
-                          </div>
-                        ))
-                      ) : (
-                        <div className="rounded-xl border border-dashed p-6 text-center">
-                          <UploadCloud className="text-muted-foreground mx-auto size-8" />
-                          <p className="mt-2 text-sm font-bold">Nothing submitted yet</p>
-                          <p className="text-muted-foreground mt-1 text-xs">
-                            Zip your repo or share a link
-                          </p>
-                        </div>
-                      )}
-                      <SubmitForm assignmentId={assignmentId} />
-                      {a.status !== "graded" && (
-                        <p className="text-muted-foreground text-xs">
-                          You can resubmit before the deadline — latest submission wins.
-                        </p>
-                      )}
-                    </CardContent>
-                  </Card>
-                )}
-
-                <Card className="bg-card shadow-soft border">
-                  <CardHeader>
-                    <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                      <CalendarDays className="text-primary size-4" /> Timeline
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    {[
-                      { t: "Opened", d: "Jul 24", done: true },
-                      { t: "Due", d: a.due, done: a.status !== "pending" },
-                      {
-                        t: "Grade published",
-                        d: "Within 7 days of due date",
-                        done: a.status === "graded",
-                      },
-                    ].map((s) => (
-                      <div key={s.t} className="flex items-center gap-3">
-                        <CheckCircle2
-                          className={cn(
-                            "size-4 shrink-0",
-                            s.done ? "text-success" : "text-muted-foreground/30",
-                          )}
-                        />
-                        <div className="flex flex-1 items-center justify-between border-b pb-3">
-                          <p className="text-sm font-semibold">{s.t}</p>
-                          <p className="text-muted-foreground text-xs">{s.d}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </CardContent>
-                </Card>
-
-                <Link
-                  to="/app/assignments"
-                  className="text-muted-foreground hover:text-primary flex items-center gap-2 text-sm font-semibold transition-colors"
-                >
-                  <ArrowLeft className="size-4" /> All assignments
-                </Link>
-              </div>
-            </div>
-          </>
-        )}
+    <AppShell roleKey="student" title="Assignment" subtitle="Your work and instructor feedback">
+      <QueryState<StudentAssignment> query={query} error={{ title: "Assignment unavailable" }}>
+        {(assignment) => <AssignmentWork key={assignment.id} assignment={assignment} />}
       </QueryState>
     </AppShell>
   );
 }
-
-function SubmitForm({ assignmentId }: { assignmentId: string }) {
-  const [value, setValue] = useState("");
-  const submit = useSubmitAssignment(assignmentId);
-
+function AssignmentWork({ assignment: a }: { assignment: StudentAssignment }) {
+  const latest = useAssignmentSubmission(a.id);
+  const submit = useSubmitAssignment(a.id);
+  const [answer, setAnswer] = useState("");
+  const graded = a.status === "graded" || latest.data?.status === "graded";
   return (
-    <div className="space-y-2">
-      <textarea
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        placeholder="Paste your repo link or submission note…"
-        rows={3}
-        className="bg-muted w-full resize-none rounded-xl border-0 px-4 py-3 text-sm outline-none"
-      />
-      <Button
-        size="sm"
-        className="bg-gradient-brand w-full border-0"
-        disabled={submit.isPending || value.trim().length === 0}
-        onClick={() => value.trim() && submit.mutate({ file: value.trim() })}
-      >
-        {submit.isPending ? (
-          <Loader2 className="mr-1.5 size-4 animate-spin" />
-        ) : (
-          <UploadCloud className="mr-1.5 size-4" />
-        )}
-        Submit work
-      </Button>
-      {submit.isError && (
-        <p className="text-destructive text-xs">
-          Submission failed — please try again or contact support.
-        </p>
+    <div className="space-y-5" data-testid="assignment-content">
+      <Card>
+        <CardContent className="space-y-4 p-6">
+          <h2 className="text-xl font-bold">{a.title}</h2>
+          <p>
+            {a.course} · Due: {a.due} · Maximum score: {a.max}
+          </p>
+          <p className="whitespace-pre-wrap">{a.description}</p>
+          {a.rubric?.length > 0 && (
+            <ul className="space-y-2">
+              {a.rubric.map((r) => (
+                <li key={r.criterion}>
+                  {r.criterion} ({r.weight}) — {r.detail}
+                </li>
+              ))}
+            </ul>
+          )}
+        </CardContent>
+      </Card>
+      <Card>
+        <CardContent className="space-y-4 p-6">
+          <h2 className="text-xl font-bold">Latest submission and feedback</h2>
+          {latest.isPending ? (
+            <p role="status">Checking your submission…</p>
+          ) : latest.isError ? (
+            <p role="alert">{getErrorMessage(latest.error)}</p>
+          ) : latest.data ? (
+            <>
+              <p>
+                Status: {latest.data.status} · Submitted: {latest.data.submittedAt}
+                {latest.data.late ? " · Late" : ""}
+              </p>
+              {latest.data.body && (
+                <details>
+                  <summary>Your submitted answer</summary>
+                  <p className="whitespace-pre-wrap break-words">{latest.data.body}</p>
+                </details>
+              )}
+              {latest.data.file && (
+                <p className="break-words">File/reference: {latest.data.file}</p>
+              )}
+              {latest.data.score != null && (
+                <p>
+                  Score: {latest.data.score} / {a.max}
+                </p>
+              )}
+              <p className="whitespace-pre-wrap">
+                {latest.data.feedback || "No instructor feedback has been returned yet."}
+              </p>
+            </>
+          ) : (
+            <p>No submission has been recorded yet.</p>
+          )}
+          <Button
+            variant="outline"
+            onClick={() => void latest.refetch()}
+            disabled={latest.isFetching}
+          >
+            Refresh submission status
+          </Button>
+        </CardContent>
+      </Card>
+      {!graded && (
+        <Card>
+          <CardContent className="space-y-4 p-6">
+            <form
+              className="space-y-4"
+              onSubmit={(event) => {
+                event.preventDefault();
+                if (
+                  answer.trim() &&
+                  !submit.isPending &&
+                  !isMockMode &&
+                  !latest.isError &&
+                  !latest.isPending
+                )
+                  submit.mutate({ body: answer.trim() }, { onSuccess: () => setAnswer("") });
+              }}
+            >
+              <label className="block font-semibold">
+                Written answer or repository link
+                <textarea
+                  value={answer}
+                  onChange={(e) => setAnswer(e.target.value)}
+                  maxLength={20000}
+                  rows={10}
+                  required
+                  disabled={submit.isPending}
+                  className="mt-2 block w-full rounded border p-3 font-normal"
+                />
+              </label>
+              <p className="text-sm text-muted-foreground">
+                Your draft stays in this page only and is not autosaved. Submitting again creates a
+                new attempt for review. File upload is not available in this form.
+              </p>
+              {isMockMode && <p>Demo data only. Submitting work is disabled.</p>}
+              <Button
+                type="submit"
+                disabled={
+                  !answer.trim() ||
+                  submit.isPending ||
+                  isMockMode ||
+                  latest.isError ||
+                  latest.isPending
+                }
+              >
+                {submit.isPending ? "Submitting…" : "Submit written answer"}
+              </Button>
+              {submit.isError && (
+                <p role="alert">
+                  {getErrorMessage(submit.error)} Check submission status before retrying; the
+                  request may have reached the server.
+                </p>
+              )}
+              {submit.isSuccess && <p role="status">Your answer was recorded by the server.</p>}
+            </form>
+          </CardContent>
+        </Card>
       )}
+      <Link to="/app/assignments" className="text-primary">
+        Back to assignments
+      </Link>
     </div>
   );
 }

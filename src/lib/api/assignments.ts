@@ -14,6 +14,7 @@ export interface SubmissionResult {
 }
 
 export interface AssignmentSubmission {
+  body?: string;
   id: string;
   status: string;
   score?: number;
