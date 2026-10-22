@@ -183,14 +183,44 @@ export const computerRepairsLessonsB: Record<string, SessionLecture> = {
       "Record the boot time before and after with your phone. A ninety-second-to-fifteen-second clip is the most persuasive evidence you can show a customer, and it is what makes them tell their friends.",
     ],
     vocabulary: [
-      { term: "SO-DIMM", meaning: "The smaller laptop RAM module. Distinct from the full-size desktop DIMM and not interchangeable." },
-      { term: "Dual channel", meaning: "Running two matched RAM sticks in the correct slots together, giving a real performance gain over single channel." },
-      { term: "NVMe", meaning: "The fast SSD protocol over M.2. Distinct from SATA over M.2, which is slower and not interchangeable." },
-      { term: "2.5-inch bay", meaning: "The drive space taking a SATA SSD or hard drive, common alongside an M.2 slot." },
-      { term: "Cloning", meaning: "Copying an entire drive, including the operating system, to a new one so the machine boots into the same state." },
-      { term: "USB-to-NVMe adapter", meaning: "An enclosure letting an SSD connect by USB for cloning or data recovery without opening the machine twice." },
-      { term: "Clean install", meaning: "Installing Windows fresh. Gives the best result but requires reinstalling every program." },
-      { term: "Memory Diagnostic", meaning: "The Windows tool testing RAM for faults. Worth running after any RAM upgrade." },
+      {
+        term: "SO-DIMM",
+        meaning:
+          "The smaller laptop RAM module. Distinct from the full-size desktop DIMM and not interchangeable.",
+      },
+      {
+        term: "Dual channel",
+        meaning:
+          "Running two matched RAM sticks in the correct slots together, giving a real performance gain over single channel.",
+      },
+      {
+        term: "NVMe",
+        meaning:
+          "The fast SSD protocol over M.2. Distinct from SATA over M.2, which is slower and not interchangeable.",
+      },
+      {
+        term: "2.5-inch bay",
+        meaning: "The drive space taking a SATA SSD or hard drive, common alongside an M.2 slot.",
+      },
+      {
+        term: "Cloning",
+        meaning:
+          "Copying an entire drive, including the operating system, to a new one so the machine boots into the same state.",
+      },
+      {
+        term: "USB-to-NVMe adapter",
+        meaning:
+          "An enclosure letting an SSD connect by USB for cloning or data recovery without opening the machine twice.",
+      },
+      {
+        term: "Clean install",
+        meaning:
+          "Installing Windows fresh. Gives the best result but requires reinstalling every program.",
+      },
+      {
+        term: "Memory Diagnostic",
+        meaning: "The Windows tool testing RAM for faults. Worth running after any RAM upgrade.",
+      },
     ],
     homework: [
       {
@@ -218,27 +248,32 @@ export const computerRepairsLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Compatibility checking",
         passing: "Checks the RAM type.",
-        excellent: "Confirms type, form factor, maximum capacity, speed and M.2 protocol from the specification, and checks used space before advising on SSD size.",
+        excellent:
+          "Confirms type, form factor, maximum capacity, speed and M.2 protocol from the specification, and checks used space before advising on SSD size.",
       },
       {
         criterion: "Fitting",
         passing: "Components are installed.",
-        excellent: "RAM seated at thirty degrees until both clips click in the dual-channel slots, SSD secured properly, and safe handling throughout.",
+        excellent:
+          "RAM seated at thirty degrees until both clips click in the dual-channel slots, SSD secured properly, and safe handling throughout.",
       },
       {
         criterion: "Cloning",
         passing: "Produces a working clone.",
-        excellent: "Source and target confirmed before starting, the original preserved until verification, and a healthy versus broken installation correctly distinguished.",
+        excellent:
+          "Source and target confirmed before starting, the original preserved until verification, and a healthy versus broken installation correctly distinguished.",
       },
       {
         criterion: "Verification",
         passing: "The machine boots.",
-        excellent: "New capacity confirmed in system information, boot and launch times measured before and after, and a stability check including the memory diagnostic.",
+        excellent:
+          "New capacity confirmed in system information, boot and launch times measured before and after, and a stability check including the memory diagnostic.",
       },
       {
         criterion: "Honest reporting",
         passing: "Reports the work done.",
-        excellent: "States plainly what the upgrade fixed and what it did not, with a separate diagnosis offered where a different fault remains.",
+        excellent:
+          "States plainly what the upgrade fixed and what it did not, with a separate diagnosis offered where a different fault remains.",
       },
     ],
     faqs: [
@@ -447,14 +482,46 @@ export const computerRepairsLessonsB: Record<string, SessionLecture> = {
       "Always ask what data is on a machine before you declare it uneconomic. Recovering files from a dead machine through a USB adapter is frequently the service the customer actually needed, and it turns a lost job into a grateful referral.",
     ],
     vocabulary: [
-      { term: "Multimeter", meaning: "The instrument measuring voltage, resistance and continuity. The core diagnostic tool for power faults." },
-      { term: "Continuity test", meaning: "Checking whether a path is unbroken — the meter beeps on a continuous conductor. Used on cables, fuses and switches." },
-      { term: "Thermal shutdown", meaning: "The machine cutting power at the CPU's thermal limit to prevent damage. A symptom of a cooling fault, not a mystery." },
-      { term: "Backlight failure", meaning: "A screen that appears dead but shows a faint image under a torch. Different from a failed panel." },
-      { term: "Display cable fatigue", meaning: "Damage to the cable running through the hinge, diagnosed by the picture changing with lid position." },
-      { term: "Battery report", meaning: "The Windows-generated comparison of design capacity with full-charge capacity, revealing battery degradation." },
-      { term: "Board-level fault", meaning: "A failure of the motherboard itself, usually uneconomic to repair on a mid-range laptop." },
-      { term: "Data recovery", meaning: "Retrieving files from a dead machine by reading its drive elsewhere. Often the real service a customer needs." },
+      {
+        term: "Multimeter",
+        meaning:
+          "The instrument measuring voltage, resistance and continuity. The core diagnostic tool for power faults.",
+      },
+      {
+        term: "Continuity test",
+        meaning:
+          "Checking whether a path is unbroken — the meter beeps on a continuous conductor. Used on cables, fuses and switches.",
+      },
+      {
+        term: "Thermal shutdown",
+        meaning:
+          "The machine cutting power at the CPU's thermal limit to prevent damage. A symptom of a cooling fault, not a mystery.",
+      },
+      {
+        term: "Backlight failure",
+        meaning:
+          "A screen that appears dead but shows a faint image under a torch. Different from a failed panel.",
+      },
+      {
+        term: "Display cable fatigue",
+        meaning:
+          "Damage to the cable running through the hinge, diagnosed by the picture changing with lid position.",
+      },
+      {
+        term: "Battery report",
+        meaning:
+          "The Windows-generated comparison of design capacity with full-charge capacity, revealing battery degradation.",
+      },
+      {
+        term: "Board-level fault",
+        meaning:
+          "A failure of the motherboard itself, usually uneconomic to repair on a mid-range laptop.",
+      },
+      {
+        term: "Data recovery",
+        meaning:
+          "Retrieving files from a dead machine by reading its drive elsewhere. Often the real service a customer needs.",
+      },
     ],
     homework: [
       {
@@ -482,27 +549,32 @@ export const computerRepairsLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Systematic method",
         passing: "Reaches a diagnosis.",
-        excellent: "Works from the simplest external cause inward, never swapping parts before a test points to them.",
+        excellent:
+          "Works from the simplest external cause inward, never swapping parts before a test points to them.",
       },
       {
         criterion: "Multimeter use",
         passing: "Can measure voltage.",
-        excellent: "Correct settings chosen, adapter output compared with its rating, continuity used to locate a cable break, and no measurement taken on a live circuit in the wrong mode.",
+        excellent:
+          "Correct settings chosen, adapter output compared with its rating, continuity used to locate a cable break, and no measurement taken on a live circuit in the wrong mode.",
       },
       {
         criterion: "Display diagnosis",
         passing: "Identifies a screen problem.",
-        excellent: "External monitor test used first, lid-movement test applied, torch check for backlight failure, and panel versus cable versus GPU correctly distinguished.",
+        excellent:
+          "External monitor test used first, lid-movement test applied, torch check for backlight failure, and panel versus cable versus GPU correctly distinguished.",
       },
       {
         criterion: "Thermal diagnosis",
         passing: "Recognises overheating.",
-        excellent: "Temperatures measured at idle and under load, thermal shutdown explained as protection, and the battery report used to rule out a degraded cell.",
+        excellent:
+          "Temperatures measured at idle and under load, thermal shutdown explained as protection, and the battery report used to rule out a degraded cell.",
       },
       {
         criterion: "Judgement",
         passing: "Completes the repair.",
-        excellent: "Prices the repair against the machine's value, presents alternatives, asks about the data, and offers recovery where the repair is uneconomic.",
+        excellent:
+          "Prices the repair against the machine's value, presents alternatives, asks about the data, and offers recovery where the repair is uneconomic.",
       },
     ],
     faqs: [
@@ -708,14 +780,45 @@ export const computerRepairsLessonsB: Record<string, SessionLecture> = {
       "Know your referral point and use it. Referring a clean-room recovery to a specialist costs you one job and earns lasting trust; attempting it and destroying the drive costs you a reputation.",
     ],
     vocabulary: [
-      { term: "S.M.A.R.T.", meaning: "A drive's self-reported health data — reallocated sectors, pending sectors, power-on hours. Any reallocated sector means the drive is degrading." },
-      { term: "Boot order", meaning: "The sequence the firmware tries devices in. A changed order mimics a dead drive and is fixed in seconds." },
-      { term: "Beep code", meaning: "A firmware error signalled by beeps when there is no display. The pattern's meaning is manufacturer-specific." },
-      { term: "MemTest86", meaning: "The professional memory test, booted from USB. Needs several full passes to catch intermittent faults." },
-      { term: "bootrec", meaning: "The Windows recovery commands rebuilding the boot configuration data and master boot record." },
-      { term: "Startup Repair", meaning: "The automated Windows recovery tool. Try it before the manual commands." },
-      { term: "Reallocated sector", meaning: "A bad sector the drive has moved data away from. A clear sign of degradation and a reason to replace the drive." },
-      { term: "Clean-room recovery", meaning: "Specialist physical data recovery requiring controlled conditions. A referral, not a service you should attempt." },
+      {
+        term: "S.M.A.R.T.",
+        meaning:
+          "A drive's self-reported health data — reallocated sectors, pending sectors, power-on hours. Any reallocated sector means the drive is degrading.",
+      },
+      {
+        term: "Boot order",
+        meaning:
+          "The sequence the firmware tries devices in. A changed order mimics a dead drive and is fixed in seconds.",
+      },
+      {
+        term: "Beep code",
+        meaning:
+          "A firmware error signalled by beeps when there is no display. The pattern's meaning is manufacturer-specific.",
+      },
+      {
+        term: "MemTest86",
+        meaning:
+          "The professional memory test, booted from USB. Needs several full passes to catch intermittent faults.",
+      },
+      {
+        term: "bootrec",
+        meaning:
+          "The Windows recovery commands rebuilding the boot configuration data and master boot record.",
+      },
+      {
+        term: "Startup Repair",
+        meaning: "The automated Windows recovery tool. Try it before the manual commands.",
+      },
+      {
+        term: "Reallocated sector",
+        meaning:
+          "A bad sector the drive has moved data away from. A clear sign of degradation and a reason to replace the drive.",
+      },
+      {
+        term: "Clean-room recovery",
+        meaning:
+          "Specialist physical data recovery requiring controlled conditions. A referral, not a service you should attempt.",
+      },
     ],
     homework: [
       {
@@ -743,27 +846,32 @@ export const computerRepairsLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Error interpretation",
         passing: "Recognises common messages.",
-        excellent: "Photographs the exact message, checks whether the drive is detected in firmware, and distinguishes boot-order, boot-record and drive-failure causes.",
+        excellent:
+          "Photographs the exact message, checks whether the drive is detected in firmware, and distinguishes boot-order, boot-record and drive-failure causes.",
       },
       {
         criterion: "Storage testing",
         passing: "Checks whether a drive works.",
-        excellent: "Reads S.M.A.R.T. and the wmic status, identifies reallocated and pending sectors, and listens for mechanical failure.",
+        excellent:
+          "Reads S.M.A.R.T. and the wmic status, identifies reallocated and pending sectors, and listens for mechanical failure.",
       },
       {
         criterion: "Memory testing",
         passing: "Reseats the RAM.",
-        excellent: "Tests sticks one at a time in one slot, runs Windows Memory Diagnostic and MemTest86 for multiple passes.",
+        excellent:
+          "Tests sticks one at a time in one slot, runs Windows Memory Diagnostic and MemTest86 for multiple passes.",
       },
       {
         criterion: "Boot repair",
         passing: "Gets the machine booting.",
-        excellent: "Tries Startup Repair before the bootrec commands, never reinstalls first, and confirms the user's files are intact afterwards.",
+        excellent:
+          "Tries Startup Repair before the bootrec commands, never reinstalls first, and confirms the user's files are intact afterwards.",
       },
       {
         criterion: "Data safety",
         passing: "Does not lose data.",
-        excellent: "Failing drive powered down immediately, data copied through an adapter with the most irreplaceable files first, original untouched, and the clean-room referral point stated clearly.",
+        excellent:
+          "Failing drive powered down immediately, data copied through an adapter with the most irreplaceable files first, original untouched, and the clean-room referral point stated clearly.",
       },
     ],
     faqs: [

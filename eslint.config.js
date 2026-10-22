@@ -10,6 +10,7 @@ export default tseslint.config(
     ignores: [
       "dist",
       ".next",
+      "next-env.d.ts",
       "src/app/(generated)",
       ".output",
       ".vinxi",

@@ -40,16 +40,14 @@ self.addEventListener("fetch", (event) => {
     // Never look up an old private page, even when connectivity disappears.
     event.respondWith(
       fetch(request).catch(async () =>
-        (await caches.open(CACHE))
-          .match("/offline.html")
-          .then(
-            (fallback) =>
-              fallback ||
-              new Response("Connection interrupted. Reconnect to access your account.", {
-                status: 503,
-                headers: { "Content-Type": "text/plain; charset=utf-8" },
-              }),
-          ),
+        (await caches.open(CACHE)).match("/offline.html").then(
+          (fallback) =>
+            fallback ||
+            new Response("Connection interrupted. Reconnect to access your account.", {
+              status: 503,
+              headers: { "Content-Type": "text/plain; charset=utf-8" },
+            }),
+        ),
       ),
     );
     return;

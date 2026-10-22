@@ -135,7 +135,7 @@ export const semanticHtml: SessionLecture = {
       body: [
         "An element is a piece of the page with a job. Most elements are written as an opening tag, the content, and a closing tag. `<p>Wash and fold.</p>` is a paragraph. The opening tag names the job. The closing tag ends it, with a slash before the name. If you forget the closing tag, the browser does not stop and scold you. It guesses where the paragraph ended. The guess is often wrong, and the damage shows up later, far from the line you missed.",
         "Some elements have no content. They do not get a closing tag. In this lesson those are `meta` and, when you add a picture, `img`. Writing `<br></br>` or a closing `meta` tag is a habit from an older style. In HTML, `<img>` is complete. A trailing slash — `<img />` — is allowed and not required. This course uses the form without the slash.",
-        "An attribute is a fact about the element, written inside the opening tag. `lang=\"en\"` says the page is in English. `href` on a link says where it goes. `src` on an image says which file to load. `alt` says what the image is if it cannot be seen. Put quotes around attribute values. A value with a space will break without them, and quoting all of them is the habit that does not have to be remembered case by case.",
+        'An attribute is a fact about the element, written inside the opening tag. `lang="en"` says the page is in English. `href` on a link says where it goes. `src` on an image says which file to load. `alt` says what the image is if it cannot be seen. Put quotes around attribute values. A value with a space will break without them, and quoting all of them is the habit that does not have to be remembered case by case.',
         "Elements nest. A paragraph can sit inside a section. A section can sit inside main. The closing tags come out in reverse order, the way brackets do in arithmetic. This is valid nesting: main opens, heading opens, heading closes, paragraph opens, paragraph closes, main closes. This is not: a paragraph closed after the main that was supposed to contain it. When a page 'breaks further down', look upward for the tag you did not close.",
         "The browser collapses whitespace. A new line in the file is not a new line on the page. Ten spaces become one. If you want a new paragraph, use another `<p>`. If you want a line break inside one paragraph — the two lines of an address — use `<br>`. Do not build the whole page out of `<br>`. That is a typewriter habit, and it throws away the outline.",
         "If you need a less-than sign in the text itself, write `&lt;`. A raw `<` starts a tag. An ampersand in text is `&amp;`. The naira sign can be typed as ₦ if the character set is UTF-8, which is why that meta tag is in the skeleton. Leave it out, save the file in a confused encoding, and ₦ can turn into rubbish. You will not always see the failure on your own laptop. You will see it on someone else's.",
@@ -149,8 +149,8 @@ export const semanticHtml: SessionLecture = {
         "`<!DOCTYPE html>` tells the browser to use current HTML rules. Omit it and some browsers fall back to older, quirkier layout rules. The page may still appear. It will misbehave later, in ways that look like CSS bugs. Put the doctype first. Capitalisation does not matter. `<!DOCTYPE html>` and `<!doctype html>` are the same instruction.",
         "`<html lang=\"en\">` is the root. Everything else sits inside it. There is one html element. `lang` is not decoration. A screen reader uses it to choose a pronunciation. `en` is right for a page in English, including Nigerian English. A page whose content is mostly Yoruba, Igbo or Hausa should say so — `yo`, `ig`, `ha` — instead of leaving the reader to guess. MDN's page on the html element is the reference if you need the rule in the spec's words: the language tag should describe the language of most of the content.",
         "`<head>` is about the page. Almost nothing in the head is drawn in the page body. The title is the exception people feel, because it appears in the tab, in a bookmark, and as the label when the link is shared. 'Document' and 'Untitled' are how you can tell a page was generated and never edited. Change it before you show the file to anyone. For this shop: Harbour Light Laundry — Yaba. The shop name, then the place. A title that is only 'Home' is useless in a row of tabs.",
-        "`<meta charset=\"UTF-8\">` sets the character set. Leave it in. It is the line that makes ₦, and names with marks, safe.",
-        "`<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">` tells a phone not to pretend the page is a tiny desktop and force the customer to pinch. You are not doing responsive layout today. You are refusing the worst default. A page without this line looks acceptable on your laptop and cramped when Kemi opens it on her phone. Check the spelling of `width=device-width`. A typo here fails silently.",
+        '`<meta charset="UTF-8">` sets the character set. Leave it in. It is the line that makes ₦, and names with marks, safe.',
+        '`<meta name="viewport" content="width=device-width, initial-scale=1.0">` tells a phone not to pretend the page is a tiny desktop and force the customer to pinch. You are not doing responsive layout today. You are refusing the worst default. A page without this line looks acceptable on your laptop and cramped when Kemi opens it on her phone. Check the spelling of `width=device-width`. A typo here fails silently.',
         "`<body>` is what the visitor sees. The heading and the paragraph you already wrote belong here, and so will the regions in the full page. Do not put a visible heading in the head. Do not put the title in the body and hope the tab will notice. They are different jobs.",
       ],
       remember:
@@ -171,11 +171,11 @@ export const semanticHtml: SessionLecture = {
       heading: "Links that say where they go",
       body: [
         "A link is an `<a>` element with an `href`. The text between the tags is what the person clicks, and what a screen reader reads in a list of links. 'Click here' says nothing in that list. 'See opening hours' says where they are going. Write the second kind.",
-        "A link to another part of the same page uses a hash and an id. `href=\"#hours\"` jumps to the element with `id=\"hours\"`. The id must match exactly, including capital letters. `Hours` and `hours` are not the same. If the id is missing, the click does nothing useful — often it jumps to the top, which feels like a bug you cannot see.",
+        'A link to another part of the same page uses a hash and an id. `href="#hours"` jumps to the element with `id="hours"`. The id must match exactly, including capital letters. `Hours` and `hours` are not the same. If the id is missing, the click does nothing useful — often it jumps to the top, which feels like a bug you cannot see.',
         "A link to another file in the project is a relative path: `services.html` if that file is in the same folder. Do not write `https://` and a domain you do not own yet. Relative paths keep working when the folder moves to a host.",
         "A link to someone else's site is an absolute URL, including `https://`. For practice, [example.com](https://example.com) is a reserved address made for examples. It is not your client's website. Do not send a customer there and call it a launch.",
         "A telephone link uses `tel:` and the number in international form. `tel:+2348000000000` is the shape. On a phone, it can open the dialler. On a desktop, it may do nothing, or it may ask to open an app. Both are normal. The visible text should still be the human number, so a person can read it even if the link does nothing on that device.",
-        "Do not add `target=\"_blank\"` today. Opening a new tab without being asked throws away the Back button, which is how many people recover from a wrong click. If a later project truly needs a new tab, add `rel=\"noopener\"` as well. A new tab without that attribute is an old security footgun. You do not need it for a laundry page.",
+        'Do not add `target="_blank"` today. Opening a new tab without being asked throws away the Back button, which is how many people recover from a wrong click. If a later project truly needs a new tab, add `rel="noopener"` as well. A new tab without that attribute is an old security footgun. You do not need it for a laundry page.',
       ],
       code: [
         {
@@ -197,7 +197,7 @@ export const semanticHtml: SessionLecture = {
     {
       heading: "Images, and the path that finds them",
       body: [
-        "An image is not inside the HTML file. The HTML points at a file. `<img src=\"images/shop.jpg\" alt=\"Front of the shop, with the name above the door\">` means: look in the images folder, next to this HTML file, for shop.jpg, and if you cannot show it, use this description.",
+        'An image is not inside the HTML file. The HTML points at a file. `<img src="images/shop.jpg" alt="Front of the shop, with the name above the door">` means: look in the images folder, next to this HTML file, for shop.jpg, and if you cannot show it, use this description.',
         "`alt` is required in the sense that omitting it is a defect, not a style choice. Write what the picture shows, or what it is for. 'Front of the shop, with the name above the door' is useful. 'image' is not. 'shop.jpg' is not. If the picture is pure decoration and adds no information, `alt=\"\"` tells assistive technology to skip it. An empty alt is a decision. A missing alt is a mistake.",
         "Set `width` and `height` to the real pixel size of the image when you know it. The browser can then reserve space before the file arrives, so the page does not jump as pictures load. If you do not know the size yet, leave the attributes off rather than inventing numbers that stretch the photo. Do not copy 800 and 500 from an example unless the file really is that size.",
         "The path is relative to the HTML file, not to your Documents folder, and not to the editor. `images/shop.jpg` works when `index.html` and the `images` folder are neighbours. If you move the HTML file into another folder and do not move the images, every picture breaks. If the file on disk is `Shop.JPG` and the tag says `shop.jpg`, your laptop may still show it and a real host may not. Match the name exactly, lowercase.",
@@ -227,14 +227,15 @@ export const semanticHtml: SessionLecture = {
       body: [
         "A list of services is a list, even before it has bullets you designed. `<ul>` is an unordered list — the order is not the point. `<ol>` is ordered — steps, or a rank, where sequence matters. Each item is an `<li>` inside the list, not a paragraph with a dash typed by hand. Navigation is a `ul` of links. You will style it sideways later. Today it may run down the page. That is correct.",
         "A table is for data that genuinely has rows and columns: hours, a price list, a size chart. It is not a way to place a sidebar. A layout table falls apart on a small screen and is miserable to read aloud.",
-        "Use a `<caption>` so the table has a name. Use `<th>` for header cells, not `<td>` made bold. `scope=\"col\"` means this header names the column. `scope=\"row\"` means it names the row. A screen reader uses those to announce 'Saturday, open, 9:00 to 16:00' instead of a stream of unrelated words. `<thead>` holds the header row. `<tbody>` holds the data. You do not need every optional table element. You do need headers.",
+        'Use a `<caption>` so the table has a name. Use `<th>` for header cells, not `<td>` made bold. `scope="col"` means this header names the column. `scope="row"` means it names the row. A screen reader uses those to announce \'Saturday, open, 9:00 to 16:00\' instead of a stream of unrelated words. `<thead>` holds the header row. `<tbody>` holds the data. You do not need every optional table element. You do need headers.',
         "Do not merge cells to make the table 'look designed'. Merged cells are where reading order goes to die. If the hours are simple, keep the table simple.",
       ],
       code: [
         {
           filename: "services list",
           language: "html",
-          caption: "A ul is the right list because the customer can read the services in any order.",
+          caption:
+            "A ul is the right list because the customer can read the services in any order.",
           source: `<ul>
   <li>Wash and fold, priced per kilogram</li>
   <li>Shirts pressed, ready for the office</li>
@@ -281,7 +282,7 @@ export const semanticHtml: SessionLecture = {
       body: [
         "Semantic elements say what a region is. `<header>` is the introductory matter, usually the shop name. `<nav>` is the block of navigation links. `<main>` is the primary content — one per page. `<section>` is a thematic group, and it should usually have a heading. `<aside>` is related but not the main thread: a note about today's power, a warning, a side fact. `<footer>` is the closing matter: the practice-page notice, a copyright line, a repeated address.",
         "`<article>` is easy to overuse. It means a self-contained piece that would still make sense if it were copied out of the page — a news story, a product that stands alone. A 'Services' block on a shop homepage is a section, not an article. If you wrap every section in article, the word stops meaning anything.",
-        "`<div>` is a box with no meaning. `<span>` is the same idea, inside a line. They are legal and sometimes necessary. They are the wrong first reach. A div with `class=\"header\"` can be styled to look like a header. A screen reader does not treat that class as a landmark. The element name is the landmark. The class is a label you invented.",
+        '`<div>` is a box with no meaning. `<span>` is the same idea, inside a line. They are legal and sometimes necessary. They are the wrong first reach. A div with `class="header"` can be styled to look like a header. A screen reader does not treat that class as a landmark. The element name is the landmark. The class is a label you invented.',
         "The diagram stacks the regions so you can read them. It is not a layout instruction. Aside does not have to sit on the right. Footer does not have to be grey. Position and colour are the CSS sessions. If you add a style attribute today to 'make it look real', you are hiding from the outline. Take it out.",
         "One `<main>`. Navigation inside `<nav>`, and the nav is not inside main if it is site navigation rather than a table of contents for one article. The footer is not inside main. These are conventions with a purpose: assistive technology can skip the repeated navigation and go to main. A page that is one long div gives them nothing to skip to.",
       ],
@@ -532,8 +533,7 @@ export const semanticHtml: SessionLecture = {
       kind: "Recognition",
       prompt:
         "For each item, name the element you would use, and one element you would refuse. 1) The shop name. 2) A list of three services where order does not matter. 3) Opening hours by day. 4) A jump to the contact section. 5) A note about today's power cut, related to the shop but not the main pitch. 6) The box you would use if you only wanted a colour later and had no better name.",
-      expected:
-        "Six choices, each with a refusal. You do not answer 'div' for the first five.",
+      expected: "Six choices, each with a refusal. You do not answer 'div' for the first five.",
       solution:
         "1) h1, not a p made to look big, and not a second h1 later. 2) ul and li, not paragraphs that start with a dash, and not ol unless the order is a sequence. 3) table with th, not a list pretending to be columns, and not a layout table. 4) a with href=\"#contact\" and a matching id, not a button, and not 'click here'. 5) aside, not a div classed as note, and not a second main. 6) div or span, and only then. If you reached for div earlier, the outline is still in your head as decoration.",
     },
@@ -598,7 +598,7 @@ export const semanticHtml: SessionLecture = {
     },
     {
       problem: "The Hours link does not jump to Hours",
-      fix: "Compare href and id, including capitals. #hours does not find id=\"Hours\". The id goes on the section or the heading, and it must be unique on the page.",
+      fix: 'Compare href and id, including capitals. #hours does not find id="Hours". The id goes on the section or the heading, and it must be unique on the page.',
     },
     {
       problem: "You built spacing with empty paragraphs and br tags",
@@ -629,7 +629,8 @@ export const semanticHtml: SessionLecture = {
       check:
         "View page source, or the Elements panel. Is there a body with content? Does the tab title match your title element? Is the path in the address bar the folder you edited?",
       fix: "Point the browser at the file you saved. If source shows content and the page is white, a CSS file you linked may be painting everything white — this lesson should not link a stylesheet. Remove any link or style you added early. If source is empty, the save did not go where you think.",
-      prevention: "Keep one project folder. Do not keep final.html, final2.html and index.html all open and guess which one the browser has.",
+      prevention:
+        "Keep one project folder. Do not keep final.html, final2.html and index.html all open and guess which one the browser has.",
       whenToStop:
         "Source shows the full page and the visible window is still blank in two browsers. Copy the source into the W3C validator and read the first error before you rewrite the page from scratch.",
     },
@@ -640,8 +641,7 @@ export const semanticHtml: SessionLecture = {
       check:
         "In Elements, search for the id. Count how many times it appears. Compare it with the href, including the hash and the capital letters.",
       fix: "Make one matching pair. ids on a page must be unique. Use lowercase.",
-      prevention:
-        "Write the id first, then copy it into the href. Do not retype it.",
+      prevention: "Write the id first, then copy it into the href. Do not retype it.",
       whenToStop:
         "The id is unique, the characters match, and the click still does not move. Say which browser, and whether the address bar gains the #hours fragment. That detail is the useful bug report.",
     },
@@ -662,18 +662,21 @@ export const semanticHtml: SessionLecture = {
       likelyCause:
         "The charset meta tag is missing, or the file was saved in an encoding other than UTF-8.",
       check:
-        "Is `<meta charset=\"UTF-8\">` in the head, near the top? In VS Code, the status bar often shows the encoding. UTF-8 is what you want.",
+        'Is `<meta charset="UTF-8">` in the head, near the top? In VS Code, the status bar often shows the encoding. UTF-8 is what you want.',
       fix: "Add the meta tag. In VS Code, click the encoding in the status bar and save as UTF-8 if it says something else. Reload the browser.",
-      prevention: "The skeleton includes charset before you type any non-English character. Do not delete it when you clean the file up.",
+      prevention:
+        "The skeleton includes charset before you type any non-English character. Do not delete it when you clean the file up.",
       whenToStop:
         "The file is UTF-8, the meta tag is present, and another browser still corrupts the character. Copy the smallest file that fails into a new folder and test again before you blame the font.",
     },
     {
       symptom: "On a phone, the page is a tiny shrunken desktop.",
       likelyCause: "The viewport meta tag is missing or mistyped.",
-      check: "Search the head for the word viewport. Compare it with the skeleton. A missing comma or a misspelled device-width is enough.",
+      check:
+        "Search the head for the word viewport. Compare it with the skeleton. A missing comma or a misspelled device-width is enough.",
       fix: "Paste the viewport tag from the worked example. Save, and reload on the phone. Sending yourself the file is a poor test if the phone does not open it as a page. Use the laptop browser's device toolbar only as a hint — F12, then the device icon. It is not a real phone.",
-      prevention: "Treat viewport as part of the skeleton, like the title. It is not an optional mobile extra.",
+      prevention:
+        "Treat viewport as part of the skeleton, like the title. It is not an optional mobile extra.",
       whenToStop:
         "The tag matches the example and a real phone still shrinks the page. Confirm the phone is opening this file and not a cached copy of an older one. Publishing and cache are later problems. Do not add three viewport tags to 'force' it.",
     },
@@ -705,14 +708,45 @@ export const semanticHtml: SessionLecture = {
     "The W3C validator is a second pair of eyes, not a score. Fix the first error, then validate again. Later errors are often the first error in disguise.",
   ],
   vocabulary: [
-    { term: "HTML", meaning: "The language that describes the structure and meaning of a page. Not the styling, and not the behaviour." },
-    { term: "Browser", meaning: "The program that reads HTML and draws the page. Chrome, Edge and Firefox are browsers. The editor is not." },
-    { term: "Element", meaning: "One piece of the page: an opening tag, its content, and usually a closing tag. p, h1, a, img are elements." },
-    { term: "Attribute", meaning: "A fact written in the opening tag, such as href, src, alt, id or lang." },
-    { term: "Head / body", meaning: "Head is about the page and is not drawn as content. Body is what the visitor sees. The title lives in the head and shows in the tab." },
-    { term: "Semantic element", meaning: "An element whose name says what the region is: header, nav, main, section, aside, footer. A div does not say." },
-    { term: "Relative path", meaning: "A path from this file to another file in the project, such as images/shop.jpg. It is not a full web address." },
-    { term: "id", meaning: "A name unique on the page, used as the target of a # link. Case-sensitive. Do not use the same id twice." },
+    {
+      term: "HTML",
+      meaning:
+        "The language that describes the structure and meaning of a page. Not the styling, and not the behaviour.",
+    },
+    {
+      term: "Browser",
+      meaning:
+        "The program that reads HTML and draws the page. Chrome, Edge and Firefox are browsers. The editor is not.",
+    },
+    {
+      term: "Element",
+      meaning:
+        "One piece of the page: an opening tag, its content, and usually a closing tag. p, h1, a, img are elements.",
+    },
+    {
+      term: "Attribute",
+      meaning: "A fact written in the opening tag, such as href, src, alt, id or lang.",
+    },
+    {
+      term: "Head / body",
+      meaning:
+        "Head is about the page and is not drawn as content. Body is what the visitor sees. The title lives in the head and shows in the tab.",
+    },
+    {
+      term: "Semantic element",
+      meaning:
+        "An element whose name says what the region is: header, nav, main, section, aside, footer. A div does not say.",
+    },
+    {
+      term: "Relative path",
+      meaning:
+        "A path from this file to another file in the project, such as images/shop.jpg. It is not a full web address.",
+    },
+    {
+      term: "id",
+      meaning:
+        "A name unique on the page, used as the target of a # link. Case-sensitive. Do not use the same id twice.",
+    },
   ],
   homework: [
     {
@@ -747,27 +781,32 @@ export const semanticHtml: SessionLecture = {
     {
       criterion: "File and browser",
       passing: "index.html opens in a browser as a page, not as raw tags.",
-      excellent: "Also explains file:/// versus a local server address, and can recover from an unsaved tab without help.",
+      excellent:
+        "Also explains file:/// versus a local server address, and can recover from an unsaved tab without help.",
     },
     {
       criterion: "Skeleton",
       passing: "Doctype, lang, charset, viewport and a real title are present.",
-      excellent: "Can say what fails for a screen reader or a phone if lang or viewport is removed.",
+      excellent:
+        "Can say what fails for a screen reader or a phone if lang or viewport is removed.",
     },
     {
       criterion: "Outline",
       passing: "One h1, logical h2 sections, a list, and a data table with headers.",
-      excellent: "Navigation jumps work, link text stands alone, and the footer does not pretend the practice shop is real.",
+      excellent:
+        "Navigation jumps work, link text stands alone, and the footer does not pretend the practice shop is real.",
     },
     {
       criterion: "Semantics",
       passing: "Uses header, nav, main and footer for those jobs.",
-      excellent: "Can say why a div with a class is not a landmark, and does not wrap every section in article.",
+      excellent:
+        "Can say why a div with a class is not a landmark, and does not wrap every section in article.",
     },
     {
       criterion: "Diagnosis",
       passing: "Fixes a wrong extension or a mismatched id with a prompt.",
-      excellent: "Uses Elements or the validator, and separates a path error from a tag error without replacing the whole file.",
+      excellent:
+        "Uses Elements or the validator, and separates a path error from a tag error without replacing the whole file.",
     },
   ],
   faqs: [
