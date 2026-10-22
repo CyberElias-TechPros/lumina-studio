@@ -110,3 +110,11 @@ This supersedes the storage limitation in the historical 0.3 section above.
 No private coursework is written to the public offline bundle. No new local
 role assignment, free enrolment bypass, fabricated grades, automatic completion
 or production test writes are introduced. CI fixtures are not live acceptance.
+
+The shared completion API now updates an existing enrolment only: completion
+cannot recreate a revoked enrolment if admissions removes it mid-request. A
+local Worker regression uses a database trigger to reproduce that interleaving;
+another proves bearer-authenticated progress appears in the student dashboard.
+Website browser fixtures verify real-text rendering, explicit completion,
+server denial, locked-content hiding and absence of fake media controls. The
+fixtures dismiss the real onboarding tour before exercising lesson controls.

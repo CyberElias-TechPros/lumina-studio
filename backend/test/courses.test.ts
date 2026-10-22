@@ -1,4 +1,5 @@
 import { beforeAll, describe, expect, it } from "vitest";
+import { env } from "cloudflare:workers";
 import { api, cookieHeaders, createTestSession, setupDb } from "./helpers";
 
 beforeAll(async () => {
@@ -167,5 +168,62 @@ describe("GET /v1/courses/gradebook", { timeout: 60_000 }, () => {
     expect(res.status).toBe(403);
     const body = (await res.json()) as { error: { code: string } };
     expect(body.error.code).toBe("FORBIDDEN");
+  });
+});
+
+describe("lesson completion entitlement", () => {
+  it("cannot recreate an enrolment revoked during completion", async () => {
+    const { cookie, session } = await createTestSession("completion.revocation@cea.ng");
+    await env.DB.prepare(
+      "INSERT INTO enrollments (id, user_id, course_slug, pct) VALUES (?, ?, 'full-stack', 0)",
+    )
+      .bind(crypto.randomUUID(), session.user.id)
+      .run();
+    // Deterministically model revocation between the initial check and pct update.
+    await env.DB.prepare(
+      `CREATE TRIGGER revoke_during_completion AFTER INSERT ON lesson_progress
+      WHEN NEW.user_id = '${session.user.id}'
+      BEGIN DELETE FROM enrollments WHERE user_id = NEW.user_id AND course_slug = NEW.course_slug; END`,
+    ).run();
+    try {
+      const response = await api("/v1/courses/full-stack/lessons/l1/complete", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${cookie}`, "Content-Type": "application/json" },
+        body: "{}",
+      });
+      expect(response.status).toBe(403);
+      expect(
+        await env.DB.prepare(
+          "SELECT id FROM enrollments WHERE user_id = ? AND course_slug = 'full-stack'",
+        )
+          .bind(session.user.id)
+          .first(),
+      ).toBeNull();
+    } finally {
+      await env.DB.prepare("DROP TRIGGER IF EXISTS revoke_during_completion").run();
+    }
+  });
+  it("updates existing enrolment progress through the native bearer contract", async () => {
+    const { cookie, session } = await createTestSession("completion.native@cea.ng");
+    await env.DB.prepare(
+      "INSERT INTO enrollments (id, user_id, course_slug, pct) VALUES (?, ?, 'full-stack', 0)",
+    )
+      .bind(crypto.randomUUID(), session.user.id)
+      .run();
+    const response = await api("/v1/courses/full-stack/lessons/l1/complete", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${cookie}`, "Content-Type": "application/json" },
+      body: "{}",
+    });
+    expect(response.status).toBe(200);
+    const result = (await response.json()) as { ok: boolean; pct: number };
+    expect(result.ok).toBe(true);
+    expect(result.pct).toBeGreaterThan(0);
+    const dashboard = await api("/v1/dashboard/student", {
+      headers: { Authorization: `Bearer ${cookie}` },
+    });
+    expect(dashboard.status).toBe(200);
+    const body = (await dashboard.json()) as { courses: Array<{ slug: string; pct: number }> };
+    expect(body.courses.find((course) => course.slug === "full-stack")?.pct).toBe(result.pct);
   });
 });

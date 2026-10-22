@@ -80,6 +80,10 @@ async function fixture(
     return reply({ items: [], total: 0, count: 0 });
   });
   await page.goto("/app/learn/course/lessons/lesson");
+  // New fixture accounts receive the real onboarding dialog. Dismiss it before
+  // testing lesson interactions instead of racing its delayed appearance.
+  await page.getByRole("button", { name: "Skip tour", exact: true }).click();
+  await expect(page.getByRole("dialog", { name: "Welcome to CEA" })).toHaveCount(0);
   await expect(page.getByTestId("lesson-content")).toBeVisible();
   return () => writes;
 }
