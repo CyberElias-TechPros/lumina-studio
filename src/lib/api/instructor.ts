@@ -59,8 +59,12 @@ export function createInstructorLesson(
   });
 }
 
-export function fetchInstructorAssignments(): Promise<Paginated<InstructorSubmission>> {
-  return apiFetch<Paginated<InstructorSubmission>>("/v1/instructor/assignments");
+export function fetchInstructorAssignments(
+  cursor?: string,
+): Promise<Paginated<InstructorSubmission>> {
+  return apiFetch<Paginated<InstructorSubmission>>("/v1/instructor/assignments", {
+    query: { cursor },
+  });
 }
 
 export function fetchInstructorAssignment(id: string): Promise<InstructorSubmission> {

@@ -26,8 +26,8 @@ export interface AssignmentSubmission {
   size: string;
 }
 
-export function fetchAssignments(): Promise<Paginated<StudentAssignment>> {
-  return apiFetch<Paginated<StudentAssignment>>("/v1/assignments");
+export function fetchAssignments(cursor?: string): Promise<Paginated<StudentAssignment>> {
+  return apiFetch<Paginated<StudentAssignment>>("/v1/assignments", { query: { cursor } });
 }
 
 export function fetchAssignment(id: string): Promise<StudentAssignment> {
