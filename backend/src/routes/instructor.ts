@@ -1,4 +1,4 @@
-import { Hono } from "hono";
+import { Hono, type Context } from "hono";
 import type { AppEnv } from "../types";
 import { z } from "zod";
 import { ApiError } from "../lib/errors";
@@ -242,13 +242,26 @@ instructor.get("/assignments", async (c) => {
 });
 
 instructor.get("/assignments/:id", async (c) => {
-  const userId = c.get("authUser").id;
   const row = await c.env.DB.prepare(
-    `SELECT id, student, title, submitted, status, score, late, file, size
-       FROM submissions WHERE user_id = ? AND id = ?`,
+    `SELECT s.id, s.student, s.title, s.submitted, s.status, s.score, s.late, s.file, s.size,
+            s.body, s.feedback, a.max, a.rubric,
+            CASE WHEN s.assignment_id IS NULL THEN 1 ELSE s.id = (
+              SELECT id FROM submissions WHERE assignment_id = s.assignment_id AND student_user_id = s.student_user_id
+              ORDER BY submitted DESC, rowid DESC LIMIT 1
+            ) END AS is_latest
+       FROM submissions s LEFT JOIN assignments a ON a.id = s.assignment_id AND a.user_id = s.student_user_id
+      WHERE s.user_id = ? AND s.id = ?`,
   )
-    .bind(userId, c.req.param("id"))
-    .first<SubmissionRow>();
+    .bind(c.get("authUser").id, c.req.param("id"))
+    .first<
+      SubmissionRow & {
+        body: string;
+        feedback: string;
+        max: number | null;
+        rubric: string | null;
+        is_latest: number;
+      }
+    >();
   if (!row) throw ApiError.notFound("Submission not found.");
   return c.json({
     id: row.id,
@@ -260,6 +273,11 @@ instructor.get("/assignments/:id", async (c) => {
     late: row.late === 1,
     file: row.file,
     size: row.size,
+    body: row.body,
+    feedback: row.feedback,
+    max: row.max,
+    rubric: row.rubric ? JSON.parse(row.rubric) : [],
+    isLatest: row.is_latest === 1,
   });
 });
 
@@ -272,16 +290,16 @@ const gradeSchema = z.object({
  * Grade a submission (instructor/admin). The grader must own the submission
  * or teach a course the submitting student is enrolled in.
  */
-instructor.patch("/submissions/:id", requireAuth, requireInstructorOrAdmin, async (c) => {
+async function gradeSubmissionHandler(c: Context<{ Bindings: AppEnv }>) {
   const grader = c.get("authUser");
   const { score, feedback } = await parseBody(c, gradeSchema);
   const id = c.req.param("id");
 
   const sub = await c.env.DB.prepare(
     `SELECT s.id, s.user_id, s.student_user_id, s.assignment_id, s.status,
-            a.id AS linked_assignment
+            a.id AS linked_assignment, a.max AS assignment_max, a.course AS assignment_course
        FROM submissions s
-       LEFT JOIN assignments a ON a.id = s.assignment_id
+       LEFT JOIN assignments a ON a.id = s.assignment_id AND a.user_id = s.student_user_id
       WHERE s.id = ?`,
   )
     .bind(id)
@@ -292,35 +310,62 @@ instructor.patch("/submissions/:id", requireAuth, requireInstructorOrAdmin, asyn
       assignment_id: string | null;
       status: string;
       linked_assignment: string | null;
+      assignment_max: number | null;
+      assignment_course: string | null;
     }>();
   if (!sub) throw ApiError.notFound("Submission not found.");
+  if (sub.assignment_id && !sub.linked_assignment) {
+    throw ApiError.conflict(
+      "This submission needs assignment ownership reconciliation before grading.",
+    );
+  }
 
   const teaches = sub.student_user_id
     ? await c.env.DB.prepare(
         `SELECT 1 FROM enrollments e
            JOIN courses c ON c.slug = e.course_slug
            JOIN instructor_courses ic ON ic.user_id = ? AND ic.title = c.title
-          WHERE e.user_id = ? LIMIT 1`,
+          WHERE e.user_id = ? AND c.title = ? LIMIT 1`,
       )
-        .bind(grader.id, sub.student_user_id)
+        .bind(grader.id, sub.student_user_id, sub.assignment_course)
         .first<{ "1": number }>()
     : null;
   if (sub.user_id !== grader.id && !teaches) {
     throw ApiError.forbidden("You don't teach this student's course.");
   }
 
-  const now = isoNow();
-  await c.env.DB.prepare(
-    `UPDATE submissions SET score = ?, feedback = ?, status = 'graded', graded_by = ?, graded_at = ?
-      WHERE id = ?`,
-  )
-    .bind(score, feedback ?? "", grader.id, now, id)
-    .run();
-  if (sub.linked_assignment) {
-    await c.env.DB.prepare(`UPDATE assignments SET score = ?, status = 'graded' WHERE id = ?`)
-      .bind(score, sub.linked_assignment)
-      .run();
+  if (sub.assignment_max !== null && score > sub.assignment_max) {
+    throw ApiError.validation({ score: [`Score must not exceed ${sub.assignment_max}.`] });
   }
+  const now = isoNow();
+  // Grade only the latest attempt, rechecked atomically with the assignment update.
+  const results = await c.env.DB.batch([
+    c.env.DB.prepare(
+      `UPDATE submissions SET score = ?, feedback = ?, status = 'graded', graded_by = ?, graded_at = ?
+       WHERE id = ? AND (assignment_id IS NULL OR id = (
+         SELECT id FROM submissions WHERE assignment_id = ? AND student_user_id = ?
+         ORDER BY submitted DESC, rowid DESC LIMIT 1
+       ))`,
+    ).bind(score, feedback ?? "", grader.id, now, id, sub.assignment_id, sub.student_user_id),
+    c.env.DB.prepare(
+      `UPDATE assignments SET score = ?, status = 'graded' WHERE id = ?
+       AND EXISTS (SELECT 1 FROM submissions WHERE id = ? AND graded_at = ? AND graded_by = ?)
+       AND ? = (SELECT id FROM submissions WHERE assignment_id = ? AND student_user_id = ?
+         ORDER BY submitted DESC, rowid DESC LIMIT 1)`,
+    ).bind(
+      score,
+      sub.linked_assignment,
+      id,
+      now,
+      grader.id,
+      id,
+      sub.assignment_id,
+      sub.student_user_id,
+    ),
+  ]);
+  if (results[0]?.meta.changes !== 1)
+    throw ApiError.conflict("A newer submission exists. Refresh the grading queue before grading.");
+
   return c.json({
     id,
     score,
@@ -329,7 +374,15 @@ instructor.patch("/submissions/:id", requireAuth, requireInstructorOrAdmin, asyn
     gradedBy: grader.id,
     gradedAt: now,
   });
-});
+}
+
+instructor.patch("/submissions/:id", requireAuth, requireInstructorOrAdmin, gradeSubmissionHandler);
+instructor.post(
+  "/submissions/:id/grade",
+  requireAuth,
+  requireInstructorOrAdmin,
+  gradeSubmissionHandler,
+);
 
 /* ---------------- Publish assignments (schedulable deadlines) ---------------- */
 

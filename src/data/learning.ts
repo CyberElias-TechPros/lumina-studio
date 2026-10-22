@@ -753,11 +753,16 @@ export interface InstructorSubmission {
   student: string;
   title: string;
   submitted: string;
-  status: "graded" | "pending";
+  status: "graded" | "pending" | "submitted";
   score?: number;
   late: boolean;
   file: string;
   size: string;
+  body?: string;
+  feedback?: string;
+  max?: number | null;
+  rubric?: unknown;
+  isLatest?: boolean;
 }
 
 export const submissions: InstructorSubmission[] = [

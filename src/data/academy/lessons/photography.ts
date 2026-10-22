@@ -215,14 +215,46 @@ export const photographyLessons: Record<string, SessionLecture> = {
       "Leave deliberate negative space in commercial work. Product and food clients almost always need room for a price or a caption, and a frame with space in it sells far more easily than a crowded one.",
     ],
     vocabulary: [
-      { term: "Frame", meaning: "The rectangle the camera records. Composition is deciding what enters it and what is kept out." },
-      { term: "Rule of thirds", meaning: "Placing a subject on the intersections of a nine-box grid. Fixes a meaningless centre and a tilted horizon at once." },
-      { term: "Leading line", meaning: "A line running from the frame edge toward the subject, pulling the eye inward. Check where it terminates." },
-      { term: "Negative space", meaning: "The empty area around a subject. Makes the subject readable and gives clients room for text." },
-      { term: "Foreground", meaning: "Something close to the camera. Creates layers, which is how depth is made in a flat image." },
-      { term: "Viewpoint", meaning: "Where the camera is, including height. A decision, not a default — crouch, get low, or move around." },
-      { term: "Eye level", meaning: "Camera at the subject's own eye height. The default for people and animals, and the one beginners skip." },
-      { term: "Frame intrusion", meaning: "Something unwanted at the edge — a bin, an arm, a pole behind a head. Found by walking the borders before the shutter." },
+      {
+        term: "Frame",
+        meaning:
+          "The rectangle the camera records. Composition is deciding what enters it and what is kept out.",
+      },
+      {
+        term: "Rule of thirds",
+        meaning:
+          "Placing a subject on the intersections of a nine-box grid. Fixes a meaningless centre and a tilted horizon at once.",
+      },
+      {
+        term: "Leading line",
+        meaning:
+          "A line running from the frame edge toward the subject, pulling the eye inward. Check where it terminates.",
+      },
+      {
+        term: "Negative space",
+        meaning:
+          "The empty area around a subject. Makes the subject readable and gives clients room for text.",
+      },
+      {
+        term: "Foreground",
+        meaning:
+          "Something close to the camera. Creates layers, which is how depth is made in a flat image.",
+      },
+      {
+        term: "Viewpoint",
+        meaning:
+          "Where the camera is, including height. A decision, not a default — crouch, get low, or move around.",
+      },
+      {
+        term: "Eye level",
+        meaning:
+          "Camera at the subject's own eye height. The default for people and animals, and the one beginners skip.",
+      },
+      {
+        term: "Frame intrusion",
+        meaning:
+          "Something unwanted at the edge — a bin, an arm, a pole behind a head. Found by walking the borders before the shutter.",
+      },
     ],
     homework: [
       {
@@ -250,27 +282,32 @@ export const photographyLessons: Record<string, SessionLecture> = {
       {
         criterion: "Framing decisions",
         passing: "Subject is in frame and recognisable.",
-        excellent: "The subject is clearly the point of every image, placement is deliberate, and each keeper can be justified by a named compositional decision.",
+        excellent:
+          "The subject is clearly the point of every image, placement is deliberate, and each keeper can be justified by a named compositional decision.",
       },
       {
         criterion: "Viewpoint",
         passing: "Shot from more than one position.",
-        excellent: "Frames made from standing, crouching, low and overhead positions, with the chosen height suiting the subject and eye level used for people.",
+        excellent:
+          "Frames made from standing, crouching, low and overhead positions, with the chosen height suiting the subject and eye level used for people.",
       },
       {
         criterion: "Depth and lines",
         passing: "Uses the grid.",
-        excellent: "Leading lines terminate on the subject, foreground layers create depth, and at least one frame shows a line running away for deliberate comparison.",
+        excellent:
+          "Leading lines terminate on the subject, foreground layers create depth, and at least one frame shows a line running away for deliberate comparison.",
       },
       {
         criterion: "Clean frames",
         passing: "Few distractions.",
-        excellent: "No intrusions at any edge in any keeper, horizons level, and background clutter either removed or used deliberately.",
+        excellent:
+          "No intrusions at any edge in any keeper, horizons level, and background clutter either removed or used deliberately.",
       },
       {
         criterion: "Selection",
         passing: "Submits six images.",
-        excellent: "Six strong keepers chosen from forty with a sentence each on why it works, plus a reasoned explanation of the strongest rejected frame.",
+        excellent:
+          "Six strong keepers chosen from forty with a sentence each on why it works, plus a reasoned explanation of the strongest rejected frame.",
       },
     ],
     faqs: [
@@ -497,14 +534,46 @@ export const photographyLessons: Record<string, SessionLecture> = {
       "Expose for faces in mixed light. In a church with daylight, tungsten and LED, no white balance is correct for all three — a correct face with odd colours is usable, while a correct background with a dark face is not.",
     ],
     vocabulary: [
-      { term: "Light direction", meaning: "Where the source is relative to the subject. Front flattens, side reveals shape, back silhouettes." },
-      { term: "Hard light", meaning: "From a small source, giving sharp-edged shadows. Midday sun, a bare bulb, a phone flash." },
-      { term: "Soft light", meaning: "From a large source, giving gentle transitions. Overcast sky, a curtained window, bounced light. Forgiving on faces." },
-      { term: "Diffusion", meaning: "Making the source larger and softer — a sheet or curtain between sun and subject. Turns hard light into soft light for nothing." },
-      { term: "Reflector", meaning: "A white or foil surface bouncing light into the shadows. Distance controls how much shadow remains." },
-      { term: "Window light", meaning: "The best free studio light available. Subject at forty-five degrees, all other lights off." },
-      { term: "Golden hour", meaning: "Roughly the hour after sunrise and before sunset. Low angle, warm and gentle for physical reasons." },
-      { term: "Mixed lighting", meaning: "Several sources at different colour temperatures in one frame. No white balance is correct for all; choose one to live with." },
+      {
+        term: "Light direction",
+        meaning:
+          "Where the source is relative to the subject. Front flattens, side reveals shape, back silhouettes.",
+      },
+      {
+        term: "Hard light",
+        meaning:
+          "From a small source, giving sharp-edged shadows. Midday sun, a bare bulb, a phone flash.",
+      },
+      {
+        term: "Soft light",
+        meaning:
+          "From a large source, giving gentle transitions. Overcast sky, a curtained window, bounced light. Forgiving on faces.",
+      },
+      {
+        term: "Diffusion",
+        meaning:
+          "Making the source larger and softer — a sheet or curtain between sun and subject. Turns hard light into soft light for nothing.",
+      },
+      {
+        term: "Reflector",
+        meaning:
+          "A white or foil surface bouncing light into the shadows. Distance controls how much shadow remains.",
+      },
+      {
+        term: "Window light",
+        meaning:
+          "The best free studio light available. Subject at forty-five degrees, all other lights off.",
+      },
+      {
+        term: "Golden hour",
+        meaning:
+          "Roughly the hour after sunrise and before sunset. Low angle, warm and gentle for physical reasons.",
+      },
+      {
+        term: "Mixed lighting",
+        meaning:
+          "Several sources at different colour temperatures in one frame. No white balance is correct for all; choose one to live with.",
+      },
     ],
     homework: [
       {
@@ -532,27 +601,32 @@ export const photographyLessons: Record<string, SessionLecture> = {
       {
         criterion: "Reading light",
         passing: "Can tell bright from dim.",
-        excellent: "Identifies direction and hardness in any situation, and can say whether the light suits the subject before shooting.",
+        excellent:
+          "Identifies direction and hardness in any situation, and can say whether the light suits the subject before shooting.",
       },
       {
         criterion: "Modification",
         passing: "Uses available light.",
-        excellent: "A reflector and a diffuser built from household materials and demonstrably used, with reflector distance varied to control shadow depth.",
+        excellent:
+          "A reflector and a diffuser built from household materials and demonstrably used, with reflector distance varied to control shadow depth.",
       },
       {
         criterion: "Indoors",
         passing: "Photographs inside.",
-        excellent: "Window light at forty-five degrees with every other light off, shadows lifted by a reflector, and no muddy mixed-colour cast.",
+        excellent:
+          "Window light at forty-five degrees with every other light off, shadows lifted by a reflector, and no muddy mixed-colour cast.",
       },
       {
         criterion: "Golden hour",
         passing: "Shot outdoors.",
-        excellent: "A frame made in golden hour with the sun at an angle to the subject, compared directly against a midday frame of the same subject.",
+        excellent:
+          "A frame made in golden hour with the sun at an angle to the subject, compared directly against a midday frame of the same subject.",
       },
       {
         criterion: "Mixed light",
         passing: "Handled a difficult interior.",
-        excellent: "Exposure set for a face in mixed daylight and artificial light, with a stated decision about which colour to accept and why.",
+        excellent:
+          "Exposure set for a face in mixed daylight and artificial light, with a stated decision about which colour to accept and why.",
       },
     ],
     faqs: [
@@ -792,14 +866,45 @@ export const photographyLessons: Record<string, SessionLecture> = {
       "Brace the phone rather than hoping for a fast shutter. Both hands, elbows against your ribs, a wall to lean on, and the volume button instead of a screen tap — in low light this is worth more than any setting you can change.",
     ],
     vocabulary: [
-      { term: "Exposure", meaning: "How bright the image is. Tap to set it, drag the sun icon to adjust it." },
-      { term: "Blown highlight", meaning: "A white area with no recorded detail. Unrecoverable, which is why you expose for the highlights." },
-      { term: "Exposure lock (AE/AF Lock)", meaning: "Press and hold to freeze brightness and focus so you can move and recompose without the camera re-guessing." },
-      { term: "Recompose", meaning: "Focus on the subject, lock, then move the phone to place it where you want. The standard technique for off-centre subjects." },
-      { term: "White balance", meaning: "The camera's guess at the colour of the light. Handles one source well and fails when there are several." },
-      { term: "Colour cast", meaning: "An overall tint from the light — orange under tungsten, greenish under some LEDs. A commercial problem for product work." },
-      { term: "HDR", meaning: "Merges several exposures to hold detail in brights and darks. Wrong for movement, silhouettes and intended darkness." },
-      { term: "Raw", meaning: "Unprocessed sensor data with far more to edit. Looks flat by design, because the information is still there." },
+      {
+        term: "Exposure",
+        meaning: "How bright the image is. Tap to set it, drag the sun icon to adjust it.",
+      },
+      {
+        term: "Blown highlight",
+        meaning:
+          "A white area with no recorded detail. Unrecoverable, which is why you expose for the highlights.",
+      },
+      {
+        term: "Exposure lock (AE/AF Lock)",
+        meaning:
+          "Press and hold to freeze brightness and focus so you can move and recompose without the camera re-guessing.",
+      },
+      {
+        term: "Recompose",
+        meaning:
+          "Focus on the subject, lock, then move the phone to place it where you want. The standard technique for off-centre subjects.",
+      },
+      {
+        term: "White balance",
+        meaning:
+          "The camera's guess at the colour of the light. Handles one source well and fails when there are several.",
+      },
+      {
+        term: "Colour cast",
+        meaning:
+          "An overall tint from the light — orange under tungsten, greenish under some LEDs. A commercial problem for product work.",
+      },
+      {
+        term: "HDR",
+        meaning:
+          "Merges several exposures to hold detail in brights and darks. Wrong for movement, silhouettes and intended darkness.",
+      },
+      {
+        term: "Raw",
+        meaning:
+          "Unprocessed sensor data with far more to edit. Looks flat by design, because the information is still there.",
+      },
     ],
     homework: [
       {
@@ -827,27 +932,32 @@ export const photographyLessons: Record<string, SessionLecture> = {
       {
         criterion: "Exposure control",
         passing: "Images are roughly the right brightness.",
-        excellent: "Highlights held rather than blown in every frame, exposure set deliberately by tapping and dragging, and a backlit scene shown as an automatic-versus-corrected pair.",
+        excellent:
+          "Highlights held rather than blown in every frame, exposure set deliberately by tapping and dragging, and a backlit scene shown as an automatic-versus-corrected pair.",
       },
       {
         criterion: "Focus control",
         passing: "Subjects are in focus.",
-        excellent: "Exposure and focus locked and recomposed for off-centre subjects, eyes focused in portraits, and focus achieved in low contrast by tapping an edge.",
+        excellent:
+          "Exposure and focus locked and recomposed for off-centre subjects, eyes focused in portraits, and focus achieved in low contrast by tapping an edge.",
       },
       {
         criterion: "Colour",
         passing: "Colours look acceptable.",
-        excellent: "A single light source used for product work with competing lights off, something white in frame as a reference, and any cast identified rather than ignored.",
+        excellent:
+          "A single light source used for product work with competing lights off, something white in frame as a reference, and any cast identified rather than ignored.",
       },
       {
         criterion: "Deliberate settings",
         passing: "Understands HDR.",
-        excellent: "HDR used where it helps and switched off for movement, silhouettes and intended darkness, with the reasoning stated, and a raw file captured with its flatness explained.",
+        excellent:
+          "HDR used where it helps and switched off for movement, silhouettes and intended darkness, with the reasoning stated, and a raw file captured with its flatness explained.",
       },
       {
         criterion: "Sharpness",
         passing: "Most frames are sharp.",
-        excellent: "Low-light frames braced with both hands and triggered by the volume button or timer, optical lenses used instead of pinch zoom, and the difference demonstrated.",
+        excellent:
+          "Low-light frames braced with both hands and triggered by the volume button or timer, optical lenses used instead of pinch zoom, and the difference demonstrated.",
       },
     ],
     faqs: [
@@ -1091,14 +1201,45 @@ export const photographyLessons: Record<string, SessionLecture> = {
       "Keep originals and edits in separate folders, always. Clients ask for a different crop, a larger export or the raw file weeks later, and the ability to go back is the difference between a five-minute job and a reshoot.",
     ],
     vocabulary: [
-      { term: "Order of operations", meaning: "Crop, colour, exposure, contrast, colour intensity, clarity, sharpen. Out of sequence, work is undone and repeated." },
-      { term: "Colour cast", meaning: "An overall warm or cool shift. Corrected with temperature and tint, judged against something neutral." },
-      { term: "Tint", meaning: "The green-magenta adjustment. Fixes fluorescent and some LED light, which temperature alone cannot." },
-      { term: "Highlights and shadows", meaning: "Targeted recovery of bright and dark areas. Better than the contrast slider, which loses detail at both ends." },
-      { term: "Clarity", meaning: "Midtone contrast. Excellent on fabric, food and stone; destructive on skin, where the texture it enhances is blemishes." },
-      { term: "Vibrance", meaning: "Saturation that protects skin tones. Preferred over saturation wherever faces appear." },
-      { term: "Batch editing", meaning: "Copying one edit across a set so a gallery looks like one photographer took it." },
-      { term: "DPI", meaning: "Dots per inch, the resolution print requires. A 6×4 print at 300 dpi needs about 1,800 by 1,200 pixels." },
+      {
+        term: "Order of operations",
+        meaning:
+          "Crop, colour, exposure, contrast, colour intensity, clarity, sharpen. Out of sequence, work is undone and repeated.",
+      },
+      {
+        term: "Colour cast",
+        meaning:
+          "An overall warm or cool shift. Corrected with temperature and tint, judged against something neutral.",
+      },
+      {
+        term: "Tint",
+        meaning:
+          "The green-magenta adjustment. Fixes fluorescent and some LED light, which temperature alone cannot.",
+      },
+      {
+        term: "Highlights and shadows",
+        meaning:
+          "Targeted recovery of bright and dark areas. Better than the contrast slider, which loses detail at both ends.",
+      },
+      {
+        term: "Clarity",
+        meaning:
+          "Midtone contrast. Excellent on fabric, food and stone; destructive on skin, where the texture it enhances is blemishes.",
+      },
+      {
+        term: "Vibrance",
+        meaning:
+          "Saturation that protects skin tones. Preferred over saturation wherever faces appear.",
+      },
+      {
+        term: "Batch editing",
+        meaning: "Copying one edit across a set so a gallery looks like one photographer took it.",
+      },
+      {
+        term: "DPI",
+        meaning:
+          "Dots per inch, the resolution print requires. A 6×4 print at 300 dpi needs about 1,800 by 1,200 pixels.",
+      },
     ],
     homework: [
       {
@@ -1126,27 +1267,32 @@ export const photographyLessons: Record<string, SessionLecture> = {
       {
         criterion: "Workflow",
         passing: "Images are edited.",
-        excellent: "Every frame edited in the correct order — crop, colour, exposure, contrast, colour intensity, clarity, sharpen — with the reasoning for the sequence explained.",
+        excellent:
+          "Every frame edited in the correct order — crop, colour, exposure, contrast, colour intensity, clarity, sharpen — with the reasoning for the sequence explained.",
       },
       {
         criterion: "Colour",
         passing: "Colours look reasonable.",
-        excellent: "Casts corrected against a neutral reference rather than by eye, tint used where fluorescent or LED light required it, and no frame left with an obvious shift.",
+        excellent:
+          "Casts corrected against a neutral reference rather than by eye, tint used where fluorescent or LED light required it, and no frame left with an obvious shift.",
       },
       {
         criterion: "Tonal control",
         passing: "Contrast is applied.",
-        excellent: "Highlights and shadows used rather than the contrast slider crushed, detail retained at both ends, and the seventy per cent rule applied with a next-day review.",
+        excellent:
+          "Highlights and shadows used rather than the contrast slider crushed, detail retained at both ends, and the seventy per cent rule applied with a next-day review.",
       },
       {
         criterion: "Restraint",
         passing: "Edits are not extreme.",
-        excellent: "Clarity neutral or negative on skin, vibrance preferred over saturation where faces appear, sharpening last and light, and no frame that reads as over-processed.",
+        excellent:
+          "Clarity neutral or negative on skin, vibrance preferred over saturation where faces appear, sharpening last and light, and no frame that reads as over-processed.",
       },
       {
         criterion: "Delivery",
         passing: "Submits edited images.",
-        excellent: "Twelve frames consistent as a set, exported at 2,048 pixels for web and 300 dpi for print, delivered by email or cloud link rather than WhatsApp, with originals and edits kept separate.",
+        excellent:
+          "Twelve frames consistent as a set, exported at 2,048 pixels for web and 300 dpi for print, delivered by email or cloud link rather than WhatsApp, with originals and edits kept separate.",
       },
     ],
     faqs: [

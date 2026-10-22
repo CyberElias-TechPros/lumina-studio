@@ -191,14 +191,45 @@ export const contentCreationLessonsB: Record<string, SessionLecture> = {
       "Plan your calendar from hours you actually have, including editing and packaging time. Almost everyone underestimates production time by a factor of three, and a calendar built on the underestimate is abandoned by week three.",
     ],
     vocabulary: [
-      { term: "Thumbnail", meaning: "The image a viewer sees before clicking. Tested by legibility at small size, not by how it looks full screen." },
-      { term: "Click-through rate", meaning: "The proportion who click after seeing the thumbnail and title. The measure of whether the package works." },
-      { term: "Clickbait", meaning: "A package that overstates what the video delivers. Earns the click and destroys retention and trust." },
-      { term: "Caption", meaning: "The text under a short-form video. The first line is often all that shows before 'more'." },
-      { term: "Hashtag", meaning: "A discovery tag. Three to five relevant ones outperform thirty irrelevant ones." },
-      { term: "Native upload", meaning: "Uploading the file to the platform rather than linking elsewhere. Linked videos are suppressed." },
-      { term: "Aspect ratio", meaning: "The shape of the frame. Vertical for short-form; wrong orientation wastes most of the screen." },
-      { term: "Content calendar", meaning: "A plan built from real available hours with one deliberately empty slot for timely work." },
+      {
+        term: "Thumbnail",
+        meaning:
+          "The image a viewer sees before clicking. Tested by legibility at small size, not by how it looks full screen.",
+      },
+      {
+        term: "Click-through rate",
+        meaning:
+          "The proportion who click after seeing the thumbnail and title. The measure of whether the package works.",
+      },
+      {
+        term: "Clickbait",
+        meaning:
+          "A package that overstates what the video delivers. Earns the click and destroys retention and trust.",
+      },
+      {
+        term: "Caption",
+        meaning:
+          "The text under a short-form video. The first line is often all that shows before 'more'.",
+      },
+      {
+        term: "Hashtag",
+        meaning: "A discovery tag. Three to five relevant ones outperform thirty irrelevant ones.",
+      },
+      {
+        term: "Native upload",
+        meaning:
+          "Uploading the file to the platform rather than linking elsewhere. Linked videos are suppressed.",
+      },
+      {
+        term: "Aspect ratio",
+        meaning:
+          "The shape of the frame. Vertical for short-form; wrong orientation wastes most of the screen.",
+      },
+      {
+        term: "Content calendar",
+        meaning:
+          "A plan built from real available hours with one deliberately empty slot for timely work.",
+      },
     ],
     homework: [
       {
@@ -226,27 +257,32 @@ export const contentCreationLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Thumbnail",
         passing: "Has an image.",
-        excellent: "Three candidates tested at a quarter size, the chosen one legible with a clear subject and few words, and matching what the video delivers.",
+        excellent:
+          "Three candidates tested at a quarter size, the chosen one legible with a clear subject and few words, and matching what the video delivers.",
       },
       {
         criterion: "Title",
         passing: "Names the topic.",
-        excellent: "States what the viewer will know or be able to do, in one of the reliable structures, and delivers exactly what it promises.",
+        excellent:
+          "States what the viewer will know or be able to do, in one of the reliable structures, and delivers exactly what it promises.",
       },
       {
         criterion: "Caption and tags",
         passing: "Has a caption.",
-        excellent: "A first line that works alone, one call-to-action rather than five, and three to five relevant hashtags placed at the end.",
+        excellent:
+          "A first line that works alone, one call-to-action rather than five, and three to five relevant hashtags placed at the end.",
       },
       {
         criterion: "Publishing",
         passing: "Posts the video.",
-        excellent: "Native upload at full quality, correct aspect ratio, chosen cover frame, caption written in the app, and early comments answered within the hour.",
+        excellent:
+          "Native upload at full quality, correct aspect ratio, chosen cover frame, caption written in the app, and early comments answered within the hour.",
       },
       {
         criterion: "Calendar",
         passing: "Plans to post regularly.",
-        excellent: "A weekly count derived from real hours including editing and packaging, with shooting, editing and packaging batched separately and one slot deliberately empty.",
+        excellent:
+          "A weekly count derived from real hours including editing and packaging, with shooting, editing and packaging batched separately and one slot deliberately empty.",
       },
     ],
     faqs: [
@@ -463,14 +499,46 @@ export const contentCreationLessonsB: Record<string, SessionLecture> = {
       "Say what you know and mark what you are guessing. It protects your audience from bad advice, it protects you from claims you cannot support, and it is what makes people trust the rest of what you say.",
     ],
     vocabulary: [
-      { term: "Retention", meaning: "How long viewers stay. Tests the hook and the content, and drives distribution more than likes." },
-      { term: "Click-through", meaning: "The proportion who click after seeing the package. Tests the thumbnail and title, not the video." },
-      { term: "Copyright", meaning: "Ownership of creative work. Using it without permission risks muting, blocking, removal and account restriction." },
-      { term: "Royalty-free", meaning: "Licensed for use without per-play payment. Distinct from free, and distinct from attribution." },
-      { term: "Attribution", meaning: "Crediting the owner. Necessary in some licences but never a substitute for permission." },
-      { term: "Consent", meaning: "Permission to film an identifiable person. Recorded on camera; required before publication." },
-      { term: "NDPA 2023", meaning: "Nigeria's data protection law. Identifiable footage of a person is personal data under it." },
-      { term: "Disclosure", meaning: "Stating when you are paid to promote something. Costs nothing and protects trust permanently." },
+      {
+        term: "Retention",
+        meaning:
+          "How long viewers stay. Tests the hook and the content, and drives distribution more than likes.",
+      },
+      {
+        term: "Click-through",
+        meaning:
+          "The proportion who click after seeing the package. Tests the thumbnail and title, not the video.",
+      },
+      {
+        term: "Copyright",
+        meaning:
+          "Ownership of creative work. Using it without permission risks muting, blocking, removal and account restriction.",
+      },
+      {
+        term: "Royalty-free",
+        meaning:
+          "Licensed for use without per-play payment. Distinct from free, and distinct from attribution.",
+      },
+      {
+        term: "Attribution",
+        meaning:
+          "Crediting the owner. Necessary in some licences but never a substitute for permission.",
+      },
+      {
+        term: "Consent",
+        meaning:
+          "Permission to film an identifiable person. Recorded on camera; required before publication.",
+      },
+      {
+        term: "NDPA 2023",
+        meaning:
+          "Nigeria's data protection law. Identifiable footage of a person is personal data under it.",
+      },
+      {
+        term: "Disclosure",
+        meaning:
+          "Stating when you are paid to promote something. Costs nothing and protects trust permanently.",
+      },
     ],
     homework: [
       {
@@ -498,27 +566,32 @@ export const contentCreationLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Analytics",
         passing: "Looks at views.",
-        excellent: "Reads reach, click-through, retention and follows in order, classifies each failure by stage, and compares like with like across ten videos.",
+        excellent:
+          "Reads reach, click-through, retention and follows in order, classifies each failure by stage, and compares like with like across ten videos.",
       },
       {
         criterion: "Growth plan",
         passing: "Hopes to grow.",
-        excellent: "One evidence-based change named with the number it will be judged on and the date it will be checked, rather than several changes made on feeling.",
+        excellent:
+          "One evidence-based change named with the number it will be judged on and the date it will be checked, rather than several changes made on feeling.",
       },
       {
         criterion: "Copyright",
         passing: "Avoids obvious theft.",
-        excellent: "Every third-party element identified and replaced with a legal source, with the distinction between attribution and permission understood.",
+        excellent:
+          "Every third-party element identified and replaced with a legal source, with the distinction between attribution and permission understood.",
       },
       {
         criterion: "Privacy",
         passing: "Is careful.",
-        excellent: "Every identifiable person listed with consent recorded on camera, and every filmed screen checked for messages, financial details and client names.",
+        excellent:
+          "Every identifiable person listed with consent recorded on camera, and every filmed screen checked for messages, financial details and client names.",
       },
       {
         criterion: "Responsibility",
         passing: "Means well.",
-        excellent: "Claims marked as personal results rather than promises, paid promotion disclosed, and a sustainable engagement window that protects the time needed to make the work.",
+        excellent:
+          "Claims marked as personal results rather than promises, paid promotion disclosed, and a sustainable engagement window that protects the time needed to make the work.",
       },
     ],
     faqs: [
@@ -732,14 +805,46 @@ export const contentCreationLessonsB: Record<string, SessionLecture> = {
       "Screen your work without explaining it first. A first-time viewer's unassisted understanding is the most accurate measure of whether the video works, and defending it in advance destroys that measurement.",
     ],
     vocabulary: [
-      { term: "Deliverable", meaning: "A published video plus a written review. Unpublished work cannot be measured and so cannot be improved." },
-      { term: "Production order", meaning: "Script, shoot, edit, package, publish, review. Each step depends on the last and skipping one costs double." },
-      { term: "Retention curve", meaning: "Where viewers leave, second by second. The most actionable single piece of analytics there is." },
-      { term: "Screening", meaning: "Showing the work to peers without explanation. Reveals what people understood unassisted." },
-      { term: "Critique", meaning: "Specific, work-focused feedback naming both what worked and what to change. Vague praise and vague dislike are both useless." },
-      { term: "Critique sorting", meaning: "Dividing feedback into genuinely wrong, preference, and the critic's own taste. Only the first must change." },
-      { term: "Body of work", meaning: "Twelve or more videos on one pillar. Worth more than one excellent piece because it proves consistency." },
-      { term: "Batching", meaning: "Producing several videos in one session. What stops a busy week becoming a missed week." },
+      {
+        term: "Deliverable",
+        meaning:
+          "A published video plus a written review. Unpublished work cannot be measured and so cannot be improved.",
+      },
+      {
+        term: "Production order",
+        meaning:
+          "Script, shoot, edit, package, publish, review. Each step depends on the last and skipping one costs double.",
+      },
+      {
+        term: "Retention curve",
+        meaning:
+          "Where viewers leave, second by second. The most actionable single piece of analytics there is.",
+      },
+      {
+        term: "Screening",
+        meaning:
+          "Showing the work to peers without explanation. Reveals what people understood unassisted.",
+      },
+      {
+        term: "Critique",
+        meaning:
+          "Specific, work-focused feedback naming both what worked and what to change. Vague praise and vague dislike are both useless.",
+      },
+      {
+        term: "Critique sorting",
+        meaning:
+          "Dividing feedback into genuinely wrong, preference, and the critic's own taste. Only the first must change.",
+      },
+      {
+        term: "Body of work",
+        meaning:
+          "Twelve or more videos on one pillar. Worth more than one excellent piece because it proves consistency.",
+      },
+      {
+        term: "Batching",
+        meaning:
+          "Producing several videos in one session. What stops a busy week becoming a missed week.",
+      },
     ],
     homework: [
       {
@@ -767,27 +872,32 @@ export const contentCreationLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Pre-production",
         passing: "Has an idea.",
-        excellent: "A pillar topic chosen for usefulness, scripted in full and timed from word count before anything was shot.",
+        excellent:
+          "A pillar topic chosen for usefulness, scripted in full and timed from word count before anything was shot.",
       },
       {
         criterion: "Production",
         passing: "Is watchable.",
-        excellent: "Window light with a bounce, eye level, cleared background, quiet room, close audio, best of three takes, looking at the lens.",
+        excellent:
+          "Window light with a bounce, eye level, cleared background, quiet room, close audio, best of three takes, looking at the lens.",
       },
       {
         criterion: "Post-production",
         passing: "Is edited.",
-        excellent: "A third of the running time removed at marked attention dips, corrected captions, licensed music at the right level, and supporting text in one font.",
+        excellent:
+          "A third of the running time removed at marked attention dips, corrected captions, licensed music at the right level, and supporting text in one font.",
       },
       {
         criterion: "Packaging and publishing",
         passing: "Is posted.",
-        excellent: "A thumbnail surviving the quarter-size test, a title that delivers exactly what it promises, a caption whose first line works alone, native upload at full quality with a chosen cover frame.",
+        excellent:
+          "A thumbnail surviving the quarter-size test, a title that delivers exactly what it promises, a caption whose first line works alone, native upload at full quality with a chosen cover frame.",
       },
       {
         criterion: "Review and critique",
         passing: "Reports the views.",
-        excellent: "All four metrics read in order with one specific failure named, all critique recorded in silence and sorted into wrong, preference and taste, plus a ninety-day batched plan reviewed monthly.",
+        excellent:
+          "All four metrics read in order with one specific failure named, all critique recorded in silence and sorted into wrong, preference and taste, plus a ninety-day batched plan reviewed monthly.",
       },
     ],
     faqs: [

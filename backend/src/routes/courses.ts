@@ -265,12 +265,16 @@ courses.post("/:slug/lessons/:lessonId/complete", async (c) => {
   const total = modules.reduce((sum, m) => sum + m.lessons.length, 0);
   const pct = total > 0 ? Math.min(100, Math.round((done / total) * 100)) : 0;
 
-  await c.env.DB.prepare(
-    `INSERT INTO enrollments (id, user_id, course_slug, pct, enrolled_at) VALUES (?, ?, ?, ?, ?)
-     ON CONFLICT (user_id, course_slug) DO UPDATE SET pct = excluded.pct`,
+  // Completion may update existing entitlement, never create/recreate it. An
+  // admissions revocation can occur after the initial entitlement check above.
+  const updatedEnrollment = await c.env.DB.prepare(
+    "UPDATE enrollments SET pct = ? WHERE user_id = ? AND course_slug = ?",
   )
-    .bind(crypto.randomUUID(), user.id, slug, pct, now)
+    .bind(pct, user.id, slug)
     .run();
+  if (updatedEnrollment.meta.changes === 0) {
+    throw ApiError.forbidden("Your course enrolment is no longer active. Refresh your courses.");
+  }
 
   const weekAgo = new Date(Date.now() - 7 * 86_400_000).toISOString();
   const weekly = await c.env.DB.prepare(

@@ -13,3 +13,22 @@ export function fetchCourse(slug: string): Promise<LearningCourse> {
 export function fetchGradebook(): Promise<Paginated<GradebookCourse>> {
   return apiFetch<Paginated<GradebookCourse>>("/v1/courses/gradebook");
 }
+
+export interface LessonCompletion {
+  ok: boolean;
+  pct: number;
+  doneLessons: number;
+  totalLessons: number;
+  lessonsThisWeek: number;
+  streakDays: number;
+}
+
+export async function completeLesson(course: string, lesson: string): Promise<LessonCompletion> {
+  const result = await apiFetch<LessonCompletion>(
+    `/v1/courses/${encodeURIComponent(course)}/lessons/${encodeURIComponent(lesson)}/complete`,
+    { method: "POST", body: {} },
+  );
+  if (result.ok !== true)
+    throw new Error("Completion was not confirmed. Refresh before trying again.");
+  return result;
+}

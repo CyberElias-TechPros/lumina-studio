@@ -97,7 +97,7 @@ export async function fcmAccessToken(
     if (
       !response.ok ||
       typeof data?.access_token !== "string" ||
-      !/^[A-Za-z0-9._~+\/-]{1,8192}$/.test(data.access_token) ||
+      !/^[A-Za-z0-9._~+/-]{1,8192}$/.test(data.access_token) ||
       data.token_type !== "Bearer"
     )
       throw unavailable();

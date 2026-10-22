@@ -1086,16 +1086,14 @@ enrollments.post("/payment-proofs/:id/confirm", requireAuth, requireFinance, asy
     }),
   );
   const bankReference = verified.bankReference.toUpperCase();
-  const proof = await c.env.DB.prepare("SELECT * FROM payment_proofs WHERE id = ?")
-    .bind(id)
-    .first<{
-      id: string;
-      registration_ref: string;
-      kind: string;
-      amount: number;
-      status: string;
-      sender_name: string;
-    }>();
+  const proof = await c.env.DB.prepare("SELECT * FROM payment_proofs WHERE id = ?").bind(id).first<{
+    id: string;
+    registration_ref: string;
+    kind: string;
+    amount: number;
+    status: string;
+    sender_name: string;
+  }>();
   if (!proof) throw ApiError.notFound("Transfer report not found.");
   if (proof.status === "rejected")
     throw new ApiError(409, "ALREADY_REVIEWED", "This report was rejected.");

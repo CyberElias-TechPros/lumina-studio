@@ -35,7 +35,7 @@ export const Route = createFileRoute("/app/instructor/assignments/")({
 function AssignmentCenter() {
   const submissionsQuery = useInstructorAssignments();
   const submissions = submissionsQuery.data?.pages.flatMap((p) => p.items) ?? [];
-  const pending = submissions.filter((s) => s.status === "pending");
+  const pending = submissions.filter((s) => s.status === "pending" || s.status === "submitted");
   const graded = submissions.filter((s) => s.status === "graded");
   const late = submissions.filter((s) => s.late);
 
@@ -172,7 +172,7 @@ function AssignmentCenter() {
                           </td>
                           <td className="py-3.5 pr-4">
                             {s.score !== undefined ? (
-                              <span className="font-display font-extrabold">{s.score}%</span>
+                              <span className="font-display font-extrabold">{s.score} points</span>
                             ) : (
                               <span className="text-muted-foreground text-xs font-semibold">—</span>
                             )}
@@ -182,7 +182,10 @@ function AssignmentCenter() {
                               asChild
                               size="sm"
                               variant={s.status === "graded" ? "outline" : "default"}
-                              className={cn(s.status === "pending" && "bg-gradient-brand border-0")}
+                              className={cn(
+                                (s.status === "pending" || s.status === "submitted") &&
+                                  "bg-gradient-brand border-0",
+                              )}
                             >
                               <Link
                                 to="/app/instructor/assignments/$submissionId/grade"
@@ -203,6 +206,15 @@ function AssignmentCenter() {
           </>
         )}
       </QueryState>
+      <p className="mt-4 text-sm text-muted-foreground">Counts reflect the loaded submissions.</p>
+      {submissionsQuery.hasNextPage && (
+        <Button
+          onClick={() => void submissionsQuery.fetchNextPage()}
+          disabled={submissionsQuery.isFetchingNextPage}
+        >
+          {submissionsQuery.isFetchingNextPage ? "Loading…" : "Load more submissions"}
+        </Button>
+      )}
     </AppShell>
   );
 }

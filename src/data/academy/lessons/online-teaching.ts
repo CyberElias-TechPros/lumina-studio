@@ -195,14 +195,46 @@ export const onlineTeachingLessonsA: Record<string, SessionLecture> = {
       "Derive your steps by working backwards from the finished task. Asking 'what had to be true just before this?' five times reliably surfaces a prerequisite you forgot you knew, which is usually exactly where learners get lost.",
     ],
     vocabulary: [
-      { term: "Learning objective", meaning: "What the learner will be able to do afterwards. Written with an observable verb so it can be tested." },
-      { term: "Observable verb", meaning: "Write, build, calculate, identify, correct. Describes something you can watch, unlike understand or appreciate." },
-      { term: "Curse of knowledge", meaning: "Expertise making the steps invisible. The main reason experts struggle to teach beginners." },
-      { term: "Prerequisite", meaning: "A skill needed before the next step. Usually a forgotten one, and usually where learners get lost." },
-      { term: "Lesson plan", meaning: "Objective, hook, demonstration, guided practice, independent practice, check. A hypothesis to be tested by the class." },
-      { term: "Guided practice", meaning: "Learners doing the task with the teacher watching. Where most real learning happens." },
-      { term: "Scaffolding", meaning: "Support removed gradually as competence grows. Too much creates dependence; too little creates failure." },
-      { term: "Mixed-ability class", meaning: "A group spanning beginner to advanced. Handled by teaching to beginners in explanation and to advanced in exercises." },
+      {
+        term: "Learning objective",
+        meaning:
+          "What the learner will be able to do afterwards. Written with an observable verb so it can be tested.",
+      },
+      {
+        term: "Observable verb",
+        meaning:
+          "Write, build, calculate, identify, correct. Describes something you can watch, unlike understand or appreciate.",
+      },
+      {
+        term: "Curse of knowledge",
+        meaning:
+          "Expertise making the steps invisible. The main reason experts struggle to teach beginners.",
+      },
+      {
+        term: "Prerequisite",
+        meaning:
+          "A skill needed before the next step. Usually a forgotten one, and usually where learners get lost.",
+      },
+      {
+        term: "Lesson plan",
+        meaning:
+          "Objective, hook, demonstration, guided practice, independent practice, check. A hypothesis to be tested by the class.",
+      },
+      {
+        term: "Guided practice",
+        meaning:
+          "Learners doing the task with the teacher watching. Where most real learning happens.",
+      },
+      {
+        term: "Scaffolding",
+        meaning:
+          "Support removed gradually as competence grows. Too much creates dependence; too little creates failure.",
+      },
+      {
+        term: "Mixed-ability class",
+        meaning:
+          "A group spanning beginner to advanced. Handled by teaching to beginners in explanation and to advanced in exercises.",
+      },
     ],
     homework: [
       {
@@ -230,27 +262,32 @@ export const onlineTeachingLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Learner understanding",
         passing: "Knows the subject.",
-        excellent: "Learners located by prior knowledge, need and application, with a written diagnostic question and a real approach to mixed ability.",
+        excellent:
+          "Learners located by prior knowledge, need and application, with a written diagnostic question and a real approach to mixed ability.",
       },
       {
         criterion: "Objectives",
         passing: "Has topic headings.",
-        excellent: "Three objectives, all with observable verbs, each answerable by what you would watch someone do, cut down from a longer list.",
+        excellent:
+          "Three objectives, all with observable verbs, each answerable by what you would watch someone do, cut down from a longer list.",
       },
       {
         criterion: "Lesson plan",
         passing: "Has an outline.",
-        excellent: "All six parts present, demonstration before explanation, an explicit check, honest timings including technical problems, and a pre-marked cut.",
+        excellent:
+          "All six parts present, demonstration before explanation, an explicit check, honest timings including technical problems, and a pre-marked cut.",
       },
       {
         criterion: "Step design",
         passing: "Explains the topic.",
-        excellent: "A sequence derived by working backwards five times, reordered by dependency rather than menu order, with one idea and one checking action per step.",
+        excellent:
+          "A sequence derived by working backwards five times, reordered by dependency rather than menu order, with one idea and one checking action per step.",
       },
       {
         criterion: "Teaching awareness",
         passing: "Explains clearly.",
-        excellent: "Understands the curse of knowledge, treats the plan as a hypothesis tested by the class, and adjusts to confusion rather than following the schedule.",
+        excellent:
+          "Understands the curse of knowledge, treats the plan as a hypothesis tested by the class, and adjusts to confusion rather than following the schedule.",
       },
     ],
     faqs: [
@@ -467,14 +504,45 @@ export const onlineTeachingLessonsA: Record<string, SessionLecture> = {
       "Ask questions instead of rescuing a stuck learner. Thirty seconds of productive struggle teaches more than watching you fix it, and rescuing teaches them that difficulty means waiting for you.",
     ],
     vocabulary: [
-      { term: "Demonstration", meaning: "Showing what the learner should do at a speed they can follow. Not showing what you can do." },
-      { term: "Narrated reasoning", meaning: "Saying why each action, including alternatives rejected. Transfers judgement rather than procedure." },
-      { term: "Guided practice", meaning: "The learner doing the task with the teacher watching. Errors are cheap because they are caught in seconds." },
-      { term: "Independent practice", meaning: "The task done alone without steps. The only real test of whether it stuck." },
-      { term: "Desirable difficulty", meaning: "Practice slightly harder than the demonstration. Feels worse and produces far more learning." },
-      { term: "Descriptive feedback", meaning: "What was right, what was wrong, what to do next. Changes the next attempt, unlike evaluation." },
-      { term: "Performance assessment", meaning: "Asking for the thing rather than recall about it. Harder to mark and far more informative." },
-      { term: "Formative check", meaning: "A low-stakes check during the lesson. Tells you whether to move on while the information is still useful." },
+      {
+        term: "Demonstration",
+        meaning:
+          "Showing what the learner should do at a speed they can follow. Not showing what you can do.",
+      },
+      {
+        term: "Narrated reasoning",
+        meaning:
+          "Saying why each action, including alternatives rejected. Transfers judgement rather than procedure.",
+      },
+      {
+        term: "Guided practice",
+        meaning:
+          "The learner doing the task with the teacher watching. Errors are cheap because they are caught in seconds.",
+      },
+      {
+        term: "Independent practice",
+        meaning: "The task done alone without steps. The only real test of whether it stuck.",
+      },
+      {
+        term: "Desirable difficulty",
+        meaning:
+          "Practice slightly harder than the demonstration. Feels worse and produces far more learning.",
+      },
+      {
+        term: "Descriptive feedback",
+        meaning:
+          "What was right, what was wrong, what to do next. Changes the next attempt, unlike evaluation.",
+      },
+      {
+        term: "Performance assessment",
+        meaning:
+          "Asking for the thing rather than recall about it. Harder to mark and far more informative.",
+      },
+      {
+        term: "Formative check",
+        meaning:
+          "A low-stakes check during the lesson. Tells you whether to move on while the information is still useful.",
+      },
     ],
     homework: [
       {
@@ -502,27 +570,32 @@ export const onlineTeachingLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Demonstration design",
         passing: "Shows how to do it.",
-        excellent: "Result shown first, slow with no shortcuts, reasoning narrated for each key action, one rejected alternative explained, and a deliberate mistake corrected on screen.",
+        excellent:
+          "Result shown first, slow with no shortcuts, reasoning narrated for each key action, one rejected alternative explained, and a deliberate mistake corrected on screen.",
       },
       {
         criterion: "Practice structure",
         passing: "Sets an exercise.",
-        excellent: "Three stages from guided to independent, each slightly harder than the last, with the first genuinely different from the demonstration rather than a repeat.",
+        excellent:
+          "Three stages from guided to independent, each slightly harder than the last, with the first genuinely different from the demonstration rather than a repeat.",
       },
       {
         criterion: "Handling difficulty",
         passing: "Helps when asked.",
-        excellent: "Asks diagnostic questions rather than taking over, keeping the learner working, with the questions written in advance.",
+        excellent:
+          "Asks diagnostic questions rather than taking over, keeping the learner working, with the questions written in advance.",
       },
       {
         criterion: "Feedback",
         passing: "Marks the work.",
-        excellent: "Three-part descriptive feedback — right, wrong, next — kept to three points, given immediately rather than collected for later.",
+        excellent:
+          "Three-part descriptive feedback — right, wrong, next — kept to three points, given immediately rather than collected for later.",
       },
       {
         criterion: "Assessment",
         passing: "Tests the material.",
-        excellent: "A task asking for the thing the objective stated, with the success standard written in advance and low-stakes checks during the lesson rather than one test at the end.",
+        excellent:
+          "A task asking for the thing the objective stated, with the success standard written in advance and low-stakes checks during the lesson rather than one test at the end.",
       },
     ],
     faqs: [
@@ -740,14 +813,44 @@ export const onlineTeachingLessonsA: Record<string, SessionLecture> = {
       "Test your fallback before you need it. Connection failures are certain rather than possible, and a plan you have actually rehearsed keeps the class calm while an unrehearsed one turns a two-minute problem into a lost lesson.",
     ],
     vocabulary: [
-      { term: "Mute on entry", meaning: "Arrivals joining muted. Prevents late-arrival noise from destroying the lesson." },
-      { term: "Waiting room", meaning: "A holding area before admission. Stops strangers joining an open link." },
-      { term: "Window sharing", meaning: "Sharing one application rather than the whole screen. Focuses attention and protects private information." },
-      { term: "Visual anchor", meaning: "The one image or phrase on a slide that the spoken explanation attaches to. Not a paragraph." },
-      { term: "Digital whiteboard", meaning: "A surface for thinking out loud. Its value is that it appears gradually and can change when someone is confused." },
-      { term: "Latency", meaning: "Delay between your action and the student seeing it. Why demonstrations must be slower online than in person." },
-      { term: "Asynchronous fallback", meaning: "A recording plus written summary for when the live session fails. What makes the lesson survive the technology." },
-      { term: "Recording consent", meaning: "Telling the class you are recording. An ethical obligation and in some contexts a legal one." },
+      {
+        term: "Mute on entry",
+        meaning: "Arrivals joining muted. Prevents late-arrival noise from destroying the lesson.",
+      },
+      {
+        term: "Waiting room",
+        meaning: "A holding area before admission. Stops strangers joining an open link.",
+      },
+      {
+        term: "Window sharing",
+        meaning:
+          "Sharing one application rather than the whole screen. Focuses attention and protects private information.",
+      },
+      {
+        term: "Visual anchor",
+        meaning:
+          "The one image or phrase on a slide that the spoken explanation attaches to. Not a paragraph.",
+      },
+      {
+        term: "Digital whiteboard",
+        meaning:
+          "A surface for thinking out loud. Its value is that it appears gradually and can change when someone is confused.",
+      },
+      {
+        term: "Latency",
+        meaning:
+          "Delay between your action and the student seeing it. Why demonstrations must be slower online than in person.",
+      },
+      {
+        term: "Asynchronous fallback",
+        meaning:
+          "A recording plus written summary for when the live session fails. What makes the lesson survive the technology.",
+      },
+      {
+        term: "Recording consent",
+        meaning:
+          "Telling the class you are recording. An ethical obligation and in some contexts a legal one.",
+      },
     ],
     homework: [
       {
@@ -775,27 +878,32 @@ export const onlineTeachingLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Platform setup",
         passing: "Can start a meeting.",
-        excellent: "Chosen for data cost and phone access, with mute on entry, a locked meeting or waiting room, chat, host-only sharing, and a properly written invitation with a reminder.",
+        excellent:
+          "Chosen for data cost and phone access, with mute on entry, a locked meeting or waiting room, chat, host-only sharing, and a properly written invitation with a reminder.",
       },
       {
         criterion: "Screen sharing",
         passing: "Shares the screen.",
-        excellent: "One window rather than the whole screen, tabs closed, notifications disabled, text enlarged, files pre-opened, and legibility confirmed by a participant on a phone.",
+        excellent:
+          "One window rather than the whole screen, tabs closed, notifications disabled, text enlarged, files pre-opened, and legibility confirmed by a participant on a phone.",
       },
       {
         criterion: "Presentations",
         passing: "Has slides.",
-        excellent: "One visual anchor per slide with nothing written that will be spoken, large high-contrast text, progressive build, and every slide numbered.",
+        excellent:
+          "One visual anchor per slide with nothing written that will be spoken, large high-contrast text, progressive build, and every slide numbered.",
       },
       {
         criterion: "Whiteboard use",
         passing: "Can draw on it.",
-        excellent: "Diagrams built live from boxes, arrows and labels to show reasoning, written large, with student questions written up so the whole class benefits.",
+        excellent:
+          "Diagrams built live from boxes, arrows and labels to show reasoning, written large, with student questions written up so the whole class benefits.",
       },
       {
         criterion: "Recording and resilience",
         passing: "Records sometimes.",
-        excellent: "Recording announced and verified as saved, audio confirmed before content, and a fallback plan written and actually tested by disconnecting.",
+        excellent:
+          "Recording announced and verified as saved, audio confirmed before content, and a fallback plan written and actually tested by disconnecting.",
       },
     ],
     faqs: [

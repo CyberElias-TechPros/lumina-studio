@@ -2,3 +2,5 @@
 **/build/
 local.properties
 *.log
+
+app/src/main/assets/public-lessons/

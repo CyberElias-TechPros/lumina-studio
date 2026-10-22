@@ -195,14 +195,43 @@ export const cybersecurityLessonsC: Record<string, SessionLecture> = {
       "Always write the review, even for a small incident. Most compromises are mundane — an unpatched system, a reused password, a clicked link — and the review is the only part of the process that stops the next one.",
     ],
     vocabulary: [
-      { term: "3-2-1 backup", meaning: "Three copies, on two media types, with one off-site. The standard scheme for surviving the worst case." },
-      { term: "Versioning", meaning: "Cloud storage keeping previous file versions, allowing rollback after encryption or deletion." },
-      { term: "Offline copy", meaning: "A backup disconnected when not in use, so ransomware cannot reach it." },
-      { term: "Restore test", meaning: "Restoring a real file and opening it. The only proof a backup works." },
-      { term: "Containment", meaning: "Stopping an incident spreading — disconnect, disable, revoke — without destroying evidence." },
-      { term: "Volatile evidence", meaning: "Data in memory that is lost at power-off. Why you disconnect rather than shut down." },
-      { term: "Eradication", meaning: "Removing the cause — malware, attacker access, the exploited vulnerability." },
-      { term: "Post-incident review", meaning: "The written analysis of cause and response, producing specific changes. The only part that prevents recurrence." },
+      {
+        term: "3-2-1 backup",
+        meaning:
+          "Three copies, on two media types, with one off-site. The standard scheme for surviving the worst case.",
+      },
+      {
+        term: "Versioning",
+        meaning:
+          "Cloud storage keeping previous file versions, allowing rollback after encryption or deletion.",
+      },
+      {
+        term: "Offline copy",
+        meaning: "A backup disconnected when not in use, so ransomware cannot reach it.",
+      },
+      {
+        term: "Restore test",
+        meaning: "Restoring a real file and opening it. The only proof a backup works.",
+      },
+      {
+        term: "Containment",
+        meaning:
+          "Stopping an incident spreading — disconnect, disable, revoke — without destroying evidence.",
+      },
+      {
+        term: "Volatile evidence",
+        meaning:
+          "Data in memory that is lost at power-off. Why you disconnect rather than shut down.",
+      },
+      {
+        term: "Eradication",
+        meaning: "Removing the cause — malware, attacker access, the exploited vulnerability.",
+      },
+      {
+        term: "Post-incident review",
+        meaning:
+          "The written analysis of cause and response, producing specific changes. The only part that prevents recurrence.",
+      },
     ],
     homework: [
       {
@@ -230,27 +259,32 @@ export const cybersecurityLessonsC: Record<string, SessionLecture> = {
       {
         criterion: "Backup design",
         passing: "Has some backup.",
-        excellent: "A 3-2-1 scheme covering the data that matters, with the third copy disconnected or versioned so ransomware cannot reach it.",
+        excellent:
+          "A 3-2-1 scheme covering the data that matters, with the third copy disconnected or versioned so ransomware cannot reach it.",
       },
       {
         criterion: "Testing",
         passing: "Believes the backup works.",
-        excellent: "Restores tested at file and folder scale, recovery media confirmed bootable, and every test dated and logged.",
+        excellent:
+          "Restores tested at file and folder scale, recovery media confirmed bootable, and every test dated and logged.",
       },
       {
         criterion: "Incident sequence",
         passing: "Would react sensibly.",
-        excellent: "Follows detect, contain, assess, eradicate, recover, review in order, and does not rush to rebuild before understanding the entry point.",
+        excellent:
+          "Follows detect, contain, assess, eradicate, recover, review in order, and does not rush to rebuild before understanding the entry point.",
       },
       {
         criterion: "Containment discipline",
         passing: "Would change a password.",
-        excellent: "Disconnects without shutting down, changes credentials from a clean device, revokes sessions, disables accounts, and preserves evidence.",
+        excellent:
+          "Disconnects without shutting down, changes credentials from a clean device, revokes sessions, disables accounts, and preserves evidence.",
       },
       {
         criterion: "Recovery and review",
         passing: "Restores the data.",
-        excellent: "Restores essentials first, verifies each by opening files, rebuilds rather than cleans, closes the entry point, and produces a written review naming specific changes.",
+        excellent:
+          "Restores essentials first, verifies each by opening files, rebuilds rather than cleans, closes the entry point, and produces a written review naming specific changes.",
       },
     ],
     faqs: [
@@ -460,14 +494,46 @@ export const cybersecurityLessonsC: Record<string, SessionLecture> = {
       "State the limits of your review explicitly. 'This is not a penetration test and does not prove anything is unbreakable' protects you, and it is what a professional says rather than something a professional has to retract.",
     ],
     vocabulary: [
-      { term: "Acceptable use policy", meaning: "What staff may and may not do with business systems. Short and specific beats long and ignored." },
-      { term: "No-blame reporting", meaning: "A commitment that reporting an incident brings no punishment. A genuine control, because fear makes staff hide incidents." },
-      { term: "Risk scoring", meaning: "Rating likelihood and impact. High, medium and low is more honest than false numeric precision." },
-      { term: "Remediation", meaning: "Fixing an identified vulnerability. Prioritised by risk reduced, not by how impressive the fix sounds." },
-      { term: "Executive summary", meaning: "One plain-language paragraph with the top actions. Often the only part an owner reads." },
-      { term: "Scope", meaning: "What the review did and did not examine. Stating it prevents misunderstanding and protects you." },
-      { term: "Penetration test", meaning: "An authorised simulated attack proving whether defences hold. Distinct from a review, and worth saying so." },
-      { term: "Governance, risk and compliance", meaning: "The policy, assessment and standards side of security. Largely non-technical and a large employment area." },
+      {
+        term: "Acceptable use policy",
+        meaning:
+          "What staff may and may not do with business systems. Short and specific beats long and ignored.",
+      },
+      {
+        term: "No-blame reporting",
+        meaning:
+          "A commitment that reporting an incident brings no punishment. A genuine control, because fear makes staff hide incidents.",
+      },
+      {
+        term: "Risk scoring",
+        meaning:
+          "Rating likelihood and impact. High, medium and low is more honest than false numeric precision.",
+      },
+      {
+        term: "Remediation",
+        meaning:
+          "Fixing an identified vulnerability. Prioritised by risk reduced, not by how impressive the fix sounds.",
+      },
+      {
+        term: "Executive summary",
+        meaning:
+          "One plain-language paragraph with the top actions. Often the only part an owner reads.",
+      },
+      {
+        term: "Scope",
+        meaning:
+          "What the review did and did not examine. Stating it prevents misunderstanding and protects you.",
+      },
+      {
+        term: "Penetration test",
+        meaning:
+          "An authorised simulated attack proving whether defences hold. Distinct from a review, and worth saying so.",
+      },
+      {
+        term: "Governance, risk and compliance",
+        meaning:
+          "The policy, assessment and standards side of security. Largely non-technical and a large employment area.",
+      },
     ],
     homework: [
       {
@@ -495,27 +561,32 @@ export const cybersecurityLessonsC: Record<string, SessionLecture> = {
       {
         criterion: "Policy design",
         passing: "Writes some rules.",
-        excellent: "One page covering five specific topics, cheap to comply with, and including an explicit no-blame reporting clause.",
+        excellent:
+          "One page covering five specific topics, cheap to comply with, and including an explicit no-blame reporting clause.",
       },
       {
         criterion: "Assessment",
         passing: "Identifies some risks.",
-        excellent: "Assets mapped to the CIA triad, real vulnerabilities found by inspecting the setup, and risks scored and ranked with honest rather than falsely precise scoring.",
+        excellent:
+          "Assets mapped to the CIA triad, real vulnerabilities found by inspecting the setup, and risks scored and ranked with honest rather than falsely precise scoring.",
       },
       {
         criterion: "Recommendations",
         passing: "Suggests fixes.",
-        excellent: "Ordered by risk reduced per naira with a cost and effort for each, plus at least one justified omission.",
+        excellent:
+          "Ordered by risk reduced per naira with a cost and effort for each, plus at least one justified omission.",
       },
       {
         criterion: "Communication",
         passing: "Explains the findings.",
-        excellent: "Every finding expressed as a business consequence, an executive summary a non-technical owner can act on, and objections handled without fear tactics.",
+        excellent:
+          "Every finding expressed as a business consequence, an executive summary a non-technical owner can act on, and objections handled without fear tactics.",
       },
       {
         criterion: "Professional honesty",
         passing: "Delivers a report.",
-        excellent: "States the scope and the limits, does not claim the business is secure, and does not oversell controls the business does not need.",
+        excellent:
+          "States the scope and the limits, does not claim the business is secure, and does not oversell controls the business does not need.",
       },
     ],
     faqs: [

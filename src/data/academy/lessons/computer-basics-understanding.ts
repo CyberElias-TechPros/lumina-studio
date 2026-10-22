@@ -375,7 +375,8 @@ export const understandingTheComputer: SessionLecture = {
       fix: "Press once and wait two minutes. Check you pressed the tower's button, not only the monitor's. Repeated presses can force a recovery screen or turn the machine off just as it was about to arrive.",
     },
     {
-      problem: "You call the tower 'the CPU' and ask the village for a new CPU when the machine will not light",
+      problem:
+        "You call the tower 'the CPU' and ask the village for a new CPU when the machine will not light",
       fix: "The CPU is a chip inside the box. Say system unit, or tower, until you have opened a case with someone who knows what they are looking at. The wrong name buys the wrong part.",
     },
     {
@@ -383,7 +384,8 @@ export const understandingTheComputer: SessionLecture = {
       fix: "Start → Power → Shut down, then wait for dark and quiet. The socket is for after the machine has finished writing, or for a surge protector you switch off once the fans have stopped.",
     },
     {
-      problem: "Start is in the middle of the bar and you think the lesson is for a different computer",
+      problem:
+        "Start is in the middle of the bar and you think the lesson is for a different computer",
       fix: "That is Windows 11's usual layout. Windows 10 keeps Start on the left. Click it anyway. Search works the same: type the program's name.",
     },
     {
@@ -419,7 +421,8 @@ export const understandingTheComputer: SessionLecture = {
       check:
         "Monitor power light. Brightness, including a sun key if this is a laptop. Video cable seated at both ends, correct shape. Try the monitor's input button if it has one — some monitors are listening to HDMI while you plugged in VGA.",
       fix: "Seat the cable or switch the monitor's input. Give it ten seconds after each change. Do not restart the tower until the cable is seated; restarting will not push a picture down a cable that is out.",
-      prevention: "When you unplug a monitor, unplug the video cable last and remember which shape you used.",
+      prevention:
+        "When you unplug a monitor, unplug the video cable last and remember which shape you used.",
       whenToStop:
         "The cable is seated, the monitor has power, you have tried its input button, and another monitor — if you can borrow one — also stays black. That can be the video port. It is a repairs problem.",
     },
@@ -475,9 +478,11 @@ export const understandingTheComputer: SessionLecture = {
       symptom: "Every letter is a capital, or the number keys do nothing useful.",
       likelyCause:
         "Caps Lock or Num Lock is on. Both have lights. Neither means the keyboard is ruined.",
-      check: "Look at the small lights on the keyboard, often on the keys themselves or at the top-right of the board.",
+      check:
+        "Look at the small lights on the keyboard, often on the keys themselves or at the top-right of the board.",
       fix: "Press Caps Lock once to return to ordinary letters. Press Num Lock once if the number pad is typing arrows instead of numbers. The next lesson treats this properly. Today, the light is the diagnosis.",
-      prevention: "Glance at those lights when the typing looks possessed, before you unplug the keyboard.",
+      prevention:
+        "Glance at those lights when the typing looks possessed, before you unplug the keyboard.",
       whenToStop:
         "The lights are correct, another keyboard does the same thing, and you still get letters you did not type. That can be a language layout. Stop and ask. Do not keep uninstalling things.",
     },
@@ -505,8 +510,7 @@ export const understandingTheComputer: SessionLecture = {
     },
     {
       term: "CPU",
-      meaning:
-        "The processor chip that carries out instructions. Not the box, not the screen.",
+      meaning: "The processor chip that carries out instructions. Not the box, not the screen.",
     },
     {
       term: "RAM",
@@ -525,8 +529,7 @@ export const understandingTheComputer: SessionLecture = {
     },
     {
       term: "Port",
-      meaning:
-        "A socket identified by shape: USB-A, USB-C, HDMI, Ethernet, audio jack, VGA.",
+      meaning: "A socket identified by shape: USB-A, USB-C, HDMI, Ethernet, audio jack, VGA.",
     },
     {
       term: "Taskbar",
@@ -576,7 +579,8 @@ export const understandingTheComputer: SessionLecture = {
   rubric: [
     {
       criterion: "Hardware identification",
-      passing: "Names the screen, keyboard, pointing device and computer, and does not call the tower the CPU.",
+      passing:
+        "Names the screen, keyboard, pointing device and computer, and does not call the tower the CPU.",
       excellent:
         "Also names four ports by shape and says what each is for, including the difference between the monitor button and the computer button.",
     },
@@ -589,11 +593,13 @@ export const understandingTheComputer: SessionLecture = {
     {
       criterion: "Desktop navigation",
       passing: "Opens Notepad from Start search and closes it.",
-      excellent: "Switches with Alt+Tab, answers the save question correctly, and locks or signs out appropriately on a shared machine.",
+      excellent:
+        "Switches with Alt+Tab, answers the save question correctly, and locks or signs out appropriately on a shared machine.",
     },
     {
       criterion: "Diagnosis",
-      passing: "Suggests a cable or the monitor button when a screen is dark, rather than 'it is spoilt'.",
+      passing:
+        "Suggests a cable or the monitor button when a screen is dark, rather than 'it is spoilt'.",
       excellent:
         "Runs the checks in order, separates a fan-running black screen from a silent machine, and stops before opening the case.",
     },

@@ -1,11 +1,14 @@
 name: Native Android preview
 on:
   push:
-    branches: ['arena/df91cdba-lumina-studio']
-    paths: ['apps/android-native/**', '.github/workflows/android-native.yml']
+    branches: [main]
+    paths: ['apps/android-native/**', 'src/data/blog.ts', 'public/images/blog/**', 'package.json', 'package-lock.json', '.github/workflows/android-native.yml']
   pull_request:
-    paths: ['apps/android-native/**', '.github/workflows/android-native.yml']
+    paths: ['apps/android-native/**', 'src/data/blog.ts', 'public/images/blog/**', 'package.json', 'package-lock.json', '.github/workflows/android-native.yml']
   workflow_dispatch:
+concurrency:
+  group: native-android-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
@@ -13,6 +16,13 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Bundle public website lessons and figures
+        run: node apps/android-native/scripts/build-lessons.mjs
       - uses: actions/setup-java@v4
         with:
           distribution: temurin

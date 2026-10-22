@@ -1,226 +1,136 @@
 "use client";
-
+import { useState } from "react";
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
-import { useState } from "react";
-import {
-  ArrowLeft,
-  ArrowRight,
-  CheckCircle2,
-  FileCode2,
-  FileText,
-  MessageSquare,
-  Send,
-  Star,
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { useInstructorAssignment, useGradeSubmission } from "@/lib/query/instructor";
 import type { InstructorSubmission } from "@/data/learning";
-import { cn } from "@/lib/utils";
+import { getErrorMessage } from "@/lib/errors";
+import { isMockMode } from "@/lib/env";
 
 export const Route = createFileRoute("/app/instructor/assignments/$submissionId/grade")({
-  head: () => ({
-    meta: [{ title: "Grade — Submission — CEA-OS" }],
-  }),
+  head: () => ({ meta: [{ title: "Grade submission — CEA-OS" }] }),
   component: Grader,
 });
-
-interface Criterion {
-  c: string;
-  w: number;
-  score: number;
-}
-
 function Grader() {
   const { submissionId } = Route.useParams();
-  const sQuery = useInstructorAssignment(submissionId);
-  const grade = useGradeSubmission(submissionId);
-  const [feedback, setFeedback] = useState(
-    "Strong submission — auth rotation is implemented correctly and the schema is well indexed. Watch the test for the rate-limiter edge case (it skipped the 429 path).",
-  );
-  const [criteria, setCriteria] = useState<Criterion[]>([
-    { c: "API design & routes", w: 20, score: 17 },
-    { c: "Auth & security", w: 25, score: 23 },
-    { c: "Data layer", w: 25, score: 24 },
-    { c: "Tests & docs", w: 15, score: 13 },
-    { c: "Code quality", w: 15, score: 14 },
-  ]);
-
-  const setScore = (i: number, score: number) =>
-    setCriteria((prev) => prev.map((c, idx) => (idx === i ? { ...c, score } : c)));
-  const total = criteria.reduce((sum, c) => sum + c.score, 0);
-  const rubric = [
-    { name: "Express routes", lines: 214, status: "ok" },
-    { name: "Auth middleware", lines: 128, status: "ok" },
-    { name: "Prisma schema", lines: 96, status: "ok" },
-    { name: "tests/api.test.ts", lines: 310, status: "warn" },
-  ];
-
+  const query = useInstructorAssignment(submissionId);
   return (
-    <AppShell
-      roleKey="instructor"
-      title="Grading"
-      subtitle="Submission detail"
-      actions={
-        <>
-          <Badge variant="secondary" className="font-semibold">
-            Auto-checks passed 8/9
-          </Badge>
-        </>
-      }
-    >
-      <QueryState<InstructorSubmission> query={sQuery} error={{ title: "Submission unavailable" }}>
-        {(s) => (
-          <div className="grid gap-5 xl:grid-cols-[1.6fr_1fr]">
-            <div className="space-y-5">
-              <Card className="bg-card shadow-soft overflow-hidden border">
-                <CardHeader className="flex-row items-center justify-between">
-                  <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                    <FileCode2 className="text-primary size-4" /> Submission files
-                  </CardTitle>
-                  <Badge variant="secondary" className="font-semibold">
-                    {s.file} · {s.size}
-                  </Badge>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                  {rubric.map((f) => (
-                    <div key={f.name} className="flex items-center gap-3 rounded-xl border p-3">
-                      <span className="bg-muted text-muted-foreground grid size-8 shrink-0 place-items-center rounded-lg">
-                        <FileCode2 className="size-4" />
-                      </span>
-                      <div className="min-w-0 flex-1">
-                        <p className="truncate font-mono text-xs font-bold">{f.name}</p>
-                        <p className="text-muted-foreground text-[11px]">{f.lines} lines</p>
-                      </div>
-                      <Badge
-                        className={cn(
-                          "border-0 font-semibold",
-                          f.status === "ok"
-                            ? "bg-success/10 text-success"
-                            : "bg-warning/10 text-warning",
-                        )}
-                      >
-                        {f.status === "ok" ? "Checks passed" : "1 lint warning"}
-                      </Badge>
-                    </div>
-                  ))}
-                  <div className="bg-muted flex items-center gap-3 rounded-xl p-4">
-                    <FileText className="text-muted-foreground size-4 shrink-0" />
-                    <p className="text-muted-foreground flex-1 text-xs font-semibold">
-                      Plagiarism scan: <strong className="text-success">3% similarity</strong> · npm
-                      audit: <strong className="text-success">0 critical</strong>
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-card shadow-soft border">
-                <CardHeader>
-                  <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                    <MessageSquare className="text-primary size-4" /> Feedback
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <textarea
-                    rows={4}
-                    value={feedback}
-                    onChange={(e) => setFeedback(e.target.value)}
-                    className="bg-muted w-full rounded-xl border-0 px-4 py-3 text-sm leading-relaxed outline-none"
-                  />
-                  <div className="flex flex-wrap gap-2">
-                    {["Great auth flow", "Missing 429 test", "Docs excellent"].map((t) => (
-                      <Badge key={t} variant="secondary" className="cursor-pointer font-semibold">
-                        + {t}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="space-y-5">
-              <Card className="bg-card shadow-soft border">
-                <CardHeader className="flex-row items-center justify-between">
-                  <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                    <Star className="text-primary size-4" /> Rubric
-                  </CardTitle>
-                  <span className="text-muted-foreground text-xs font-semibold">total · 100</span>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {criteria.map((c, i) => (
-                    <div key={c.c}>
-                      <div className="flex items-center justify-between text-xs font-semibold">
-                        <span>{c.c}</span>
-                        <span>
-                          <strong>{c.score}</strong>
-                          <span className="text-muted-foreground"> / {c.w}</span>
-                        </span>
-                      </div>
-                      <input
-                        type="range"
-                        min={0}
-                        max={c.w}
-                        value={c.score}
-                        onChange={(e) => setScore(i, Number(e.target.value))}
-                        aria-label={`${c.c} score`}
-                        className="mt-2 w-full accent-[var(--primary)]"
-                      />
-                    </div>
-                  ))}
-                  <div className="bg-muted flex items-center justify-between rounded-xl px-4 py-3">
-                    <span className="text-xs font-bold">Final score</span>
-                    <span className="font-display text-lg font-extrabold">{total}%</span>
-                  </div>
-                  <p className="text-muted-foreground flex items-center gap-1.5 text-xs">
-                    <CheckCircle2 className="text-success size-3.5" /> Autosaved draft · not yet
-                    returned
-                  </p>
-                </CardContent>
-              </Card>
-
-              <div className="grid gap-3">
-                <Button
-                  className="bg-gradient-brand w-full border-0"
-                  disabled={grade.isPending}
-                  onClick={() =>
-                    grade.mutate({
-                      score: Math.round(total),
-                      feedback: feedback.trim() || undefined,
-                    })
-                  }
-                >
-                  <Send className="mr-1.5 size-4" /> Return grade to {s.student.split(" ")[0]}
-                </Button>
-                {grade.isError && (
-                  <p className="text-destructive text-xs">
-                    Grading failed — please try again or contact support.
-                  </p>
-                )}
-              </div>
-
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <Link
-                  to="/app/instructor/assignments"
-                  className="text-muted-foreground hover:text-primary flex items-center gap-2 text-sm font-semibold transition-colors"
-                >
-                  <ArrowLeft className="size-4" /> Queue
-                </Link>
-                <Link
-                  to="/app/instructor/assignments/$submissionId/grade"
-                  params={{ submissionId: "s2" }}
-                  className="text-primary flex items-center gap-2 text-sm font-semibold"
-                >
-                  Next <ArrowRight className="size-4" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        )}
+    <AppShell roleKey="instructor" title="Grading" subtitle="Review the actual submitted work">
+      <QueryState<InstructorSubmission> query={query} error={{ title: "Submission unavailable" }}>
+        {(submission) => <GradeForm key={submission.id} submission={submission} />}
       </QueryState>
     </AppShell>
+  );
+}
+function GradeForm({ submission: s }: { submission: InstructorSubmission }) {
+  const grade = useGradeSubmission(s.id);
+  const [score, setScore] = useState(s.score === undefined ? "" : String(s.score));
+  const [feedback, setFeedback] = useState(s.feedback ?? "");
+  const max = s.max;
+  const valid =
+    max != null &&
+    score.trim() !== "" &&
+    Number.isInteger(Number(score)) &&
+    Number(score) >= 0 &&
+    Number(score) <= max;
+  return (
+    <div className="grid gap-5 lg:grid-cols-2" data-testid="grading-content">
+      <Card>
+        <CardContent className="space-y-4 p-6">
+          <h2 className="text-xl font-bold">{s.title}</h2>
+          <p>
+            Submitted by {s.student} · {s.submitted}
+          </p>
+          <h3 className="font-semibold">Written answer</h3>
+          {s.body ? (
+            <div className="whitespace-pre-wrap break-words">{s.body}</div>
+          ) : (
+            <p>No written answer is available for this attempt.</p>
+          )}
+          {s.file && (
+            <p className="break-words">
+              Submitted file/reference: {s.file}
+              {s.size ? ` (${s.size})` : ""}
+            </p>
+          )}
+          <p className="text-sm text-muted-foreground">
+            Review the supplied work yourself. Automated code, plagiarism and security checks are
+            not provided here.
+          </p>
+          {Array.isArray(s.rubric) && s.rubric.length > 0 && (
+            <details>
+              <summary>Assignment rubric</summary>
+              <pre className="whitespace-pre-wrap break-words text-sm">
+                {JSON.stringify(s.rubric, null, 2)}
+              </pre>
+            </details>
+          )}
+        </CardContent>
+      </Card>
+      <Card>
+        <CardContent className="space-y-4 p-6">
+          <form
+            className="space-y-4"
+            onSubmit={(event) => {
+              event.preventDefault();
+              if (valid && s.isLatest && !isMockMode && !grade.isPending)
+                grade.mutate({ score: Number(score), feedback: feedback.trim() });
+            }}
+          >
+            <h2 className="text-xl font-bold">Return grade and feedback</h2>
+            {s.isLatest === false && (
+              <p role="alert">A newer attempt exists. Open the latest submission before grading.</p>
+            )}
+            {max == null && (
+              <p>
+                The assignment maximum is unavailable. Grading is disabled until the assignment is
+                linked correctly.
+              </p>
+            )}
+            <label className="block">
+              Score{max != null ? ` (out of ${max})` : ""}
+              <input
+                aria-label="Score"
+                type="number"
+                min={0}
+                max={max ?? undefined}
+                step={1}
+                required
+                value={score}
+                onChange={(e) => setScore(e.target.value)}
+                disabled={grade.isPending}
+                className="mt-2 block w-full rounded border p-3"
+              />
+            </label>
+            <label className="block">
+              Feedback
+              <textarea
+                value={feedback}
+                maxLength={5000}
+                rows={7}
+                onChange={(e) => setFeedback(e.target.value)}
+                disabled={grade.isPending}
+                className="mt-2 block w-full rounded border p-3"
+              />
+            </label>
+            <p className="text-sm text-muted-foreground">
+              Changes are not autosaved. Returning a grade publishes it to the student.
+            </p>
+            <Button type="submit" disabled={!valid || !s.isLatest || isMockMode || grade.isPending}>
+              {grade.isPending ? "Returning grade…" : "Return grade to student"}
+            </Button>
+            {grade.isError && <p role="alert">{getErrorMessage(grade.error)}</p>}
+            {grade.isSuccess && <p role="status">Grade and feedback saved by the server.</p>}
+          </form>
+          <Link to="/app/instructor/assignments" className="text-primary">
+            Back to grading queue
+          </Link>
+        </CardContent>
+      </Card>
+    </div>
   );
 }

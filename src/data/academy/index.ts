@@ -268,8 +268,11 @@ function lectureProse(lecture: SessionLecture): string {
       b.heading,
       ...b.body,
       b.remember ?? "",
-      ...(b.code?.flatMap((sample) => [sample.filename ?? "", sample.caption ?? "", sample.source]) ??
-        []),
+      ...(b.code?.flatMap((sample) => [
+        sample.filename ?? "",
+        sample.caption ?? "",
+        sample.source,
+      ]) ?? []),
     ]),
     ...(lecture.figures?.flatMap((f) => [f.alt, f.caption]) ?? []),
     lecture.demonstration.intro,
@@ -291,8 +294,13 @@ function lectureProse(lecture: SessionLecture): string {
     ...lecture.expertNotes,
     ...lecture.vocabulary.flatMap((v) => [v.term, v.meaning]),
     ...lecture.homework.flatMap((h) => [h.task, h.detail]),
-    ...(lecture.exercises?.flatMap((e) => [e.title, e.prompt, e.hint ?? "", e.expected, e.solution]) ??
-      []),
+    ...(lecture.exercises?.flatMap((e) => [
+      e.title,
+      e.prompt,
+      e.hint ?? "",
+      e.expected,
+      e.solution,
+    ]) ?? []),
     ...(lecture.mastery ?? []),
     ...lecture.rubric.flatMap((r) => [r.criterion, r.passing, r.excellent]),
     ...lecture.faqs.flatMap((f) => [f.q, f.a]),

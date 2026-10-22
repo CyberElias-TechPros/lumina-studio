@@ -64,3 +64,56 @@ The emulator tests use local fixtures, not production accounts or API writes.
 This is not physical-device acceptance, a signed release, authenticated role
 parity, or proof of production catalogue availability. The existing app and
 production deployment were not replaced.
+
+## Public learning increment
+
+The native Lessons tab now shares `src/data/blog.ts` and public figures with the
+website: 210 public learning notes, searchable and readable without internet,
+including native text selection, semantic headings and illustration descriptions.
+Assets are generated during CI, not committed duplicates of website content.
+APK builds fail if the bundle is missing. This is public reading, not secure
+identity, private coursework, learning progress, or completion of migration
+slice 3. Authentication remains pending. No production deployment is included.
+
+## Native identity first increment (0.3)
+
+Implemented native existing-account sign-in, MFA challenge/recovery-code entry,
+server identity, online session revalidation, refresh rotation, expiry and
+sign-out. Session credentials intentionally live only in process memory. No
+persistent vault is claimed; process death requires reauthentication. Native
+registration/recovery/verified links, persistent secure storage, deletion and
+private learner tasks remain acceptance work for slice 2 onward.
+
+Transport is fixed to the CEA HTTPS auth endpoints, refuses redirects, limits
+response size and disables caching. Password/code/token material is not stored
+in saved instance state, public caches or logs. Offline sign-out and MFA cancel
+state exactly what was cleared locally versus revoked at the server. No new
+backend permissions or weaker MFA policy are introduced.
+
+## Current implementation ledger — 22 October 2026
+
+This supersedes the storage limitation in the historical 0.3 section above.
+
+| Workflow | Implemented in source (`0.6.0-native-preview`) | Remaining external / future scope |
+| --- | --- | --- |
+| Sign-in / MFA | Native password, authenticator and recovery-code challenge | Real-account/physical-device acceptance |
+| Session persistence | Opt-in Keystore AES-GCM vault (`KeystoreSessionStore`); verified online restore; rotation, expiry and local clearing | Physical-device key invalidation, device migration and multi-OS acceptance |
+| Native account lifecycle | Registration (`sign-up`), password reset (`forgot-password` / `reset-password`), 6-digit email verification, password change, device session list/revoke, and `"DELETE"`-confirmed account deletion | Production email delivery & physical-device acceptance |
+| Student reading & progress | Server-owned enrolment list, modules, published lesson text, confirmed completion, refetched records | Video/media lesson playback and downloadable materials |
+| Website lesson viewer | Actual published text and confirmed completion replace inert controls and fabricated lesson material | Media, materials and discussion APIs/workflows |
+| Written submissions, instructor grading & assessments | Student assignments + feedback, server-scored interactive assessments (`/v1/assessments`), and native instructor grading queue/detail (`POST /v1/instructor/submissions/:id/grade`) + courses | File-attachment upload & download; remote D1 `0069_submission_text.sql` + Worker deployment |
+| Native admissions, offers, receipts & staff finance | Free application (`POST /v1/enrollments` + `KeystoreDraftStore` + UUID `submissionKey`), `enrollments/mine`, canonical offer acceptance (`tuition-2026-10-17`), transfer-proof claim (`pending_review`), official receipts, and staff finance `confirm`/`reject` | In-app card checkout SDK; live finance ops signoff |
+| Native messaging & notifications | Direct message threads/replies (`/v1/messages/threads`) and in-app notifications (`/v1/notifications`, `read`, `read-all`) | Production Firebase (`ng.cea.app` / `FCM_SERVICE_ACCOUNT_JSON`) push delivery |
+| Release pipeline & lint gate | Blocking repo-wide `npm run lint` CI gate; Gradle optional `CEA_*` signing config + `.github/workflows/android-native-release.yml` (Play `.aab` + direct `.apk` + SHA-256) | Cloudflare `Workers Builds: cea-api` dashboard config, owner Play upload keystore secrets in `android-release`, physical-device & Play Console review |
+
+No private coursework is written to the public offline bundle. No new local
+role assignment, free enrolment bypass, fabricated grades, automatic completion
+or production test writes are introduced. CI fixtures are not live acceptance.
+
+The shared completion API now updates an existing enrolment only: completion
+cannot recreate a revoked enrolment if admissions removes it mid-request. A
+local Worker regression uses a database trigger to reproduce that interleaving;
+another proves bearer-authenticated progress appears in the student dashboard.
+Website browser fixtures verify real-text rendering, explicit completion,
+server denial, locked-content hiding and absence of fake media controls. The
+fixtures dismiss the real onboarding tour before exercising lesson controls.

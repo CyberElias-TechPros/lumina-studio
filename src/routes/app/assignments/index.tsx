@@ -2,20 +2,10 @@
 
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
-import {
-  ArrowRight,
-  CalendarDays,
-  CheckCircle2,
-  Clock,
-  FileText,
-  FolderOpen,
-  Send,
-  Timer,
-} from "lucide-react";
+import { ArrowRight, CalendarDays, CheckCircle2, FileText, FolderOpen, Send } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
 import { useAssignments } from "@/lib/query/assignments";
@@ -52,21 +42,20 @@ function AssignmentsCenter() {
 
   const graded = items.filter((a) => a.status === "graded").length;
   const submitted = items.filter((a) => a.status === "submitted").length;
-  const pending = items.filter((a) => a.status === "pending").length;
-  const dueSoon = items.filter((a) => a.status !== "graded");
+  const pending = items.filter((a) => a.status === "pending" || a.status === "draft").length;
 
   return (
     <AppShell
       roleKey="assignments"
       title="Assignments"
-      subtitle="Term 2 · all courses · sorted by deadline"
+      subtitle="Published work, submission status and returned scores"
       actions={
         <>
           <Badge className="bg-warning/10 text-warning border-0 font-semibold">
-            {pending} not started
+            {pending} open
           </Badge>
           <Badge variant="secondary" className="font-semibold">
-            {submitted + graded} of {items.length} done
+            {submitted + graded} of {items.length} submitted
           </Badge>
         </>
       }
@@ -80,32 +69,32 @@ function AssignmentsCenter() {
             <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
               {[
                 {
-                  label: "Active",
+                  label: "Loaded",
                   value: String(rows.length),
-                  delta: "this term",
+                  delta: "published to your account",
                   icon: FileText,
                   tone: "bg-primary/10 text-primary",
                 },
                 {
+                  label: "Open",
+                  value: String(pending),
+                  delta: "not yet submitted",
+                  icon: FolderOpen,
+                  tone: "bg-warning/10 text-warning",
+                },
+                {
                   label: "Submitted",
                   value: String(submitted),
-                  delta: "awaiting grade",
+                  delta: "awaiting instructor review",
                   icon: Send,
                   tone: "bg-learning/10 text-learning",
                 },
                 {
                   label: "Graded",
                   value: String(graded),
-                  delta: "avg 90.5%",
+                  delta: "score returned by instructor",
                   icon: CheckCircle2,
                   tone: "bg-success/10 text-success",
-                },
-                {
-                  label: "Hours until due",
-                  value: "8h",
-                  delta: "REST API · tonight",
-                  icon: Timer,
-                  tone: "bg-error/10 text-error",
                 },
               ].map((k) => (
                 <Card key={k.label} className="bg-card shadow-soft border">
@@ -125,55 +114,15 @@ function AssignmentsCenter() {
               ))}
             </div>
 
-            <div className="mt-5 grid gap-4 md:grid-cols-2">
-              {dueSoon.map((a) => (
-                <Link
-                  key={a.id}
-                  to="/app/assignments/$assignmentId"
-                  params={{ assignmentId: a.id }}
-                  className="group bg-card shadow-soft hover:shadow-elevated flex flex-col rounded-2xl border p-5 transition-all hover:-translate-y-0.5"
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <span
-                      className={cn(
-                        "grid size-10 shrink-0 place-items-center rounded-xl",
-                        a.status === "pending"
-                          ? "bg-warning/10 text-warning"
-                          : "bg-primary/10 text-primary",
-                      )}
-                    >
-                      <FolderOpen className="size-5" />
-                    </span>
-                    <Badge className={cn("border-0 font-semibold", statusTone[a.status])}>
-                      {statusLabel[a.status]}
-                    </Badge>
-                  </div>
-                  <p className="font-display mt-4 text-sm font-extrabold">{a.title}</p>
-                  <p className="text-muted-foreground mt-1 text-xs font-semibold">{a.course}</p>
-                  <p className="text-muted-foreground mt-3 line-clamp-2 text-xs leading-relaxed">
-                    {a.description}
-                  </p>
-                  <div className="mt-auto flex items-center justify-between gap-3 border-t pt-4">
-                    <span className="text-muted-foreground flex items-center gap-1.5 text-xs">
-                      <CalendarDays className="size-3.5" /> {a.due}
-                    </span>
-                    <Button variant="ghost" size="sm" className="text-primary font-semibold">
-                      Open <ArrowRight className="ml-1 size-3.5" />
-                    </Button>
-                  </div>
-                </Link>
-              ))}
-            </div>
-
-            <div className="mt-5">
+            <div className="mt-5" data-testid="assignments-list">
               <Card className="bg-card shadow-soft border">
-                <CardContent className="divide-y">
+                <CardContent className="divide-y p-6">
                   {rows.map((a) => (
                     <Link
                       key={a.id}
                       to="/app/assignments/$assignmentId"
                       params={{ assignmentId: a.id }}
-                      className="flex flex-wrap items-center gap-3 py-4 first:pt-2 last:pb-0"
+                      className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
                     >
                       <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
                         <FileText className="size-4" />
@@ -181,24 +130,30 @@ function AssignmentsCenter() {
                       <div className="min-w-0 flex-1">
                         <p className="truncate text-sm font-bold">{a.title}</p>
                         <p className="text-muted-foreground text-xs">
-                          {a.course} · weight {a.weight}%
+                          {a.course}
+                          {a.weight > 0 ? ` · weight ${a.weight}%` : ""}
                         </p>
                       </div>
                       {a.status === "graded" && a.score !== undefined ? (
-                        <div className="flex items-center gap-3">
-                          <Progress value={a.score} className="h-1.5 w-24" />
-                          <Badge className="bg-primary/10 text-primary w-12 justify-center border-0 font-bold">
-                            {a.score}%
-                          </Badge>
-                        </div>
+                        <Badge className="bg-primary/10 text-primary justify-center border-0 font-bold">
+                          {a.score} / {a.max}
+                        </Badge>
                       ) : (
                         <span className="text-muted-foreground flex items-center gap-1.5 text-xs">
-                          <Clock className="size-3.5" /> {a.due}
+                          <CalendarDays className="size-3.5" /> {a.due}
                         </span>
                       )}
-                      <Badge className={cn("border-0 font-semibold", statusTone[a.status])}>
-                        {statusLabel[a.status]}
+                      <Badge
+                        className={cn(
+                          "border-0 font-semibold",
+                          statusTone[a.status] ?? "bg-muted text-muted-foreground",
+                        )}
+                      >
+                        {statusLabel[a.status] ?? a.status}
                       </Badge>
+                      <span className="text-primary flex items-center text-xs font-semibold">
+                        Open <ArrowRight className="ml-1 size-3.5" />
+                      </span>
                     </Link>
                   ))}
                 </CardContent>
@@ -207,6 +162,16 @@ function AssignmentsCenter() {
           </>
         )}
       </QueryState>
+      <p className="text-muted-foreground mt-4 text-sm">Counts reflect the loaded assignments.</p>
+      {assignmentsQuery.hasNextPage && (
+        <Button
+          className="mt-3"
+          onClick={() => void assignmentsQuery.fetchNextPage()}
+          disabled={assignmentsQuery.isFetchingNextPage}
+        >
+          {assignmentsQuery.isFetchingNextPage ? "Loading…" : "Load more assignments"}
+        </Button>
+      )}
     </AppShell>
   );
 }

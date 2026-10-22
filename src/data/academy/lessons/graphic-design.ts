@@ -176,14 +176,45 @@ export const graphicDesignLessonsA: Record<string, SessionLecture> = {
       "Ask 'what does the viewer need to do?' before 'what should this look like?'. Keeping the action in mind is what separates a designer from a decorator, and it is the question that makes a client feel understood rather than served.",
     ],
     vocabulary: [
-      { term: "Hierarchy", meaning: "The ranking of elements by importance, produced by deliberate contrast. Three levels is usually right." },
-      { term: "Contrast", meaning: "Deliberate difference — of size, weight, colour or position — that tells the eye where to go first." },
-      { term: "White space", meaning: "The empty area around and between elements. Not waste; it is what makes the important things visible." },
-      { term: "Alignment", meaning: "Elements sharing a common edge, centre or baseline. The invisible grid that makes work look organised." },
-      { term: "Balance", meaning: "How visual weight is distributed. Symmetrical reads formal, asymmetrical reads modern, accidental reads wrong." },
-      { term: "F-pattern", meaning: "How eyes scan text-heavy pages: two horizontal sweeps then down the left edge." },
-      { term: "Z-pattern", meaning: "How eyes scan posters: top-left to top-right, diagonal to bottom-left, then to bottom-right." },
-      { term: "Squint test", meaning: "Blurring your vision to reveal which elements still dominate — the fastest check on hierarchy." },
+      {
+        term: "Hierarchy",
+        meaning:
+          "The ranking of elements by importance, produced by deliberate contrast. Three levels is usually right.",
+      },
+      {
+        term: "Contrast",
+        meaning:
+          "Deliberate difference — of size, weight, colour or position — that tells the eye where to go first.",
+      },
+      {
+        term: "White space",
+        meaning:
+          "The empty area around and between elements. Not waste; it is what makes the important things visible.",
+      },
+      {
+        term: "Alignment",
+        meaning:
+          "Elements sharing a common edge, centre or baseline. The invisible grid that makes work look organised.",
+      },
+      {
+        term: "Balance",
+        meaning:
+          "How visual weight is distributed. Symmetrical reads formal, asymmetrical reads modern, accidental reads wrong.",
+      },
+      {
+        term: "F-pattern",
+        meaning: "How eyes scan text-heavy pages: two horizontal sweeps then down the left edge.",
+      },
+      {
+        term: "Z-pattern",
+        meaning:
+          "How eyes scan posters: top-left to top-right, diagonal to bottom-left, then to bottom-right.",
+      },
+      {
+        term: "Squint test",
+        meaning:
+          "Blurring your vision to reveal which elements still dominate — the fastest check on hierarchy.",
+      },
     ],
     homework: [
       {
@@ -211,27 +242,32 @@ export const graphicDesignLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Principle knowledge",
         passing: "Can name the main principles correctly.",
-        excellent: "Can explain each principle's job and give a concrete example of it failing in real work.",
+        excellent:
+          "Can explain each principle's job and give a concrete example of it failing in real work.",
       },
       {
         criterion: "Diagnosis",
         passing: "Identifies problems in collected designs.",
-        excellent: "Names specific faults in the critique vocabulary and gives a fix that follows from the diagnosis rather than from taste.",
+        excellent:
+          "Names specific faults in the critique vocabulary and gives a fix that follows from the diagnosis rather than from taste.",
       },
       {
         criterion: "Hierarchy",
         passing: "The redesign has a clear main element.",
-        excellent: "Three visibly distinct levels, decided in writing before layout, and passing the squint test.",
+        excellent:
+          "Three visibly distinct levels, decided in writing before layout, and passing the squint test.",
       },
       {
         criterion: "Layout discipline",
         passing: "Elements are roughly organised.",
-        excellent: "One consistent alignment, generous margins, deliberate white space between groups, and elements removed rather than shrunk.",
+        excellent:
+          "One consistent alignment, generous margins, deliberate white space between groups, and elements removed rather than shrunk.",
       },
       {
         criterion: "Communication",
         passing: "Can describe what they changed.",
-        excellent: "Justifies each change by reference to audience and goal, in one sentence, as they would to a client.",
+        excellent:
+          "Justifies each change by reference to audience and goal, in one sentence, as they would to a client.",
       },
     ],
     faqs: [
@@ -436,13 +472,41 @@ export const graphicDesignLessonsA: Record<string, SessionLecture> = {
     ],
     vocabulary: [
       { term: "Hue", meaning: "Which colour it is — its position on the colour wheel." },
-      { term: "Saturation", meaning: "How vivid a colour is, from pure to grey. Lowering saturation is often the fix for a clashing palette." },
-      { term: "Brightness (value)", meaning: "How light or dark a colour is. Most perceived colour clashes are actually equal-brightness problems." },
-      { term: "60-30-10", meaning: "Palette proportion rule: roughly 60% dominant, 30% secondary, 10% accent. Guarantees contrast by construction." },
-      { term: "Contrast ratio", meaning: "A numeric measure of text legibility against its background. Body text needs at least 4.5:1." },
-      { term: "Type scale", meaning: "A related set of type sizes derived from a base by a fixed ratio, rather than sizes chosen individually." },
-      { term: "Leading (line spacing)", meaning: "Vertical space between lines. Body text needs 1.4–1.6× the font size; headings need tighter." },
-      { term: "Widow / orphan", meaning: "A single stranded word or heading left alone. Looks careless; takes ten seconds to fix." },
+      {
+        term: "Saturation",
+        meaning:
+          "How vivid a colour is, from pure to grey. Lowering saturation is often the fix for a clashing palette.",
+      },
+      {
+        term: "Brightness (value)",
+        meaning:
+          "How light or dark a colour is. Most perceived colour clashes are actually equal-brightness problems.",
+      },
+      {
+        term: "60-30-10",
+        meaning:
+          "Palette proportion rule: roughly 60% dominant, 30% secondary, 10% accent. Guarantees contrast by construction.",
+      },
+      {
+        term: "Contrast ratio",
+        meaning:
+          "A numeric measure of text legibility against its background. Body text needs at least 4.5:1.",
+      },
+      {
+        term: "Type scale",
+        meaning:
+          "A related set of type sizes derived from a base by a fixed ratio, rather than sizes chosen individually.",
+      },
+      {
+        term: "Leading (line spacing)",
+        meaning:
+          "Vertical space between lines. Body text needs 1.4–1.6× the font size; headings need tighter.",
+      },
+      {
+        term: "Widow / orphan",
+        meaning:
+          "A single stranded word or heading left alone. Looks careless; takes ten seconds to fix.",
+      },
     ],
     homework: [
       {
@@ -470,27 +534,32 @@ export const graphicDesignLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Colour system",
         passing: "Uses a limited, sensible palette.",
-        excellent: "A documented palette with named roles, a chosen harmony relationship, and 60-30-10 proportions applied deliberately.",
+        excellent:
+          "A documented palette with named roles, a chosen harmony relationship, and 60-30-10 proportions applied deliberately.",
       },
       {
         criterion: "Accessibility",
         passing: "Text is generally readable.",
-        excellent: "Every text-and-background pair measured and passing 4.5:1, verified on a phone in bright light.",
+        excellent:
+          "Every text-and-background pair measured and passing 4.5:1, verified on a phone in bright light.",
       },
       {
         criterion: "Typeface choice",
         passing: "Uses one or two typefaces.",
-        excellent: "Two faces chosen for tone, tested at real sizes, with variation from weight and size rather than added families.",
+        excellent:
+          "Two faces chosen for tone, tested at real sizes, with variation from weight and size rather than added families.",
       },
       {
         criterion: "Typographic craft",
         passing: "Text is set reasonably.",
-        excellent: "A written scale from one ratio, correct leading for body and headings, controlled line length, no stretched type, no widows.",
+        excellent:
+          "A written scale from one ratio, correct leading for body and headings, controlled line length, no stretched type, no widows.",
       },
       {
         criterion: "Application",
         passing: "Applies the system to one piece.",
-        excellent: "Applies the identical system to two different formats and can explain what had to change and what deliberately did not.",
+        excellent:
+          "Applies the identical system to two different formats and can explain what had to change and what deliberately did not.",
       },
     ],
     faqs: [
@@ -696,14 +765,45 @@ export const graphicDesignLessonsA: Record<string, SessionLecture> = {
       "Check every deliverable on a phone before sending. WhatsApp compression, screen brightness and small size change how a design reads, and the ten seconds it takes to check prevents the most common and most avoidable client complaint.",
     ],
     vocabulary: [
-      { term: "Canvas", meaning: "The design surface at its true proportions. Choose its size before anything else." },
-      { term: "Brand Kit", meaning: "Your saved colours, typefaces and logo, available in every design. Set it up before your first project." },
-      { term: "Frame", meaning: "A shape that masks any image dragged into it — the fastest way to get clean circular or rounded images." },
-      { term: "Smart guides", meaning: "Pink lines that appear when an edge or centre lines up with another element. Wait for them rather than eyeballing." },
-      { term: "Grouping", meaning: "Binding elements so they move and resize together (Ctrl+G). Essential for repeated components." },
-      { term: "Locking", meaning: "Preventing an element from being selected or moved (Shift+L). Use it on backgrounds and finished areas." },
-      { term: "Bleed", meaning: "Extra area beyond the trim edge so no white shows when a print job is cut. Always ticked for print." },
-      { term: "PDF Print", meaning: "Canva's print export format. Never export a print job as PNG or JPG." },
+      {
+        term: "Canvas",
+        meaning:
+          "The design surface at its true proportions. Choose its size before anything else.",
+      },
+      {
+        term: "Brand Kit",
+        meaning:
+          "Your saved colours, typefaces and logo, available in every design. Set it up before your first project.",
+      },
+      {
+        term: "Frame",
+        meaning:
+          "A shape that masks any image dragged into it — the fastest way to get clean circular or rounded images.",
+      },
+      {
+        term: "Smart guides",
+        meaning:
+          "Pink lines that appear when an edge or centre lines up with another element. Wait for them rather than eyeballing.",
+      },
+      {
+        term: "Grouping",
+        meaning:
+          "Binding elements so they move and resize together (Ctrl+G). Essential for repeated components.",
+      },
+      {
+        term: "Locking",
+        meaning:
+          "Preventing an element from being selected or moved (Shift+L). Use it on backgrounds and finished areas.",
+      },
+      {
+        term: "Bleed",
+        meaning:
+          "Extra area beyond the trim edge so no white shows when a print job is cut. Always ticked for print.",
+      },
+      {
+        term: "PDF Print",
+        meaning: "Canva's print export format. Never export a print job as PNG or JPG.",
+      },
     ],
     homework: [
       {
@@ -731,27 +831,32 @@ export const graphicDesignLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Workspace setup",
         passing: "Has an account and can find the main panels.",
-        excellent: "Brand Kit configured, client folders created, and a naming convention applied to every file.",
+        excellent:
+          "Brand Kit configured, client folders created, and a naming convention applied to every file.",
       },
       {
         criterion: "Tool command",
         passing: "Can place and format text, images and shapes.",
-        excellent: "Uses frames, guides, Position alignment, grouping and locking fluently, with shortcuts rather than menus.",
+        excellent:
+          "Uses frames, guides, Position alignment, grouping and locking fluently, with shortcuts rather than menus.",
       },
       {
         criterion: "Design application",
         passing: "Produces a legible design.",
-        excellent: "Applies the session-one and session-two principles visibly — hierarchy, alignment, palette roles and type scale all present.",
+        excellent:
+          "Applies the session-one and session-two principles visibly — hierarchy, alignment, palette roles and type scale all present.",
       },
       {
         criterion: "Multi-format work",
         passing: "Produces one format.",
-        excellent: "Produces three formats from one system, repositioning rather than stretching, with no distortion anywhere.",
+        excellent:
+          "Produces three formats from one system, repositioning rather than stretching, with no distortion anywhere.",
       },
       {
         criterion: "Export correctness",
         passing: "Exports a usable file.",
-        excellent: "PNG for screen, PDF Print with crop marks and bleed for print, every file checked on a phone at real size.",
+        excellent:
+          "PNG for screen, PDF Print with crop marks and bleed for print, every file checked on a phone at real size.",
       },
     ],
     faqs: [
