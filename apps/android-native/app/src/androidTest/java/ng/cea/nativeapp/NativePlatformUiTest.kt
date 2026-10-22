@@ -36,10 +36,9 @@ class NativePlatformUiTest {
     }
 
     @Test
-    fun instructorAndFinanceActionsRequireExplicitConfirmationDialogs() {
+    fun instructorGradingRequiresExplicitConfirmationDialog() {
         var graded: Triple<String, Int, String>? = null
-        var confirmedProof: Triple<String, String, Double>? = null
-        val instructorSession = NativeSession(user = NativeUser("inst-1", "Elias", "inst@cea.ng", "admin"))
+        val instructorSession = NativeSession(user = NativeUser("inst-1", "Elias", "inst@cea.ng", "instructor"))
         val detail = InstructorSubmissionDetail(
             id = "sub-99",
             student = "Amaka Obi",
@@ -55,6 +54,37 @@ class NativePlatformUiTest {
             max = 20,
             isLatest = true,
         )
+
+        compose.setContent {
+            MaterialTheme {
+                AccountScreen(
+                    state = AccountState(
+                        session = instructorSession,
+                        selectedInstructorSubmission = detail,
+                    ),
+                    signIn = { _, _, _ -> },
+                    verify = {},
+                    checkSession = {},
+                    refresh = {},
+                    signOut = {},
+                    cancelMfa = {},
+                    gradeInstructorSubmission = { id, score, fb -> graded = Triple(id, score, fb) },
+                )
+            }
+        }
+
+        compose.onNodeWithText("Open instructor workspace").performScrollTo().performClick()
+        compose.onNodeWithText("Score (0–20)").performScrollTo().performTextInput("18")
+        compose.onNodeWithText("Record grade").performScrollTo().performClick()
+        compose.runOnIdle { assertNull(graded) }
+        compose.onNodeWithText("Save grade").performClick()
+        compose.runOnIdle { assertEquals(Triple("sub-99", 18, ""), graded) }
+    }
+
+    @Test
+    fun financeTransferVerificationRequiresExplicitConfirmationDialog() {
+        var confirmedProof: Triple<String, String, Double>? = null
+        val financeSession = NativeSession(user = NativeUser("fin-1", "Finance", "finance@cea.ng", "finance"))
         val proof = PaymentProofItem(
             id = "prf-99",
             ref = "CEA-2026-KL34MN",
@@ -74,8 +104,7 @@ class NativePlatformUiTest {
             MaterialTheme {
                 AccountScreen(
                     state = AccountState(
-                        session = instructorSession,
-                        selectedInstructorSubmission = detail,
+                        session = financeSession,
                         paymentProofs = listOf(proof),
                     ),
                     signIn = { _, _, _ -> },
@@ -84,20 +113,12 @@ class NativePlatformUiTest {
                     refresh = {},
                     signOut = {},
                     cancelMfa = {},
-                    gradeInstructorSubmission = { id, score, fb -> graded = Triple(id, score, fb) },
                     confirmPaymentProof = { id, ref, amt -> confirmedProof = Triple(id, ref, amt) },
                 )
             }
         }
 
-        compose.onNodeWithText("Instructor").performScrollTo().performClick()
-        compose.onNodeWithText("Score (0–20)").performScrollTo().performTextInput("18")
-        compose.onNodeWithText("Record grade").performScrollTo().performClick()
-        compose.runOnIdle { assertNull(graded) }
-        compose.onNodeWithText("Save grade").performClick()
-        compose.runOnIdle { assertEquals(Triple("sub-99", 18, ""), graded) }
-
-        compose.onNodeWithText("Staff ops").performScrollTo().performClick()
+        compose.onNodeWithText("Open admissions & finance workspace").performScrollTo().performClick()
         compose.onNodeWithText("Confirm receipt").performScrollTo().performClick()
         compose.runOnIdle { assertNull(confirmedProof) }
         compose.onAllNodesWithText("Confirm receipt").onLast().performClick()
