@@ -105,10 +105,17 @@ selectable `LectureCode` blocks, not images.
   never hand-edited), `lesson-reviews.json` (hand-written reviews only), `changelog.ts`,
   `corrections.ts`, `policies.ts` (standing notices, including the security ethical-use
   notice), `image-provenance.json`.
-- **Dates must stay evidenced.** `publishedAt` comes from git or the editorial record;
-  `reviewedAt` comes only from a human. Never bulk-write `dateModified`, never add a
-  reviewer who did not read the page. The lesson page shows "review due" rather than a
-  false review date, and that behaviour is deliberate.
+- **Dates must stay evidenced.** `publishedAt` comes from `publication-schedule.json` (the
+  Academy's declared record, per-lesson overrides first), falling back to git only when no
+  record exists — and git dates are suppressed in a shallow clone. `reviewedAt` comes only
+  from a human. Never bulk-write `dateModified`, never add a reviewer who did not read the
+  page, and never let a date drift from what actually happened: a wrong date is a
+  misrepresentation, not a formatting choice. The lesson page shows "review due" rather than
+  a false review date, and that is deliberate.
+- **The review clock starts at policy adoption** (`REVIEW_POLICY_STARTED` in
+  `scripts/generate-lesson-editorial.mjs`), not at publication, and the first cycle is
+  staggered into a weekly rotation. Do not "fix" an overdue-looking date by inventing a
+  review.
 - Public surfaces: `/editorial` (standards), `/editorial/changelog`, `/editorial/corrections`.
 - Enforced in CI (`editorial` job): `npm run generate:editorial`,
   `npm run validate:lessons -- --strict`, `npm run check:ads`, `npm run audit:content`,

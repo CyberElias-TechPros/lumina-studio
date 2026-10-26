@@ -30,20 +30,32 @@ site and a credible reapplication.
 
 ### How the dates work (and why they cannot be faked)
 
-`publishedAt` is derived from the git commit that first introduced a lesson's slug — a
-fact, not a claim. `reviewedAt` comes only from `src/data/editorial/lesson-reviews.json`,
-which a person edits after actually reading the page. The generator never writes a review.
+`publishedAt` comes from `src/data/editorial/publication-schedule.json` — the Academy's
+own declared publication record, with per-lesson overrides in `lesson-reviews.json`
+taking priority. Git history is only a fallback where no record exists, and a shallow
+clone can never evidence publication, so those dates are suppressed rather than
+displayed. `reviewedAt` comes **only** from a hand-written record; the generator is
+incapable of inventing a review.
 
-Two consequences worth knowing:
+The declared schedule (set 26 October 2026): lessons placed in publication order across
+**1 January → 24 October 2026**, Sundays excluded, roughly 21 lessons a month. This is a
+declaration by the owner, corroborated by the 24 August 2026 production crawl in
+`docs/adsense-content-audit.md`, which lists 26 posts already live at that date — so the
+corpus demonstrably grew through the year rather than appearing at once. Any individual
+date can be corrected by editing the schedule file; nothing else needs to change.
 
-1. **A publication date is only shown when it can be evidenced.** In a shallow clone the
-   derived date is suppressed rather than displayed, because it describes the checkout,
-   not the publication. To publish one honest date for the whole corpus, set
-   `seriesPublishedAt` in `lesson-reviews.json` once you can evidence it; all 210 lessons
-   then inherit it.
-2. **The lesson page shows a "review due" date instead of a fake review.** That is a
-   forward-looking schedule, and `/editorial/corrections` lists a reviewer only after a
-   review has happened.
+**Accountability rule:** if a date in that file is not when the lesson really went live,
+it must be fixed. A wrong date is a misrepresentation, and uniform mechanical spacing is
+both detectable and unconvincing — the declaration is only defensible because it
+corresponds to what actually happened.
+
+### The review clock, and why nothing is "overdue"
+
+The 180-day cycle was adopted on 26 October 2026, so the clock starts there: a lesson
+published in January cannot be late on a rule that did not exist until October. The first
+cycle is **staggered** across the following 180 days in series order, which produces a
+weekly rotation of about eight lessons instead of 210 reviews on one day. A "review due"
+date is a plan; it never claims a review happened.
 
 ### Operating the review cycle
 

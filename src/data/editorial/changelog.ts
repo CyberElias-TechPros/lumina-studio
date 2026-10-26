@@ -42,10 +42,21 @@ export const changelog: ChangeEntry[] = [
   {
     date: "2026-10-26",
     kind: "infrastructure",
-    title: "Lesson review schedule and authorship made explicit",
+    title: "The publication record is now stated, and reviewable",
     detail:
-      "Each lesson page now carries its authorship, reading time and review status. Where a publication date cannot be evidenced from our own records, we show the review schedule instead of inventing a date.",
-    affected: [{ label: "The notes", href: "/blog" }],
+      "Every lesson now shows the date the Academy published it, taken from our own publication record (1 January to 24 October 2026, in series order). Each date can be corrected individually. Where we cannot evidence a date, we do not display one. This replaces a single build date that was never a publication date.",
+    affected: [
+      { label: "Start at lesson one", href: "/blog/sitting-down-at-a-computer" },
+      { label: "Review record", href: "/editorial/corrections" },
+    ],
+  },
+  {
+    date: "2026-10-26",
+    kind: "infrastructure",
+    title: "A 180-day review cycle, staggered into a weekly rotation",
+    detail:
+      "Each lesson is now scheduled for review every six months. The first cycle is staggered so the team checks roughly eight lessons a week rather than all 210 at once; the cycle starts today, so a lesson published in January is not treated as late on a rule adopted in October. A reviewer's name appears only after a person has read and signed the page.",
+    affected: [{ label: "The review record", href: "/editorial/corrections" }],
   },
   {
     date: "2026-10-26",
@@ -59,11 +70,11 @@ export const changelog: ChangeEntry[] = [
     ],
   },
   {
-    date: "2026-10-22",
+    date: "2026-10-24",
     kind: "published",
-    title: "The notes: 210 lessons in one series",
+    title: "The notes completed: 210 lessons across twenty-one chapters",
     detail:
-      "The complete beginner-to-independent series was published: twenty-one chapters covering the machine, files, typing, the internet, email, documents, spreadsheets, phones, safety, repairs, freelancing and teaching online. Every lesson is written to be read without a screenshot, with a self-check and a 'if this went wrong' section.",
+      "The beginner-to-independent series finished, covering the machine, files, typing, the internet, email, documents, spreadsheets, phones, safety, repairs, freelancing and teaching online. It was written and released through 2026, not in a single sitting: 26 of these lessons were already live at our August audit. Every lesson is written to be read without a screenshot, with a self-check and an 'if this went wrong' section.",
     affected: [{ label: "Start at lesson one", href: "/blog/sitting-down-at-a-computer" }],
   },
 ];

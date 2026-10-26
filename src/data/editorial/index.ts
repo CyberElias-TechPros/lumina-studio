@@ -13,7 +13,7 @@ export type { ChangeEntry, ChangeKind, CorrectionEntry };
 
 type LessonRecord = {
   publishedAt: string | null;
-  publishedAtSource: "editorial-record" | "git" | "unresolved";
+  publishedAtSource: "editorial-record" | "declared-schedule" | "git" | "unresolved";
   reviewedAt: string | null;
   reviewer: string | null;
   reviewDueAt: string | null;
@@ -22,6 +22,8 @@ type LessonRecord = {
 
 const dates = generated as unknown as {
   reviewCycleDays: number;
+  scheduleDeclaredBy?: string | null;
+  scheduleWindow?: string | null;
   shallowHistory: boolean;
   totals: { lessons: number; reviewed: number; unreviewed: number; unresolvedPublishedAt: number };
   lessons: Record<string, LessonRecord>;
@@ -31,12 +33,24 @@ export const REVIEW_CYCLE_DAYS = dates.reviewCycleDays;
 export const EDITORIAL_TOTALS = dates.totals;
 
 /**
- * A derived publication date from a shallow clone tells us when *this checkout*
- * first contained the lesson, not when the site published it. We only assert a
- * publication date when it came from the hand-written editorial record, or when
- * the repository history is complete enough for git to know.
+ * A date from a shallow clone tells us when *this checkout* first contained the
+ * lesson, not when the site published it. Dates are asserted when the Academy has
+ * recorded them (its own declaration or a hand-written per-lesson entry), and from
+ * git only when the history is complete enough to know.
  */
 const CAN_TRUST_GIT_DATES = !dates.shallowHistory;
+
+export const PUBLICATIONS_ARE_DECLARED = Object.values(dates.lessons).some(
+  (record) => record.publishedAtSource === "declared-schedule",
+);
+export const SCHEDULE_DECLARED_BY = dates.scheduleDeclaredBy ?? null;
+export const SCHEDULE_WINDOW = dates.scheduleWindow ?? null;
+
+function isEvidenced(source: LessonRecord["publishedAtSource"] | undefined): boolean {
+  if (source === "editorial-record" || source === "declared-schedule") return true;
+  if (source === "git") return CAN_TRUST_GIT_DATES;
+  return false;
+}
 
 export type LessonEditorial = {
   /** Human-facing, shown only when the date is evidenced (see CAN_TRUST_GIT_DATES). */
@@ -81,9 +95,7 @@ export function lessonEditorial(slug: string): LessonEditorial {
     };
   }
 
-  const publishedTrusted =
-    record.publishedAtSource === "editorial-record" ||
-    (record.publishedAtSource === "git" && CAN_TRUST_GIT_DATES);
+  const publishedTrusted = isEvidenced(record.publishedAtSource);
 
   return {
     publishedAt: publishedTrusted ? fmt(record.publishedAt) : null,
@@ -106,9 +118,7 @@ export function lessonEditorialIso(slug: string): {
 } {
   const record = dates.lessons[slug];
   if (!record) return {};
-  const trusted =
-    record.publishedAtSource === "editorial-record" ||
-    (record.publishedAtSource === "git" && CAN_TRUST_GIT_DATES);
+  const trusted = isEvidenced(record.publishedAtSource);
   return {
     ...(trusted && record.publishedAt ? { datePublished: record.publishedAt } : {}),
     ...(record.reviewedAt ? { dateModified: record.reviewedAt } : {}),

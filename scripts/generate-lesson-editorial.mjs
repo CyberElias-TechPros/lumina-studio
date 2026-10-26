@@ -10,10 +10,12 @@
  *
  * So every date this script writes is traceable:
  *
- *   publishedAt  — the git author date of the commit that first introduced the
- *                  lesson's slug into src/data/blog.ts. Where a repository is
- *                  shallow or git is unavailable, the committed generated file is
- *                  left untouched and the record says so.
+ *   publishedAt  — in priority order: a per-lesson entry in lesson-reviews.json;
+ *                  the owner's declared schedule in publication-schedule.json; a
+ *                  single evidenced seriesPublishedAt; then the git author date of
+ *                  the commit that first introduced the lesson's slug. A shallow
+ *                  clone cannot evidence publication, so git dates are suppressed
+ *                  for display rather than asserted.
  *   reviewedAt   — ONLY from src/data/editorial/lesson-reviews.json, which an
  *                  editor writes by hand after actually reading and correcting
  *                  the lesson. This script never invents a review.
@@ -35,8 +37,19 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT_DIR = join(root, "src/data/editorial");
 const OUT_FILE = join(OUT_DIR, "lesson-dates.generated.json");
 const REVIEWS_FILE = join(OUT_DIR, "lesson-reviews.json");
+const SCHEDULE_FILE = join(OUT_DIR, "publication-schedule.json");
 const BLOG_FILE = "src/data/blog.ts";
 const REVIEW_CYCLE_DAYS = 180;
+
+/**
+ * The day the 180-day review cycle was adopted. A lesson published in January
+ * cannot be "late" on a rule that did not exist until October — so the clock
+ * starts here, not at publication. The first-cycle due dates are then staggered
+ * across the cycle so the team reviews a few lessons each week instead of facing
+ * 210 reviews on one day. A due date is a plan, never a claim that a review
+ * happened.
+ */
+const REVIEW_POLICY_STARTED = "2026-10-26";
 const checkOnly = process.argv.includes("--check");
 
 function git(args) {
@@ -78,6 +91,13 @@ const reviews = existsSync(REVIEWS_FILE) ? JSON.parse(readFileSync(REVIEWS_FILE,
 const seriesPublishedAt = reviews.seriesPublishedAt ?? null;
 const lessonRecords = reviews.lessons ?? {};
 
+/**
+ * The owner's declared publication schedule. This is an editorial record, not a
+ * derivation: the Academy states when it published, and the site displays that.
+ */
+const schedule = existsSync(SCHEDULE_FILE) ? JSON.parse(readFileSync(SCHEDULE_FILE, "utf8")) : null;
+const scheduledDates = schedule?.dates ?? {};
+
 function addDays(isoDate, days) {
   const d = new Date(`${isoDate}T00:00:00Z`);
   d.setUTCDate(d.getUTCDate() + days);
@@ -89,11 +109,31 @@ const unknown = [];
 let reviewed = 0;
 const reviewers = new Set();
 
+/** Publication order, used to stagger the first review rotation. */
+const byOrder = [...blogPosts].sort((a, b) => a.order - b.order);
+const rotationIndex = new Map(byOrder.map((post, index) => [post.slug, index]));
+
 for (const post of blogPosts) {
   const record = lessonRecords[post.slug] ?? {};
-  const recorded = record.publishedAt ?? seriesPublishedAt ?? null;
-  let publishedAt = recorded ?? firstSeen(post.slug);
-  const publishedAtSource = recorded ? "editorial-record" : publishedAt ? "git" : "unresolved";
+  const handRecorded = record.publishedAt ?? null;
+  const scheduled = scheduledDates[post.slug] ?? null;
+  const recorded = handRecorded ?? scheduled ?? seriesPublishedAt ?? null;
+
+  let publishedAt;
+  let publishedAtSource;
+  if (handRecorded) {
+    publishedAt = handRecorded;
+    publishedAtSource = "editorial-record";
+  } else if (scheduled) {
+    publishedAt = scheduled;
+    publishedAtSource = "declared-schedule";
+  } else if (seriesPublishedAt) {
+    publishedAt = seriesPublishedAt;
+    publishedAtSource = "editorial-record";
+  } else {
+    publishedAt = firstSeen(post.slug);
+    publishedAtSource = publishedAt ? "git" : "unresolved";
+  }
 
   if (!publishedAt) {
     unknown.push(post.slug);
@@ -106,22 +146,35 @@ for (const post of blogPosts) {
     if (record.reviewer) reviewers.add(record.reviewer);
   }
 
-  const base = reviewedAt ?? publishedAt;
+  let reviewDueAt;
+  if (reviewedAt) {
+    reviewDueAt = addDays(reviewedAt, REVIEW_CYCLE_DAYS);
+  } else {
+    const index = rotationIndex.get(post.slug) ?? 0;
+    const slots = Math.max(1, blogPosts.length - 1);
+    const offset = Math.round((index * (REVIEW_CYCLE_DAYS - 1)) / slots) + 1;
+    reviewDueAt = addDays(REVIEW_POLICY_STARTED, offset);
+  }
+
   lessons[post.slug] = {
     publishedAt,
     publishedAtSource,
     reviewedAt,
     reviewer: record.reviewer ?? null,
-    reviewDueAt: base ? addDays(base, REVIEW_CYCLE_DAYS) : null,
+    reviewDueAt,
     note: record.note ?? null,
   };
 }
 
 const payload = {
   generatedBy: "scripts/generate-lesson-editorial.mjs",
-  method:
-    "publishedAt = git author date that first introduced the lesson slug; reviewedAt = hand-written review record only. No date is invented.",
+  method: schedule
+    ? "publishedAt = the Academy's declared publication schedule (publication-schedule.json), with per-lesson overrides in lesson-reviews.json taking priority; git history is used only as a fallback when no record exists. reviewedAt = a hand-written review record only."
+    : "publishedAt = git author date that first introduced the lesson slug; reviewedAt = hand-written review record only.",
+  scheduleDeclaredBy: schedule?.declaredBy ?? null,
+  scheduleWindow: schedule ? `${schedule.firstPublishedAt} → ${schedule.lastPublishedAt}` : null,
   reviewCycleDays: REVIEW_CYCLE_DAYS,
+  reviewPolicyStarted: REVIEW_POLICY_STARTED,
   shallowHistory: isShallow,
   totals: {
     lessons: blogPosts.length,
