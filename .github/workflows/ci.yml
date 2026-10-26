@@ -36,6 +36,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      # Reads the prerendered HTML: word floor, FAQ schema, instructor, and
+      # links into the lesson corpus. Guards the commercial half of the site.
+      - name: Course page quality (fails on errors)
+        run: npm run audit:courses -- --strict
 
   editorial:
     name: Editorial contract (lessons, dates, ad placement)

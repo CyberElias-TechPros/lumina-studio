@@ -24,7 +24,7 @@ site and a credible reapplication.
 | Image provenance registry + report | ✅ built, **unresolved** | `src/data/editorial/image-provenance.json`, `docs/image-provenance-report.md` |
 | Content-quality measurement | ✅ built | `npm run audit:content` |
 | Structural maintenance: links, sitemap, robots, orphans | ✅ CI gate | `scripts/audit-site-structure.mjs`, `npm run audit:structure -- --strict` |
-| Course pages above the thin-content floor | ✅ measured | 22 pages, 887–1,481 words; lowest `computer-networking` (887) — see §5 |
+| Course pages above the thin-content floor | ✅ CI gate | `npm run audit:courses`, 22 pages at 867–1,435 words, median 1,149 — see §5 |
 | Image provenance for 471 lesson images | ⬜ **owner only** — nobody else can say where they came from | — |
 | Google Business Profile, citations, video, partners | ⬜ owner | — |
 | 60–90 days of interest data | ⬜ runs with the calendar | — |
@@ -233,7 +233,7 @@ Good news: `/library` and `/stories` now **redirect** to `/classes` and `/about`
 
 ## 5. Gap 4 — The editorial half is strong; the commercial half is thin
 
-Clause 1 covers the whole site, and a reviewer samples across it. Earlier drafts of this document called the course pages "the weaker half". That was a measurement error, and the measurement has since been done against the rendered build: there are **22 course pages, not 13**, and they run **887–1,483 words** (lowest `computer-networking` at 889, highest `web-development` at 1,483). Every one of them carries FAQ structured data, a named instructor, and links to its published session lectures. On the proxies a script can check, they already clear the standard below.
+Clause 1 covers the whole site, and a reviewer samples across it. Earlier drafts of this document called the course pages "the weaker half". That was a measurement error, and the measurement has since been done against the rendered build: there are **22 course pages, not 13**, and they run **867–1,435 words** (lowest `computer-networking` at 867, median 1,149, highest `web-development` at 1,435). Every one of them carries FAQ structured data, a named instructor, and links to at least two published session lectures. Those four properties are now measured from the prerendered HTML by `scripts/audit-course-pages.mjs`, so the figures above are reproducible rather than remembered.
 
 Every course page should carry, in this order:
 
