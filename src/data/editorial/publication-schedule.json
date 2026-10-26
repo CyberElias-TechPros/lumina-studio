@@ -1,14 +1,16 @@
 {
   "_readme": [
-    "The Academy's declared publication record. Not derived from git.",
-    "Owner: state the truth here — these dates are what the site shows in <time> tags and",
-    "in Article datePublished. Editing one entry corrects that lesson everywhere.",
-    "Method: lessons placed in publication order across the window, Sundays excluded.",
-    "Source of the window: the owner's record; corroborated by docs/adsense-content-audit.md,",
-    "which lists 26 posts already live on the 24 August 2026 crawl."
+    "Ordering aid for the review rotation \u2014 NOT a record of publication dates.",
+    "The Academy does not hold per-lesson publication days for lessons released before",
+    "26 October 2026. What is evidenced: 26 lessons were live on the 24 August 2026",
+    "crawl (docs/adsense-content-audit.md), and the series was complete by 24 October 2026.",
+    "These dates are therefore shown as an estimate and are never published as a claim,",
+    "never emitted as schema datePublished, and are used only to order the review rotation.",
+    "For a lesson published from 26 October 2026 onward, record the real day with",
+    "{\"precision\": \"exact\"} in lesson-reviews.json; that date WILL be displayed."
   ],
-  "method": "declared-publication-order",
-  "declaredBy": "Ellis Dennis Graham — Founder, Cyber Elias Academy",
+  "method": "estimated-order",
+  "declaredBy": "Ellis Dennis Graham \u2014 Founder, Cyber Elias Academy",
   "declaredOn": "2026-10-26",
   "note": "Lessons are ordered by their position in the series and spread across the window with Sundays excluded. Individual dates may be corrected by editing this file.",
   "firstPublishedAt": "2026-01-01",
@@ -226,5 +228,12 @@
     "learning-anything-faster": "2026-10-22",
     "work-that-changes-and-stays": "2026-10-23",
     "the-road-ahead": "2026-10-24"
-  }
+  },
+  "precision": "estimated",
+  "evidence": {
+    "lessonsLiveOn2026-08-24": 26,
+    "source": "docs/adsense-content-audit.md \u00a7B/\u00a7C (production crawl)",
+    "seriesCompleteBy": "2026-10-24"
+  },
+  "disclosure": "Per-lesson publication days are not recorded for lessons released before 26 October 2026. The series was published during 2026; 26 lessons were already live by the 24 August 2026 audit and the series was complete by 24 October 2026."
 }

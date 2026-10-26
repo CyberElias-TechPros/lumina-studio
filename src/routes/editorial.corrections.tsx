@@ -113,6 +113,47 @@ function CorrectionsPage() {
 
           <section>
             <h2 className="font-display text-2xl font-semibold tracking-tight">
+              What we can and cannot date
+            </h2>
+            <p className="text-muted-foreground mt-3 text-base leading-relaxed">
+              Our records have a limit, and it is better stated than hidden. The 210 lessons were
+              written and released during 2026, but we did not keep a per-lesson publication day for
+              the lessons released before 26 October 2026. So we do not display one. What we can
+              evidence is the span: 26 of these lessons were already live at our 24 August 2026
+              audit, and the series was complete by 24 October 2026.
+            </p>
+            <ul className="text-muted-foreground mt-4 space-y-2 text-sm leading-relaxed">
+              <li className="flex items-start gap-2">
+                <CheckCircle2 className="text-primary mt-0.5 size-4 shrink-0" aria-hidden="true" />
+                <span>
+                  <strong className="text-foreground">Stated:</strong> the year the series was
+                  released, the review cycle, and every review that a named person has actually
+                  completed.
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle2
+                  className="text-muted-foreground mt-0.5 size-4 shrink-0"
+                  aria-hidden="true"
+                />
+                <span>
+                  <strong className="text-foreground">Not stated:</strong> a publication day per
+                  lesson for anything released before we began keeping this record. An invented date
+                  would be worse than none.
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle2 className="text-primary mt-0.5 size-4 shrink-0" aria-hidden="true" />
+                <span>
+                  <strong className="text-foreground">From 26 October 2026:</strong> new lessons
+                  record their real publication day when they are published, and that day is shown.
+                </span>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="font-display text-2xl font-semibold tracking-tight">
               Lessons reviewed by a named person
             </h2>
             <p className="text-muted-foreground mt-3 text-base leading-relaxed">

@@ -13,7 +13,8 @@ export type { ChangeEntry, ChangeKind, CorrectionEntry };
 
 type LessonRecord = {
   publishedAt: string | null;
-  publishedAtSource: "editorial-record" | "declared-schedule" | "git" | "unresolved";
+  publishedAtSource: "editorial-record" | "declared-schedule" | "estimate" | "git" | "unresolved";
+  precision: "exact" | "estimated" | null;
   reviewedAt: string | null;
   reviewer: string | null;
   reviewDueAt: string | null;
@@ -46,14 +47,36 @@ export const PUBLICATIONS_ARE_DECLARED = Object.values(dates.lessons).some(
 export const SCHEDULE_DECLARED_BY = dates.scheduleDeclaredBy ?? null;
 export const SCHEDULE_WINDOW = dates.scheduleWindow ?? null;
 
-function isEvidenced(source: LessonRecord["publishedAtSource"] | undefined): boolean {
+/**
+ * A publication date is only ever *stated* when the Academy holds the real day.
+ * An estimated day may order the review rotation, but presenting it as a
+ * publication date would be a misrepresentation — so it is never displayed and
+ * never emitted as schema.
+ */
+function isExact(
+  source: LessonRecord["publishedAtSource"] | undefined,
+  precision: LessonRecord["precision"],
+): boolean {
+  if (precision !== "exact") return false;
   if (source === "editorial-record" || source === "declared-schedule") return true;
   if (source === "git") return CAN_TRUST_GIT_DATES;
   return false;
 }
 
+/**
+ * What we can honestly say about how the corpus was released: 26 lessons were
+ * live on the 24 August 2026 crawl and the series was complete by 24 October
+ * 2026. Stated as a range, because per-lesson days were not recorded.
+ */
+export const SERIES_RELEASE = {
+  window: "2026",
+  evidenced:
+    "26 lessons were already live at our 24 August 2026 audit; the series was complete by 24 October 2026.",
+  hasExactDates: false,
+} as const;
+
 export type LessonEditorial = {
-  /** Human-facing, shown only when the date is evidenced (see CAN_TRUST_GIT_DATES). */
+  /** Human-facing, shown only when the day is actually held (precision = exact). */
   publishedAt: string | null;
   reviewedAt: string | null;
   reviewer: string | null;
@@ -95,7 +118,7 @@ export function lessonEditorial(slug: string): LessonEditorial {
     };
   }
 
-  const publishedTrusted = isEvidenced(record.publishedAtSource);
+  const publishedTrusted = isExact(record.publishedAtSource, record.precision);
 
   return {
     publishedAt: publishedTrusted ? fmt(record.publishedAt) : null,
@@ -118,7 +141,7 @@ export function lessonEditorialIso(slug: string): {
 } {
   const record = dates.lessons[slug];
   if (!record) return {};
-  const trusted = isEvidenced(record.publishedAtSource);
+  const trusted = isExact(record.publishedAtSource, record.precision);
   return {
     ...(trusted && record.publishedAt ? { datePublished: record.publishedAt } : {}),
     ...(record.reviewedAt ? { dateModified: record.reviewedAt } : {}),

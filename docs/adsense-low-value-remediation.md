@@ -28,26 +28,39 @@ site and a credible reapplication.
 | Google Business Profile, citations, video, partners | ⬜ owner | — |
 | 60–90 days of interest data | ⬜ runs with the calendar | — |
 
-### How the dates work (and why they cannot be faked)
+### How dates work now: we only state what we hold
 
-`publishedAt` comes from `src/data/editorial/publication-schedule.json` — the Academy's
-own declared publication record, with per-lesson overrides in `lesson-reviews.json`
-taking priority. Git history is only a fallback where no record exists, and a shallow
-clone can never evidence publication, so those dates are suppressed rather than
-displayed. `reviewedAt` comes **only** from a hand-written record; the generator is
-incapable of inventing a review.
+The owner confirmed on 26 October 2026 that per-lesson publication dates do not exist. Two
+earlier attempts are recorded here because both were wrong and one was dangerous:
 
-The declared schedule (set 26 October 2026): lessons placed in publication order across
-**1 January → 24 October 2026**, Sundays excluded, roughly 21 lessons a month. This is a
-declaration by the owner, corroborated by the 24 August 2026 production crawl in
-`docs/adsense-content-audit.md`, which lists 26 posts already live at that date — so the
-corpus demonstrably grew through the year rather than appearing at once. Any individual
-date can be corrected by editing the schedule file; nothing else needs to change.
+1. **The original state** — every lesson inherited the build date. That was never a
+   publication date and it made 210 pages look machine-stamped.
+2. **The first fix** — spreading lessons evenly across 1 January → 25 October 2026 looked
+   like a fix and was worse: it substituted invented days for missing ones. Uniform
+   mechanical spacing is exactly the pattern a reviewer or classifier can spot, and a
+   fabricated date is a misrepresentation under AdSense's own policies.
 
-**Accountability rule:** if a date in that file is not when the lesson really went live,
-it must be fixed. A wrong date is a misrepresentation, and uniform mechanical spacing is
-both detectable and unconvincing — the declaration is only defensible because it
-corresponds to what actually happened.
+**What the site states now**, and nothing more:
+
+| Claim | Evidence |
+|---|---|
+| "Released in the 2026 notes series" (per lesson) | 26 lessons live at the 24 Aug 2026 crawl; series complete by 24 Oct 2026 (`docs/adsense-content-audit.md`) |
+| Review cycle and due dates | Forward-looking plan, adopted 26 Oct 2026 |
+| Named reviewer per lesson | Only after a person reads and signs the page |
+| Changelog entries and corrections | Dated events that actually happened |
+
+Per-lesson publication days are **not displayed** and are **not emitted** as schema
+`datePublished`. The estimate file `src/data/editorial/publication-schedule.json` survives
+only to order the review rotation; it is marked `"precision": "estimated"` and the generator
+refuses to display an estimated day.
+
+**Going forward the record becomes real.** A lesson published from 26 October 2026 records
+its day at publication with `{ "precision": "exact" }` in `lesson-reviews.json`. That date is
+then displayed and emitted in schema. Over the next cycle the corpus accumulates genuine
+dates, which is a far stronger maintenance signal than 210 back-dated ones.
+
+**The accountability rule:** a date may only be shown if we hold it. If a date in the
+schedule file is not real, it stays an estimate and stays invisible.
 
 ### The review clock, and why nothing is "overdue"
 

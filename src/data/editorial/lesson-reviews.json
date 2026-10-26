@@ -1,10 +1,14 @@
 {
   "_readme": [
     "Hand-written editorial record. Nothing here is generated.",
-    "seriesPublishedAt: the date the notes first went live, once you can evidence it.",
-    "lessons: { slug: { publishedAt, reviewedAt, reviewer, note } } \u2014 add an entry only",
-    "after a person has actually read and checked that lesson. A review date is a claim."
+    "lessons: { slug: { publishedAt, precision, reviewedAt, reviewer, note } }",
+    "  precision 'exact'  -> the date is displayed and emitted as schema datePublished. Use this",
+    "                        for anything published from 26 October 2026 onward, when we began",
+    "                        keeping this record.",
+    "  precision 'estimated' -> ordered only; never displayed as a publication claim.",
+    "reviewedAt: add only after a person has actually read and checked the lesson."
   ],
   "seriesPublishedAt": null,
-  "lessons": {}
+  "lessons": {},
+  "lessonRecordsNote": "See _readme."
 }

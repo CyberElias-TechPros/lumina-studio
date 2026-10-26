@@ -1,18 +1,9 @@
-"use client";
-
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
 import { ArrowRight, CalendarClock, CircleDot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageHero, PageShell } from "@/components/marketing/shell";
-import {
-  changelog,
-  changelogTotals,
-  EDITORIAL_TOTALS,
-  REVIEW_CYCLE_DAYS,
-  SCHEDULE_DECLARED_BY,
-  SCHEDULE_WINDOW,
-} from "@/data/editorial";
+import { changelog, changelogTotals, EDITORIAL_TOTALS, REVIEW_CYCLE_DAYS } from "@/data/editorial";
 import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/editorial/changelog")({
@@ -34,14 +25,6 @@ const KIND_LABEL: Record<string, string> = {
   correction: "Correction",
   infrastructure: "Site work",
 };
-
-/** "2026-01-01 → 2026-10-25" rendered as prose. */
-function formatWindow(window: string | null): string | null {
-  if (!window) return null;
-  const [from, to] = window.split("→").map((part) => part.trim());
-  if (!from || !to) return null;
-  return `${formatDate(from)} and ${formatDate(to)}`;
-}
 
 function formatDate(iso: string) {
   return new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", {
@@ -137,17 +120,15 @@ function Changelog() {
                 review dates onto pages nobody opened.
               </p>
             </div>
-            {SCHEDULE_WINDOW ? (
-              <div className="border-border mt-5 border-t pt-4">
-                <p className="text-foreground text-sm font-semibold">Where the dates come from</p>
-                <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                  Not from this repository: the Academy keeps its own publication record, and the
-                  lessons were released between {formatWindow(SCHEDULE_WINDOW)}
-                  {SCHEDULE_DECLARED_BY ? ` (declared by ${SCHEDULE_DECLARED_BY})` : ""}. Each date
-                  is stated per lesson and can be corrected individually.
-                </p>
-              </div>
-            ) : null}
+            <div className="border-border mt-5 border-t pt-4">
+              <p className="text-foreground text-sm font-semibold">What these dates are</p>
+              <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+                Each entry is the day a change was published. The lesson corpus itself does not
+                carry per-lesson publication days before 26 October 2026 — we did not record them,
+                so we do not show them. What we can show is the span: 26 lessons were live at the 24
+                August 2026 audit and the series was complete by 24 October 2026.
+              </p>
+            </div>
             <dl className="mt-5 grid grid-cols-2 gap-4 text-sm">
               <div>
                 <dt className="text-muted-foreground">Lessons</dt>

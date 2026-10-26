@@ -41,13 +41,13 @@ export const changelog: ChangeEntry[] = [
   },
   {
     date: "2026-10-26",
-    kind: "infrastructure",
-    title: "The publication record is now stated, and reviewable",
+    kind: "correction",
+    title: "We stopped showing a publication date we could not evidence",
     detail:
-      "Every lesson now shows the date the Academy published it, taken from our own publication record (1 January to 24 October 2026, in series order). Each date can be corrected individually. Where we cannot evidence a date, we do not display one. This replaces a single build date that was never a publication date.",
+      "Until today every lesson carried the same build date, which was not a publication date at all. Our first fix spread invented per-lesson dates across 2026 — also wrong, because we do not hold the real days. We have removed both. Lessons now say the series was released during 2026, which we can evidence: 26 lessons were live at our 24 August 2026 audit and the series was complete by 24 October 2026. From today, a lesson published with a recorded day will show that day.",
     affected: [
+      { label: "What we can and cannot date", href: "/editorial/corrections" },
       { label: "Start at lesson one", href: "/blog/sitting-down-at-a-computer" },
-      { label: "Review record", href: "/editorial/corrections" },
     ],
   },
   {

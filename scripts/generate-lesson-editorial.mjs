@@ -116,23 +116,39 @@ const rotationIndex = new Map(byOrder.map((post, index) => [post.slug, index]));
 for (const post of blogPosts) {
   const record = lessonRecords[post.slug] ?? {};
   const handRecorded = record.publishedAt ?? null;
+  const handPrecision = record.precision ?? (handRecorded ? "exact" : null);
   const scheduled = scheduledDates[post.slug] ?? null;
-  const recorded = handRecorded ?? scheduled ?? seriesPublishedAt ?? null;
+  const schedulePrecision = schedule?.precision ?? "estimated";
 
   let publishedAt;
   let publishedAtSource;
-  if (handRecorded) {
+  /**
+   * "exact" means the Academy holds the real day and the site may state it.
+   * "estimated" means the day exists only to order the review rotation: it is
+   * never displayed and never emitted as schema datePublished.
+   */
+  let precision;
+
+  if (handRecorded && handPrecision === "exact") {
     publishedAt = handRecorded;
     publishedAtSource = "editorial-record";
+    precision = "exact";
+  } else if (handRecorded) {
+    publishedAt = handRecorded;
+    publishedAtSource = "estimate";
+    precision = "estimated";
   } else if (scheduled) {
     publishedAt = scheduled;
-    publishedAtSource = "declared-schedule";
+    publishedAtSource = schedulePrecision === "exact" ? "declared-schedule" : "estimate";
+    precision = schedulePrecision === "exact" ? "exact" : "estimated";
   } else if (seriesPublishedAt) {
     publishedAt = seriesPublishedAt;
-    publishedAtSource = "editorial-record";
+    publishedAtSource = "estimate";
+    precision = "estimated";
   } else {
     publishedAt = firstSeen(post.slug);
     publishedAtSource = publishedAt ? "git" : "unresolved";
+    precision = publishedAt ? "exact" : null;
   }
 
   if (!publishedAt) {
@@ -159,12 +175,15 @@ for (const post of blogPosts) {
   lessons[post.slug] = {
     publishedAt,
     publishedAtSource,
+    precision,
     reviewedAt,
     reviewer: record.reviewer ?? null,
     reviewDueAt,
     note: record.note ?? null,
   };
 }
+
+const exactCount = Object.values(lessons).filter((l) => l.precision === "exact").length;
 
 const payload = {
   generatedBy: "scripts/generate-lesson-editorial.mjs",
@@ -178,6 +197,8 @@ const payload = {
   shallowHistory: isShallow,
   totals: {
     lessons: blogPosts.length,
+    exactPublicationDates: exactCount,
+    estimatedDates: blogPosts.length - exactCount,
     reviewed,
     unreviewed: blogPosts.length - reviewed,
     unresolvedPublishedAt: unknown.length,
@@ -204,6 +225,7 @@ console.log(
   [
     `Lessons: ${blogPosts.length}`,
     `Reviewed: ${reviewed} · unreviewed: ${blogPosts.length - reviewed}`,
+    `Exact publication dates: ${exactCount} · estimates (not displayed): ${blogPosts.length - exactCount}`,
     `Unresolved publication dates: ${unknown.length}${unknown.length ? ` (${unknown.slice(0, 5).join(", ")}…)` : ""}`,
     `Shallow git history: ${isShallow}${isShallow ? " — dates reflect this clone, not the original publication" : ""}`,
     `Wrote ${OUT_FILE.replace(`${root}/`, "")}`,

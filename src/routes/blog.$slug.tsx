@@ -11,7 +11,7 @@ import { FounderPhoto } from "@/components/marketing/founder-photo";
 import { adjacentNotes, chapterForOrder, relatedNotes } from "@/data/note-chapters";
 import { getPageHead } from "@/lib/seo";
 import { readingTimeLabel } from "@/lib/blog-reading-time";
-import { lessonEditorial, lessonEditorialIso } from "@/data/editorial";
+import { lessonEditorial, lessonEditorialIso, SERIES_RELEASE } from "@/data/editorial";
 import { resolveBlogSlugRedirect } from "@/lib/legacy-redirects";
 import { SITE_URL } from "@/lib/site-url";
 
@@ -165,13 +165,15 @@ function Article() {
             <span className="flex items-center gap-1.5">
               <Clock className="size-4" /> {readingTimeLabel(post.body)} read
             </span>
-            {editorial.publishedAt && (
+            {editorial.publishedAt ? (
               <span>
                 Published{" "}
                 <time dateTime={editorial.publishedAtIso ?? undefined}>
                   {editorial.publishedAt}
                 </time>
               </span>
+            ) : (
+              <span>Released in the {SERIES_RELEASE.window} notes series</span>
             )}
             {editorial.reviewedAt && (
               <span>
