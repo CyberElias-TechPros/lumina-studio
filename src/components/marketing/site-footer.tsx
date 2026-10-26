@@ -41,6 +41,7 @@ const columns = [
     title: "Shop",
     links: [
       { label: "All products", to: "/shop" },
+      { label: "Payment methods", to: "/payment" },
       { label: "Delivery", to: "/shipping" },
       { label: "Refunds policy", to: "/refunds" },
     ],

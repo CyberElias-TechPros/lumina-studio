@@ -64,6 +64,10 @@ jobs:
         run: npm run audit:content
       - name: Image provenance report (non-blocking)
         run: npm run audit:images
+      # Structural rot: broken internal links, redirects or noindex pages in the
+      # sitemap, orphans. Static — no server, no network.
+      - name: Site structure audit (fails on errors)
+        run: npm run audit:structure -- --strict --verbose
 
   lint:
     name: Lint

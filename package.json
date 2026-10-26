@@ -29,7 +29,8 @@
     "validate:lessons": "node scripts/validate-lessons.mjs",
     "audit:images": "node scripts/audit-image-provenance.mjs",
     "check:ads": "node scripts/check-ad-slots.mjs",
-    "check:editorial": "npm run generate:editorial && npm run validate:lessons -- --strict && npm run check:ads"
+    "audit:structure": "node scripts/audit-site-structure.mjs",
+    "check:editorial": "npm run generate:editorial && npm run validate:lessons -- --strict && npm run check:ads && npm run audit:structure -- --strict"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

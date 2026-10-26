@@ -23,7 +23,8 @@ site and a credible reapplication.
 | Ad placement policy as code + guardrail | ✅ CI gate | `src/lib/ads/slots.ts`, `npm run check:ads` |
 | Image provenance registry + report | ✅ built, **unresolved** | `src/data/editorial/image-provenance.json`, `docs/image-provenance-report.md` |
 | Content-quality measurement | ✅ built | `npm run audit:content` |
-| 13 course pages to the §5 standard | ⬜ owner + writers | — |
+| Structural maintenance: links, sitemap, robots, orphans | ✅ CI gate | `scripts/audit-site-structure.mjs`, `npm run audit:structure -- --strict` |
+| Course pages above the thin-content floor | ✅ measured | 22 pages, 887–1,481 words; lowest `computer-networking` (887) — see §5 |
 | Image provenance for 471 lesson images | ⬜ **owner only** — nobody else can say where they came from | — |
 | Google Business Profile, citations, video, partners | ⬜ owner | — |
 | 60–90 days of interest data | ⬜ runs with the calendar | — |
@@ -61,6 +62,31 @@ dates, which is a far stronger maintenance signal than 210 back-dated ones.
 
 **The accountability rule:** a date may only be shown if we hold it. If a date in the
 schedule file is not real, it stays an estimate and stays invisible.
+
+### Structural maintenance is enforced, not asserted
+
+AdSense's clause asks for **ongoing curation and structural maintenance**. A policy page that says
+"we maintain this site" is an assertion; a gate that fails the build when the site rots is
+evidence. `scripts/audit-site-structure.mjs` runs statically against the generated route manifest
+(no server, no network) and fails CI on:
+
+- an internal link (`to=` / `href=`, or `{ to: "/x" }` in nav data) pointing at a path that does not exist;
+- a sitemap entry that does not resolve, is a redirect, is private (`/app`, `/portal`, `/auth`), is marked `noindex`, or is disallowed by `robots.txt`;
+- a public indexable page with no inbound internal link, or one that is not reachable from the header/footer by following links.
+
+Warnings cover duplicate sitemap entries. Current state (26 October 2026): **0 errors, 0 warnings** —
+407 sitemap entries, 340 distinct internal targets resolving, 29 redirect routes and 9 `noindex`
+routes correctly excluded. The last two were genuine: `/pay` and `/payment` are public
+informational pages (how tuition payment works, which methods the shop accepts) and were being
+classified as private; `/visit/info`, `/visit/brochure` and `/visit/feedback` were advertised in the
+sitemap but linked from nowhere, and now hang off `/visit` as "Before you come". `/payment` was
+added to the footer.
+
+Run it before touching navigation, routes or the sitemap:
+
+```bash
+npm run audit:structure -- --strict --verbose
+```
 
 ### The review clock, and why nothing is "overdue"
 
@@ -207,7 +233,7 @@ Good news: `/library` and `/stories` now **redirect** to `/classes` and `/about`
 
 ## 5. Gap 4 — The editorial half is strong; the commercial half is thin
 
-Clause 1 covers the whole site, and a reviewer samples across it. The 210 lessons are excellent. The **13 course pages** are the weaker half, and they are also the pages that matter commercially.
+Clause 1 covers the whole site, and a reviewer samples across it. Earlier drafts of this document called the course pages "the weaker half". That was a measurement error, and the measurement has since been done against the rendered build: there are **22 course pages, not 13**, and they run **887–1,483 words** (lowest `computer-networking` at 889, highest `web-development` at 1,483). Every one of them carries FAQ structured data, a named instructor, and links to its published session lectures. On the proxies a script can check, they already clear the standard below.
 
 Every course page should carry, in this order:
 
@@ -223,7 +249,7 @@ Every course page should carry, in this order:
 10. Two free lessons from the same subject, linked — "read before you pay".
 11. One primary action.
 
-That is 700–1,100 words per course, all of it verifiable. This is where new writing should go — not into lesson #211.
+That is 700–1,100 words per course, all of it verifiable, and every current course page is past that floor on word count. The list matters as the standard a **new** course page is written against, and because two items on it cannot be proved by a count: item 1 (who should choose a different course) and item 10 (are the linked lessons actually the same subject). Those are a read, not a script. New writing belongs in a course page or a new lecture, not in a 211th note that repeats the 210th.
 
 ---
 
