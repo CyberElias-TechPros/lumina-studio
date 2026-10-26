@@ -2,6 +2,16 @@
 
 Companion to [`../plans/CEA_MASTERPIECE_BLUEPRINT_2026-10.md`](../plans/CEA_MASTERPIECE_BLUEPRINT_2026-10.md).
 
+> **Update — 26 October 2026.** An application was rejected with the newer site-quality message
+> ("policy violations" + "low value content"), whose text names **ongoing curation and structural
+> maintenance**, a **consistent presence on the web**, and **genuine user interest** — not just content
+> substance. Measured against the corpus (`npm run audit:content`: 210 lessons, median 839 words, zero
+> duplicate pairs, zero boilerplate), content substance is not the failing clause. Read
+> [`adsense-low-value-remediation.md`](./adsense-low-value-remediation.md) before acting on this
+> playbook: it decodes that specific rejection, lists the four gaps to close, and sets a nine-gate
+> reapplication bar. §0 below ("no minimum traffic requirement") remains true as published policy but
+> is no longer sufficient as a plan — budget for demonstrable demand.
+
 **Scope:** what it actually takes for `www.cea.ng` to be approved for Google AdSense, how to place ads afterwards without damaging enrolment or trust, and how to get paid in Nigeria.
 **Currency of policy:** written 25 October 2026. Google's policies change; before filing an application, re-read the AdSense Program policies and the EU user consent policy page in-product.
 
@@ -10,7 +20,7 @@ Companion to [`../plans/CEA_MASTERPIECE_BLUEPRINT_2026-10.md`](../plans/CEA_MAST
 ## 0. The honest framing (read this before anything else)
 
 1. **AdSense approval is a quality judgment, not a checklist.** Technical requirements are necessary and cheap. The expensive part is proving that every page a reviewer might sample adds value. Google's own wording for the near-universal rejection is *"low value content"* / *"insufficient content"* — which is a statement about the site as a whole, not about a missing file.
-2. **There is no minimum traffic requirement and no minimum domain age.** Approval at low traffic is possible. There *is* a de-facto floor of original, substantial, well-structured pages, coherently focused, with legal pages and working navigation.
+2. **There is no published minimum traffic requirement and no minimum domain age** — but the current rejection language cites *genuine user interest* and a *consistent presence on the web*. Treat demand as a gate, not a hope: a perfectly written site nobody reads can still be refused. See `adsense-low-value-remediation.md` §3 and §7.
 3. **CEA already has the hard part.** 210 original lessons in a distinctive, locally-grounded voice; 13 real courses with published fees; a real address and photographs; a founder with a byline; a privacy policy that already discloses advertising; `/ads.txt` already published; a consent banner; ad code that renders nothing until approval. That is more than most approved sites start with. The risk is not "no content" — it is **thin, empty, or broken pages sitting in the index next to the good ones**, which a reviewer will reasonably read as "unfinished site".
 4. **The money is small; the downside is not.** Nigerian informational RPMs are low (see §9). The real risk is not earning little — it is (a) letting ad inventory reshape pages that convert learners, and (b) triggering a policy strike that is hard to unwind. Treat ads as a subsidy capped at one day of work per month.
 
@@ -116,6 +126,15 @@ The rule: **every indexable URL is either ≥600 rendered words of original subs
 - [ ] No ad or analytics script fires before consent.
 - [ ] **If any traffic from EEA/UK/Switzerland is expected:** a Google-certified CMP integrated with IAB TCF is in place (see §6). Otherwise document the decision to serve non-personalised ads there, or exclude those regions.
 **Owner:** DPO + monetisation manager.
+
+### Gate 6b — Maintenance and presence evidence
+- [ ] Lessons carry `datePublished`/`dateModified` in schema **and** a visible reviewer byline.
+- [ ] `/editorial/changelog` and a corrections log are published and current.
+- [ ] Image provenance recorded for every asset; zero `unknown`.
+- [ ] Security lessons carry an ethical-use notice.
+- [ ] 60–90 days of Search Console / GA4 evidence of real interest (organic clicks, brand queries, returning users).
+- [ ] Google Business Profile live with reviews; 8+ citations; 8+ videos embedded in lessons.
+**Owner:** editor-in-chief + SEO manager.
 
 ### Gate 7 — Application hygiene
 - [ ] One AdSense account for the academy, on the Google account that owns Search Console and Analytics.

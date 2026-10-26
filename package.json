@@ -23,7 +23,8 @@
     "test:staging-config": "node --test scripts/test/staging-config.test.mjs",
     "test:service-worker": "node --test scripts/test/service-worker.test.mjs",
     "deps:sync-bun": "node scripts/sync-bun-lock.mjs",
-    "deps:check": "node scripts/sync-bun-lock.mjs --check"
+    "deps:check": "node scripts/sync-bun-lock.mjs --check",
+    "audit:content": "node scripts/adsense-content-quality.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
