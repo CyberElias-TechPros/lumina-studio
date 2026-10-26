@@ -3,7 +3,7 @@
 **A build plan for www.cea.ng that is excellent on purpose, not by accident.**
 
 Date: 25 October 2026 · Branch: `arena/9ba9816e-lumina-studio` · Status: planning document (no production change in this pass)
-Companions: [`role-activation-matrix.md`](./role-activation-matrix.md) · [`../docs/masterpiece-design-spec.md`](../docs/masterpiece-design-spec.md) · [`../docs/adsense-approval-playbook.md`](../docs/adsense-approval-playbook.md) · [`../docs/masterpiece-scorecard.md`](../docs/masterpiece-scorecard.md)
+Companions: [`role-activation-matrix.md`](./role-activation-matrix.md) · [`../docs/masterpiece-design-spec.md`](../docs/masterpiece-design-spec.md) · [`../docs/adsense-approval-playbook.md`](../docs/adsense-approval-playbook.md) · [`../docs/masterpiece-scorecard.md`](../docs/masterpiece-scorecard.md) · [`../docs/chatgpt-blueprint-review-2026-10-25.md`](../docs/chatgpt-blueprint-review-2026-10-25.md) (second-opinion review and the four changes it produced)
 
 ---
 
@@ -35,7 +35,8 @@ Everything else — CEA-OS, monetisation, social, apps — is support or upside.
 
 | Layer | State today | Verdict |
 |---|---|---|
-| Frontend | Next.js 15 App Router, SSR/SSG, ~400 sitemap URLs, 63 route files + generated app router pages, Tailwind v4 token system, motion primitives | **Strong foundation** |
+| Frontend | Next.js 15 App Router, SSR/SSG, ~400 sitemap URLs, 63 route files generated into App Router pages by `scripts/generate-next-routes.mjs`, Tailwind v4 token system, motion primitives, mock-mode preview harness (`NEXT_PUBLIC_API_URL` unset) | **Strong foundation** — IA changes are code changes + a generator update, never CMS clicks |
+| Mobile | Two apps: `apps/android` (Capacitor) and `apps/android-native` (native, Play AAB + direct APK workflows, FCM, offline lesson bundling) | **Built, under-activated** — the gap is store presence and onboarding, not engineering |
 | Public content | 210 self-paced lessons, 13 live courses (22-course catalog / 142 sessions in `src/data/academy`), glossary, career guides, library, editorial policy | **Genuinely differentiated** — the lesson voice (see `/blog/sitting-down-at-a-computer`) is the best asset on the site |
 | Proof | Real classroom photography, real address, published fees, founder byline, certificate verification | **Rare for the category**; still under-used in layout |
 | SEO | Canonical host fixed to `www.cea.ng`, static sitemap, per-page head helpers, JSON-LD org/business/website | **Solid**, needs hub/internal-link discipline and indexing ops |
@@ -203,6 +204,7 @@ Forty roles across nine pods. The point of naming all forty is not to hire forty
 | Rule | Test |
 |---|---|
 | **One job per URL** | You can state the page's single job in one sentence, and the page's primary action matches it. |
+| **One address forever** | `/classes` and `/blog` are permanent. A rename needs keyword-demand evidence **and** a tested one-to-one 301 map. The canonical-host indexing incident (`docs/search-console-indexing-2026-10.md`) already cost this site 197 URLs; do not re-open that class of failure for a prettier path name. |
 | **No orphan pages** | Every indexable URL is linked from at least one hub and one sibling. |
 | **No dead ends** | Every page ends with a next step (course, lesson, apply, contact), never a bare footer. |
 | **No empty shells in the index** | If a page needs an API that may fail, it ships a server-rendered fallback with real content, or it is `noindex` until it does. |
@@ -404,7 +406,8 @@ Every phase has a **gate** — a binary test with evidence linked in the gate lo
 - Every indexable public page either has ≥600 words of real substance or is `noindex` until it does (`/library`, `/stories`, `/marketplace`, `/virtual-tour`, `/work`, `/alumni`, `/programs/compare` first in queue).
 - Course pages: deliverable, fee card, weeks, sessions, requirements, schedule, FAQ, "read before you pay" lesson, apply CTA.
 - Proof layer: 24 real photos with captions; founder's letter; staff pages with credentials; certificate verification explained; refunds and privacy rewritten for advertising.
-- Performance pass to budget on 6 templates; axe-clean on 5 templates.
+- **Authoring pipeline (P0):** lesson bodies move to MDX/JSON with a typed schema, plus a CI validator (words, figures, self-check, sources, reviewer, computed reading time, internal links) and a preview route — so a teacher publishes a compliant lesson without touching TypeScript. See `docs/chatgpt-blueprint-review-2026-10-25.md` §2.1.
+- Performance pass to budget on 6 templates; axe-clean on 5 templates. Add Lighthouse CI, axe and a bundle budget to the pipeline (CI currently gates build, lint and backend tests only).
 **Gate 1:** zero thin indexable pages; LCP p75 < 2.5 s; zero serious a11y violations; every claim in the register evidenced.
 
 ### Phase 2 — Authority (weeks 7–12)
@@ -429,6 +432,20 @@ Every phase has a **gate** — a binary test with evidence linked in the gate lo
 **Gate 4:** enrolments 3× baseline; LCP < 1.8 s; ads policy-clean; scorecard average ≥ 4.0/5.
 
 ---
+
+## 10b. Scope guard and procurement rules
+
+### The do-not-build list (until a gate proves otherwise)
+
+A custom LMS · a second mobile app (two exist) · a bespoke video platform · a 3D or cinematic hero · an AI tutor · a new visual identity or palette change · URL restructuring (`/classes` → `/courses`, `/blog` → `/learn`) · replatforming (WordPress or any CMS migration) · mass content expansion before the existing corpus is deepened. Each of these has a plausible champion and no evidence behind it yet.
+
+### If external help is hired
+
+- Pay against **accepted deliverables with evidence**, not calendar dates (e.g. 15% discovery · 20% design approval · 30% working staging · 20% content/SEO/QA · 15% launch handover).
+- Contract for: IP ownership, access transfer, handover documentation, warranty, third-party costs, change-request process.
+- The academy — not the vendor — signs off factual claims (the procurement form of the claims register).
+- No lock-in: CEA owns domain, hosting, repository and all accounts at every point.
+- Reject any proposal whose scope includes work already in this repository: see `docs/chatgpt-blueprint-review-2026-10-25.md` §3.3 before approving a budget.
 
 ## 11. Resourcing: what it actually takes
 
