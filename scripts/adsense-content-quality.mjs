@@ -27,6 +27,18 @@
 
 import { writeFileSync } from "node:fs";
 
+// Native TypeScript type-stripping is only unflagged from Node 22.18 / 23.6.
+// On Node 20 the import below throws ERR_UNKNOWN_FILE_EXTENSION, which reads like a
+// bug in this script rather than a runtime that is too old. Say which it is.
+const [nodeMajor, nodeMinor] = process.versions.node.split(".").map(Number);
+if (nodeMajor < 22 || (nodeMajor === 22 && nodeMinor < 18)) {
+  console.error(
+    `This script imports src/data/blog.ts directly and needs Node >= 22.18 for native ` +
+      `TypeScript type-stripping. Running ${process.versions.node}.`,
+  );
+  process.exit(1);
+}
+
 const { blogPosts } = await import("../src/data/blog.ts");
 
 const csvFlag = process.argv.indexOf("--csv");
