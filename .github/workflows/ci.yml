@@ -37,6 +37,34 @@ jobs:
       - run: npm ci
       - run: npm run build
 
+  editorial:
+    name: Editorial contract (lessons, dates, ad placement)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Full history so generated lesson dates match a developer's clone.
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Regenerate editorial dates
+        run: npm run generate:editorial
+      # Note: publishedAt is derived from git history, so a shallow clone in CI can
+      # legitimately differ from a maintainer's full clone. We regenerate here but do
+      # not assert byte equality; set seriesPublishedAt in lesson-reviews.json to make
+      # corpus dates independent of clone depth.
+      - name: Lesson contract (fails on errors)
+        run: npm run validate:lessons -- --strict
+      - name: Ad placement policy
+        run: npm run check:ads
+      - name: Content quality report
+        run: npm run audit:content
+      - name: Image provenance report (non-blocking)
+        run: npm run audit:images
+
   lint:
     name: Lint
     runs-on: ubuntu-latest

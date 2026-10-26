@@ -29,6 +29,8 @@ const columns = [
     title: "Explore",
     links: [
       { label: "Notes", to: "/blog" },
+      { label: "Editorial standards", to: "/editorial" },
+      { label: "Change log", to: "/editorial/changelog" },
       { label: "Opportunities", to: "/opportunities" },
       { label: "About", to: "/about" },
       { label: "Services", to: "/services" },
@@ -49,6 +51,7 @@ const columns = [
       { label: "Privacy", to: "/privacy" },
       { label: "Terms", to: "/terms" },
       { label: "Accessibility", to: "/accessibility" },
+      { label: "Corrections", to: "/editorial/corrections" },
       { label: "Verify a certificate", to: "/certificates/verify" },
     ],
   },

@@ -99,6 +99,27 @@ Published exemplars: Typing & Computer Basics session 1, and Web Development
 session 1 (`/classes/web-development/semantic-html`) — code samples render as
 selectable `LectureCode` blocks, not images.
 
+## Editorial system (do not weaken)
+
+- `src/data/editorial/` is the editorial record: `lesson-dates.generated.json` (derived,
+  never hand-edited), `lesson-reviews.json` (hand-written reviews only), `changelog.ts`,
+  `corrections.ts`, `policies.ts` (standing notices, including the security ethical-use
+  notice), `image-provenance.json`.
+- **Dates must stay evidenced.** `publishedAt` comes from git or the editorial record;
+  `reviewedAt` comes only from a human. Never bulk-write `dateModified`, never add a
+  reviewer who did not read the page. The lesson page shows "review due" rather than a
+  false review date, and that behaviour is deliberate.
+- Public surfaces: `/editorial` (standards), `/editorial/changelog`, `/editorial/corrections`.
+- Enforced in CI (`editorial` job): `npm run generate:editorial`,
+  `npm run validate:lessons -- --strict`, `npm run check:ads`, `npm run audit:content`,
+  `npm run audit:images`. The lesson contract is what makes "substantial unique value"
+  checkable instead of aspirational.
+- `src/lib/ads/slots.ts` is the ad placement policy as code; `npm run check:ads` fails the
+  build if the allowlist drifts outside reading surfaces or ad code appears elsewhere.
+  Ads never render on `/classes`, `/apply`, `/pay`, legal, verification or signed-in routes.
+- Image provenance: 471 lesson images are currently `unknown` in
+  `docs/image-provenance-report.md`. Resolving them is an owner task, not a coding task.
+
 ## Key Data Files
 - `src/data/site.ts` — programs, engines, FAQs, landing stats
 - `src/data/academy/` — the practical digital skills curriculum: `catalog.ts`

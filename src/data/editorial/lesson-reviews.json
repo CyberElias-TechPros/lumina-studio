@@ -1,0 +1,10 @@
+{
+  "_readme": [
+    "Hand-written editorial record. Nothing here is generated.",
+    "seriesPublishedAt: the date the notes first went live, once you can evidence it.",
+    "lessons: { slug: { publishedAt, reviewedAt, reviewer, note } } \u2014 add an entry only",
+    "after a person has actually read and checked that lesson. A review date is a claim."
+  ],
+  "seriesPublishedAt": null,
+  "lessons": {}
+}

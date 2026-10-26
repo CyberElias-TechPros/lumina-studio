@@ -1,7 +1,60 @@
 # AdSense rejection decoded — what "low value content" actually means for cea.ng
 
 Date: 26 October 2026 · Companion: [`adsense-approval-playbook.md`](./adsense-approval-playbook.md) · [`chatgpt-blueprint-review-2026-10-25.md`](./chatgpt-blueprint-review-2026-10-25.md)
-Tooling: `node scripts/adsense-content-quality.mjs` (measures the corpus; results in §2)
+Tooling: `npm run audit:content`, `npm run validate:lessons`, `npm run audit:images`, `npm run check:ads`
+
+---
+
+## Status — implemented 26 October 2026
+
+The parts of this plan that belong in code are now in code and enforced in CI. The parts
+that need a human are listed separately and are the only things standing between this
+site and a credible reapplication.
+
+| Deliverable | State | Where |
+|---|---|---|
+| Lesson publication/review dates, evidence-gated | ✅ built | `scripts/generate-lesson-editorial.mjs` → `src/data/editorial/lesson-dates.generated.json` |
+| Reviewer byline + "review due" schedule on every lesson | ✅ built | `src/routes/blog.$slug.tsx` |
+| `datePublished` / `dateModified` / `reviewedBy` in schema, only when evidenced | ✅ built | `src/lib` via `lessonEditorialIso()` |
+| Public change log | ✅ published | `/editorial/changelog` |
+| Public corrections log + policy | ✅ published | `/editorial/corrections` |
+| Standing ethical-use notice on security lessons | ✅ built | `src/data/editorial/policies.ts` |
+| Lesson contract validator (depth, figures, captions, images, dates) | ✅ CI gate | `npm run validate:lessons -- --strict` |
+| Ad placement policy as code + guardrail | ✅ CI gate | `src/lib/ads/slots.ts`, `npm run check:ads` |
+| Image provenance registry + report | ✅ built, **unresolved** | `src/data/editorial/image-provenance.json`, `docs/image-provenance-report.md` |
+| Content-quality measurement | ✅ built | `npm run audit:content` |
+| 13 course pages to the §5 standard | ⬜ owner + writers | — |
+| Image provenance for 471 lesson images | ⬜ **owner only** — nobody else can say where they came from | — |
+| Google Business Profile, citations, video, partners | ⬜ owner | — |
+| 60–90 days of interest data | ⬜ runs with the calendar | — |
+
+### How the dates work (and why they cannot be faked)
+
+`publishedAt` is derived from the git commit that first introduced a lesson's slug — a
+fact, not a claim. `reviewedAt` comes only from `src/data/editorial/lesson-reviews.json`,
+which a person edits after actually reading the page. The generator never writes a review.
+
+Two consequences worth knowing:
+
+1. **A publication date is only shown when it can be evidenced.** In a shallow clone the
+   derived date is suppressed rather than displayed, because it describes the checkout,
+   not the publication. To publish one honest date for the whole corpus, set
+   `seriesPublishedAt` in `lesson-reviews.json` once you can evidence it; all 210 lessons
+   then inherit it.
+2. **The lesson page shows a "review due" date instead of a fake review.** That is a
+   forward-looking schedule, and `/editorial/corrections` lists a reviewer only after a
+   review has happened.
+
+### Operating the review cycle
+
+1. Pick lessons in review-due order (`npm run validate:lessons` warns on each).
+2. Read the page, fix what is wrong, and record `{ "reviewedAt": "YYYY-MM-DD", "reviewer": "Name" }`
+   in `lesson-reviews.json`. Add a changelog entry the same week.
+3. Run `npm run generate:editorial && npm run validate:lessons -- --strict`.
+4. If a correction changed an instruction a reader may already have followed, also add a
+   `corrections.ts` entry — that log is permanent.
+
+
 
 ---
 

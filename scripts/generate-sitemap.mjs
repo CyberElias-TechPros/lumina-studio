@@ -18,6 +18,8 @@ const staticRoutes = [
   "/contact",
   "/classes",
   "/editorial",
+  "/editorial/changelog",
+  "/editorial/corrections",
   "/faq",
   "/opportunities",
   "/opportunities/idice-skills-to-jobs",

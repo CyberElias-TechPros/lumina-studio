@@ -100,7 +100,8 @@ const rows = blogPosts.map((post) => {
 
 /* ---------- 1. depth ---------- */
 const sortedWords = [...rows].map((r) => r.words).sort((a, b) => a - b);
-const pct = (p) => sortedWords[Math.min(sortedWords.length - 1, Math.floor(sortedWords.length * p))];
+const pct = (p) =>
+  sortedWords[Math.min(sortedWords.length - 1, Math.floor(sortedWords.length * p))];
 const depth = {
   min: sortedWords[0],
   p10: pct(0.1),
@@ -195,17 +196,32 @@ const repeatedHeadings = [...h2Count.entries()]
 const line = (s) => console.log(s);
 line(`\nAdSense content-quality audit — ${rows.length} published lessons\n${"=".repeat(58)}`);
 line(`\n1. DEPTH (words per lesson, all body text incl. captions)`);
-line(`   min ${depth.min} · p10 ${depth.p10} · median ${depth.median} · p90 ${depth.p90} · max ${depth.max}`);
+line(
+  `   min ${depth.min} · p10 ${depth.p10} · median ${depth.median} · p90 ${depth.p90} · max ${depth.max}`,
+);
 line(`   under 300 words: ${depth.under300} · under 600: ${depth.under600}`);
-line(`   lessons with 0 figures: ${depth.noFigures} · exactly 1: ${depth.oneFigure} · 3+: ${depth.richFigures}`);
+line(
+  `   lessons with 0 figures: ${depth.noFigures} · exactly 1: ${depth.oneFigure} · 3+: ${depth.richFigures}`,
+);
 
 line(`\n2. STRUCTURAL SAMENESS`);
 line(`   distinct block signatures: ${signatures.length} for ${rows.length} lessons`);
-line(`   largest group: ${signatures[0][1]} lessons (${Math.round(modalShare * 100)}%) share one shape`);
-line(`   second/third: ${signatures.slice(1, 3).map(([, n]) => n).join(" / ") || "none"} lessons`);
+line(
+  `   largest group: ${signatures[0][1]} lessons (${Math.round(modalShare * 100)}%) share one shape`,
+);
+line(
+  `   second/third: ${
+    signatures
+      .slice(1, 3)
+      .map(([, n]) => n)
+      .join(" / ") || "none"
+  } lessons`,
+);
 line(`   most predictable block positions:`);
 for (const p of positionProfile.filter((x) => x.share >= 0.85).slice(0, 8)) {
-  line(`     block ${p.position}: ${p.dominant} in ${Math.round(p.share * 100)}% of lessons (n=${p.seen})`);
+  line(
+    `     block ${p.position}: ${p.dominant} in ${Math.round(p.share * 100)}% of lessons (n=${p.seen})`,
+  );
 }
 
 line(`\n3. NEAR-DUPLICATE PAIRS (5-word shingle Jaccard ≥ 0.10)`);
@@ -218,17 +234,23 @@ line(`   pairs at ≥ 0.20 (material overlap): ${over20}`);
 
 line(`\n4. BOILERPLATE (8-word phrases appearing in ≥5% of lessons)`);
 line(`   phrases found: ${boilerplate.length}`);
-for (const b of boilerplate.slice(0, 10)) line(`   ${String(b.lessons).padStart(3)}×  "${b.phrase}"`);
+for (const b of boilerplate.slice(0, 10))
+  line(`   ${String(b.lessons).padStart(3)}×  "${b.phrase}"`);
 
 line(`\n5. OPENING FORMULAS`);
-line(`   lessons opening with an anecdote construction: ${anecdoteOpeners} (${Math.round((anecdoteOpeners / rows.length) * 100)}%)`);
-for (const [text, n] of repeatedOpeners.slice(0, 8)) line(`   ${String(n).padStart(3)}×  "${text}…"`);
+line(
+  `   lessons opening with an anecdote construction: ${anecdoteOpeners} (${Math.round((anecdoteOpeners / rows.length) * 100)}%)`,
+);
+for (const [text, n] of repeatedOpeners.slice(0, 8))
+  line(`   ${String(n).padStart(3)}×  "${text}…"`);
 
 line(`\n6. REPEATED HEADINGS`);
-for (const [text, n] of repeatedHeadings.slice(0, 10)) line(`   ${String(n).padStart(3)}×  "${text}"`);
+for (const [text, n] of repeatedHeadings.slice(0, 10))
+  line(`   ${String(n).padStart(3)}×  "${text}"`);
 
 if (csvPath) {
-  const header = "slug,order,words,paragraphWords,figures,headings,lists,blocks,signature,firstSentence";
+  const header =
+    "slug,order,words,paragraphWords,figures,headings,lists,blocks,signature,firstSentence";
   const rowsCsv = rows
     .slice()
     .sort((a, b) => a.words - b.words)
@@ -251,4 +273,6 @@ if (csvPath) {
 }
 
 line(`\nInterpretation aid: depth is healthy by page. The risk sits in rows 2,`);
-line(`4 and 5 — one shape, one rhythm and one opening formula across the corpus,\nwhich is what "scaled content" and "structural maintenance" refer to.\n`);
+line(
+  `4 and 5 — one shape, one rhythm and one opening formula across the corpus,\nwhich is what "scaled content" and "structural maintenance" refer to.\n`,
+);

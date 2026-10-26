@@ -1,0 +1,1694 @@
+{
+  "generatedBy": "scripts/generate-lesson-editorial.mjs",
+  "method": "publishedAt = git author date that first introduced the lesson slug; reviewedAt = hand-written review record only. No date is invented.",
+  "reviewCycleDays": 180,
+  "shallowHistory": true,
+  "totals": {
+    "lessons": 210,
+    "reviewed": 0,
+    "unreviewed": 210,
+    "unresolvedPublishedAt": 0
+  },
+  "lessons": {
+    "sitting-down-at-a-computer": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "files-and-folders": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "your-hands-on-the-keyboard": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-internet-without-getting-lost": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "your-first-email": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "passwords-you-can-keep": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-link-you-should-not-open": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "printing-without-waste": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "spreadsheets-the-grid-that-counts": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "whatsapp-is-not-email": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "a-letter-that-looks-like-one": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "photos-off-the-phone": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "updates-without-panic": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "backup-before-the-light-goes": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "a-google-account-on-purpose": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "wifi-at-home-without-mystery": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "shutdown-sleep-and-the-power-button": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "filling-a-form-on-a-website": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "a-video-call-without-panic": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "when-the-computer-is-slow": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "installing-a-program-on-purpose": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "uninstalling-what-a-shop-added": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "naira-and-accents": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-recycle-bin-and-i-deleted-it": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "asking-for-help-without-the-password": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "copy-and-paste-between-programs": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "taking-a-screenshot": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "zipping-a-folder-to-email": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "bluetooth-to-a-phone": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "what-a-pdf-is-for": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "a-folder-for-school-or-work": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "renaming-files-without-breaking-them": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "searching-for-a-lost-file": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "start-menu-and-taskbar": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "a-shortcut-is-not-the-file": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "volume-and-headphones": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "brightness-and-night": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "a-second-screen-or-projector": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "usb-devices-that-are-not-flash-drives": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "when-there-is-no-sound": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "charging-without-killing-the-battery": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "heat-and-the-vents": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-webcam-and-who-can-see-you": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "cookies-and-accept-all": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "a-browser-profile-on-a-shared-computer": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "bookmarks-you-can-find-again": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "history-and-private-windows": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-downloads-pile": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-cloud-in-ordinary-words": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "signing-out-of-a-machine-that-is-not-yours": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "tables-in-a-letter": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "mail-merge-you-can-skip": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "calendar-and-reminders": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "contacts-versus-the-phone-book": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "what-a-qr-code-is-doing": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "whatsapp-web-on-a-computer": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "maps-without-getting-lost": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "a-simple-poster": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "shrinking-a-photo-for-email": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "what-a-virus-usually-is": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "two-windows-at-once": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "making-text-larger": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "bullets-and-numbered-lists": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "spell-check-is-a-cousin": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "find-and-replace": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "undo-and-redo": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "selecting-text": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "page-numbers-and-headers": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "cc-bcc-and-reply-all": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "an-email-signature": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "open-with-the-right-program": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "kilobytes-and-megabytes": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-right-click-menu": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "drag-and-drop": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "a-one-page-cv-that-is-honest": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "google-docs-when-there-is-no-word": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "sharing-a-file-without-publishing-it": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "comments-on-a-document": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "sorting-a-spreadsheet-column": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "printing-a-sheet-so-it-fits": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "making-numbers-look-like-money": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "freeze-the-top-row": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "filling-a-formula-down": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "a-simple-weekly-money-list": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "when-the-cell-looks-broken": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "watching-a-video-without-getting-lost": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "captions-pause-and-speed": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "airplane-mode": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "storage-on-the-phone": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "app-permissions": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "locking-the-phone-and-the-laptop": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "if-the-phone-is-stolen": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "do-not-disturb": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-phone-as-a-hotspot": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "wifi-or-mobile-data": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "photographing-a-document": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "scanning-to-pdf-on-the-phone": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "one-time-passwords": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "public-wifi-and-the-bank": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "you-have-won": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "six-more-keystrokes": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-keyboard-on-the-phone": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "talking-to-the-keyboard": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "email-in-your-pocket": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-file-that-goes-up": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "papers-the-bag-cannot-lose": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "before-you-forget-the-password": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-second-lock": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-forward-that-lies": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "paying-for-something-online": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "bank-in-your-hand": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "new-phone-without-losing-your-life": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "selling-the-thing-you-own": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-ride-that-comes-to-you": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "government-things-online": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "learning-online-mostly-free": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-profile-that-finds-work": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-voice-that-borrowed-a-face": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "cleaning-the-digital-house": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "each-one-teach-one": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-cybersecurity-analyst-at-work": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-soc-room": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "siem-in-ordinary-words": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "zero-trust-gate": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "vulnerability-assessment-fence": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "tcp-ip-road": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "digital-signature-meaning": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "frontend-developer-explained": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "machine-learning-engineer-work": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "agile-and-devops": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "careers-in-data-analytics": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "how-to-build-mobile-app-nigeria": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "choosing-where-to-learn-bootcamp": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "it-support-the-person-who-fixes-the-day": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "websites-for-small-businesses": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "social-media-manager-behind-posts": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "graphic-designer-table": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "working-remote-from-here": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "pricing-your-work": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-portfolio-proof": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "your-first-paid-client": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "working-with-ai-assistants": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-books-of-a-one-person-business": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "secrets-that-are-not-yours": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-body-at-the-desk": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "learning-in-public": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "when-a-client-goes-quiet": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "your-first-hand": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "certificates-and-the-track-record": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-working-life": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "checking-results-online": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-family-table": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-cv-that-gets-read": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-interview-on-a-screen": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "slides-that-speak": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "email-that-gets-answered": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "notes-that-last": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-pivot-table-properly": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "health-online": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-upgrade-habit": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "banking-without-the-internet": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-deductions-on-your-line": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "where-the-data-goes": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-atm-and-the-card-manners": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "power-banks-and-surges": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "electricity-units-online": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "booking-a-flight-online": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-vpn-explained": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "loan-apps-the-real-cost": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-money-that-doubles": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "when-the-screen-stays-dark": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-fan-that-screams": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-hard-drive-that-clicks": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "water-on-the-keyboard": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "buying-a-used-laptop": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "chargers-cables-and-the-spark": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-blue-screen-and-the-spinning-circle": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "upgrading-ram-the-honest-math": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-repairs-engineer-and-the-bench": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "ten-years-from-one-machine": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "how-the-internet-arrives": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-router-and-its-lights": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "wi-fi-and-the-cable": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "what-a-megabyte-is": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "when-the-network-is-sick": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "names-on-the-network": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "sharing-on-the-network": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "neighbours-and-your-wifi": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "phone-as-rescue-wire": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-shop-network": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "listening-like-a-technician": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "five-questions-in-order": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "fixing-without-formatting": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-honest-reset": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "backup-for-someone-else": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "setting-up-a-new-computer": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-job-card": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "helping-from-across-town": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "this-is-beyond-me": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "support-as-honest-work": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-assistant-that-types": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "asking-clearly": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "checking-the-homework": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-assistant-at-school": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-assistant-at-work": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "pictures-voices-and-truth": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "your-judgment-stays-yours": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "learning-anything-faster": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "work-that-changes-and-stays": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    },
+    "the-road-ahead": {
+      "publishedAt": "2026-10-22",
+      "publishedAtSource": "git",
+      "reviewedAt": null,
+      "reviewer": null,
+      "reviewDueAt": "2027-04-20",
+      "note": null
+    }
+  }
+}

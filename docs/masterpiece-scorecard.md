@@ -224,7 +224,7 @@ Weighted average of the fifteen dimensions (weights above sum to 100%).
 | G5 | Accessibility pass | axe zero serious/critical on 5 templates + keyboard/TalkBack walkthrough of apply | A11y specialist |
 | G6 | Legal & consent complete | Reviewed policies; consent gated; vendors listed; CMP decision implemented | DPO |
 | G7 | Proof layer live | 3 consented learner deliverables, 24 dated photographs, founder letter, staff bylines | Alumni mgr + art director |
-| G8 | Editorial transparency live | `/editorial` with standards, AI policy, corrections SLA, reviewer names | Editor-in-chief |
+| G8 | Editorial transparency live | `/editorial` with standards, AI policy, corrections SLA, reviewer names. **Editorial machinery shipped 26 Oct 2026** (`/editorial/changelog`, `/editorial/corrections`, evidence-gated dates, CI contract). Remaining: named reviewers recorded as the 180-day cycle runs. | Editor-in-chief |
 | G9 | Indexing hygiene | Zero `noindex` leaks, zero orphan pages, zero broken internal links | SEO manager |
 | G10 | Release discipline | Every deploy has revision proof, rollback tested, 24h watch recorded | DevOps |
 | G11 | Measurement verified | All launch events verified in debug view; one dashboard; weekly triage held 4 weeks running | Analytics lead |

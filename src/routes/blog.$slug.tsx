@@ -11,6 +11,7 @@ import { FounderPhoto } from "@/components/marketing/founder-photo";
 import { adjacentNotes, chapterForOrder, relatedNotes } from "@/data/note-chapters";
 import { getPageHead } from "@/lib/seo";
 import { readingTimeLabel } from "@/lib/blog-reading-time";
+import { lessonEditorial, lessonEditorialIso } from "@/data/editorial";
 import { resolveBlogSlugRedirect } from "@/lib/legacy-redirects";
 import { SITE_URL } from "@/lib/site-url";
 
@@ -25,12 +26,15 @@ export const Route = createFileRoute("/blog/$slug")({
   },
   head: ({ params }) => {
     const post = blogPosts.find((p) => p.slug === params.slug) ?? blogPosts[0];
+    const dates = lessonEditorialIso(post.slug);
     const articleSchema = {
       "@context": "https://schema.org",
       "@type": "Article",
       headline: post.title,
       description: post.excerpt,
       image: `${SITE_URL}${post.cover}`,
+      ...dates,
+      ...(dates.reviewedBy ? { reviewedBy: { "@type": "Person", name: dates.reviewedBy } } : {}),
       author: {
         "@type": "Person",
         name: post.author,
@@ -100,6 +104,7 @@ function Article() {
   const { prev, next } = adjacentNotes(post);
   const chapter = chapterForOrder(post.order);
   const related = relatedNotes(post, 3);
+  const editorial = lessonEditorial(post.slug);
 
   return (
     <PageShell>
@@ -160,6 +165,29 @@ function Article() {
             <span className="flex items-center gap-1.5">
               <Clock className="size-4" /> {readingTimeLabel(post.body)} read
             </span>
+            {editorial.publishedAt && (
+              <span>
+                Published{" "}
+                <time dateTime={editorial.publishedAtIso ?? undefined}>
+                  {editorial.publishedAt}
+                </time>
+              </span>
+            )}
+            {editorial.reviewedAt && (
+              <span>
+                Reviewed by{" "}
+                <span className="text-foreground font-medium">{editorial.reviewer}</span> on{" "}
+                <time dateTime={editorial.reviewedAtIso ?? undefined}>{editorial.reviewedAt}</time>
+              </span>
+            )}
+            {!editorial.reviewedAt && editorial.reviewDueAt && (
+              <span>
+                Review due{" "}
+                <time dateTime={editorial.reviewDueAtIso ?? undefined}>
+                  {editorial.reviewDueAt}
+                </time>
+              </span>
+            )}
             {chapter && (
               <span className="hidden sm:inline">
                 Chapter: <span className="text-foreground font-medium">{chapter.title}</span>
@@ -191,6 +219,9 @@ function Article() {
           <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
             <Link to="/editorial" className="text-primary hover:underline">
               How we maintain these notes
+            </Link>
+            <Link to="/editorial/corrections" className="text-primary hover:underline">
+              Corrections log
             </Link>
             <a
               href={`mailto:help@cea.ng?subject=${encodeURIComponent(`Correction: ${post.title}`)}`}

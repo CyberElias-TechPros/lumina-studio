@@ -34,6 +34,7 @@ import {
   resolvedCourses,
 } from "@/data/academy";
 import { getPageHead } from "@/lib/seo";
+import { standingNoticeFor } from "@/data/editorial/policies";
 import { SITE_URL } from "@/lib/site-url";
 
 export const Route = createFileRoute("/classes/$courseSlug/$sessionSlug")({
@@ -174,6 +175,10 @@ function SessionPage() {
   const next = match?.next;
   const lecture = session?.lecture;
   const reviewed = lecture?.reviewed;
+  const standingNotice = standingNoticeFor({
+    courseSlug: course?.slug,
+    category: course?.category,
+  });
 
   if (!lecture) {
     return (
@@ -337,6 +342,34 @@ function SessionPage() {
             </ol>
           </nav>
         </Reveal>
+
+        {standingNotice && (
+          <aside
+            className="border-primary/30 bg-primary/5 mt-12 rounded-xl border p-6"
+            aria-label={standingNotice.title}
+          >
+            <div className="flex items-start gap-3">
+              <Shield className="text-primary mt-0.5 size-5 shrink-0" aria-hidden="true" />
+              <div>
+                <p className="font-display text-lg font-semibold">{standingNotice.title}</p>
+                <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+                  {standingNotice.body}
+                </p>
+                <ul className="text-muted-foreground mt-3 space-y-1.5 text-sm leading-relaxed">
+                  {standingNotice.points.map((point) => (
+                    <li key={point} className="flex items-start gap-2">
+                      <span
+                        aria-hidden="true"
+                        className="text-primary mt-1.5 block size-1.5 shrink-0 rounded-full bg-current"
+                      />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </aside>
+        )}
 
         {/* Objectives */}
         <section id="objectives" className="mt-14 scroll-mt-28">

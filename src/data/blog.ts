@@ -3359,7 +3359,7 @@ export const blogPosts: BlogPost[] = [
     slug: "what-a-virus-usually-is",
     title: "What “the computer has a virus” usually is",
     excerpt:
-      "A flashing count of infections is usually an advert. A real problem is quieter: a file you cannot open, a browser that will not leave a stranger's page, a program you did not install. Close the scare. Do not call the number on it.",
+      "A flashing count of infections is usually an advert. A real problem is quieter: a file you cannot open, a browser stuck on a stranger's page. Close the scare; never call the number on it.",
     series: SERIES,
     order: 60,
     author: AUTHOR,
