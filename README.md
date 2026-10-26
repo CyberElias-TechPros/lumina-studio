@@ -55,6 +55,11 @@ Every `/v1` route is registered in `backend/src/lib/rbac.ts`; unlisted routes ar
 
 ## Local development
 
+**Node 22.18 or newer.** Several `scripts/*.mjs` files import `src/data/*.ts`
+directly and rely on Node's native TypeScript type-stripping, which is unflagged only
+from 22.18. On Node 20 those scripts exit with an explanation rather than a stack trace,
+and CI runs Node 22 to match.
+
 **Frontend** (mock mode — no backend needed):
 
 ```sh
@@ -92,9 +97,16 @@ cd backend && npm run typecheck
 cd backend && npx vitest run --exclude test/ai.test.ts   # 713 tests, no network
 cd backend && npx vitest run test/ai.test.ts             # live AI suite (needs AI_API_KEY)
 npx playwright test                                      # e2e vs E2E_BASE_URL (default https://cea.ng)
+
+# Editorial and structural gates (all run in CI)
+npm run check:editorial                    # generate dates, lesson contract, ad slots, structure
+npm run audit:content                      # corpus word counts and duplication report
+npm run audit:structure -- --strict        # broken links, sitemap/robots integrity, orphans
+npm run build && npm run audit:courses -- --strict   # course pages, measured from prerendered HTML
+npm run audit:images                       # image provenance report (non-blocking)
 ```
 
-CI (`.github/workflows/ci.yml`) runs frontend typecheck + build, backend typecheck + tests, and the live AI suite when the `AI_API_KEY` secret is configured.
+CI (`.github/workflows/ci.yml`) runs frontend typecheck + build, the editorial and structural gates above, backend typecheck + tests, and the live AI suite when the `AI_API_KEY` secret is configured.
 
 ---
 
