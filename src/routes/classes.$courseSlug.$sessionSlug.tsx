@@ -25,6 +25,7 @@ import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
 import { Reveal } from "@/components/motion";
 import { ContentFreshness } from "@/components/content-freshness";
+import { CourseEndAd } from "@/components/marketing/ad-slots";
 import {
   findCourse,
   findSession,
@@ -916,6 +917,12 @@ function SessionPage() {
         title={`Take ${course.title} in the classroom`}
         description="Reading the notes is the first level. Doing the work with an instructor correcting you in the room is how you reach the third. Two sessions a week, supervised practice, and a certificate awarded on what you produce."
       />
+
+      {/* A session lecture is a reading page, so the course-page slot applies.
+          It goes last, after the enrolment call to action. */}
+      <div className="container-page max-w-3xl pb-14">
+        <CourseEndAd />
+      </div>
     </PageShell>
   );
 }

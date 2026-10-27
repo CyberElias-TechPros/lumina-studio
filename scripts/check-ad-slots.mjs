@@ -9,7 +9,13 @@
  *  4. reserved height exists on every slot (CLS);
  *  5. AdSense/`adsbygoogle` code appears only in the sanctioned loader files;
  *  6. auto ads / anchor / vignette formats are not configured anywhere;
- *  7. the loader still refuses to run without the explicit env flag.
+ *  7. the loader still refuses to run without the explicit env flag;
+ *  8. exactly one primary slot per path family (one network zone = one unit per page);
+ *  9. every declared prefix resolves to a live route and is not a redirect;
+ * 10. no route under a transactional, legal or signed-in surface imports an ad
+ *     component, whatever the registry says. The registry is policy; this is
+ *     enforcement, and the two must agree.
+ * 11. third-party ad code appears only in the two sanctioned files.
  *
  * Exit 1 on any failure. Run in CI.
  */
@@ -28,6 +34,8 @@ const slotBlocks = [...slotsSource.matchAll(/\{\s*id:\s*"([^"]+)"([\s\S]*?)\n  \
   ([, id, rest]) => ({
     id,
     allow: [...rest.matchAll(/"(\/[^"]*)"/g)].map((m) => m[1]),
+    match: /match:\s*"(exact|descendants|prefix)"/.exec(rest)?.[1],
+    primary: /primary:\s*true/.test(rest),
     minHeight: /minHeightPx:\s*(\d+)/.exec(rest)?.[1],
   }),
 );
@@ -62,8 +70,12 @@ for (const slot of slotBlocks) {
 const sanctioned = new Set([
   "src/lib/adsense.ts",
   "src/lib/ads/slots.ts",
+  "src/lib/ads/ngadverts.ts",
   "src/components/marketing/ad-slots.tsx",
+  "src/components/marketing/ngadverts.tsx",
 ]);
+
+const AD_COMPONENT = /components\/marketing\/ad-slots|components\/marketing\/ngadverts/;
 
 function walk(dir, out = []) {
   for (const entry of readdirSync(dir)) {
@@ -107,7 +119,106 @@ if (!/NEXT_PUBLIC_ENABLE_PUBLIC_TRACKING/.test(loader))
   failures.push("adsense loader no longer checks NEXT_PUBLIC_ENABLE_PUBLIC_TRACKING");
 if (!/NO_ADS/.test(loader)) failures.push("adsense loader lost its path exclusion list");
 
-/* ---------- 8: placeholders stay absent ---------- */
+/* ---------- 8: one primary slot per path family ---------- */
+// A path family is a prefix plus its match mode: `/blog` exact is the index,
+// `/blog` descendants is a lesson. Each family may have one primary, because the
+// zone can only fill one container per page without duplicating an element id.
+const primariesByFamily = new Map();
+for (const slot of slotBlocks) {
+  if (!slot.match)
+    failures.push(`slot "${slot.id}": missing \`match\` (exact | descendants | prefix)`);
+  if (!slot.primary) continue;
+  for (const prefix of slot.allow) {
+    const family = `${prefix}#${slot.match}`;
+    const existing = primariesByFamily.get(family);
+    if (existing)
+      failures.push(`slots "${existing}" and "${slot.id}" are both primary for ${family}`);
+    else primariesByFamily.set(family, slot.id);
+  }
+}
+
+/* ---------- 9: declared prefixes resolve to live, non-redirect routes ---------- */
+const manifest = readFileSync(join(root, "src/lib/next-compat/routes.gen.ts"), "utf8");
+const routePaths = [...manifest.matchAll(/\{\s*path:\s*"([^"]+)",\s*file:\s*"([^"]+)"/g)].map(
+  ([, path, file]) => ({ path: path.replace(/(.)\/$/, "$1"), file }),
+);
+const redirectFiles = new Set(
+  routePaths
+    .filter(({ file }) => {
+      try {
+        return /(redirectPublic|throw redirect\()/.test(
+          readFileSync(join(root, "src/routes", file), "utf8"),
+        );
+      } catch {
+        return false;
+      }
+    })
+    .map(({ file }) => file),
+);
+
+for (const slot of slotBlocks) {
+  for (const prefix of slot.allow) {
+    const live = routePaths.filter(
+      (route) =>
+        route.path === prefix || (route.path.startsWith(`${prefix}/`) && route.path !== prefix),
+    );
+    if (!live.length) {
+      failures.push(`slot "${slot.id}": allow prefix "${prefix}" matches no route`);
+      continue;
+    }
+    if (live.every((route) => redirectFiles.has(route.file)))
+      failures.push(`slot "${slot.id}": every route under "${prefix}" is a redirect`);
+  }
+}
+
+/* ---------- 10: no ad import on a surface that must stay clean ---------- */
+const CLEAN_PREFIXES = [
+  "/apply",
+  "/pay",
+  "/payment",
+  "/auth",
+  "/app",
+  "/portal",
+  "/shop",
+  "/merchant",
+  "/contact",
+  "/visit",
+  "/privacy",
+  "/terms",
+  "/refunds",
+  "/shipping",
+  "/accessibility",
+  "/certificates",
+  "/partners",
+  "/request-project",
+  "/editorial",
+];
+
+for (const route of routePaths) {
+  let source;
+  try {
+    source = readFileSync(join(root, "src/routes", route.file), "utf8");
+  } catch {
+    continue;
+  }
+  if (!AD_COMPONENT.test(source)) continue;
+  const path = route.path;
+  if (path === "/") failures.push(`${route.file}: ad component mounted on the homepage`);
+  for (const clean of CLEAN_PREFIXES) {
+    if (path === clean || path.startsWith(`${clean}/`))
+      failures.push(`${route.file}: ad component imported on ${path}, which must stay clean`);
+  }
+}
+
+/* ---------- 11: third-party ad code confinement ---------- */
+for (const file of walk(join(root, "src"))) {
+  const rel = relative(root, file).split("\\").join("/");
+  if (sanctioned.has(rel)) continue;
+  if (/ngadverts\.com|adm-container-|items\.php\?/.test(readFileSync(file, "utf8")))
+    failures.push(`third-party ad code outside the sanctioned files: ${rel}`);
+}
+
+/* ---------- 12: placeholders stay absent ---------- */
 const adSlots = readFileSync(join(root, "src/components/marketing/ad-slots.tsx"), "utf8");
 if (/Advertisement\s*<\/|border-dashed/.test(adSlots))
   failures.push(
@@ -119,7 +230,14 @@ console.log(
   `Ad placement guardrail — ${slotBlocks.length} slot(s) across ${eligible.length} eligible prefixes`,
 );
 for (const slot of slotBlocks)
-  console.log(`  · ${slot.id.padEnd(20)} ${slot.allow.join(", ").padEnd(28)} ≥${slot.minHeight}px`);
+  console.log(
+    `  · ${slot.id.padEnd(18)} ${slot.allow.join(", ").padEnd(10)} ${(slot.match ?? "?").padEnd(12)} ` +
+      `${slot.primary ? "primary  " : "alternate"} ≥${slot.minHeight}px`,
+  );
+const primaryCount = slotBlocks.filter((slot) => slot.primary).length;
+console.log(
+  `  ${primaryCount} primary unit(s) — one live zone, so at most one unit renders per page.`,
+);
 
 if (failures.length) {
   console.error(`\n${failures.length} problem(s):`);

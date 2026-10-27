@@ -20,7 +20,8 @@ site and a credible reapplication.
 | Public corrections log + policy | ✅ published | `/editorial/corrections` |
 | Standing ethical-use notice on security lessons | ✅ built | `src/data/editorial/policies.ts` |
 | Lesson contract validator (depth, figures, captions, images, dates) | ✅ CI gate | `npm run validate:lessons -- --strict` |
-| Ad placement policy as code + guardrail | ✅ CI gate | `src/lib/ads/slots.ts`, `npm run check:ads` |
+| Ad placement policy as code + guardrail | ✅ CI gate | `src/lib/ads/slots.ts`, `npm run check:ads` (registry shape + 36-path behaviour table) |
+| ngadverts zone 13225 renderer, consent-gated, one unit per page | ✅ built | `src/components/marketing/ngadverts.tsx`, `src/lib/ads/ngadverts.ts` |
 | Image provenance registry + report | ✅ built, **unresolved** | `src/data/editorial/image-provenance.json`, `docs/image-provenance-report.md` |
 | Content-quality measurement | ✅ built | `npm run audit:content` |
 | Structural maintenance: links, sitemap, robots, orphans | ✅ CI gate | `scripts/audit-site-structure.mjs`, `npm run audit:structure -- --strict` |

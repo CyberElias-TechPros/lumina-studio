@@ -28,7 +28,7 @@
     "generate:editorial": "node scripts/generate-lesson-editorial.mjs",
     "validate:lessons": "node scripts/validate-lessons.mjs",
     "audit:images": "node scripts/audit-image-provenance.mjs",
-    "check:ads": "node scripts/check-ad-slots.mjs",
+    "check:ads": "node scripts/check-ad-slots.mjs && node scripts/test-ad-placement.mjs",
     "audit:structure": "node scripts/audit-site-structure.mjs",
     "audit:courses": "node scripts/audit-course-pages.mjs",
     "check:editorial": "npm run generate:editorial && npm run validate:lessons -- --strict && npm run check:ads && npm run audit:structure -- --strict"

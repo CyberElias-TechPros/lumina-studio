@@ -170,7 +170,7 @@ Implementation must make this structural, not a matter of memory: the ad compone
 
 ---
 
-## 5. Ad implementation spec (after approval only)
+## 5. Ad implementation spec (built, off until approval)
 
 | Concern | Requirement |
 |---|---|
@@ -188,6 +188,28 @@ Implementation must make this structural, not a matter of memory: the ad compone
 | Privacy | Ad personalisation signalled by consent; non-personalised fallback for non-consenting users |
 
 **Do not:** click your own ads (ever, including "to test"), ask learners or staff to click, offer anything in exchange for clicking, buy traffic to ad pages, use pop-unders, refresh units, or place ads near download/apply buttons.
+
+### 5.1 Implemented — ngadverts zone 13225 (October 2026)
+
+The network snippet is a container div plus a third-party script. It is implemented in
+`src/components/marketing/ngadverts.tsx` and configured in `src/lib/ads/ngadverts.ts`, and it obeys the
+rules above rather than the network's "place it everywhere" default:
+
+| Constraint | Why | Where |
+|---|---|---|
+| One unit per page | The zone id is baked into the container id (`adm-container-13225`). Two instances duplicate an element id and compete for one fill. A second unit needs a second zone id. | `MAX_UNITS_PER_PAGE` in `src/lib/ads/slots.ts` |
+| Rendered only on the declared primary slot | The registry decides the position, not the call site | `primarySlotForPath()` |
+| Lessons: after the second section · Index: after the cards · Course and session pages: below the FAQs, the apply panel and the closing CTA | Ads never above the content, never between a question and its answer, never adjacent to Apply | `AD_SLOTS` |
+| Never on `/apply`, `/pay`, `/payment`, `/shop`, `/contact`, `/visit`, `/certificates`, legal pages, `/editorial`, `/app`, `/portal` | Prohibited or revenue-negative | `AD_INELIGIBLE_PREFIXES`, plus an import-level check in `check-ad-slots.mjs` |
+| Client-side only, and only after optional-cookie consent | The script is a direct third-party download; nothing to fetch is better than fetching before permission | `AdUnit` |
+| Reserved height, collapses to nothing if unfilled within 12s | No layout shift, and no empty box that reads as a broken site | `minHeightPx`, `FILL_TIMEOUT_MS` |
+| Labelled "Advertisement" | A unit that is not obviously an advert is a policy problem in every market | `AdUnit` |
+
+`npm run check:ads` enforces the registry's shape **and** its decisions: `scripts/check-ad-slots.mjs`
+rejects a second primary per path family, a declared prefix that matches no live route or only
+redirects, an ad import inside a transactional or signed-in route, and third-party ad code outside the
+two sanctioned files. `scripts/test-ad-placement.mjs` asks the real resolver about 36 paths,
+including every surface that must stay clean. Neither needs a browser.
 
 ---
 

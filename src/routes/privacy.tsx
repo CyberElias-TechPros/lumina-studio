@@ -140,11 +140,20 @@ function PrivacyPage() {
           </Reveal>
 
           <Reveal delay={0.25}>
-            <h2 className="font-display text-2xl font-bold">6. Advertising (Google AdSense)</h2>
+            <h2 className="font-display text-2xl font-bold">6. Advertising</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              This site uses Google AdSense. Google uses cookies, including the DoubleClick cookie,
-              to serve ads based on your visit here and on other sites. We do not load the AdSense
-              script on Privacy, Terms, Accessibility, Apply, or signed-in pages.
+              This site can show advertising from two networks: <strong>Google AdSense</strong>{" "}
+              (publisher <code>ca-pub-9117572925263537</code>) and <strong>ngadverts</strong> (zone
+              13225), a Nigerian ad network. Google uses cookies, including the DoubleClick cookie,
+              to serve ads based on your visit here and on other sites. The ngadverts unit is not
+              requested at all unless you accept optional cookies in the banner.
+            </p>
+            <p className="text-muted-foreground mt-4 leading-relaxed">
+              Adverts appear only on pages whose job is reading: lessons, the lesson index, and the
+              bottom of a course page after the enrolment panel. They do not appear on application,
+              payment, checkout, contact, visit, legal, verification or signed-in pages, and they
+              are never placed inside a form or above the content you came for. If you decline
+              optional cookies, the site works exactly as it does otherwise, without those scripts.
             </p>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Opt out of personalised ads at{" "}

@@ -62,7 +62,9 @@ jobs:
       # corpus dates independent of clone depth.
       - name: Lesson contract (fails on errors)
         run: npm run validate:lessons -- --strict
-      - name: Ad placement policy
+      # Registry shape (check-ad-slots) plus a behavioural table of 36 paths
+      # (test-ad-placement) — including every surface that must never carry a unit.
+      - name: Ad placement policy and behaviour
         run: npm run check:ads
       - name: Content quality report
         run: npm run audit:content
