@@ -1,0 +1,14 @@
+{
+  "_readme": [
+    "Hand-written editorial record. Nothing here is generated.",
+    "lessons: { slug: { publishedAt, precision, reviewedAt, reviewer, note } }",
+    "  precision 'exact'  -> the date is displayed and emitted as schema datePublished. Use this",
+    "                        for anything published from 26 October 2026 onward, when we began",
+    "                        keeping this record.",
+    "  precision 'estimated' -> ordered only; never displayed as a publication claim.",
+    "reviewedAt: add only after a person has actually read and checked the lesson."
+  ],
+  "seriesPublishedAt": null,
+  "lessons": {},
+  "lessonRecordsNote": "See _readme."
+}

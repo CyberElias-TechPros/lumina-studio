@@ -40,14 +40,24 @@ export function initGA4(measurementId: string) {
   script.addEventListener("load", config);
 }
 
+/** Consent changes mid-session; ad units listen for this rather than polling. */
+export const CONSENT_EVENT = "cea:consent";
+
+function announceConsent(state: string) {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(new CustomEvent(CONSENT_EVENT, { detail: state }));
+}
+
 export function grantConsent() {
   localStorage.setItem(CONSENT_KEY, "granted");
   const id = process.env.NEXT_PUBLIC_GA4_ID;
   if (id) initGA4(id);
+  announceConsent("granted");
 }
 
 export function denyConsent() {
   localStorage.setItem(CONSENT_KEY, "denied");
+  announceConsent("denied");
 }
 
 export function getConsent() {

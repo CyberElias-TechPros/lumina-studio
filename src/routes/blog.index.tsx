@@ -8,6 +8,7 @@ import { ArrowRight, BookOpen, ChevronLeft, ChevronRight, Search, X } from "luci
 import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
 import { NoteCard } from "@/components/marketing/note-card";
+import { BlogIndexAd } from "@/components/marketing/ad-slots";
 import { blogPosts } from "@/data/blog";
 import { noteChapters, notesInChapter } from "@/data/note-chapters";
 import {
@@ -316,6 +317,8 @@ function Blog() {
           {totalPages > 1 && (
             <Pagination current={current} total={totalPages} onChange={goToPage} />
           )}
+
+          <BlogIndexAd />
         </div>
       </div>
 

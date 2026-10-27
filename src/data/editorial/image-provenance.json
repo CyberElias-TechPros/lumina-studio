@@ -1,0 +1,18 @@
+{
+  "_doc": "Provenance registry for public/images. Everything not covered here is reported as unknown. Statuses: owned (photographed by the Academy), generated (AI/tooling, terms recorded), licensed (third-party licence recorded), owner-supplied (file delivered by the Academy; rights still to confirm).",
+  "directories": [
+    {
+      "prefix": "/images/team/",
+      "status": "owner-supplied",
+      "holder": "Cyber Elias Academy",
+      "note": "Delivered by the founder through scripts/import-ebony-photos.sh from the Academy's own uploads. Rights confirmable: these are the Academy's own staff portraits."
+    },
+    {
+      "prefix": "/images/campus/",
+      "status": "owner-supplied",
+      "holder": "Cyber Elias Academy",
+      "note": "Classroom photographs delivered by the founder (same import script) and described in AGENTS.md/README as the Academy's own campus photographs."
+    }
+  ],
+  "files": {}
+}

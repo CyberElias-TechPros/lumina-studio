@@ -56,6 +56,20 @@ function EditorialStandards() {
           >
             Meet the team <ArrowRight className="size-4" />
           </Link>
+          <div className="border-border mt-5 space-y-2 border-t pt-4">
+            <Link
+              to="/editorial/changelog"
+              className="text-primary block text-sm font-semibold hover:underline"
+            >
+              Change log
+            </Link>
+            <Link
+              to="/editorial/corrections"
+              className="text-primary block text-sm font-semibold hover:underline"
+            >
+              Corrections log
+            </Link>
+          </div>
         </aside>
 
         <div className="space-y-12">
@@ -118,6 +132,14 @@ function EditorialStandards() {
             >
               Email the editorial team <Mail className="size-4" />
             </a>
+            <div className="border-border mt-6 flex flex-wrap gap-x-6 gap-y-2 border-t pt-5 text-sm font-medium">
+              <Link to="/editorial/changelog" className="text-primary hover:underline">
+                Change log — what we add, revise and retire
+              </Link>
+              <Link to="/editorial/corrections" className="text-primary hover:underline">
+                Corrections and review record
+              </Link>
+            </div>
           </section>
 
           <section className="border-border rounded-xl border bg-muted/25 p-6">

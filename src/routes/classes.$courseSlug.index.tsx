@@ -31,6 +31,7 @@ import {
 import { getPageHead } from "@/lib/seo";
 import { TUITION_POLICY } from "@/data/academy/tuition-policy";
 import { CourseIntake } from "@/components/enrollment/course-intake";
+import { CourseEndAd } from "@/components/marketing/ad-slots";
 import { SITE_URL } from "@/lib/site-url";
 
 export const Route = createFileRoute("/classes/$courseSlug/")({
@@ -556,6 +557,12 @@ function CoursePage() {
         }
         secondary={{ label: "View all courses", to: "/classes" }}
       />
+
+      {/* Last block on the page: below the FAQ, below the apply panel, below the
+          closing call to action. It cannot compete with enrolment from there. */}
+      <div className="container-page max-w-3xl pb-14">
+        <CourseEndAd />
+      </div>
     </PageShell>
   );
 }

@@ -45,6 +45,24 @@ const visitTypes = [
   },
 ];
 
+const visitLinks = [
+  {
+    to: "/visit/info",
+    label: "How to find us",
+    desc: "Address, landmark, opening hours and what a first visit looks like.",
+  },
+  {
+    to: "/visit/brochure",
+    label: "Course list",
+    desc: "The full class list by department, sent to your email if you want it.",
+  },
+  {
+    to: "/visit/feedback",
+    label: "Visit feedback",
+    desc: "A short form for anything that was unclear or wrong during your visit.",
+  },
+] as const;
+
 function VisitPage() {
   const [type, setType] = useState("look");
   const [booked, setBooked] = useState(false);
@@ -208,6 +226,31 @@ function VisitPage() {
           </div>
         </section>
       )}
+
+      <section className="border-t">
+        <div className="mx-auto max-w-5xl px-4 py-12">
+          <h2 className="font-display text-xl font-semibold">Before you come</h2>
+          <p className="text-muted-foreground mt-2 max-w-2xl text-sm leading-relaxed">
+            Directions for the Ebony Road campus, the course list if you would rather read first,
+            and the form for telling us how the visit went.
+          </p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            {visitLinks.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className="hover:border-primary/50 group rounded-xl border p-4 transition-colors"
+              >
+                <p className="flex items-center gap-1.5 font-medium">
+                  {item.label}
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                </p>
+                <p className="text-muted-foreground mt-1 text-sm leading-relaxed">{item.desc}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <CTASection
         title="Or apply from here"

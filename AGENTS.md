@@ -99,6 +99,36 @@ Published exemplars: Typing & Computer Basics session 1, and Web Development
 session 1 (`/classes/web-development/semantic-html`) — code samples render as
 selectable `LectureCode` blocks, not images.
 
+## Editorial system (do not weaken)
+
+- `src/data/editorial/` is the editorial record: `lesson-dates.generated.json` (derived,
+  never hand-edited), `lesson-reviews.json` (hand-written reviews only), `changelog.ts`,
+  `corrections.ts`, `policies.ts` (standing notices, including the security ethical-use
+  notice), `image-provenance.json`.
+- **Dates must stay evidenced.** A publication date is displayed and emitted in schema
+  **only** when `precision: "exact"`. The Academy does not hold per-lesson publication days
+  for lessons released before 26 Oct 2026, so the site says "released in the 2026 notes
+  series" and shows no per-lesson day. `publication-schedule.json` is an *estimate* used
+  only to order the review rotation (`"precision": "estimated"`); it must never be displayed
+  or emitted. New lessons record their real day at publication with `precision: "exact"`.
+  `reviewedAt` comes only from a human. Never bulk-write `dateModified`, never back-date,
+  never add a reviewer who did not read the page. A wrong date is a misrepresentation, not
+  a formatting choice.
+- **The review clock starts at policy adoption** (`REVIEW_POLICY_STARTED` in
+  `scripts/generate-lesson-editorial.mjs`), not at publication, and the first cycle is
+  staggered into a weekly rotation. Do not "fix" an overdue-looking date by inventing a
+  review.
+- Public surfaces: `/editorial` (standards), `/editorial/changelog`, `/editorial/corrections`.
+- Enforced in CI (`editorial` job): `npm run generate:editorial`,
+  `npm run validate:lessons -- --strict`, `npm run check:ads`, `npm run audit:content`,
+  `npm run audit:images`. The lesson contract is what makes "substantial unique value"
+  checkable instead of aspirational.
+- `src/lib/ads/slots.ts` is the ad placement policy as code; `npm run check:ads` fails the
+  build if the allowlist drifts outside reading surfaces or ad code appears elsewhere.
+  Ads never render on `/classes`, `/apply`, `/pay`, legal, verification or signed-in routes.
+- Image provenance: 471 lesson images are currently `unknown` in
+  `docs/image-provenance-report.md`. Resolving them is an owner task, not a coding task.
+
 ## Key Data Files
 - `src/data/site.ts` — programs, engines, FAQs, landing stats
 - `src/data/academy/` — the practical digital skills curriculum: `catalog.ts`

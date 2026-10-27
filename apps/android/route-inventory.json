@@ -1362,6 +1362,14 @@
       "source": "src/routes/editorial.tsx"
     },
     {
+      "route": "/editorial/changelog",
+      "source": "src/routes/editorial.changelog.tsx"
+    },
+    {
+      "route": "/editorial/corrections",
+      "source": "src/routes/editorial.corrections.tsx"
+    },
+    {
       "route": "/engines",
       "source": "src/routes/engines.tsx"
     },

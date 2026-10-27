@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0",
-    "predev": "node scripts/generate-next-routes.mjs",
-    "prebuild": "node scripts/generate-library-data.mjs && node scripts/generate-merchant-feeds.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-next-routes.mjs",
+    "predev": "node scripts/generate-lesson-editorial.mjs && node scripts/generate-next-routes.mjs",
+    "prebuild": "node scripts/generate-lesson-editorial.mjs && node scripts/generate-library-data.mjs && node scripts/generate-merchant-feeds.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-next-routes.mjs",
     "build": "next build",
     "build:dev": "next build",
     "start": "next start --hostname 0.0.0.0",
@@ -23,7 +23,15 @@
     "test:staging-config": "node --test scripts/test/staging-config.test.mjs",
     "test:service-worker": "node --test scripts/test/service-worker.test.mjs",
     "deps:sync-bun": "node scripts/sync-bun-lock.mjs",
-    "deps:check": "node scripts/sync-bun-lock.mjs --check"
+    "deps:check": "node scripts/sync-bun-lock.mjs --check",
+    "audit:content": "node scripts/adsense-content-quality.mjs",
+    "generate:editorial": "node scripts/generate-lesson-editorial.mjs",
+    "validate:lessons": "node scripts/validate-lessons.mjs",
+    "audit:images": "node scripts/audit-image-provenance.mjs",
+    "check:ads": "node scripts/check-ad-slots.mjs && node scripts/test-ad-placement.mjs",
+    "audit:structure": "node scripts/audit-site-structure.mjs",
+    "audit:courses": "node scripts/audit-course-pages.mjs",
+    "check:editorial": "npm run generate:editorial && npm run validate:lessons -- --strict && npm run check:ads && npm run audit:structure -- --strict"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
