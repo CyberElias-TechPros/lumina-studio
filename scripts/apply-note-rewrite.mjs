@@ -52,11 +52,7 @@ function blockText(block) {
 }
 
 function words(item) {
-  return item.body
-    .map(blockText)
-    .join(" ")
-    .split(/\s+/)
-    .filter(Boolean).length;
+  return item.body.map(blockText).join(" ").split(/\s+/).filter(Boolean).length;
 }
 
 function quote(text) {
@@ -121,7 +117,8 @@ for (const { item, file } of rewrites) {
       if (!block.src?.startsWith("/")) problems.push(`${where}: figure src must start with /`);
       else if (!existsSync(join(root, "public", block.src)))
         problems.push(`${where}: missing image ${block.src}`);
-      if (!block.alt || block.alt.trim().length < 8) problems.push(`${where}: figure needs alt text`);
+      if (!block.alt || block.alt.trim().length < 8)
+        problems.push(`${where}: figure needs alt text`);
       if (!block.caption || block.caption.trim().length < 12)
         problems.push(`${where}: figure needs a caption`);
     }
@@ -135,7 +132,8 @@ for (const { item, file } of rewrites) {
 
   if (item.excerpt) {
     if (item.excerpt.length < 40) problems.push(`${where}: excerpt too short`);
-    if (item.excerpt.length > 220) problems.push(`${where}: excerpt ${item.excerpt.length} chars (max 220)`);
+    if (item.excerpt.length > 220)
+      problems.push(`${where}: excerpt ${item.excerpt.length} chars (max 220)`);
   }
 
   if (item.title) {
@@ -246,7 +244,9 @@ writeFileSync(BLOG_FILE, output, "utf8");
 
 console.log(`Rewrote ${report.length} lesson(s) in src/data/blog.ts`);
 for (const row of report)
-  console.log(`  · ${String(row.order).padStart(3, " ")}. ${row.slug} — ${row.words} words, ${row.figures} figure(s)`);
+  console.log(
+    `  · ${String(row.order).padStart(3, " ")}. ${row.slug} — ${row.words} words, ${row.figures} figure(s)`,
+  );
 
 const shortest = Math.min(...report.map((r) => r.words));
 console.log(`\nShortest rewrite: ${shortest} words. Next: npm run validate:lessons`);

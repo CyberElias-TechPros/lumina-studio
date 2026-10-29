@@ -149,9 +149,7 @@ function wordsOf(text) {
 function syllables(word) {
   const clean = word.toLowerCase().replace(/[^a-z]/g, "");
   if (clean.length <= 3) return 1;
-  const trimmed = clean
-    .replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, "")
-    .replace(/^y/, "");
+  const trimmed = clean.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, "").replace(/^y/, "");
   const groups = trimmed.match(/[aeiouy]{1,2}/g);
   return Math.max(1, groups ? groups.length : 1);
 }
