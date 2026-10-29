@@ -1,0 +1,761 @@
+[
+  {
+    "slug": "listening-like-a-technician",
+    "excerpt": "The first repair tool is a question and a pause: how to hear what actually happened, take notes that survive the week, and explain without jargon.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches the first repair skill, which is listening. You will learn the questions that find a fault, how to take notes you can use a week later, and how to explain a fix in words the owner understands."
+      },
+      {
+        "type": "p",
+        "text": "People describe a fault as a feeling before they describe it as a fact. A machine that is slow, a page that will not open, a phone that is behaving strangely: each of those is a story with a detail inside it."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A notebook and a pen.",
+          "Twenty minutes with the person, if you can arrange it.",
+          "The machine, switched on."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Open the conversation"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Ask the person to show you what happens, rather than to describe it.",
+          "Let them finish the sentence without correcting the words they use.",
+          "Repeat the problem back in your own words and check it.",
+          "Ask when it started, and what happened before it.",
+          "Ask whether anything was installed, moved, or unplugged.",
+          "Say what you are about to do before you touch anything."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the person relax a little once they hear the problem repeated correctly. That moment is when they stop worrying about being blamed and start helping you."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/listening-to-customer-notebook.jpg",
+        "alt": "A technician listening to a customer while holding a notebook.",
+        "caption": "Ask, then pause. The pause is where most of the useful detail arrives."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a technician should start with the machine. Starting with the person's account saves more time than any diagnostic tool on the first visit."
+      },
+      {
+        "type": "h2",
+        "text": "The words people use"
+      },
+      {
+        "type": "p",
+        "text": "Translate as you listen, and never make the person feel small for the words they chose."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "It is slow: ask for a number. Slow to start, slow on one site, or slow all day.",
+          "It is not charging: ask whether the light on the charger comes on.",
+          "It is not connecting: ask whether the wifi name appears in the list.",
+          "It is hot: ask when it started and whether the fan runs.",
+          "It has a virus: ask what appeared on the screen.",
+          "It deleted my work: ask which program was open when it happened."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "A screen described by the owner will often contain the answer, such as a message with a number, a warning with a date, or a name that does not belong. Ask for a photograph of it rather than a description."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/notebook-job-notes-handwriting.jpg",
+        "alt": "Handwritten job notes in a notebook with a pen.",
+        "caption": "Write while you listen. A date, a symptom, and one quote will bring the whole visit back."
+      },
+      {
+        "type": "h2",
+        "text": "Notes that survive the week"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Write the date and the person's name at the top.",
+          "Write the machine, the model, and the serial if you can see it.",
+          "Record the symptom in the owner's words, in quotes.",
+          "Record what you changed, one line per change.",
+          "Record what you did not change, which is equally useful later.",
+          "Record what to check first if it returns."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Your notebook will become the record that lets you return to a job after a month and pick up where you stopped. That continuity is what separates a technician from a helper."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about writing neatly. Nobody is judging the handwriting, and the person beside you is more likely to trust a technician who writes things down."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here is about a conversation rather than a circuit."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The person cannot describe the fault: ask them to reproduce it and watch.",
+          "They say everything is broken: pick the one fault that bothers them most.",
+          "They are embarrassed: say how common the problem is, then move on.",
+          "They want a promise before you look: say what you will check first.",
+          "They are angry about an earlier repair: ask what was promised and write it down.",
+          "You cannot reproduce the fault: note the conditions, and leave a way to contact you."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Practise the first two minutes on somebody who is not paying you."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Ask a friend about a problem with their phone.",
+          "Let them finish before you ask anything.",
+          "Repeat the problem back in one sentence.",
+          "Write three notes, including one quote.",
+          "Ask them whether you understood it."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now start a repair with a question rather than a screwdriver. In the next lesson you will use the five questions in a fixed order."
+      }
+    ]
+  },
+  {
+    "slug": "five-questions-in-order",
+    "excerpt": "A repeatable diagnostic order: what changed, when it started, who else is affected, what has been tried, and whether it is one app or everything.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson gives you five questions in a fixed order. You will learn what each one narrows, why the order matters, and how the answers turn a vague complaint into a testable fault."
+      },
+      {
+        "type": "p",
+        "text": "A fault has a shape, and five questions find its edges. The order goes from the widest fact to the narrowest, so each answer costs less work than the one before it."
+      },
+      {
+        "type": "p",
+        "text": "Nobody is born knowing which question to ask first, and asking them out loud is how most technicians learn. Take your time with the answers, since a careful five minutes here saves an hour later."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A notebook and a pen.",
+          "The machine, or the person who owns it.",
+          "About twenty minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "The five questions"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "What changed? An update, a new program, a move, a power cut.",
+          "When did it start, and is it constant or occasional?",
+          "Who else is affected? One person, one device, one room, or the whole building.",
+          "What has been tried already? Restarts, reinstalls, cables, a different charger.",
+          "Is it one app or everything? A single program or the whole machine."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the fault shrink as the answers arrive. A problem that began after an update, affects one device, and touches every app is a different job from one that began weeks ago and only affects one site."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/checklist-notebook-pen.jpg",
+        "alt": "A checklist written in a notebook beside a pen.",
+        "caption": "Five lines and a space for answers. The list is short enough to remember and long enough to work."
+      },
+      {
+        "type": "p",
+        "text": "It looks like experience lets a technician skip the questions. Experience is what tells you which answer to trust, and the questions are how you get it."
+      },
+      {
+        "type": "h2",
+        "text": "What each answer narrows"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A change before the fault points at the change, and undoing it is the first test.",
+          "A sudden start points at an event, and a slow decline points at wear or a filling disk.",
+          "One device affected points at that device, and several point at the network or the provider.",
+          "Something already tried should not be repeated, which saves an hour.",
+          "One app affected points at the app or its settings, not the operating system."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "A page's error message will often name the program or the site that failed, and that name places the fault. Reading the message aloud with the owner is the fastest way to agree on what is broken."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/two-people-at-laptop-pointing.jpg",
+        "alt": "Two people looking at a laptop screen and pointing at something on it.",
+        "caption": "Point at the same message. Agreement about the symptom is half of the diagnosis."
+      },
+      {
+        "type": "h2",
+        "text": "Turning answers into a test"
+      },
+      {
+        "type": "p",
+        "text": "Each test should be able to fail, and each result should remove one possibility."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Try another browser or another device, which rules the network in or out.",
+          "Try the same action in a new user account, which rules the profile in or out.",
+          "Start in safe mode, which rules out most add-on software.",
+          "Undo the last change, which tests the change directly.",
+          "Write the result beside the question it answered.",
+          "Stop when one test explains every symptom."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The notebook will show five questions with a line under each, and the answer will appear beside the question that produced it. That page becomes the repair plan, and later the record of what you did."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about asking questions the owner finds obvious. The owner is the only person who knows what changed, and they are usually glad to be asked."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a next question, and the list keeps working when an answer is missing."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The owner remembers nothing: ask about the last working day and work forward.",
+          "They insist nothing changed: ask about updates, which change on their own.",
+          "Several devices fail at once: test the line before the machines.",
+          "The fault comes and goes: leave a way to note it when it returns, with the time.",
+          "A test gives no result: the test was unfair, so change one thing and repeat it.",
+          "You run out of ideas: return to the questions, since one answer is usually wrong."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Run the five questions on one real fault this week."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Write the five questions in your notebook, leaving space under each.",
+          "Ask them about one fault, in order.",
+          "Write the answer beside each question.",
+          "Choose one test from the answers.",
+          "Record the result and the time it took."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now run the same diagnosis on any machine. In the next lesson you will try to fix a machine without wiping it."
+      }
+    ]
+  },
+  {
+    "slug": "fixing-without-formatting",
+    "excerpt": "Before the wipe: safe mode, a new user account, a restore point, and a boot repair, and how to tell when a reinstall is genuinely the answer.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is about fixing a computer without wiping it. You will learn the checks that come before a reinstall, why a new user account solves so much, and how to know when a wipe is the honest answer."
+      },
+      {
+        "type": "p",
+        "text": "A reinstall takes an afternoon and returns the machine to its first day, which also means losing the person's settings. Most faults have a smaller fix, and the smaller fix should come first."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The machine, and the owner's permission to change things.",
+          "A flash drive with the installer, kept for later.",
+          "About two hours."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "The checks, in order"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Restart once properly, since a full restart clears more than people expect.",
+          "Start in safe mode, which loads the system without the extra software.",
+          "Create a new user account and test there, which separates the person from the machine.",
+          "Use a restore point from before the fault, if one exists.",
+          "Repair the startup files from the recovery menu.",
+          "Update the driver for the device that is failing.",
+          "Run a disk check if the machine freezes or clicks."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see safe mode draw the screen with large icons and no wallpaper, which looks old and is normal. If everything works there, the fault is in the software that loads afterwards."
+      },
+      {
+        "type": "p",
+        "text": "You will learn more from one honest test than from three guesses. If you see the machine behave in safe mode, you have already found the half of the system that is innocent."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/safe-mode-laptop-evening.jpg",
+        "alt": "A laptop starting in safe mode in the evening.",
+        "caption": "Safe mode with large icons and a plain background. A working safe mode narrows the fault to the add-on software."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a slow machine needs a new installation. A new user account often restores the speed of a machine that is not actually old."
+      },
+      {
+        "type": "h2",
+        "text": "The new user account, explained"
+      },
+      {
+        "type": "p",
+        "text": "A profile collects settings, startup programs, and saved state. When a profile corrupts, the machine misbehaves while the hardware is fine."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Create a new local account with a simple name.",
+          "Sign in and test the fault there.",
+          "If the fault is gone, copy the person's files across.",
+          "Move favourites, documents, and desktop files by hand.",
+          "Set up their email and printers again.",
+          "Keep the old profile for a week before deleting it."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The sign-in screen will show the new account beside the old one, and the choice is the test. A fault that follows the person rather than the machine is a profile fault."
+      },
+      {
+        "type": "p",
+        "text": "You can try this yourself on any machine, and it costs nothing but time. Create a test account, sign in, and see whether the fault follows you. If it does not, you have your answer without touching a single file."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/usb-flash-in-laptop-side.jpg",
+        "alt": "A USB flash drive plugged into the side of a laptop.",
+        "caption": "The installer drive, kept ready. Having it on hand turns a reinstall from an emergency into a planned job."
+      },
+      {
+        "type": "h2",
+        "text": "When a wipe is the answer"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The disk is failing and the data has been copied off.",
+          "The system files are damaged beyond repair and recovery fails.",
+          "Malware has returned after repeated cleaning and the machine is used for payments.",
+          "The machine is being sold or handed on and must be clean.",
+          "The owner wants a fresh start and has agreed to the loss.",
+          "Nothing else has worked and the owner understands the cost."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs special tools beyond the installer drive. Patience with the smaller fixes saves the owner their settings and saves you an afternoon."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about asking for more time. Most owners prefer a slower repair that keeps their files to a fast one that loses them."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a route back, and the data comes first in all of them."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Safe mode fails too: the fault is in the system, so try a restore point.",
+          "No restore point exists: turn the feature on once the machine is healthy.",
+          "The new account cannot reach the old files: take ownership of the folder.",
+          "The repair menu will not open: the boot files are damaged, so use the installer drive.",
+          "A driver update breaks the display: start in safe mode and roll it back.",
+          "The disk check reports errors: copy the data off before anything else."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Run the checks in order on a machine you own."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Restart and note the start-up time.",
+          "Start in safe mode and note it again.",
+          "Create a test account and compare.",
+          "Create a restore point and name it with today's date.",
+          "Write down what each step changed."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now repair without destroying. In the next lesson you will reset a machine honestly, when that is the right call."
+      }
+    ]
+  },
+  {
+    "slug": "the-honest-reset",
+    "excerpt": "A reinstall done properly: what the owner will lose, how to explain it, the licence and driver list, and the handover afterwards.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is about resetting a machine honestly. You will learn what to say before you start, what to copy, how to keep the licence and drivers, and how to hand the machine back without surprises."
+      },
+      {
+        "type": "p",
+        "text": "A reset erases the disk and installs a fresh system. It fixes most software faults, and it removes everything the owner had, which is why the conversation comes before the work."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "An external drive with enough space.",
+          "The installer drive and the licence key.",
+          "The owner's agreement in writing, by message if needed."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "The conversation"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Say plainly that everything on the machine will be erased.",
+          "List what will be copied: documents, photographs, and the desktop.",
+          "Ask about programs that cannot be replaced, such as a work tool or an old driver.",
+          "Ask for the passwords the machine will need, or plan to reset them.",
+          "Say what will not be copied, such as saved game progress or a browser's open tabs.",
+          "Agree a time to return the machine."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The ownership screen will show who set the machine up, and the account name is often the only record of a licence tied to that account. Note it before the reset, since it disappears with the disk."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/windows-usb-installer-hand.jpg",
+        "alt": "A hand holding a USB installer drive beside a laptop.",
+        "caption": "The installer drive. Make it before you need it, on a machine that already works."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a reset restores the machine to new. It restores the system, and the owner's files return only if somebody copied them first."
+      },
+      {
+        "type": "p",
+        "text": "You will find that the conversation is the hard part and the installation is the simple part. Once the owner understands what will go, you can work without watching the door."
+      },
+      {
+        "type": "h2",
+        "text": "Copying before the reset"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Copy the user folders: documents, pictures, videos, downloads, and desktop.",
+          "Export browser bookmarks to a file.",
+          "Copy any mail stored on the machine rather than the server.",
+          "Copy program settings where the program offers an export.",
+          "Write down the names of installed programs before they vanish.",
+          "Check the copy by opening three files from the external drive."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The external drive will show the copied folders with the same names, and the file count should match. A copy nobody has opened is a hope rather than a backup."
+      },
+      {
+        "type": "p",
+        "text": "The copy window will show a progress bar and a remaining time, and you should watch the file count rise. If the count stops rising for ten minutes, stop the copy and look at the drive."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/external-drive-copying-laptop.jpg",
+        "alt": "An external drive copying files from a laptop.",
+        "caption": "Copy first, verify second, install third. The order is the whole method."
+      },
+      {
+        "type": "h2",
+        "text": "After the reset"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Install the drivers the machine needs, starting with the network adapter.",
+          "Connect to the internet and let the system update.",
+          "Install the programs from your written list, newest versions first.",
+          "Restore the files into the same folders.",
+          "Set up the printer and the email account.",
+          "Test the three things the owner uses most before handing it over."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs a workshop. A list, a drive, and one careful afternoon return a machine that feels new and keeps the owner's history."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about the machine looking empty at first. That emptiness is the reset working, and the files come back in the next step."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a recovery, provided the copy happened first."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The installer will not boot: check the boot order in the machine's settings.",
+          "The licence is rejected: the key belongs to a different edition.",
+          "The network driver is missing: download it on another machine and carry it across.",
+          "Files are missing after the restore: check the other user folders before saying they are gone.",
+          "The owner's program will not install: find the version that matches the system.",
+          "The machine is slower than before: the updates are still running, so give it a day."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Rehearse the reset on a machine nobody depends on."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Write the list of installed programs.",
+          "Copy the user folders to an external drive.",
+          "Open three files from the copy to prove it works.",
+          "Install the system and the network driver.",
+          "Restore the files and compare the counts."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now reset a machine without losing a life's photographs. In the next lesson you will back up somebody else's computer."
+      }
+    ]
+  },
+  {
+    "slug": "backup-for-someone-else",
+    "excerpt": "Backing up a family member's machine: the three folders that matter, how to copy a phone's photographs, and the verification that makes a backup real.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is about backing up somebody else's computer. You will learn which folders matter, how to rescue photographs from a phone, and the check that turns a copy into a backup."
+      },
+      {
+        "type": "p",
+        "text": "A backup is a copy that has been opened and checked. Without the check it is a hope, and hopes fail at the worst moment, usually the evening before a repair."
+      },
+      {
+        "type": "p",
+        "text": "You are the person who will be remembered for this, either for the copy or for its absence. Doing it once, properly, is a better gift than a promise to do it later."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "An external drive larger than the data you will copy.",
+          "The person's permission to look through their folders.",
+          "About two hours."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "The folders that matter"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Documents, which hold work, school, and official letters.",
+          "Pictures and videos, which cannot be recreated.",
+          "Desktop, where most people keep the file they are using.",
+          "Downloads, which sometimes hold the only copy of an application form.",
+          "The browser's bookmarks, exported to a file.",
+          "Anything the person names when you ask what they would miss."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the external drive fill with folders that carry the same names as the machine's own. That mirroring is what makes the copy understandable to the owner later."
+      },
+      {
+        "type": "p",
+        "text": "The drive's window will show the folders in a column, with a size beside each one, and you can compare those sizes with the machine's own. A folder that shows zero is one you have not copied yet."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/copying-photos-for-family.jpg",
+        "alt": "A person copying photographs from a computer to an external drive.",
+        "caption": "Photographs first. Everything else can be replaced, and a family album cannot."
+      },
+      {
+        "type": "p",
+        "text": "It looks like the important files are the ones in Documents. For most families the photographs matter more, and they are the folder nobody remembers to copy."
+      },
+      {
+        "type": "h2",
+        "text": "The phone in the drawer"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Connect the phone by cable and choose file transfer on its screen.",
+          "Copy the camera folder and any messaging folder that holds photographs.",
+          "Copy the voice notes folder if the person uses it.",
+          "Name the destination folder with the person's name and the date.",
+          "Leave the phone charging while the copy runs.",
+          "Check three photographs open from the drive."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The phone's screen will ask what the computer may do with it, and file transfer is the option that allows a copy. Choosing charging only will leave the folders invisible, which looks like a broken cable."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/labelled-external-drive-desk.jpg",
+        "alt": "A labelled external drive on a desk beside a notebook.",
+        "caption": "A label with a name and a date. An unlabelled drive becomes a mystery within a year."
+      },
+      {
+        "type": "h2",
+        "text": "Making the copy real"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Compare the file counts in each folder.",
+          "Open three files from different folders on the drive.",
+          "Play ten seconds of one video.",
+          "Write the date and the folder names in a notebook.",
+          "Keep a second copy if the data is precious, on another drive or online.",
+          "Tell the owner where the drive is and what is on it."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs paid software. The file manager, an external drive, and three opened files cover a family machine."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about the time it takes. A first copy is slow, and every later copy is faster because it only adds what is new."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a second attempt, and none of them damages the original."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The drive will not open: try another port and another cable before another drive.",
+          "The copy stops halfway: the drive may be full, so check the space.",
+          "Files are refused: they are in use, so close the program and copy again.",
+          "The phone shows no folders: the cable carries power only, or the mode is wrong.",
+          "The count does not match: hidden files are excluded, so compare visible ones.",
+          "The drive is dropped: replace it, since a dropped drive is no longer a backup."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Back up one family machine this month."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Ask what the owner would miss most.",
+          "Copy that folder first.",
+          "Copy the remaining user folders.",
+          "Open three files from the drive.",
+          "Write the date and the contents on a label."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now protect somebody's history in an afternoon. In the next lesson you will set up a new computer for a person who has never had one."
+      }
+    ]
+  }
+]
