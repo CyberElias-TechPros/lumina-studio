@@ -124,10 +124,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about speed. Hunting for each letter is how everybody starts, and accuracy is the habit worth building first.",
       ),
-      h2("If it goes wrong"),
-      p(
-        "Every one of these has a cause you can check, and none of them means you have broken the computer.",
-      ),
+      h2("Troubleshooting"),
+      p("These come up often."),
       ul([
         "The screen stays black: check the monitor's power light, the wall socket, then the cable at the back.",
         "The pointer does not move: check the mouse cable, or turn the mouse over and look for a light. A wireless mouse may need new batteries.",
@@ -243,8 +241,8 @@ export const blogPosts: BlogPost[] = [
         "A laptop keyboard with hands resting on the home row.",
         "Ctrl and S, pressed often, is the cheapest insurance in computing. It takes a second and saves an afternoon.",
       ),
-      h2("If it goes wrong"),
-      p("None of these means the work is lost for good, so read them without alarm."),
+      h2("When it fails"),
+      p("Nothing here is unusual."),
       ul([
         "You cannot find the file: open Documents, then the folder you remember, then check Downloads.",
         "You closed the window without saving: the work is gone, because it was never copied to the disk. This is the one case saving cannot fix, which is why Ctrl and S matters.",
@@ -279,7 +277,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "Two hands resting on the home row of a computer keyboard.",
     body: [
       p(
-        "This lesson teaches you to type without hunting for every key. You will learn where to rest your fingers, how to fix mistakes quickly, and the shortcuts you will use every day. If your typing is slow today, that is normal, and it is also temporary.",
+        "In this lesson you will learn to type without hunting for every key. You will learn where to rest your fingers, how to fix mistakes quickly, and the shortcuts you will use every day. If your typing is slow today, that is normal, and it is also temporary.",
       ),
       p(
         "Typing is a physical skill, like riding a bicycle. Reading about it does not make you faster. Your hands learn the positions by doing them slowly, and speed arrives on its own once accuracy is there.",
@@ -358,9 +356,7 @@ export const blogPosts: BlogPost[] = [
         "Select first, then copy. The text turns a different colour when the computer knows what you mean.",
       ),
       h2("If it goes wrong"),
-      p(
-        "None of these means the keyboard is broken, and all of them are common in the first week.",
-      ),
+      p("Try these before calling a repairer."),
       ul([
         "Letters appear in the wrong place: you clicked somewhere else in the text. Click where you want the cursor, or press Ctrl and Z.",
         "Every letter is a capital: press Caps Lock once.",
@@ -395,7 +391,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop screen showing a web browser with the address bar visible at the top.",
     body: [
       p(
-        "This lesson teaches you to use the internet on purpose. You will open a browser, search for what you need, keep several pages open, and check that a site is really the one you wanted. Nothing here requires you to be technical, and nothing here can break the computer.",
+        "Here you will learn to use the internet on purpose. You will open a browser, search for what you need, keep several pages open, and check that a site is really the one you wanted. Nothing here requires you to be technical, and nothing here can break the computer.",
       ),
       p(
         "The internet is a very large library with no librarian and no locked door. Anyone can put a page on the shelf, including people who want your password or your money. Most of this lesson is about knowing which shelf you are standing at.",
@@ -474,8 +470,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Downloads land in your Downloads folder. Move a file into Documents if you mean to keep it, and save a page with the star at the end of the address bar. Give the bookmark a name you will recognise, not the machine's suggestion.",
       ),
-      h2("If it goes wrong"),
-      p("The internet fails in a few ordinary ways, and every one of them has a next step."),
+      h2("Troubleshooting"),
+      p("Test one thing at a time."),
       ul([
         "The page will not load: check the Wi-Fi or data connection, then press the reload button once.",
         "Every page is slow: close the tabs you are not using, then try again.",
@@ -591,8 +587,10 @@ export const blogPosts: BlogPost[] = [
         "Forward sends the letter to a new person. Add one sentence at the top saying why.",
         "Use Reply by default, and Reply all only when every person on the list needs your answer.",
       ]),
-      h2("If it goes wrong"),
-      p("Email is forgiving. Almost every mistake here can be corrected with one more message."),
+      h2("When it fails"),
+      p(
+        "Work through these in order. Almost every mistake here can be corrected with one more message.",
+      ),
       ul([
         "The mail bounces back: one letter in the address is wrong. Compare it with the address the person gave you.",
         "The attachment will not send: the file is too large. Send a link, or make the photo or PDF smaller.",
@@ -626,7 +624,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A notebook and pen beside a closed laptop on a wooden desk.",
     body: [
       p(
-        "This lesson teaches you to make strong passwords, keep them somewhere safe, and add a second lock to the accounts that matter most. You will set one up today and build the habit over the next week. Forgetting a password is normal, and so is fixing it.",
+        "In this lesson you will learn to make strong passwords, keep them somewhere safe, and add a second lock to the accounts that matter most. You will set one up today and build the habit over the next week. Forgetting a password is normal, and so is fixing it.",
       ),
       p(
         "A password is a key. It should be long and hard for another person to guess, and it should be different for each important account. One copied key opens every door in the house.",
@@ -714,7 +712,7 @@ export const blogPosts: BlogPost[] = [
         "The same password on a small site you will never use again.",
       ]),
       h2("If it goes wrong"),
-      p("Every item below is recoverable, and none of them means you are careless."),
+      p("Each one takes a few minutes."),
       ul([
         "You forgot the password: use Forgot password on the real site, and reset through the email or phone number on the account.",
         "Somebody has changed your password: use the recovery option, then check the recovery email and phone number are still yours.",
@@ -749,7 +747,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop on a wooden desk showing an email inbox.",
     body: [
       p(
-        "This lesson teaches you to recognise a dangerous link before you click it, and what to do if you already did. Most stolen accounts in Nigeria start with one message and one tap, not with a genius hacker.",
+        "Here you will learn to recognise a dangerous link before you click it, and what to do if you already did. Most stolen accounts in Nigeria start with one message and one tap, not with a genius hacker.",
       ),
       p(
         "If you have already tapped one, this lesson tells you exactly what to do, and none of it is embarrassing. Being caught once is common, and it is how most people learn the habit.",
@@ -949,7 +947,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop screen showing a simple spreadsheet with names, items and amounts.",
     body: [
       p(
-        "This lesson teaches you to use a spreadsheet for real work: a budget, a list of sales, or a record of school fees. You will enter numbers correctly, add a column with a formula, and spot the errors that make a total wrong.",
+        "In this lesson you will learn to use a spreadsheet for real work: a budget, a list of sales, or a record of school fees. You will enter numbers correctly, add a column with a formula, and spot the errors that make a total wrong.",
       ),
       p(
         "You do not need to be quick with arithmetic for this lesson. The sheet does the adding, and your job is to put the right numbers in the right boxes.",
@@ -1240,8 +1238,8 @@ export const blogPosts: BlogPost[] = [
         "Name the file with your name and the purpose: cv-ada-okoro.pdf or application-admission-2026.pdf.",
         "Attach the PDF, not the .docx, unless the office asks for an editable file.",
       ]),
-      h2("If it goes wrong"),
-      p("None of these means the letter has to be retyped from the beginning."),
+      h2("When it fails"),
+      p("Go down the list from the top."),
       ul([
         "The text jumps to a new page for no reason: delete the empty paragraphs and check the margins again.",
         "The font looks different on another computer: save and send the PDF instead.",
@@ -1274,7 +1272,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A USB cable connecting a phone to a laptop on a wooden desk.",
     body: [
       p(
-        "This lesson teaches you to move photographs off your phone and into a folder on a computer. You will use a cable, copy instead of cut, and decide what to keep so the phone does not fill up.",
+        "In this lesson you will learn to move photographs off your phone and into a folder on a computer. You will use a cable, copy instead of cut, and decide what to keep so the phone does not fill up.",
       ),
       p(
         "If you have never done this, nothing here can damage the phone or the computer. The photographs stay where they are until you delete them.",
@@ -1336,9 +1334,7 @@ export const blogPosts: BlogPost[] = [
         "Empty the phone's Recently Deleted folder only after the computer copy is checked.",
       ]),
       h2("If it goes wrong"),
-      p(
-        "None of these loses the photographs for good, and the first two are cable or setting problems.",
-      ),
+      p("None of this is your fault, and each case has a fix."),
       ul([
         "The computer does not see the phone: try another cable, another USB port, and choose File transfer again.",
         "The transfer stops halfway: do not unplug. Cancel, wait, and start again with fewer photographs at a time.",
@@ -1371,7 +1367,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop screen showing a Windows restart and update message.",
     body: [
       p(
-        "This lesson explains system updates, why they matter, and how to install one without losing work. You will learn the three things to do before you start, and how to tell a real update from a fake message that wants your money.",
+        "This lesson shows system updates, why they matter, and how to install one without losing work. You will learn the three things to do before you start, and how to tell a real update from a fake message that wants your money.",
       ),
       p(
         "If an update has ever frightened you, that is reasonable. It restarts the machine by itself, which feels like losing control of something you own.",
@@ -1432,10 +1428,8 @@ export const blogPosts: BlogPost[] = [
         "Fake: an email attachment called update.exe or invoice.pdf.exe.",
         "When unsure: close everything, open Settings yourself, and check for updates there.",
       ]),
-      h2("If it goes wrong"),
-      p(
-        "None of these means the computer is broken, and most finish on their own within the hour.",
-      ),
+      h2("Troubleshooting"),
+      p("Each has a cause you can find."),
       ul([
         "The update is stuck for over two hours: wait another hour if the screen is moving, then hold the power button for ten seconds and start again.",
         "It restarts in a loop: unplug everything except power, wait, and let it finish. If it repeats for a day, take it to a repairer and say what the screen showed.",
@@ -1532,10 +1526,8 @@ export const blogPosts: BlogPost[] = [
         "Never store the only copy of a certificate in a cloud account you cannot log into.",
         "Before leaving a laptop at a repair shop, back up and sign out of your accounts.",
       ]),
-      h2("If it goes wrong"),
-      p(
-        "None of these means the original files are gone. The copy is the thing at risk, and it can be made again.",
-      ),
+      h2("When it fails"),
+      p("Nobody was born knowing this, and each case has a fix."),
       ul([
         "The drive is full: delete older backups after the new one is checked, keeping at least two months.",
         "The copy stopped halfway: start again with one folder at a time.",
@@ -1569,7 +1561,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop browser showing a simple account creation form.",
     body: [
       p(
-        "This lesson teaches you to create a Google account on purpose, with details you will still recognise in five years. You will set a recovery phone number and email, add two-step verification, and know which services the account unlocks.",
+        "In this lesson you will learn to create a Google account on purpose, with details you will still recognise in five years. You will set a recovery phone number and email, add two-step verification, and know which services the account unlocks.",
       ),
       p(
         "If you already have an account you cannot get into, you are not alone. This lesson builds one you can still open in five years.",
@@ -1631,9 +1623,7 @@ export const blogPosts: BlogPost[] = [
         "Never: an account you made with a fake name, because you will fail identity checks later.",
       ]),
       h2("If it goes wrong"),
-      p(
-        "None of these settings is permanent, and every one of them can be changed from the Security page once you are signed in.",
-      ),
+      p("Take your time with these, since each one has an answer."),
       ul([
         "You forgot the password: use Forgot password, and complete the check on the recovery phone.",
         "The recovery phone number is dead: use the recovery email, then change the number as soon as you are in.",
@@ -1667,7 +1657,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A small home Wi-Fi router on a wooden shelf, a laptop in the background.",
     body: [
       p(
-        "This lesson explains home Wi-Fi in plain words. You will learn how the router works, how to join a network, how to keep neighbours off your connection, and what to check when the page will not load.",
+        "This lesson shows home Wi-Fi in plain words. You will learn how the router works, how to join a network, how to keep neighbours off your connection, and what to check when the page will not load.",
       ),
       p(
         "If the internet has ever stopped for no reason you could see, this lesson gives you the order to check. Most of it takes a minute and needs no technician.",
@@ -1728,8 +1718,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "On a computer you used somewhere else, forget that network. Settings, then Network and internet, then Wi-Fi, then Manage known networks, then Forget. On a phone, long-press the network name and choose Forget. This stops the device from reconnecting automatically to a network you no longer trust.",
       ),
-      h2("If it goes wrong"),
-      p("None of these needs a technician on the first day, and the first two solve most cases."),
+      h2("Troubleshooting"),
+      p("None of this is your fault, and each case has a fix."),
       ul([
         "The network appears but will not connect: forget it, then join again and retype the password.",
         "The router light is red: the provider connection is down. Call them before you touch any setting.",
@@ -1862,7 +1852,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop browser showing a simple web form with name, phone and email fields.",
     body: [
       p(
-        "This lesson teaches you to fill a website form correctly the first time. You will move through the boxes with the keyboard, fix errors without starting again, and submit once, which matters most when the form involves money.",
+        "In this lesson you will learn to fill a website form correctly the first time. You will move through the boxes with the keyboard, fix errors without starting again, and submit once, which matters most when the form involves money.",
       ),
       p(
         "If a form has ever timed out after you filled twenty boxes, this lesson is for you. The fix is preparation, not speed.",
@@ -1934,9 +1924,7 @@ export const blogPosts: BlogPost[] = [
         "If money left your account and no confirmation came, contact the organisation with the transaction reference before you pay again.",
       ]),
       h2("If it goes wrong"),
-      p(
-        "None of these means starting from the beginning. Sign in again, look for a draft, and refill only what is missing.",
-      ),
+      p("Nobody was born knowing this, and each case has a fix."),
       ul([
         "The page times out: sign in again and look for a saved draft before you start over.",
         "The upload fails: check the file type and size, then try a smaller PDF.",
@@ -1970,7 +1958,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "Over-the-shoulder view of a laptop on a video call, earphones beside it.",
     body: [
       p(
-        "This lesson teaches you to join a video call, check your microphone and camera before it starts, and fix the problems that stop people getting in. You will also learn the habits that make a call easier for everybody on it.",
+        "Here you will learn to join a video call, check your microphone and camera before it starts, and fix the problems that stop people getting in. You will also learn the habits that make a call easier for everybody on it.",
       ),
       p(
         "If video calls make you nervous, you are not alone. Most of what goes wrong is sound rather than confidence, and both are fixable.",
@@ -2034,10 +2022,8 @@ export const blogPosts: BlogPost[] = [
         "Send one short message to confirm what you understood, if anything involved money or a deadline.",
         "Switch off the hotspot or meeting app if you used data.",
       ]),
-      h2("If it goes wrong"),
-      p(
-        "None of these needs the meeting cancelled, and rejoining through the same link fixes most of them.",
-      ),
+      h2("Troubleshooting"),
+      p("Take your time with these, since each one has an answer."),
       ul([
         "The link does not open: copy it into a browser, or open the app and paste the meeting code.",
         "The browser says the camera is blocked: click the icon beside the address bar and allow camera and microphone.",
@@ -2142,8 +2128,8 @@ export const blogPosts: BlogPost[] = [
         "It is four years old or more and slow even after cleanup: ask a repairer to quote for an SSD before you buy a new machine.",
         "A stranger offers a paid cleaner because your computer is slow: decline. Change nothing you cannot explain.",
       ]),
-      h2("If it goes wrong"),
-      p("None of this requires a technician until the last item, and the first three are free."),
+      h2("When it fails"),
+      p("Take them one at a time."),
       ul([
         "The computer takes minutes to start: disable startup programs, then check the drive health.",
         "It slows down only on the browser: close tabs, clear the cache, and disable extensions you do not use.",
@@ -2177,7 +2163,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop screen showing a simple software installer with a Next button.",
     body: [
       p(
-        "This lesson teaches you to install a program deliberately: where to get it, which buttons to read, and how to refuse the extras that arrive with it. By the end you will be able to install what you need without filling the machine with things you did not ask for.",
+        "In this lesson you will learn to install a program deliberately: where to get it, which buttons to read, and how to refuse the extras that arrive with it. By the end you will be able to install what you need without filling the machine with things you did not ask for.",
       ),
       p(
         "If you have installed one program and found three the next day, this lesson shows you where the extra two came from.",
@@ -2249,9 +2235,7 @@ export const blogPosts: BlogPost[] = [
         "If a browser tells you an update is needed and offers a download, close it and update through the program's own menu.",
       ]),
       h2("If it goes wrong"),
-      p(
-        "None of these means the machine is infected, though the last item deserves a scan before you use it again.",
-      ),
+      p("Read the row that fits your case."),
       ul([
         "The program will not open: restart the computer, then check the program is listed in the Start menu.",
         "You installed something you did not want: uninstall it from Settings, then check the browser for a new toolbar or homepage.",
@@ -2285,7 +2269,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A Windows Settings list of installed apps on a laptop screen.",
     body: [
       p(
-        "This lesson teaches you to remove programs you did not ask for, without removing the ones the computer needs. You will learn where the list of installed programs lives, what is safe to uninstall, and how to clear the icons that remain after the program is gone.",
+        "Here you will learn to remove programs you did not ask for, without removing the ones the computer needs. You will learn where the list of installed programs lives, what is safe to uninstall, and how to clear the icons that remain after the program is gone.",
       ),
       p(
         "If a laptop arrived with programs you never chose, you are not alone. Most of them take a minute each to remove.",
@@ -2342,10 +2326,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "A leftover icon is not the program. It is a shortcut pointing at a file that no longer exists. Right-click it and delete it. If the program folder is still in Program Files, the uninstaller did not finish, so run it again rather than deleting files by hand.",
       ),
-      h2("If it goes wrong"),
-      p(
-        "None of these breaks the computer, and every step can be undone by installing the program again.",
-      ),
+      h2("Troubleshooting"),
+      p("Nobody was born knowing this, and each case has a fix."),
       ul([
         "The uninstaller asks for a password: you need the owner's account. Stop and ask.",
         "The program returns after a restart: another program reinstalled it. Check for a tool from the maker or the shop.",
@@ -2437,10 +2419,8 @@ export const blogPosts: BlogPost[] = [
         "Check that the person's name is spelled as they spell it, especially on certificates and forms.",
         "Do not replace a person's name with a plain version because the keyboard is difficult.",
       ]),
-      h2("If it goes wrong"),
-      p(
-        "None of these changes anything permanently, and the last one is a font choice rather than a fault.",
-      ),
+      h2("When it fails"),
+      p("Take your time with these, since each one has an answer."),
       ul([
         "The Alt code types nothing: use the number row only if it is a full pad, or use Insert Symbol instead.",
         "The naira sign shows as a box or a question mark: the font does not contain it. Change to Calibri, Arial, or Times New Roman.",
@@ -2477,7 +2457,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A Recycle Bin window on a laptop showing a few deleted files.",
     body: [
       p(
-        "This lesson teaches you to recover a file you deleted by accident. You will learn where deleted files go, how to restore one, and the difference between a deletion you can undo and one you cannot.",
+        "In this lesson you will learn to recover a file you deleted by accident. You will learn where deleted files go, how to restore one, and the difference between a deletion you can undo and one you cannot.",
       ),
       p(
         "If you have just deleted something and your chest feels tight, stop before you retype a single word. Most deletions can be undone in under a minute.",
@@ -2539,9 +2519,7 @@ export const blogPosts: BlogPost[] = [
         "Remember that a file restored from the bin has no protection until it is backed up.",
       ]),
       h2("If it goes wrong"),
-      p(
-        "None of these is hopeless until the disk has been filled with other work, so act before you save anything new.",
-      ),
+      p("None of this is your fault, and each case has a fix."),
       ul([
         "The file is not in the bin: it was deleted with Shift, was on a flash drive, or the bin was emptied.",
         "The bin itself is missing from the desktop: open Settings, then Personalisation, then Themes, then Desktop icon settings, and tick Recycle Bin.",
@@ -2575,7 +2553,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A learner at a laptop with a helper pointing at the screen, not typing.",
     body: [
       p(
-        "This lesson teaches you to ask for help in a way that keeps your account and your money safe. You will learn what a helper actually needs, what they must never have, and how to allow remote help without handing over control for longer than necessary.",
+        "Here you will learn to ask for help in a way that keeps your account and your money safe. You will learn what a helper actually needs, what they must never have, and how to allow remote help without handing over control for longer than necessary.",
       ),
       p(
         "If somebody has ever told you to just hand over the password, this lesson gives you the words to refuse without offence.",
@@ -2635,10 +2613,8 @@ export const blogPosts: BlogPost[] = [
         "A hand covering a notebook page beside a laptop keyboard.",
         "What a helper needs is the problem. A password is not part of the problem, and not part of the solution.",
       ),
-      h2("If it goes wrong"),
-      p(
-        "None of these is embarrassing, and every bank has heard them before. Speed matters far more than pride.",
-      ),
+      h2("Troubleshooting"),
+      p("These happen to everyone, and none of them is unusual."),
       ul([
         "You already gave a password: change it now on the real site, then sign out of all devices.",
         "You read out a code: call the bank immediately and tell them a code was shared.",
@@ -2745,8 +2721,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Never copy a one-time code or a bank PIN, and clear the clipboard after a sensitive copy by copying a blank space or a harmless word. On Windows, press Windows and V to see the clipboard history and clear it.",
       ),
-      h2("If it goes wrong"),
-      p("Every item here is common, and none of them means the machine is faulty."),
+      h2("When it fails"),
+      p("Nothing here is unusual."),
       ul([
         "Nothing pastes: press Ctrl and C again, because the clipboard may have been replaced by a later copy.",
         "The wrong text pastes: that was the last thing copied. Copy the correct piece and try again.",
@@ -2781,7 +2757,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A finger near the Print Screen key on a laptop keyboard.",
     body: [
       p(
-        "This lesson teaches you to capture what is on the screen and save it as a file you can send. You will take a full screenshot, a cropped one, and an error message a support person can actually read. You will also learn what not to capture.",
+        "In this lesson you will learn to capture what is on the screen and save it as a file you can send. You will take a full screenshot, a cropped one, and an error message a support person can actually read. You will also learn what not to capture.",
       ),
       p(
         "A screenshot is a photograph taken by the computer itself. It is the fastest way to show a problem, keep proof of a payment, or explain a screen to somebody who is not in the room.",
@@ -2863,7 +2839,7 @@ export const blogPosts: BlogPost[] = [
         "If you must send one of these, crop it first, and cover the private part with a shape before you save. None of this is difficult, and it takes ten seconds.",
       ),
       h2("If it goes wrong"),
-      p("Screenshots fail in a few ordinary ways, and every one of them has a second method."),
+      p("Try these before calling a repairer."),
       ul([
         "Nothing happens when you press Print Screen: the key may need Fn held with it, or the function key is doing the job instead.",
         "The paste is empty: the screenshot went to a file instead of the clipboard. Look in Pictures, then Screenshots.",
@@ -2900,7 +2876,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A File Explorer window showing a zip folder beside ordinary folders.",
     body: [
       p(
-        "This lesson teaches you to pack a folder into one file, send it by email, and open a zip that somebody sends you. You will learn the size limits, what to do when a zip is refused, and when a zip should make you suspicious. Nothing here can damage the files inside.",
+        "Here you will learn to pack a folder into one file, send it by email, and open a zip that somebody sends you. You will learn the size limits, what to do when a zip is refused, and when a zip should make you suspicious. Nothing here can damage the files inside.",
       ),
       p(
         "A zip is a suitcase. The files inside keep their names and their folders, but they travel as one item. Email limits are counted per item, so one suitcase passes where twenty loose files would be refused.",
@@ -2964,8 +2940,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "A file called invoice.pdf.exe is a program pretending to be a PDF. Turn on file name extensions in File Explorer, under View, so that the real ending is always visible.",
       ),
-      h2("If it goes wrong"),
-      p("Zips rarely fail, and none of these problems means the files are lost."),
+      h2("Troubleshooting"),
+      p("Test one thing at a time."),
       ul([
         "The zip will not attach: the file is too large. Split it or send a link.",
         "The recipient cannot open it: some mail systems block zip files. Send a PDF for documents, or use a link.",
@@ -3064,8 +3040,8 @@ export const blogPosts: BlogPost[] = [
         "For a whole folder, zip it first, then send one file.",
         "For anything you will need again, save it into Documents rather than leaving it in Downloads.",
       ]),
-      h2("If it goes wrong"),
-      p("None of this means either device is broken, and the third item solves most cases."),
+      h2("When it fails"),
+      p("These happen to everyone, and none of them is unusual."),
       ul([
         "The phone does not appear in the list: make sure it is discoverable, and bring the two devices closer.",
         "Pairing asks for a code: check the same six digits show on both screens, then confirm.",
@@ -3179,9 +3155,7 @@ export const blogPosts: BlogPost[] = [
         "Never send a PDF of a form that the office must fill in themselves.",
       ]),
       h2("If it goes wrong"),
-      p(
-        "None of these loses the document, and the original file is still there to make a fresh PDF.",
-      ),
+      p("Nobody was born knowing this, and each case has a fix."),
       ul([
         "The PDF has a blank page at the end: an empty paragraph in the Word file. Delete it and save again.",
         "The text looks scrambled: a font was missing. Use a common font such as Calibri or Arial, then export again.",
@@ -3284,8 +3258,8 @@ export const blogPosts: BlogPost[] = [
         "A desk with a notebook, a pen, and a laptop showing organised folders.",
         "Sort what you will use this month, archive the rest, and leave the archive closed. That is the whole repair.",
       ),
-      h2("If it goes wrong"),
-      p("None of these loses a file, because moving a file inside the same disk is reversible."),
+      h2("Troubleshooting"),
+      p("Every one of these is common."),
       ul([
         "You moved a file and cannot find it: press Ctrl and Z, or search for its name.",
         "A file will not move: it is open in another program. Close the program and try again.",
@@ -3392,8 +3366,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "If a name is refused, the message usually says which character is the problem. Read it rather than retyping the whole name, and the fix takes five seconds.",
       ),
-      h2("If it goes wrong"),
-      p("Renaming does not touch what is inside the file, so even a bad rename is easy to undo."),
+      h2("When it fails"),
+      p("None of these needs a new machine."),
       p("None of these loses the file, so read them without alarm and try the first fix."),
       ul([
         "The file will not open after renaming: you removed or changed the extension. Rename it back, or add the original ending.",
@@ -3429,7 +3403,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "File Explorer search box with results listed below.",
     body: [
       p(
-        "This lesson teaches you to find a file you have lost. You will search by half a name, by the day you remember, and by what is inside the document. You will also learn why a search sometimes finds nothing, and what to do next.",
+        "In this lesson you will learn to find a file you have lost. You will search by half a name, by the day you remember, and by what is inside the document. You will also learn why a search sometimes finds nothing, and what to do next.",
       ),
       p(
         "Search looks at file names and, on most machines, at the words inside files. It is fast, but it can only find what exists. A file that was never saved is not hiding, and no search will produce it.",
@@ -3505,7 +3479,7 @@ export const blogPosts: BlogPost[] = [
         "Back up the folders you would hate to search for again.",
       ]),
       h2("If it goes wrong"),
-      p("None of these is a dead end, and the last one explains most empty searches."),
+      p("These happen to everyone, and none of them is unusual."),
       ul([
         "Search is very slow: close other programs, and search one drive at a time.",
         "Search finds files but not the one you want: the name is different from what you remember. Search for a word inside it instead.",
@@ -3540,7 +3514,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "The Windows Start menu open on a laptop.",
     body: [
       p(
-        "This lesson explains the Start menu and the taskbar, which together are the map of a Windows computer. You will find any program, see what is already running, and get the taskbar back when it hides. If a program seems to have vanished, this is where it went.",
+        "This lesson shows the Start menu and the taskbar, which together are the map of a Windows computer. You will find any program, see what is already running, and get the taskbar back when it hides. If a program seems to have vanished, this is where it went.",
       ),
       p(
         "The taskbar is the strip along the bottom of the screen. The Start menu opens from the button at the left of it. Everything you do happens somewhere on that strip, even when the window in front of you is hiding it.",
@@ -3601,8 +3575,8 @@ export const blogPosts: BlogPost[] = [
         "Restart from the Start menu if the strip stays missing.",
       ]),
       p("None of this loses your open work, and the second step solves it in most cases."),
-      h2("If it goes wrong"),
-      p("These are the five things people ask about most, and every one has a short fix."),
+      h2("Troubleshooting"),
+      p("Start with the simplest check."),
       ul([
         "A pinned icon does nothing when clicked: the program was uninstalled. Right-click it and unpin.",
         "Windows key does not open Start: the keyboard may be locked with Fn, or the key is failing. Click the Start button instead.",
@@ -3636,7 +3610,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A desktop shortcut icon with a small arrow, beside a real folder.",
     body: [
       p(
-        "This lesson explains shortcuts: what they are, how to make one, and why they stop working when they travel to another computer. If a desktop icon has ever refused to open, this lesson explains what happened without blaming the machine.",
+        "This lesson sets out shortcuts: what they are, how to make one, and why they stop working when they travel to another computer. If a desktop icon has ever refused to open, this lesson explains what happened without blaming the machine.",
       ),
       p(
         "A shortcut is a small file that points at another file, the way a signpost points at a town. The sign is not the town. If the town moves, the sign still stands there pointing at nothing.",
@@ -3709,10 +3683,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "None of this means the original file is gone, and the last line in the list prevents most cases on the day it matters.",
       ),
-      h2("If it goes wrong"),
-      p(
-        "Shortcuts are the least dangerous thing on a computer, because they hold no work of their own.",
-      ),
+      h2("When it fails"),
+      p("Go down the list from the top."),
       ul([
         "A desktop icon shows a white page: the target is missing, or the program was uninstalled.",
         "The shortcut opens the wrong file: the target path is out of date. Rebuild the shortcut from the right file.",
@@ -3814,9 +3786,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the tiny buzzing you hear in cheap earphones at high volume. It is usually the earphones, not the computer, and it is a reason to turn the volume down rather than replace the machine.",
       ),
       h2("If it goes wrong"),
-      p(
-        "These six cases cover almost every silent computer, and the first two solve most of them.",
-      ),
+      p("Pick the line that fits."),
       ul([
         "No sound at all: check the speaker icon for a mute symbol, then raise the system slider.",
         "One video is silent: check the player's own volume and mute button.",
@@ -3851,7 +3821,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop screen at low brightness in a dim room.",
     body: [
       p(
-        "This lesson explains screen brightness and night settings. You will learn the brightness keys, the automatic setting that dims the screen by itself, and how to make a laptop readable in a bright room without straining your eyes.",
+        "This lesson shows screen brightness and night settings. You will learn the brightness keys, the automatic setting that dims the screen by itself, and how to make a laptop readable in a bright room without straining your eyes.",
       ),
       p(
         "Brightness is not only comfort. A screen that is too bright in a dark room tires your eyes, and one that is too dim in daylight makes you lean in and squint, which is how headaches start.",
@@ -3923,10 +3893,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "You will see the screen turn slightly yellow when night light is on. That colour is expected, and it is why photographs edited at night can look too blue the next morning.",
       ),
-      h2("If it goes wrong"),
-      p(
-        "A screen problem is uncomfortable rather than dangerous, and the first three items solve most of it.",
-      ),
+      h2("Troubleshooting"),
+      p("Each has a cause you can find."),
       ul([
         "The screen is too dark to read: raise brightness with the keys, then check battery saver.",
         "The brightness keys do nothing: the function keys may need Fn held, or a monitor is being used instead.",
@@ -4026,8 +3994,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "None of this needs a technician, and the first item prevents most of what goes wrong in a hall.",
       ),
-      h2("If it goes wrong"),
-      p("A blank second screen is almost always one of these six things, in this order."),
+      h2("When it fails"),
+      p("Each one has an answer."),
       ul([
         "Nothing appears: check the second screen is switched on and set to the right input.",
         "The laptop does not notice the cable: press Windows and P and choose Extend, then try another cable.",
@@ -4130,7 +4098,7 @@ export const blogPosts: BlogPost[] = [
         "None of this is fussiness. Files that are half-written are the ones people describe as corrupted, and the eject button exists to prevent that.",
       ),
       h2("If it goes wrong"),
-      p("USB problems are usually physical, and the first four checks solve most of them."),
+      p("All of these are fixable."),
       ul([
         "The device is not recognised: try another port and another cable before anything else.",
         "The plug will not fit: it is the wrong shape, or upside down. Never force it.",
@@ -4236,10 +4204,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "None of these steps damages anything, and the last one is the reason a technician asks for the model number of the machine.",
       ),
-      h2("If it goes wrong"),
-      p(
-        "Every case here is common in a shared or older machine, and none of them means the computer is finished.",
-      ),
+      h2("Troubleshooting"),
+      p("Stop at the row that matches."),
       ul([
         "Sound works in one program only: the mixer slider for the other program is low or muted.",
         "Sound returns after a restart and goes again: the driver is failing. Reinstall it from the maker's site.",
@@ -4274,7 +4240,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop charging cable plugged in on a wooden desk.",
     body: [
       p(
-        "This lesson explains how to charge a laptop so that the battery lasts years instead of months. You will learn what the battery icon is telling you, the two habits that shorten a battery's life, and the warning sign that means stop using the charger.",
+        "This lesson sets out how to charge a laptop so that the battery lasts years instead of months. You will learn what the battery icon is telling you, the two habits that shorten a battery's life, and the warning sign that means stop using the charger.",
       ),
       p(
         "A battery is a container of chemical energy that slowly loses the ability to hold a charge. Every full cycle wears it a little, and heat wears it faster than anything else. Good charging is mostly about avoiding heat and avoiding extremes.",
@@ -4342,10 +4308,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about the normal warmth of a working laptop. Warm is expected. A swollen case, a hot smell, or a fan that never stops are the signs that deserve action.",
       ),
-      h2("If it goes wrong"),
-      p(
-        "Every case here has a clear next step, and the last one is a safety matter rather than a repair.",
-      ),
+      h2("When it fails"),
+      p("Each check costs nothing to try."),
       ul([
         "The laptop will not charge: try another socket, then another charger of the same voltage, then check the plug for damage.",
         "The battery drains while plugged in: the charger is too weak for the work you are doing, or the cable is failing.",
@@ -4449,7 +4413,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("If it goes wrong"),
       p(
-        "A warm laptop is normal. These six signs mean it has gone past warm, and each has an action.",
+        "The first check is usually enough. These six signs mean it has gone past warm, and each has an action.",
       ),
       ul([
         "The fan runs constantly: clear the vents, use a hard surface, and close programs you are not using.",
@@ -4485,7 +4449,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop webcam with a small sliding privacy cover closed.",
     body: [
       p(
-        "This lesson explains the small camera above a laptop screen: when it is on, which programs can use it, and how to switch it off when you do not need it. You will check the permissions and set a habit that costs nothing.",
+        "This lesson shows the small camera above a laptop screen: when it is on, which programs can use it, and how to switch it off when you do not need it. You will check the permissions and set a habit that costs nothing.",
       ),
       p(
         "The webcam is a camera with no shutter on most machines. It is on whenever a program is using it, and the only reliable sign is the small light beside the lens, which is wired to the camera itself.",
@@ -4551,8 +4515,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about being interesting enough to watch. Most camera use is ordinary: a program you installed asking for a permission you did not notice.",
       ),
-      h2("If it goes wrong"),
-      p("Every item here has a practical next step, and no case is improved by panic."),
+      h2("Troubleshooting"),
+      p("Some of these are settings only."),
       ul([
         "The camera light stays on: cover the lens, restart, and check the app list in Settings.",
         "You cannot find the camera in Settings: on some machines a switch or function key owns it, and the software menu is empty.",
@@ -4587,7 +4551,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A cookie consent banner at the bottom of a browser window.",
     body: [
       p(
-        "This lesson explains cookies in plain words and what the Accept all button really agrees to. You will learn the difference between the cookie that keeps you signed in and the ones that follow you between sites, and how clearing them fixes problems.",
+        "This lesson sets out cookies in plain words and what the Accept all button really agrees to. You will learn the difference between the cookie that keeps you signed in and the ones that follow you between sites, and how clearing them fixes problems.",
       ),
       p(
         "A cookie is a small note a website leaves in your browser. It can hold a login, a language choice, or a shopping basket. It can also hold an identifier that lets advertisers recognise your browser on other sites.",
@@ -4658,8 +4622,8 @@ export const blogPosts: BlogPost[] = [
         "Do not tick Remember me on a machine you do not own.",
         "On a public computer, clear cookies after you finish.",
       ]),
-      h2("If it goes wrong"),
-      p("Cookies cause small annoyances rather than damage, and each one has a short fix."),
+      h2("When it fails"),
+      p("Take them one at a time."),
       ul([
         "The site says cookies are required and will not continue: allow necessary cookies for that site only.",
         "You are logged out of everything: you cleared cookies. Sign in again and let the browser save the ones you need.",
@@ -4694,7 +4658,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A browser profile icon in the corner of a laptop window.",
     body: [
       p(
-        "This lesson teaches you to keep your own space on a shared computer. You will make a browser profile, use a guest window for a quick check, and leave the machine without leaving your accounts open. Nothing here needs a second laptop.",
+        "In this lesson you will learn to keep your own space on a shared computer. You will make a browser profile, use a guest window for a quick check, and leave the machine without leaving your accounts open. Nothing here needs a second laptop.",
       ),
       p(
         "A browser profile is a separate shelf for one person: their bookmarks, their saved passwords, their history. Two profiles on one computer behave like two different machines, which is exactly what a shared office needs.",
@@ -4757,7 +4721,7 @@ export const blogPosts: BlogPost[] = [
         "None of this is about distrusting the people you live with. It is about the visitor, the repairer, and the cousin who borrowed the laptop for one evening.",
       ),
       h2("If it goes wrong"),
-      p("Every case below ends with your account closed, and none of them needs a technician."),
+      p("Read the row that fits your case."),
       ul([
         "Your profile has somebody else's bookmarks: you are in their profile. Switch using the icon at the top right.",
         "A website signs you in automatically as another person: sign out, then clear that site's cookies.",
@@ -4792,7 +4756,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A browser bookmarks bar with a few named bookmarks.",
     body: [
       p(
-        "This lesson teaches you to save a web page and find it again months later. You will learn the star, the bookmarks bar, and folders inside it, and you will know which five pages deserve a place on the bar. If you have ever searched for your own bank twice a week, this fixes it.",
+        "Here you will learn to save a web page and find it again months later. You will learn the star, the bookmarks bar, and folders inside it, and you will know which five pages deserve a place on the bar. If you have ever searched for your own bank twice a week, this fixes it.",
       ),
       p(
         "A bookmark is a saved address with a name you choose. It saves the page, not a copy of it: if the page changes, the bookmark still opens the current version, which is what you want for a bank or a school portal.",
@@ -4853,8 +4817,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about losing bookmarks when you change phone or laptop. Signing in to the browser syncs them, as long as you are signed in before you switch machines.",
       ),
-      h2("If it goes wrong"),
-      p("Bookmarks are easy to recover, and the first fix solves most cases."),
+      h2("Troubleshooting"),
+      p("Most of these have a cheap fix."),
       ul([
         "The bar disappeared: press Ctrl, Shift and B to bring it back.",
         "You saved a page with a useless name: right-click it and choose Edit.",
@@ -4889,7 +4853,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A browser history list on a laptop screen.",
     body: [
       p(
-        "This lesson explains browser history and private windows. You will find a page you visited but did not save, understand what a private window actually hides, and know when clearing history is the right thing to do. Neither feature is a secret, and neither one is dangerous.",
+        "This lesson sets out browser history and private windows. You will find a page you visited but did not save, understand what a private window actually hides, and know when clearing history is the right thing to do. Neither feature is a secret, and neither one is dangerous.",
       ),
       p(
         "History is a list of pages your browser has visited, with the time and the title. It is a diary kept for your convenience, and it is stored on the machine, not on the websites.",
@@ -4948,8 +4912,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "None of this deletes bookmarks or files. History and cookies are separate, and clearing one does not clear the other unless you tick both.",
       ),
-      h2("If it goes wrong"),
-      p("History problems are small, and every case here has a plain fix."),
+      h2("When it fails"),
+      p("Begin with the first one."),
       ul([
         "A page you visited is missing from history: it was opened in a private window, or history was cleared.",
         "Ctrl and H does nothing: the browser has a different shortcut. Use the menu, then History.",
@@ -4984,7 +4948,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A Downloads folder with mixed files on a laptop.",
     body: [
       p(
-        "This lesson teaches you to control the Downloads folder instead of letting it grow. You will clear the pile, change where files land, and free space on a full disk. Downloads is the most cluttered folder on most computers, and it takes ten minutes to fix.",
+        "In this lesson you will learn to control the Downloads folder instead of letting it grow. You will clear the pile, change where files land, and free space on a full disk. Downloads is the most cluttered folder on most computers, and it takes ten minutes to fix.",
       ),
       p(
         "Every file the internet sends you lands in Downloads by default: forms, receipts, installers, photographs, and the same invoice you have saved four times under four names. It is a delivery mat, and nobody sweeps it.",
@@ -5054,7 +5018,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about keeping every version of a form. Keep the one you submitted, and let the earlier drafts go.",
       ),
       h2("If it goes wrong"),
-      p("A full disk causes real problems, and each one here has a clear next step."),
+      p("Here is what to check first."),
       ul([
         "The disk is full: clear Downloads first, then the Recycle Bin, then old videos.",
         "A file will not delete because it is in use: close the program that opened it, or restart.",
@@ -5089,7 +5053,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A cloud storage folder list in a browser on a laptop.",
     body: [
       p(
-        "This lesson explains cloud storage in ordinary words: what it is, what it costs, and how to use it without depending on it completely. You will upload one folder, open it on a second device, and know the case where the cloud is not a backup.",
+        "This lesson shows cloud storage in ordinary words: what it is, what it costs, and how to use it without depending on it completely. You will upload one folder, open it on a second device, and know the case where the cloud is not a backup.",
       ),
       p(
         "The cloud is somebody else's computer holding a copy of your files. When you open a cloud folder, your device downloads the copy or streams it. The files are not in the air; they are on a server in a data centre, and you reach them through the internet.",
@@ -5155,8 +5119,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about the cloud being unsafe in general. The real risks are a forgotten password, a closed free account, and a delete that syncs everywhere at once.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a recovery path, and the first two solve most of them."),
+      h2("Troubleshooting"),
+      p("These come up often."),
       ul([
         "A file is missing from the cloud: check the service's trash, then the version history.",
         "Uploads never finish: check the connection, then upload one file at a time.",
@@ -5255,8 +5219,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about being perfect. Signing out, deleting your files, and taking your flash drive removes almost all of the risk.",
       ),
-      h2("If it goes wrong"),
-      p("You can still act after you leave, and the first two steps are the ones that matter."),
+      h2("When it fails"),
+      p("Nothing here is unusual."),
       ul([
         "You forgot to sign out of email: change the password now, which ends the session, then sign out of other devices.",
         "You left a file on the machine: call the centre and ask them to delete it, then treat the file as seen.",
@@ -5291,7 +5255,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A simple three-column table in a Word document on a laptop.",
     body: [
       p(
-        "This lesson teaches you to put a table into a document: a list of fees, a schedule, a stock count. You will make one, keep the columns from jumping, and know when a table helps a letter and when it does not. A table is easier than it looks, and it takes about ten minutes to learn.",
+        "In this lesson you will learn to put a table into a document: a list of fees, a schedule, a stock count. You will make one, keep the columns from jumping, and know when a table helps a letter and when it does not. A table is easier than it looks, and it takes about ten minutes to learn.",
       ),
       p(
         "A table is a grid of boxes inside a document. Each box is a cell, and the boxes in a row line up whether you type two words or twenty. That lining up is the whole point: it lets a reader compare amounts without hunting across the page.",
@@ -5356,7 +5320,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about making it look decorative. A plain grid with clear headings is what an office wants, and shading usually prints badly anyway.",
       ),
       h2("If it goes wrong"),
-      p("Every case here is a two-click fix, and none of them loses your figures."),
+      p("Try these before calling a repairer."),
       ul([
         "The table runs off the page: drag the right edge in, or reduce the font size to 10.",
         "Columns jump while you type: set fixed widths in Table Properties.",
@@ -5391,7 +5355,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A printed list of names beside a laptop.",
     body: [
       p(
-        "This lesson explains mail merge: what it does, what it needs, and when you should skip it. You will learn the three parts it depends on, and the point at which doing it by hand is the better decision. Most people never need it, and knowing that saves hours.",
+        "This lesson shows mail merge: what it does, what it needs, and when you should skip it. You will learn the three parts it depends on, and the point at which doing it by hand is the better decision. Most people never need it, and knowing that saves hours.",
       ),
       p(
         "Mail merge takes one letter and one list of names, and produces one letter per person with the name filled in. It is a factory for letters, and like a factory it needs clean materials before it can run.",
@@ -5456,8 +5420,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about the settings screen looking complicated. The buttons you need are three: insert field, preview, finish.",
       ),
-      h2("If it goes wrong"),
-      p("A bad merge is not a disaster, because nothing is sent until you send it."),
+      h2("Troubleshooting"),
+      p("Test one thing at a time."),
       ul([
         "Every letter has the same name: the field was copied as text. Insert the field again from the menu.",
         "The fields show as code: turn on preview, which hides the codes and shows the real text.",
@@ -5558,8 +5522,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about a perfect system. One calendar, one place for reminders, and one look a week is enough for a busy life.",
       ),
-      h2("If it goes wrong"),
-      p("Calendar problems are small, and each one here has a quick fix."),
+      h2("When it fails"),
+      p("Work through these in order."),
       ul([
         "The event is on the wrong day: the year or the time zone was wrong. Open it and correct both.",
         "No reminder arrived: notifications are blocked for the app. Allow them in the phone settings.",
@@ -5661,7 +5625,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about losing the list when you change phones. Signing in to the same account restores it, which is why the first step in this lesson matters more than the rest.",
       ),
       h2("If it goes wrong"),
-      p("Every case here has a recovery, and the first two are the most common."),
+      p("Each one takes a few minutes."),
       ul([
         "A contact is missing after changing phones: it was saved to the phone, not the account. Check the old device, then re-save it properly.",
         "Two entries for one person: merge them, or delete the older and keep the newer.",
@@ -5696,7 +5660,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone camera pointed at a QR code on a paper flyer.",
     body: [
       p(
-        "This lesson explains QR codes: what the square pattern holds, how to scan one without getting caught, and how to check where it leads before you type anything. You will scan a real code, look at the address first, and know what to do if a code turns out to be a trap.",
+        "This lesson shows QR codes: what the square pattern holds, how to scan one without getting caught, and how to check where it leads before you type anything. You will scan a real code, look at the address first, and know what to do if a code turns out to be a trap.",
       ),
       p(
         "A QR code is a link printed as a picture. Inside the square pattern is a web address, a phone number, or a payment detail. Your camera reads the pattern and offers to open it, and the whole risk is that you follow a printed link without reading it.",
@@ -5762,8 +5726,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about the money you did not send. A cautious pause costs nothing, and it is the only defence that works against a sticker.",
       ),
-      h2("If it goes wrong"),
-      p("These six cases cover almost every QR problem, and none of them needs a technician."),
+      h2("Troubleshooting"),
+      p("Every one of these is common."),
       ul([
         "The camera will not read the code: clean the lens, move closer, and hold the phone still.",
         "The code opens nothing: it may be damaged or made for an app you do not have.",
@@ -5862,8 +5826,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry if you forget once. Removing the device from the phone ends the session on the computer within a minute.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a fix that takes under a minute, and none of them needs support."),
+      h2("When it fails"),
+      p("None of these needs a new machine."),
       ul([
         "The QR code will not scan: clean the phone lens, and hold it steady at the right distance.",
         "The computer shows Connecting and nothing loads: check the phone is online and awake.",
@@ -5898,7 +5862,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A map with a search box on a laptop screen.",
     body: [
       p(
-        "This lesson teaches you to use a map on a phone to reach a place you have never visited. You will search for the address, read the route before you leave, share your location with somebody waiting, and recover when the map loses you. It works with data, and partly without it.",
+        "In this lesson you will learn to use a map on a phone to reach a place you have never visited. You will search for the address, read the route before you leave, share your location with somebody waiting, and recover when the map loses you. It works with data, and partly without it.",
       ),
       p(
         "A map app is a moving picture of streets with a blue dot for you. The dot comes from satellites and from phone masts, and it is usually accurate to a few metres, which is enough to tell which side of a road you are on.",
@@ -5967,7 +5931,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the map being wrong in some areas. It is a guide, and the person at the junction usually knows the last hundred metres better than the satellite.",
       ),
       h2("If it goes wrong"),
-      p("These six cases cover most trips that go wrong, and each one has a practical answer."),
+      p("Check these in the order given."),
       ul([
         "The app will not open: check data, then location permission, then restart the phone.",
         "The map shows the wrong town: the search matched a similarly named place. Add the state to the search.",
@@ -6002,7 +5966,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A simple poster on a laptop screen with a heading and plenty of white space.",
     body: [
       p(
-        "This lesson teaches you to make a poster that people can read from across a room. You will choose one message, set type big enough to see, add one image, and print it at a business centre. No design software experience is needed.",
+        "Here you will learn to make a poster that people can read from across a room. You will choose one message, set type big enough to see, add one image, and print it at a business centre. No design software experience is needed.",
       ),
       p(
         "A poster has roughly three seconds to be understood by somebody walking past. That means one message, large text, and a clear way to contact you. Everything else is decoration that competes with the message.",
@@ -6072,10 +6036,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about filling every space. Empty space is what makes large text readable, and a crowded poster is the most common beginner mistake.",
       ),
-      h2("If it goes wrong"),
-      p(
-        "Every case here is fixable in the file before you print, which is the cheapest place to fix it.",
-      ),
+      h2("Troubleshooting"),
+      p("Start with the simplest check."),
       ul([
         "The text is cut off at the edge: the printer has an unprintable margin. Move everything inward.",
         "The photograph is blurry: it was small and you enlarged it. Use a larger image or remove it.",
@@ -6176,8 +6138,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry if the first attempt is rejected for size. Change one number, save a new copy, and try again. The step that matters is reading the exact limit.",
       ),
-      h2("If it goes wrong"),
-      p("These six problems cover most upload and attachment failures."),
+      h2("When it fails"),
+      p("Go down the list from the top."),
       ul([
         "The file is still too large: reduce the dimensions rather than the quality alone.",
         "The picture is now blurry: you reduced too far. Go back to the original and stop at a larger size.",
@@ -6290,7 +6252,7 @@ export const blogPosts: BlogPost[] = [
         "If it will not clean, ask a repairer to reinstall the system, and restore only your own documents.",
       ]),
       h2("If it goes wrong"),
-      p("Every case here has a safe next step, and the first two are the ones people get wrong."),
+      p("Pick the line that fits."),
       ul([
         "The warning will not close: end the browser in Task Manager, then reopen it.",
         "The page reappears on every start: remove the extension, and reset the browser settings.",
@@ -6325,7 +6287,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop showing a letter and a browser side by side.",
     body: [
       p(
-        "This lesson teaches you to work with two windows at once: a letter and a spreadsheet, a form and your bank statement, a video and your notes. You will put them side by side, switch with the keyboard, and copy between them without losing your place.",
+        "Here you will learn to work with two windows at once: a letter and a spreadsheet, a form and your bank statement, a video and your notes. You will put them side by side, switch with the keyboard, and copy between them without losing your place.",
       ),
       p(
         "A window is one program or one document, and Windows allows as many as the machine can carry. Working with two at once is the difference between copying an address by hand and copying it in one press.",
@@ -6391,8 +6353,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry if the first paste lands in the wrong place. Ctrl and Z removes it, and the clipboard still holds the copy, so a second paste costs one key press.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a fix, and none of them loses work."),
+      h2("Troubleshooting"),
+      p("Each has a cause you can find."),
       ul([
         "A window has vanished: it is minimised. Click its taskbar icon.",
         "Alt and Tab does nothing: another program is capturing the keys. Use the taskbar instead.",
@@ -6494,8 +6456,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about the document looking different on another computer. The font size travels with the file, which is why a PDF is a good way to send it.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is reversible, and the first one is the most common."),
+      h2("When it fails"),
+      p("Each one has an answer."),
       ul([
         "The page is stuck huge or tiny: press Ctrl and zero.",
         "Ctrl and plus does nothing: click inside the page first, then try again.",
@@ -6530,7 +6492,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A short bullet list in a word processor on a laptop.",
     body: [
       p(
-        "This lesson teaches you to use bullet points and numbered lists properly. You will learn which one to choose, how to make a list with the keyboard, and how to fix the spacing problems that annoy people most. It takes ten minutes and improves every document you write.",
+        "In this lesson you will learn to use bullet points and numbered lists properly. You will learn which one to choose, how to make a list with the keyboard, and how to fix the spacing problems that annoy people most. It takes ten minutes and improves every document you write.",
       ),
       p(
         "A list breaks a paragraph into separate items a reader can count. Numbers mean order matters. Dots mean order does not. Choosing the wrong one makes a reader wonder whether to follow the steps in sequence.",
@@ -6592,7 +6554,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about a list looking plain. A reader wants to follow it, not admire it, and the plainest list is usually the clearest.",
       ),
       h2("If it goes wrong"),
-      p("Six small cases, and every one is undone with Ctrl and Z or a toolbar button."),
+      p("All of these are fixable."),
       ul([
         "Every new line becomes a bullet: press Enter twice, or click the bullet button to switch it off.",
         "Numbers are all ones: the program is restarting the list at each line. Select the list and apply numbering once.",
@@ -6627,7 +6589,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A word-processor paragraph with a red squiggle under a misspelled word.",
     body: [
       p(
-        "This lesson explains the spell checker: what it catches, what it misses, and how to use it without trusting it too much. You will learn the settings that matter and the reading habit that finds the mistakes software cannot.",
+        "This lesson shows the spell checker: what it catches, what it misses, and how to use it without trusting it too much. You will learn the settings that matter and the reading habit that finds the mistakes software cannot.",
       ),
       p(
         "A spell checker compares each word with a list. If the word is not on the list, it underlines it. That means it catches typing mistakes and misses real words used in the wrong place, which are the ones that embarrass people.",
@@ -6691,8 +6653,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about sounding slow. An error in a fee amount costs more than the five minutes you saved by sending early.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is fixable, and the second one is the most common complaint."),
+      h2("Troubleshooting"),
+      p("Stop at the row that matches."),
       ul([
         "Every word is underlined: the document language is set wrong. Change it in Review, then Language.",
         "Your name is underlined: right-click and add it to the dictionary.",
@@ -6792,8 +6754,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about remembering every trap. The habit of finding first and reading the count prevents almost all of them.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is recoverable, and the first two matter most."),
+      h2("When it fails"),
+      p("Each check costs nothing to try."),
       ul([
         "Everything changed wrongly: press Ctrl and Z once, immediately.",
         "You already saved the bad version: restore the previous version from the program's history, or from your backup.",
@@ -6828,7 +6790,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A word-processor letter on a laptop with an undo control nearby.",
     body: [
       p(
-        "This lesson teaches you to undo a mistake and redo it if you change your mind. You will learn the two shortcuts, how far back they reach, and the mistakes they cannot fix. If you have ever deleted a paragraph by accident, this is the key that brings it back.",
+        "In this lesson you will learn to undo a mistake and redo it if you change your mind. You will learn the two shortcuts, how far back they reach, and the mistakes they cannot fix. If you have ever deleted a paragraph by accident, this is the key that brings it back.",
       ),
       p(
         "Most programs keep a list of your recent actions. Undo walks backwards through that list. Redo walks forwards again. The list only covers actions inside the program, and it only lasts while the program stays open.",
@@ -6892,7 +6854,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about losing an afternoon to a single slip. The habit of saving often, plus the Recycle Bin, covers almost every case in the list above.",
       ),
       h2("If it goes wrong"),
-      p("Each of these is common, and none of them means your work is lost for good."),
+      p("The first check is usually enough."),
       ul([
         "Ctrl and Z does nothing: the program does not support it, or there is nothing to undo.",
         "You undid too far: press Ctrl and Y to redo, one step at a time.",
@@ -6927,7 +6889,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A paragraph on a laptop with a few words highlighted.",
     body: [
       p(
-        "This lesson teaches you to select the exact text you want. You will learn four methods, from a single word to a whole document, and how to fix a selection that overshoots. Selecting well makes copying, deleting, and formatting fast.",
+        "Here you will learn to select the exact text you want. You will learn four methods, from a single word to a whole document, and how to fix a selection that overshoots. Selecting well makes copying, deleting, and formatting fast.",
       ),
       p(
         "Selecting tells the computer what to act on. Without a selection, a command like delete or bold applies to nothing, or to whatever is next to the cursor. That is why a half-made selection feels like the program is ignoring you.",
@@ -6993,8 +6955,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about making a perfect selection first time. Selecting is reversible, and pressing an arrow key cancels it without changing anything.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is undone in a second, and none of them damages the document."),
+      h2("Troubleshooting"),
+      p("Some of these are settings only."),
       ul([
         "The selection keeps jumping: your palm is touching the laptop trackpad, or the mouse button is not held down.",
         "You selected too much: hold Shift and click again at the right end, or press an arrow key and start again.",
@@ -7094,8 +7056,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry if the setting is hidden in a different place on your version. Search the program's help for different first page, and the path appears in one line.",
       ),
-      h2("If it goes wrong"),
-      p("These six cases cover almost every numbering complaint, and each has a one-step fix."),
+      h2("When it fails"),
+      p("Take them one at a time."),
       ul([
         "The number appears on the first page and should not: turn on Different first page.",
         "Every page shows one: the numbers were typed by hand. Delete them and insert a real page number.",
@@ -7196,9 +7158,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about it looking impersonal. A group mail with hidden addresses is the normal professional form, and the alternative is thirty strangers with each other's emails.",
       ),
       h2("If it goes wrong"),
-      p(
-        "Every case here has a next step, and the first one is the most common mistake in offices.",
-      ),
+      p("Read the row that fits your case."),
       ul([
         "You replied to everybody by accident: send one short apology to the same list, and change nothing else.",
         "You exposed a group's addresses: tell the group, apologise once, and use Bcc next time.",
@@ -7233,7 +7193,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "An email with a short name-and-phone signature at the bottom.",
     body: [
       p(
-        "This lesson teaches you to set an email signature that ends every message properly. You will write four lines that tell a stranger who you are and how to reach you, and you will set it once so it appears automatically. Short signatures get replies; long ones get ignored.",
+        "Here you will learn to set an email signature that ends every message properly. You will write four lines that tell a stranger who you are and how to reach you, and you will set it once so it appears automatically. Short signatures get replies; long ones get ignored.",
       ),
       p(
         "A signature is the block of text at the bottom of your mail: your name, your role, and one way to reach you. It exists so that the reader does not have to search through old messages for your number.",
@@ -7293,8 +7253,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about being judged for a plain ending. A reader wants your name and a number, and both are easier to find in four lines than in a small poster.",
       ),
-      h2("If it goes wrong"),
-      p("Each case here is a settings fix, and none of them affects the mails already sent."),
+      h2("Troubleshooting"),
+      p("Most of these have a cheap fix."),
       ul([
         "The signature does not appear: it is switched off, or set only for one type of message.",
         "It appears twice: delete the second copy in each mail, or set it for new mails only.",
@@ -7391,8 +7351,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about installing five programs to cover every type. Two or three cover almost everything in ordinary use.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a fix, and the first two solve most of them."),
+      h2("When it fails"),
+      p("Begin with the first one."),
       ul([
         "The program is not in the list: it is not installed, or it needs updating before it registers itself.",
         "The file opens as strange characters: the program is the wrong kind for that content, not the file.",
@@ -7427,7 +7387,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A folder window showing a Size column for a few files.",
     body: [
       p(
-        "This lesson teaches you to read file sizes and storage space. You will learn what KB, MB, and GB mean, how to estimate whether a file will fit, and why a flash drive sold as 16 GB holds less. It is arithmetic you can do in your head.",
+        "In this lesson you will learn to read file sizes and storage space. You will learn what KB, MB, and GB mean, how to estimate whether a file will fit, and why a flash drive sold as 16 GB holds less. It is arithmetic you can do in your head.",
       ),
       p(
         "A kilobyte, a megabyte, and a gigabyte are steps of about a thousand. A megabyte is roughly a thousand kilobytes, and a gigabyte is roughly a thousand megabytes. Your phone storage is counted in gigabytes, and your data bundle is often counted in megabytes.",
@@ -7491,7 +7451,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the missing gigabytes. Every drive does it, and no amount of formatting recovers the difference.",
       ),
       h2("If it goes wrong"),
-      p("Every case here has a practical answer, and the first one is the one people ask about."),
+      p("Here is what to check first."),
       ul([
         "The drive is full and the file is small: empty the Recycle Bin, then check Downloads.",
         "A copy fails with a message about space: read the message, which states how much is needed.",
@@ -7526,7 +7486,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A small right-click menu open over a file on a laptop.",
     body: [
       p(
-        "This lesson explains the right-click menu. You will learn what it offers on a file, a folder, the desktop, and inside a document, and the five actions that answer most everyday questions. It is the shortest route to most settings in Windows.",
+        "This lesson shows the right-click menu. You will learn what it offers on a file, a folder, the desktop, and inside a document, and the five actions that answer most everyday questions. It is the shortest route to most settings in Windows.",
       ),
       p(
         "The right button opens a short menu of actions that apply to whatever is under the pointer. Because it changes with context, it is the fastest way to find what you can do with a thing, without hunting through menus at the top of the window.",
@@ -7572,8 +7532,8 @@ export const blogPosts: BlogPost[] = [
         "A person using the right mouse button on a laptop.",
         "On a laptop, press with two fingers on the trackpad for the same menu. Many people never discover it.",
       ),
-      h2("If it goes wrong"),
-      p("These six cases cover most of what surprises people, and each has a short answer."),
+      h2("Troubleshooting"),
+      p("These come up often."),
       ul([
         "The menu will not open: the mouse or trackpad is set for left-hand use, or the button is failing. Try two fingers on the trackpad.",
         "The menu is very long: that is normal on a machine with many programs installed. Choose Show more options if you see it.",
@@ -7669,10 +7629,8 @@ export const blogPosts: BlogPost[] = [
         "A hand dragging a file icon across a screen.",
         "The keyboard is the reliable version: copy, click the destination, paste, and check.",
       ),
-      h2("If it goes wrong"),
-      p(
-        "Most people drop a file in the wrong folder in their first week, and none of these fixes take more than a minute.",
-      ),
+      h2("When it fails"),
+      p("Nothing here is unusual."),
       ul([
         "You dropped it in the wrong folder: press Ctrl and Z at once.",
         "The file disappeared: it moved rather than copied. Search for its name, or check the folder you dragged it into.",
@@ -7707,7 +7665,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A simple one-page CV on a laptop screen.",
     body: [
       p(
-        "This lesson teaches you to write a one-page CV that a busy employer can read in thirty seconds. You will structure it, fill it with honest evidence, and save it as a PDF that opens anywhere. You do not need experience to have a CV worth reading.",
+        "In this lesson you will learn to write a one-page CV that a busy employer can read in thirty seconds. You will structure it, fill it with honest evidence, and save it as a PDF that opens anywhere. You do not need experience to have a CV worth reading.",
       ),
       p(
         "A CV is not a life story. It is an argument that you can do the job, made in one page, with evidence a reader can check. Everything that does not support that argument is in the way of it.",
@@ -7777,7 +7735,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about not having the perfect background. An honest, clear, one-page CV from a beginner beats a padded one from anybody, and employers in small firms read every one.",
       ),
       h2("If it goes wrong"),
-      p("Each of these is fixable before you send, and the last one is asked about most."),
+      p("Try these before calling a repairer."),
       ul([
         "It will not fit on one page: cut the oldest detail, reduce the margins to 2 cm, and keep the font at 11 or 12.",
         "The layout moves on another computer: you sent a .docx instead of a PDF.",
@@ -7812,7 +7770,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A simple letter open in a browser on a laptop.",
     body: [
       p(
-        "This lesson teaches you to write a document in Google Docs when Word is not installed. You will create it, format it, save it to the cloud, and download a copy for somebody without a Google account. You only need a browser and an account.",
+        "Here you will learn to write a document in Google Docs when Word is not installed. You will create it, format it, save it to the cloud, and download a copy for somebody without a Google account. You only need a browser and an account.",
       ),
       p(
         "Google Docs is a word processor that runs inside the browser. The document lives in your Google account rather than on the machine, and it saves as you type, which is why the light going out mid-sentence no longer costs you the afternoon.",
@@ -7878,8 +7836,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about the internet dropping. Offline mode can be switched on in the settings, and the document syncs when the connection returns.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is recoverable, and the first two are the ones that worry people most."),
+      h2("Troubleshooting"),
+      p("Test one thing at a time."),
       ul([
         "The page will not load: check the connection, then open docs.google.com again rather than reloading a stale tab.",
         "Your work disappeared: open Drive and look in Recent, then in the Trash for thirty days.",
@@ -7976,8 +7934,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about offending anybody by removing access. It is normal housekeeping, and the person rarely notices or minds.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is fixable, and the first one is the most urgent."),
+      h2("When it fails"),
+      p("Work through these in order."),
       ul([
         "You shared a private file with the link setting: set it to Restricted now. Copies already downloaded cannot be recalled.",
         "The person cannot open it: they must sign in with the exact address you used.",
@@ -8012,7 +7970,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A document with a short comment in the margin.",
     body: [
       p(
-        "This lesson teaches you to comment on a document and suggest edits without changing the author's words. You will leave a comment, make a suggestion, and resolve a discussion when it is finished. This is how offices review work without argument.",
+        "In this lesson you will learn to comment on a document and suggest edits without changing the author's words. You will leave a comment, make a suggestion, and resolve a discussion when it is finished. This is how offices review work without argument.",
       ),
       p(
         "A comment is a note in the margin that starts a conversation. A suggestion is a proposed change the author can accept or reject. Neither one edits the document, which is why they are safer than typing over somebody's work.",
@@ -8073,7 +8031,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about being direct in a comment. Clear notes save an hour of misunderstanding, and a polite sentence costs nothing.",
       ),
       h2("If it goes wrong"),
-      p("These six cases cover most review problems, and each one is a short fix."),
+      p("Each one takes a few minutes."),
       ul([
         "You cannot comment: you have view-only access. Ask for Commenter rights.",
         "The comment icon is missing: the document is a PDF, which needs a different tool.",
@@ -8108,7 +8066,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A simple spreadsheet with a column sorted A to Z.",
     body: [
       p(
-        "This lesson teaches you to sort a spreadsheet without scrambling it. You will sort a whole table by one column, keep each row together, and restore the original order if you need it. Sorting a column alone is the mistake that ruins a list of customer payments.",
+        "Here you will learn to sort a spreadsheet without scrambling it. You will sort a whole table by one column, keep each row together, and restore the original order if you need it. Sorting a column alone is the mistake that ruins a list of customer payments.",
       ),
       p(
         "A spreadsheet stores rows, and each row is one record: a name with its amount, a date with its item. Sorting reorders whole rows. Sorting a single column reorders only that column, and the names no longer match their amounts.",
@@ -8170,8 +8128,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about hiding data by accident. A filter is a view, and the rows are still there underneath it.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a repair, and the first is the one to act on fastest."),
+      h2("Troubleshooting"),
+      p("Every one of these is common."),
       ul([
         "The names no longer match the amounts: undo at once with Ctrl and Z. If you already saved, restore the copy.",
         "The header row sorted into the data: undo, then sort with the header box ticked.",
@@ -8271,8 +8229,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about asking for a test page. A shop that refuses one is telling you something useful about the rest of the service.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is a settings change, and none of them touches your figures."),
+      h2("When it fails"),
+      p("None of these needs a new machine."),
       ul([
         "One column prints on its own page: set Width to 1 page in the page setup.",
         "The text is too small after fitting: reduce the number of columns, or use landscape and narrow margins.",
@@ -8307,7 +8265,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A spreadsheet amount column formatted as money.",
     body: [
       p(
-        "This lesson teaches you to make a column of numbers read as money: ₦1,500.00 instead of 1500. You will set the format, choose how many decimals to show, and keep the total adding correctly. It takes five minutes, and it makes a sheet look like a record rather than a list.",
+        "In this lesson you will learn to make a column of numbers read as money: ₦1,500.00 instead of 1500. You will set the format, choose how many decimals to show, and keep the total adding correctly. It takes five minutes, and it makes a sheet look like a record rather than a list.",
       ),
       p(
         "Formatting changes how a number looks, not what it is. The cell still holds 1500, so formulas still add it. This is the whole reason to use formatting rather than typing the sign yourself.",
@@ -8373,7 +8331,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the formatting looking different when somebody else opens the file. The format travels with the spreadsheet, and a PDF keeps it exactly.",
       ),
       h2("If it goes wrong"),
-      p("Every case here is a formatting fix, and your figures are never changed by it."),
+      p("Check these in the order given."),
       ul([
         "The total does not include some numbers: those cells are text. Retype one and watch the total move.",
         "The column shows a strange date: the numbers were read as dates. Reformat the cells as Currency.",
@@ -8408,7 +8366,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A spreadsheet scrolled down with the header row still visible.",
     body: [
       p(
-        "This lesson teaches you to freeze the top row of a spreadsheet so the headings stay visible as you scroll. You will freeze a row, freeze two columns, and unfreeze when you are done. On a list of two hundred rows, it is the difference between working and guessing.",
+        "Here you will learn to freeze the top row of a spreadsheet so the headings stay visible as you scroll. You will freeze a row, freeze two columns, and unfreeze when you are done. On a list of two hundred rows, it is the difference between working and guessing.",
       ),
       p(
         "Freezing pins rows or columns in place while the rest scrolls underneath. It changes nothing in the data, and it is stored with the file, so the next person who opens it sees the same view.",
@@ -8461,8 +8419,8 @@ export const blogPosts: BlogPost[] = [
         "A spreadsheet scrolled down with the header row still visible.",
         "Header frozen, list scrolled to row ninety. The reader still knows which column is which.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is a view fix, and none of them touches your figures."),
+      h2("Troubleshooting"),
+      p("Start with the simplest check."),
       ul([
         "The freeze is in the wrong place: unfreeze, then click a cell in the right position and freeze again.",
         "You cannot find the option: it is under View, not Format or Data.",
@@ -8563,8 +8521,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about remembering which dollar sign does what. Press F4 until the formula behaves, and read the last row to be sure.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is a two-second fix, and the first is the most common."),
+      h2("When it fails"),
+      p("Go down the list from the top."),
       ul([
         "Every row shows the same answer: the references were locked. Remove the dollar signs from the row references.",
         "The answer is wrong in one row only: a cell in that row is text or empty. Check it.",
@@ -8599,7 +8557,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A simple weekly spending list on a spreadsheet.",
     body: [
       p(
-        "This lesson teaches you to build a simple weekly money list: what came in, what went out, and what is left. You will set it up in ten minutes and keep it in three minutes a day. You do not need accounting experience, only honesty and a habit.",
+        "In this lesson you will learn to build a simple weekly money list: what came in, what went out, and what is left. You will set it up in ten minutes and keep it in three minutes a day. You do not need accounting experience, only honesty and a habit.",
       ),
       p(
         "A money list is not a budget you fail at. It is a record of what actually happened, written down the day it happened. Once the week is visible, the decisions become obvious without anybody telling you what to do.",
@@ -8664,7 +8622,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about a bad week. A record that shows a bad week is doing its job, and it is the reason the next one is better.",
       ),
       h2("If it goes wrong"),
-      p("Every case here is a correction, and the first one causes most of them."),
+      p("Pick the line that fits."),
       ul([
         "The total is lower than expected: some numbers are stored as text. Retype one and watch the total move.",
         "The balance goes negative for no reason: a spend was typed into the In column.",
@@ -8699,7 +8657,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A spreadsheet cell filled with hash marks because the column is narrow.",
     body: [
       p(
-        "This lesson explains the error messages a spreadsheet shows: #####, #DIV/0!, #VALUE!, and #NAME?. You will learn what each one means, find the cause in a minute, and fix it without deleting your work. None of these messages means your file is damaged.",
+        "This lesson shows the error messages a spreadsheet shows: #####, #DIV/0!, #VALUE!, and #NAME?. You will learn what each one means, find the cause in a minute, and fix it without deleting your work. None of these messages means your file is damaged.",
       ),
       p(
         "An error message is the spreadsheet telling you what it could not do. Each message names a different problem, and reading it is faster than guessing.",
@@ -8761,8 +8719,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about the count. Errors arrive in groups, and fixing the first one in a column usually fixes five.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a plain fix, and none of them needs the sheet rebuilt."),
+      h2("Troubleshooting"),
+      p("Each has a cause you can find."),
       ul([
         "##### will not go away after widening: the number is huge. Format the cell to fewer decimals.",
         "#DIV/0! appears in a total: one row is blank. Wrap the formula in IFERROR to show a blank instead.",
@@ -8884,8 +8842,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Saving a link is faster than searching again. Copy the address bar and keep it in a note with the reason you saved it.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a fix you can try in a minute."),
+      h2("When it fails"),
+      p("Each one has an answer."),
       ul([
         "There is no sound: the speaker icon is muted, or the wrong output is chosen.",
         "The video will not play at all: the browser is old. Update it, or try another.",
@@ -8983,7 +8941,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about memorising the list. Space and the arrow keys cover most of what you need while you learn the rest.",
       ),
       h2("If it goes wrong"),
-      p("Every case here is a setting, and none of them breaks the video."),
+      p("All of these are fixable."),
       ul([
         "The captions are in the wrong language: open Settings, then Subtitles, and choose again.",
         "There are no captions offered: the speaker never enabled them, and no setting will invent them.",
@@ -9018,7 +8976,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone settings screen with Airplane mode switched on.",
     body: [
       p(
-        "This lesson explains airplane mode: what it switches off, when it helps, and what stops working while it is on. You will use it to save battery, to stop data charges, and to reset a network that has stopped working.",
+        "This lesson shows airplane mode: what it switches off, when it helps, and what stops working while it is on. You will use it to save battery, to stop data charges, and to reset a network that has stopped working.",
       ),
       p(
         "Airplane mode turns off every radio in the device: the mobile network, wifi, and Bluetooth. The phone still works as a camera, a calculator, and a place to read what you have already saved.",
@@ -9077,8 +9035,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about looking foolish for switching the network off to fix the network. Engineers do the same thing on much larger equipment.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here comes from the mode staying on when you did not intend it."),
+      h2("Troubleshooting"),
+      p("Stop at the row that matches."),
       ul([
         "Calls go straight to voicemail: airplane mode is still on. Check the top bar.",
         "You cannot send a message: the phone has no network. Turn the mode off and wait.",
@@ -9113,7 +9071,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "Phone storage settings showing what is using space.",
     body: [
       p(
-        "This lesson explains what to do when a phone says its storage is full. You will see where the space went, delete what is safe, and move photos somewhere you can keep them. Nothing on the phone needs to be wiped.",
+        "This lesson sets out what to do when a phone says its storage is full. You will see where the space went, delete what is safe, and move photos somewhere you can keep them. Nothing on the phone needs to be wiped.",
       ),
       p(
         "Storage is the space your phone keeps for photos, videos, apps, and messages. When that space is full, the phone cannot take a new picture or install an update, and it starts to slow down.",
@@ -9185,8 +9143,8 @@ export const blogPosts: BlogPost[] = [
         "Turn on automatic backup if your data allows it, so photos leave the phone on their own.",
         "Check the storage figure once a month, which takes ten seconds.",
       ]),
-      h2("If it goes wrong"),
-      p("Every case here has a route back, and the first one is the most common."),
+      h2("When it fails"),
+      p("Each check costs nothing to try."),
       ul([
         "You deleted a photo by mistake: check the trash or recently deleted album within thirty days.",
         "WhatsApp says storage is full but the phone has space: clear the app cache in Settings.",
@@ -9293,7 +9251,7 @@ export const blogPosts: BlogPost[] = [
         "Switch location off completely from quick settings when you want nothing to know.",
       ]),
       h2("If it goes wrong"),
-      p("Every case here is reversible, and the phone tells you what changed."),
+      p("The first check is usually enough."),
       ul([
         "The camera will not open in an app: the permission is denied. Allow it in Settings.",
         "A voice note records silence: the microphone is denied for that app.",
@@ -9328,7 +9286,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone lock screen with a PIN pad on a wooden desk.",
     body: [
       p(
-        "This lesson teaches you to lock a phone and a laptop so a stranger cannot open them. You will set a PIN or a pattern, turn on a fingerprint, and make the machine lock itself when you walk away. It takes ten minutes and protects everything else in these lessons.",
+        "Here you will learn to lock a phone and a laptop so a stranger cannot open them. You will set a PIN or a pattern, turn on a fingerprint, and make the machine lock itself when you walk away. It takes ten minutes and protects everything else in these lessons.",
       ),
       p(
         "A lock screen is a door between the world and your messages, photos, and accounts. It is the cheapest security you will ever set up, and every phone and laptop already has one.",
@@ -9403,8 +9361,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about being rude by locking a screen in front of a colleague. People who handle money and records do it without thinking.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a route back, and none of them needs a new device."),
+      h2("Troubleshooting"),
+      p("Some of these are settings only."),
       ul([
         "You forgot the PIN: use the account recovery on the phone, which needs your Google or Apple password.",
         "The fingerprint stops working: wash and dry the finger, then re-add it in Settings.",
@@ -9499,8 +9457,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about the cost of a replacement yet. Sorting the accounts is the urgent part, and the phone can wait a week.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a next step, and the first is the most common."),
+      h2("When it fails"),
+      p("Take them one at a time."),
       ul([
         "The find-device page shows the phone as offline: it will act when the phone next connects, so leave the lock request in place.",
         "You cannot receive the WhatsApp code: wait for the SMS block to clear, or ask WhatsApp to send the code by call.",
@@ -9535,7 +9493,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone with Do not disturb or a moon icon switched on.",
     body: [
       p(
-        "This lesson teaches you to use Do Not Disturb so a phone stops buzzing without being switched off. You will set it for an hour, let one important contact through, and schedule it for the night.",
+        "In this lesson you will learn to use Do Not Disturb so a phone stops buzzing without being switched off. You will set it for an hour, let one important contact through, and schedule it for the night.",
       ),
       p(
         "Do Not Disturb silences notifications and calls for a set period. Alarms still ring, and the phone still takes messages, which arrive quietly and wait for you.",
@@ -9601,7 +9559,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about messages piling up. They arrive quietly in the notification shade, and the count waits for you.",
       ),
       h2("If it goes wrong"),
-      p("Every case here is a setting, and the phone can always be returned to normal."),
+      p("Read the row that fits your case."),
       ul([
         "Calls do not ring at all: the exception list is empty. Add your favourites.",
         "The alarm did not ring: alarms were switched off inside Do Not Disturb.",
@@ -9636,7 +9594,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "Phone hotspot settings on a wooden desk.",
     body: [
       p(
-        "This lesson teaches you to use a phone as a hotspot, which lets a laptop use the phone's data. You will turn it on, set a proper password, connect the laptop, and keep an eye on what it costs.",
+        "Here you will learn to use a phone as a hotspot, which lets a laptop use the phone's data. You will turn it on, set a proper password, connect the laptop, and keep an eye on what it costs.",
       ),
       p(
         "A hotspot is the phone acting as a small wifi router. Other devices connect to it with a password and use the mobile data in the phone's SIM.",
@@ -9699,8 +9657,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry if the phone gets warm. A hotspot runs the radio hard, and the heat is expected while it works.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is a setting or a signal, and the connection comes back."),
+      h2("Troubleshooting"),
+      p("Most of these have a cheap fix."),
       ul([
         "The hotspot does not appear in the laptop list: turn it off and on again, then refresh the list.",
         "The password is rejected: check capital letters, and read it from the phone screen.",
@@ -9805,8 +9763,8 @@ export const blogPosts: BlogPost[] = [
         "Sign out of accounts you opened on a shared network.",
         "Turn wifi off when you leave, so the phone does not reconnect on its own.",
       ]),
-      h2("If it goes wrong"),
-      p("Every case here has a plain explanation and a short fix."),
+      h2("When it fails"),
+      p("Begin with the first one."),
       ul([
         "Wifi says connected but pages will not load: the router has no internet. Use data.",
         "Data is on but nothing loads: the bundle is finished, or the network is weak.",
@@ -9841,7 +9799,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone held directly above a document on a wooden desk.",
     body: [
       p(
-        "This lesson teaches you to photograph a document with a phone so the words come out readable. You will fix the light, hold the phone square, and check the picture before sending it. An unreadable photo means a wasted trip, and this lesson prevents that.",
+        "In this lesson you will learn to photograph a document with a phone so the words come out readable. You will fix the light, hold the phone square, and check the picture before sending it. An unreadable photo means a wasted trip, and this lesson prevents that.",
       ),
       p(
         "A document photo fails for three reasons: too little light, an angle, and a shadow from the phone itself. Fix those three and a cheap phone takes a usable picture.",
@@ -9914,7 +9872,7 @@ export const blogPosts: BlogPost[] = [
         "Keep the photos until the office confirms receipt.",
       ]),
       h2("If it goes wrong"),
-      p("Every case here is a retake, and a retake takes ten seconds."),
+      p("Here is what to check first."),
       ul([
         "Text is blurry: the phone moved. Rest the phone on a book or a wall and retake.",
         "There is a bright band across the page: that is glare. Change the angle of the light.",
@@ -9949,7 +9907,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone camera framing a document to scan.",
     body: [
       p(
-        "This lesson teaches you to scan pages on a phone and save them as one PDF. You will use a free app, crop the edges, name the file, and send something small enough to arrive. A scanned PDF looks like paper and opens on any device.",
+        "Here you will learn to scan pages on a phone and save them as one PDF. You will use a free app, crop the edges, name the file, and send something small enough to arrive. A scanned PDF looks like paper and opens on any device.",
       ),
       p(
         "A PDF keeps the pages in order and the layout fixed, so the receiver sees what you saw. Scanning apps do the same job as an office scanner, using the camera you already own.",
@@ -10018,8 +9976,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about the scan looking different from the paper. The receiver needs to read the words and see the stamps, and a black-and-white scan does both.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a fix inside the app, and none of them loses the file."),
+      h2("Troubleshooting"),
+      p("These come up often."),
       ul([
         "The page is cut off: the outline snapped inside the text. Re-scan and drag the corners out.",
         "The scan is too dark: use the light or colour setting instead of black and white.",
@@ -10054,7 +10012,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone showing a short SMS with a six-digit code.",
     body: [
       p(
-        "This lesson explains the short codes that arrive by text, usually six digits, that prove it is you. You will learn what they are for, why they expire, and why no bank, app, or person needs you to read one aloud.",
+        "This lesson sets out the short codes that arrive by text, usually six digits, that prove it is you. You will learn what they are for, why they expire, and why no bank, app, or person needs you to read one aloud.",
       ),
       p(
         "A one-time password, or OTP, is a code that works once and dies. It protects you because a thief with your password still cannot get in without the code that only reaches your phone.",
@@ -10122,8 +10080,8 @@ export const blogPosts: BlogPost[] = [
         "Ask the site to send the code by voice call instead of text.",
         "Do not keep pressing resend ten times, which locks the account for a while.",
       ]),
-      h2("If it goes wrong"),
-      p("Every case here has a next step, and the first one matters most."),
+      h2("When it fails"),
+      p("Nothing here is unusual."),
       ul([
         "You typed the code and it was rejected: it expired. Request a new one.",
         "You entered a code on a page that then asked for a card: close it. That page was not your bank.",
@@ -10224,7 +10182,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the data bundle. A banking session uses a few megabytes, which is less than one video.",
       ),
       h2("If it goes wrong"),
-      p("Every case here has a clear next step, and acting early is the whole defence."),
+      p("Try these before calling a repairer."),
       ul([
         "The browser warns the certificate is not valid: leave the page. A warning is never a formality.",
         "A network asks for a card number to connect: refuse. Real venues do not charge for wifi in that way.",
@@ -10333,8 +10291,8 @@ export const blogPosts: BlogPost[] = [
         "A message from a relative in trouble, sent from a new number, needs a phone call to confirm.",
         "Any request to keep it secret is a reason to tell somebody.",
       ]),
-      h2("If it goes wrong"),
-      p("Every case here has a next step, and speed matters more than shame."),
+      h2("Troubleshooting"),
+      p("Test one thing at a time."),
       ul([
         "You paid the fee: report to the bank within hours, since early reports sometimes recover funds.",
         "You sent your BVN: tell your bank and ask them to watch the account.",
@@ -10445,8 +10403,8 @@ export const blogPosts: BlogPost[] = [
         "Command and Space opens a search for any file or program.",
         "The key with the four loops is the Command key.",
       ]),
-      h2("If it goes wrong"),
-      p("Every case here is harmless, and the first is the most common when you are learning."),
+      h2("When it fails"),
+      p("Work through these in order."),
       ul([
         "The wrong window closes: Ctrl and Z does not reopen it. Use the browser's reopen-tab option.",
         "Text disappears after a paste: undo with Ctrl and Z and check where the cursor was.",
@@ -10556,7 +10514,7 @@ export const blogPosts: BlogPost[] = [
         "Read the message once before sending, since autocorrect hides in plain sight.",
       ]),
       h2("If it goes wrong"),
-      p("Every case here is a setting or a tap, and none of them loses your text."),
+      p("Each one takes a few minutes."),
       ul([
         "The keyboard has disappeared: tap the text box again, which brings it back.",
         "Every word is underlined in red: the wrong language is set. Change it in keyboard settings.",
@@ -10666,8 +10624,8 @@ export const blogPosts: BlogPost[] = [
         "Filling a complaint form, where the wording matters and typing is slow.",
         "A shopping list, spoken as you walk through the market.",
       ]),
-      h2("If it goes wrong"),
-      p("Every case here has a plain cause, and most are about the room."),
+      h2("Troubleshooting"),
+      p("Every one of these is common."),
       ul([
         "Nothing appears when you speak: the microphone permission is denied for the keyboard.",
         "The words are wrong from the start: background noise, or the wrong language set.",
@@ -10774,8 +10732,8 @@ export const blogPosts: BlogPost[] = [
         "Set the app to sync only on wifi if data is expensive.",
         "Check the account every morning and every evening, which is enough for most work.",
       ]),
-      h2("If it goes wrong"),
-      p("Every case here has a fix, and the password is the most common cause."),
+      h2("When it fails"),
+      p("None of these needs a new machine."),
       ul([
         "The password is rejected: it may have been changed on a computer. Update it in the phone settings.",
         "Mail will not load: data is off, or the account needs re-authentication. Open the app and approve it.",
@@ -10884,7 +10842,7 @@ export const blogPosts: BlogPost[] = [
         "If nothing confirms, ask the receiver before uploading again.",
       ]),
       h2("If it goes wrong"),
-      p("Every case here has a next step, and a slow connection is usually the cause."),
+      p("Check these in the order given."),
       ul([
         "The site rejects the file type: it wants a PDF. Convert or scan it as one.",
         "The site says the file is too large: shrink the photo or split the document.",
@@ -10920,7 +10878,7 @@ export const blogPosts: BlogPost[] = [
       "A phone held in both hands showing cloud storage folders named Papers, Certificates and IDs.",
     body: [
       p(
-        "This lesson teaches you to keep digital copies of the papers you cannot afford to lose: certificates, receipts, and identity documents. You will scan them properly, store them where you can find them, and know which offices accept a copy.",
+        "Here you will learn to keep digital copies of the papers you cannot afford to lose: certificates, receipts, and identity documents. You will scan them properly, store them where you can find them, and know which offices accept a copy.",
       ),
       p(
         "A paper in a bag can be lost in one bus trip. A copy in your own account survives the bag, the phone, and the fire, if you can remember where you put it.",
@@ -10993,8 +10951,8 @@ export const blogPosts: BlogPost[] = [
         "Keep the file size small enough for email, or use a shared link.",
         "Note which office asked for what, so the same request does not surprise you twice.",
       ]),
-      h2("If it goes wrong"),
-      p("Every case here has a next step, and none of them means starting over."),
+      h2("Troubleshooting"),
+      p("Start with the simplest check."),
       ul([
         "The scan is unreadable: retake it in daylight with the phone flat above the page.",
         "The file will not open on another device: it was saved as a photo. Rescan as a PDF.",
@@ -11029,7 +10987,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A man looking thoughtfully at his phone showing an account verification screen.",
     body: [
       p(
-        "This lesson is about account recovery: the email address and phone number that let you back in when a password fails. You will set both up, test them, and keep them current. Ten minutes now saves a week of being locked out later.",
+        "This lesson looks at account recovery: the email address and phone number that let you back in when a password fails. You will set both up, test them, and keep them current. Ten minutes now saves a week of being locked out later.",
       ),
       p(
         "A recovery method is a second way to prove the account is yours. When the password is forgotten, the service sends a code to that address or number instead.",
@@ -11093,8 +11051,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about the questions you cannot answer. Most services offer a second route, such as a code sent to a recovery phone, when a question fails.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a route, and the first step is the same in each."),
+      h2("When it fails"),
+      p("Go down the list from the top."),
       ul([
         "The recovery email is one you cannot open: go to that provider first and recover it, then return.",
         "The recovery number belongs to an old SIM: call the network and ask if the number can be restored.",
@@ -11204,7 +11162,7 @@ export const blogPosts: BlogPost[] = [
         "Change the password after any lost-device event, even if nothing looks wrong.",
       ]),
       h2("If it goes wrong"),
-      p("Every case here has a way through, and the paper list solves most of them."),
+      p("Pick the line that fits."),
       ul([
         "The prompt never arrives: the phone has no data. Connect it to wifi and try again.",
         "The codes are all used: generate a new set from a signed-in device.",
@@ -11308,8 +11266,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about offending the person who sent it. A short reply saying you could not find it anywhere is usually enough, and it stops the next round.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is repairable, and a correction travels faster than people expect."),
+      h2("Troubleshooting"),
+      p("Each has a cause you can find."),
       ul([
         "You forwarded something false: send a short correction to the same people, which is the whole fix.",
         "Somebody acted on it: help them undo the step, whether it was a payment or a form.",
@@ -11404,8 +11362,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about taking screenshots of every purchase. The confirmation page and the delivery date are the two things you will need, and both are on one screen.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a next step, and acting within days matters more than the amount."),
+      h2("When it fails"),
+      p("Each one has an answer."),
       ul([
         "The item never arrives: contact the seller in writing, then the platform, then the card issuer.",
         "The item is not what was described: photograph it as it arrived, before unpacking further.",
@@ -11519,7 +11477,7 @@ export const blogPosts: BlogPost[] = [
         "Check the statement once a week, which catches small unauthorised charges early.",
       ]),
       h2("If it goes wrong"),
-      p("Every case here has a route, and the bank's own line is the first call."),
+      p("All of these are fixable."),
       ul([
         "The app will not activate: the phone number on the account differs from the SIM in the phone.",
         "You forgot the app password: use the reset in the app, which needs the card and a code.",
@@ -11629,10 +11587,8 @@ export const blogPosts: BlogPost[] = [
         "Delete the old device from your account's device list.",
         "Change the passwords for accounts you signed into on the old phone, if it left your hands.",
       ]),
-      h2("If it goes wrong"),
-      p(
-        "Every case here is recoverable while the old phone still exists, which is the reason to wait.",
-      ),
+      h2("Troubleshooting"),
+      p("Stop at the row that matches."),
       ul([
         "WhatsApp shows no chats: restore did not run. Reinstall and choose Restore during setup.",
         "Photos are missing: check the cloud account, which may still be uploading.",
@@ -11736,8 +11692,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about losing a sale by asking for a check. A buyer who refuses to wait five minutes was never going to pay.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a next step, and the first one is the most common."),
+      h2("When it fails"),
+      p("Each check costs nothing to try."),
       ul([
         "A screenshot shows a transfer that never arrived: wait for the balance, not the picture.",
         "The buyer sends an overpayment and asks for a refund: refuse and report it, since it is a known trick.",
@@ -11772,7 +11728,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone showing a ride app map with a car icon approaching along the street.",
     body: [
       p(
-        "This lesson teaches you to order a ride from a phone app and arrive safely. You will set the pickup point, read the map, check the number plate before entering, and share the trip with somebody at home.",
+        "In this lesson you will learn to order a ride from a phone app and arrive safely. You will set the pickup point, read the map, check the number plate before entering, and share the trip with somebody at home.",
       ),
       p(
         "A ride app connects you to a driver, shows the fare, and records the trip. The record is the part that protects you, and using the app properly keeps that record accurate.",
@@ -11839,7 +11795,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about seeming anxious by sharing a trip. It is a normal feature, and drivers see it as a sign that the trip is recorded.",
       ),
       h2("If it goes wrong"),
-      p("Every case here has a next step inside the app, and the record is on your side."),
+      p("The first check is usually enough."),
       ul([
         "The driver asks you to cancel and pay cash: refuse, since you lose the record and the fare protection.",
         "The number plate does not match: do not enter. Cancel in the app and report the driver.",
@@ -11938,8 +11894,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about the form disappearing after payment. The reference number and the receipt are the record, and the portal keeps both on the account you created.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a route, and the reference number is the key to most of them."),
+      h2("Troubleshooting"),
+      p("Some of these are settings only."),
       ul([
         "The page times out mid-form: your progress is usually lost. Keep documents ready and move faster next time.",
         "The name is spelled wrongly on the submission: contact the agency with the reference before paying.",
@@ -12047,8 +12003,8 @@ export const blogPosts: BlogPost[] = [
         "Check the refund terms before paying for anything, even a small amount.",
         "Prefer a course with a certificate from an institution you can name.",
       ]),
-      h2("If it goes wrong"),
-      p("Every case here has a correction, and none of them costs you the whole effort."),
+      h2("When it fails"),
+      p("Take them one at a time."),
       ul([
         "You started five courses and finished none: choose one and hide the rest for a month.",
         "You cannot follow the accent: turn on captions and slow the video down.",
@@ -12157,7 +12113,7 @@ export const blogPosts: BlogPost[] = [
         "Send a short message after a week if the advert names a contact.",
       ]),
       h2("If it goes wrong"),
-      p("Every case here has a repair, and the first is the most common."),
+      p("Read the row that fits your case."),
       ul([
         "The employer cannot open your CV: upload the PDF rather than a photo or a document file.",
         "No replies after twenty applications: the headline is vague. Rewrite it for each advert.",
@@ -12256,8 +12212,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about feeling ashamed. These calls are built to work on people who love their families, which is not a weakness.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a next step, and speed is the thing that helps."),
+      h2("Troubleshooting"),
+      p("Most of these have a cheap fix."),
       ul([
         "You sent money an hour ago: call the bank now, since early reports sometimes stop the transfer.",
         "You gave account details but sent nothing: watch the account and change the password.",
@@ -12355,8 +12311,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about losing something you might need. Keep the accounts you use once a year, and close only the ones you had forgotten existed.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a route back, and none of them is permanent on the same day."),
+      h2("When it fails"),
+      p("Begin with the first one."),
       ul([
         "You cancelled the wrong subscription: resubscribe, which takes two minutes.",
         "An app you removed held your photos: check the service's website before panicking.",
@@ -12392,7 +12348,7 @@ export const blogPosts: BlogPost[] = [
       "A young person guiding an older woman's hand on a laptop trackpad, both smiling slightly.",
     body: [
       p(
-        "This lesson teaches you to teach somebody else: a parent, a shop assistant, a younger sibling. You will learn the order to teach things in, how to sit beside rather than take over, and how to leave them able to do it alone.",
+        "In this lesson you will learn to teach somebody else: a parent, a shop assistant, a younger sibling. You will learn the order to teach things in, how to sit beside rather than take over, and how to leave them able to do it alone.",
       ),
       p(
         "Teaching is a separate skill from doing. A person who grabs the mouse and finishes the task has done the work and taught nothing, which is why patience matters more than knowledge.",
@@ -12456,7 +12412,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the notes looking untidy. Notes in the learner's own words are the ones they will read, and neat notes in your words are the ones they will ignore.",
       ),
       h2("If it goes wrong"),
-      p("Every case here is about pace or patience, and both can be adjusted."),
+      p("Here is what to check first."),
       ul([
         "They forget the steps within a day: repeat the task tomorrow, which is normal rather than failure.",
         "They ask you to do it: agree to do it once, then ask them to repeat it.",
@@ -12572,8 +12528,8 @@ export const blogPosts: BlogPost[] = [
         "Write a short CV that names the tools you have touched, even in a lab.",
         "Ask at your current workplace whether the security team needs help with anything.",
       ]),
-      h2("If it goes wrong"),
-      p("Every case here is a normal part of the job, not a sign that you are unsuited to it."),
+      h2("Troubleshooting"),
+      p("These come up often."),
       ul([
         "You closed a real alert as false: report it as soon as you notice, which is what the notes are for.",
         "You escalated something harmless: that is cheaper than the opposite, and nobody will mind.",
@@ -12683,8 +12639,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about asking a question during handover that sounds basic. A question at handover is cheaper than a mistake at three in the morning.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here happens in real rooms, and each has a routine answer."),
+      h2("When it fails"),
+      p("Nothing here is unusual."),
       ul([
         "An alert is missed on a quiet night: the process, not one person, is reviewed and the rule is fixed.",
         "Two analysts investigate the same thing: the shared queue exists to prevent this, so use it.",
@@ -12800,7 +12756,7 @@ export const blogPosts: BlogPost[] = [
         "When you tune a rule, write down what you changed and why, because you will be the person asking in six months. Your note is what stops the next analyst from undoing your work by accident.",
       ),
       h2("If it goes wrong"),
-      p("Every case here is a known problem with a known correction."),
+      p("Try these before calling a repairer."),
       ul([
         "No alerts arrive at all: collection has stopped. Check the feed before checking the rules.",
         "Alerts are delayed by hours: the queue is overloaded, or the storage is full.",
@@ -12835,7 +12791,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A security guard checking a visitor's identity card at a compound gate.",
     body: [
       p(
-        "This lesson explains zero trust, the principle that no request is trusted because of where it comes from. You will learn the three checks applied at every door, what least privilege means, and why the old idea of a safe office network failed.",
+        "This lesson shows zero trust, the principle that no request is trusted because of where it comes from. You will learn the three checks applied at every door, what least privilege means, and why the old idea of a safe office network failed.",
       ),
       p(
         "Zero trust means verify every request, every time: who is asking, from what device, and for what. A familiar network is not a reason to stop checking.",
@@ -12900,8 +12856,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about the word zero in the name. It describes trust in the network, not trust in people, who are still the reason the systems exist.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is a friction that has an answer, and each is worth the friction."),
+      h2("Troubleshooting"),
+      p("Test one thing at a time."),
       ul([
         "You are asked to verify again: the device or location changed, which is the check doing its job.",
         "A colleague cannot reach a system: their permission expired. Ask for it, rather than sharing yours.",
@@ -12936,7 +12892,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A man inspecting a compound fence with a torch at dusk, looking for weak points.",
     body: [
       p(
-        "This lesson explains a vulnerability assessment: a scan for weak places in systems, a decision about which to fix first, and a report that gets somebody to act. You will learn what the scan can see, what it cannot, and how severity scores are read.",
+        "This lesson sets out a vulnerability assessment: a scan for weak places in systems, a decision about which to fix first, and a report that gets somebody to act. You will learn what the scan can see, what it cannot, and how severity scores are read.",
       ),
       p(
         "A vulnerability assessment checks what is known to be weak, using lists of published problems. It finds missing updates, open services, and default settings, which are the causes of most real incidents.",
@@ -13007,8 +12963,8 @@ export const blogPosts: BlogPost[] = [
         "It cannot replace a test where a person tries to break in on purpose.",
         "It cannot fix anything, which is why the report matters more than the scan.",
       ]),
-      h2("If it goes wrong"),
-      p("Every case here is common, and each has a routine correction."),
+      h2("When it fails"),
+      p("Work through these in order."),
       ul([
         "The scan reports everything as critical: the tool is set too loud. Confirm findings by hand.",
         "The scan slows a server: run it outside working hours, and exclude fragile machines.",
@@ -13110,7 +13066,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about memorising the numbers. Two facts carry most of the value: addresses find machines, and ports find services.",
       ),
       h2("If it goes wrong"),
-      p("Every case here is a common symptom, and each points at a different layer."),
+      p("Each one takes a few minutes."),
       ul([
         "The name does not resolve: DNS is failing, and typing the IP address directly sometimes works.",
         "The page loads without pictures: some packets are lost repeatedly, which suggests a weak signal.",
@@ -13146,7 +13102,7 @@ export const blogPosts: BlogPost[] = [
       "A hand signing a document with a pen beside a laptop showing a digital signing screen.",
     body: [
       p(
-        "This lesson explains what a digital signature proves and what it does not. You will learn how the padlock in a browser works, how a signed PDF differs from a scanned signature, and the one thing a signature never confirms.",
+        "This lesson shows what a digital signature proves and what it does not. You will learn how the padlock in a browser works, how a signed PDF differs from a scanned signature, and the one thing a signature never confirms.",
       ),
       p(
         "A digital signature uses mathematics to show two things: the document has not changed since it was signed, and it came from the holder of a particular key. It says nothing about whether the signer meant what they signed.",
@@ -13208,8 +13164,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry if you have signed things by scanning. Most offices accept it, and knowing the difference is what protects you in the few cases that matter.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is a warning worth understanding, and none of them is a reason to panic."),
+      h2("Troubleshooting"),
+      p("Every one of these is common."),
       ul([
         "The padlock is missing on a bank page: leave it, and type the address yourself next time.",
         "The certificate has expired: the site owner has not renewed it. Treat it as a stop sign.",
@@ -13245,7 +13201,7 @@ export const blogPosts: BlogPost[] = [
       "A developer at a laptop with code on one half of the screen and a webpage on the other.",
     body: [
       p(
-        "This lesson explains the frontend developer's job: the part of a website you can see and touch. You will learn the three languages involved, why a page must work on a small screen, and the first steps for somebody starting today.",
+        "This lesson sets out the frontend developer's job: the part of a website you can see and touch. You will learn the three languages involved, why a page must work on a small screen, and the first steps for somebody starting today.",
       ),
       p(
         "The frontend is everything that runs in your browser. The backend, by contrast, runs on a server and holds the data, and the two talk to each other over the network.",
@@ -13304,8 +13260,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about the frameworks with unfamiliar names. They change every few years, and the three languages underneath do not.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is a normal part of building, not a sign that you cannot do it."),
+      h2("When it fails"),
+      p("None of these needs a new machine."),
       ul([
         "The page looks wrong in one browser: check the console for errors before changing the styles.",
         "A button does nothing: the script has an error, or the element name does not match.",
@@ -13406,7 +13362,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the mathematics if you are only curious. The judgement questions above are the ones that decide whether a project helps anybody.",
       ),
       h2("If it goes wrong"),
-      p("Every case here is a known failure, and each is found by testing rather than guessing."),
+      p("Check these in the order given."),
       ul([
         "The model is accurate in testing and wrong in use: the test data did not match real users.",
         "The model refuses one group more often: check the training examples for that group.",
@@ -13441,7 +13397,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A team standing around a board covered in sticky notes, one person speaking.",
     body: [
       p(
-        "This lesson explains agile and DevOps in ordinary words: how a team decides what to build next, and how a change reaches users without breaking things. You will learn the meetings, the board, and the pipeline that catches mistakes early.",
+        "This lesson shows agile and DevOps in ordinary words: how a team decides what to build next, and how a change reaches users without breaking things. You will learn the meetings, the board, and the pipeline that catches mistakes early.",
       ),
       p(
         "Agile is a way of working in short cycles with frequent review. DevOps is the habit of building, testing, and releasing automatically, so a small change can go out safely on a Tuesday.",
@@ -13506,8 +13462,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about the vocabulary of ceremonies and artefacts. The board, the short cycle, the review, and the automatic test are the parts that change the work.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is common, and each has a correction the team can make itself."),
+      h2("Troubleshooting"),
+      p("Start with the simplest check."),
       ul([
         "The sprint ends with nothing finished: the team took on too much. Take less next time.",
         "The board is not updated: nobody trusts it, so the meeting becomes the plan instead.",
@@ -13542,7 +13498,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A woman studying a spreadsheet of sales figures on a laptop, pen in hand.",
     body: [
       p(
-        "This lesson explains the data analyst's job: turning a pile of records into an answer somebody can act on. You will learn the three tools that cover most of the work and the questions that decide whether a report is useful.",
+        "This lesson sets out the data analyst's job: turning a pile of records into an answer somebody can act on. You will learn the three tools that cover most of the work and the questions that decide whether a report is useful.",
       ),
       p(
         "An analyst does not start with the data. The work starts with a question somebody in the business needs answered by Friday, and the data is the material for the answer.",
@@ -13610,8 +13566,8 @@ export const blogPosts: BlogPost[] = [
         "Look for analyst titles in operations, sales, and finance, not only in technology.",
         "Ask a business you know for one question and answer it for free, as practice.",
       ]),
-      h2("If it goes wrong"),
-      p("Every case here is a normal mistake, and each is caught by a habit you can build."),
+      h2("When it fails"),
+      p("Go down the list from the top."),
       ul([
         "Your total is wrong: duplicate rows. Count the rows before summing.",
         "The chart says nothing: too many categories. Group the small ones together.",
@@ -13728,7 +13684,7 @@ export const blogPosts: BlogPost[] = [
         "If it goes wrong, the first check is whether the problem is real rather than whether the app is good. The sentence at the top of this lesson is the thing to revisit, and most fixes happen there.",
       ),
       h2("If it goes wrong"),
-      p("Every case here is common in a first project, and each has a plain answer."),
+      p("Pick the line that fits."),
       ul([
         "Nobody downloads it: the problem is not painful enough, or the people were never asked.",
         "People download and leave: the first screen asks for too much. Remove a step.",
@@ -13827,8 +13783,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about starting later than a friend. A course chosen carefully in three weeks is quicker than a wrong one paid for today.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a route, and the written record is what helps."),
+      h2("Troubleshooting"),
+      p("Each has a cause you can find."),
       ul([
         "The course stopped halfway: ask the other students to complain together, in writing.",
         "The teaching is not what was promised: raise it in writing, and request the refund terms.",
@@ -13941,8 +13897,8 @@ export const blogPosts: BlogPost[] = [
         "Keep a personal notebook of every problem you solve, which becomes your experience.",
         "Move towards a speciality after a year, such as networks, security, or cloud.",
       ]),
-      h2("If it goes wrong"),
-      p("Every case here happens in real offices, and each has a routine answer."),
+      h2("When it fails"),
+      p("Each one has an answer."),
       ul([
         "You fixed it and it broke again: the cause was not found. Note the pattern and look deeper.",
         "You closed a ticket too early: reopen it, and apologise once rather than twice.",
@@ -13978,7 +13934,7 @@ export const blogPosts: BlogPost[] = [
       "A shop owner and a young developer looking at a laptop together behind a shop counter.",
     body: [
       p(
-        "This lesson is about building websites for small businesses as a trade. You will learn what a local client actually needs, how to price in naira, what to put in a written agreement, and how maintenance becomes a monthly income.",
+        "This lesson covers building websites for small businesses as a trade. You will learn what a local client actually needs, how to price in naira, what to put in a written agreement, and how maintenance becomes a monthly income.",
       ),
       p(
         "A small business needs a page that loads fast on a cheap phone, shows what they sell, and gives a phone number that works. That is a smaller job than most beginners imagine, and it is the job people pay for.",
@@ -14049,7 +14005,7 @@ export const blogPosts: BlogPost[] = [
         "Charge for changes beyond the agreed scope, politely and in writing.",
       ]),
       h2("If it goes wrong"),
-      p("Every case here is common in a small trade, and each has a plain answer."),
+      p("All of these are fixable."),
       ul([
         "The client does not pay the second half: the site stays on your hosting until payment, which the agreement should state.",
         "The domain was registered in your name: transfer it, since owning a client's name ends the relationship.",
@@ -14084,7 +14040,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A planner showing a week of scheduled posts beside a phone on a desk.",
     body: [
       p(
-        "This lesson explains the social media manager's job: the planning, the posting, the replies, and the reporting. You will learn how a week is planned before it starts and why the inbox matters more than the follower count.",
+        "This lesson shows the social media manager's job: the planning, the posting, the replies, and the reporting. You will learn how a week is planned before it starts and why the inbox matters more than the follower count.",
       ),
       p(
         "Posting is the smallest part of the work. The job is deciding what to say, saying it regularly, and answering the people who respond.",
@@ -14152,8 +14108,8 @@ export const blogPosts: BlogPost[] = [
         "Send it on the same day each month, so it becomes expected.",
         "Include one problem that needs the owner's decision.",
       ]),
-      h2("If it goes wrong"),
-      p("Every case here is common, and each has a straightforward response."),
+      h2("Troubleshooting"),
+      p("Stop at the row that matches."),
       ul([
         "A post gets a rude comment: reply once, politely, and hide the comment rather than arguing.",
         "The account is quiet for a week: post one useful thing rather than three apologetic ones.",
@@ -14253,8 +14209,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about the client asking for changes. Two rounds, agreed in advance, turns a difficult client into a normal one.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is a professional problem with an ordinary answer."),
+      h2("When it fails"),
+      p("Each check costs nothing to try."),
       ul([
         "The client wants a redesign after approval: quote for a new round, politely.",
         "The printed colours are wrong: the file was in the wrong colour mode for print.",
@@ -14290,7 +14246,7 @@ export const blogPosts: BlogPost[] = [
       "A young professional at a desk with headphones, a laptop and a small UPS, in a home room.",
     body: [
       p(
-        "This lesson is about working remotely from Nigeria: the hours, the payment routes, the equipment worth buying first, and the habits that keep a client for years. You will learn what remote employers actually check.",
+        "This lesson covers working remotely from Nigeria: the hours, the payment routes, the equipment worth buying first, and the habits that keep a client for years. You will learn what remote employers actually check.",
       ),
       p(
         "Remote work is ordinary work done at a distance. The distance changes the payment, the hours, and the trust, and each of those has a practical answer.",
@@ -14356,7 +14312,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the accent or the background. Clients care that they understood you and that the work arrived, and both are within your control.",
       ),
       h2("If it goes wrong"),
-      p("Every case here is common in remote work, and each has a plain fix."),
+      p("The first check is usually enough."),
       ul([
         "The payment is held by the service: check the name on the account matches the invoice exactly.",
         "The rate dropped before payment: quote in the currency you are paid in, where possible.",
@@ -14391,7 +14347,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A hand writing figures into a notebook beside a calculator and a laptop.",
     body: [
       p(
-        "This lesson teaches you to price your work: work out your real cost per hour, build a quote, and answer a request for a discount without lowering your value. You will leave with a figure and a sentence to say out loud.",
+        "Here you will learn to price your work: work out your real cost per hour, build a quote, and answer a request for a discount without lowering your value. You will leave with a figure and a sentence to say out loud.",
       ),
       p(
         "A price is not a guess about what somebody will pay. It is your costs, your time, and a margin, written down so you can repeat it.",
@@ -14460,8 +14416,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about losing the client. A client who will not pay your floor costs you the work you could have done for somebody who will.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is common in a first year of charging, and each has a plain answer."),
+      h2("Troubleshooting"),
+      p("Some of these are settings only."),
       ul([
         "You quoted too low: finish this job, and raise the price for the next client.",
         "The scope grew: point to the quote, and price the extra as a new line.",
@@ -14559,8 +14515,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "You will see the page load in a few seconds on a phone, with the first project visible without scrolling. If it needs a login, or images take ten seconds, fix that before sending it anywhere.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is fixable in an evening, and none of them needs starting over."),
+      h2("When it fails"),
+      p("Take them one at a time."),
       ul([
         "The link needs a login: change the sharing settings, then test from another device.",
         "The images are blurred: use the original files rather than screenshots of screenshots.",
@@ -14672,7 +14628,7 @@ export const blogPosts: BlogPost[] = [
         "Ask for the testimonial again if they forgot, which most people do.",
       ]),
       h2("If it goes wrong"),
-      p("Every case here happens in a first year, and each has a calm answer."),
+      p("Read the row that fits your case."),
       ul([
         "They ask for a discount: offer less work at a lower price, rather than the same work for less.",
         "They add a new request: quote it as a separate line, politely.",
@@ -14788,8 +14744,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "If you must work on a client document, remove the names and the figures first. A draft about a tenant becomes a draft about a customer, and the advice still works.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a plain fix, and the first one is the most common."),
+      h2("Troubleshooting"),
+      p("Most of these have a cheap fix."),
       ul([
         "It invented a fact: correct it in the next message, and check anything else from the same answer.",
         "The tone is wrong: describe the reader and the feeling you want, then compare two drafts.",
@@ -14902,8 +14858,8 @@ export const blogPosts: BlogPost[] = [
         "Compare this month with the last two, since one month says little.",
         "Write one decision for next month, in one sentence.",
       ]),
-      h2("If it goes wrong"),
-      p("Every case here is common in a small trade, and each has a plain answer."),
+      h2("When it fails"),
+      p("Begin with the first one."),
       ul([
         "The ledger has a gap: reconcile against the bank app, which shows every movement.",
         "Cash sales are missing: write them the same evening, since memory fades by Friday.",
@@ -14939,7 +14895,7 @@ export const blogPosts: BlogPost[] = [
       "A laptop with a lock screen turned away from visitors on a tidy desk, files closed beside it.",
     body: [
       p(
-        "This lesson is about the client information you handle: what to keep, where to keep it, and who may see it. You will learn the simple habits that meet a confidentiality promise, and what to do if something goes wrong.",
+        "This lesson covers the client information you handle: what to keep, where to keep it, and who may see it. You will learn the simple habits that meet a confidentiality promise, and what to do if something goes wrong.",
       ),
       p(
         "Confidentiality is a promise you make by taking the work. It does not need a lawyer to keep, only a few habits applied every time.",
@@ -15018,7 +14974,7 @@ export const blogPosts: BlogPost[] = [
         "Do not promise it will never happen again. Say what you have changed.",
       ]),
       h2("If it goes wrong"),
-      p("Every case here is recoverable, and honesty is the part that decides the outcome."),
+      p("Here is what to check first."),
       ul([
         "A file went to the wrong person: ask them to delete it, and tell the client the same day.",
         "A folder was shared too widely: change the link settings, which revokes it at once.",
@@ -15123,10 +15079,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "The break will feel like lost time for the first week. By the second week, the last hour of the day is as clear as the first, which is where the time comes back.",
       ),
-      h2("If it goes wrong"),
-      p(
-        "Every case here has a practical step, and the last one belongs to a clinic rather than a website.",
-      ),
+      h2("Troubleshooting"),
+      p("These come up often."),
       ul([
         "Your neck aches: the screen is too low. Raise it and check again in a week.",
         "Your wrists hurt: they are resting on the desk edge. Move the keyboard closer.",
@@ -15162,7 +15116,7 @@ export const blogPosts: BlogPost[] = [
       "A person typing a question into an online forum on a laptop, notebook open beside them.",
     body: [
       p(
-        "This lesson is about learning in public: sharing what you are building, asking real questions, and recording what you learn. You will learn what to post, what to keep private, and how the habit brings help from people you have never met.",
+        "This lesson looks at learning in public: sharing what you are building, asking real questions, and recording what you learn. You will learn what to post, what to keep private, and how the habit brings help from people you have never met.",
       ),
       p(
         "Learning in public means showing the work while it is unfinished. It feels risky and it is useful, because the mistake somebody points out on Tuesday saves a week of guessing.",
@@ -15238,8 +15192,8 @@ export const blogPosts: BlogPost[] = [
         "Every month, read the notes and choose one thing to go deeper on.",
         "After six months, the notes are a portfolio with a story.",
       ]),
-      h2("If it goes wrong"),
-      p("Every case here happens to people who share their work, and each has a calm answer."),
+      h2("When it fails"),
+      p("Nothing here is unusual."),
       ul([
         "Nobody replies: the question was too broad, or posted where the wrong people gather.",
         "Somebody is rude: answer once, politely, or say nothing. The thread is not the work.",
@@ -15274,7 +15228,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A hand holding a phone showing a politely worded payment reminder message.",
     body: [
       p(
-        "This lesson is about the client who goes quiet: the late payment, the unanswered message, the dispute that arrives after delivery. You will learn a reminder that works, the records that settle an argument, and when to stop working.",
+        "This lesson covers the client who goes quiet: the late payment, the unanswered message, the dispute that arrives after delivery. You will learn a reminder that works, the records that settle an argument, and when to stop working.",
       ),
       p(
         "Silence is not always bad faith. Sometimes it is a busy week, and sometimes it is a decision. A calm, written follow-up tells you which one you are dealing with.",
@@ -15344,7 +15298,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about being seen as difficult. A person who sends a polite reminder on time is easier to work with than one who stays silent and then explodes.",
       ),
       h2("If it goes wrong"),
-      p("Every case here has a next step, and the records are what make it possible."),
+      p("Try these before calling a repairer."),
       ul([
         "The client says they paid: ask for the transfer reference and check your statement by date.",
         "They paid part of it: acknowledge the part in writing, and restate the balance.",
@@ -15449,8 +15403,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about not being able to afford help. Start with a few hours a week on one task, which costs less than losing the client you cannot keep up with.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is common in a first year, and each has a straightforward answer."),
+      h2("Troubleshooting"),
+      p("Test one thing at a time."),
       ul([
         "The work is not right: check the written steps first, since the fault is often there.",
         "They take shortcuts: make the checklist visible, and check the result for a week.",
@@ -15552,8 +15506,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry if the record is short at the start. Three finished things with dates is already more than most applicants bring.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is a normal part of building a career, and each has a practical answer."),
+      h2("When it fails"),
+      p("Work through these in order."),
       ul([
         "You failed an exam: read the syllabus again, and sit it when you have practised the weak section.",
         "The certificate expired: renew only if the adverts still ask for it.",
@@ -15589,7 +15543,7 @@ export const blogPosts: BlogPost[] = [
       "A tidy desk at morning: laptop closed, notebook open with the day's three lines written, tea steaming.",
     body: [
       p(
-        "This lesson is about the shape of a working life, rather than the shape of a working week. You will learn to plan for the quiet months, choose skills that keep paying, and decide what you want the work to give you.",
+        "This lesson covers the shape of a working life, rather than the shape of a working week. You will learn to plan for the quiet months, choose skills that keep paying, and decide what you want the work to give you.",
       ),
       p(
         "Work has seasons. Every trade here has months of plenty and months of nothing, and a plan that assumes steady income is a plan that breaks in the quiet month.",
@@ -15665,7 +15619,7 @@ export const blogPosts: BlogPost[] = [
         "Change the plan when it stops fitting, rather than enduring it.",
       ]),
       h2("If it goes wrong"),
-      p("Every case here is normal over a long working life, and each has a step forward."),
+      p("Each one takes a few minutes."),
       ul([
         "A quiet month empties the account: it is a planning gap, not a personal failure.",
         "A good month is followed by spending: move the reserve first, then spend.",
@@ -15701,7 +15655,7 @@ export const blogPosts: BlogPost[] = [
       "A young person checking an exam result on a phone at a table, pen and scratch card nearby.",
     body: [
       p(
-        "This lesson teaches you to check a result or an admission status online, on the official page, without paying anybody for a free link. You will have the details ready, handle a page that times out, and keep a printed copy.",
+        "Here you will learn to check a result or an admission status online, on the official page, without paying anybody for a free link. You will have the details ready, handle a page that times out, and keep a printed copy.",
       ),
       p(
         "Result portals are slow on the day results are released, because thousands of people open them at once. Knowing that in advance prevents most of the panic.",
@@ -15765,8 +15719,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about checking on the first morning. The result is the same at noon, and the portal is readable then.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a route, and the school or the exam body is the authority."),
+      h2("Troubleshooting"),
+      p("Every one of these is common."),
       ul([
         "The details are rejected: check the session year first, which is the usual error.",
         "The result is not the expected one: confirm the name and the number, then contact the school.",
@@ -15802,7 +15756,7 @@ export const blogPosts: BlogPost[] = [
       "A family at a living-room table, a parent guiding a child's hands on a small tablet.",
     body: [
       p(
-        "This lesson is about phones, tablets, and children in one household. You will set the controls that matter, agree house rules everybody understands, and decide where devices sleep at night.",
+        "This lesson looks at phones, tablets, and children in one household. You will set the controls that matter, agree house rules everybody understands, and decide where devices sleep at night.",
       ),
       p(
         "Parental controls are useful and limited. They cannot replace a conversation, and a child who understands the reason follows a rule more reliably than one who only meets a lock.",
@@ -15866,8 +15820,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "A child who has been warned without being frightened is safer than one who has only been blocked. The warning is what they remember when the message arrives.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is common, and the first response should be calm."),
+      h2("When it fails"),
+      p("None of these needs a new machine."),
       ul([
         "The child installed an app you did not approve: check the store settings, then ask what it was for.",
         "A stranger is messaging: block and report, save the messages, and do not delete them.",
@@ -15903,7 +15857,7 @@ export const blogPosts: BlogPost[] = [
       "A job seeker tailoring a CV on a laptop, the job advert open on a phone beside the keyboard.",
     body: [
       p(
-        "This lesson shows you how to write a CV that a recruiter finishes. You will build the top third first, delete the lines that waste space, and tailor it to one advert in ten minutes.",
+        "Here you will learn how to write a CV that a recruiter finishes. You will build the top third first, delete the lines that waste space, and tailor it to one advert in ten minutes.",
       ),
       p(
         "A recruiter reads the top of the page and decides whether to read the rest. Everything that matters must be in the first three lines, above the fold on a printed page.",
@@ -15979,7 +15933,7 @@ export const blogPosts: BlogPost[] = [
         "Save it as a separate file named for that employer.",
       ]),
       h2("If it goes wrong"),
-      p("Every case here has a correction, and the first is the most common."),
+      p("Check these in the order given."),
       ul([
         "No replies: the headline is generic. Change it for each advert.",
         "The CV is two pages: cut the oldest job to one line, and delete the hobbies.",
@@ -16082,8 +16036,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about a child or a fan in the background. Say sorry once, and continue, since composure under a small interruption is itself an answer.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a fix you can apply without leaving the call."),
+      h2("Troubleshooting"),
+      p("Start with the simplest check."),
       ul([
         "The connection drops: rejoin at once, and message the interviewer if the link fails twice.",
         "The sound fails: type in the chat, then switch to a phone call.",
@@ -16188,8 +16142,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about forgetting a line. The slide in front of you holds the heading, and the heading is the cue.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here happens at real talks, and each has a response ready."),
+      h2("When it fails"),
+      p("Go down the list from the top."),
       ul([
         "The projector fails: use the printed copy, and keep talking, which the room prefers.",
         "The slides will not open: present from a PDF, which opens anywhere.",
@@ -16225,7 +16179,7 @@ export const blogPosts: BlogPost[] = [
       "A laptop screen showing a short email being composed with a clear subject line filled.",
     body: [
       p(
-        "This lesson teaches you to write an email that somebody answers. You will write a subject line that states the ask, put the request in the first line, and keep it short enough to read on a phone.",
+        "In this lesson you will learn to write an email that somebody answers. You will write a subject line that states the ask, put the request in the first line, and keep it short enough to read on a phone.",
       ),
       p(
         "People answer emails that are easy to answer. Most unanswered messages are not ignored out of rudeness; they are long, vague, or asking for three things at once.",
@@ -16304,7 +16258,7 @@ export const blogPosts: BlogPost[] = [
         "Ask somebody else in the organisation if the first person is away.",
       ]),
       h2("If it goes wrong"),
-      p("Every case here has a fix, and each is quicker than rewriting the email."),
+      p("Pick the line that fits."),
       ul([
         "You sent it to the wrong person: forward it with one line of apology and the correct ask.",
         "You attached the wrong file: send the right one at once, and say which is correct.",
@@ -16404,8 +16358,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about the notes looking untidy. An untidy page you can find beats a neat page you cannot.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a correction, and none of them means starting a new notebook."),
+      h2("Troubleshooting"),
+      p("Each has a cause you can find."),
       ul([
         "You cannot find the note: search for the menu name, not the topic.",
         "The notes are in four places: choose one place, and move the rest into it this month.",
@@ -16516,8 +16470,8 @@ export const blogPosts: BlogPost[] = [
         "Question a total that looks too round, since a mistake often produces one.",
         "Keep the file with the list and the table together, so the numbers can be checked.",
       ]),
-      h2("If it goes wrong"),
-      p("Every case here is a data problem, and each has a plain fix."),
+      h2("When it fails"),
+      p("Each one has an answer."),
       ul([
         "The total is too low: some amounts are stored as text. Retype one and watch the total move.",
         "A category appears twice: the spelling differs, or a space was typed. Fix the list.",
@@ -16552,7 +16506,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A woman booking a doctor's appointment on her phone at a kitchen table.",
     body: [
       p(
-        "This lesson is about looking up health information online without being misled. You will learn which sources are worth reading, which claims to ignore, and the point at which a person rather than a page is needed.",
+        "This lesson covers looking up health information online without being misled. You will learn which sources are worth reading, which claims to ignore, and the point at which a person rather than a page is needed.",
       ),
       p(
         "The internet is good at explaining a condition and bad at diagnosing one. It can tell you what a word means and cannot tell you what is wrong with you.",
@@ -16628,9 +16582,7 @@ export const blogPosts: BlogPost[] = [
         "Anything involving a child, a pregnancy, or a long-term condition.",
       ]),
       h2("If it goes wrong"),
-      p(
-        "Every case here is about a decision rather than a technical fault, and each has a plain answer.",
-      ),
+      p("All of these are fixable."),
       ul([
         "You bought a product online: stop using it, and tell your clinic what it contained.",
         "You stopped a prescription: restart only on advice from a professional, and call today.",
@@ -16729,8 +16681,8 @@ export const blogPosts: BlogPost[] = [
         "Teach it to one person, which is the test of understanding.",
         "Add it to your CV only after you have used it for real.",
       ]),
-      h2("If it goes wrong"),
-      p("Every case here is common, and each costs an hour rather than a career."),
+      h2("Troubleshooting"),
+      p("Stop at the row that matches."),
       ul([
         "You skipped three months: restart with one hour, not a catch-up month.",
         "The tool was useless: write one line about why, which saves you trying it again.",
@@ -16834,8 +16786,8 @@ export const blogPosts: BlogPost[] = [
         "A notebook with a written transaction reference number and a date.",
         "A reference number on paper survives a flat battery. Write it before you put the phone away.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a next step, and the alert is the first thing to check."),
+      h2("When it fails"),
+      p("Each check costs nothing to try."),
       ul([
         "The menu does not appear: the SIM is not the registered one, or the network is busy.",
         "The session ends mid-transfer: wait for the alert before trying again.",
@@ -16871,7 +16823,7 @@ export const blogPosts: BlogPost[] = [
       "A phone screen showing a list of small deduction text messages, held by a frowning owner.",
     body: [
       p(
-        "This lesson is about the small charges that disappear from your airtime every week. You will learn how to find them, how to stop them, and what to do when a service was added without your agreement.",
+        "This lesson covers the small charges that disappear from your airtime every week. You will learn how to find them, how to stop them, and what to do when a service was added without your agreement.",
       ),
       p(
         "Value-added services are subscriptions sold through the network: ringtones, text alerts, games, and quizzes. They charge a small amount daily or weekly, and the total across a year is often surprising.",
@@ -16938,7 +16890,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about sounding difficult. Asking what is charging your line is an ordinary question, and the operators answer it all day.",
       ),
       h2("If it goes wrong"),
-      p("Every case here has a route, and the record of messages is what makes it work."),
+      p("The first check is usually enough."),
       ul([
         "The charges return: ask for a block on all value-added services, not only a stop.",
         "There are no messages at all: request the line's charge history from the customer line.",
@@ -17045,8 +16997,8 @@ export const blogPosts: BlogPost[] = [
         "A notebook page recording bundle purchases, dates, and usage.",
         "A page per month: bought, finished, and how long it lasted. The pattern is the answer.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a cause you can find on the screen, and a fix in the settings."),
+      h2("Troubleshooting"),
+      p("Some of these are settings only."),
       ul([
         "The bundle finished in two days: check the hotspot, which spends fastest.",
         "The usage screen and the network disagree: the network counts from a different date, so compare the same days.",
@@ -17082,7 +17034,7 @@ export const blogPosts: BlogPost[] = [
       "A hand covering the ATM keypad while the other types, shoulder and camera protected.",
     body: [
       p(
-        "This lesson is about using an ATM and a POS machine safely. You will cover the keypad, check the card slot, read the slip before signing, and know what to do when a machine keeps your card.",
+        "This lesson looks at using an ATM and a POS machine safely. You will cover the keypad, check the card slot, read the slip before signing, and know what to do when a machine keeps your card.",
       ),
       p(
         "Card fraud usually needs two things: your card details and your PIN. Covering the PIN and keeping the card in sight removes most of the risk, and both take a second.",
@@ -17152,8 +17104,8 @@ export const blogPosts: BlogPost[] = [
         "A close view of an ATM card slot being checked before use.",
         "A loose or extra piece at the slot is a reason to use another machine. Your card should enter smoothly.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a next step, and the bank needs the details while they are fresh."),
+      h2("When it fails"),
+      p("Take them one at a time."),
       ul([
         "The machine keeps the card: call the bank at once, and block the card.",
         "The cash does not come out but the account is debited: keep the slip, and report it the same day.",
@@ -17189,7 +17141,7 @@ export const blogPosts: BlogPost[] = [
       "A phone charging from a power bank on a table at night, a small lamp glowing beside it.",
     body: [
       p(
-        "This lesson is about power banks, surges, and charging safely. You will choose a power bank that suits your phone, use a surge protector properly, and avoid the charging habits that shorten a battery's life.",
+        "This lesson covers power banks, surges, and charging safely. You will choose a power bank that suits your phone, use a surge protector properly, and avoid the charging habits that shorten a battery's life.",
       ),
       p(
         "Unstable power damages chargers and phones more often than any app does. A surge protector and a few careful habits cost far less than a replacement handset.",
@@ -17261,7 +17213,7 @@ export const blogPosts: BlogPost[] = [
         "A public kiosk charges the phone and can also read it. Carry your own plug and use a socket where you can.",
       ),
       h2("If it goes wrong"),
-      p("Every case here is a safety matter, and the first response is to stop charging."),
+      p("Read the row that fits your case."),
       ul([
         "The charger is hot enough to hurt: unplug it and replace it, not the phone.",
         "The phone will not charge: try another cable first, then another charger, then a repair shop.",
@@ -17296,7 +17248,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A hand typing a long token number into a prepaid meter's keypad by phone light.",
     body: [
       p(
-        "This lesson teaches you to buy prepaid electricity units from a phone, enter the token on the meter, and keep the record until the light stays on. You will learn the number that must be exact and the mistakes that waste a purchase.",
+        "Here you will learn to buy prepaid electricity units from a phone, enter the token on the meter, and keep the record until the light stays on. You will learn the number that must be exact and the mistakes that waste a purchase.",
       ),
       p(
         "A prepaid meter accepts a token, which is a long number that carries the units you paid for. Buy through a channel that gives a receipt, and the money is recoverable when something goes wrong.",
@@ -17371,10 +17323,8 @@ export const blogPosts: BlogPost[] = [
         "A printed electricity receipt kept in a folder with other bills.",
         "The receipt goes in the folder with the token written on it. A purchase is only finished when the meter agrees.",
       ),
-      h2("If it goes wrong"),
-      p(
-        "Every case here is recoverable with the receipt, and the first call is the vendor rather than the meter.",
-      ),
+      h2("Troubleshooting"),
+      p("Most of these have a cheap fix."),
       ul([
         "The token is rejected twice: check the meter number on the receipt, which is the usual fault.",
         "The units went to another meter: call the vendor with the receipt, and report the wrong number.",
@@ -17479,10 +17429,8 @@ export const blogPosts: BlogPost[] = [
         "A phone showing a boarding pass with a barcode at the airport gate.",
         "The boarding pass on the phone, and a screenshot as a backup. A flat battery at the gate would be the reason for the screenshot.",
       ),
-      h2("If it goes wrong"),
-      p(
-        "Every case here has a next step, and the airline's support line is faster than an agent at the airport.",
-      ),
+      h2("When it fails"),
+      p("Begin with the first one."),
       ul([
         "The name is misspelt: call the airline immediately, since some corrections are free within a day.",
         "The dates are wrong: check the change fee before canceling, since changing is often cheaper.",
@@ -17583,7 +17531,7 @@ export const blogPosts: BlogPost[] = [
         "Cancel within the trial period if it does not do what you need.",
       ]),
       h2("If it goes wrong"),
-      p("Every case here has a plain answer, and the first step is to switch it off."),
+      p("Here is what to check first."),
       ul([
         "The connection is much slower: change the server, or turn it off for video.",
         "A bank app blocks the connection: turn the VPN off for banking, which is safer anyway.",
@@ -17694,8 +17642,8 @@ export const blogPosts: BlogPost[] = [
         "Screenshots of threatening messages saved in a phone folder.",
         "Save the messages. A folder of evidence is what a regulator and the app store need to act.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a next step, and the written record is what protects you."),
+      h2("Troubleshooting"),
+      p("These come up often."),
       ul([
         "A contact was messaged: screenshot it, tell the contact, and report the lender.",
         "The app keeps calling at night: ask for contact by message only, in writing.",
@@ -17731,7 +17679,7 @@ export const blogPosts: BlogPost[] = [
       "A phone showing an investment app with a steep green profit curve and a big balance.",
     body: [
       p(
-        "This lesson is about schemes that promise to double your money. You will learn why the arithmetic cannot work, the three signs that give a Ponzi away, and the questions that end the conversation without an argument.",
+        "This lesson looks at schemes that promise to double your money. You will learn why the arithmetic cannot work, the three signs that give a Ponzi away, and the questions that end the conversation without an argument.",
       ),
       p(
         "A scheme that doubles money in weeks must pay from new deposits rather than from profit. That works until the deposits stop, and then everybody who joined late loses.",
@@ -17802,8 +17750,8 @@ export const blogPosts: BlogPost[] = [
         "A family group discussing an investment offer around a table.",
         "Ask in front of the family, not in a private message. Public questions get honest answers.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is painful, and the steps are still clear."),
+      h2("When it fails"),
+      p("Nothing here is unusual."),
       ul([
         "You have already paid: report to the police and the regulator with every message and receipt.",
         "The app has disappeared: keep the screenshots, and note the account names you paid.",
@@ -17923,7 +17871,7 @@ export const blogPosts: BlogPost[] = [
         "Hold the stick by the edges and clean the gold contacts gently. A reseated stick fixes a start that stops before the screen.",
       ),
       h2("If it goes wrong"),
-      p("Every case here has a next step, and stopping early is part of the lesson."),
+      p("Try these before calling a repairer."),
       ul([
         "The charger light stays off: try another charger of the same rating before opening anything.",
         "The fan spins but nothing shows: use the torch test and the external monitor test.",
@@ -18043,8 +17991,8 @@ export const blogPosts: BlogPost[] = [
         "A small dot of thermal paste on a processor before the heatsink is fitted.",
         "A dot the size of a grain of rice, spread by the pressure of the heatsink. More paste does not mean better cooling.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is a normal laptop problem, and each has a sensible next step."),
+      h2("Troubleshooting"),
+      p("Test one thing at a time."),
       ul([
         "The machine shuts down suddenly: it is protecting itself. Stop working and clean the vents.",
         "The fan screams from the moment it starts: something is running, so check the program list.",
@@ -18080,7 +18028,7 @@ export const blogPosts: BlogPost[] = [
       "Hands sliding a 2.5-inch solid-state drive into a laptop drive bay next to an old mechanical drive.",
     body: [
       p(
-        "This lesson is about a hard drive that is failing: the sounds, the slowdowns, and the backup you must take today. You will also learn what a solid-state drive changes, and when an upgrade is worth the money.",
+        "This lesson looks at a hard drive that is failing: the sounds, the slowdowns, and the backup you must take today. You will also learn what a solid-state drive changes, and when an upgrade is worth the money.",
       ),
       p(
         "A mechanical hard drive stores data on spinning plates. When it begins to fail, it clicks, slows, and eventually stops, and the data goes with it unless a copy exists elsewhere.",
@@ -18154,8 +18102,8 @@ export const blogPosts: BlogPost[] = [
         "An older laptop opened with a new solid-state drive beside the old one.",
         "Old drive out, new drive in. The machine starts faster, and the old drive stays as a backup for a month.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a next step, and the first one is about stopping the damage."),
+      h2("When it fails"),
+      p("Work through these in order."),
       ul([
         "The drive clicks and the machine will not start: stop trying, and take it to a recovery service.",
         "A folder will not copy: copy the files inside it one by one, and skip what fails.",
@@ -18266,7 +18214,7 @@ export const blogPosts: BlogPost[] = [
         "A board cleaned with isopropyl alcohol after a sugary spill. The residue, not the water, is what corrodes the contacts.",
       ),
       h2("If it goes wrong"),
-      p("Every case here has a next step, and honesty at the shop helps most."),
+      p("Each one takes a few minutes."),
       ul([
         "It starts and then fails: switch off, and take it in for cleaning before using it again.",
         "The keys stick: the residue needs cleaning, which is a shop job.",
@@ -18302,7 +18250,7 @@ export const blogPosts: BlogPost[] = [
       "A black command prompt window running a powercfg battery report showing design capacity versus full charge capacity.",
     body: [
       p(
-        "This lesson teaches you to buy a used laptop without being cheated. You will run three quick tests, inspect the parts that fail first, and ask questions a seller cannot dodge. It takes twenty minutes and saves a month of regret.",
+        "Here you will learn to buy a used laptop without being cheated. You will run three quick tests, inspect the parts that fail first, and ask questions a seller cannot dodge. It takes twenty minutes and saves a month of regret.",
       ),
       p(
         "A used laptop is a good buy when the machine is sound and a bad buy when the battery, the hinge, or the drive is failing. Each of those is testable before money changes hands.",
@@ -18371,8 +18319,8 @@ export const blogPosts: BlogPost[] = [
         "A hand opening a laptop lid slowly to check the hinge.",
         "Open the lid slowly and watch the hinge. A crack or a wobble becomes a broken screen within months.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is a reason to negotiate, walk away, or plan a repair."),
+      h2("Troubleshooting"),
+      p("Every one of these is common."),
       ul([
         "The seller will not let you test: walk away, since there is no reason to refuse.",
         "The battery is below seventy per cent: price a replacement before agreeing.",
@@ -18408,7 +18356,7 @@ export const blogPosts: BlogPost[] = [
       "A close-up photograph of the fine print on a genuine laptop power brick highlighting 19.5V and 3.33A.",
     body: [
       p(
-        "This lesson is about chargers, cables, and the small blue spark at the socket. You will read a charger label, recognise a cable that is about to fail, and stop a spark from becoming something worse.",
+        "This lesson looks at chargers, cables, and the small blue spark at the socket. You will read a charger label, recognise a cable that is about to fail, and stop a spark from becoming something worse.",
       ),
       p(
         "A charger converts the wall's power into the voltage a device needs. When the label does not match the device, or the cable is damaged, the device pays for it.",
@@ -18480,8 +18428,8 @@ export const blogPosts: BlogPost[] = [
         "A multimeter measuring the output of a laptop charger at the barrel jack.",
         "A multimeter confirms the output when a charger behaves oddly. A repair shop will do this in a minute.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is a safety decision, and the first step is always to unplug."),
+      h2("When it fails"),
+      p("None of these needs a new machine."),
       ul([
         "The charger is hot enough to hurt: stop using it, and replace it.",
         "The socket sparks every time: switch off at the main, and call an electrician.",
@@ -18517,7 +18465,7 @@ export const blogPosts: BlogPost[] = [
       "A phone camera taking a photograph of a blue screen with the stop code MEMORY_MANAGEMENT clearly readable.",
     body: [
       p(
-        "This lesson is about the blue screen and the spinning circle. You will learn what each one means, which detail to photograph, and how safe mode gets a machine started when nothing else will.",
+        "This lesson covers the blue screen and the spinning circle. You will learn what each one means, which detail to photograph, and how safe mode gets a machine started when nothing else will.",
       ),
       p(
         "A blue screen is Windows stopping on purpose, because continuing would risk the files. It is a protective stop rather than a crash for its own sake.",
@@ -18592,7 +18540,7 @@ export const blogPosts: BlogPost[] = [
         "A driver rollback undoes one update. It is the fastest fix when the fault began the day a driver changed.",
       ),
       h2("If it goes wrong"),
-      p("Every case here has a next step, and the photograph makes each one easier."),
+      p("Check these in the order given."),
       ul([
         "It blue screens repeatedly: note the code, and search for that exact code.",
         "It will not start at all: use the recovery menu and choose a restore point.",
@@ -18699,8 +18647,8 @@ export const blogPosts: BlogPost[] = [
         "A memory stick being seated into a laptop at an angle before pressing down.",
         "Seat it at an angle, then press until the clips click. Forcing it flat bends the contacts.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is a known outcome, and each has a plain answer."),
+      h2("Troubleshooting"),
+      p("Start with the simplest check."),
       ul([
         "The machine will not start after fitting: reseat the stick, and check the clips clicked.",
         "It starts but shows the old amount: the stick is not seated, or the slot is disabled.",
@@ -18805,8 +18753,8 @@ export const blogPosts: BlogPost[] = [
         "A replaced laptop fan and an old battery on a bench.",
         "The old part, handed back. It proves the repair happened, and it is your evidence if the fault returns.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here happens in real shops, and the paperwork is what helps."),
+      h2("When it fails"),
+      p("Go down the list from the top."),
       ul([
         "The price rises after diagnosis: ask for a call before any work, as agreed in writing.",
         "The fault returns within the warranty: take it back with the receipt, not with an explanation.",
@@ -18842,7 +18790,7 @@ export const blogPosts: BlogPost[] = [
       "A ten-year-old classic black laptop working quietly on a neat wooden desk next to a notebook and mug.",
     body: [
       p(
-        "This lesson is about making one laptop last ten years. You will choose the upgrades that matter, set the battery habits that help, and decide when a lighter system is the right second life for an old machine.",
+        "This lesson covers making one laptop last ten years. You will choose the upgrades that matter, set the battery habits that help, and decide when a lighter system is the right second life for an old machine.",
       ),
       p(
         "Laptops do not wear out evenly. The drive, the memory, and the battery fail first, and each is replaceable, which is why an old machine can stay useful long after its replacement date.",
@@ -18910,7 +18858,7 @@ export const blogPosts: BlogPost[] = [
         "A plain desktop on old hardware. Fewer effects mean more of the machine is left for the work.",
       ),
       h2("If it goes wrong"),
-      p("Every case here is a decision about spending, and each has a sensible answer."),
+      p("Pick the line that fits."),
       ul([
         "The machine is too slow after upgrades: check the drive health and the heat.",
         "A new part does not fit: return it, and check the model number first.",
@@ -19009,8 +18957,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about understanding the whole chain. Knowing where your responsibility ends is enough to ask the right question.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a first check, and the first check decides who to call."),
+      h2("Troubleshooting"),
+      p("Each has a cause you can find."),
       ul([
         "The whole street is down: report it and wait, since nothing inside the house will fix it.",
         "One device fails and the rest work: the problem is the device, not the line.",
@@ -19046,7 +18994,7 @@ export const blogPosts: BlogPost[] = [
       "A small black home Wi-Fi router with tiny green lights sitting on a wooden shelf beside a doorway.",
     body: [
       p(
-        "This lesson explains the lights on a home router and the restart that fixes most problems. You will learn what each light means, the order to switch things off and on, and where the box should sit.",
+        "This lesson sets out the lights on a home router and the restart that fixes most problems. You will learn what each light means, the order to switch things off and on, and where the box should sit.",
       ),
       p(
         "A router is a small computer with a modem inside. The lights are its way of telling you which part is working, and reading them takes ten seconds.",
@@ -19116,8 +19064,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about pressing the reset hole on the back. Avoid it unless you are told to, since it erases the settings the provider installed.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a light pattern, and each pattern points at one thing."),
+      h2("When it fails"),
+      p("Each one has an answer."),
       ul([
         "No lights at all: check the socket and the adapter before calling anybody.",
         "Power on and internet off: the provider's line is down. Call with the account number.",
@@ -19153,7 +19101,7 @@ export const blogPosts: BlogPost[] = [
       "A laptop on a wooden table with a yellow Ethernet cable plugged into its side port in morning window light.",
     body: [
       p(
-        "This lesson is about wifi and the cable under the table. You will learn when a cable is the better choice, why walls weaken a signal, and the cheap fixes that reach the far room.",
+        "This lesson covers wifi and the cable under the table. You will learn when a cable is the better choice, why walls weaken a signal, and the cheap fixes that reach the far room.",
       ),
       p(
         "Wifi is radio, and radio loses strength through walls and distance. A cable carries the signal without loss, which is why an older machine often works better plugged in.",
@@ -19220,7 +19168,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the cable looking untidy. A cable along a skirting board is less trouble than a call that drops every ten minutes.",
       ),
       h2("If it goes wrong"),
-      p("Every case here has a plain cause, and most are about position rather than equipment."),
+      p("All of these are fixable."),
       ul([
         "The far room has one bar: move the router first, then consider a cable.",
         "The signal drops at the same time each evening: a neighbour's network or an appliance.",
@@ -19256,7 +19204,7 @@ export const blogPosts: BlogPost[] = [
       "A hand holding a phone showing a simple coloured bar chart of data usage with soft screen glow.",
     body: [
       p(
-        "This lesson explains what a megabyte is and where your data goes. You will learn the difference between bits and bytes, how much a video or a song uses, and how to plan a bundle that lasts the month.",
+        "This lesson shows what a megabyte is and where your data goes. You will learn the difference between bits and bytes, how much a video or a song uses, and how to plan a bundle that lasts the month.",
       ),
       p(
         "A byte is a small unit of data, and a megabyte is a million of them. Providers sell bundles in megabytes or gigabytes, and they advertise speeds in megabits, which is one eighth of a megabyte.",
@@ -19320,8 +19268,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about counting every megabyte. Two habits, lower video quality and wifi downloads, change the month more than tracking does.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a plain explanation, and the usage screen is the evidence."),
+      h2("Troubleshooting"),
+      p("Stop at the row that matches."),
       ul([
         "The bundle finished early: check video and hotspot use first.",
         "The speed test is good and pages crawl: the site or the device is the slow part.",
@@ -19423,8 +19371,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about being told to restart it again. Say that you have, and give the figures, which moves the conversation forward.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a cause, and each cause has a home."),
+      h2("When it fails"),
+      p("Each check costs nothing to try."),
       ul([
         "One page fails and others load: the site is the problem, not your line.",
         "Everything fails after a storm: check the wall box and call the provider.",
@@ -19527,7 +19475,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the factory names looking strange. Renaming your own devices takes five minutes and makes the list useful from then on.",
       ),
       h2("If it goes wrong"),
-      p("Every case here has a plain cause, and none of them needs a technician."),
+      p("The first check is usually enough."),
       ul([
         "One site fails and others open: that site's name record is broken, so try again later.",
         "Every site fails: the lookup is down, so restart the router and check the clock.",
@@ -19629,8 +19577,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about getting it wrong on the first try. Access can be removed at any time, and removing it is the part most people never practise.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a setting behind it, and each one is fixable."),
+      h2("Troubleshooting"),
+      p("Some of these are settings only."),
       ul([
         "The printer disappears: the host machine went to sleep or restarted.",
         "The folder asks for a password: the guest account is off, which is safer.",
@@ -19666,7 +19614,7 @@ export const blogPosts: BlogPost[] = [
       "A small handwritten notebook lying beside a home Wi-Fi router on a wooden shelf in warm lamplight.",
     body: [
       p(
-        "This lesson is about the neighbours and your wifi. You will learn how a signal reaches the next building, why a shared password becomes a habit, and how to take access back without a quarrel.",
+        "This lesson looks at the neighbours and your wifi. You will learn how a signal reaches the next building, why a shared password becomes a habit, and how to take access back without a quarrel.",
       ),
       p(
         "Radio does not stop at a wall. A router in a compound with thin walls can serve three buildings, and a password given once is rarely taken back.",
@@ -19730,8 +19678,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about the conversation. Offering the guest network gives a neighbour a way to stay connected without giving them your own line.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a way back, and none of them needs a new router."),
+      h2("When it fails"),
+      p("None of this is your fault, and each case has a fix."),
       ul([
         "Your own devices will not reconnect: the password was typed with a capital or a space.",
         "The guest network cannot print: that is the separation working as intended.",
@@ -19767,7 +19715,7 @@ export const blogPosts: BlogPost[] = [
       "A phone propped against a mug beside a laptop on a wooden table, both in use in afternoon light.",
     body: [
       p(
-        "This lesson shows you how to use a phone as a rescue wire. You will learn the difference between a hotspot and a cable, how to set either up in a minute, and how to keep the bundle from disappearing.",
+        "Here you will learn how to use a phone as a rescue wire. You will learn the difference between a hotspot and a cable, how to set either up in a minute, and how to keep the bundle from disappearing.",
       ),
       p(
         "A phone with data is a small router. Sharing that data is called tethering, and it is the reason a working phone can carry an office through an outage.",
@@ -19834,7 +19782,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the setup taking long. Once the hotspot name and password are set, a rescue takes under a minute.",
       ),
       h2("If it goes wrong"),
-      p("Every case here has a cause, and most are settings rather than hardware."),
+      p("Read the row that fits your case."),
       ul([
         "The laptop cannot find the hotspot: the hotspot band may be set to the newer one only.",
         "The hotspot keeps dropping: the phone is saving power, so keep the screen awake.",
@@ -19943,8 +19891,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about the cost of the supply. A small unit costs less than one lost evening of card payments.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is a shop-sized problem with a shop-sized fix."),
+      h2("Troubleshooting"),
+      p("Most of these have a cheap fix."),
       ul([
         "The till loses connection at the same hour: a staff phone is syncing on the same network.",
         "Card payments fail and transfers work: the terminal's provider is down, not your line.",
@@ -20044,8 +19992,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about writing neatly. Nobody is judging the handwriting, and the person beside you is more likely to trust a technician who writes things down.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is about a conversation rather than a circuit."),
+      h2("When it fails"),
+      p("Begin with the first one."),
       ul([
         "The person cannot describe the fault: ask them to reproduce it and watch.",
         "They say everything is broken: pick the one fault that bothers them most.",
@@ -20147,9 +20095,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about asking questions the owner finds obvious. The owner is the only person who knows what changed, and they are usually glad to be asked.",
       ),
       h2("If it goes wrong"),
-      p(
-        "Every case here has a next question, and the list keeps working when an answer is missing.",
-      ),
+      p("Here is what to check first."),
       ul([
         "The owner remembers nothing: ask about the last working day and work forward.",
         "They insist nothing changed: ask about updates, which change on their own.",
@@ -20258,8 +20204,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about asking for more time. Most owners prefer a slower repair that keeps their files to a fast one that loses them.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a route back, and the data comes first in all of them."),
+      h2("Troubleshooting"),
+      p("These come up often."),
       ul([
         "Safe mode fails too: the fault is in the system, so try a restore point.",
         "No restore point exists: turn the feature on once the machine is healthy.",
@@ -20295,7 +20241,7 @@ export const blogPosts: BlogPost[] = [
       "A hand holding a USB flash drive in front of an open laptop on a wooden desk, ready to reinstall the system.",
     body: [
       p(
-        "This lesson is about resetting a machine honestly. You will learn what to say before you start, what to copy, how to keep the licence and drivers, and how to hand the machine back without surprises.",
+        "This lesson looks at resetting a machine honestly. You will learn what to say before you start, what to copy, how to keep the licence and drivers, and how to hand the machine back without surprises.",
       ),
       p(
         "A reset erases the disk and installs a fresh system. It fixes most software faults, and it removes everything the owner had, which is why the conversation comes before the work.",
@@ -20364,8 +20310,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about the machine looking empty at first. That emptiness is the reset working, and the files come back in the next step.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a recovery, provided the copy happened first."),
+      h2("When it fails"),
+      p("Nothing here is unusual."),
       ul([
         "The installer will not boot: check the boot order in the machine's settings.",
         "The licence is rejected: the key belongs to a different edition.",
@@ -20401,7 +20347,7 @@ export const blogPosts: BlogPost[] = [
       "A young woman copying files at a desktop computer while an older woman watches beside her at a warm home table.",
     body: [
       p(
-        "This lesson is about backing up somebody else's computer. You will learn which folders matter, how to rescue photographs from a phone, and the check that turns a copy into a backup.",
+        "This lesson covers backing up somebody else's computer. You will learn which folders matter, how to rescue photographs from a phone, and the check that turns a copy into a backup.",
       ),
       p(
         "A backup is a copy that has been opened and checked. Without the check it is a hope, and hopes fail at the worst moment, usually the evening before a repair.",
@@ -20471,7 +20417,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the time it takes. A first copy is slow, and every later copy is faster because it only adds what is new.",
       ),
       h2("If it goes wrong"),
-      p("Every case here has a second attempt, and none of them damages the original."),
+      p("Try these before calling a repairer."),
       ul([
         "The drive will not open: try another port and another cable before another drive.",
         "The copy stops halfway: the drive may be full, so check the space.",
@@ -20574,8 +20520,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about explaining everything. Three tasks and a notebook cover the first week, and the rest can wait for a question.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a way forward, and most are about patience rather than skill."),
+      h2("Troubleshooting"),
+      p("Test one thing at a time."),
       ul([
         "The update stalls at a percentage: leave it an hour before touching anything.",
         "The owner forgets the password: the notebook is the backup, so write it down.",
@@ -20611,7 +20557,7 @@ export const blogPosts: BlogPost[] = [
       "A carbon-copy job card booklet with neat handwriting lying on a wooden counter with a pen across it.",
     body: [
       p(
-        "This lesson is about the job card and the boundary. You will learn what to write before you start, how to quote without guessing, and how to stop a small repair from becoming unpaid work.",
+        "This lesson looks at the job card and the boundary. You will learn what to write before you start, how to quote without guessing, and how to stop a small repair from becoming unpaid work.",
       ),
       p(
         "A job card is a page with the fault, the price, and the date. It protects you and the customer, and it ends more arguments than any technical skill.",
@@ -20681,8 +20627,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about asking for a signature. Most customers are relieved that somebody wrote the price down.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is about money and memory, and the card is the answer to both."),
+      h2("When it fails"),
+      p("Work through these in order."),
       ul([
         "The customer remembers a lower price: show the card, without arguing.",
         "The repair fails after a week: say what you will check and at what price.",
@@ -20718,7 +20664,7 @@ export const blogPosts: BlogPost[] = [
       "A technician at a laptop wearing earphones, speaking on a video call with a remote screen softly glowing.",
     body: [
       p(
-        "This lesson is about helping somebody from across town. You will learn how to guide a person by voice, how to see what they see, and when a journey is the honest answer.",
+        "This lesson covers helping somebody from across town. You will learn how to guide a person by voice, how to see what they see, and when a journey is the honest answer.",
       ),
       p(
         "Most support is a conversation. A calm voice, a clear next step, and a way to see the screen solve more faults than a long journey.",
@@ -20788,7 +20734,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about saying the call is not working. Saying so early saves an hour of guessing, and the person will trust the next suggestion more.",
       ),
       h2("If it goes wrong"),
-      p("Every case here has a next move, and none of them is a reason to blame the person."),
+      p("Each one takes a few minutes."),
       ul([
         "They describe the screen wrongly: ask for a screenshot before the next step.",
         "They cannot find a menu: ask what is written at the top of their screen.",
@@ -20893,8 +20839,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about the customer's first reaction. Most people accept a clear limit, and the ones who do not were going to be difficult about something else.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a way to end well, and none of them needs an argument."),
+      h2("Troubleshooting"),
+      p("Every one of these is common."),
       ul([
         "The customer insists you try: say what the risk is, and let them decide.",
         "You have already opened it: close it, write what you saw, and stop.",
@@ -20930,7 +20876,7 @@ export const blogPosts: BlogPost[] = [
       "A ruled logbook with handwritten rows and a mobile phone beside it on a wooden desk.",
     body: [
       p(
-        "This lesson is about support as honest work. You will learn how to price fairly, keep a logbook, give a receipt, and build the habits that turn one repair into steady customers.",
+        "This lesson looks at support as honest work. You will learn how to price fairly, keep a logbook, give a receipt, and build the habits that turn one repair into steady customers.",
       ),
       p(
         "Support is skilled work, and pricing it properly is not greed. A charge that covers your time and parts keeps you available when a customer needs you again.",
@@ -20999,8 +20945,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about asking for your price. Saying the number plainly, once, is easier for the customer than a conversation that circles it.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a way back to a fair ending."),
+      h2("When it fails"),
+      p("None of these needs a new machine."),
       ul([
         "The customer disputes the bill: show the card and the receipt, without heat.",
         "A repair fails under your own time: fix it once, without charging twice.",
@@ -21103,7 +21049,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about using it at all. The rule is simple: talk about the task, not about real people's private details.",
       ),
       h2("If it goes wrong"),
-      p("Every case here has a check, and none of them needs a technical background."),
+      p("These happen to everyone, and none of them is unusual."),
       ul([
         "The answer sounds certain and is wrong: verify the fact in a second place.",
         "The tone is too formal: ask for a shorter version in plain words.",
@@ -21139,7 +21085,7 @@ export const blogPosts: BlogPost[] = [
       "A notebook with a short handwritten brief beside an open laptop on a wooden table in warm top-down light.",
     body: [
       p(
-        "This lesson teaches you to ask clearly. You will learn the four parts of a useful request, why the answer is only as good as the question, and how to correct one without starting again.",
+        "Here you will learn to ask clearly. You will learn the four parts of a useful request, why the answer is only as good as the question, and how to correct one without starting again.",
       ),
       p(
         "A request has four parts: what the situation is, what you want done, what shape the answer should take, and what to avoid. Most disappointing answers are missing one of them.",
@@ -21209,8 +21155,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about the first answer being poor. The second request, written with the four parts, is where the useful work happens.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here is a question problem rather than a program problem."),
+      h2("Troubleshooting"),
+      p("Start with the simplest check."),
       ul([
         "The answer is too general: add the audience and the purpose.",
         "It writes too much: ask for a set number of sentences.",
@@ -21246,7 +21192,7 @@ export const blogPosts: BlogPost[] = [
       "Two open books and a phone on a wooden table, a person's finger comparing them in warm library light.",
     body: [
       p(
-        "This lesson is about checking the assistant's work. You will learn which facts to verify first, how to use two sources, and the habit that protects your name when the answer is wrong.",
+        "This lesson looks at checking the assistant's work. You will learn which facts to verify first, how to use two sources, and the habit that protects your name when the answer is wrong.",
       ),
       p(
         "A draft is a claim until somebody checks it. The check is short, and it is the difference between using a tool and vouching for one.",
@@ -21312,8 +21258,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about slowing down. One careful check before sending protects a reputation that took years to build.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a repair, and honesty is faster than a cover-up."),
+      h2("When it fails"),
+      p("Go down the list from the top."),
       ul([
         "You sent a wrong figure: correct it at once, in one line, without excuses.",
         "The quote was invented: remove it, and say the line was misattributed.",
@@ -21349,7 +21295,7 @@ export const blogPosts: BlogPost[] = [
       "A young student at a wooden desk at night with a textbook, notebook, and laptop under lamp light.",
     body: [
       p(
-        "This lesson is about using an assistant for school and study. You will learn the difference between learning with it and letting it do the work, and the questions that make it teach rather than answer.",
+        "This lesson covers using an assistant for school and study. You will learn the difference between learning with it and letting it do the work, and the questions that make it teach rather than answer.",
       ),
       p(
         "A tool that writes your essay has done your assignment and taken your practice. The same tool can explain a topic until you understand it, which is the version worth having.",
@@ -21416,7 +21362,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about asking a question twice. Asking again in plainer words is how anybody learns a hard topic, and the tool does not tire of it.",
       ),
       h2("If it goes wrong"),
-      p("Every case here has a correction, and none of them is a disaster."),
+      p("Pick the line that fits."),
       ul([
         "The explanation is still confusing: ask for an example with numbers or names you know.",
         "It gives the answer too early: ask for a hint only, then try again yourself.",
@@ -21524,8 +21470,8 @@ export const blogPosts: BlogPost[] = [
       p(
         "Do not worry about asking permission. A short question to your manager about which tools are allowed protects you more than a clever workaround.",
       ),
-      h2("If it goes wrong"),
-      p("Every case here has a next step, and speed matters more than dignity."),
+      h2("Troubleshooting"),
+      p("Each has a cause you can find."),
       ul([
         "A draft went out with a wrong figure: correct it in one short message.",
         "Private details were pasted: tell your manager the same day.",
@@ -21552,7 +21498,7 @@ export const blogPosts: BlogPost[] = [
     slug: "pictures-voices-and-truth",
     title: "Pictures, voices, and the truth",
     excerpt:
-      "The cloned face learned new tricks. What still betrays a fake, the standing habits of doubt, and the phone call with the family word that settles everything in sixty seconds.",
+      "When a photograph or a voice can be manufactured: the checks that still work, the family code word, and the rule about money and urgency.",
     series: SERIES,
     order: 206,
     author: AUTHOR,
@@ -21561,47 +21507,91 @@ export const blogPosts: BlogPost[] = [
       "A person comparing a photograph on a phone with a printed photograph held in hand at a wooden table.",
     body: [
       p(
-        "Last December, a video of a politician confessing to election fraud moved through the family groups at the speed of outrage. It was watched two million times before anyone noticed his blink was wrong every fourth second and the collar melted into his neck when he turned. The confession was written by a bored student for a class project. By the time the correction put its shoes on, the lie had eaten three meals. Meanwhile, in the same month, a woman in Port Harcourt received a call from her daughter's voice — her exact laugh, the same pet name for the children — pleading for forty thousand naira at a hospital in Abuja. The daughter was at her shop in Port Harcourt, selling provisions, holding her own phone. This lesson is the forgery shop that is now open all night: what the machine can fake in 2026, the sixty-second settlement that keeps your family whole, and the fear at its proper size.",
+        "This lesson looks at pictures and voices that can be faked. You will learn how a fake image or a copied voice is made, the checks that still work, and the family code word that settles a panicked call.",
       ),
       p(
-        "Take stock first, because the catalogue moves monthly. Photographs can be generated from a sentence — nobody in the picture ever lived. Voices can be cloned from a few seconds of any voice note you have ever sent, which is why the family group's audio blessings are now raw material. Video shows people saying what they never said. Text arrives in your inbox as a lawyer's letter, a bank's alert, a child's plea, every word fluent. The old rule 'seeing is believing' was true right up until last year. Hold that sentence in the light for a second — because the forger's deepest product is not the fake. It is your exhaustion: a world where nothing can be believed at all, and the truth drowns with the lies.",
+        "A photograph used to be evidence. A voice on the phone used to be proof of who was speaking. Both are now easy to copy, and the checks have moved from the picture to the conversation around it.",
+      ),
+      h2("Before you start"),
+      ul([
+        "About twenty minutes.",
+        "One family member to agree a code word with.",
+        "A second way to reach the people who matter.",
+      ]),
+      h2("How the fakes work"),
+      ul([
+        "An image can be generated from a written description, in any style.",
+        "A face can be placed on another person's head in a video.",
+        "A voice can be copied from a few seconds of recording.",
+        "A message can be written in a relative's style after reading their posts.",
+        "A profile can be copied, with the same name and photograph.",
+        "All of it is cheap, fast, and improving every year.",
+      ]),
+      p(
+        "You will see a photograph that looks slightly too smooth, with strange hands or jewellery that melts into the skin. Those details are clues, and none of them is proof, so the checks below matter more than the clues.",
       ),
       fig(
         "/images/blog/comparing-photos-phone-and-print.jpg",
-        "A person comparing a photograph on a phone with a printed photograph held in hand, frowning slightly.",
-        "The posture beats the checklist: doubt before the feeling acts. The feeling is the delivery mechanism — fear, pity, greed, pride — and doubt is the vaccine.",
-      ),
-      h2("The sixty-second settlement"),
-      p(
-        "Now the defence, and it fits in one minute. The scam's whole business is the first sixty seconds of your feeling — fear, pity, greed, pride are the delivery trucks, not the message. So spend those sixty seconds on a second channel instead of a transfer. The daughter's voice pleads with a new number: hang up and call her husband's line, or the neighbour's house, or walk the two streets. The video shows your brother at a hospital in Abuja: ask the family word from the voice lesson — and ask for the name of the dog at the compound in 2011. The question that performances cannot answer is the one that was never in the training data, because it was never in public. It is your family's private history, and the forgery shop has never once been able to answer what the dog was called.",
+        "A printed photograph compared with the same image on a phone.",
+        "A print and a screen, side by side. Compare an image with the original rather than judging it alone.",
       ),
       p(
-        "Before we continue, one retrieval question, because this is the whole skill: your 'uncle' calls from a strange number with his voice, the story urgent, the account number different. What are the first sixty seconds for? ... A second channel. Call the number in your book — not the number that called you. Sixty seconds of second channel, applied without exception, beats every detector app ever shipped.",
+        "It looks like a clear picture must be real. A clear picture is the norm now, and the deciding question is who sent it and why.",
+      ),
+      h2("The checks that work"),
+      ul([
+        "Call the person back on a number you already have, not the one in the message.",
+        "Ask a question only they could answer, such as the name of a shared neighbour.",
+        "Send the picture to somebody who was there, and ask when it was taken.",
+        "Search the image itself, which finds the older original when it exists.",
+        "Slow down: every fake needs urgency, and every real emergency survives five minutes.",
+        "Refuse to send money on the strength of one message, however convincing.",
+      ]),
+      p(
+        "A reverse image search will show a results page with the same picture on older pages, sometimes years old. When the same face appears in five countries, the picture is not evidence of anything.",
       ),
       fig(
         "/images/blog/older-man-listening-phone-call.jpg",
-        "An older man holding a phone to his ear with a cautious expression, sitting in a doorway in evening light.",
-        "The second channel beats every detector: hang up and call back on the number in your book. Anger at verification is the oldest tell in the confidence trade.",
+        "An older man listening carefully during a phone call.",
+        "The hardest calls target the people who care most. A code word protects them without insulting them.",
       ),
-      h2("The duty at the forward button"),
-      p(
-        "Then the duty that travels with every inbox: before you forward, you verify. A video of a politician, a crying child, a collapsed building, an old woman accused of witchcraft — these move through the family group at the speed of feeling and do their damage before any correction arrives walking: reputations burned, mobs gathered, donations opened for emergencies that did not happen. And notice the arithmetic of corrections — the correction never travels as far as the lie. So the pause at the forward button is a small civic act, and the sentence it earns, 'I am still checking this', is the most responsible thing any of us posts all week. Photos can be searched by their own image now too, and the search will often show you the same picture wearing last year's emergency.",
-      ),
-      h2("Teaching the household, again"),
-      p(
-        "The practical work of this lesson is not on your machine. It is at your table, with the people most targeted — the parents whose generation believes that seeing is believing. Sit with them and show, gently, one example: a famous face saying something false, generated for a thousand naira by a bored student. The demonstration does more than a hundred warnings. Then rehearse the family word until it is reflex, agree that no money moves on a first message in any circumstances, and give the household the one sentence that solves most of it: hang up and call back. The elderly who have practised this once at the table with you will practise it at midnight when it counts.",
-      ),
-      p(
-        "Finally, hold the fear at its proper size — because the forgers would love you to stop believing your own eyes entirely, and a world where no video counts is their victory too. Most of what you see is still true. The camera at the shop, the call with your daughter's real laugh in it, the photograph of the rent receipt — these remain the fabric of ordinary trust and should stay so. The habit is not to disbelieve everything. It is to spend sixty seconds of second channel on the things that move you strongly and ask for money or for a mob. Doubt the dramatic. Verify at the fountain. Call back on your own phone. The forgery shop is open all night, and it has never once been able to answer what the dog was called.",
-      ),
+      h2("The family code word"),
+      p("Agree one word, known to the family and useless to anybody else."),
       ul([
-        "Doubt before the feeling acts: fear, pity, greed, and pride are the delivery mechanisms, not the message.",
-        "The sixty-second settlement — hang up and call the number in your book — beats every detector app ever shipped.",
-        "Verify before forwarding. The correction never travels as far as the lie, and the pause is a civic act.",
-        "Teach the table, not just yourself: one demonstration for the parents, the family word rehearsed until it is reflex.",
+        "Choose a word that is not on anybody's social media.",
+        "Teach it to the people who might be impersonated, not only the ones who worry.",
+        "Use it when a call asks for money, and use it calmly.",
+        "Change it if it has been shared outside the family.",
+        "Write it in the notebook the family keeps, in a sealed page if you prefer.",
+        "Practice once, so the word comes to mind when the call is frightening.",
       ]),
       p(
-        "The forgery shop is understood and its prices are falling, which raises a fair fear in every honest worker at the table: if the machine writes, draws, answers, and now performs — what remains for the hands? The next lesson answers the fear honestly, and the answer is older than the machine: the judgment that stays yours, and the small discipline of keeping it sharp.",
+        "None of this needs special software. A call back on a known number, one question, and five minutes of patience stop most of these attacks.",
+      ),
+      p(
+        "Do not worry about seeming suspicious. The people who love you would rather be asked a question than send money to a stranger.",
+      ),
+      h2("When it fails"),
+      p("Each one has an answer."),
+      ul([
+        "You sent money: report it to the bank at once, and keep every message.",
+        "You gave a code: change it immediately, in the app where it is used.",
+        "A relative's account is copied: report the profile, and tell the real person.",
+        "You shared a picture that is now being reused: tell the people who trust you.",
+        "A video looks real and frightens you: check the original source before reacting.",
+        "You feel foolish: that feeling is the tool the attacker used, and naming it helps.",
+      ]),
+      h2("Practice"),
+      p("Agree one code word this week."),
+      ul([
+        "Choose a word the family will remember.",
+        "Tell two people about it, face to face.",
+        "Practise one pretend call with the word.",
+        "Write it in the family notebook.",
+        "Agree the rule: money requests are always checked by a call back.",
+      ]),
+      p(
+        "You can now hear a convincing lie and still check it. In the next lesson you will keep your own judgment in a world of recommendations.",
       ),
     ],
   },
@@ -21609,7 +21599,7 @@ export const blogPosts: BlogPost[] = [
     slug: "your-judgment-stays-yours",
     title: "Your judgment stays yours",
     excerpt:
-      "The pilot who lets the autopilot fly alone is the pilot nobody wants. Which skills must stay manual in your own hands, and how to practise them without the crutch on certain days of the week.",
+      "Feeds, recommendations, and notifications that decide for you: how to notice the nudge, and the small habits that keep the choosing.",
     series: SERIES,
     order: 207,
     author: AUTHOR,
@@ -21618,43 +21608,90 @@ export const blogPosts: BlogPost[] = [
       "A person writing with a pen in a notebook at a wooden table in calm morning light, no computer present.",
     body: [
       p(
-        "The fear arrives honestly: the machine writes letters, draws pictures, answers questions, and passes examinations. What, then, is the person for? Oluwaseun asked it out loud three months after finishing these notes, watching a draft arrive in seconds that would have taken him an evening. The answer is standing in every cockpit over the skies of this country right now. The autopilot flies the aeroplane for ninety-five percent of the flight with a precision no hand can match — and the airline pays the pilot enormous money for the other five percent and for the judgment that owns all hundred. Automation does not end the skilled person; it raises the price of the one who can verify it, catch it, and take the controls in the twelve seconds when it is wrong. The world will pay less and less for typing the letter and more and more for knowing whether the letter is true, fair, and wise. That knowing is judgment, and judgment is a muscle built by manual hours.",
+        "This lesson keeps your judgment yours. You will learn how recommendation feeds decide what you see, how notifications borrow your attention, and the small habits that put the choosing back in your hands.",
       ),
       p(
-        "So decide which skills in your own life must stay manual, the way a pilot keeps manual hours in the sim. Writing is the first: not typing — thinking on paper. Once a week, a page or two written entirely by your own struggling hand, no box consulted: a letter, an argument, a plan for the shop. The struggle is the workout; the fluency that follows is the muscle. Arithmetic is the second: the sum done in your head at the market, the invoice checked before payment, the percentage understood before the loan app’s cheerful number is believed. The calculator and the assistant will always be faster. The head that can smell a wrong figure is the one the fraud cannot feed on. And reading — the long article finished to the end without the summary — is the third discipline, because the summarised life loses the patience that comprehension requires.",
+        "A feed is sorted by what keeps you watching, not by what is true or useful. That sorting is useful sometimes and costly often, and noticing it is the first skill.",
+      ),
+      h2("Before you start"),
+      ul([
+        "One phone, and ten minutes.",
+        "A notebook for two observations.",
+        "Willingness to change one setting.",
+      ]),
+      h2("How the choosing moves"),
+      ul([
+        "The feed shows what held other people's attention longest.",
+        "Adverts are placed by the same logic, between the things you wanted.",
+        "Autoplay decides that the next video should start without asking.",
+        "A notification arrives at the hour you usually open the app.",
+        "A shop's page arranges choices so the first option wins.",
+        "None of this is a conspiracy, and all of it shapes a decision.",
+      ]),
+      p(
+        "You will see the same three videos again after you watch one of them, and the repetition is the system learning rather than a coincidence. Watching one more teaches it to send twenty more.",
       ),
       fig(
         "/images/blog/hands-writing-without-computer.jpg",
-        "A person writing with a pen in a notebook at a wooden table in calm morning light, no computer in sight.",
-        "Manual hours in the simulator. The struggle on paper is the workout — fluency afterward is the muscle, and the muscle is what the box cannot lend you.",
-      ),
-      h2("The days of the week without the crutch"),
-      p(
-        "Make the discipline a schedule and it will survive your moods. One letter a week by hand. One hour of arithmetic without the calculator — the shop’s book, done with a biro and checked twice. One article a week read to its final paragraph. One map journey a month with the phone in the pocket and the road remembered by landmarks, the wayfinding instinct that the blue dot quietly atrophies. And one evening a month of remembering without notes: the phone numbers that matter, the family word, the account’s last four digits, the three people to call in a crisis. These sound like nostalgia. They are not. They are the maintenance schedule of the judgment that the machines are making scarce and therefore precious.",
+        "Hands writing in a notebook with no computer nearby.",
+        "A page and a pen, with no feed attached. Some thinking needs the noise switched off.",
       ),
       p(
-        "The same principle polishes the professional’s edge, and this chapter has been building it all along. The five questions are judgment in a notebook. The six rooms before formatting are judgment refusing a shortcut. The checking pass is judgment reading the machine’s homework. Notice how little of the trade’s value ever lived in the typing — and how all of its value lives in the deciding. When you take the assistant into your work, therefore, do it the way the cockpit does: let it handle the cruise, keep your hands near the controls, and log the manual hours on purpose. The worker who can say calmly — “the machine drafted this, and I checked every figure and rewrote the close” — is more valuable than either the one who types alone or the one who trusts alone.",
+        "It looks like you chose what to watch. You choose within a list somebody else arranged, and knowing that changes how much of the list you accept.",
+      ),
+      h2("Taking the choosing back"),
+      ul([
+        "Turn off autoplay in the apps you use most.",
+        "Set notifications to arrive in batches, or turn most of them off.",
+        "Search for what you want instead of scrolling what arrives.",
+        "Give a decision an hour before buying anything advertised to you.",
+        "Write a short list before you open a shop's page, and buy from the list.",
+        "Check one important decision against a person rather than a feed.",
+      ]),
+      p(
+        "The settings page will show a list of switches for notifications, and each one is a decision somebody made for you. Turning three off is a five-minute job with a quiet week afterwards.",
       ),
       fig(
         "/images/blog/clock-and-hand-on-paper.jpg",
-        "A small wall clock above a hand checking figures on paper with a calculator on a wooden desk.",
-        "One hour of arithmetic with a biro a week. The head that can smell a wrong figure is the one the fraud cannot feed on.",
+        "A clock beside a hand writing on paper.",
+        "An hour between the advert and the purchase. Most urges do not survive it.",
       ),
-      h2("What the machine cannot have"),
-      p(
-        "There is a final answer to the fear and it is not a skill list. It is a fact about where you live. The machine has no mother in your village, no name in your community’s register, no stake in the outcome of your customer’s school fees, no body that must stand at the counter on Monday and meet the eyes of the person it advised on Friday. Every service in this series — the quiet hour, the honest reset, the referral, the checked homework — was somebody standing behind the work with their name and their face. Software can imitate every sentence in this book. It cannot be the person the compound trusts, because trust is not a document. It is a relationship with a body that keeps showing up.",
-      ),
-      p(
-        "Hold the two truths together the way the series has taught you to hold all pairs. The machine is astonishing and it is not a person. Use it more every year and depend on it less every year — for facts, for judgment, for your name. Keep the manual hours because they keep you. And when the fear returns at the next headline, walk to the window and look at the street: the tailor with her judgment, the mechanic with his hands, the teacher with her patience, the grandmother with her memory of everybody’s name. The world has never paid for typing. It has paid, in every season, for people who can be trusted with the deciding. That seat is still yours. It was always the only one that was.",
-      ),
+      h2("Thinking without a screen"),
       ul([
-        "Keep three manual hours weekly: a page by hand, an hour of arithmetic with a biro, one article read to the end.",
-        "Let the assistant fly the cruise and keep your hands at the controls — log the manual hours the way pilots keep their sim time.",
-        "Remember without notes monthly: the numbers that matter, the family word, the three people for a crisis.",
-        "Your name, your face at the counter, your stake in the outcome — the standing-behind-the-work that no software can borrow.",
+        "Write the decision on paper before looking anything up.",
+        "Say the reasons aloud, which exposes the weak ones.",
+        "Ask what you would choose if nobody were watching.",
+        "Sleep on anything that costs more than a day's pay.",
+        "Keep one hour a day with no feed, even if it is only the walk home.",
+        "Judge a week by what you did, not by what you watched.",
       ]),
       p(
-        "The judgment is safe in the only place it was ever safe: your hands, kept sharp on purpose. There remains one use of the assistant we have circled all series without entering — its strangest and kindest power, which is to teach. The next lesson is learning anything faster, with a patient machine beside a determined person, in evenings that finally stick.",
+        "None of this needs an expensive course or a new phone. Three switches, one list, and an hour of silence change more than any productivity app.",
+      ),
+      p(
+        "Do not worry about being manipulated by everything. You are allowed to enjoy a feed, and you are allowed to know when you are being steered.",
+      ),
+      h2("If it goes wrong"),
+      p("All of these are fixable."),
+      ul([
+        "You spent an evening scrolling: note the time, and set one switch tonight.",
+        "You bought something unplanned: return it, or write the reason you kept it.",
+        "The app shows upsetting content: report it once, and stop watching it.",
+        "You cannot concentrate on a book: read ten pages before opening the phone.",
+        "You feel behind after scrolling: that feeling is the product working.",
+        "You keep comparing your life: unfollow the accounts that do it, by name.",
+      ]),
+      h2("Practice"),
+      p("Change three settings and keep a small record."),
+      ul([
+        "Turn off autoplay in two apps.",
+        "Turn off all but three notifications.",
+        "Write a shopping list before opening any shop.",
+        "Spend one hour without a feed today.",
+        "Write what you noticed in the notebook.",
+      ]),
+      p(
+        "You can now keep your own counsel in a noisy place. In the next lesson you will learn anything faster than you expect.",
       ),
     ],
   },
@@ -21662,7 +21699,7 @@ export const blogPosts: BlogPost[] = [
     slug: "learning-anything-faster",
     title: "Learning anything faster",
     excerpt:
-      "A patient tutor who never tires of your questions — used well, it compresses months into weeks. Roadmaps, quizzes, and the twenty hours at the table, now with company.",
+      "A practice loop that actually works: small sessions, spaced repetition, teaching it back, and a first project small enough to finish.",
     series: SERIES,
     order: 208,
     author: AUTHOR,
@@ -21671,48 +21708,105 @@ export const blogPosts: BlogPost[] = [
       "A hand pinning a simple weekly study timetable chart to a wooden wall with pins and paper.",
     body: [
       p(
-        "Zainab wanted to pass the data analysis exam in three months, and everything she tried said the same thing in different voices: read this big book, watch this long course, be disciplined. Then she asked the assistant one careful question — teach me to repair printers in ten evening sittings of one hour each, assuming I already know the machine's parts — and what came back changed how she studied everything. Not a shortcut around the twenty hours at the table. Something better: company at the table. The patient tutor who has read everything and never tires of the question asked a fourth time in simpler English. Months genuinely become weeks when the lonely, confused hours are compressed and deleted — and the deliberate hours remain, booked, with a guide who never yawns.",
+        "This lesson is about learning faster than you expect. You will learn a practice loop that fits a busy week, why spacing beats cramming, and how a small finished project teaches more than a long course.",
       ),
       p(
-        "The first tool is the roadmap, and its instruction shape lives on the card from the asking lesson. Ask for a syllabus shaped like a real course: teach me X in ten evening sittings, list what we cover each evening and the practice for each. Or: I want to pass the professional exam in data analysis in three months at eight hours a week — draw the week-by-week plan with the topics and where to practise each free. The machine returns a startlingly good syllabus, being fluent in every syllabus ever written. Print it and pin it beside the timetable chart. The roadmap turns a mountain into a staircase, and staircases are climbed on ordinary Tuesdays.",
+        "Learning happens when you try, fail, and try again with attention. Watching somebody else do it feels like learning and leaves very little behind.",
+      ),
+      h2("Before you start"),
+      ul([
+        "One skill you want, named plainly.",
+        "Thirty minutes a day for two weeks.",
+        "A notebook and a pen.",
+      ]),
+      h2("The loop"),
+      ul([
+        "Watch or read one small piece, then stop.",
+        "Do it yourself straight away, with the material closed.",
+        "Compare your attempt with the example.",
+        "Write the mistake in one line.",
+        "Repeat the same piece tomorrow before adding anything new.",
+        "Review the mistakes once a week.",
+      ]),
+      p(
+        "You will see the second attempt improve without any new teaching, and that improvement is the loop working. Doing beats watching at every stage.",
       ),
       fig(
         "/images/blog/study-plan-on-wall-chart.jpg",
-        "A hand pinning a simple weekly study timetable chart to a wooden wall with pins and paper.",
-        "The roadmap turns a mountain into a staircase. Pin it beside the calendar where the household can see it — staircases are climbed on ordinary Tuesdays.",
-      ),
-      h2("The Socratic switch, and the quiz that bites"),
-      p(
-        "The second tool is a switch hidden in plain sight: you may command the tutor to stop giving answers. “Do not explain the answer to me. Ask me one question at a time and wait for my answer, then correct me briefly.” That single fence converts the machine from an answer key into the examiner who builds understanding — the method of the good teacher since Athens, available at midnight. Add the quiz habit from the study lessons: “after each sitting, quiz me strictly on this evening's topic in ten questions and mark me as a hostile examiner would.” The strictness is the gift. A tutor who flatters is a mirror; a tutor who fails you on Thursday saves you in December. One question while we are here: why does being asked a question teach more than being given the answer? ... Because retrieval builds the road your exam will walk on. Reading is tourism; being questioned is labour, and the exam only pays the labour.",
+        "A study plan chart pinned on a wall.",
+        "A small plan on a wall. Six weeks of thirty minutes beats one heroic weekend.",
       ),
       p(
-        "Then combine the tutor with the older tools, and the compound interest shows. The video lesson's pause-and-notebook rhythm works beside the assistant exactly as beside a human teacher — watch, pause, attempt, and bring the stuck step to the box in words: the formula returns error at row nine, here is what I typed, what did I do wrong. The captions lesson's notebook of new words feeds the tutor's drills. And the honest accounting stays honest: the machine can explain the spreadsheet's sort but cannot sit while your hands try it eleven times. The twenty hours at the table remain the irreplaceable ingredient — only now they are booked with company.",
+        "It looks like a long course teaches more than a short practice. A finished small project teaches more than a finished long video, because the project makes you decide.",
+      ),
+      h2("Spacing and recall"),
+      ul([
+        "Learn a piece, then leave it for a day.",
+        "Recall it from memory before opening the notes.",
+        "Review after two days, then after a week.",
+        "Write questions for yourself, and answer them without looking.",
+        "Mix old material with new, instead of finishing one topic completely.",
+        "Keep the sessions short enough to repeat tomorrow.",
+      ]),
+      p(
+        "A page of your own questions will show which ideas survive a night and which do not. The ones that vanish are the ones to review, and the rest can wait.",
+      ),
+      p(
+        "You will see those questions on the page when you open your notes, and the ones you cannot answer are tomorrow's work. A page of questions is a better study plan than a page of highlights.",
       ),
       fig(
         "/images/blog/student-pausing-video-taking-notes.jpg",
-        "A young woman at a laptop with earphones pausing to write in a notebook at a daylight study table.",
-        "Pause, attempt, bring the stuck step to the tutor in words. The machine deletes the lonely hours — the deliberate hours at the table are still yours to book.",
+        "A student pausing a video lesson to take notes.",
+        "Pause, write, then play. A paused video is a lesson, and a playing one is a broadcast.",
       ),
-      h2("Learning with the homework habit in hand"),
-      p(
-        "The checking lesson walks beside this one like a chaperone, because a tutor that invents things can teach a wrong thing with great confidence — the formula that does not exist, the legal deadline from another country, the exam syllabus of 2019. The fence is your friend: “only teach me from the official syllabus, and tell me when you are unsure.” And the practice is the habit already built: anything the tutor asserts that smells like a specific — the exam's format, the board's fee, the formula's exact name — verify at the fountain before it enters the notes. Learn this way and you acquire something larger than the subject: the skill of learning anything from any source while keeping your judgment awake. It is the same skill at the school desk, the office desk, and the repair bench.",
-      ),
-      p(
-        "Finally, the picture that settles the practice: the wall chart with the roadmap pinned to it, the notebook with the quiz scores of four Thursdays, the tutor's chat history showing the questions you were not ashamed to ask, and — somewhere in the week — the twenty hours at the table with the hands doing the work. That room is the whole method. It needs no fees, no campus, no perfect connection — only the schedule and the stubbornness to keep it. Pick the skill your next year needs — the repair bench, the spreadsheets, the analysis, a language for new markets — and write the roadmap tonight. The tutor is at the table and the staircase is pinned to the wall. One honest question remains, the one your uncle asked at the naming ceremony and the fear beneath every lesson of this last chapter: what happens to the work itself. The next lesson is the clearest look in the series at what the machines change, what they do not touch, and where a person should stand in the decade ahead.",
-      ),
+      h2("Teach it back"),
+      p("Explaining a thing out loud finds the gaps faster than reading it again."),
       ul([
-        "Print the roadmap and pin it up: ten sittings or twelve weeks, the staircase where the mountain used to stand.",
-        "Flip the Socratic switch — ask me one question at a time and wait — and demand the strict Thursday quiz.",
-        "Bring the stuck step to the tutor in words, then let the hands try it eleven times at the table.",
-        "Chaperone the tutor with the homework habit: verify the specifics at the fountain before they enter the notes.",
+        "Explain the topic to somebody who does not know it.",
+        "Use your own examples, not the ones in the video.",
+        "Notice the moment you reach for a word you cannot define.",
+        "Write that word down, and learn it next.",
+        "Explain it again the following week.",
+        "Keep the explanation short, under two minutes.",
       ]),
+      p(
+        "A short first project is the test of the loop. Choose something you can finish in a week, such as one page, one short interview, or one small repair, and finish it before starting anything larger.",
+      ),
+      p(
+        "None of this needs a paid course. A notebook, thirty minutes, and one person who will listen cover the whole method.",
+      ),
+      p(
+        "Do not worry about learning slowly. Most people who seem quick are repeating the same small loop, and the loop is available to you today.",
+      ),
+      h2("Troubleshooting"),
+      p("Stop at the row that matches."),
+      ul([
+        "You miss a week: start again with the smallest session, not the biggest.",
+        "You forget everything: the spacing was too long, so review sooner.",
+        "You are bored: the piece is too large, so cut it in half.",
+        "You are busy: do ten minutes rather than nothing, and mark the calendar.",
+        "You cannot find a project: build the smallest useful version of the thing.",
+        "You compare yourself with others: compare with your attempt last week.",
+      ]),
+      h2("Practice"),
+      p("Run the loop for one week on one skill."),
+      ul([
+        "Name the skill in one line.",
+        "Choose the smallest first piece.",
+        "Do it with the material closed.",
+        "Write yesterday's mistake before today's practice.",
+        "Explain the week's work to somebody on Sunday.",
+      ]),
+      p(
+        "You can now learn on purpose rather than by accident. In the next lesson you will look at the work that changes and the work that stays.",
+      ),
     ],
   },
   {
     slug: "work-that-changes-and-stays",
     title: "The work that changes and the work that stays",
     excerpt:
-      "An honest look at the fear: transcription changed, judgment did not. The person who can check the machine eats in every season — and where to stand in the decade ahead.",
+      "What machines take, what they leave, and how to keep your skills portable when the job description shifts under your feet.",
     series: SERIES,
     order: 209,
     author: AUTHOR,
@@ -21721,46 +21815,96 @@ export const blogPosts: BlogPost[] = [
       "A middle-aged office worker taking an evening class at a wooden desk with a laptop and notebook, calm and determined.",
     body: [
       p(
-        "Bode asked the question at the back of the training room, the way somebody asks about a diagnosis they are afraid to hear: 'If the machine writes, draws, answers, and performs — what remains for the hands?' The room went quiet, because everyone had been carrying the same question in a different pocket. This lesson will not comfort him with fables. The machines have already eaten certain work entirely and will eat more — transcription, typing what is spoken, collapsed as a trade in three years. Basic translation, first-draft copywriting, simple graphics, routine entry-level coding: these did not disappear, but the rungs of their ladders have thinned, and the young person who once entered a career through the bottom rung now finds it missing. The change is real, it is uneven, and it falls hardest on exactly the routine work beginners used to do. Grieve the ladder honestly. Then look at what the change left standing — because the standing things are numerous, and they are where the next decade's bread is.",
+        "This lesson looks at the work that changes and the work that stays. You will learn which tasks machines are taking, which parts of a job remain human, and how to keep your skills portable when the description shifts.",
       ),
       p(
-        "One contrast to frame the map: 'the machines will eat the work' is half a sentence. They ate the routine and left the standing-behind-it. Watch from your own counter rather than from any headline. The machine cannot visit the compound and sit with the mother at her screen — the quiet hour stays human, and this country will need millions of them. The machine cannot stand behind a repair and return the replaced parts in hand — the accountable technician stays, because accountability is a body with a name. The machine cannot decide that the honest reset beats the quick format and stake its reputation on the choice — judgment stays, at every desk, priced higher every year. The machine cannot teach a room and notice which child is hungry — care stays. And the machine cannot check the machine at scale: the world is filling with generated text, generated evidence, generated fraud, and every litre of it creates paid work for the person who can verify at the fountain. The checking economy is hiring.",
+        "Every trade has a part that can be written down and a part that cannot. The written part moves to software first, and the rest stays with the person who can be trusted.",
       ),
+      h2("Before you start"),
+      ul([
+        "A list of what your week actually contains.",
+        "About twenty minutes.",
+        "A notebook for two columns.",
+      ]),
+      h2("What moves first"),
+      ul([
+        "Repeating the same form with different names.",
+        "Copying numbers from one place to another.",
+        "Writing the same letter with a new date.",
+        "Summarising a long document that follows a pattern.",
+        "Answering the same five questions all day.",
+        "Checking whether a page has every required field.",
+      ]),
       p(
-        "Before the standing map continues, sit with Bode's question yourself for one moment: what do your hands do that a customer would never accept from a screen? ... Write that answer down tonight. It is your decade's address.",
+        "You will see a task disappear into a template or a chat window, and the time it frees is real. What you do with that time decides whether the change helps you.",
       ),
       fig(
         "/images/blog/worker-upgrading-skills-notebook.jpg",
-        "A middle-aged office worker taking an evening class at a wooden desk with a laptop and notebook under warm light.",
-        "The yearly upgrade habit, applied to the person. One skill added a year, written in the logbook — the ladder thinned, and the climber now carries their own rope.",
-      ),
-      h2("Where to stand in the decade ahead"),
-      p(
-        "The standing positions share one shape, and the shape is teachable. Stand where the machine's output meets the human consequence: the technician at the device, the support person at the desk, the analyst who signs the recommendation, the teacher at the class, the operator who watches the automated process and owns its failures. Learn the machine thoroughly — deeper than the people who fear it — and bring the part it lacks: the hands, the face, the name, the stake. The upgrade habit from the working chapter said it first as a private discipline: one skill a year, honestly added to the CV. This decade raises the pace of the honest addition and lowers the price of pretending.",
+        "A worker writing in a notebook beside a laptop.",
+        "Two columns: what a machine can do, and what needs a person. The second list is your work.",
       ),
       p(
-        "For the young person at the table, the advice is concrete enough to act on this month. Take one of the standing trades and apprentice to it properly — the repairs bench, the networks and their shops, the support chair, the data's careful end, the teaching of all of it — and bring the assistant along as your tireless intern. It drafts your quotes, explains your errors, quizzes you for your certifications, translates your documentation. Learn the trade the old way in the hands and the new way in the tooling. The two together are the profile the decade rewards: someone who can do the work when the systems fail, and can make the systems work while they hold. That person is rare already — and everything in these two hundred and nine lessons has been building toward their hands.",
+        "It looks like automation removes a whole job. Most changes remove tasks, and the job that remains is the part customers were always paying for.",
+      ),
+      h2("What stays human"),
+      ul([
+        "Deciding what should be done at all.",
+        "Taking responsibility when something fails.",
+        "Reading a room, a customer, or a worry that is not written down.",
+        "Handling money, keys, and access, where trust is the product.",
+        "Fixing the physical thing, with hands and a screwdriver.",
+        "Teaching somebody else, which needs patience rather than knowledge alone.",
+      ]),
+      p(
+        "A customer will still ask for the person who answered last time, and that request is the clearest sign of what a machine cannot replace.",
+      ),
+      p(
+        "You will see a chat window answer a question in a second, and nobody asks it for the name of the person who helped. The name is what customers come back for.",
+      ),
+      p(
+        "A job advert will appear with a list of tools, and the same advert will ask for somebody who can be trusted with the keys. The second line is the one that keeps the job human.",
       ),
       fig(
         "/images/blog/rows-of-desks-computer-room.jpg",
-        "A tidy computer training room with rows of wooden desks and monitors, empty and bright in daylight.",
-        "The standing trades all share one shape: where the machine's output meets the human consequence. Learn the machine deeply and bring the part it lacks.",
+        "Rows of desks in a computer room with people working.",
+        "The same room, different tasks. Skills move with the person, and desks move with the work.",
       ),
-      h2("The work that never had a name"),
-      p(
-        "One more category of staying work — the largest and least discussed: the labour that never appeared in any job advertisement. The household's administrator: the person who knows where every document lives, when every fee is due, how to recover the aunt's mail. The family's help desk. The compound's quiet teacher. The shop's organiser of its digital back room. Every family in this country has promoted somebody to these posts without a letter, and the promotion is real work with real skill in it — the skill of this entire book. The machines have made this invisible office more powerful and more necessary, not less. Whoever holds these posts at home is already employed by the decade. They should learn it, own it, and — when the neighbours ask for help too — finally price it. The pricing lesson and the small book are waiting.",
-      ),
-      p(
-        "So here is the honest summary of the fear, signed in daylight. Yes: the routine rungs are thinning and the ladders are changing shape, and the young must be told that truth at the table rather than comforted with fables. And yes: the work that stays is enormous — the accountable, the caring, the careful, the verifying, the standing-behind-it — and it is precisely the work this series has trained from the first sitting. The machines will do more of the typing every year. The world will pay more every year for the deciding. Stand there, keep the manual hours, carry the tool proudly and the judgment privately, and teach one person beside you as you climb. One last retrieval for the road: what is this sorting called, in the language of the very first files lesson? ... A folder. The work is not disappearing. It is being sorted — and sorting is an old friend of ours. We have been doing it since the yellow folders.",
-      ),
+      h2("Keeping skills portable"),
       ul([
-        "Grieve the thinning ladder honestly, then map the standing work: accountable, caring, careful, verifying, standing-behind-it.",
-        "Stand where the machine's output meets the human consequence, and learn the machine deeper than the people who fear it.",
-        "Apprentice to a standing trade this month, and bring the assistant as your tireless intern in quotes, drills, and documentation.",
-        "Own the invisible office at home — the household's administrator and help desk — and price it when the neighbours ask.",
+        "Write down three things you do that a customer would pay for on their own.",
+        "Learn the tool that removes your least favourite task.",
+        "Keep a folder of finished work you can show somebody.",
+        "Learn to explain what you do in one sentence.",
+        "Ask one person in a different trade what they need help with.",
+        "Review the plan every six months, since the tools move.",
       ]),
       p(
-        "The decade is now mapped and the fear has a chair at the table rather than the whole room. There is one lesson left in the series, and it is the shortest to describe: the road itself, seen whole at last — from the first sitting to this one, and from tonight to the ten-year horizon where somebody is still sitting down at a machine, needing exactly what you now know how to give.",
+        "None of this needs a career change. One new tool and one plain sentence about your value carry more than a certificate nobody asked for.",
+      ),
+      p(
+        "Do not worry about the pace of change. Most of it arrives slowly, and the people who keep learning a little are rarely caught out.",
+      ),
+      h2("When it fails"),
+      p("Each check costs nothing to try."),
+      ul([
+        "A tool does your main task: learn to run the tool, and keep the judgment.",
+        "Work slows for a month: call past customers, and ask what they need now.",
+        "Your employer changes systems: be the person who learns it first.",
+        "A certificate expires: note the date, and renew before it lapses.",
+        "A skill is not selling: ask three buyers what they would pay for.",
+        "You feel too old to start: the first lesson takes thirty minutes.",
+      ]),
+      h2("Practice"),
+      p("Draw the two columns for your own week."),
+      ul([
+        "List every task in a normal week.",
+        "Mark the ones a machine could repeat.",
+        "Mark the ones that need judgment or trust.",
+        "Choose one task from the first list and learn its tool.",
+        "Choose one from the second and get better at it on purpose.",
+      ]),
+      p(
+        "You can now see your own work clearly. There is one lesson left, and it is about the road ahead.",
       ),
     ],
   },
@@ -21768,7 +21912,7 @@ export const blogPosts: BlogPost[] = [
     slug: "the-road-ahead",
     title: "The road ahead",
     excerpt:
-      "From the first sitting to this one: the whole map on one page, the ten-year view, and the quiet hour you now owe somebody else. The last lesson of the series, and the first of yours.",
+      "The last lesson: what to keep from ten chapters, the notebook that holds it together, and the next step that is small enough to take today.",
     series: SERIES,
     order: 210,
     author: AUTHOR,
@@ -21777,47 +21921,92 @@ export const blogPosts: BlogPost[] = [
       "A young woman with a laptop bag looking down a quiet Nigerian street in early morning light, hopeful and calm.",
     body: [
       p(
-        "Two hundred and ten lessons ago, somebody sat down at a desk in front of a dark screen and was not sure where the power button lived. That person was not stupid. They had never been given a quiet hour with somebody who would name the parts out loud and refuse to laugh. If that person was you, sit for a moment and look at what the quiet hours built: the mouse stays on the table now. The yellow folders hold their treasures under names you chose. Letters leave your desk in your own voice. The spreadsheet balances the money and the money agrees. The phone is a tool and not a trap. The router's lights speak and you answer them in the right order. The family's photographs live in two safe houses. And the person across the table with the broken screen and the frightened face now meets your calm voice, your notebook, your five questions in order — and the sentence you are no longer afraid to say: this part is beyond me, and here is where it should go. The machine in front of you is not a stranger. Neither are you.",
+        "This is the last lesson in the course, and it is about what comes next. You will look back at what you have learned, keep the habits that matter, and choose a next step small enough to take today.",
+      ),
+      p(
+        "Two hundred and ten lessons are a lot of ground. What stays is not the whole of it, and the parts that stay will be the ones you used.",
+      ),
+      h2("Before you start"),
+      ul([
+        "Your notebook, if you have kept one.",
+        "Twenty minutes, with the phone face down.",
+        "One honest question: what do I want to do next?",
+      ]),
+      h2("What to keep"),
+      ul([
+        "The habit of writing a fault down before touching the machine.",
+        "The five questions, in order, for anything that stops working.",
+        "The backup you made, and the date you checked it.",
+        "The password notebook, kept away from the router.",
+        "One plain sentence that explains what you can do for somebody.",
+        "The knowledge that a confusing screen is normal before it is understood.",
+      ]),
+      p(
+        "You will see your notebook fill differently now, with dates, prices, and the words people used rather than the words the manual used. That handwriting is the course, kept in a form you can carry.",
+      ),
+      p(
+        "The first page will show the date you started, and the last will show what you can do now. Reading both pages is the most honest measure of progress you will find.",
       ),
       fig(
         "/images/blog/looking-outdoor-road-morning.jpg",
-        "A young woman with a laptop bag looking down a quiet Nigerian street in early morning light.",
-        "The lessons do not end at the page. They begin at the door — the morning you carry all of this into somebody else's quiet hour.",
-      ),
-      h2("The whole road, one look from above"),
-      p(
-        "Before we close the book, turn around at the top and look back at the route, the way you would reread a map before leaving a city. The first sittings named the parts and gave you the keyboard's geography — the letters, the naira sign, the shortcuts. Then files: yellow rooms, real names, the bin by the door, the backups in two houses. The internet arrived as a road with rules, the mail with its manners, the web's judgement yours at last. The phone became a pocket university with locks on its doors. The office suite grew into a working life: letters, forms, the spreadsheet's small honesty. The working chapter taught the interview, the CV, the pivot table nobody can bluff. The purse lessons stood between you and the fee that unlocks nothing. The workshop opened the boxes and named the dust of the harmattan. The network chapter wired the compound — the wire to the house, the lights on the shelf, the shop's three courtyards, the neighbours and their curiosity. The helping chapter gave you a card, a logbook, and handshakes across a bench. And the last chapter, the strangest one, taught you to work beside the assistant in the box: four-part instructions, checking at the fountain, your secrets kept out of it, taught beside it, feared politely, depended on never.",
+        "A view down an open road in the morning light.",
+        "A road, a morning, and no hurry. The next step does not have to be large.",
       ),
       p(
-        "Twenty-one chapters, and only one thread through all of them: slow down, name what you see, decide, then act. Every skill in the series was that one move wearing different clothes.",
+        "It looks like the end of a course should be a plan for years. A plan for this week is worth more, since this week is the one you can act on.",
       ),
-      h2("The next ten years, honestly"),
+      h2("The three things worth doing"),
+      ul([
+        "Fix one thing for somebody, free, and write down what you learned.",
+        "Back up one family machine, and check the copy.",
+        "Teach one person one lesson from this course.",
+      ]),
       p(
-        "Now the horizon, honestly, the way this series has always talked to you. In ten years the machines on your desk will be stranger than anything in these pages. The assistant will see and hear and draft whole projects. The frauds will stage whole dramas with voices and faces you trust. Some of these lessons will sound quaint to the young — the way the typewriter sounds quaint now — and some of the buttons will have moved. Prepare for that without anxiety: the yearly upgrade habit from the roadmap lesson keeps your hands current, and what keeps them honest is the manual hours you still spend checking the machine's work at the fountain.",
-      ),
-      p(
-        "But the ten-year picture has one fixed point in it, and the fixed point is the reason this series was written at all. There will still be a person sitting down at a machine for the first time, frightened, in a room in Port Harcourt or Potiskum or a village with one working laptop — needing exactly one thing: somebody to name the parts out loud and not laugh. The technology at that table will be different. The quiet hour will not. It has not changed since the first teacher sat beside the first student, and it will not change in ten years or a hundred. Everything you learned here — every file, every light, every question, every fence — is preparation for that morning.",
+        "The first of those three is how most support work begins. The second saves a family's photographs. The third is how you find out what you actually know.",
       ),
       fig(
         "/images/blog/computer-desk.jpg",
-        "A learner sitting at a wooden desk facing a desktop computer, the room quiet and warm around them.",
-        "The first sitting is still happening somewhere this morning. The whole series is the quiet hour somebody gave you — and the one this photograph is still asking you to give away.",
+        "A computer on a desk with a notebook beside it.",
+        "A desk, a machine, and a notebook. Most of this work begins at a table like this one.",
       ),
-      h2("The quiet hour you now owe"),
+      h2("When you feel behind"),
       p(
-        "Every one of these lessons was built out of one gift: somebody — a teacher, a note, a patient stranger on a bench — gave you a quiet hour at the beginning, when you were the frightened one. A gift like that has one peculiar property that money never figured out: it does not deplete. It multiplies only when passed on — and it multiplies specifically in the hands of the people who remember being afraid at the desk. That is why this is the last lesson and not merely the last chapter of advice. There is no more advice to give. There is a debt, small and payable in the exact currency you were paid in. Teach one person, who will teach one person.",
-      ),
-      p(
-        "Keep the book on the shelf at the height of somebody else's screen. You will meet these pages again at a cousin's laptop, hunting for the lesson on the clicking drive or the fee that unlocks nothing. The certificates on the wall and the cards in the drawer will do their work in the market — the pricing, the clients, the handovers. But the real work is the one this series can only point toward. Somewhere in your compound this week there is a dark screen and a person avoiding it. Take them the quiet hour. Name the parts out loud. Do not laugh. Go well.",
+        "Everybody feels behind at some point, and the feeling is a poor guide to what you can do.",
       ),
       ul([
-        "Reread the map whole once — twenty-one chapters, one thread: slow down, name what you see, decide, then act.",
-        "Keep your hands current and your judgment manual: the yearly upgrade habit and the manual hours both stay in the calendar.",
-        "Fund one quiet hour a week in your own life — free, patient, the parts named out loud, nobody laughed at.",
-        "Keep this book within reach of the next frightened screen. The debt is paid one person at a time.",
+        "Compare with your own work from a month ago, not with somebody's best day.",
+        "Ask a question out loud, since most people are glad to answer.",
+        "Start with the smallest version of the thing you want to build.",
+        "Write down what you already finished, and read the list on a bad day.",
+        "Keep the notebook open, because the record answers the doubt.",
       ]),
       p(
-        "Two hundred and ten lessons, and only the first one was ever really taught: you belong at this machine. Everything since has been a footnote to that sentence. The desk is warm. The screen is bright. The road ahead is yours.",
+        "None of this needs to be done alone. A group of two or three people learning the same thing moves faster than any of them would alone, and the meetings cost nothing but a table.",
+      ),
+      p(
+        "Do not worry about the parts you have forgotten. The lessons are here, and a page you have read before takes half the time on the second visit.",
+      ),
+      h2("If it goes wrong"),
+      p("The first check is usually enough."),
+      ul([
+        "You forget a procedure: open the lesson and follow the steps in order.",
+        "A machine defeats you: write the fault down, and ask one person who knows.",
+        "You lose the notebook: start a new one, and copy the last two entries.",
+        "A repair fails: say so early, and return the machine as you found it.",
+        "You feel like an impostor: show somebody the work you finished last month.",
+        "You have no customer yet: fix one thing for free and ask for a sentence in return.",
+      ]),
+      h2("Practice"),
+      p("Choose one step and do it this week."),
+      ul([
+        "Pick one of the three things above.",
+        "Write the day you will do it.",
+        "Tell one person you are doing it.",
+        "Do it, and write two lines afterwards.",
+        "Choose the next one only after the first is finished.",
+      ]),
+      p(
+        "You have finished the course, and you know more than you did. The machine in front of you is a tool rather than a mystery, and the person using it is still the point.",
       ),
     ],
   },

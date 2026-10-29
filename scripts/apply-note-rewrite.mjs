@@ -11,8 +11,8 @@
  *   { slug, title?, excerpt?, cover?, coverAlt?, body: [ ...blocks ] }
  *
  * Usage:
- *   node scripts/apply-note-rewrite.mjs content/notes/batch-01.json
- *   node scripts/apply-note-rewrite.mjs content/notes/*.json --dry-run
+ *   node scripts/apply-note-rewrite.mjs path/to/rewrite.json
+ *   node scripts/apply-note-rewrite.mjs path/to/*.json --dry-run
  */
 
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
