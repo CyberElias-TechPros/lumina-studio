@@ -125,7 +125,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about speed. Hunting for each letter is how everybody starts, and accuracy is the habit worth building first.",
       ),
       h2("Troubleshooting"),
-      p("These come up often."),
+      p("All of these are fixable."),
       ul([
         "The screen stays black: check the monitor's power light, the wall socket, then the cable at the back.",
         "The pointer does not move: check the mouse cable, or turn the mouse over and look for a light. A wireless mouse may need new batteries.",
@@ -242,7 +242,7 @@ export const blogPosts: BlogPost[] = [
         "Ctrl and S, pressed often, is the cheapest insurance in computing. It takes a second and saves an afternoon.",
       ),
       h2("When it fails"),
-      p("Nothing here is unusual."),
+      p("Each one has an answer."),
       ul([
         "You cannot find the file: open Documents, then the folder you remember, then check Downloads.",
         "You closed the window without saving: the work is gone, because it was never copied to the disk. This is the one case saving cannot fix, which is why Ctrl and S matters.",
@@ -356,7 +356,7 @@ export const blogPosts: BlogPost[] = [
         "Select first, then copy. The text turns a different colour when the computer knows what you mean.",
       ),
       h2("If it goes wrong"),
-      p("Try these before calling a repairer."),
+      p("Nothing here is unusual."),
       ul([
         "Letters appear in the wrong place: you clicked somewhere else in the text. Click where you want the cursor, or press Ctrl and Z.",
         "Every letter is a capital: press Caps Lock once.",
@@ -471,7 +471,7 @@ export const blogPosts: BlogPost[] = [
         "Downloads land in your Downloads folder. Move a file into Documents if you mean to keep it, and save a page with the star at the end of the address bar. Give the bookmark a name you will recognise, not the machine's suggestion.",
       ),
       h2("Troubleshooting"),
-      p("Test one thing at a time."),
+      p("Every one of these is common."),
       ul([
         "The page will not load: check the Wi-Fi or data connection, then press the reload button once.",
         "Every page is slow: close the tabs you are not using, then try again.",
@@ -712,7 +712,7 @@ export const blogPosts: BlogPost[] = [
         "The same password on a small site you will never use again.",
       ]),
       h2("If it goes wrong"),
-      p("Each one takes a few minutes."),
+      p("Start with the first one."),
       ul([
         "You forgot the password: use Forgot password on the real site, and reset through the email or phone number on the account.",
         "Somebody has changed your password: use the recovery option, then check the recovery email and phone number are still yours.",
@@ -1239,7 +1239,7 @@ export const blogPosts: BlogPost[] = [
         "Attach the PDF, not the .docx, unless the office asks for an editable file.",
       ]),
       h2("When it fails"),
-      p("Go down the list from the top."),
+      p("Most of them have a plain fix."),
       ul([
         "The text jumps to a new page for no reason: delete the empty paragraphs and check the margins again.",
         "The font looks different on another computer: save and send the PDF instead.",
@@ -1429,7 +1429,7 @@ export const blogPosts: BlogPost[] = [
         "When unsure: close everything, open Settings yourself, and check for updates there.",
       ]),
       h2("Troubleshooting"),
-      p("Each has a cause you can find."),
+      p("You can deal with each in turn."),
       ul([
         "The update is stuck for over two hours: wait another hour if the screen is moving, then hold the power button for ten seconds and start again.",
         "It restarts in a loop: unplug everything except power, wait, and let it finish. If it repeats for a day, take it to a repairer and say what the screen showed.",
@@ -2129,7 +2129,7 @@ export const blogPosts: BlogPost[] = [
         "A stranger offers a paid cleaner because your computer is slow: decline. Change nothing you cannot explain.",
       ]),
       h2("When it fails"),
-      p("Take them one at a time."),
+      p("Start with the first one."),
       ul([
         "The computer takes minutes to start: disable startup programs, then check the drive health.",
         "It slows down only on the browser: close tabs, clear the cache, and disable extensions you do not use.",
@@ -2235,7 +2235,7 @@ export const blogPosts: BlogPost[] = [
         "If a browser tells you an update is needed and offers a download, close it and update through the program's own menu.",
       ]),
       h2("If it goes wrong"),
-      p("Read the row that fits your case."),
+      p("Each has a cause you can find."),
       ul([
         "The program will not open: restart the computer, then check the program is listed in the Start menu.",
         "You installed something you did not want: uninstall it from Settings, then check the browser for a new toolbar or homepage.",
@@ -2722,7 +2722,7 @@ export const blogPosts: BlogPost[] = [
         "Never copy a one-time code or a bank PIN, and clear the clipboard after a sensitive copy by copying a blank space or a harmless word. On Windows, press Windows and V to see the clipboard history and clear it.",
       ),
       h2("When it fails"),
-      p("Nothing here is unusual."),
+      p("Work through the list below."),
       ul([
         "Nothing pastes: press Ctrl and C again, because the clipboard may have been replaced by a later copy.",
         "The wrong text pastes: that was the last thing copied. Copy the correct piece and try again.",
@@ -2839,7 +2839,7 @@ export const blogPosts: BlogPost[] = [
         "If you must send one of these, crop it first, and cover the private part with a shape before you save. None of this is difficult, and it takes ten seconds.",
       ),
       h2("If it goes wrong"),
-      p("Try these before calling a repairer."),
+      p("You can deal with each in turn."),
       ul([
         "Nothing happens when you press Print Screen: the key may need Fn held with it, or the function key is doing the job instead.",
         "The paste is empty: the screenshot went to a file instead of the clipboard. Look in Pictures, then Screenshots.",
@@ -2941,7 +2941,7 @@ export const blogPosts: BlogPost[] = [
         "A file called invoice.pdf.exe is a program pretending to be a PDF. Turn on file name extensions in File Explorer, under View, so that the real ending is always visible.",
       ),
       h2("Troubleshooting"),
-      p("Test one thing at a time."),
+      p("Take these one at a time."),
       ul([
         "The zip will not attach: the file is too large. Split it or send a link.",
         "The recipient cannot open it: some mail systems block zip files. Send a PDF for documents, or use a link.",
@@ -3259,7 +3259,7 @@ export const blogPosts: BlogPost[] = [
         "Sort what you will use this month, archive the rest, and leave the archive closed. That is the whole repair.",
       ),
       h2("Troubleshooting"),
-      p("Every one of these is common."),
+      p("Nothing here is unusual."),
       ul([
         "You moved a file and cannot find it: press Ctrl and Z, or search for its name.",
         "A file will not move: it is open in another program. Close the program and try again.",
@@ -3367,7 +3367,7 @@ export const blogPosts: BlogPost[] = [
         "If a name is refused, the message usually says which character is the problem. Read it rather than retyping the whole name, and the fix takes five seconds.",
       ),
       h2("When it fails"),
-      p("None of these needs a new machine."),
+      p("Every one of these is common."),
       p("None of these loses the file, so read them without alarm and try the first fix."),
       ul([
         "The file will not open after renaming: you removed or changed the extension. Rename it back, or add the original ending.",
@@ -3576,7 +3576,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       p("None of this loses your open work, and the second step solves it in most cases."),
       h2("Troubleshooting"),
-      p("Start with the simplest check."),
+      p("Start with the first one."),
       ul([
         "A pinned icon does nothing when clicked: the program was uninstalled. Right-click it and unpin.",
         "Windows key does not open Start: the keyboard may be locked with Fn, or the key is failing. Click the Start button instead.",
@@ -3684,7 +3684,7 @@ export const blogPosts: BlogPost[] = [
         "None of this means the original file is gone, and the last line in the list prevents most cases on the day it matters.",
       ),
       h2("When it fails"),
-      p("Go down the list from the top."),
+      p("Each has a cause you can find."),
       ul([
         "A desktop icon shows a white page: the target is missing, or the program was uninstalled.",
         "The shortcut opens the wrong file: the target path is out of date. Rebuild the shortcut from the right file.",
@@ -3786,7 +3786,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the tiny buzzing you hear in cheap earphones at high volume. It is usually the earphones, not the computer, and it is a reason to turn the volume down rather than replace the machine.",
       ),
       h2("If it goes wrong"),
-      p("Pick the line that fits."),
+      p("These come up often."),
       ul([
         "No sound at all: check the speaker icon for a mute symbol, then raise the system slider.",
         "One video is silent: check the player's own volume and mute button.",
@@ -3894,7 +3894,7 @@ export const blogPosts: BlogPost[] = [
         "You will see the screen turn slightly yellow when night light is on. That colour is expected, and it is why photographs edited at night can look too blue the next morning.",
       ),
       h2("Troubleshooting"),
-      p("Each has a cause you can find."),
+      p("There is a way through each one."),
       ul([
         "The screen is too dark to read: raise brightness with the keys, then check battery saver.",
         "The brightness keys do nothing: the function keys may need Fn held, or a monitor is being used instead.",
@@ -3995,7 +3995,7 @@ export const blogPosts: BlogPost[] = [
         "None of this needs a technician, and the first item prevents most of what goes wrong in a hall.",
       ),
       h2("When it fails"),
-      p("Each one has an answer."),
+      p("None of these is a dead end."),
       ul([
         "Nothing appears: check the second screen is switched on and set to the right input.",
         "The laptop does not notice the cable: press Windows and P and choose Extend, then try another cable.",
@@ -4098,7 +4098,7 @@ export const blogPosts: BlogPost[] = [
         "None of this is fussiness. Files that are half-written are the ones people describe as corrupted, and the eject button exists to prevent that.",
       ),
       h2("If it goes wrong"),
-      p("All of these are fixable."),
+      p("Most of them have a plain fix."),
       ul([
         "The device is not recognised: try another port and another cable before anything else.",
         "The plug will not fit: it is the wrong shape, or upside down. Never force it.",
@@ -4205,7 +4205,7 @@ export const blogPosts: BlogPost[] = [
         "None of these steps damages anything, and the last one is the reason a technician asks for the model number of the machine.",
       ),
       h2("Troubleshooting"),
-      p("Stop at the row that matches."),
+      p("Work through the list below."),
       ul([
         "Sound works in one program only: the mixer slider for the other program is low or muted.",
         "Sound returns after a restart and goes again: the driver is failing. Reinstall it from the maker's site.",
@@ -4309,7 +4309,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the normal warmth of a working laptop. Warm is expected. A swollen case, a hot smell, or a fan that never stops are the signs that deserve action.",
       ),
       h2("When it fails"),
-      p("Each check costs nothing to try."),
+      p("You can deal with each in turn."),
       ul([
         "The laptop will not charge: try another socket, then another charger of the same voltage, then check the plug for damage.",
         "The battery drains while plugged in: the charger is too weak for the work you are doing, or the cable is failing.",
@@ -4516,7 +4516,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about being interesting enough to watch. Most camera use is ordinary: a program you installed asking for a permission you did not notice.",
       ),
       h2("Troubleshooting"),
-      p("Some of these are settings only."),
+      p("All of these are fixable."),
       ul([
         "The camera light stays on: cover the lens, restart, and check the app list in Settings.",
         "You cannot find the camera in Settings: on some machines a switch or function key owns it, and the software menu is empty.",
@@ -4623,7 +4623,7 @@ export const blogPosts: BlogPost[] = [
         "On a public computer, clear cookies after you finish.",
       ]),
       h2("When it fails"),
-      p("Take them one at a time."),
+      p("Each one has an answer."),
       ul([
         "The site says cookies are required and will not continue: allow necessary cookies for that site only.",
         "You are logged out of everything: you cleared cookies. Sign in again and let the browser save the ones you need.",
@@ -4721,7 +4721,7 @@ export const blogPosts: BlogPost[] = [
         "None of this is about distrusting the people you live with. It is about the visitor, the repairer, and the cousin who borrowed the laptop for one evening.",
       ),
       h2("If it goes wrong"),
-      p("Read the row that fits your case."),
+      p("Nothing here is unusual."),
       ul([
         "Your profile has somebody else's bookmarks: you are in their profile. Switch using the icon at the top right.",
         "A website signs you in automatically as another person: sign out, then clear that site's cookies.",
@@ -4818,7 +4818,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about losing bookmarks when you change phone or laptop. Signing in to the browser syncs them, as long as you are signed in before you switch machines.",
       ),
       h2("Troubleshooting"),
-      p("Most of these have a cheap fix."),
+      p("Every one of these is common."),
       ul([
         "The bar disappeared: press Ctrl, Shift and B to bring it back.",
         "You saved a page with a useless name: right-click it and choose Edit.",
@@ -4913,7 +4913,7 @@ export const blogPosts: BlogPost[] = [
         "None of this deletes bookmarks or files. History and cookies are separate, and clearing one does not clear the other unless you tick both.",
       ),
       h2("When it fails"),
-      p("Begin with the first one."),
+      p("Go through them in order."),
       ul([
         "A page you visited is missing from history: it was opened in a private window, or history was cleared.",
         "Ctrl and H does nothing: the browser has a different shortcut. Use the menu, then History.",
@@ -5018,7 +5018,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about keeping every version of a form. Keep the one you submitted, and let the earlier drafts go.",
       ),
       h2("If it goes wrong"),
-      p("Here is what to check first."),
+      p("Start with the first one."),
       ul([
         "The disk is full: clear Downloads first, then the Recycle Bin, then old videos.",
         "A file will not delete because it is in use: close the program that opened it, or restart.",
@@ -5120,7 +5120,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the cloud being unsafe in general. The real risks are a forgotten password, a closed free account, and a delete that syncs everywhere at once.",
       ),
       h2("Troubleshooting"),
-      p("These come up often."),
+      p("Each has a cause you can find."),
       ul([
         "A file is missing from the cloud: check the service's trash, then the version history.",
         "Uploads never finish: check the connection, then upload one file at a time.",
@@ -5220,7 +5220,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about being perfect. Signing out, deleting your files, and taking your flash drive removes almost all of the risk.",
       ),
       h2("When it fails"),
-      p("Nothing here is unusual."),
+      p("These come up often."),
       ul([
         "You forgot to sign out of email: change the password now, which ends the session, then sign out of other devices.",
         "You left a file on the machine: call the centre and ask them to delete it, then treat the file as seen.",
@@ -5320,7 +5320,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about making it look decorative. A plain grid with clear headings is what an office wants, and shading usually prints badly anyway.",
       ),
       h2("If it goes wrong"),
-      p("Try these before calling a repairer."),
+      p("There is a way through each one."),
       ul([
         "The table runs off the page: drag the right edge in, or reduce the font size to 10.",
         "Columns jump while you type: set fixed widths in Table Properties.",
@@ -5421,7 +5421,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the settings screen looking complicated. The buttons you need are three: insert field, preview, finish.",
       ),
       h2("Troubleshooting"),
-      p("Test one thing at a time."),
+      p("None of these is a dead end."),
       ul([
         "Every letter has the same name: the field was copied as text. Insert the field again from the menu.",
         "The fields show as code: turn on preview, which hides the codes and shows the real text.",
@@ -5523,7 +5523,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about a perfect system. One calendar, one place for reminders, and one look a week is enough for a busy life.",
       ),
       h2("When it fails"),
-      p("Work through these in order."),
+      p("Most of them have a plain fix."),
       ul([
         "The event is on the wrong day: the year or the time zone was wrong. Open it and correct both.",
         "No reminder arrived: notifications are blocked for the app. Allow them in the phone settings.",
@@ -5625,7 +5625,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about losing the list when you change phones. Signing in to the same account restores it, which is why the first step in this lesson matters more than the rest.",
       ),
       h2("If it goes wrong"),
-      p("Each one takes a few minutes."),
+      p("Work through the list below."),
       ul([
         "A contact is missing after changing phones: it was saved to the phone, not the account. Check the old device, then re-save it properly.",
         "Two entries for one person: merge them, or delete the older and keep the newer.",
@@ -5727,7 +5727,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the money you did not send. A cautious pause costs nothing, and it is the only defence that works against a sticker.",
       ),
       h2("Troubleshooting"),
-      p("Every one of these is common."),
+      p("You can deal with each in turn."),
       ul([
         "The camera will not read the code: clean the lens, move closer, and hold the phone still.",
         "The code opens nothing: it may be damaged or made for an app you do not have.",
@@ -5827,7 +5827,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry if you forget once. Removing the device from the phone ends the session on the computer within a minute.",
       ),
       h2("When it fails"),
-      p("None of these needs a new machine."),
+      p("Take these one at a time."),
       ul([
         "The QR code will not scan: clean the phone lens, and hold it steady at the right distance.",
         "The computer shows Connecting and nothing loads: check the phone is online and awake.",
@@ -5931,7 +5931,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the map being wrong in some areas. It is a guide, and the person at the junction usually knows the last hundred metres better than the satellite.",
       ),
       h2("If it goes wrong"),
-      p("Check these in the order given."),
+      p("All of these are fixable."),
       ul([
         "The app will not open: check data, then location permission, then restart the phone.",
         "The map shows the wrong town: the search matched a similarly named place. Add the state to the search.",
@@ -6037,7 +6037,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about filling every space. Empty space is what makes large text readable, and a crowded poster is the most common beginner mistake.",
       ),
       h2("Troubleshooting"),
-      p("Start with the simplest check."),
+      p("Each one has an answer."),
       ul([
         "The text is cut off at the edge: the printer has an unprintable margin. Move everything inward.",
         "The photograph is blurry: it was small and you enlarged it. Use a larger image or remove it.",
@@ -6139,7 +6139,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry if the first attempt is rejected for size. Change one number, save a new copy, and try again. The step that matters is reading the exact limit.",
       ),
       h2("When it fails"),
-      p("Go down the list from the top."),
+      p("Nothing here is unusual."),
       ul([
         "The file is still too large: reduce the dimensions rather than the quality alone.",
         "The picture is now blurry: you reduced too far. Go back to the original and stop at a larger size.",
@@ -6252,7 +6252,7 @@ export const blogPosts: BlogPost[] = [
         "If it will not clean, ask a repairer to reinstall the system, and restore only your own documents.",
       ]),
       h2("If it goes wrong"),
-      p("Pick the line that fits."),
+      p("Every one of these is common."),
       ul([
         "The warning will not close: end the browser in Task Manager, then reopen it.",
         "The page reappears on every start: remove the extension, and reset the browser settings.",
@@ -6354,7 +6354,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry if the first paste lands in the wrong place. Ctrl and Z removes it, and the clipboard still holds the copy, so a second paste costs one key press.",
       ),
       h2("Troubleshooting"),
-      p("Each has a cause you can find."),
+      p("Go through them in order."),
       ul([
         "A window has vanished: it is minimised. Click its taskbar icon.",
         "Alt and Tab does nothing: another program is capturing the keys. Use the taskbar instead.",
@@ -6457,7 +6457,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the document looking different on another computer. The font size travels with the file, which is why a PDF is a good way to send it.",
       ),
       h2("When it fails"),
-      p("Each one has an answer."),
+      p("Start with the first one."),
       ul([
         "The page is stuck huge or tiny: press Ctrl and zero.",
         "Ctrl and plus does nothing: click inside the page first, then try again.",
@@ -6554,7 +6554,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about a list looking plain. A reader wants to follow it, not admire it, and the plainest list is usually the clearest.",
       ),
       h2("If it goes wrong"),
-      p("All of these are fixable."),
+      p("Each has a cause you can find."),
       ul([
         "Every new line becomes a bullet: press Enter twice, or click the bullet button to switch it off.",
         "Numbers are all ones: the program is restarting the list at each line. Select the list and apply numbering once.",
@@ -6654,7 +6654,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about sounding slow. An error in a fee amount costs more than the five minutes you saved by sending early.",
       ),
       h2("Troubleshooting"),
-      p("Stop at the row that matches."),
+      p("These come up often."),
       ul([
         "Every word is underlined: the document language is set wrong. Change it in Review, then Language.",
         "Your name is underlined: right-click and add it to the dictionary.",
@@ -6755,7 +6755,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about remembering every trap. The habit of finding first and reading the count prevents almost all of them.",
       ),
       h2("When it fails"),
-      p("Each check costs nothing to try."),
+      p("There is a way through each one."),
       ul([
         "Everything changed wrongly: press Ctrl and Z once, immediately.",
         "You already saved the bad version: restore the previous version from the program's history, or from your backup.",
@@ -6854,7 +6854,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about losing an afternoon to a single slip. The habit of saving often, plus the Recycle Bin, covers almost every case in the list above.",
       ),
       h2("If it goes wrong"),
-      p("The first check is usually enough."),
+      p("None of these is a dead end."),
       ul([
         "Ctrl and Z does nothing: the program does not support it, or there is nothing to undo.",
         "You undid too far: press Ctrl and Y to redo, one step at a time.",
@@ -6956,7 +6956,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about making a perfect selection first time. Selecting is reversible, and pressing an arrow key cancels it without changing anything.",
       ),
       h2("Troubleshooting"),
-      p("Some of these are settings only."),
+      p("Most of them have a plain fix."),
       ul([
         "The selection keeps jumping: your palm is touching the laptop trackpad, or the mouse button is not held down.",
         "You selected too much: hold Shift and click again at the right end, or press an arrow key and start again.",
@@ -7057,7 +7057,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry if the setting is hidden in a different place on your version. Search the program's help for different first page, and the path appears in one line.",
       ),
       h2("When it fails"),
-      p("Take them one at a time."),
+      p("Work through the list below."),
       ul([
         "The number appears on the first page and should not: turn on Different first page.",
         "Every page shows one: the numbers were typed by hand. Delete them and insert a real page number.",
@@ -7158,7 +7158,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about it looking impersonal. A group mail with hidden addresses is the normal professional form, and the alternative is thirty strangers with each other's emails.",
       ),
       h2("If it goes wrong"),
-      p("Read the row that fits your case."),
+      p("You can deal with each in turn."),
       ul([
         "You replied to everybody by accident: send one short apology to the same list, and change nothing else.",
         "You exposed a group's addresses: tell the group, apologise once, and use Bcc next time.",
@@ -7254,7 +7254,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about being judged for a plain ending. A reader wants your name and a number, and both are easier to find in four lines than in a small poster.",
       ),
       h2("Troubleshooting"),
-      p("Most of these have a cheap fix."),
+      p("Take these one at a time."),
       ul([
         "The signature does not appear: it is switched off, or set only for one type of message.",
         "It appears twice: delete the second copy in each mail, or set it for new mails only.",
@@ -7352,7 +7352,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about installing five programs to cover every type. Two or three cover almost everything in ordinary use.",
       ),
       h2("When it fails"),
-      p("Begin with the first one."),
+      p("All of these are fixable."),
       ul([
         "The program is not in the list: it is not installed, or it needs updating before it registers itself.",
         "The file opens as strange characters: the program is the wrong kind for that content, not the file.",
@@ -7451,7 +7451,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the missing gigabytes. Every drive does it, and no amount of formatting recovers the difference.",
       ),
       h2("If it goes wrong"),
-      p("Here is what to check first."),
+      p("Each one has an answer."),
       ul([
         "The drive is full and the file is small: empty the Recycle Bin, then check Downloads.",
         "A copy fails with a message about space: read the message, which states how much is needed.",
@@ -7533,7 +7533,7 @@ export const blogPosts: BlogPost[] = [
         "On a laptop, press with two fingers on the trackpad for the same menu. Many people never discover it.",
       ),
       h2("Troubleshooting"),
-      p("These come up often."),
+      p("Nothing here is unusual."),
       ul([
         "The menu will not open: the mouse or trackpad is set for left-hand use, or the button is failing. Try two fingers on the trackpad.",
         "The menu is very long: that is normal on a machine with many programs installed. Choose Show more options if you see it.",
@@ -7630,7 +7630,7 @@ export const blogPosts: BlogPost[] = [
         "The keyboard is the reliable version: copy, click the destination, paste, and check.",
       ),
       h2("When it fails"),
-      p("Nothing here is unusual."),
+      p("Every one of these is common."),
       ul([
         "You dropped it in the wrong folder: press Ctrl and Z at once.",
         "The file disappeared: it moved rather than copied. Search for its name, or check the folder you dragged it into.",
@@ -7735,7 +7735,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about not having the perfect background. An honest, clear, one-page CV from a beginner beats a padded one from anybody, and employers in small firms read every one.",
       ),
       h2("If it goes wrong"),
-      p("Try these before calling a repairer."),
+      p("Go through them in order."),
       ul([
         "It will not fit on one page: cut the oldest detail, reduce the margins to 2 cm, and keep the font at 11 or 12.",
         "The layout moves on another computer: you sent a .docx instead of a PDF.",
@@ -7837,7 +7837,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the internet dropping. Offline mode can be switched on in the settings, and the document syncs when the connection returns.",
       ),
       h2("Troubleshooting"),
-      p("Test one thing at a time."),
+      p("Start with the first one."),
       ul([
         "The page will not load: check the connection, then open docs.google.com again rather than reloading a stale tab.",
         "Your work disappeared: open Drive and look in Recent, then in the Trash for thirty days.",
@@ -7935,7 +7935,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about offending anybody by removing access. It is normal housekeeping, and the person rarely notices or minds.",
       ),
       h2("When it fails"),
-      p("Work through these in order."),
+      p("Each has a cause you can find."),
       ul([
         "You shared a private file with the link setting: set it to Restricted now. Copies already downloaded cannot be recalled.",
         "The person cannot open it: they must sign in with the exact address you used.",
@@ -8031,7 +8031,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about being direct in a comment. Clear notes save an hour of misunderstanding, and a polite sentence costs nothing.",
       ),
       h2("If it goes wrong"),
-      p("Each one takes a few minutes."),
+      p("These come up often."),
       ul([
         "You cannot comment: you have view-only access. Ask for Commenter rights.",
         "The comment icon is missing: the document is a PDF, which needs a different tool.",
@@ -8129,7 +8129,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about hiding data by accident. A filter is a view, and the rows are still there underneath it.",
       ),
       h2("Troubleshooting"),
-      p("Every one of these is common."),
+      p("There is a way through each one."),
       ul([
         "The names no longer match the amounts: undo at once with Ctrl and Z. If you already saved, restore the copy.",
         "The header row sorted into the data: undo, then sort with the header box ticked.",
@@ -8230,7 +8230,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about asking for a test page. A shop that refuses one is telling you something useful about the rest of the service.",
       ),
       h2("When it fails"),
-      p("None of these needs a new machine."),
+      p("None of these is a dead end."),
       ul([
         "One column prints on its own page: set Width to 1 page in the page setup.",
         "The text is too small after fitting: reduce the number of columns, or use landscape and narrow margins.",
@@ -8331,7 +8331,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the formatting looking different when somebody else opens the file. The format travels with the spreadsheet, and a PDF keeps it exactly.",
       ),
       h2("If it goes wrong"),
-      p("Check these in the order given."),
+      p("Most of them have a plain fix."),
       ul([
         "The total does not include some numbers: those cells are text. Retype one and watch the total move.",
         "The column shows a strange date: the numbers were read as dates. Reformat the cells as Currency.",
@@ -8420,7 +8420,7 @@ export const blogPosts: BlogPost[] = [
         "Header frozen, list scrolled to row ninety. The reader still knows which column is which.",
       ),
       h2("Troubleshooting"),
-      p("Start with the simplest check."),
+      p("Work through the list below."),
       ul([
         "The freeze is in the wrong place: unfreeze, then click a cell in the right position and freeze again.",
         "You cannot find the option: it is under View, not Format or Data.",
@@ -8522,7 +8522,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about remembering which dollar sign does what. Press F4 until the formula behaves, and read the last row to be sure.",
       ),
       h2("When it fails"),
-      p("Go down the list from the top."),
+      p("You can deal with each in turn."),
       ul([
         "Every row shows the same answer: the references were locked. Remove the dollar signs from the row references.",
         "The answer is wrong in one row only: a cell in that row is text or empty. Check it.",
@@ -8622,7 +8622,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about a bad week. A record that shows a bad week is doing its job, and it is the reason the next one is better.",
       ),
       h2("If it goes wrong"),
-      p("Pick the line that fits."),
+      p("Take these one at a time."),
       ul([
         "The total is lower than expected: some numbers are stored as text. Retype one and watch the total move.",
         "The balance goes negative for no reason: a spend was typed into the In column.",
@@ -8720,7 +8720,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the count. Errors arrive in groups, and fixing the first one in a column usually fixes five.",
       ),
       h2("Troubleshooting"),
-      p("Each has a cause you can find."),
+      p("All of these are fixable."),
       ul([
         "##### will not go away after widening: the number is huge. Format the cell to fewer decimals.",
         "#DIV/0! appears in a total: one row is blank. Wrap the formula in IFERROR to show a blank instead.",
@@ -8941,7 +8941,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about memorising the list. Space and the arrow keys cover most of what you need while you learn the rest.",
       ),
       h2("If it goes wrong"),
-      p("All of these are fixable."),
+      p("Nothing here is unusual."),
       ul([
         "The captions are in the wrong language: open Settings, then Subtitles, and choose again.",
         "There are no captions offered: the speaker never enabled them, and no setting will invent them.",
@@ -9036,7 +9036,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about looking foolish for switching the network off to fix the network. Engineers do the same thing on much larger equipment.",
       ),
       h2("Troubleshooting"),
-      p("Stop at the row that matches."),
+      p("Every one of these is common."),
       ul([
         "Calls go straight to voicemail: airplane mode is still on. Check the top bar.",
         "You cannot send a message: the phone has no network. Turn the mode off and wait.",
@@ -9144,7 +9144,7 @@ export const blogPosts: BlogPost[] = [
         "Check the storage figure once a month, which takes ten seconds.",
       ]),
       h2("When it fails"),
-      p("Each check costs nothing to try."),
+      p("Go through them in order."),
       ul([
         "You deleted a photo by mistake: check the trash or recently deleted album within thirty days.",
         "WhatsApp says storage is full but the phone has space: clear the app cache in Settings.",
@@ -9251,7 +9251,7 @@ export const blogPosts: BlogPost[] = [
         "Switch location off completely from quick settings when you want nothing to know.",
       ]),
       h2("If it goes wrong"),
-      p("The first check is usually enough."),
+      p("Start with the first one."),
       ul([
         "The camera will not open in an app: the permission is denied. Allow it in Settings.",
         "A voice note records silence: the microphone is denied for that app.",
@@ -9362,7 +9362,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about being rude by locking a screen in front of a colleague. People who handle money and records do it without thinking.",
       ),
       h2("Troubleshooting"),
-      p("Some of these are settings only."),
+      p("Each has a cause you can find."),
       ul([
         "You forgot the PIN: use the account recovery on the phone, which needs your Google or Apple password.",
         "The fingerprint stops working: wash and dry the finger, then re-add it in Settings.",
@@ -9458,7 +9458,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the cost of a replacement yet. Sorting the accounts is the urgent part, and the phone can wait a week.",
       ),
       h2("When it fails"),
-      p("Take them one at a time."),
+      p("These come up often."),
       ul([
         "The find-device page shows the phone as offline: it will act when the phone next connects, so leave the lock request in place.",
         "You cannot receive the WhatsApp code: wait for the SMS block to clear, or ask WhatsApp to send the code by call.",
@@ -9559,7 +9559,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about messages piling up. They arrive quietly in the notification shade, and the count waits for you.",
       ),
       h2("If it goes wrong"),
-      p("Read the row that fits your case."),
+      p("There is a way through each one."),
       ul([
         "Calls do not ring at all: the exception list is empty. Add your favourites.",
         "The alarm did not ring: alarms were switched off inside Do Not Disturb.",
@@ -9658,7 +9658,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry if the phone gets warm. A hotspot runs the radio hard, and the heat is expected while it works.",
       ),
       h2("Troubleshooting"),
-      p("Most of these have a cheap fix."),
+      p("None of these is a dead end."),
       ul([
         "The hotspot does not appear in the laptop list: turn it off and on again, then refresh the list.",
         "The password is rejected: check capital letters, and read it from the phone screen.",
@@ -9764,7 +9764,7 @@ export const blogPosts: BlogPost[] = [
         "Turn wifi off when you leave, so the phone does not reconnect on its own.",
       ]),
       h2("When it fails"),
-      p("Begin with the first one."),
+      p("Most of them have a plain fix."),
       ul([
         "Wifi says connected but pages will not load: the router has no internet. Use data.",
         "Data is on but nothing loads: the bundle is finished, or the network is weak.",
@@ -9872,7 +9872,7 @@ export const blogPosts: BlogPost[] = [
         "Keep the photos until the office confirms receipt.",
       ]),
       h2("If it goes wrong"),
-      p("Here is what to check first."),
+      p("Work through the list below."),
       ul([
         "Text is blurry: the phone moved. Rest the phone on a book or a wall and retake.",
         "There is a bright band across the page: that is glare. Change the angle of the light.",
@@ -9977,7 +9977,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the scan looking different from the paper. The receiver needs to read the words and see the stamps, and a black-and-white scan does both.",
       ),
       h2("Troubleshooting"),
-      p("These come up often."),
+      p("You can deal with each in turn."),
       ul([
         "The page is cut off: the outline snapped inside the text. Re-scan and drag the corners out.",
         "The scan is too dark: use the light or colour setting instead of black and white.",
@@ -10081,7 +10081,7 @@ export const blogPosts: BlogPost[] = [
         "Do not keep pressing resend ten times, which locks the account for a while.",
       ]),
       h2("When it fails"),
-      p("Nothing here is unusual."),
+      p("Take these one at a time."),
       ul([
         "You typed the code and it was rejected: it expired. Request a new one.",
         "You entered a code on a page that then asked for a card: close it. That page was not your bank.",
@@ -10182,7 +10182,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the data bundle. A banking session uses a few megabytes, which is less than one video.",
       ),
       h2("If it goes wrong"),
-      p("Try these before calling a repairer."),
+      p("All of these are fixable."),
       ul([
         "The browser warns the certificate is not valid: leave the page. A warning is never a formality.",
         "A network asks for a card number to connect: refuse. Real venues do not charge for wifi in that way.",
@@ -10292,7 +10292,7 @@ export const blogPosts: BlogPost[] = [
         "Any request to keep it secret is a reason to tell somebody.",
       ]),
       h2("Troubleshooting"),
-      p("Test one thing at a time."),
+      p("Each one has an answer."),
       ul([
         "You paid the fee: report to the bank within hours, since early reports sometimes recover funds.",
         "You sent your BVN: tell your bank and ask them to watch the account.",
@@ -10404,7 +10404,7 @@ export const blogPosts: BlogPost[] = [
         "The key with the four loops is the Command key.",
       ]),
       h2("When it fails"),
-      p("Work through these in order."),
+      p("Nothing here is unusual."),
       ul([
         "The wrong window closes: Ctrl and Z does not reopen it. Use the browser's reopen-tab option.",
         "Text disappears after a paste: undo with Ctrl and Z and check where the cursor was.",
@@ -10514,7 +10514,7 @@ export const blogPosts: BlogPost[] = [
         "Read the message once before sending, since autocorrect hides in plain sight.",
       ]),
       h2("If it goes wrong"),
-      p("Each one takes a few minutes."),
+      p("Every one of these is common."),
       ul([
         "The keyboard has disappeared: tap the text box again, which brings it back.",
         "Every word is underlined in red: the wrong language is set. Change it in keyboard settings.",
@@ -10625,7 +10625,7 @@ export const blogPosts: BlogPost[] = [
         "A shopping list, spoken as you walk through the market.",
       ]),
       h2("Troubleshooting"),
-      p("Every one of these is common."),
+      p("Go through them in order."),
       ul([
         "Nothing appears when you speak: the microphone permission is denied for the keyboard.",
         "The words are wrong from the start: background noise, or the wrong language set.",
@@ -10733,7 +10733,7 @@ export const blogPosts: BlogPost[] = [
         "Check the account every morning and every evening, which is enough for most work.",
       ]),
       h2("When it fails"),
-      p("None of these needs a new machine."),
+      p("Start with the first one."),
       ul([
         "The password is rejected: it may have been changed on a computer. Update it in the phone settings.",
         "Mail will not load: data is off, or the account needs re-authentication. Open the app and approve it.",
@@ -10842,7 +10842,7 @@ export const blogPosts: BlogPost[] = [
         "If nothing confirms, ask the receiver before uploading again.",
       ]),
       h2("If it goes wrong"),
-      p("Check these in the order given."),
+      p("Each has a cause you can find."),
       ul([
         "The site rejects the file type: it wants a PDF. Convert or scan it as one.",
         "The site says the file is too large: shrink the photo or split the document.",
@@ -10952,7 +10952,7 @@ export const blogPosts: BlogPost[] = [
         "Note which office asked for what, so the same request does not surprise you twice.",
       ]),
       h2("Troubleshooting"),
-      p("Start with the simplest check."),
+      p("These come up often."),
       ul([
         "The scan is unreadable: retake it in daylight with the phone flat above the page.",
         "The file will not open on another device: it was saved as a photo. Rescan as a PDF.",
@@ -11052,7 +11052,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the questions you cannot answer. Most services offer a second route, such as a code sent to a recovery phone, when a question fails.",
       ),
       h2("When it fails"),
-      p("Go down the list from the top."),
+      p("There is a way through each one."),
       ul([
         "The recovery email is one you cannot open: go to that provider first and recover it, then return.",
         "The recovery number belongs to an old SIM: call the network and ask if the number can be restored.",
@@ -11162,7 +11162,7 @@ export const blogPosts: BlogPost[] = [
         "Change the password after any lost-device event, even if nothing looks wrong.",
       ]),
       h2("If it goes wrong"),
-      p("Pick the line that fits."),
+      p("None of these is a dead end."),
       ul([
         "The prompt never arrives: the phone has no data. Connect it to wifi and try again.",
         "The codes are all used: generate a new set from a signed-in device.",
@@ -11267,7 +11267,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about offending the person who sent it. A short reply saying you could not find it anywhere is usually enough, and it stops the next round.",
       ),
       h2("Troubleshooting"),
-      p("Each has a cause you can find."),
+      p("Most of them have a plain fix."),
       ul([
         "You forwarded something false: send a short correction to the same people, which is the whole fix.",
         "Somebody acted on it: help them undo the step, whether it was a payment or a form.",
@@ -11363,7 +11363,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about taking screenshots of every purchase. The confirmation page and the delivery date are the two things you will need, and both are on one screen.",
       ),
       h2("When it fails"),
-      p("Each one has an answer."),
+      p("Work through the list below."),
       ul([
         "The item never arrives: contact the seller in writing, then the platform, then the card issuer.",
         "The item is not what was described: photograph it as it arrived, before unpacking further.",
@@ -11477,7 +11477,7 @@ export const blogPosts: BlogPost[] = [
         "Check the statement once a week, which catches small unauthorised charges early.",
       ]),
       h2("If it goes wrong"),
-      p("All of these are fixable."),
+      p("You can deal with each in turn."),
       ul([
         "The app will not activate: the phone number on the account differs from the SIM in the phone.",
         "You forgot the app password: use the reset in the app, which needs the card and a code.",
@@ -11588,7 +11588,7 @@ export const blogPosts: BlogPost[] = [
         "Change the passwords for accounts you signed into on the old phone, if it left your hands.",
       ]),
       h2("Troubleshooting"),
-      p("Stop at the row that matches."),
+      p("Take these one at a time."),
       ul([
         "WhatsApp shows no chats: restore did not run. Reinstall and choose Restore during setup.",
         "Photos are missing: check the cloud account, which may still be uploading.",
@@ -11693,7 +11693,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about losing a sale by asking for a check. A buyer who refuses to wait five minutes was never going to pay.",
       ),
       h2("When it fails"),
-      p("Each check costs nothing to try."),
+      p("All of these are fixable."),
       ul([
         "A screenshot shows a transfer that never arrived: wait for the balance, not the picture.",
         "The buyer sends an overpayment and asks for a refund: refuse and report it, since it is a known trick.",
@@ -11795,7 +11795,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about seeming anxious by sharing a trip. It is a normal feature, and drivers see it as a sign that the trip is recorded.",
       ),
       h2("If it goes wrong"),
-      p("The first check is usually enough."),
+      p("Each one has an answer."),
       ul([
         "The driver asks you to cancel and pay cash: refuse, since you lose the record and the fare protection.",
         "The number plate does not match: do not enter. Cancel in the app and report the driver.",
@@ -11895,7 +11895,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the form disappearing after payment. The reference number and the receipt are the record, and the portal keeps both on the account you created.",
       ),
       h2("Troubleshooting"),
-      p("Some of these are settings only."),
+      p("Nothing here is unusual."),
       ul([
         "The page times out mid-form: your progress is usually lost. Keep documents ready and move faster next time.",
         "The name is spelled wrongly on the submission: contact the agency with the reference before paying.",
@@ -12004,7 +12004,7 @@ export const blogPosts: BlogPost[] = [
         "Prefer a course with a certificate from an institution you can name.",
       ]),
       h2("When it fails"),
-      p("Take them one at a time."),
+      p("Every one of these is common."),
       ul([
         "You started five courses and finished none: choose one and hide the rest for a month.",
         "You cannot follow the accent: turn on captions and slow the video down.",
@@ -12113,7 +12113,7 @@ export const blogPosts: BlogPost[] = [
         "Send a short message after a week if the advert names a contact.",
       ]),
       h2("If it goes wrong"),
-      p("Read the row that fits your case."),
+      p("Go through them in order."),
       ul([
         "The employer cannot open your CV: upload the PDF rather than a photo or a document file.",
         "No replies after twenty applications: the headline is vague. Rewrite it for each advert.",
@@ -12213,7 +12213,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about feeling ashamed. These calls are built to work on people who love their families, which is not a weakness.",
       ),
       h2("Troubleshooting"),
-      p("Most of these have a cheap fix."),
+      p("Start with the first one."),
       ul([
         "You sent money an hour ago: call the bank now, since early reports sometimes stop the transfer.",
         "You gave account details but sent nothing: watch the account and change the password.",
@@ -12312,7 +12312,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about losing something you might need. Keep the accounts you use once a year, and close only the ones you had forgotten existed.",
       ),
       h2("When it fails"),
-      p("Begin with the first one."),
+      p("Each has a cause you can find."),
       ul([
         "You cancelled the wrong subscription: resubscribe, which takes two minutes.",
         "An app you removed held your photos: check the service's website before panicking.",
@@ -12412,7 +12412,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the notes looking untidy. Notes in the learner's own words are the ones they will read, and neat notes in your words are the ones they will ignore.",
       ),
       h2("If it goes wrong"),
-      p("Here is what to check first."),
+      p("These come up often."),
       ul([
         "They forget the steps within a day: repeat the task tomorrow, which is normal rather than failure.",
         "They ask you to do it: agree to do it once, then ask them to repeat it.",
@@ -12529,7 +12529,7 @@ export const blogPosts: BlogPost[] = [
         "Ask at your current workplace whether the security team needs help with anything.",
       ]),
       h2("Troubleshooting"),
-      p("These come up often."),
+      p("There is a way through each one."),
       ul([
         "You closed a real alert as false: report it as soon as you notice, which is what the notes are for.",
         "You escalated something harmless: that is cheaper than the opposite, and nobody will mind.",
@@ -12640,7 +12640,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about asking a question during handover that sounds basic. A question at handover is cheaper than a mistake at three in the morning.",
       ),
       h2("When it fails"),
-      p("Nothing here is unusual."),
+      p("None of these is a dead end."),
       ul([
         "An alert is missed on a quiet night: the process, not one person, is reviewed and the rule is fixed.",
         "Two analysts investigate the same thing: the shared queue exists to prevent this, so use it.",
@@ -12756,7 +12756,7 @@ export const blogPosts: BlogPost[] = [
         "When you tune a rule, write down what you changed and why, because you will be the person asking in six months. Your note is what stops the next analyst from undoing your work by accident.",
       ),
       h2("If it goes wrong"),
-      p("Try these before calling a repairer."),
+      p("Most of them have a plain fix."),
       ul([
         "No alerts arrive at all: collection has stopped. Check the feed before checking the rules.",
         "Alerts are delayed by hours: the queue is overloaded, or the storage is full.",
@@ -12857,7 +12857,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the word zero in the name. It describes trust in the network, not trust in people, who are still the reason the systems exist.",
       ),
       h2("Troubleshooting"),
-      p("Test one thing at a time."),
+      p("Work through the list below."),
       ul([
         "You are asked to verify again: the device or location changed, which is the check doing its job.",
         "A colleague cannot reach a system: their permission expired. Ask for it, rather than sharing yours.",
@@ -12964,7 +12964,7 @@ export const blogPosts: BlogPost[] = [
         "It cannot fix anything, which is why the report matters more than the scan.",
       ]),
       h2("When it fails"),
-      p("Work through these in order."),
+      p("You can deal with each in turn."),
       ul([
         "The scan reports everything as critical: the tool is set too loud. Confirm findings by hand.",
         "The scan slows a server: run it outside working hours, and exclude fragile machines.",
@@ -13066,7 +13066,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about memorising the numbers. Two facts carry most of the value: addresses find machines, and ports find services.",
       ),
       h2("If it goes wrong"),
-      p("Each one takes a few minutes."),
+      p("Take these one at a time."),
       ul([
         "The name does not resolve: DNS is failing, and typing the IP address directly sometimes works.",
         "The page loads without pictures: some packets are lost repeatedly, which suggests a weak signal.",
@@ -13165,7 +13165,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry if you have signed things by scanning. Most offices accept it, and knowing the difference is what protects you in the few cases that matter.",
       ),
       h2("Troubleshooting"),
-      p("Every one of these is common."),
+      p("All of these are fixable."),
       ul([
         "The padlock is missing on a bank page: leave it, and type the address yourself next time.",
         "The certificate has expired: the site owner has not renewed it. Treat it as a stop sign.",
@@ -13261,7 +13261,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the frameworks with unfamiliar names. They change every few years, and the three languages underneath do not.",
       ),
       h2("When it fails"),
-      p("None of these needs a new machine."),
+      p("Each one has an answer."),
       ul([
         "The page looks wrong in one browser: check the console for errors before changing the styles.",
         "A button does nothing: the script has an error, or the element name does not match.",
@@ -13362,7 +13362,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the mathematics if you are only curious. The judgement questions above are the ones that decide whether a project helps anybody.",
       ),
       h2("If it goes wrong"),
-      p("Check these in the order given."),
+      p("Nothing here is unusual."),
       ul([
         "The model is accurate in testing and wrong in use: the test data did not match real users.",
         "The model refuses one group more often: check the training examples for that group.",
@@ -13463,7 +13463,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the vocabulary of ceremonies and artefacts. The board, the short cycle, the review, and the automatic test are the parts that change the work.",
       ),
       h2("Troubleshooting"),
-      p("Start with the simplest check."),
+      p("Every one of these is common."),
       ul([
         "The sprint ends with nothing finished: the team took on too much. Take less next time.",
         "The board is not updated: nobody trusts it, so the meeting becomes the plan instead.",
@@ -13567,7 +13567,7 @@ export const blogPosts: BlogPost[] = [
         "Ask a business you know for one question and answer it for free, as practice.",
       ]),
       h2("When it fails"),
-      p("Go down the list from the top."),
+      p("Go through them in order."),
       ul([
         "Your total is wrong: duplicate rows. Count the rows before summing.",
         "The chart says nothing: too many categories. Group the small ones together.",
@@ -13684,7 +13684,7 @@ export const blogPosts: BlogPost[] = [
         "If it goes wrong, the first check is whether the problem is real rather than whether the app is good. The sentence at the top of this lesson is the thing to revisit, and most fixes happen there.",
       ),
       h2("If it goes wrong"),
-      p("Pick the line that fits."),
+      p("Start with the first one."),
       ul([
         "Nobody downloads it: the problem is not painful enough, or the people were never asked.",
         "People download and leave: the first screen asks for too much. Remove a step.",
@@ -13898,7 +13898,7 @@ export const blogPosts: BlogPost[] = [
         "Move towards a speciality after a year, such as networks, security, or cloud.",
       ]),
       h2("When it fails"),
-      p("Each one has an answer."),
+      p("These come up often."),
       ul([
         "You fixed it and it broke again: the cause was not found. Note the pattern and look deeper.",
         "You closed a ticket too early: reopen it, and apologise once rather than twice.",
@@ -14005,7 +14005,7 @@ export const blogPosts: BlogPost[] = [
         "Charge for changes beyond the agreed scope, politely and in writing.",
       ]),
       h2("If it goes wrong"),
-      p("All of these are fixable."),
+      p("There is a way through each one."),
       ul([
         "The client does not pay the second half: the site stays on your hosting until payment, which the agreement should state.",
         "The domain was registered in your name: transfer it, since owning a client's name ends the relationship.",
@@ -14109,7 +14109,7 @@ export const blogPosts: BlogPost[] = [
         "Include one problem that needs the owner's decision.",
       ]),
       h2("Troubleshooting"),
-      p("Stop at the row that matches."),
+      p("None of these is a dead end."),
       ul([
         "A post gets a rude comment: reply once, politely, and hide the comment rather than arguing.",
         "The account is quiet for a week: post one useful thing rather than three apologetic ones.",
@@ -14210,7 +14210,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the client asking for changes. Two rounds, agreed in advance, turns a difficult client into a normal one.",
       ),
       h2("When it fails"),
-      p("Each check costs nothing to try."),
+      p("Most of them have a plain fix."),
       ul([
         "The client wants a redesign after approval: quote for a new round, politely.",
         "The printed colours are wrong: the file was in the wrong colour mode for print.",
@@ -14312,7 +14312,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the accent or the background. Clients care that they understood you and that the work arrived, and both are within your control.",
       ),
       h2("If it goes wrong"),
-      p("The first check is usually enough."),
+      p("Work through the list below."),
       ul([
         "The payment is held by the service: check the name on the account matches the invoice exactly.",
         "The rate dropped before payment: quote in the currency you are paid in, where possible.",
@@ -14417,7 +14417,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about losing the client. A client who will not pay your floor costs you the work you could have done for somebody who will.",
       ),
       h2("Troubleshooting"),
-      p("Some of these are settings only."),
+      p("You can deal with each in turn."),
       ul([
         "You quoted too low: finish this job, and raise the price for the next client.",
         "The scope grew: point to the quote, and price the extra as a new line.",
@@ -14516,7 +14516,7 @@ export const blogPosts: BlogPost[] = [
         "You will see the page load in a few seconds on a phone, with the first project visible without scrolling. If it needs a login, or images take ten seconds, fix that before sending it anywhere.",
       ),
       h2("When it fails"),
-      p("Take them one at a time."),
+      p("Take these one at a time."),
       ul([
         "The link needs a login: change the sharing settings, then test from another device.",
         "The images are blurred: use the original files rather than screenshots of screenshots.",
@@ -14628,7 +14628,7 @@ export const blogPosts: BlogPost[] = [
         "Ask for the testimonial again if they forgot, which most people do.",
       ]),
       h2("If it goes wrong"),
-      p("Read the row that fits your case."),
+      p("All of these are fixable."),
       ul([
         "They ask for a discount: offer less work at a lower price, rather than the same work for less.",
         "They add a new request: quote it as a separate line, politely.",
@@ -14745,7 +14745,7 @@ export const blogPosts: BlogPost[] = [
         "If you must work on a client document, remove the names and the figures first. A draft about a tenant becomes a draft about a customer, and the advice still works.",
       ),
       h2("Troubleshooting"),
-      p("Most of these have a cheap fix."),
+      p("Each one has an answer."),
       ul([
         "It invented a fact: correct it in the next message, and check anything else from the same answer.",
         "The tone is wrong: describe the reader and the feeling you want, then compare two drafts.",
@@ -14859,7 +14859,7 @@ export const blogPosts: BlogPost[] = [
         "Write one decision for next month, in one sentence.",
       ]),
       h2("When it fails"),
-      p("Begin with the first one."),
+      p("Nothing here is unusual."),
       ul([
         "The ledger has a gap: reconcile against the bank app, which shows every movement.",
         "Cash sales are missing: write them the same evening, since memory fades by Friday.",
@@ -14974,7 +14974,7 @@ export const blogPosts: BlogPost[] = [
         "Do not promise it will never happen again. Say what you have changed.",
       ]),
       h2("If it goes wrong"),
-      p("Here is what to check first."),
+      p("Every one of these is common."),
       ul([
         "A file went to the wrong person: ask them to delete it, and tell the client the same day.",
         "A folder was shared too widely: change the link settings, which revokes it at once.",
@@ -15080,7 +15080,7 @@ export const blogPosts: BlogPost[] = [
         "The break will feel like lost time for the first week. By the second week, the last hour of the day is as clear as the first, which is where the time comes back.",
       ),
       h2("Troubleshooting"),
-      p("These come up often."),
+      p("Go through them in order."),
       ul([
         "Your neck aches: the screen is too low. Raise it and check again in a week.",
         "Your wrists hurt: they are resting on the desk edge. Move the keyboard closer.",
@@ -15193,7 +15193,7 @@ export const blogPosts: BlogPost[] = [
         "After six months, the notes are a portfolio with a story.",
       ]),
       h2("When it fails"),
-      p("Nothing here is unusual."),
+      p("Start with the first one."),
       ul([
         "Nobody replies: the question was too broad, or posted where the wrong people gather.",
         "Somebody is rude: answer once, politely, or say nothing. The thread is not the work.",
@@ -15298,7 +15298,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about being seen as difficult. A person who sends a polite reminder on time is easier to work with than one who stays silent and then explodes.",
       ),
       h2("If it goes wrong"),
-      p("Try these before calling a repairer."),
+      p("Each has a cause you can find."),
       ul([
         "The client says they paid: ask for the transfer reference and check your statement by date.",
         "They paid part of it: acknowledge the part in writing, and restate the balance.",
@@ -15404,7 +15404,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about not being able to afford help. Start with a few hours a week on one task, which costs less than losing the client you cannot keep up with.",
       ),
       h2("Troubleshooting"),
-      p("Test one thing at a time."),
+      p("These come up often."),
       ul([
         "The work is not right: check the written steps first, since the fault is often there.",
         "They take shortcuts: make the checklist visible, and check the result for a week.",
@@ -15507,7 +15507,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry if the record is short at the start. Three finished things with dates is already more than most applicants bring.",
       ),
       h2("When it fails"),
-      p("Work through these in order."),
+      p("There is a way through each one."),
       ul([
         "You failed an exam: read the syllabus again, and sit it when you have practised the weak section.",
         "The certificate expired: renew only if the adverts still ask for it.",
@@ -15619,7 +15619,7 @@ export const blogPosts: BlogPost[] = [
         "Change the plan when it stops fitting, rather than enduring it.",
       ]),
       h2("If it goes wrong"),
-      p("Each one takes a few minutes."),
+      p("None of these is a dead end."),
       ul([
         "A quiet month empties the account: it is a planning gap, not a personal failure.",
         "A good month is followed by spending: move the reserve first, then spend.",
@@ -15720,7 +15720,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about checking on the first morning. The result is the same at noon, and the portal is readable then.",
       ),
       h2("Troubleshooting"),
-      p("Every one of these is common."),
+      p("Most of them have a plain fix."),
       ul([
         "The details are rejected: check the session year first, which is the usual error.",
         "The result is not the expected one: confirm the name and the number, then contact the school.",
@@ -15821,7 +15821,7 @@ export const blogPosts: BlogPost[] = [
         "A child who has been warned without being frightened is safer than one who has only been blocked. The warning is what they remember when the message arrives.",
       ),
       h2("When it fails"),
-      p("None of these needs a new machine."),
+      p("Work through the list below."),
       ul([
         "The child installed an app you did not approve: check the store settings, then ask what it was for.",
         "A stranger is messaging: block and report, save the messages, and do not delete them.",
@@ -15933,7 +15933,7 @@ export const blogPosts: BlogPost[] = [
         "Save it as a separate file named for that employer.",
       ]),
       h2("If it goes wrong"),
-      p("Check these in the order given."),
+      p("You can deal with each in turn."),
       ul([
         "No replies: the headline is generic. Change it for each advert.",
         "The CV is two pages: cut the oldest job to one line, and delete the hobbies.",
@@ -16037,7 +16037,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about a child or a fan in the background. Say sorry once, and continue, since composure under a small interruption is itself an answer.",
       ),
       h2("Troubleshooting"),
-      p("Start with the simplest check."),
+      p("Take these one at a time."),
       ul([
         "The connection drops: rejoin at once, and message the interviewer if the link fails twice.",
         "The sound fails: type in the chat, then switch to a phone call.",
@@ -16143,7 +16143,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about forgetting a line. The slide in front of you holds the heading, and the heading is the cue.",
       ),
       h2("When it fails"),
-      p("Go down the list from the top."),
+      p("All of these are fixable."),
       ul([
         "The projector fails: use the printed copy, and keep talking, which the room prefers.",
         "The slides will not open: present from a PDF, which opens anywhere.",
@@ -16258,7 +16258,7 @@ export const blogPosts: BlogPost[] = [
         "Ask somebody else in the organisation if the first person is away.",
       ]),
       h2("If it goes wrong"),
-      p("Pick the line that fits."),
+      p("Each one has an answer."),
       ul([
         "You sent it to the wrong person: forward it with one line of apology and the correct ask.",
         "You attached the wrong file: send the right one at once, and say which is correct.",
@@ -16359,7 +16359,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the notes looking untidy. An untidy page you can find beats a neat page you cannot.",
       ),
       h2("Troubleshooting"),
-      p("Each has a cause you can find."),
+      p("Nothing here is unusual."),
       ul([
         "You cannot find the note: search for the menu name, not the topic.",
         "The notes are in four places: choose one place, and move the rest into it this month.",
@@ -16471,7 +16471,7 @@ export const blogPosts: BlogPost[] = [
         "Keep the file with the list and the table together, so the numbers can be checked.",
       ]),
       h2("When it fails"),
-      p("Each one has an answer."),
+      p("Every one of these is common."),
       ul([
         "The total is too low: some amounts are stored as text. Retype one and watch the total move.",
         "A category appears twice: the spelling differs, or a space was typed. Fix the list.",
@@ -16582,7 +16582,7 @@ export const blogPosts: BlogPost[] = [
         "Anything involving a child, a pregnancy, or a long-term condition.",
       ]),
       h2("If it goes wrong"),
-      p("All of these are fixable."),
+      p("Go through them in order."),
       ul([
         "You bought a product online: stop using it, and tell your clinic what it contained.",
         "You stopped a prescription: restart only on advice from a professional, and call today.",
@@ -16682,7 +16682,7 @@ export const blogPosts: BlogPost[] = [
         "Add it to your CV only after you have used it for real.",
       ]),
       h2("Troubleshooting"),
-      p("Stop at the row that matches."),
+      p("Start with the first one."),
       ul([
         "You skipped three months: restart with one hour, not a catch-up month.",
         "The tool was useless: write one line about why, which saves you trying it again.",
@@ -16787,7 +16787,7 @@ export const blogPosts: BlogPost[] = [
         "A reference number on paper survives a flat battery. Write it before you put the phone away.",
       ),
       h2("When it fails"),
-      p("Each check costs nothing to try."),
+      p("Each has a cause you can find."),
       ul([
         "The menu does not appear: the SIM is not the registered one, or the network is busy.",
         "The session ends mid-transfer: wait for the alert before trying again.",
@@ -16890,7 +16890,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about sounding difficult. Asking what is charging your line is an ordinary question, and the operators answer it all day.",
       ),
       h2("If it goes wrong"),
-      p("The first check is usually enough."),
+      p("These come up often."),
       ul([
         "The charges return: ask for a block on all value-added services, not only a stop.",
         "There are no messages at all: request the line's charge history from the customer line.",
@@ -16998,7 +16998,7 @@ export const blogPosts: BlogPost[] = [
         "A page per month: bought, finished, and how long it lasted. The pattern is the answer.",
       ),
       h2("Troubleshooting"),
-      p("Some of these are settings only."),
+      p("There is a way through each one."),
       ul([
         "The bundle finished in two days: check the hotspot, which spends fastest.",
         "The usage screen and the network disagree: the network counts from a different date, so compare the same days.",
@@ -17105,7 +17105,7 @@ export const blogPosts: BlogPost[] = [
         "A loose or extra piece at the slot is a reason to use another machine. Your card should enter smoothly.",
       ),
       h2("When it fails"),
-      p("Take them one at a time."),
+      p("None of these is a dead end."),
       ul([
         "The machine keeps the card: call the bank at once, and block the card.",
         "The cash does not come out but the account is debited: keep the slip, and report it the same day.",
@@ -17213,7 +17213,7 @@ export const blogPosts: BlogPost[] = [
         "A public kiosk charges the phone and can also read it. Carry your own plug and use a socket where you can.",
       ),
       h2("If it goes wrong"),
-      p("Read the row that fits your case."),
+      p("Most of them have a plain fix."),
       ul([
         "The charger is hot enough to hurt: unplug it and replace it, not the phone.",
         "The phone will not charge: try another cable first, then another charger, then a repair shop.",
@@ -17324,7 +17324,7 @@ export const blogPosts: BlogPost[] = [
         "The receipt goes in the folder with the token written on it. A purchase is only finished when the meter agrees.",
       ),
       h2("Troubleshooting"),
-      p("Most of these have a cheap fix."),
+      p("Work through the list below."),
       ul([
         "The token is rejected twice: check the meter number on the receipt, which is the usual fault.",
         "The units went to another meter: call the vendor with the receipt, and report the wrong number.",
@@ -17430,7 +17430,7 @@ export const blogPosts: BlogPost[] = [
         "The boarding pass on the phone, and a screenshot as a backup. A flat battery at the gate would be the reason for the screenshot.",
       ),
       h2("When it fails"),
-      p("Begin with the first one."),
+      p("You can deal with each in turn."),
       ul([
         "The name is misspelt: call the airline immediately, since some corrections are free within a day.",
         "The dates are wrong: check the change fee before canceling, since changing is often cheaper.",
@@ -17531,7 +17531,7 @@ export const blogPosts: BlogPost[] = [
         "Cancel within the trial period if it does not do what you need.",
       ]),
       h2("If it goes wrong"),
-      p("Here is what to check first."),
+      p("Take these one at a time."),
       ul([
         "The connection is much slower: change the server, or turn it off for video.",
         "A bank app blocks the connection: turn the VPN off for banking, which is safer anyway.",
@@ -17643,7 +17643,7 @@ export const blogPosts: BlogPost[] = [
         "Save the messages. A folder of evidence is what a regulator and the app store need to act.",
       ),
       h2("Troubleshooting"),
-      p("These come up often."),
+      p("All of these are fixable."),
       ul([
         "A contact was messaged: screenshot it, tell the contact, and report the lender.",
         "The app keeps calling at night: ask for contact by message only, in writing.",
@@ -17751,7 +17751,7 @@ export const blogPosts: BlogPost[] = [
         "Ask in front of the family, not in a private message. Public questions get honest answers.",
       ),
       h2("When it fails"),
-      p("Nothing here is unusual."),
+      p("Each one has an answer."),
       ul([
         "You have already paid: report to the police and the regulator with every message and receipt.",
         "The app has disappeared: keep the screenshots, and note the account names you paid.",
@@ -17871,7 +17871,7 @@ export const blogPosts: BlogPost[] = [
         "Hold the stick by the edges and clean the gold contacts gently. A reseated stick fixes a start that stops before the screen.",
       ),
       h2("If it goes wrong"),
-      p("Try these before calling a repairer."),
+      p("Nothing here is unusual."),
       ul([
         "The charger light stays off: try another charger of the same rating before opening anything.",
         "The fan spins but nothing shows: use the torch test and the external monitor test.",
@@ -17992,7 +17992,7 @@ export const blogPosts: BlogPost[] = [
         "A dot the size of a grain of rice, spread by the pressure of the heatsink. More paste does not mean better cooling.",
       ),
       h2("Troubleshooting"),
-      p("Test one thing at a time."),
+      p("Every one of these is common."),
       ul([
         "The machine shuts down suddenly: it is protecting itself. Stop working and clean the vents.",
         "The fan screams from the moment it starts: something is running, so check the program list.",
@@ -18103,7 +18103,7 @@ export const blogPosts: BlogPost[] = [
         "Old drive out, new drive in. The machine starts faster, and the old drive stays as a backup for a month.",
       ),
       h2("When it fails"),
-      p("Work through these in order."),
+      p("Go through them in order."),
       ul([
         "The drive clicks and the machine will not start: stop trying, and take it to a recovery service.",
         "A folder will not copy: copy the files inside it one by one, and skip what fails.",
@@ -18214,7 +18214,7 @@ export const blogPosts: BlogPost[] = [
         "A board cleaned with isopropyl alcohol after a sugary spill. The residue, not the water, is what corrodes the contacts.",
       ),
       h2("If it goes wrong"),
-      p("Each one takes a few minutes."),
+      p("Start with the first one."),
       ul([
         "It starts and then fails: switch off, and take it in for cleaning before using it again.",
         "The keys stick: the residue needs cleaning, which is a shop job.",
@@ -18320,7 +18320,7 @@ export const blogPosts: BlogPost[] = [
         "Open the lid slowly and watch the hinge. A crack or a wobble becomes a broken screen within months.",
       ),
       h2("Troubleshooting"),
-      p("Every one of these is common."),
+      p("Each has a cause you can find."),
       ul([
         "The seller will not let you test: walk away, since there is no reason to refuse.",
         "The battery is below seventy per cent: price a replacement before agreeing.",
@@ -18429,7 +18429,7 @@ export const blogPosts: BlogPost[] = [
         "A multimeter confirms the output when a charger behaves oddly. A repair shop will do this in a minute.",
       ),
       h2("When it fails"),
-      p("None of these needs a new machine."),
+      p("These come up often."),
       ul([
         "The charger is hot enough to hurt: stop using it, and replace it.",
         "The socket sparks every time: switch off at the main, and call an electrician.",
@@ -18540,7 +18540,7 @@ export const blogPosts: BlogPost[] = [
         "A driver rollback undoes one update. It is the fastest fix when the fault began the day a driver changed.",
       ),
       h2("If it goes wrong"),
-      p("Check these in the order given."),
+      p("There is a way through each one."),
       ul([
         "It blue screens repeatedly: note the code, and search for that exact code.",
         "It will not start at all: use the recovery menu and choose a restore point.",
@@ -18648,7 +18648,7 @@ export const blogPosts: BlogPost[] = [
         "Seat it at an angle, then press until the clips click. Forcing it flat bends the contacts.",
       ),
       h2("Troubleshooting"),
-      p("Start with the simplest check."),
+      p("None of these is a dead end."),
       ul([
         "The machine will not start after fitting: reseat the stick, and check the clips clicked.",
         "It starts but shows the old amount: the stick is not seated, or the slot is disabled.",
@@ -18754,7 +18754,7 @@ export const blogPosts: BlogPost[] = [
         "The old part, handed back. It proves the repair happened, and it is your evidence if the fault returns.",
       ),
       h2("When it fails"),
-      p("Go down the list from the top."),
+      p("Most of them have a plain fix."),
       ul([
         "The price rises after diagnosis: ask for a call before any work, as agreed in writing.",
         "The fault returns within the warranty: take it back with the receipt, not with an explanation.",
@@ -18858,7 +18858,7 @@ export const blogPosts: BlogPost[] = [
         "A plain desktop on old hardware. Fewer effects mean more of the machine is left for the work.",
       ),
       h2("If it goes wrong"),
-      p("Pick the line that fits."),
+      p("Work through the list below."),
       ul([
         "The machine is too slow after upgrades: check the drive health and the heat.",
         "A new part does not fit: return it, and check the model number first.",
@@ -18958,7 +18958,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about understanding the whole chain. Knowing where your responsibility ends is enough to ask the right question.",
       ),
       h2("Troubleshooting"),
-      p("Each has a cause you can find."),
+      p("You can deal with each in turn."),
       ul([
         "The whole street is down: report it and wait, since nothing inside the house will fix it.",
         "One device fails and the rest work: the problem is the device, not the line.",
@@ -19065,7 +19065,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about pressing the reset hole on the back. Avoid it unless you are told to, since it erases the settings the provider installed.",
       ),
       h2("When it fails"),
-      p("Each one has an answer."),
+      p("Take these one at a time."),
       ul([
         "No lights at all: check the socket and the adapter before calling anybody.",
         "Power on and internet off: the provider's line is down. Call with the account number.",
@@ -19269,7 +19269,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about counting every megabyte. Two habits, lower video quality and wifi downloads, change the month more than tracking does.",
       ),
       h2("Troubleshooting"),
-      p("Stop at the row that matches."),
+      p("Each one has an answer."),
       ul([
         "The bundle finished early: check video and hotspot use first.",
         "The speed test is good and pages crawl: the site or the device is the slow part.",
@@ -19372,7 +19372,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about being told to restart it again. Say that you have, and give the figures, which moves the conversation forward.",
       ),
       h2("When it fails"),
-      p("Each check costs nothing to try."),
+      p("Nothing here is unusual."),
       ul([
         "One page fails and others load: the site is the problem, not your line.",
         "Everything fails after a storm: check the wall box and call the provider.",
@@ -19475,7 +19475,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the factory names looking strange. Renaming your own devices takes five minutes and makes the list useful from then on.",
       ),
       h2("If it goes wrong"),
-      p("The first check is usually enough."),
+      p("Every one of these is common."),
       ul([
         "One site fails and others open: that site's name record is broken, so try again later.",
         "Every site fails: the lookup is down, so restart the router and check the clock.",
@@ -19578,7 +19578,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about getting it wrong on the first try. Access can be removed at any time, and removing it is the part most people never practise.",
       ),
       h2("Troubleshooting"),
-      p("Some of these are settings only."),
+      p("Go through them in order."),
       ul([
         "The printer disappears: the host machine went to sleep or restarted.",
         "The folder asks for a password: the guest account is off, which is safer.",
@@ -19782,7 +19782,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the setup taking long. Once the hotspot name and password are set, a rescue takes under a minute.",
       ),
       h2("If it goes wrong"),
-      p("Read the row that fits your case."),
+      p("Each has a cause you can find."),
       ul([
         "The laptop cannot find the hotspot: the hotspot band may be set to the newer one only.",
         "The hotspot keeps dropping: the phone is saving power, so keep the screen awake.",
@@ -19892,7 +19892,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the cost of the supply. A small unit costs less than one lost evening of card payments.",
       ),
       h2("Troubleshooting"),
-      p("Most of these have a cheap fix."),
+      p("These come up often."),
       ul([
         "The till loses connection at the same hour: a staff phone is syncing on the same network.",
         "Card payments fail and transfers work: the terminal's provider is down, not your line.",
@@ -19993,7 +19993,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about writing neatly. Nobody is judging the handwriting, and the person beside you is more likely to trust a technician who writes things down.",
       ),
       h2("When it fails"),
-      p("Begin with the first one."),
+      p("There is a way through each one."),
       ul([
         "The person cannot describe the fault: ask them to reproduce it and watch.",
         "They say everything is broken: pick the one fault that bothers them most.",
@@ -20095,7 +20095,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about asking questions the owner finds obvious. The owner is the only person who knows what changed, and they are usually glad to be asked.",
       ),
       h2("If it goes wrong"),
-      p("Here is what to check first."),
+      p("None of these is a dead end."),
       ul([
         "The owner remembers nothing: ask about the last working day and work forward.",
         "They insist nothing changed: ask about updates, which change on their own.",
@@ -20205,7 +20205,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about asking for more time. Most owners prefer a slower repair that keeps their files to a fast one that loses them.",
       ),
       h2("Troubleshooting"),
-      p("These come up often."),
+      p("Most of them have a plain fix."),
       ul([
         "Safe mode fails too: the fault is in the system, so try a restore point.",
         "No restore point exists: turn the feature on once the machine is healthy.",
@@ -20311,7 +20311,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the machine looking empty at first. That emptiness is the reset working, and the files come back in the next step.",
       ),
       h2("When it fails"),
-      p("Nothing here is unusual."),
+      p("Work through the list below."),
       ul([
         "The installer will not boot: check the boot order in the machine's settings.",
         "The licence is rejected: the key belongs to a different edition.",
@@ -20417,7 +20417,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the time it takes. A first copy is slow, and every later copy is faster because it only adds what is new.",
       ),
       h2("If it goes wrong"),
-      p("Try these before calling a repairer."),
+      p("You can deal with each in turn."),
       ul([
         "The drive will not open: try another port and another cable before another drive.",
         "The copy stops halfway: the drive may be full, so check the space.",
@@ -20521,7 +20521,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about explaining everything. Three tasks and a notebook cover the first week, and the rest can wait for a question.",
       ),
       h2("Troubleshooting"),
-      p("Test one thing at a time."),
+      p("Take these one at a time."),
       ul([
         "The update stalls at a percentage: leave it an hour before touching anything.",
         "The owner forgets the password: the notebook is the backup, so write it down.",
@@ -20628,7 +20628,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about asking for a signature. Most customers are relieved that somebody wrote the price down.",
       ),
       h2("When it fails"),
-      p("Work through these in order."),
+      p("All of these are fixable."),
       ul([
         "The customer remembers a lower price: show the card, without arguing.",
         "The repair fails after a week: say what you will check and at what price.",
@@ -20734,7 +20734,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about saying the call is not working. Saying so early saves an hour of guessing, and the person will trust the next suggestion more.",
       ),
       h2("If it goes wrong"),
-      p("Each one takes a few minutes."),
+      p("Each one has an answer."),
       ul([
         "They describe the screen wrongly: ask for a screenshot before the next step.",
         "They cannot find a menu: ask what is written at the top of their screen.",
@@ -20840,7 +20840,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the customer's first reaction. Most people accept a clear limit, and the ones who do not were going to be difficult about something else.",
       ),
       h2("Troubleshooting"),
-      p("Every one of these is common."),
+      p("Nothing here is unusual."),
       ul([
         "The customer insists you try: say what the risk is, and let them decide.",
         "You have already opened it: close it, write what you saw, and stop.",
@@ -20946,7 +20946,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about asking for your price. Saying the number plainly, once, is easier for the customer than a conversation that circles it.",
       ),
       h2("When it fails"),
-      p("None of these needs a new machine."),
+      p("Every one of these is common."),
       ul([
         "The customer disputes the bill: show the card and the receipt, without heat.",
         "A repair fails under your own time: fix it once, without charging twice.",
@@ -21156,7 +21156,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the first answer being poor. The second request, written with the four parts, is where the useful work happens.",
       ),
       h2("Troubleshooting"),
-      p("Start with the simplest check."),
+      p("Start with the first one."),
       ul([
         "The answer is too general: add the audience and the purpose.",
         "It writes too much: ask for a set number of sentences.",
@@ -21259,7 +21259,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about slowing down. One careful check before sending protects a reputation that took years to build.",
       ),
       h2("When it fails"),
-      p("Go down the list from the top."),
+      p("Each has a cause you can find."),
       ul([
         "You sent a wrong figure: correct it at once, in one line, without excuses.",
         "The quote was invented: remove it, and say the line was misattributed.",
@@ -21362,7 +21362,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about asking a question twice. Asking again in plainer words is how anybody learns a hard topic, and the tool does not tire of it.",
       ),
       h2("If it goes wrong"),
-      p("Pick the line that fits."),
+      p("These come up often."),
       ul([
         "The explanation is still confusing: ask for an example with numbers or names you know.",
         "It gives the answer too early: ask for a hint only, then try again yourself.",
@@ -21471,7 +21471,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about asking permission. A short question to your manager about which tools are allowed protects you more than a clever workaround.",
       ),
       h2("Troubleshooting"),
-      p("Each has a cause you can find."),
+      p("There is a way through each one."),
       ul([
         "A draft went out with a wrong figure: correct it in one short message.",
         "Private details were pasted: tell your manager the same day.",
@@ -21572,7 +21572,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about seeming suspicious. The people who love you would rather be asked a question than send money to a stranger.",
       ),
       h2("When it fails"),
-      p("Each one has an answer."),
+      p("None of these is a dead end."),
       ul([
         "You sent money: report it to the bank at once, and keep every message.",
         "You gave a code: change it immediately, in the app where it is used.",
@@ -21672,7 +21672,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about being manipulated by everything. You are allowed to enjoy a feed, and you are allowed to know when you are being steered.",
       ),
       h2("If it goes wrong"),
-      p("All of these are fixable."),
+      p("Most of them have a plain fix."),
       ul([
         "You spent an evening scrolling: note the time, and set one switch tonight.",
         "You bought something unplanned: return it, or write the reason you kept it.",
@@ -21779,7 +21779,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about learning slowly. Most people who seem quick are repeating the same small loop, and the loop is available to you today.",
       ),
       h2("Troubleshooting"),
-      p("Stop at the row that matches."),
+      p("Work through the list below."),
       ul([
         "You miss a week: start again with the smallest session, not the biggest.",
         "You forget everything: the spacing was too long, so review sooner.",
@@ -21885,7 +21885,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the pace of change. Most of it arrives slowly, and the people who keep learning a little are rarely caught out.",
       ),
       h2("When it fails"),
-      p("Each check costs nothing to try."),
+      p("You can deal with each in turn."),
       ul([
         "A tool does your main task: learn to run the tool, and keep the judgment.",
         "Work slows for a month: call past customers, and ask what they need now.",
@@ -21987,7 +21987,7 @@ export const blogPosts: BlogPost[] = [
         "Do not worry about the parts you have forgotten. The lessons are here, and a page you have read before takes half the time on the second visit.",
       ),
       h2("If it goes wrong"),
-      p("The first check is usually enough."),
+      p("Take these one at a time."),
       ul([
         "You forget a procedure: open the lesson and follow the steps in order.",
         "A machine defeats you: write the fault down, and ask one person who knows.",

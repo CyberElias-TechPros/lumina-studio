@@ -4,6 +4,12 @@ Applies to all 210 lessons in `src/data/blog.ts` (series: **Computer skills from
 Supersedes v1 (29 October 2026, "straight teaching") and the literary voice it replaced.
 Tracker: `npm run audit:notes` · Workflow: `§7` · Checklist: `§8`.
 
+**Status, 29 October 2026: complete.** All 210 lessons pass `npm run audit:notes`. The corpus
+averages 781 words a lesson and 12.5 words a sentence, reads at 79 on the Flesch scale, carries
+0 em dashes and 0 repeated 8-word phrases, and every lesson has a recovery section and a practice
+task. Structural sameness is tracked by `npm run audit:content`, which found no near-duplicate
+pairs and no boilerplate phrase above the 5% threshold.
+
 ---
 
 ## 0. The short answer
@@ -172,7 +178,7 @@ write a lesson that could belong to another topic with three words changed.
 ```sh
 npm run audit:notes                       # where the corpus stands
 npm run audit:notes -- --next 10          # what to write next
-node scripts/apply-note-rewrite.mjs content/notes/batch-01.json
+node scripts/apply-note-rewrite.mjs a rewrite file, e.g. `revisions/september.json`
 npm run validate:lessons -- --strict      # depth, figures, images, excerpts, records
 npm run audit:notes                       # voice, warmth, readability, structure
 npm run audit:content                     # duplication across the corpus
