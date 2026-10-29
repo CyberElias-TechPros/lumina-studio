@@ -16165,6 +16165,9 @@ export const blogPosts: BlogPost[] = [
       p(
         "On the projector, the headings will look larger than they did on the laptop, which is the reason to check one slide in the room. If a heading is hard to read from the back row, everything else is too small.",
       ),
+      p(
+        "The slide list will show the five slides in order down the left side of the screen, which is where to check the running order before anybody arrives.",
+      ),
       fig(
         "/images/blog/slides-projector-talk.jpg",
         "A person presenting with slides on a large screen behind them.",
