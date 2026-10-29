@@ -1,0 +1,746 @@
+[
+  {
+    "slug": "how-the-internet-arrives",
+    "excerpt": "The path from a cable in the ground to a page on your screen: the line, the router, the provider, and why the whole street can be slow at once.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson follows the internet from the street to your screen. You will learn what the cable, the router, and the provider each do, and why a fault in one place affects everybody at once."
+      },
+      {
+        "type": "p",
+        "text": "The internet arrives through one line, which may be fibre, a phone line, or a mobile signal. Everything in the house shares that line, which explains most of the slow evenings."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "About twenty minutes.",
+          "A look at the box where the line enters the house."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "The path, in order"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A fibre or copper cable reaches the building, often through a small box on the wall.",
+          "The cable connects to the provider's equipment, which may be the router itself.",
+          "The router gives each device in the house an address and shares the line.",
+          "The provider connects the building to its own network and then to the wider internet.",
+          "Names are translated to addresses along the way, which is how a word becomes a page.",
+          "Every device in the house competes for the same line."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see a small box on the wall with a thin cable entering it, usually near a window or under the stairs. That box is where the provider's responsibility ends and yours begins."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/fibre-cable-entering-house.jpg",
+        "alt": "A thin fibre cable entering a small box on a wall.",
+        "caption": "The thin cable at the wall. Do not bend or cut it, since a fibre strand breaks rather than bends."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a slow connection is the provider's fault alone. Ten devices on one line slow each other down, and that is a fact about the house rather than the network."
+      },
+      {
+        "type": "h2",
+        "text": "What the provider controls"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The line from the street to the building, and the speed it is set to.",
+          "The network beyond the building, including the busy hours.",
+          "The address your house presents to the outside world.",
+          "The maintenance that causes planned outages.",
+          "The support line and the fault ticket.",
+          "The price and the bundle, which change what is possible."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "A fault report will give you a ticket number and sometimes a promised date. Keep both, since the number is how a second call becomes a follow-up rather than a fresh complaint."
+      },
+      {
+        "type": "p",
+        "text": "The provider's status page will show your line with a green tick or a warning, and that screen is worth a screenshot before you call. A picture of the current status is faster than describing the fault from memory."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/telecom-mast-evening-sky.jpg",
+        "alt": "A telecom mast against an evening sky.",
+        "caption": "The mast carries the mobile half of the network. Its signal shares the same backhaul as the wired line."
+      },
+      {
+        "type": "h2",
+        "text": "What you control"
+      },
+      {
+        "type": "p",
+        "text": "Inside the building, everything belongs to you, and most everyday problems live there."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Where the router sits, which decides how far the signal reaches.",
+          "How many devices are connected, and what they are doing.",
+          "The wifi password, and who has it.",
+          "The cables, which fail at the plug more often than in the middle.",
+          "The devices themselves, which can be the slow part.",
+          "The habits, such as downloading films at eight in the evening."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs the provider. Moving a router, changing a password, and closing an old download solve more complaints than any support call."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about understanding the whole chain. Knowing where your responsibility ends is enough to ask the right question."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a first check, and the first check decides who to call."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The whole street is down: report it and wait, since nothing inside the house will fix it.",
+          "One device fails and the rest work: the problem is the device, not the line.",
+          "Everything fails after a storm: check the wall box and call the provider.",
+          "Slow only in the evening: the network is busy. Schedule downloads for the morning.",
+          "The line works and the wifi does not: restart the router before calling anybody.",
+          "A cable is damaged near the door: report it, since a customer repair can break the fibre."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Find the wall box and learn one number."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Find where the line enters the house.",
+          "Photograph the wall box and the router's label.",
+          "Note the provider's support number and your account number.",
+          "Count the devices connected to the wifi.",
+          "Ask one neighbour whether their connection is slow at the same hour."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now see the whole path a page travels. In the next lesson you will read the five lights on the router."
+      }
+    ]
+  },
+  {
+    "slug": "the-router-and-its-lights",
+    "excerpt": "What each light on a home router means, the restart order that fixes most faults, and where to put the box so the signal reaches the rooms you use.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson explains the lights on a home router and the restart that fixes most problems. You will learn what each light means, the order to switch things off and on, and where the box should sit."
+      },
+      {
+        "type": "p",
+        "text": "A router is a small computer with a modem inside. The lights are its way of telling you which part is working, and reading them takes ten seconds."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The router, and a moment to look at it.",
+          "The provider's support number.",
+          "About fifteen minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "The five lights"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Power: solid when the router has electricity.",
+          "Internet or globe: solid when the provider's line is working.",
+          "DSL or WAN: solid when the line is connected, flashing while it trains.",
+          "Wifi: solid or flashing when the wireless signal is on.",
+          "LAN: one light per cable port, lit when a cable is connected.",
+          "Any light that is red, or off when it should be on, is the one to report."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the internet light go off during an outage, while the power and wifi lights stay on. That pattern tells you the fault is outside the house."
+      },
+      {
+        "type": "p",
+        "text": "In the router's settings page, the status line will show the connection as connected or disconnected, and the uptime figure shows how long it has held. A short uptime that keeps resetting means the line is dropping and reconnecting."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/home-router-wooden-shelf.jpg",
+        "alt": "A home router on a wooden shelf with several indicator lights.",
+        "caption": "Read the lights before calling anybody. The internet light alone explains most of the calls made to a provider."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a red light means the router is broken. A red internet light usually means the provider's line is down, which the router cannot fix."
+      },
+      {
+        "type": "h2",
+        "text": "The restart that works"
+      },
+      {
+        "type": "p",
+        "text": "The order matters, which is why a quick switch off and on often does nothing."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Switch the router off at the wall and unplug it.",
+          "Wait thirty seconds, which lets the provider's side notice the disconnection.",
+          "Plug it in and switch on, then wait two minutes without touching it.",
+          "Watch the lights come on in order, ending at the internet light.",
+          "Test one page on one device before trying everything.",
+          "Repeat once only, since a third attempt changes nothing."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The lights will settle in a sequence, and the internet light is the last to stop flashing. Until it is steady, nothing in the house will load, so waiting is part of the fix."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/hands-restarting-router.jpg",
+        "alt": "Hands switching a router off at the wall socket.",
+        "caption": "Off at the wall, thirty seconds, then on. The pause is what makes the restart work."
+      },
+      {
+        "type": "h2",
+        "text": "Where the box should sit"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Put it high and central, not shut in a cabinet or behind a television.",
+          "Keep it away from a microwave, which interferes while it runs.",
+          "Keep it away from water and from the floor, where it collects dust.",
+          "Do not stack books on it, since the vents need air.",
+          "Point the antennae upward if it has them.",
+          "Put it where you can see the lights, which saves a walk during every fault."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs a new router. Position and a restart fix the majority of home network complaints."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about pressing the reset hole on the back. Avoid it unless you are told to, since it erases the settings the provider installed."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a light pattern, and each pattern points at one thing."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "No lights at all: check the socket and the adapter before calling anybody.",
+          "Power on and internet off: the provider's line is down. Call with the account number.",
+          "Internet light red: report a line fault, since it is not a setting in the house.",
+          "All lights on and no page loads: try another device, then another website.",
+          "The wifi light is off: somebody pressed the wifi button. Press it again.",
+          "The router restarts every hour: the adapter is failing, or it is overheating."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Learn your own lights, so a fault takes ten seconds."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Photograph the router while everything works, so you know the normal pattern.",
+          "Label each light with a small sticker and a word.",
+          "Practise the restart, timing it with a phone.",
+          "Move the router if it sits inside a closed cabinet.",
+          "Write the provider's number on the router's label."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now read a router at a glance. In the next lesson you will choose between wifi and a cable."
+      }
+    ]
+  },
+  {
+    "slug": "wi-fi-and-the-cable",
+    "excerpt": "When a cable beats wifi, how walls and distance weaken the signal, and the cheap fixes that reach the back room.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is about wifi and the cable under the table. You will learn when a cable is the better choice, why walls weaken a signal, and the cheap fixes that reach the far room."
+      },
+      {
+        "type": "p",
+        "text": "Wifi is radio, and radio loses strength through walls and distance. A cable carries the signal without loss, which is why an older machine often works better plugged in."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A device and the router.",
+          "A network cable if you have one.",
+          "About fifteen minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "When a cable wins"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "For a desktop or a television that never moves.",
+          "For video calls, where a dropped signal ends the call.",
+          "For downloading large files, where speed matters.",
+          "For gaming, where delay is felt immediately.",
+          "For a room where the wifi shows one bar.",
+          "For security, since a cable cannot be joined from outside the house."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the wifi icon become a small plug or a computer symbol when the cable is connected, and the connection stops wobbling. That steadiness is the whole benefit."
+      },
+      {
+        "type": "p",
+        "text": "The wifi list will show a strength bar beside each network, and the bars in the far room tell you more than a speed test. Compare the bars in two rooms before buying anything."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/laptop-ethernet-cable.jpg",
+        "alt": "A laptop connected to a router by a network cable.",
+        "caption": "A cable, a click, and no more dropped calls. Most routers have four ports and use two."
+      },
+      {
+        "type": "p",
+        "text": "It looks like wifi has replaced cables entirely. A cable still carries the steadiest signal, and it costs less than any extender."
+      },
+      {
+        "type": "h2",
+        "text": "Why the signal fades"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Each wall removes strength, especially a wall with metal or water pipes.",
+          "Distance matters more than the number of walls in most homes.",
+          "A microwave oven interferes while it is running.",
+          "A cordless phone base and a baby monitor can sit on the same frequency.",
+          "A router shut inside a cabinet is a router behind a metal door.",
+          "The 2.4 band travels further, and the 5 band is faster over a short distance."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "A signal test will show a strength figure that drops by half in the next room. Walking the phone around the house while watching that figure finds the dead spots in two minutes."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/router-placement-sitting-room.jpg",
+        "alt": "A router placed high in a sitting room away from walls.",
+        "caption": "High, central, and out of any closed cabinet. Position changes the signal more than any setting."
+      },
+      {
+        "type": "h2",
+        "text": "Cheap fixes, in order"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Move the router to a central, high place.",
+          "Point the antennae upward, not sideways.",
+          "Change the wifi channel if the app shows a crowded one.",
+          "Use the 2.4 band for the far rooms and the 5 band near the router.",
+          "Run a cable to the far room if the wall is the problem.",
+          "Add a second access point connected by cable, rather than a repeater."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs a technician. Moving the router and running one cable fixes more homes than a repeater ever does."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about the cable looking untidy. A cable along a skirting board is less trouble than a call that drops every ten minutes."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a plain cause, and most are about position rather than equipment."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The far room has one bar: move the router first, then consider a cable.",
+          "The signal drops at the same time each evening: a neighbour's network or an appliance.",
+          "The cable is connected but nothing loads: the port may be off, so try another port.",
+          "The 5 band disappears in the next room: it is short range, which is normal.",
+          "The repeater halves the speed: it repeats rather than extends. Use a cable where you can.",
+          "The wifi is fine and one device is slow: the problem is that device's adapter."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Test one room before buying anything."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Walk the phone around the house, watching the signal strength.",
+          "Note the two weakest places.",
+          "Move the router higher and repeat the walk.",
+          "Connect one device by cable and compare the steadiness.",
+          "Write down which fix helped most."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now put the signal where you need it. In the next lesson you will work out what a megabyte actually buys."
+      }
+    ]
+  },
+  {
+    "slug": "what-a-megabyte-is",
+    "excerpt": "Bits, bytes, and the difference that doubles your bill: how much data a video, a song, and a page actually use.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson explains what a megabyte is and where your data goes. You will learn the difference between bits and bytes, how much a video or a song uses, and how to plan a bundle that lasts the month."
+      },
+      {
+        "type": "p",
+        "text": "A byte is a small unit of data, and a megabyte is a million of them. Providers sell bundles in megabytes or gigabytes, and they advertise speeds in megabits, which is one eighth of a megabyte."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Your bundle size and its price.",
+          "The data usage screen on the phone.",
+          "About twenty minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Bits and bytes"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A byte is written with a capital B, and a bit with a small b.",
+          "Eight bits make one byte, which is why the numbers differ by a factor of eight.",
+          "A speed of 10 Mbps is about 1.2 megabytes per second.",
+          "Downloading a 100 megabyte file at that speed takes about eighty seconds.",
+          "A bundle of 1.5 gigabytes is 1,500 megabytes, and it disappears quickly with video.",
+          "The phone's usage screen counts in megabytes, which is the figure that matches a bundle."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the speed test report megabits while the file manager reports megabytes, and the two numbers will never match. That mismatch is units rather than a fault."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/phone-data-usage-in-hand.jpg",
+        "alt": "A phone held in the hand showing a data usage figure.",
+        "caption": "Megabytes used, in the hand. The figure is the one that tells you how long a bundle will last."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a bigger bundle costs less per megabyte. Often it does, and a bundle you do not finish is money spent rather than saved."
+      },
+      {
+        "type": "h2",
+        "text": "What things actually use"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A text message: a few kilobytes, which is nothing.",
+          "A web page with photographs: one to three megabytes.",
+          "A song on a streaming service: about four megabytes.",
+          "A short video clip: ten to fifty megabytes, depending on quality.",
+          "An hour of standard video: three hundred to seven hundred megabytes.",
+          "An hour of high definition video: one to three gigabytes."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "A usage screen will show a single evening of video as more than a week of messaging, which is the pattern worth remembering. Video is almost always the answer to where the bundle went."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/streaming-video-laptop-evening.jpg",
+        "alt": "A laptop playing a video in the evening beside a phone.",
+        "caption": "One evening of video can cost a week of everything else. Lower the quality and the bundle lasts."
+      },
+      {
+        "type": "h2",
+        "text": "Planning a bundle"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Write the bundle size and the number of days it should cover.",
+          "Divide the megabytes by the days, which gives a daily allowance.",
+          "Check the daily figure against the usage screen for a normal day.",
+          "Choose the lower video quality in the apps you use most.",
+          "Download music and videos on wifi rather than streaming on data.",
+          "Buy the next bundle before the last one finishes, so you are not caught.",
+          "Review the month once, and change the size rather than the habit."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs a data app. The phone's own counter, a division, and one line in a notebook cover the whole plan."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about counting every megabyte. Two habits, lower video quality and wifi downloads, change the month more than tracking does."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a plain explanation, and the usage screen is the evidence."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The bundle finished early: check video and hotspot use first.",
+          "The speed test is good and pages crawl: the site or the device is the slow part.",
+          "A 1 gigabyte bundle lasted two days: that is ordinary with an hour of video a day.",
+          "The phone shows more usage than the provider: the counts start on different days.",
+          "A download failed at ninety per cent: it will start again, and the data is spent.",
+          "An update used the data: the store was set to update on any network."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Work out one daily allowance."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Write the bundle size in megabytes.",
+          "Divide by the number of days it should last.",
+          "Compare with a normal day's usage.",
+          "Set the video quality to the lower option for a week.",
+          "Check the total again and compare."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now buy data with a plan rather than a hope. In the next lesson you will diagnose a network that has gone slow."
+      }
+    ]
+  },
+  {
+    "slug": "when-the-network-is-sick",
+    "excerpt": "A step-by-step diagnosis for a slow network: isolating the device, the router, and the line, and what to tell the provider when it is theirs.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is a diagnosis for a slow network. You will test one device, then the router, then the line, and know which of the three is at fault before you call anybody."
+      },
+      {
+        "type": "p",
+        "text": "A slow connection has three possible homes: the device in your hand, the router in the house, and the line from the provider. Testing in that order takes five minutes and saves a wasted call."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Two devices, one of them a phone.",
+          "The router's lights, visible.",
+          "About twenty minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Step one: one device"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Try the same page on a phone and on the computer.",
+          "If one works and one does not, the fault is in that device.",
+          "Restart the device, which clears more than people expect.",
+          "Check the device's wifi signal strength in the same room as the router.",
+          "Close the tabs and programs you are not using.",
+          "Forget the network on the device and join it again."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the working device load the same page normally, which rules out the line entirely. That single comparison is the most useful test in this lesson."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/checking-router-lights-crouch.jpg",
+        "alt": "A person crouching to check the lights on a router.",
+        "caption": "Read the lights before the next test. A red internet light ends the diagnosis in ten seconds."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a slow page means a slow connection. One working device and one failing device describe a device problem, not a network one."
+      },
+      {
+        "type": "h2",
+        "text": "Step two: the router"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Read the lights and note any that are off or red.",
+          "Switch it off at the wall, wait thirty seconds, and switch it on.",
+          "Wait two minutes without touching it.",
+          "Test one page on one device.",
+          "Check the wifi password has not been changed by somebody in the house.",
+          "Look at how many devices are connected, since twenty is different from three."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The router's device list will show every phone, television, and laptop attached, which often explains the evening slowdown. A guest who never left is a common finding."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/speed-test-phone.jpg",
+        "alt": "A phone showing a speed test result with download and upload figures.",
+        "caption": "A speed test at the router and in the far room tells you whether the line or the wifi is the limit."
+      },
+      {
+        "type": "h2",
+        "text": "Step three: the line"
+      },
+      {
+        "type": "p",
+        "text": "If every device is slow, the problem is the line, and the provider needs specific information."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Run a speed test connected by cable, standing beside the router.",
+          "Run the same test in the far room, and compare the two figures.",
+          "Check whether a neighbour has the same problem at the same hour.",
+          "Note the times of day when it is worst, since busy hours are a real answer.",
+          "Photograph the router's lights while the fault is happening.",
+          "Call with the account number, the ticket number, and the two speed results."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs technical language. Two speed figures and a photograph of the lights are more useful to a support line than a description of how slow it feels."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about being told to restart it again. Say that you have, and give the figures, which moves the conversation forward."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a cause, and each cause has a home."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "One page fails and others load: the site is the problem, not your line.",
+          "Everything fails after a storm: check the wall box and call the provider.",
+          "The speed test is good and pages crawl: the name service is slow, so try a different one.",
+          "Only video buffers: the app's quality setting is too high for the line.",
+          "It slows at the same hour every evening: the network is busy, which is not a fault in the house.",
+          "The router drops the connection hourly: the adapter or the router is failing."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Run the three steps once, while everything works, so you know the numbers."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Run a speed test beside the router.",
+          "Run the same test in the furthest room.",
+          "Write both figures in your notebook, with the date.",
+          "Count the devices connected to the wifi.",
+          "Photograph the router's lights while it is healthy."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now tell a slow device from a slow line. In the next lesson you will look at how names are given to machines on a network."
+      }
+    ]
+  }
+]
