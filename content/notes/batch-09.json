@@ -1,0 +1,746 @@
+[
+  {
+    "slug": "bookmarks-you-can-find-again",
+    "excerpt": "How to save a page so you can find it in a year, how to put bookmarks in folders, and which five links are worth pinning to the bar.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to save a web page and find it again months later. You will learn the star, the bookmarks bar, and folders inside it, and you will know which five pages deserve a place on the bar. If you have ever searched for your own bank twice a week, this fixes it."
+      },
+      {
+        "type": "p",
+        "text": "A bookmark is a saved address with a name you choose. It saves the page, not a copy of it: if the page changes, the bookmark still opens the current version, which is what you want for a bank or a school portal."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A browser open on a page you use often.",
+          "About ten minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "The star, the bar, and the menu"
+      },
+      {
+        "type": "p",
+        "text": "There are three places a bookmark can live, and knowing them stops the pile from becoming a mystery."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Click the star at the right end of the address bar. The page is saved at once.",
+          "A small box appears where you can change the name before you save.",
+          "Choose a folder in that box if you want to keep the bar tidy.",
+          "Show the bar with Ctrl, Shift and B, so one click opens the page.",
+          "Open the full list from the menu, under Bookmarks, when the bar is hidden."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the star turn solid blue once the page is saved, and the page appear on the bar if you chose that folder. A hollow star means the page is not saved yet."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/bookmark-star.jpg",
+        "alt": "A browser address bar with the bookmark star highlighted.",
+        "caption": "The star saves the page. A solid star means it is saved, and a hollow one means it is not."
+      },
+      {
+        "type": "p",
+        "text": "It looks like saving everything is harmless. A list of two hundred unsorted bookmarks is a list nobody opens, and it is how people end up searching for their own bank every week."
+      },
+      {
+        "type": "h2",
+        "text": "Folders, so you can find one"
+      },
+      {
+        "type": "p",
+        "text": "Five folders are enough for most people. Name them for what you do, not for what the sites are."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Right-click the bookmarks bar and choose Add folder.",
+          "Name them for your week: Money, School, Work, Reference, Later.",
+          "Right-click any bookmark and choose Edit to move it into a folder.",
+          "Keep the top level under about seven items, so every one is visible.",
+          "Delete a bookmark the moment you notice you never use it."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this is permanent. A folder takes a second to rename, and a tidy bar is easier to keep tidy than to rebuild."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/bookmarks-bar.jpg",
+        "alt": "A browser bookmarks bar showing folders for money, school and work.",
+        "caption": "Folders named for your week. Seven visible items beat two hundred hidden ones."
+      },
+      {
+        "type": "h2",
+        "text": "What to pin, and what not to"
+      },
+      {
+        "type": "p",
+        "text": "The bar is the most valuable space in the browser. Put on it only what you open weekly."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Your bank, reached by typing the address yourself the first time.",
+          "Your email, the school portal, and one work tool.",
+          "A reference page you use constantly, such as the academy notes.",
+          "Your own cloud folder, if you share links often.",
+          "Not: an article you might read one day. Save that in a Later folder instead.",
+          "Not: a site you reached from a link in a message, until you have checked the address."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about losing bookmarks when you change phone or laptop. Signing in to the browser syncs them, as long as you are signed in before you switch machines."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Bookmarks are easy to recover, and the first fix solves most cases."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The bar disappeared: press Ctrl, Shift and B to bring it back.",
+          "You saved a page with a useless name: right-click it and choose Edit.",
+          "A bookmark opens the wrong page: the site changed its address. Delete it and save the page again.",
+          "All bookmarks vanished after a reset: sign in to the browser profile and let sync restore them.",
+          "You clicked a saved link and landed somewhere odd: the site was sold or the address expired. Delete the bookmark and find the official page yourself.",
+          "Too many bookmarks to manage: export them once from the menu, then start the bar again with five."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Five minutes and the bar becomes useful rather than decorative."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Save the page you visit most, with a name you would say out loud.",
+          "Show the bookmarks bar and confirm the page appears on it.",
+          "Make two folders, Money and School, and move one bookmark into each.",
+          "Delete one bookmark you have not opened this month.",
+          "Save one reference page into a Later folder rather than the bar."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now get to the pages that matter in one click. In the next lesson you will use the browser's memory of where you have been, and understand what a private window really hides."
+      }
+    ]
+  },
+  {
+    "slug": "history-and-private-windows",
+    "excerpt": "How to find a page you visited last Tuesday, what browser history keeps, what a private window does and does not hide, and when to clear history.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson explains browser history and private windows. You will find a page you visited but did not save, understand what a private window actually hides, and know when clearing history is the right thing to do. Neither feature is a secret, and neither one is dangerous."
+      },
+      {
+        "type": "p",
+        "text": "History is a list of pages your browser has visited, with the time and the title. It is a diary kept for your convenience, and it is stored on the machine, not on the websites."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A browser you have used for a few days.",
+          "About ten minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Find last Tuesday"
+      },
+      {
+        "type": "p",
+        "text": "You rarely need the whole list. You need one page you saw once and did not save, and history finds it in four clicks."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Press Ctrl and H to open history.",
+          "Search a word you remember from the page title.",
+          "Change the range, or scroll by date, if you know roughly when.",
+          "Click the entry to reopen the page.",
+          "Save it as a bookmark this time, so history is not needed again."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see a list grouped by day, with the newest at the top and a search box near the top of the page. Typing three letters narrows the list faster than scrolling."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/browser-history.jpg",
+        "alt": "A browser history page listing sites by date.",
+        "caption": "History is grouped by day. Search a word from the title instead of scrolling through weeks."
+      },
+      {
+        "type": "h2",
+        "text": "What private actually does"
+      },
+      {
+        "type": "p",
+        "text": "A private window, or incognito, keeps no history on that device when you close it. It is a clean table, not a mask."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "It does not save history, cookies, or form entries after you close the window.",
+          "It does not hide what you do from your network, your internet provider, or your employer.",
+          "It does not make you anonymous to the websites you visit.",
+          "It does not protect you from viruses or from a link that steals a password.",
+          "It is useful on a shared machine, and for checking a second login to the same site."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "It looks like a private window hides everything. It hides the trail on the device in front of you, and nothing else, which is why it is the right tool for a borrowed laptop and the wrong tool for anything illegal or dangerous."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/private-window.jpg",
+        "alt": "A private browsing window with the mask icon in the title bar.",
+        "caption": "A private window keeps no trail on that device. It does not hide you from the network or from the site."
+      },
+      {
+        "type": "h2",
+        "text": "When to clear history"
+      },
+      {
+        "type": "p",
+        "text": "Clearing history is normal housekeeping, and it is also a reasonable thing to do before handing over a machine."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Clear before you sell, lend, or repair a computer.",
+          "Clear when the address bar keeps suggesting a page you no longer want.",
+          "Clear the last hour when you have been testing links and the list is a mess.",
+          "Do not clear if you are trying to find something: find it first, then clear.",
+          "Choose the range carefully, because All time removes everything."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this deletes bookmarks or files. History and cookies are separate, and clearing one does not clear the other unless you tick both."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "History problems are small, and every case here has a plain fix."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A page you visited is missing from history: it was opened in a private window, or history was cleared.",
+          "Ctrl and H does nothing: the browser has a different shortcut. Use the menu, then History.",
+          "History is empty on a new machine: it lives on the old device unless the browser was synced.",
+          "You cleared history by mistake: it cannot be restored, but the pages may still appear in the address bar suggestions.",
+          "Somebody else can see your history: sign out of the browser profile, and use your own profile from now on.",
+          "A private window will not open: an extension or a workplace policy is blocking it. Ask before you work around it."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Find one real page today, and the feature stops being abstract."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open history and find a page you visited this week.",
+          "Search history for a word rather than scrolling.",
+          "Open a private window, visit a site, close it, and confirm it is not in history.",
+          "Bookmark the page you found, so next time you do not need history.",
+          "Clear history for the last hour only, and check the rest is still there."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now retrace your own steps and understand what a private window really covers. In the next lesson you will clear the folder where every download lands."
+      }
+    ]
+  },
+  {
+    "slug": "the-downloads-pile",
+    "excerpt": "Why Downloads fills up, how to make a file land in the right folder the first time, and what to do when the folder is eating your disk space.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to control the Downloads folder instead of letting it grow. You will clear the pile, change where files land, and free space on a full disk. Downloads is the most cluttered folder on most computers, and it takes ten minutes to fix."
+      },
+      {
+        "type": "p",
+        "text": "Every file the internet sends you lands in Downloads by default: forms, receipts, installers, photographs, and the same invoice you have saved four times under four names. It is a delivery mat, and nobody sweeps it."
+      },
+      {
+        "type": "p",
+        "text": "You will see the folder marked with a down arrow in File Explorer's sidebar, usually holding more files than every other folder combined."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "File Explorer open on Downloads.",
+          "About fifteen minutes.",
+          "A folder in Documents called Archive, if you do not have one."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "The five-minute walk"
+      },
+      {
+        "type": "p",
+        "text": "You do not need to sort every file. You need the folder to stop being the place where things go to be forgotten."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open Downloads and switch to Details view.",
+          "Sort by Date modified so the newest appear first.",
+          "Open the newest ten and decide where each one belongs.",
+          "Move the ones you need into Documents, Pictures, or the Archive folder.",
+          "Delete the installers you have already used, and anything older than a year.",
+          "Leave nothing in Downloads that you would be sorry to lose."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the folder shrink to a short list, and the disk space bar in This PC move a little. That movement is the reward, and it is the reason to repeat this once a month."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/downloads-folder.jpg",
+        "alt": "A Downloads folder with mixed files sorted by date.",
+        "caption": "Sort by date and deal with the newest ten. A folder of two hundred files is a week of small decisions, not one big one."
+      },
+      {
+        "type": "p",
+        "text": "It looks like deleting an installer is a risk. An installer you have already used can be downloaded again, and the program it installed does not need it."
+      },
+      {
+        "type": "h2",
+        "text": "Make files land in the right room"
+      },
+      {
+        "type": "p",
+        "text": "Most browsers will ask where to save, if you tell them to. That one setting ends the pile at the source."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open the browser settings and find Downloads.",
+          "Turn on Ask where to save each file before downloading.",
+          "From then on, name the file and choose the folder at the moment of saving.",
+          "Save documents into Documents, pictures into Pictures, and installers anywhere you will remember.",
+          "For a file you will only read once, choose Desktop and delete it afterwards."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this slows you down. It moves one small decision from next month to this minute, when you still remember what the file is."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/sorting-downloads.jpg",
+        "alt": "A person sorting downloaded files into folders on a laptop.",
+        "caption": "Ask where to save, and name the file while you still know what it is. That is the whole method."
+      },
+      {
+        "type": "h2",
+        "text": "The name with a one in brackets"
+      },
+      {
+        "type": "p",
+        "text": "When you download the same file twice, the browser adds a number, and you end up with invoice.pdf, invoice (1).pdf, and invoice (2).pdf, none of which tells you which is current."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Rename the newest one with the date: invoice-october-2026.pdf.",
+          "Delete the older copies once you have checked the new one opens.",
+          "Open the file before you delete the others, to confirm it is complete.",
+          "Keep one copy in the right folder, not three in Downloads."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about keeping every version of a form. Keep the one you submitted, and let the earlier drafts go."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "A full disk causes real problems, and each one here has a clear next step."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The disk is full: clear Downloads first, then the Recycle Bin, then old videos.",
+          "A file will not delete because it is in use: close the program that opened it, or restart.",
+          "You deleted something you needed: check the Recycle Bin before anything else.",
+          "Downloads vanished from the sidebar: it is still in This PC, under your user folder.",
+          "The browser will not ask where to save: the setting is off, or a workplace policy fixed the folder.",
+          "A download never finishes: pause and resume, or try again on a stronger connection."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "One pass today, and a reminder on the first of each month."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Sort Downloads by date and deal with the newest ten files.",
+          "Turn on Ask where to save in the browser settings.",
+          "Download one file and watch it ask for a folder.",
+          "Delete the installers you no longer need.",
+          "Check the free space on your drive before and after."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now keep the delivery mat clear and the disk healthy. In the next lesson you will meet the folder in the sky that everyone mentions but few explain."
+      }
+    ]
+  },
+  {
+    "slug": "the-cloud-in-ordinary-words",
+    "excerpt": "What cloud storage actually is, what it costs, how to use it without losing access to your own files, and when it is not a backup.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson explains cloud storage in ordinary words: what it is, what it costs, and how to use it without depending on it completely. You will upload one folder, open it on a second device, and know the case where the cloud is not a backup."
+      },
+      {
+        "type": "p",
+        "text": "The cloud is somebody else's computer holding a copy of your files. When you open a cloud folder, your device downloads the copy or streams it. The files are not in the air; they are on a server in a data centre, and you reach them through the internet."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "An account with Google Drive, OneDrive, or iCloud.",
+          "One folder with a few documents in it.",
+          "About twenty minutes, and enough data to upload it."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "What it is for"
+      },
+      {
+        "type": "p",
+        "text": "The cloud solves three problems: reaching your files from another device, sharing a file with somebody without email limits, and surviving a stolen laptop."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Upload the folders you need on more than one device.",
+          "Share a single file with a link rather than sending thirty attachments.",
+          "Open a document on a phone to read it, and edit it on a laptop later.",
+          "Keep the free plan until you actually need more space.",
+          "Check the price in naira before you upgrade, because it is charged monthly."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see a small tick or an arrow beside a file name once the upload finishes, and a progress bar while it is going. A file with a cloud icon but no tick is not safely uploaded yet, and closing the lid can interrupt it."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/cloud-folder.jpg",
+        "alt": "A cloud storage folder open with files and upload ticks.",
+        "caption": "A tick beside the name means the copy reached the server. That is the difference between a file on your disk and a file you can reach anywhere."
+      },
+      {
+        "type": "p",
+        "text": "It looks like the cloud keeps everything safely forever. Free accounts are closed after long periods without signing in, and a forgotten password can lock you out of your own files."
+      },
+      {
+        "type": "h2",
+        "text": "The free rooms and the paid house"
+      },
+      {
+        "type": "p",
+        "text": "Every provider gives a small amount free, usually fifteen gigabytes on Google, five on Microsoft, and five on Apple. That is enough for documents, and not enough for video."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Count your space: documents take kilobytes, photographs take megabytes, videos take gigabytes.",
+          "Delete the videos from the cloud before you pay for more room.",
+          "Keep a backup of the password and the recovery phone number for the account itself.",
+          "Check whether upgrading is monthly or yearly before you click.",
+          "Do not use a school or workplace account for personal files: the school can close it."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this costs anything to try. The free tier is enough for the documents most people actually need to reach from two places."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/cloud-devices.jpg",
+        "alt": "A phone and a laptop showing the same cloud folder.",
+        "caption": "One folder, two devices. The cloud is a copy that travels, not a copy that replaces the ones you hold."
+      },
+      {
+        "type": "h2",
+        "text": "Not a backup until it is a second house"
+      },
+      {
+        "type": "p",
+        "text": "A cloud folder is a copy, and one copy is not a backup. If you delete the file on your laptop and the folder syncs, the copy in the cloud is deleted too."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Keep at least two copies: one on a device you own, one in the cloud or on a drive.",
+          "Use version history to recover a file you overwrote, in the provider's menu.",
+          "Check the trash in the cloud service, which keeps deleted files for about thirty days.",
+          "Keep the important folders on a flash drive as well, once a month.",
+          "Write the account password down, because losing access is the same as losing the files."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about the cloud being unsafe in general. The real risks are a forgotten password, a closed free account, and a delete that syncs everywhere at once."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a recovery path, and the first two solve most of them."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A file is missing from the cloud: check the service's trash, then the version history.",
+          "Uploads never finish: check the connection, then upload one file at a time.",
+          "The account is full: delete large videos and empty the trash.",
+          "You cannot sign in: use the recovery phone number, and check the account's own help pages.",
+          "Files disappeared from the laptop after you deleted them in the cloud: restore them from the cloud trash.",
+          "A shared link lets anyone edit your folder: change the link setting to view only, and re-share."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Upload one folder today, and open it on a phone to prove it works."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Sign in to your cloud account and check how much space is free.",
+          "Upload one folder of documents and wait for the ticks.",
+          "Open one file on a phone.",
+          "Share a file with yourself by link, then change it to view only.",
+          "Write the account password in your notebook, next to the recovery number."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now use the cloud as a travelling copy without depending on it entirely. In the next lesson you will leave a machine that is not yours without leaving anything behind."
+      }
+    ]
+  },
+  {
+    "slug": "signing-out-of-a-machine-that-is-not-yours",
+    "excerpt": "The five-minute checklist before you walk away from a borrowed or business-centre computer, what normally gets left behind, and how to undo it if you forgot.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is the checklist to run before you walk away from a computer that is not yours: a business centre, a friend's laptop, a school lab, or an office desk. You will learn what to close, what to sign out of, and what to do if you realise later that you did not."
+      },
+      {
+        "type": "p",
+        "text": "A shared machine remembers you in more places than you expect: the browser session, the saved password, the Downloads folder, and the account that stays signed in to Windows itself."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Two minutes now, and this page open on your phone if you can.",
+          "A note of any account you signed in to while you were there."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "The five-minute walk"
+      },
+      {
+        "type": "p",
+        "text": "Do these in order. The last one is the one people forget, and it matters most."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Sign out of every website, using the account menu, not just by closing the tab.",
+          "Close the browser completely.",
+          "Delete the files you downloaded and empty the Recycle Bin.",
+          "Clear the browser history and cookies if the browser belongs to somebody else.",
+          "Sign out of the Windows or macOS account, or switch the machine off.",
+          "Unplug your flash drive using Eject, and take it with you."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the browser return to a sign-in page and the account name disappear from the top corner. If the name is still there, the sign-out did not finish."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/sign-out.jpg",
+        "alt": "A browser account menu with the sign out option highlighted.",
+        "caption": "Sign out from the account menu. Closing the tab leaves the session open for the next person."
+      },
+      {
+        "type": "p",
+        "text": "It looks like closing the browser signs you out. It usually does not, because the session is stored as a cookie that survives until it expires or you clear it."
+      },
+      {
+        "type": "h2",
+        "text": "The account that remembers the machine"
+      },
+      {
+        "type": "p",
+        "text": "On Windows, the computer itself may remember your email account, and the next person can see the name on the sign-in screen. On a business centre machine, that is worth avoiding."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Before you use a borrowed machine, ask whether you can use a guest account.",
+          "If you must sign in to Windows, use a local account rather than your personal email account.",
+          "Remove your account from the machine afterwards, in Settings, then Accounts.",
+          "Check the sign-in screen again after you remove it.",
+          "On a shop computer, do not sign in to Windows at all. Work in the browser and use a private window."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this is about being suspicious of the person beside you. A business centre machine is used by strangers all day, and the person after you is a stranger too."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/leaving-shared-pc.jpg",
+        "alt": "A person standing up to leave a business centre computer.",
+        "caption": "Two minutes before you stand up: sign out, close, delete, clear. Then leave."
+      },
+      {
+        "type": "h2",
+        "text": "What still leaks"
+      },
+      {
+        "type": "p",
+        "text": "Some things survive a sign-out, and knowing them is what makes the checklist realistic rather than magical."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Files left in Downloads survive until somebody deletes them.",
+          "A printed page stays in the tray or beside the printer.",
+          "The printer's own memory may keep the last document you printed.",
+          "A remembered password stays if you clicked Save.",
+          "A session on a phone app that was signed in while you worked stays signed in."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about being perfect. Signing out, deleting your files, and taking your flash drive removes almost all of the risk."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "You can still act after you leave, and the first two steps are the ones that matter."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "You forgot to sign out of email: change the password now, which ends the session, then sign out of other devices.",
+          "You left a file on the machine: call the centre and ask them to delete it, then treat the file as seen.",
+          "You saved a password on a shared machine: change that password today.",
+          "You left a flash drive behind: go back for it, and if you cannot, change any password written on it.",
+          "You left a printed page with your details: call and ask them to destroy it.",
+          "You are not sure what you signed in to: change the password on the two accounts that matter most, email and bank."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Run the checklist once on your own machine, so it becomes automatic."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Sign out of one site and watch the account name disappear.",
+          "Delete a file and empty the Recycle Bin.",
+          "Clear history for the last hour only.",
+          "Eject a flash drive properly and remove it.",
+          "Write the checklist in your notebook, with the six steps in order."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now use a borrowed computer and leave nothing of yourself behind. The next chapter begins the part of the series that protects all of this: accounts, permissions, and privacy."
+      }
+    ]
+  }
+]
