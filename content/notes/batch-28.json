@@ -1,0 +1,826 @@
+[
+  {
+    "slug": "your-first-paid-client",
+    "excerpt": "The first paid job from first message to final invoice: the questions to ask, the quote to send, the deposit, and the follow-up that brings the second job.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson walks through your first paid client, from the first message to the final invoice. You will ask the right questions, send a short quote, take a deposit, deliver, and follow up. Each step is small, and none of them needs confidence you do not have yet."
+      },
+      {
+        "type": "p",
+        "text": "Most first jobs go wrong at the same two points: the work was never clearly described, and the money was never clearly agreed. A written quote fixes both before anything starts."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "One service you can describe in a sentence.",
+          "A bank account that sends alerts.",
+          "About twenty minutes to read, and one week to practise."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "The first message"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Reply within a day, even if the answer is that you will send a quote tomorrow.",
+          "Ask what they need, who it is for, and when it must be ready.",
+          "Ask what they have already: photographs, text, or an old page.",
+          "Ask what a good result would look like to them.",
+          "Repeat it back in one sentence and ask them to confirm.",
+          "Do not quote a price in the first message, since you have not seen the job."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the job get smaller as the questions are answered. A request to build me a website often turns out to be one page with a phone number on it."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/first-client-handshake.jpg",
+        "alt": "Two people shaking hands over a desk with a laptop open.",
+        "caption": "A handshake is not an agreement. The written quote, confirmed in a message, is what protects the work."
+      },
+      {
+        "type": "p",
+        "text": "It looks like asking questions makes you seem unsure. It makes you seem careful, and clients pay more for careful than for confident."
+      },
+      {
+        "type": "h2",
+        "text": "The quote, in six lines"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "What you will deliver, listed plainly.",
+          "What is not included, so the list has an edge.",
+          "The price, in naira, with no hedging.",
+          "The deposit, usually half, and when the balance is due.",
+          "The delivery date, and what you need from them to meet it.",
+          "The number of changes included, such as two rounds."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The quote will fit on one phone screen, which is where most clients will read it. A client who can read it in ten seconds answers in ten minutes."
+      },
+      {
+        "type": "p",
+        "text": "The client's reply will appear as a short message, often only the word ok. Keep it in the same thread as the quote, so the agreement sits above the work in one place."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/invoice-delivery-document.jpg",
+        "alt": "An invoice and a delivered document on a desk beside a phone.",
+        "caption": "The invoice goes out with the delivery, not a week later. Payment follows the document that asks for it."
+      },
+      {
+        "type": "h2",
+        "text": "Do the work, then deliver"
+      },
+      {
+        "type": "p",
+        "text": "Send one update halfway, so the client is never surprised at the end."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Start only after the deposit arrives in your account.",
+          "Send a short progress message when half the work is done.",
+          "Deliver in the format they can open, usually a PDF or a link.",
+          "Include a two-line note saying what changed and what to do next.",
+          "Send the invoice with the delivery, not after a reminder.",
+          "Ask for one sentence you can use as a testimonial."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this is extra admin. Each message is the evidence that the work was done, and evidence is what settles a dispute without an argument."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about the client being silent for a day. Silence during the work is normal, and silence after the invoice is when you follow up."
+      },
+      {
+        "type": "h2",
+        "text": "After the money arrives"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Send a one-line thank you, with the date of the next review if there is one.",
+          "Ask whether they know anybody with the same problem.",
+          "Note the job in your records: client, amount, date, hours.",
+          "Keep the files and the messages in one folder.",
+          "Follow up once after a month to check the work is still fine.",
+          "Ask for the testimonial again if they forgot, which most people do."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here happens in a first year, and each has a calm answer."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "They ask for a discount: offer less work at a lower price, rather than the same work for less.",
+          "They add a new request: quote it as a separate line, politely.",
+          "The deposit never comes: do not start. Say you are holding the slot for three days.",
+          "They pay late: keep the final files until the balance clears, as the quote states.",
+          "They are unhappy with the work: ask which part, fix that part once, and note it for next time.",
+          "They disappear: send one firm message, then close the job and keep the deposit if the terms allow."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Rehearse the whole job once before money is involved."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Write your six-line quote template.",
+          "Write the three questions you will ask every client.",
+          "Do one small job for a family business, unpaid, and follow every step.",
+          "Send yourself a mock invoice and check the reference number.",
+          "Ask that family member for the testimonial sentence."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now take a job from message to payment without guessing. In the next lesson you will use AI tools without letting them make decisions for you."
+      }
+    ]
+  },
+  {
+    "slug": "working-with-ai-assistants",
+    "excerpt": "What an AI assistant is good at, what it invents, how to check its claims, and the client information you should never paste into one.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is about working with AI assistants: what they do well, where they invent things, and how to check the result. You will also learn what never to paste into one, which matters more than any prompt."
+      },
+      {
+        "type": "p",
+        "text": "An AI assistant predicts likely words from the patterns it was trained on. That makes it fast at drafts and unreliable at facts, since a confident sentence and a correct one look identical."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "An assistant you can open in a browser or app.",
+          "One real task, such as a message you must write.",
+          "About twenty minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Where it saves real time"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Rewriting a message in plain words, when you know what you mean.",
+          "Making a list from a paragraph you already wrote.",
+          "Changing the tone of a complaint so it can be sent.",
+          "Explaining a term you met in a document.",
+          "Writing a first draft that you then correct.",
+          "Turning rough notes into a tidy outline."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the first draft arrive in seconds, often better organised than the version in your head. The saving is real, and the checking is where the work moves."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/ai-assistant-chat.jpg",
+        "alt": "A chat window with an AI assistant writing a draft message.",
+        "caption": "The draft is a starting point. Read every line before it reaches a client, because a fluent sentence can still be wrong."
+      },
+      {
+        "type": "p",
+        "text": "The chat window will show each message in a bubble, with your instruction above and the draft below. When you ask for a change, the new version appears underneath, so you can compare the two."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a well-written answer must be accurate. Fluency comes quickly and accuracy does not, which is why the confidence of the wording proves nothing."
+      },
+      {
+        "type": "h2",
+        "text": "Where it invents"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Names, dates, and figures it was never given.",
+          "Quotes and references that look real and do not exist.",
+          "Rules and prices for a country it has not been updated on.",
+          "The content of a document you did not paste in.",
+          "Instructions for software versions that have changed.",
+          "Legal, medical, and tax answers, which need a person who is qualified."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "A fabricated reference will look like every other reference, with a title and a year. The only test is to search for it, and the search takes fifteen seconds."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/verify-ai-claims.jpg",
+        "alt": "A browser searching for a claim made by an AI assistant.",
+        "caption": "Search the claim before you repeat it. A reference that does not appear anywhere was never a reference."
+      },
+      {
+        "type": "h2",
+        "text": "Asking in a way that works"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Say who the reader is, such as a landlord or a customer.",
+          "Say what you want, in one sentence.",
+          "Give the facts it must use, and say not to add others.",
+          "Ask for a length, such as four sentences.",
+          "Ask it to mark anything it is unsure about.",
+          "Correct the draft and ask for the change, rather than starting again."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs clever wording. Clear instructions and your own facts produce a usable draft, and vague instructions produce something you must rewrite."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about being left behind. The tool is a fast typist with no judgement, and judgement is what clients pay you for."
+      },
+      {
+        "type": "h2",
+        "text": "What never goes into the box"
+      },
+      {
+        "type": "p",
+        "text": "Anything you would not post on a noticeboard should stay out of a chat window, including work for somebody else."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Client names, addresses, or account numbers.",
+          "Passwords, codes, or bank details of any kind.",
+          "Identity documents, or photographs of them.",
+          "Contracts you signed with a confidentiality clause.",
+          "Medical details about a person you know.",
+          "Staff records or salary information."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "If you must work on a client document, remove the names and the figures first. A draft about a tenant becomes a draft about a customer, and the advice still works."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a plain fix, and the first one is the most common."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "It invented a fact: correct it in the next message, and check anything else from the same answer.",
+          "The tone is wrong: describe the reader and the feeling you want, then compare two drafts.",
+          "It refused a harmless request: rewrite it without the personal details.",
+          "You pasted client data: tell your client, and remove the chat if the tool allows it.",
+          "The draft sounds like nobody: read it aloud and replace the phrases you would not say.",
+          "It gives different answers each time: that is how it works, so keep the version that passes your check."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "One real message, one check, one correction."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Choose a message you must send this week.",
+          "Give the assistant the reader, the facts, and a length.",
+          "Read the draft and mark every claim you cannot confirm.",
+          "Search for one of those claims.",
+          "Rewrite the draft in your own voice before sending."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now use the tool without being used by it. In the next lesson you will keep the money records a one-person business needs."
+      }
+    ]
+  },
+  {
+    "slug": "the-books-of-a-one-person-business",
+    "excerpt": "Keeping simple books as a one-person business: the two accounts, the weekly ledger, the receipts to keep, and the monthly total that tells the truth.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson sets up simple books for a one-person business: a separate account, a weekly ledger, and the receipts that answer a question a year later. You will learn what to record and what to ignore."
+      },
+      {
+        "type": "p",
+        "text": "Books are not paperwork for its own sake. They answer three questions: did I make money, where did it go, and can I prove it if somebody asks."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A business account, or a second account used only for the business.",
+          "A notebook or a spreadsheet.",
+          "About thirty minutes, then ten minutes a week."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Separate the money first"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open a second account for the business, even a savings account with a card.",
+          "Pay all business income into it, and nothing else.",
+          "Pay business costs from it, including data, transport, and materials.",
+          "Pay yourself a fixed amount weekly or monthly, as a named withdrawal.",
+          "Keep personal spending out of the account, since it hides the truth.",
+          "Reconcile the balance once a week against the app."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the business balance become a number you can trust, which is the whole point. A mixed account always looks better than the business is."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/money-two-accounts.jpg",
+        "alt": "Two bank cards and a phone showing two separate account balances.",
+        "caption": "Two accounts: one for the business, one for the household. The separation is the first bookkeeping decision."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a separate account is only for registered companies. Anybody taking money for work needs one, even with a small income."
+      },
+      {
+        "type": "h2",
+        "text": "The weekly ledger"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Date, what it was, money in, money out, and a category.",
+          "One row for every movement, including cash.",
+          "A category that matches your work, such as stock, transport, data, and repairs.",
+          "A running balance, so a missed row shows up quickly.",
+          "A note for anything unusual, such as a refund or a loan.",
+          "Ten minutes on the same day each week, which is the whole habit."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The ledger will show a small number of categories doing most of the work. Two or three of them usually explain where the month went, and that knowledge is worth more than the totals."
+      },
+      {
+        "type": "p",
+        "text": "The statement screen will show every movement with a date and a description, and the balance beside each line. That list is where a missing row is found, so read it against your ledger once a week."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/ledger-weekly.jpg",
+        "alt": "A handwritten weekly ledger with columns for date, item, in, out, and balance.",
+        "caption": "Five columns on paper, filled weekly. Paper that is up to date beats software that is not."
+      },
+      {
+        "type": "h2",
+        "text": "Receipts that answer questions"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Photograph every paper receipt on the day, before it fades.",
+          "Save the photograph in a folder named for the month.",
+          "Keep transfer confirmations, which are often the only proof.",
+          "Note the purpose in the file name, such as generator-repair-august.",
+          "Keep business and personal receipts in separate folders.",
+          "Hold on to records for at least six years, since a question can arrive late."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs accounting software. A spreadsheet, a phone camera, and a folder for each month will answer almost every question."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about being behind. Two hours with a bank statement will rebuild the last three months, and the habit starts from today."
+      },
+      {
+        "type": "h2",
+        "text": "The monthly total"
+      },
+      {
+        "type": "p",
+        "text": "Once a month, read three numbers: money in, money out, and what is left. Then ask one question about each."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Money in: which client or product produced most of it?",
+          "Money out: which category grew without a reason?",
+          "What is left: is it enough to cover next month's fixed costs?",
+          "Set aside a share for tax, even if you are not sure of the amount.",
+          "Compare this month with the last two, since one month says little.",
+          "Write one decision for next month, in one sentence."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here is common in a small trade, and each has a plain answer."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The ledger has a gap: reconcile against the bank app, which shows every movement.",
+          "Cash sales are missing: write them the same evening, since memory fades by Friday.",
+          "A client pays into your personal account: move it across and note both sides.",
+          "The balance does not match: look for a charge or a transfer dated at month end.",
+          "You cannot find a receipt: use the bank line plus a written note, and keep both.",
+          "The tax question is unclear: ask an accountant once, rather than guessing every year."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Set up the two accounts this week."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open or designate a business account.",
+          "Build five columns in a spreadsheet or a notebook.",
+          "Record every movement for seven days, including cash.",
+          "Photograph every receipt and name the files.",
+          "Total the week and read the three numbers."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now see your own business clearly. In the next lesson you will keep other people's information safe, which is a promise you make by taking the work."
+      }
+    ]
+  },
+  {
+    "slug": "secrets-that-are-not-yours",
+    "excerpt": "Handling client information you were trusted with: what to store, how to store it, who may see it, and what to say if something leaks.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is about the client information you handle: what to keep, where to keep it, and who may see it. You will learn the simple habits that meet a confidentiality promise, and what to do if something goes wrong."
+      },
+      {
+        "type": "p",
+        "text": "Confidentiality is a promise you make by taking the work. It does not need a lawyer to keep, only a few habits applied every time."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A list of clients you currently hold information for.",
+          "A folder structure you can control.",
+          "About twenty minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "What counts as a secret"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Names, phone numbers, and addresses of customers.",
+          "Prices, costs, and what a client pays a supplier.",
+          "Documents: contracts, identity papers, and bank letters.",
+          "Photographs that show people, premises, or paperwork.",
+          "Anything said in a meeting that was not public.",
+          "Lists of customers or staff, which are often the most valuable thing a business owns."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the list is broader than expected, and most of it sits in chat messages and phone galleries. The work is tidying what already exists, rather than starting from nothing."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/client-files-locked.jpg",
+        "alt": "A laptop with a locked folder icon and a key beside it.",
+        "caption": "One folder per client, locked, with access only where it is needed. Tidiness is most of confidentiality."
+      },
+      {
+        "type": "p",
+        "text": "It looks like confidentiality means signing a document. The document sets the expectation, and the habits decide whether it is kept."
+      },
+      {
+        "type": "p",
+        "text": "The sharing panel will open with a list of names and a level of access beside each one. Read that list before you close the window, because access given once stays until somebody removes it."
+      },
+      {
+        "type": "h2",
+        "text": "Habits that keep the promise"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "One folder per client, with the name in it, not on the folder.",
+          "A screen lock on every device that holds client files.",
+          "A password on the folder or the cloud account, where it is offered.",
+          "Share a single file rather than the whole folder, and remove access when finished.",
+          "Never send client files to your personal chat for convenience.",
+          "Keep work off a shared family computer, or use a separate account on it."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Sharing will show a list of people with access, which is worth reading before you close the window. Removing one old address is easier than explaining a leak later."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/nda-signing-desk.jpg",
+        "alt": "A confidentiality agreement being signed at a desk with a pen.",
+        "caption": "The agreement names what is confidential and for how long. Read those two lines before signing, since they decide your habits."
+      },
+      {
+        "type": "h2",
+        "text": "When a client sends you a document"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Ask what may be done with it, in writing, before you pass it on.",
+          "Check whether the agreement says where files may be stored.",
+          "Keep the original untouched and work on a copy.",
+          "Do not open it on a public computer or a borrowed phone.",
+          "Return or delete the files when the job ends, as the agreement says.",
+          "Keep a note of what you deleted and when, in case a question comes later."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this is difficult. It is a habit of asking once, at the start, rather than assuming permission later."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about seeming suspicious by asking. A client who hears the question knows their information is being handled by somebody careful."
+      },
+      {
+        "type": "h2",
+        "text": "If something leaks"
+      },
+      {
+        "type": "p",
+        "text": "Tell the client early. A leak reported in an hour is a problem, and a leak discovered by them later is a betrayal."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Say what was exposed, to whom, and when you noticed.",
+          "Change the passwords on any account involved.",
+          "Remove the shared link or the access you granted.",
+          "Offer a concrete next step, such as notifying the people affected.",
+          "Write down what happened, so the fix is not repeated.",
+          "Do not promise it will never happen again. Say what you have changed."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here is recoverable, and honesty is the part that decides the outcome."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A file went to the wrong person: ask them to delete it, and tell the client the same day.",
+          "A folder was shared too widely: change the link settings, which revokes it at once.",
+          "Your phone was lost with client files: change the passwords, and use the device lock remotely.",
+          "You cannot remember who has access: review the sharing list and remove everyone unnecessary.",
+          "A colleague used your account: change the password and tell the client.",
+          "The client asks for deletion: delete, and send a one-line confirmation."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Tidy one client's information today."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Create one folder named after the client.",
+          "Move every related file into it.",
+          "Check the sharing settings and remove anyone unnecessary.",
+          "Delete the copies that live in chat downloads.",
+          "Write down the access you still have, and why."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now keep a promise that clients rarely check and always value. In the next lesson you will look after the body that does the work."
+      }
+    ]
+  },
+  {
+    "slug": "the-body-at-the-desk",
+    "excerpt": "Setting the screen, chair, and light so a working day does not end in an ache, and the short breaks that matter more than any chair.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is about the body at the desk: screen height, chair position, light, and the breaks that prevent most of the ache. You will set up a workable desk this week, with what you already own."
+      },
+      {
+        "type": "p",
+        "text": "Pain at a desk builds slowly and quietly. It is caused by repetition and position, which means small changes repeated daily are the cure."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The place you actually work, not the one you would like to.",
+          "A few books, a box, or a cushion.",
+          "About twenty minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Screen and eyes"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Put the top of the screen at about eye level, using books or a box.",
+          "Keep the screen an arm's length away, and further if the text is large.",
+          "Tilt it back slightly, so your eyes look down a little.",
+          "Raise the text size rather than leaning forward.",
+          "Keep a window to your side, never directly behind or in front.",
+          "Turn the screen brightness down at night, when the room is dark."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see your shoulders drop once the screen is at eye level, because you stop bending to the picture. That change is the whole reason for the books."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/posture-desk-chair.jpg",
+        "alt": "A person sitting at a desk with the screen raised and feet flat on the floor.",
+        "caption": "Screen at eye level, feet flat, elbows near a right angle. A box under the laptop does most of the work."
+      },
+      {
+        "type": "p",
+        "text": "It looks like an expensive chair is the answer. Position and breaks matter more than the chair, and both cost nothing."
+      },
+      {
+        "type": "h2",
+        "text": "Chair, feet, and hands"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Sit with the feet flat, and put a box under them if the chair is too high.",
+          "Keep the knees at about hip height, not higher.",
+          "Bring the keyboard close, so the elbows stay near your sides.",
+          "Keep the wrists straight, floating above the keys rather than resting on the edge.",
+          "Support the lower back with a cushion, which is the cheapest fix there is.",
+          "Keep the shoulders down, and check them once an hour, since they creep up."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs new furniture. Two books under the laptop, a cushion behind the back, and a stool under the feet changes the whole day."
+      },
+      {
+        "type": "p",
+        "text": "In a mirror or a phone camera, you will see your shoulders lift towards your ears after an hour at the desk. That lift is the ache starting, and dropping the shoulders takes one breath."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry if your setup looks improvised. A box under a laptop works as well as a stand, and nobody is judging the desk."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/eyes-break-window.jpg",
+        "alt": "A person looking out of a window during a break from the screen.",
+        "caption": "Looking far away for twenty seconds rests the eyes. The view matters less than the distance."
+      },
+      {
+        "type": "h2",
+        "text": "The breaks that do the work"
+      },
+      {
+        "type": "p",
+        "text": "Twenty seconds every twenty minutes, and five minutes every hour, prevents most of the damage."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Every twenty minutes, look at something far away for twenty seconds.",
+          "Every hour, stand up and walk for two minutes.",
+          "Every two hours, roll the shoulders and stretch the hands.",
+          "Take the phone call standing, rather than settling deeper into the chair.",
+          "Do not use the break to scroll, since the eyes stay at the same distance.",
+          "Stop at the first tingling in the fingers, and rest before it becomes constant."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The break will feel like lost time for the first week. By the second week, the last hour of the day is as clear as the first, which is where the time comes back."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a practical step, and the last one belongs to a clinic rather than a website."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Your neck aches: the screen is too low. Raise it and check again in a week.",
+          "Your wrists hurt: they are resting on the desk edge. Move the keyboard closer.",
+          "Your eyes feel dry: you are not blinking at the screen. Take the twenty-second break.",
+          "Your lower back aches: add the cushion, and stand up more often.",
+          "The pain continues after a week of changes: see a clinic, since early advice is cheaper.",
+          "You cannot concentrate by three in the afternoon: check the light and the last meal, not the willpower."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Change three things today, and keep them for a week."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Raise the screen with books until the top is at eye level.",
+          "Put a cushion behind your lower back.",
+          "Move the keyboard close enough that your elbows stay down.",
+          "Set a reminder every twenty minutes for the eye break.",
+          "Note how the last hour of the day feels on Friday."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now work for years rather than months. In the next lesson you will learn in the open, where other people can help."
+      }
+    ]
+  }
+]
