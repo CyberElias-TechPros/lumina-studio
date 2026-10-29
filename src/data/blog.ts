@@ -58,7 +58,7 @@ export const blogPosts: BlogPost[] = [
         "A desktop computer on a wooden desk with a monitor, keyboard and mouse.",
         "Four parts, four jobs. When something feels wrong later, check these first, before you decide the machine is finished.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "A desktop computer or a laptop with its charger.",
         "A wall socket that is switched on.",
@@ -134,7 +134,7 @@ export const blogPosts: BlogPost[] = [
         "The machine ignores everything: hold the power button for ten seconds to switch it off. Wait, then press it once to start again.",
         "A message asks for a password you do not have: stop and call the owner. Do not install anything a message tells you to install.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Ten minutes today is enough to start. Ten minutes tomorrow is what makes it stay."),
       ul([
         "Name the four parts out loud, without looking back at this page.",
@@ -170,7 +170,7 @@ export const blogPosts: BlogPost[] = [
         "A file window showing the Documents, Pictures and Desktop folders.",
         "Each yellow icon is a folder. Double-click one to open it, and look at the address bar at the top to see where you are.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "A computer with about thirty minutes free.",
         "One document you do not mind practising with.",
@@ -251,7 +251,7 @@ export const blogPosts: BlogPost[] = [
         "The computer asks to save when you close: read the three buttons before you click. Save keeps it, Don't Save discards it, Cancel keeps the window open.",
         "The file will not open on another computer: save and send a PDF instead of the editable file.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Fifteen minutes on this today and you will never lose a document the same way again."),
       ul([
         "Make a folder called Practice inside Documents.",
@@ -396,7 +396,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "The internet is a very large library with no librarian and no locked door. Anyone can put a page on the shelf, including people who want your password or your money. Most of this lesson is about knowing which shelf you are standing at.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "A computer connected to Wi-Fi or data.",
         "A browser: Chrome, Edge, Firefox, or Safari.",
@@ -480,7 +480,7 @@ export const blogPosts: BlogPost[] = [
         "You downloaded something by accident: open Downloads, delete the file, and do not open it first.",
         "A page keeps opening on its own: close the tab, then check the browser for extensions you did not add.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p(
         "Do this with one real question in mind, so the practice produces something you actually needed.",
       ),
@@ -518,7 +518,7 @@ export const blogPosts: BlogPost[] = [
         "A laptop showing an email being written with To, Subject and a message body.",
         "Three fields decide whether the mail works: To, Subject, and the body. Read all three before you press Send.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "An email address of your own, written down.",
         "A second address you can open, such as a family member's, for the practice mail.",
@@ -599,7 +599,7 @@ export const blogPosts: BlogPost[] = [
         "A stranger asks you to confirm a password by email: do not reply. No bank asks for a password by email.",
         "The reply went to everybody on the list: apologise in one short line, and use Reply next time.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Two practice mails today will do more than an hour of reading."),
       ul([
         "Write your own address on paper and read it aloud to somebody.",
@@ -823,7 +823,7 @@ export const blogPosts: BlogPost[] = [
         "The bank says the money has gone: report it the same day and keep the message, the time, and the account number.",
         "A friend's account sends you a link: their account may be stolen. Call them on the phone before you reply.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       ul([
         "Open your inbox and find one message that asks you to click something.",
         "Read the sender address in full, then rest the pointer on the link without clicking it.",
@@ -922,7 +922,7 @@ export const blogPosts: BlogPost[] = [
         "The wrong pages print: cancel any remaining jobs in the queue before you change the settings.",
         "You are charged for pages that failed: ask to see the counter on the machine, and pay only for pages you received.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       ul([
         "Open any document and press Ctrl and P, then close the window without printing.",
         "Set the pages to 1 and the copies to 1, and look at how the preview changes.",
@@ -1142,7 +1142,7 @@ export const blogPosts: BlogPost[] = [
         "You lost the conversation with a new phone: restore from the backup in WhatsApp settings during setup.",
         "Storage is full: delete videos and forwards, then check the phone's storage screen for the largest files.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       ul([
         "Rename a PDF on your phone so it says what it contains.",
         "Send that PDF to yourself by email, then open it on a computer.",
@@ -1247,7 +1247,7 @@ export const blogPosts: BlogPost[] = [
         "The receiver's name is unknown: use Dear Sir or Madam and close with Yours faithfully.",
         "You sent the .docx by mistake: send the PDF in a short follow-up, and say it is the same letter in a fixed format.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       ul([
         "Type a one-page letter asking for a document from a school or an office.",
         "Set the margins to 2.5 cm and use one font at size 12.",
@@ -1437,7 +1437,7 @@ export const blogPosts: BlogPost[] = [
         "The computer is very slow for a day: normal. Indexing and cleanup run after a large update.",
         "An app stopped working: open the app store and update the app too.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       ul([
         "Open Settings and find your update screen without using a search engine.",
         "Note the date of the last update and the version number.",
@@ -1536,7 +1536,7 @@ export const blogPosts: BlogPost[] = [
         "The laptop is stolen: change your email and bank passwords first, then restore the files when you have a machine.",
         "The repair shop says the disk is dead: ask them not to format it, and take it to a data recovery service if the files matter.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       ul([
         "Write down the three folders you would be saddest to lose.",
         "Copy those three folders to a flash drive today.",
@@ -1728,7 +1728,7 @@ export const blogPosts: BlogPost[] = [
         "The internet works on the phone but not the laptop: check the laptop is on the right network, then restart the laptop.",
         "You changed the router password and forgot it: press the reset button on the back for ten seconds, then set it up again.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       ul([
         "Find the sticker under your router and read the network name out loud.",
         "Join the network on one device, typing the password with Show password switched on.",
@@ -1827,7 +1827,7 @@ export const blogPosts: BlogPost[] = [
         "Everything looks different after a restart: you may be in a temporary profile. Restart once more before worrying.",
         "The battery drains overnight while asleep: something is keeping it awake. Shut down instead of using sleep.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       ul([
         "Open two programs and a document, then put the computer to sleep and wake it.",
         "Save and shut down properly, using Start and the power symbol.",
@@ -2033,7 +2033,7 @@ export const blogPosts: BlogPost[] = [
         "You are removed from the room: the host may have locked it. Message the organiser and rejoin with the same name.",
         "The call drops completely: rejoin through the same link. Do not create a new meeting unless you are the host.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       ul([
         "Start a test call with one friend or family member.",
         "Turn the microphone off and on, and have them tell you what changed.",
@@ -2138,7 +2138,7 @@ export const blogPosts: BlogPost[] = [
         "It is hot and slow: switch off, clean the vents with a dry brush, and keep it off soft surfaces.",
         "Nothing helps and the disk light stays on: back up your files today and let a repairer test the disk.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       ul([
         "Open Task Manager and note the two programs using the most memory.",
         "Close those programs and check whether the machine feels different.",
@@ -2336,7 +2336,7 @@ export const blogPosts: BlogPost[] = [
         "You removed a program the office needs: reinstall it, and tell the person who set it up what happened.",
         "The machine is full of programs and you cannot tell which matter: write the list down and ask somebody who knows, rather than guessing.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       ul([
         "Open the installed apps list and sort by date.",
         "Write down three programs you do not recognise.",
@@ -2432,7 +2432,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "It looks like the character is missing from the computer. It is usually missing from the font, and changing to Arial or Calibri brings it back.",
       ),
-      h2("Practice"),
+      h2("Try it now"),
       ul([
         "Type the naira sign in a blank document using two different methods.",
         "Type a sentence with one accented name in it.",
@@ -2623,7 +2623,7 @@ export const blogPosts: BlogPost[] = [
         "You are unsure whether a helper is genuine: end the session and call the organisation's published number.",
         "You feel foolish: do not stay silent. Every bank has heard this before, and speed matters more than pride.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       ul([
         "Write down the three things you will never share, and keep the note where you work.",
         "Take a screenshot of an error message and crop out your name and any number.",
@@ -2653,7 +2653,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "The computer keeps one item in a temporary place called the clipboard. Copy puts a piece of work there. Paste takes it out and places it where you are working. The original stays where it was, which is why copying is the safer habit.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "Two programs open, such as a browser and Notepad.",
         "Something to copy, such as your own name and address from a note.",
@@ -2731,7 +2731,7 @@ export const blogPosts: BlogPost[] = [
         "The pasted text is huge or tiny: it carried the source font. Select it and set the size yourself.",
         "You pasted over something you needed: press Ctrl and Z once, and the old text comes back.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("This is one of the few skills that pays back on the same day you learn it."),
       ul([
         "Copy your own address from a note and paste it into Notepad.",
@@ -2881,7 +2881,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A zip is a suitcase. The files inside keep their names and their folders, but they travel as one item. Email limits are counted per item, so one suitcase passes where twenty loose files would be refused.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "A folder with several files that belong together, such as scanned certificates.",
         "An email account you can send from.",
@@ -2950,7 +2950,7 @@ export const blogPosts: BlogPost[] = [
         "The zip asks for a password you were not given: ask the sender. Never guess, and never run a tool a website offers for it.",
         "Windows warns the file may be unsafe: that is normal for a downloaded zip. It is a reason to check the sender, not to panic.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Practise on files you do not need, so that a mistake costs nothing."),
       ul([
         "Make a folder with three files inside it.",
@@ -2981,7 +2981,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Bluetooth is a short radio link between two devices that are close together. It works without a network, which makes it useful when there is no data and no cable in the house.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "A computer and a phone within about ten metres of each other.",
         "Both devices charged, because Bluetooth uses power on both.",
@@ -3050,7 +3050,7 @@ export const blogPosts: BlogPost[] = [
         "The computer cannot receive at all: some workplace machines block it. Use a cable instead.",
         "You paired with the wrong device: remove the pairing in Bluetooth settings and pair again.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("One photograph each way is enough to learn the whole process."),
       ul([
         "Switch Bluetooth on for both devices and pair them.",
@@ -3195,7 +3195,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A structure is not a decoration. It is a promise that a file has one obvious place to live, so the next time you need it you look once instead of everywhere.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "A computer with Documents open.",
         "Three real files you use often, such as a CV, a receipt, and a certificate.",
@@ -3268,7 +3268,7 @@ export const blogPosts: BlogPost[] = [
         "The tree looks wrong on a phone: cloud apps show folders differently. The structure still holds.",
         "You accidentally deleted a folder: restore it from the Recycle Bin, which keeps whole folders.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Build it today with three files. The structure is only real once it holds something."),
       ul([
         "Build the area, year, and topic folders in Documents.",
@@ -3302,7 +3302,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "If you have renamed something and it stopped opening, you are not the first, and the fix takes one minute. The file itself is almost never damaged.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "One file you do not mind practising with.",
         "File Explorer open on the folder that holds it.",
@@ -3377,7 +3377,7 @@ export const blogPosts: BlogPost[] = [
         "You renamed the wrong file: press Ctrl and Z, which undoes the rename.",
         "A shared file has two versions with the same name: keep the newer one, rename the older with the word archive and its date.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Rename three files today, and the pattern will stick."),
       ul([
         "Rename one file with F2, and leave the extension alone.",
@@ -3584,7 +3584,7 @@ export const blogPosts: BlogPost[] = [
         "Too many icons on the taskbar: unpin the ones you do not use, and keep under ten.",
         "The taskbar moved to the side: drag it back, or unlock it in Settings and set the location.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Two minutes with the search box today saves a week of hunting through menus."),
       ul([
         "Open three programs using only the Start search box.",
@@ -3618,7 +3618,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "If you have ever sent somebody an icon that arrived as a white page, you did nothing wrong. You sent the signpost instead of the town, and this lesson shows the difference.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul(["A file or program you use often.", "About five minutes."]),
       h2("Tell a shortcut from the file"),
       p(
@@ -3693,7 +3693,7 @@ export const blogPosts: BlogPost[] = [
         "The shortcut works on your machine but not on another: expected. Send the file itself.",
         "You have thirty shortcuts and cannot see the desktop picture: select them and delete the ones you do not use.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Five minutes on this prevents a support call that takes an hour."),
       ul([
         "Make a shortcut to a folder you use daily.",
@@ -3832,7 +3832,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Most people work at the wrong brightness for months without noticing, so fixing it late is a common and sensible thing to do.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "A laptop or a desktop with a monitor.",
         "The room light you normally work in.",
@@ -3903,7 +3903,7 @@ export const blogPosts: BlogPost[] = [
         "Everything is huge or tiny: that is display scaling, not brightness. Change it under Display, then Scale.",
         "The screen goes black when you move: a loose cable or a failing backlight. Test with another monitor before buying a new machine.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Set it once in daylight and once at night, and your eyes will tell you which is right."),
       ul([
         "Find the brightness keys without looking at this page.",
@@ -3934,7 +3934,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A second screen is either a copy of your laptop screen or an extension of it. That single choice explains most of the confusion: people expect one and get the other, then decide the cable is broken.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "A monitor, television, or projector with its power cable.",
         "The right video cable: HDMI is the most common today.",
@@ -4004,7 +4004,7 @@ export const blogPosts: BlogPost[] = [
         "There is no sound on the television: choose the television as the sound device in the volume menu.",
         "The projector keeps sleeping: move the mouse or press a key, or change its sleep setting in the projector menu.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Do this once at home and the next presentation is calm."),
       ul([
         "Connect a second screen and press Windows and P.",
@@ -4141,7 +4141,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "You will see the device name change beside the slider as you test, which is how you know the computer noticed the plug.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "A video or song you know has sound.",
         "Headphones, to test the jack.",
@@ -4214,7 +4214,7 @@ export const blogPosts: BlogPost[] = [
         "A microphone does not work: choose the right input device, then allow microphone access in Settings.",
         "A technician says the board must be replaced: ask for a USB sound adapter first, which costs a fraction and solves a dead jack.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Run the whole list once on a working machine, so you know the path before you need it."),
       ul([
         "Mute and unmute the speaker from the taskbar.",
@@ -4245,7 +4245,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A battery is a container of chemical energy that slowly loses the ability to hold a charge. Every full cycle wears it a little, and heat wears it faster than anything else. Good charging is mostly about avoiding heat and avoiding extremes.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "A laptop with its own charger. A phone charger is usually too weak.",
         "About ten minutes to read and set one habit.",
@@ -4318,7 +4318,7 @@ export const blogPosts: BlogPost[] = [
         "The laptop is hot and slows down on charge: the vents are blocked or the charger is wrong. Stop and let it cool.",
         "The case is bulging: stop using it today, and take it to a repairer. This one is not a settings problem.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("One setting and one habit, done today, add years to a battery."),
       ul([
         "Click the battery icon and read the percentage and the remaining time.",
@@ -4454,7 +4454,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "The webcam is a camera with no shutter on most machines. It is on whenever a program is using it, and the only reliable sign is the small light beside the lens, which is wired to the camera itself.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "The laptop or monitor with the camera.",
         "A small sticker or a folded piece of paper and tape.",
@@ -4525,7 +4525,7 @@ export const blogPosts: BlogPost[] = [
         "You think someone watched: cover the camera, change the passwords on the accounts you use on that machine, and run a scan.",
         "A shared laptop shows another person's camera: sign out of your school or work account before you leave it.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Five minutes today, and the camera stops being a worry."),
       ul([
         "Find the light and the lens on your machine.",
@@ -4559,7 +4559,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "You will see the banner in the corner or across the bottom of the page, and it usually returns on each new device until you choose.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul(["A browser open on a website with a cookie banner.", "About ten minutes."]),
       h2("Three kinds of small note"),
       p("The banner usually groups them, and the grouping is worth reading once."),
@@ -4632,7 +4632,7 @@ export const blogPosts: BlogPost[] = [
         "A shop basket empties by itself: allow cookies for that shop, and do not clear them mid-purchase.",
         "You are on a shared machine and forgot to sign out: sign out now, then change the password if the account is important.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Two banners, handled properly, and the habit is set."),
       ul([
         "On the next banner you meet, click Manage options instead of Accept all.",
@@ -4761,7 +4761,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A bookmark is a saved address with a name you choose. It saves the page, not a copy of it: if the page changes, the bookmark still opens the current version, which is what you want for a bank or a school portal.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul(["A browser open on a page you use often.", "About ten minutes."]),
       h2("The star, the bar, and the menu"),
       p(
@@ -4827,7 +4827,7 @@ export const blogPosts: BlogPost[] = [
         "You clicked a saved link and landed somewhere odd: the site was sold or the address expired. Delete the bookmark and find the official page yourself.",
         "Too many bookmarks to manage: export them once from the menu, then start the bar again with five.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Five minutes and the bar becomes useful rather than decorative."),
       ul([
         "Save the page you visit most, with a name you would say out loud.",
@@ -4858,7 +4858,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "History is a list of pages your browser has visited, with the time and the title. It is a diary kept for your convenience, and it is stored on the machine, not on the websites.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul(["A browser you have used for a few days.", "About ten minutes."]),
       h2("Find last Tuesday"),
       p(
@@ -4922,7 +4922,7 @@ export const blogPosts: BlogPost[] = [
         "Somebody else can see your history: sign out of the browser profile, and use your own profile from now on.",
         "A private window will not open: an extension or a workplace policy is blocking it. Ask before you work around it.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Find one real page today, and the feature stops being abstract."),
       ul([
         "Open history and find a page you visited this week.",
@@ -5058,7 +5058,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "The cloud is somebody else's computer holding a copy of your files. When you open a cloud folder, your device downloads the copy or streams it. The files are not in the air; they are on a server in a data centre, and you reach them through the internet.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "An account with Google Drive, OneDrive, or iCloud.",
         "One folder with a few documents in it.",
@@ -5129,7 +5129,7 @@ export const blogPosts: BlogPost[] = [
         "Files disappeared from the laptop after you deleted them in the cloud: restore them from the cloud trash.",
         "A shared link lets anyone edit your folder: change the link setting to view only, and re-share.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Upload one folder today, and open it on a phone to prove it works."),
       ul([
         "Sign in to your cloud account and check how much space is free.",
@@ -5160,7 +5160,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A shared machine remembers you in more places than you expect: the browser session, the saved password, the Downloads folder, and the account that stays signed in to Windows itself.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "Two minutes now, and this page open on your phone if you can.",
         "A note of any account you signed in to while you were there.",
@@ -5229,7 +5229,7 @@ export const blogPosts: BlogPost[] = [
         "You left a printed page with your details: call and ask them to destroy it.",
         "You are not sure what you signed in to: change the password on the two accounts that matter most, email and bank.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Run the checklist once on your own machine, so it becomes automatic."),
       ul([
         "Sign out of one site and watch the account name disappear.",
@@ -5363,7 +5363,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "You will see the merge run through the list one row at a time, building a page for each person, and the whole document appear at the end ready to check.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "One letter you send to several people.",
         "A list with one person per row, as a spreadsheet.",
@@ -5430,7 +5430,7 @@ export const blogPosts: BlogPost[] = [
         "Accents appear wrong: save the list as a recent format, and use a common font.",
         "You merged to the printer by mistake: cancel the job in the printer queue before it starts.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Practise with three names you invented, so a mistake costs nothing."),
       ul([
         "Make a spreadsheet with three names and three addresses.",
@@ -5461,7 +5461,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A calendar holds the dates. A reminder nudges you before the date arrives. Used together, they replace the mental list that keeps you awake, and they work even when the power is off.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "A phone with a calendar app, or Google Calendar in a browser.",
         "Three real dates you are carrying in your head.",
@@ -5532,7 +5532,7 @@ export const blogPosts: BlogPost[] = [
         "You lost the calendar after changing phones: sign in to the same account, and let it sync.",
         "You have reminders in three places and trust none: choose one, and move everything into it this week.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Three real dates, today, with reminders."),
       ul([
         "Add the three dates you are carrying in your head.",
@@ -5665,7 +5665,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A QR code is a link printed as a picture. Inside the square pattern is a web address, a phone number, or a payment detail. Your camera reads the pattern and offers to open it, and the whole risk is that you follow a printed link without reading it.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "A phone with a camera.",
         "One QR code you trust, such as the one on this page or a bank's own poster.",
@@ -5736,7 +5736,7 @@ export const blogPosts: BlogPost[] = [
         "You paid into the wrong account: call your bank immediately and report the transfer reference.",
         "A poster's code looks like a sticker over another: do not scan it, and tell the shop.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Two scans, both read before tapping, and the habit is formed."),
       ul([
         "Scan one code you trust and read the address before tapping.",
@@ -5767,7 +5767,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "WhatsApp Web is not a second account. It is a window into the chat already on your phone, which means the phone must stay connected and switched on for it to work.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "A phone with WhatsApp and an internet connection.",
         "A computer with a browser.",
@@ -5836,7 +5836,7 @@ export const blogPosts: BlogPost[] = [
         "The computer signed itself out: the session expired. Link it again with the phone.",
         "You left it linked on a public computer: open Linked devices on the phone and remove it now.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Do this once on your own laptop, and once on a borrowed one to feel the difference."),
       ul([
         "Link WhatsApp Web on your own computer.",
@@ -5977,7 +5977,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "If you have never made one before, that is fine. A heading, a picture, and a phone number are the whole poster, and Word can make all three.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "Word, Canva, or any program that can make a page.",
         "One photograph or logo you have the right to use.",
@@ -6046,7 +6046,7 @@ export const blogPosts: BlogPost[] = [
         "Nobody can read the phone number: make it the largest line after the heading.",
         "The poster looks busy: remove one element. Then remove one more.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("One real poster, printed once, checked from three metres away."),
       ul([
         "Write your message in ten words or fewer.",
@@ -6080,7 +6080,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "It looks like a large file must be a better photograph. The size mostly comes from the number of pixels, and a form that asks for a small file is asking for fewer of them.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "One photograph from your phone, already on the computer.",
         "The size limit the form or the inbox asks for, if there is one.",
@@ -6148,7 +6148,7 @@ export const blogPosts: BlogPost[] = [
         "The colours look wrong: the file was saved in an unusual profile. Save again as standard JPG.",
         "The photograph is sideways: rotate it in the viewer and save, then upload again.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("One photograph, reduced once, checked in the email that sends it."),
       ul([
         "Read the size and dimensions of one phone photograph.",
@@ -6292,7 +6292,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A window is one program or one document, and Windows allows as many as the machine can carry. Working with two at once is the difference between copying an address by hand and copying it in one press.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "Two programs or documents open, such as a browser and a document.",
         "About ten minutes.",
@@ -6363,7 +6363,7 @@ export const blogPosts: BlogPost[] = [
         "The two windows overlap and you cannot move one: drag it by the title bar, not the edges.",
         "Everything is tiny in two halves: use the browser zoom, Ctrl and plus, or close the second window.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Two windows, one copy, and the habit is yours."),
       ul([
         "Open a document and a browser.",
@@ -6397,7 +6397,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "You will see everything on the page grow together, including buttons and pictures, and a small percentage appear at the right of the address bar.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul(["A browser, and one document you are happy to practise on.", "About ten minutes."]),
       h2("Zoom a website"),
       p(
@@ -6466,7 +6466,7 @@ export const blogPosts: BlogPost[] = [
         "Everything is bold or double spaced after pasting: the paste carried formatting. Use Paste as plain text.",
         "Printing looks smaller than the screen: zoom does not affect print, so check the print preview.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("One page, two settings, and you will know which to reach for."),
       ul([
         "Zoom a website to 150 percent and read a paragraph.",
@@ -6597,7 +6597,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "You will see a thin coloured line under the word the moment you press the space bar, and it disappears when the word is fixed.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul(["A document you wrote, with at least one page of text.", "About ten minutes."]),
       h2("What the red line means"),
       ul([
@@ -6663,7 +6663,7 @@ export const blogPosts: BlogPost[] = [
         "A correction was applied to every copy: press Ctrl and Z at once.",
         "Autocorrect keeps changing a word you want: turn off that replacement in the autocorrect settings.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("One letter, checked twice, teaches the difference."),
       ul([
         "Write five sentences that each contain one common confusion, such as form and from.",
@@ -6697,7 +6697,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "You will see the words highlighted in the document and a small box showing how many matches were found.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul(["A document with a word that appears several times.", "About ten minutes."]),
       h2("Find it first"),
       p(
@@ -6764,7 +6764,7 @@ export const blogPosts: BlogPost[] = [
         "The dialog closed and you lost the text: press Ctrl and H again, and retype it.",
         "A formatting change came with the replacement: use Paste as plain text, or reformat the new text.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Two minutes on a copy, and the shortcuts stay with you."),
       ul([
         "Write ten lines that use the word is several times.",
@@ -6897,7 +6897,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "You will see the words turn blue or grey and stay that way until you click somewhere else or press an arrow key.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "A page of text you did not write, such as a page from this site.",
         "About ten minutes.",
@@ -6965,7 +6965,7 @@ export const blogPosts: BlogPost[] = [
         "You deleted the wrong selection: press Ctrl and Z at once.",
         "The selection disappears when you click a toolbar button: choose the button first, then select and apply, or leave the selection in place.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Ten deliberate selections, and the mouse stops fighting you."),
       ul([
         "Double-click a word, then copy it with Ctrl and C.",
@@ -6996,7 +6996,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A header is the strip at the top of every page. A footer is the strip at the bottom, where page numbers usually live. Both repeat automatically, which is why you set them once rather than typing on each page.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "A document that runs to at least three pages, or a practice file you can pad out.",
         "About ten minutes.",
@@ -7066,7 +7066,7 @@ export const blogPosts: BlogPost[] = [
         "The header is missing on one page: that page starts a new section. Link it to the previous one.",
         "The numbers vanish when you print: the footer margin is outside the printable area. Increase it slightly.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("One document, numbered and headed, checked in print preview."),
       ul([
         "Take a document of three pages or more.",
@@ -7198,7 +7198,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A signature is the block of text at the bottom of your mail: your name, your role, and one way to reach you. It exists so that the reader does not have to search through old messages for your number.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "An email account you can open in a browser.",
         "A phone number and, if you have one, a job title you can state truthfully.",
@@ -7263,7 +7263,7 @@ export const blogPosts: BlogPost[] = [
         "It appears in the wrong place: the cursor was above it. Put the cursor at the end before you type.",
         "You cannot find the settings: search the mail program's help for signature, which shows the path.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("One signature, set once, checked on a phone."),
       ul([
         "Write your four lines in a note first, and read them aloud.",
@@ -7294,7 +7294,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Every file has a type, written after the dot in its name. Windows uses that ending to choose a program. When the choice is wrong, or no program is registered for that ending, the file looks broken while it is perfectly fine.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul(["One file that opens in a program you did not expect.", "About ten minutes."]),
       h2("Open it with something else, once"),
       p("Start with a single opening, so you do not change the whole system for one file."),
@@ -7361,7 +7361,7 @@ export const blogPosts: BlogPost[] = [
         "Windows asks which program every time: the default was never saved. Set it with the always box ticked.",
         "A file you were sent will not open: ask the sender to export it as a PDF, which any machine can read.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Two files, two changes, and the mystery goes."),
       ul([
         "Turn on file name extensions in the View menu.",
@@ -7491,7 +7491,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "The right button opens a short menu of actions that apply to whatever is under the pointer. Because it changes with context, it is the fastest way to find what you can do with a thing, without hunting through menus at the top of the window.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul(["A folder with a few files in it.", "About ten minutes."]),
       h2("What changes with what you clicked"),
       ul([
@@ -7542,7 +7542,7 @@ export const blogPosts: BlogPost[] = [
         "The menu is missing an item you expect: the program that provides it is not installed.",
         "The menu opens in the wrong place: move the pointer to where you meant and try again.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Ten right-clicks in five places, and the menu stops being a mystery."),
       ul([
         "Right-click a file and open Properties.",
@@ -7579,7 +7579,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "You will see the file icon follow the pointer, and the folder under it highlight when it is ready to receive.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "Two folders open on screen, or one folder and the desktop.",
         "One practice file you do not mind moving.",
@@ -7639,7 +7639,7 @@ export const blogPosts: BlogPost[] = [
         "The pointer shows a crossed circle: the destination does not accept files, such as a program menu.",
         "You moved a folder into itself: Windows refuses this, and the folder stays where it was.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Three drags and two keyboard moves, and the difference is clear."),
       ul([
         "Make two folders on the desktop, and put a test file in one.",
@@ -7775,7 +7775,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Google Docs is a word processor that runs inside the browser. The document lives in your Google account rather than on the machine, and it saves as you type, which is why the light going out mid-sentence no longer costs you the afternoon.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "A browser and a Google account you can sign in to.",
         "About twenty minutes.",
@@ -7846,7 +7846,7 @@ export const blogPosts: BlogPost[] = [
         "The recipient cannot open the link: they need permission. Set it to anyone with the link can view.",
         "Two people edited at once and the text looks odd: check Version history under File to see who changed what.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("One real document, exported and emailed, and the tool is yours."),
       ul([
         "Create a document and give it a real name.",
@@ -7877,7 +7877,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A shared file has two parts: who can open it, and what they can do once inside. Getting the first right is privacy, and getting the second right is safety. Both live in the same small dialog.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "A file in Google Drive, OneDrive, or a similar service.",
         "The email address of the person who needs it.",
@@ -7944,7 +7944,7 @@ export const blogPosts: BlogPost[] = [
         "You were asked for edit access to a form: give view only, unless they truly must change it.",
         "A link appears in a public place: the file is public. Change the access and tell whoever needs to know.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("One file shared, one permission removed, and the habit forms."),
       ul([
         "Share a practice file with your own second address as Viewer.",
@@ -8071,7 +8071,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A spreadsheet stores rows, and each row is one record: a name with its amount, a date with its item. Sorting reorders whole rows. Sorting a single column reorders only that column, and the names no longer match their amounts.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul(["A spreadsheet with a list of at least ten rows.", "About fifteen minutes."]),
       h2("Sort the table, not the column"),
       ul([
@@ -8138,7 +8138,7 @@ export const blogPosts: BlogPost[] = [
         "The filter hides rows you need: clear the filter from Data, then Remove filter.",
         "The list has lost its original order and no numbers were added: sort by a date column, or restore your saved copy.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("One table, sorted three ways, with the original order kept."),
       ul([
         "Make a table with Name, Amount, and Date, and ten rows.",
@@ -8169,7 +8169,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A spreadsheet has no page edges on screen. The program decides where the paper ends, and by default it decides badly for wide tables. The print settings are how you take that decision back.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "A spreadsheet with several columns.",
         "About fifteen minutes, and no printer needed for the setup.",
@@ -8239,7 +8239,7 @@ export const blogPosts: BlogPost[] = [
         "The last column is cut off: increase the left margin, or set the print area to exclude an empty column.",
         "The shop's computer prints differently: send a PDF rather than the spreadsheet file.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Set it up once, and every future print of that sheet works."),
       ul([
         "Open a wide table and read the page count in the preview.",
@@ -8371,7 +8371,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Freezing pins rows or columns in place while the rest scrolls underneath. It changes nothing in the data, and it is stored with the file, so the next person who opens it sees the same view.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "A spreadsheet with a header row and at least thirty rows of data.",
         "About ten minutes.",
@@ -8429,7 +8429,7 @@ export const blogPosts: BlogPost[] = [
         "Printing now shows a repeated header: that is a separate print-title setting, and it is helpful.",
         "A colleague finds the sheet odd: unfreeze before you share it, and let them choose.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Freeze, scroll, unfreeze, and the habit is clear."),
       ul([
         "Open a long list and scroll to the bottom before freezing.",
@@ -8460,7 +8460,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A formula written in one row can be copied to the rows below. The row numbers in the formula shift as it copies, so a formula that adds B2 and C2 becomes B3 and C3 in the next row, which is why the method works.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "A sheet with two or three columns of numbers.",
         "One formula working correctly in the first data row.",
@@ -8531,7 +8531,7 @@ export const blogPosts: BlogPost[] = [
         "The fill copied the formatting as well as the formula: use Paste Special, then Formulas, in future.",
         "The last row is empty: the fill stopped at a gap. Drag to the true end of the data.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Three fills, one lock, and the skill is permanent."),
       ul([
         "Make three columns: Quantity, Price, and Total.",
@@ -8662,7 +8662,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "An error message is the spreadsheet telling you what it could not do. Each message names a different problem, and reading it is faster than guessing.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul(["A sheet, even a practice one, and two minutes of patience.", "About ten minutes."]),
       h2("The four messages, in plain words"),
       ul([
@@ -8729,7 +8729,7 @@ export const blogPosts: BlogPost[] = [
         "The error clears but the total is still wrong: a cell is still text. Check the alignment.",
         "A formula works alone but fails in a table: a cell inside the table has a stray space.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Create each error on purpose once, and you will never fear them again."),
       ul([
         "Type a long number into a narrow column and watch ##### appear.",
@@ -8760,7 +8760,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A video plays in a player, which is a set of controls sitting on top of the picture. Learning five of those controls is enough to watch almost anything.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "A computer or phone with a browser or the video app.",
         "A connection, even a slow one.",
@@ -8852,7 +8852,7 @@ export const blogPosts: BlogPost[] = [
         "The video is not the right one: press the browser back button and choose again.",
         "Data disappears quickly: the quality was set high. Lower it before the next video.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("One search, one pause, one quality change, and the player stops being strange."),
       ul([
         "Search for a short clip about a task you already know.",
@@ -8981,7 +8981,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Airplane mode turns off every radio in the device: the mobile network, wifi, and Bluetooth. The phone still works as a camera, a calculator, and a place to read what you have already saved.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul(["A phone or a laptop.", "About ten minutes."]),
       h2("Turning it on and what stops"),
       ul([
@@ -9045,7 +9045,7 @@ export const blogPosts: BlogPost[] = [
         "The battery drains faster than before: a weak signal was the earlier cause, not the cure.",
         "The switch is greyed out: a system setting or a device management app is blocking it.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Turn it on for ten minutes and watch what stops and what keeps working."),
       ul([
         "Switch airplane mode on and note the icon in the status bar.",
@@ -9076,7 +9076,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Storage is the space your phone keeps for photos, videos, apps, and messages. When that space is full, the phone cannot take a new picture or install an update, and it starts to slow down.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "The phone with the warning.",
         "About thirty minutes, and a charger.",
@@ -9153,7 +9153,7 @@ export const blogPosts: BlogPost[] = [
         "Photos did not copy to the computer: check the cable and choose file transfer, not charging.",
         "The memory card is not seen: reseat it, or format it in the phone before first use.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Ten minutes today saves an evening later."),
       ul([
         "Open the storage screen and write down the free space.",
@@ -9291,7 +9291,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A lock screen is a door between the world and your messages, photos, and accounts. It is the cheapest security you will ever set up, and every phone and laptop already has one.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "The phone or laptop, charged.",
         "A PIN you can remember, not one written on the back of the phone.",
@@ -9371,7 +9371,7 @@ export const blogPosts: BlogPost[] = [
         "The laptop asks for a password you never set: it wants the Microsoft account password.",
         "Facial unlock fails in the dark: type the PIN instead, which always works.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Set one lock today and the habit follows."),
       ul([
         "Set a six-digit PIN on the phone.",
@@ -9402,7 +9402,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A stolen phone is not only a lost device. It is a way into your messages, your bank alerts, and your accounts. Acting quickly closes those doors in a few minutes.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "Another phone, or a friend's phone, or a computer.",
         "Your phone number and the name on the SIM registration.",
@@ -9467,7 +9467,7 @@ export const blogPosts: BlogPost[] = [
         "A friend sends money to the thief: tell them to report it at once, since transfers can sometimes be reversed.",
         "The thief photographs the SIM: blocking the line is the only fix, so call the network first.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Set this up today, while nothing is wrong."),
       ul([
         "Write your IMEI number on paper and keep it at home.",
@@ -9599,7 +9599,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A hotspot is the phone acting as a small wifi router. Other devices connect to it with a password and use the mobile data in the phone's SIM.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "A phone with data and a charged battery.",
         "The laptop you want to connect.",
@@ -9667,7 +9667,7 @@ export const blogPosts: BlogPost[] = [
         "The hotspot name has changed on its own: the network reset the settings. Set it again.",
         "The battery empties in an hour: tethering is heavy. Charge the phone while it works.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("One session, watched carefully, teaches more than the settings do."),
       ul([
         "Set the hotspot name and an eight-character password.",
@@ -9698,7 +9698,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Wifi comes from a router and costs nothing per gigabyte. Mobile data comes from the network and comes out of your bundle. Both can be on at once, and the phone decides which to use.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul(["A phone with both a SIM and a wifi network nearby.", "About ten minutes."]),
       h2("Read the icons"),
       ul([
@@ -9773,7 +9773,7 @@ export const blogPosts: BlogPost[] = [
         "The wifi keeps dropping: move closer to the router, or forget and rejoin.",
         "Both icons are missing: airplane mode is on.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Read the bar, flip both switches, and the phone stops being a mystery."),
       ul([
         "Note which icon is showing now and what it means.",
@@ -9912,7 +9912,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A PDF keeps the pages in order and the layout fixed, so the receiver sees what you saw. Scanning apps do the same job as an office scanner, using the camera you already own.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "The pages you need, flat on a table.",
         "Google Drive on the phone, which scans without an extra app, or any scanning app.",
@@ -9986,7 +9986,7 @@ export const blogPosts: BlogPost[] = [
         "The app will not save: the phone storage is full. Free some space first.",
         "The receiver cannot open the file: it was sent as a photo. Share the PDF itself.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("One two-page scan is enough to learn the whole process."),
       ul([
         "Scan two pages of any document into one file.",
@@ -10017,7 +10017,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A one-time password, or OTP, is a code that works once and dies. It protects you because a thief with your password still cannot get in without the code that only reaches your phone.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul(["A phone that receives texts.", "About ten minutes."]),
       h2("When a code appears"),
       ul([
@@ -10090,7 +10090,7 @@ export const blogPosts: BlogPost[] = [
         "A caller said the code was for a refund: there is no such process. End the call.",
         "You shared a code by mistake: change the password and call the bank, in that order.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Recognise the message before you ever need to act on one."),
       ul([
         "Open one account that uses a code and request one on purpose.",
@@ -10222,7 +10222,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "These messages work by turning a gift into a bill. The fee looks small next to the prize, and each payment leads to another one, each larger than the last.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "Any message you are unsure about.",
         "Ten minutes and a second opinion from somebody at home.",
@@ -10301,7 +10301,7 @@ export const blogPosts: BlogPost[] = [
         "You feel foolish: keeping quiet is what lets the same message reach the next person.",
         "They keep calling: block the number and tell your network provider.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Read the last suspicious message you received and find the signs in it."),
       ul([
         "Count how many of the four signs appear in that message.",
@@ -10333,7 +10333,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A shortcut is two or three keys pressed together. The computer does the same thing as the menu, in a fraction of the movement, and the saving adds up over a working day.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "Any laptop or desktop with a keyboard.",
         "A document you are happy to experiment in.",
@@ -10413,7 +10413,7 @@ export const blogPosts: BlogPost[] = [
         "Copy and paste stops working: something else is on the clipboard, so select again.",
         "Your hand still aches: the break matters more than the shortcut. Adjust the desk height.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Learn two shortcuts a day, which is enough."),
       ul([
         "Open a document, type a sentence, and save with Ctrl and S.",
@@ -10554,7 +10554,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Voice typing sends your speech to a recognition service, which returns text. It works well in a quiet room and struggles near a generator, a market, or a loud fan.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "A phone or laptop with a microphone.",
         "A place with as little background noise as you can find.",
@@ -10634,7 +10634,7 @@ export const blogPosts: BlogPost[] = [
         "It hears your accent poorly: speak slightly more slowly and closer to the phone.",
         "It refuses to work offline: that device needs a connection. Type instead, or move to data.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Dictate one paragraph and correct it, which teaches the whole skill."),
       ul([
         "Open a note and tap the microphone.",
@@ -10665,7 +10665,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "The phone email app is the same mailbox as the one on a computer. A message read on the phone is read everywhere, because the mail sits on the server rather than on either device.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "Your email address and password.",
         "A phone with data or wifi.",
@@ -10742,7 +10742,7 @@ export const blogPosts: BlogPost[] = [
         "The phone shows an old inbox: pull down on the list to refresh.",
         "You signed out by mistake: add the account again with the same steps.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("One received message, one reply, one attachment."),
       ul([
         "Add the account and open the inbox.",
@@ -10883,7 +10883,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A paper in a bag can be lost in one bus trip. A copy in your own account survives the bag, the phone, and the fire, if you can remember where you put it.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "The papers you would hate to replace.",
         "A phone with a camera.",
@@ -10961,7 +10961,7 @@ export const blogPosts: BlogPost[] = [
         "The phone is lost: the copies are in the account, which is exactly the point.",
         "You cannot find a file: search for part of the name, which beats scrolling.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Start with two papers and build the habit."),
       ul([
         "Choose two papers you would hate to lose.",
@@ -10992,7 +10992,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A recovery method is a second way to prove the account is yours. When the password is forgotten, the service sends a code to that address or number instead.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "The accounts you depend on most: email, then the bank, then social.",
         "Access to a second phone number or email address.",
@@ -11061,7 +11061,7 @@ export const blogPosts: BlogPost[] = [
         "The account is locked after attempts: wait twenty-four hours rather than trying again.",
         "You have no recovery method at all: add both today from a device that is still signed in.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Set it up while you are still signed in, which is the only time no code is needed."),
       ul([
         "Open the security settings of your main email account.",
@@ -11202,7 +11202,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A forwarded message arrives without its source. The person who sent it to you did not write it, and the person before them did not either, so nobody is responsible for the claim.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "Any forwarded message on your phone.",
         "A browser, for the checks.",
@@ -11276,7 +11276,7 @@ export const blogPosts: BlogPost[] = [
         "A family group keeps forwarding: post one correction with the link, then let it rest.",
         "You are unsure whether it is true: waiting a day costs nothing and usually settles it.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Take one forwarded message and check it properly."),
       ul([
         "Copy the main claim into a search box in quotation marks.",
@@ -11307,7 +11307,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Online payment sends money before the goods arrive, which is why the seller matters as much as the price. A careful check of five minutes protects a whole month's income.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "The item and the shop page.",
         "A card or a transfer method you are willing to use.",
@@ -11372,7 +11372,7 @@ export const blogPosts: BlogPost[] = [
         "The price changed at checkout: stop, and check the total before confirming.",
         "A courier asks for an extra fee: call the seller on the number on their site, not the courier's.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Check a shop you already use, then one you have never used."),
       ul([
         "Open a shop page and find its contact details.",
@@ -11517,7 +11517,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Most losses during a phone change happen because the old phone was wiped or sold too early. Doing the steps in the right order prevents that entirely.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "Both phones, charged, and a wifi connection.",
         "Your Google or Apple account password.",
@@ -11597,7 +11597,7 @@ export const blogPosts: BlogPost[] = [
         "The old phone was wiped too early: some data can come from the cloud backup, and some cannot.",
         "The new phone is locked to the old account: the previous owner must remove it.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Even without a new phone, run the first half of this today."),
       ul([
         "Back up WhatsApp now and read the last backup date.",
@@ -11628,7 +11628,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A sale online is two strangers agreeing on a price. Most trouble comes from a vague listing or a payment that was never really made, and both are easy to prevent.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "The item, cleaned and charged if it needs power.",
         "Daylight, for photographs.",
@@ -11702,7 +11702,7 @@ export const blogPosts: BlogPost[] = [
         "The buyer disputes the condition: point to the damage photo in the listing.",
         "Somebody asks for your account details to pay you: give only the account number, never a PIN or a code.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Prepare one listing properly, even if you never post it."),
       ul([
         "Choose one item and clean it.",
@@ -11836,7 +11836,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Government portals have moved a great deal of paperwork online. The form is free to fill, the fee is fixed, and an agent who charges for typing is charging for something you can do.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "The documents the form will ask for.",
         "A phone or computer, and a browser.",
@@ -11904,7 +11904,7 @@ export const blogPosts: BlogPost[] = [
         "The site looks official but asks for a card PIN: it is not official. Leave the page.",
         "You cannot find the confirmation email: search the inbox for the reference number.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Find one official page and bookmark it, without submitting anything."),
       ul([
         "Search for one agency you will need this year.",
@@ -11936,7 +11936,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Most of what a beginner needs is already free. The difficulty is not access but choosing, and the choice is easier with three simple tests.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "A connection you can afford for an hour or two a week.",
         "A notebook, paper or digital.",
@@ -12013,7 +12013,7 @@ export const blogPosts: BlogPost[] = [
         "You paid for a course you cannot use: ask for a refund within the platform's window.",
         "You feel too old to start: the first lesson does not know your age, and it works the same.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("One subject, one course, one page of notes this week."),
       ul([
         "Write down one thing you need to learn for work or business.",
@@ -12154,7 +12154,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A short recording from social media is enough for software to copy a voice. The call then sounds like somebody you know, which is why a rule agreed in advance matters more than suspicion in the moment.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "A family member to talk to, today.",
         "Ten minutes.",
@@ -12222,7 +12222,7 @@ export const blogPosts: BlogPost[] = [
         "You are unsure whether a call was real: ask the family question, and treat silence as a no.",
         "Your number was used in the same scam: warn your contacts, since they will be targeted next.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Agree the family question today, while nothing is happening."),
       ul([
         "Choose a question whose answer is not on social media.",
@@ -12253,7 +12253,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Digital clutter is quiet. It costs storage, battery, and sometimes money every month, and nobody notices until the storage warning appears.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "The phone, charged, on wifi.",
         "A bank statement for the last three months.",
@@ -12321,7 +12321,7 @@ export const blogPosts: BlogPost[] = [
         "The bank statement has a charge you cannot identify: call the bank rather than ignoring it.",
         "The phone is slower after the clean-up: restart it, which clears the temporary files.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("One category today, and put the rest in the calendar."),
       ul([
         "Uninstall three apps you have not opened this month.",
@@ -12452,7 +12452,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "An analyst watches a company's systems for signs of trouble, decides what matters, and writes down what happened. Most of the work is reading, judging, and writing, with the tools doing the watching.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "About twenty minutes of reading.",
         "Any experience you already have with troubleshooting, which counts.",
@@ -12538,7 +12538,7 @@ export const blogPosts: BlogPost[] = [
         "You feel out of your depth in the first month: most analysts do, and the queue is the teacher.",
         "The handover note is unclear: ask the previous shift, rather than assuming.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Do one small piece of the job this week, from home."),
       ul([
         "Read about one alert type, such as a failed login burst.",
@@ -12570,7 +12570,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A SOC is a team watching one organisation's systems all day and all night. The room is less dramatic than films suggest: several screens, a shared queue, and a great deal of writing.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "About twenty minutes of reading.",
         "The previous lesson on the analyst's work, if you have not read it.",
@@ -12649,7 +12649,7 @@ export const blogPosts: BlogPost[] = [
         "The night is too quiet to stay awake: use the time for reading the rules, not for scrolling.",
         "The morning shift disagrees with your decision: write down the reason, which settles most disputes.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Write a handover note as an exercise."),
       ul([
         "Imagine three open tickets: one false alarm, one watching, one real.",
@@ -12796,7 +12796,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Zero trust means verify every request, every time: who is asking, from what device, and for what. A familiar network is not a reason to stop checking.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul(["About twenty minutes.", "No technical background needed."]),
       h2("The old model"),
       ul([
@@ -12866,7 +12866,7 @@ export const blogPosts: BlogPost[] = [
         "The approval process is slow: that is a process problem to raise, not a reason to bypass it.",
         "Somebody shares a password to save time: report it, since it removes every check at once.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Apply the idea to your own accounts this week."),
       ul([
         "List the apps that can read your email or files.",
@@ -12897,7 +12897,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A vulnerability assessment checks what is known to be weak, using lists of published problems. It finds missing updates, open services, and default settings, which are the causes of most real incidents.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul(["About twenty minutes.", "The earlier lesson on the analyst's work, for context."]),
       h2("How the check runs"),
       ul([
@@ -12973,7 +12973,7 @@ export const blogPosts: BlogPost[] = [
         "A system owner refuses the scan: raise it with their manager, since the scope was agreed.",
         "A finding is wrong: record it as a false positive with a reason, which stops it returning.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Write a report for a system you know, even a home network."),
       ul([
         "List three systems you own and what each one holds.",
@@ -13107,7 +13107,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A digital signature uses mathematics to show two things: the document has not changed since it was signed, and it came from the holder of a particular key. It says nothing about whether the signer meant what they signed.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul(["About twenty minutes.", "A browser, to look at a padlock."]),
       h2("The padlock, step by step"),
       ul([
@@ -13174,7 +13174,7 @@ export const blogPosts: BlogPost[] = [
         "A PDF signature will not validate on your reader: update the reader before assuming fraud.",
         "An email claims to be signed: look for the badge in the mail app, not a picture in the message.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Look at one certificate properly, which teaches more than a definition."),
       ul([
         "Open a bank site and click the padlock.",
@@ -13206,7 +13206,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "The frontend is everything that runs in your browser. The backend, by contrast, runs on a server and holds the data, and the two talk to each other over the network.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul(["About twenty minutes.", "A browser, and curiosity about how a page is made."]),
       h2("The three languages"),
       ul([
@@ -13270,7 +13270,7 @@ export const blogPosts: BlogPost[] = [
         "Your changes do not appear: the browser cached the old file. Reload with the cache cleared.",
         "You copied code you do not understand: rewrite one line at a time until it makes sense.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Build one page this week, even an ugly one."),
       ul([
         "Create a file with a heading, two paragraphs, and a link.",
@@ -13402,7 +13402,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Agile is a way of working in short cycles with frequent review. DevOps is the habit of building, testing, and releasing automatically, so a small change can go out safely on a Tuesday.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul(["About twenty minutes.", "Any experience of a team project, which is enough."]),
       h2("The short cycle"),
       ul([
@@ -13472,7 +13472,7 @@ export const blogPosts: BlogPost[] = [
         "The stand-up runs for forty minutes: it has become a status report. Take it offline.",
         "Deployment is done by hand at midnight: that is the problem to fix first.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Run one short cycle on any project, paid or unpaid."),
       ul([
         "Write five tasks on cards and put them in one column.",
@@ -13503,7 +13503,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "An analyst does not start with the data. The work starts with a question somebody in the business needs answered by Friday, and the data is the material for the answer.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul(["About twenty minutes.", "A spreadsheet, if you want to follow along by hand."]),
       h2("The question comes first"),
       ul([
@@ -13576,7 +13576,7 @@ export const blogPosts: BlogPost[] = [
         "The analysis takes a week: the question was too broad. Narrow it with the person asking.",
         "Nobody reads the report: lead with the decision, and put the method at the end.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Answer one real question with a table you already have."),
       ul([
         "Choose a question from a business you know.",
@@ -13725,7 +13725,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A good provider will answer every question below without hesitation. A provider that dodges two of them is selling something other than teaching.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "The provider's page, open in a browser.",
         "A notebook for the answers.",
@@ -13793,7 +13793,7 @@ export const blogPosts: BlogPost[] = [
         "The fee was a loan you cannot repay: speak to the lender early, before the arrears grow.",
         "You chose badly: stop attending and keep the money for the next course, rather than finishing out of pride.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Compare two providers using the six questions."),
       ul([
         "Choose two providers for the same subject.",
@@ -13825,7 +13825,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Support work is mostly diagnosis and communication, not deep engineering. Most tickets are the same twelve problems wearing different clothes.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "About twenty minutes.",
         "Any experience of helping a relative with a phone, which is the same skill.",
@@ -13907,7 +13907,7 @@ export const blogPosts: BlogPost[] = [
         "The queue never empties: that is normal. Work by impact, not by arrival order.",
         "You cannot reach a machine: use remote support, or ask the user to read the screen to you.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Write three tickets from problems you have already solved."),
       ul([
         "Choose three fixes you have done for family or friends.",
@@ -14045,7 +14045,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Posting is the smallest part of the work. The job is deciding what to say, saying it regularly, and answering the people who respond.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul(["About twenty minutes.", "A phone with the apps the business already uses."]),
       h2("The week before the week"),
       ul([
@@ -14118,7 +14118,7 @@ export const blogPosts: BlogPost[] = [
         "The owner wants daily posts with no material: explain the cost, and offer three good ones.",
         "Somebody copies the account's pictures: report it to the platform, and add a small mark to future photos.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Plan one week for a business you know."),
       ul([
         "Write four posts with a day and a time for each.",
@@ -14149,7 +14149,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A designer solves a communication problem with type, image, and space. The tool matters less than the brief, and most disputes come from a brief nobody wrote down.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "About twenty minutes.",
         "Any design tool, even a free one, if you want to follow along.",
@@ -14219,7 +14219,7 @@ export const blogPosts: BlogPost[] = [
         "The file will not open at the printer's: send a PDF, which opens anywhere.",
         "The client uses the design without paying: keep the source file until payment, as the agreement states.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Design one flyer for a real business, from brief to file."),
       ul([
         "Write the six-line brief with the owner.",
@@ -14352,7 +14352,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A price is not a guess about what somebody will pay. It is your costs, your time, and a margin, written down so you can repeat it.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "A notebook and a calculator.",
         "Your monthly costs, even roughly.",
@@ -14426,7 +14426,7 @@ export const blogPosts: BlogPost[] = [
         "You feel embarrassed saying a number: write it down and read it aloud once before the call.",
         "The price is right but nobody buys: the offer is unclear, rather than the price being high.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Write one number and one sentence."),
       ul([
         "Add your monthly costs on paper.",
@@ -14457,7 +14457,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A portfolio answers one question: can this person do the job I need done? Everything in it should serve that answer, and everything else should be removed.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "Three pieces of work, finished or nearly finished.",
         "A folder on a computer, or a free page online.",
@@ -14525,7 +14525,7 @@ export const blogPosts: BlogPost[] = [
         "An employer asks for the source files: keep them, and share only what the job needs.",
         "Your work was used without payment: keep dated copies, which is your proof.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Assemble three projects this week, and cut everything else."),
       ul([
         "Choose three pieces, one for each job above.",
@@ -14668,7 +14668,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "An AI assistant predicts likely words from the patterns it was trained on. That makes it fast at drafts and unreliable at facts, since a confident sentence and a correct one look identical.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "An assistant you can open in a browser or app.",
         "One real task, such as a message you must write.",
@@ -14754,7 +14754,7 @@ export const blogPosts: BlogPost[] = [
         "The draft sounds like nobody: read it aloud and replace the phrases you would not say.",
         "It gives different answers each time: that is how it works, so keep the version that passes your check.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("One real message, one check, one correction."),
       ul([
         "Choose a message you must send this week.",
@@ -14785,7 +14785,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Books are not paperwork for its own sake. They answer three questions: did I make money, where did it go, and can I prove it if somebody asks.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "A business account, or a second account used only for the business.",
         "A notebook or a spreadsheet.",
@@ -14868,7 +14868,7 @@ export const blogPosts: BlogPost[] = [
         "You cannot find a receipt: use the bank line plus a written note, and keep both.",
         "The tax question is unclear: ask an accountant once, rather than guessing every year.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Set up the two accounts this week."),
       ul([
         "Open or designate a business account.",
@@ -15015,7 +15015,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Pain at a desk builds slowly and quietly. It is caused by repetition and position, which means small changes repeated daily are the cure.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "The place you actually work, not the one you would like to.",
         "A few books, a box, or a cushion.",
@@ -15089,7 +15089,7 @@ export const blogPosts: BlogPost[] = [
         "The pain continues after a week of changes: see a clinic, since early advice is cheaper.",
         "You cannot concentrate by three in the afternoon: check the light and the last meal, not the willpower.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Change three things today, and keep them for a week."),
       ul([
         "Raise the screen with books until the top is at eye level.",
@@ -15121,7 +15121,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Learning in public means showing the work while it is unfinished. It feels risky and it is useful, because the mistake somebody points out on Tuesday saves a week of guessing.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "One place you already post: a group, a forum, or a social account.",
         "Something you are learning this month.",
@@ -15202,7 +15202,7 @@ export const blogPosts: BlogPost[] = [
         "You feel like an impostor: write the weekly note, which shows progress that memory hides.",
         "The group is full of adverts: find one with moderators, even if it is smaller.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("One question this week, and one note at the end of it."),
       ul([
         "Choose something you are stuck on.",
@@ -15339,7 +15339,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A helper multiplies your time only if the work is handed over properly. Most first hires fail because the task was never described, not because the person could not do it.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "One task you repeat every week.",
         "A written description of how you do it.",
@@ -15413,7 +15413,7 @@ export const blogPosts: BlogPost[] = [
         "Money is short in a quiet month: agree reduced hours in writing, rather than a late payment.",
         "You are still doing everything: you hired for the wrong task. Choose a smaller one.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Write one process before you hire anybody."),
       ul([
         "Pick your most repetitive weekly task.",
@@ -15445,7 +15445,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A certificate proves you attended and passed. A record proves you finished something somebody wanted, and employers increasingly ask for the second.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "A list of certificates you already hold.",
         "One job advert in the field you want.",
@@ -15516,7 +15516,7 @@ export const blogPosts: BlogPost[] = [
         "A course promised a job: check the advert, since employers do the hiring.",
         "You have no work to show: volunteer one piece for a business you know, and date it.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Do the advert count before you spend anything."),
       ul([
         "Find five adverts for the job you want.",
@@ -15660,7 +15660,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Result portals are slow on the day results are released, because thousands of people open them at once. Knowing that in advance prevents most of the panic.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "The candidate's registration number or index number.",
         "The exam year or session, exactly as written on the slip.",
@@ -15729,7 +15729,7 @@ export const blogPosts: BlogPost[] = [
         "The portal asked for a PIN you do not have: ask the school where the PIN is issued.",
         "You lost the printed copy: check the portal again, and print two this time.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Do the preparation before the result is released."),
       ul([
         "Write the registration number and session on paper.",
@@ -15761,7 +15761,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Parental controls are useful and limited. They cannot replace a conversation, and a child who understands the reason follows a rule more reliably than one who only meets a lock.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "The child's device, and the account it uses.",
         "Twenty minutes, and the child in the room if they are old enough to talk to.",
@@ -15830,7 +15830,7 @@ export const blogPosts: BlogPost[] = [
         "The child is being bullied: keep the messages, tell the school, and do not take the phone away as punishment.",
         "The controls lock you out: use the family account's recovery, which is why it was set up under yours.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Set two things this week, and have one conversation."),
       ul([
         "Set the app store to ask for approval.",
@@ -15974,7 +15974,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A video interview is an ordinary interview with an extra risk: the connection, the light, and the sound. Remove those three risks and the conversation is the same as any other.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "The interview time, in both time zones if the employer is abroad.",
         "A phone or laptop with a working camera and microphone.",
@@ -16046,7 +16046,7 @@ export const blogPosts: BlogPost[] = [
         "The camera shows you from below: raise the laptop, and carry on.",
         "The call runs out of time: ask for an email address and send your two questions afterwards.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Record one answer and watch it once."),
       ul([
         "Set the laptop on books and open a window in front of you.",
@@ -16078,7 +16078,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A slide is a support for a person speaking. If the slide says everything, the audience reads it and stops listening, and the speaker becomes unnecessary.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "A talk you must give, or one you could give.",
         "A slide program, though paper works while planning.",
@@ -16152,7 +16152,7 @@ export const blogPosts: BlogPost[] = [
         "The room cannot read the text: read the heading aloud, and move on.",
         "You speak too fast: pause after each slide, which slows the whole talk.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Build five slides for a three-minute talk."),
       ul([
         "Write the one sentence the audience must remember.",
@@ -16299,7 +16299,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Notes fail for two reasons: they are written for the moment rather than for later, and they are stored where they cannot be found. Both are fixed by a simple system.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "A notebook, or a notes app on the phone.",
         "One thing you learned this week.",
@@ -16368,7 +16368,7 @@ export const blogPosts: BlogPost[] = [
         "You stopped writing for a month: restart with one page, not a catch-up.",
         "The handwriting is unreadable: type the important page, which takes ten minutes.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Write one page properly, and add it to an index."),
       ul([
         "Choose something you learned this week.",
@@ -16399,7 +16399,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A pivot table summarises a long list without formulas. It takes one column and counts or adds another, grouping the rows as you choose.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "A list with a header row and no blank rows inside it.",
         "A spreadsheet, on a computer rather than a phone.",
@@ -16480,7 +16480,7 @@ export const blogPosts: BlogPost[] = [
         "New rows are not counted: refresh the table, which is one click.",
         "The dates will not group by month: they are text. Convert the column to a date format.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Build one table from a list you already have."),
       ul([
         "Check the list has one header row and no gaps.",
@@ -16623,7 +16623,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Tools change constantly and skills change slowly. The habit that keeps you employable is learning one useful thing regularly, rather than reacting to every announcement.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "A calendar or a notebook.",
         "One hour a month, at a fixed time.",
@@ -16691,7 +16691,7 @@ export const blogPosts: BlogPost[] = [
         "A course promised a job: check the adverts, since employers hire and courses teach.",
         "You cannot find the hour: take it from scrolling, which is where the hour usually is.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Book the hour, and choose the first thing."),
       ul([
         "Put a monthly hour in the calendar, with an alarm.",
@@ -16722,7 +16722,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "USSD is the menu that appears when you dial a short code, like a text conversation with the bank. It runs on the phone network rather than the internet, which is why it still works when data is finished.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "The SIM registered to your bank account, in the phone.",
         "Your bank's USSD code, printed on its website or the back of your card.",
@@ -16796,7 +16796,7 @@ export const blogPosts: BlogPost[] = [
         "A caller asks for your PIN to reverse a transfer: refuse, and end the call.",
         "The code is rejected: it may have changed. Check the bank's page again.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Do one harmless session today, so the second one is calm."),
       ul([
         "Dial the code and choose the balance option.",
@@ -16931,7 +16931,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Data is spent in the background as well as in front of you. Updates, photo backups, and automatic video play continue while the phone sits in your pocket.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "A phone with data that runs out faster than expected.",
         "The network's bundle size, which you should write down.",
@@ -17007,7 +17007,7 @@ export const blogPosts: BlogPost[] = [
         "Video plays by itself in a feed: set the app to wifi only, which is one switch.",
         "A bundle vanished after one video call: calls use a great deal. Use wifi for long calls.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Do the three settings, then record one week."),
       ul([
         "Set the cycle date to your renewal day.",
@@ -17039,7 +17039,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Card fraud usually needs two things: your card details and your PIN. Covering the PIN and keeping the card in sight removes most of the risk, and both take a second.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "Your card, and the phone number registered with the bank.",
         "A few minutes, and a machine in a well-lit place.",
@@ -17114,7 +17114,7 @@ export const blogPosts: BlogPost[] = [
         "Somebody watched your PIN: change it at the ATM or in the app today.",
         "The card was copied: report it, and check the statement for small test charges.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Add the two habits before your next withdrawal."),
       ul([
         "Save the bank's card-blocking number in your contacts.",
@@ -17253,7 +17253,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A prepaid meter accepts a token, which is a long number that carries the units you paid for. Buy through a channel that gives a receipt, and the money is recoverable when something goes wrong.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "The meter number, which is printed on the meter itself.",
         "A bank app, a USSD code, or an official vending point.",
@@ -17333,7 +17333,7 @@ export const blogPosts: BlogPost[] = [
         "You lost the token: the vending app keeps it under the transaction, so search by date.",
         "The meter number changed after a meter replacement: update the number on paper and in the app.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Set the record up once, and every purchase gets easier."),
       ul([
         "Photograph the meter number and write it on paper.",
@@ -17365,7 +17365,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A cheap fare is often cheap because luggage is excluded. The price you compare should be the price of the journey you actually need, with the bag included.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "The passenger's ID or passport, in front of you.",
         "The travel dates, and some flexibility if there is any.",
@@ -17439,7 +17439,7 @@ export const blogPosts: BlogPost[] = [
         "The flight is cancelled: ask for a rebooking first, and a refund second.",
         "The bag is over the limit: move items to the cabin bag before the counter, not at it.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Rehearse a booking without paying."),
       ul([
         "Search a route on the airline's own site.",
@@ -17572,7 +17572,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A loan app lends small amounts for short periods. The fee looks small because the term is short, and the annual cost is often far higher than any bank's.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "One loan offer, open in the app.",
         "A calculator, or the calculator on the phone.",
@@ -17652,7 +17652,7 @@ export const blogPosts: BlogPost[] = [
         "The app will not delete your data: request deletion in writing, and report it if refused.",
         "A new loan is offered to cover the old one: decline, since that is how the debt grows.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Read one offer and calculate one annual figure."),
       ul([
         "Open an offer and note the amount and the repayment.",
@@ -17684,7 +17684,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A scheme that doubles money in weeks must pay from new deposits rather than from profit. That works until the deposits stop, and then everybody who joined late loses.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "Any offer you have been sent, or one you have heard about.",
         "A calculator.",
@@ -17760,7 +17760,7 @@ export const blogPosts: BlogPost[] = [
         "You introduced others: tell them at once, which is the only honest step left.",
         "You feel ashamed: the shame keeps people from reporting, which protects the scheme.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Practise the three questions on paper."),
       ul([
         "Take any scheme you have heard about.",
@@ -17912,7 +17912,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A fan spins faster when the inside is hot. That noise is the machine asking for help, and dust is the usual reason it cannot breathe.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "The laptop, and a place with good light.",
         "A soft brush or a clean paintbrush.",
@@ -18001,7 +18001,7 @@ export const blogPosts: BlogPost[] = [
         "The laptop is under warranty: take it in before opening anything.",
         "Cleaning did not help: ask the shop to check the paste and the fan together.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Clean one vent this week, and change one habit."),
       ul([
         "Switch off and let the machine cool.",
@@ -18033,7 +18033,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A mechanical hard drive stores data on spinning plates. When it begins to fail, it clicks, slows, and eventually stops, and the data goes with it unless a copy exists elsewhere.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "The laptop in question, switched on.",
         "A memory stick or an external drive with enough space.",
@@ -18112,7 +18112,7 @@ export const blogPosts: BlogPost[] = [
         "The laptop is under warranty: ask before opening, since the warranty may cover the drive.",
         "You deleted a file by mistake: check the recycle bin before doing anything else.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Run a health check this week, whatever your machine is doing."),
       ul([
         "Look for the drive check tool in the system settings.",
@@ -18255,7 +18255,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A used laptop is a good buy when the machine is sound and a bad buy when the battery, the hinge, or the drive is failing. Each of those is testable before money changes hands.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "The meeting, in a public place with a socket.",
         "A phone with a torch.",
@@ -18329,7 +18329,7 @@ export const blogPosts: BlogPost[] = [
         "It overheats within minutes: the vents are blocked, or the paste is gone.",
         "You paid and found a fault: message at once, and keep the conversation in writing.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Test your own laptop, so you know what a good report looks like."),
       ul([
         "Open the battery report and note both capacity figures.",
@@ -18361,7 +18361,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A charger converts the wall's power into the voltage a device needs. When the label does not match the device, or the cable is damaged, the device pays for it.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "Two or three chargers from around the house.",
         "The device each one belongs to.",
@@ -18438,7 +18438,7 @@ export const blogPosts: BlogPost[] = [
         "The charger buzzes: the internal parts are failing, and a replacement costs less than a repair.",
         "A child can reach the socket: fit a cover, which costs almost nothing.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Read three labels and check three cables."),
       ul([
         "Photograph the output label of each charger.",
@@ -18581,7 +18581,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Memory holds what the machine is working on right now. When it is full, the machine swaps to the disk, which is far slower, and everything crawls.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "The laptop, with the programs you normally use open.",
         "A note of the current memory size.",
@@ -18657,7 +18657,7 @@ export const blogPosts: BlogPost[] = [
         "The machine is under warranty: ask the maker before opening it.",
         "You bought the wrong size: return it unopened, since most shops allow that.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Read your own numbers before buying anything."),
       ul([
         "Open Task Manager and note the total memory.",
@@ -18689,7 +18689,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Most repair disputes are about what the machine was like when it arrived, and what was replaced. Both are settled by a photograph and a written receipt, and both take five minutes.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "The device, and the fault described in one sentence.",
         "A phone for photographs.",
@@ -18763,7 +18763,7 @@ export const blogPosts: BlogPost[] = [
         "They kept the old part: ask for it again, citing the receipt line.",
         "They lost the machine: the serial number on the receipt is the record.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Prepare one device, even if nothing is wrong."),
       ul([
         "Photograph the serial number and the back of the device.",
@@ -18899,7 +18899,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "The internet arrives through one line, which may be fibre, a phone line, or a mobile signal. Everything in the house shares that line, which explains most of the slow evenings.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul(["About twenty minutes.", "A look at the box where the line enters the house."]),
       h2("The path, in order"),
       ul([
@@ -18967,7 +18967,7 @@ export const blogPosts: BlogPost[] = [
         "The line works and the wifi does not: restart the router before calling anybody.",
         "A cable is damaged near the door: report it, since a customer repair can break the fibre.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Find the wall box and learn one number."),
       ul([
         "Find where the line enters the house.",
@@ -18999,7 +18999,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A router is a small computer with a modem inside. The lights are its way of telling you which part is working, and reading them takes ten seconds.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "The router, and a moment to look at it.",
         "The provider's support number.",
@@ -19074,7 +19074,7 @@ export const blogPosts: BlogPost[] = [
         "The wifi light is off: somebody pressed the wifi button. Press it again.",
         "The router restarts every hour: the adapter is failing, or it is overheating.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Learn your own lights, so a fault takes ten seconds."),
       ul([
         "Photograph the router while everything works, so you know the normal pattern.",
@@ -19209,7 +19209,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A byte is a small unit of data, and a megabyte is a million of them. Providers sell bundles in megabytes or gigabytes, and they advertise speeds in megabits, which is one eighth of a megabyte.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "Your bundle size and its price.",
         "The data usage screen on the phone.",
@@ -19278,7 +19278,7 @@ export const blogPosts: BlogPost[] = [
         "A download failed at ninety per cent: it will start again, and the data is spent.",
         "An update used the data: the store was set to update on any network.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Work out one daily allowance."),
       ul([
         "Write the bundle size in megabytes.",
@@ -19310,7 +19310,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A slow connection has three possible homes: the device in your hand, the router in the house, and the line from the provider. Testing in that order takes five minutes and saves a wasted call.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "Two devices, one of them a phone.",
         "The router's lights, visible.",
@@ -19381,7 +19381,7 @@ export const blogPosts: BlogPost[] = [
         "It slows at the same hour every evening: the network is busy, which is not a fault in the house.",
         "The router drops the connection hourly: the adapter or the router is failing.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Run the three steps once, while everything works, so you know the numbers."),
       ul([
         "Run a speed test beside the router.",
@@ -19516,7 +19516,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Sharing is a permission rather than a copy. The file stays on one machine, and other machines are allowed to read it, which is why a wrong setting can expose more than you meant.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "Two machines on the same network.",
         "The printer, and its driver if you have it.",
@@ -19587,7 +19587,7 @@ export const blogPosts: BlogPost[] = [
         "A former staff member still opens it: remove the name, then change the password.",
         "Printing is slow: the host machine is busy, and a direct network printer is faster.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Build one small share and check it from the other side."),
       ul([
         "Create a folder called Shared-Documents.",
@@ -19619,7 +19619,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Radio does not stop at a wall. A router in a compound with thin walls can serve three buildings, and a password given once is rarely taken back.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "Access to the router's settings page.",
         "A count of the devices you actually own.",
@@ -19688,7 +19688,7 @@ export const blogPosts: BlogPost[] = [
         "The signal still reaches next door: lower the power or move the router inward.",
         "Somebody changed the router password: reset the router and set it up again.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Separate the two networks this week."),
       ul([
         "Count the devices attached to your network.",
@@ -19823,7 +19823,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A shop needs less than an office and more than a home. Two networks, one router, and a way to keep the till working through a power cut cover most counters.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "The till or POS terminal, and the phone used for transfers.",
         "The router, and its power adapter.",
@@ -19901,7 +19901,7 @@ export const blogPosts: BlogPost[] = [
         "The router dies in a power cut: the supply is too small for the load.",
         "Speed is slow with one customer connected: the guest network shares the same line.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Run the shop's first test cut."),
       ul([
         "Switch on the guest network with its own password.",
@@ -19933,7 +19933,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "People describe a fault as a feeling before they describe it as a fact. A machine that is slow, a page that will not open, a phone that is behaving strangely: each of those is a story with a detail inside it.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "A notebook and a pen.",
         "Twenty minutes with the person, if you can arrange it.",
@@ -20002,7 +20002,7 @@ export const blogPosts: BlogPost[] = [
         "They are angry about an earlier repair: ask what was promised and write it down.",
         "You cannot reproduce the fault: note the conditions, and leave a way to contact you.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Practise the first two minutes on somebody who is not paying you."),
       ul([
         "Ask a friend about a problem with their phone.",
@@ -20136,7 +20136,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A reinstall takes an afternoon and returns the machine to its first day, which also means losing the person's settings. Most faults have a smaller fix, and the smaller fix should come first.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "The machine, and the owner's permission to change things.",
         "A flash drive with the installer, kept for later.",
@@ -20214,7 +20214,7 @@ export const blogPosts: BlogPost[] = [
         "A driver update breaks the display: start in safe mode and roll it back.",
         "The disk check reports errors: copy the data off before anything else.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Run the checks in order on a machine you own."),
       ul([
         "Restart and note the start-up time.",
@@ -20246,7 +20246,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A reset erases the disk and installs a fresh system. It fixes most software faults, and it removes everything the owner had, which is why the conversation comes before the work.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "An external drive with enough space.",
         "The installer drive and the licence key.",
@@ -20320,7 +20320,7 @@ export const blogPosts: BlogPost[] = [
         "The owner's program will not install: find the version that matches the system.",
         "The machine is slower than before: the updates are still running, so give it a day.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Rehearse the reset on a machine nobody depends on."),
       ul([
         "Write the list of installed programs.",
@@ -20458,7 +20458,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A new machine is not ready when it comes out of the box. It needs updates, a sensible name, and a short session with the person who will use it.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "The machine, its charger, and the network password.",
         "An hour, plus time for updates.",
@@ -20530,7 +20530,7 @@ export const blogPosts: BlogPost[] = [
         "The printer will not connect: install the driver before blaming the cable.",
         "The owner is nervous about breaking it: tell them what cannot be broken by tapping.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Write your own setup checklist and use it twice."),
       ul([
         "Charge, connect, and update.",
@@ -20562,7 +20562,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A job card is a page with the fault, the price, and the date. It protects you and the customer, and it ends more arguments than any technical skill.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "A notebook or a pad of printed cards.",
         "A pen that works.",
@@ -20637,7 +20637,7 @@ export const blogPosts: BlogPost[] = [
         "A machine is left for months: write a storage note and a date to sell or return.",
         "Somebody else worked on it first: note the state of the screws and the seals.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Design a card you will actually use."),
       ul([
         "Write six lines: date, name, machine, fault, work, price.",
@@ -20775,7 +20775,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Every technician has an edge, and the edge moves as skills grow. Recognising it before you open the machine is the mark of somebody who works carefully.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "About ten minutes to think about your own limits.",
         "The names of two people you can refer work to.",
@@ -20849,7 +20849,7 @@ export const blogPosts: BlogPost[] = [
         "The customer blames you for the fault: show the notes from the first visit.",
         "You feel you should have known: write the fault down and learn it for next time.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Write your own list of limits."),
       ul([
         "List three faults you will not open.",
@@ -20881,7 +20881,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Support is skilled work, and pricing it properly is not greed. A charge that covers your time and parts keeps you available when a customer needs you again.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "A notebook for the logbook.",
         "A receipt book, or a phone app that prints one.",
@@ -20955,7 +20955,7 @@ export const blogPosts: BlogPost[] = [
         "A job took twice the time: note why, and price that kind of job better.",
         "A customer wants free advice all day: give one answer, then quote the rest.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Put your work on paper for one month."),
       ul([
         "Write your three common jobs and their prices.",
@@ -21093,7 +21093,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "The same four parts work when you ask a colleague for help. A request that carries the situation, the job, the shape, and the limit gets a useful reply the first time, and nobody has to guess what you meant.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "A task you need help with today.",
         "A notebook to write the four parts.",
@@ -21165,7 +21165,7 @@ export const blogPosts: BlogPost[] = [
         "It ignores a limit: repeat the limit alone, in one line.",
         "The topic is too big: ask one part of it at a time.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Rewrite one old request using the four parts."),
       ul([
         "Find a question that gave a poor answer.",
@@ -21197,7 +21197,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A draft is a claim until somebody checks it. The check is short, and it is the difference between using a tool and vouching for one.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "A draft from the assistant.",
         "Two ways to look something up.",
@@ -21268,7 +21268,7 @@ export const blogPosts: BlogPost[] = [
         "The whole draft is shaky: rewrite it from your own notes.",
         "You cannot remember what you changed: keep both versions from now on.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Check three claims in one draft."),
       ul([
         "Ask the assistant for a short paragraph with two numbers in it.",
@@ -21403,7 +21403,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Work documents carry a name, a price, and a promise. A tool can draft the wording, and a person still has to stand behind every line that leaves the building.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "One repetitive writing task from your week.",
         "Your employer's rules on outside tools, if they exist.",
@@ -21480,7 +21480,7 @@ export const blogPosts: BlogPost[] = [
         "The tool invents a policy: check the staff handbook, which is the authority.",
         "A customer asks whether a person wrote it: answer honestly and briefly.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Use it on one task with the details removed."),
       ul([
         "Choose a routine message you write often.",
@@ -21512,7 +21512,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "A photograph used to be evidence. A voice on the phone used to be proof of who was speaking. Both are now easy to copy, and the checks have moved from the picture to the conversation around it.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "About twenty minutes.",
         "One family member to agree a code word with.",
@@ -21581,7 +21581,7 @@ export const blogPosts: BlogPost[] = [
         "A video looks real and frightens you: check the original source before reacting.",
         "You feel foolish: that feeling is the tool the attacker used, and naming it helps.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Agree one code word this week."),
       ul([
         "Choose a word the family will remember.",
@@ -21713,7 +21713,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Learning happens when you try, fail, and try again with attention. Watching somebody else do it feels like learning and leaves very little behind.",
       ),
-      h2("Before you start"),
+      h2("What you will need"),
       ul([
         "One skill you want, named plainly.",
         "Thirty minutes a day for two weeks.",
@@ -21788,7 +21788,7 @@ export const blogPosts: BlogPost[] = [
         "You cannot find a project: build the smallest useful version of the thing.",
         "You compare yourself with others: compare with your attempt last week.",
       ]),
-      h2("Practice"),
+      h2("Your turn"),
       p("Run the loop for one week on one skill."),
       ul([
         "Name the skill in one line.",
@@ -21820,7 +21820,7 @@ export const blogPosts: BlogPost[] = [
       p(
         "Every trade has a part that can be written down and a part that cannot. The written part moves to software first, and the rest stays with the person who can be trusted.",
       ),
-      h2("Before you start"),
+      h2("Before you begin"),
       ul([
         "A list of what your week actually contains.",
         "About twenty minutes.",
@@ -21894,7 +21894,7 @@ export const blogPosts: BlogPost[] = [
         "A skill is not selling: ask three buyers what they would pay for.",
         "You feel too old to start: the first lesson takes thirty minutes.",
       ]),
-      h2("Practice"),
+      h2("Try it now"),
       p("Draw the two columns for your own week."),
       ul([
         "List every task in a normal week.",
