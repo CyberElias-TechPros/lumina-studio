@@ -1,0 +1,762 @@
+[
+  {
+    "slug": "papers-the-bag-cannot-lose",
+    "excerpt": "How to photograph and store the documents you can never replace, which wallet apps accept scans, and how to keep them safe from a lost bag.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to keep digital copies of the papers you cannot afford to lose: certificates, receipts, and identity documents. You will scan them properly, store them where you can find them, and know which offices accept a copy."
+      },
+      {
+        "type": "p",
+        "text": "A paper in a bag can be lost in one bus trip. A copy in your own account survives the bag, the phone, and the fire, if you can remember where you put it."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The papers you would hate to replace.",
+          "A phone with a camera.",
+          "An account you already own, such as Google Drive or OneDrive.",
+          "About an hour, and a second session later for the rest."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Which papers deserve a copy"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Certificates: school, birth, and any professional paper.",
+          "Identity documents, saved with the number visible but not the photograph if you prefer.",
+          "Land or tenancy documents, which are expensive to replace.",
+          "Receipts for anything with a warranty or a loan attached.",
+          "Medical records and immunisation cards, especially for children.",
+          "Business registration and tax papers, which banks ask for repeatedly."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the list looks longer than expected, and it is not urgent to finish it in one day. A folder with five important papers is already a great deal better than none."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/drive-papers.jpg",
+        "alt": "A laptop showing a cloud folder of scanned documents organised by name.",
+        "caption": "One folder per kind of paper, with names a stranger could understand. A folder called misc is the same as no folder."
+      },
+      {
+        "type": "p",
+        "text": "It looks like digital copies are only for people with a scanner. A phone, careful light, and a free scanning app produce copies that offices accept every day."
+      },
+      {
+        "type": "h2",
+        "text": "Take copies that last"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Photograph or scan each paper in daylight, with the whole page inside the frame.",
+          "Check the smallest text on the copy before moving on.",
+          "Scan to PDF rather than a photo, which keeps pages in order.",
+          "Name each file clearly, such as bvn-slip-2026 or school-certificate-ade.",
+          "Keep one folder per kind, not one folder for everything.",
+          "Make a second copy on a memory card or a computer, since one copy is not a backup."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this exposes the paper. A copy in your own account is safer than the original in a bag that travels on public transport."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/certificate-folder.jpg",
+        "alt": "A folder of certificates beside a phone showing the same certificates as scans.",
+        "caption": "The original stays at home. The copy is the one that travels to the office, which is the point of the exercise."
+      },
+      {
+        "type": "h2",
+        "text": "Keep it safe as well as findable"
+      },
+      {
+        "type": "p",
+        "text": "A copy that anybody can open is a risk. The folder needs a lock that does not make it impossible for you."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Use the account's own security, with a strong password and two-step verification.",
+          "Do not put the folder in a public link that anybody with the address can open.",
+          "Name files without account numbers, since names appear in share screens.",
+          "Keep the paper originals at home in one envelope you can find.",
+          "Tell one other person where the copies live, in case you are not available.",
+          "Check once a year that you can still open the folder, because a forgotten password is its own loss."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about the folder looking untidy. Five named files in the right folder beat a hundred unsorted photographs on a phone."
+      },
+      {
+        "type": "h2",
+        "text": "When an office asks for a copy"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Ask whether a printed copy of the scan is acceptable, which most offices allow.",
+          "Print the PDF rather than a photograph, which looks like the paper.",
+          "Carry the original when the paper is a certificate or an identity document.",
+          "Send a link to the file rather than a photograph of the screen.",
+          "Keep the file size small enough for email, or use a shared link.",
+          "Note which office asked for what, so the same request does not surprise you twice."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a next step, and none of them means starting over."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The scan is unreadable: retake it in daylight with the phone flat above the page.",
+          "The file will not open on another device: it was saved as a photo. Rescan as a PDF.",
+          "You cannot remember the folder password: use account recovery now, before you need the papers.",
+          "The office rejects a printed scan: take the original and a printed copy both.",
+          "The phone is lost: the copies are in the account, which is exactly the point.",
+          "You cannot find a file: search for part of the name, which beats scrolling."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Start with two papers and build the habit."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Choose two papers you would hate to lose.",
+          "Scan each one to PDF in good light.",
+          "Name both files clearly.",
+          "Upload them to one folder in your account.",
+          "Confirm the folder opens on the phone and on a computer."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now carry the papers without carrying the risk. In the next lesson you will set up the recovery that saves an account when a password is forgotten."
+      }
+    ]
+  },
+  {
+    "slug": "before-you-forget-the-password",
+    "excerpt": "Setting a recovery email and phone number before you need them, what the reset screen shows, and the details that decide whether you get back in.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is about account recovery: the email address and phone number that let you back in when a password fails. You will set both up, test them, and keep them current. Ten minutes now saves a week of being locked out later."
+      },
+      {
+        "type": "p",
+        "text": "A recovery method is a second way to prove the account is yours. When the password is forgotten, the service sends a code to that address or number instead."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The accounts you depend on most: email, then the bank, then social.",
+          "Access to a second phone number or email address.",
+          "About twenty minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Set both, not one"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Sign in and open Security, then Ways to sign in or Recovery.",
+          "Add a recovery email you check often, ideally a different provider.",
+          "Add a recovery phone number that you will still have in a year.",
+          "Confirm both by entering the code each one receives.",
+          "Add two-step verification, which is the next lesson.",
+          "Record the date you checked these, so you remember to look again."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see a check mark and the words Verified beside each recovery method once it is confirmed. Until that mark appears, the method is only a suggestion and will not work."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/recovery-screen.jpg",
+        "alt": "An account security settings page showing recovery email and phone options.",
+        "caption": "Both methods listed and verified. Two methods matter, because one phone can be lost on the same day as the password."
+      },
+      {
+        "type": "p",
+        "text": "It looks like the recovery phone is the same as the phone you use to sign in. That is fine until the phone is stolen, which is the exact moment you need a second route."
+      },
+      {
+        "type": "h2",
+        "text": "Keep the details current"
+      },
+      {
+        "type": "p",
+        "text": "Most locked-out accounts are caused by an old number, not a forgotten password."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Update the recovery number before you change a SIM, not after.",
+          "Update the recovery email when you stop using an old one.",
+          "Check the recovery details every time you change a phone.",
+          "Make sure a family member knows the recovery email address, not the password.",
+          "Keep the old number active for a month after a change, if the network allows.",
+          "Set a reminder twice a year to look at the list."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this weakens the account. A recovery method that nobody else can reach is the point, and it makes the account stronger rather than weaker."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/recovery-code-paper.jpg",
+        "alt": "A printed card of backup codes kept in a drawer.",
+        "caption": "Backup codes printed and kept somewhere dry. A code on the phone is useless when the phone is gone."
+      },
+      {
+        "type": "h2",
+        "text": "What a reset looks like"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "You type the address on the sign-in page and choose Forgot password.",
+          "The service sends a code to the recovery email or number.",
+          "The code expires in minutes, so keep the screen open.",
+          "Enter the code, then set a new password immediately.",
+          "The service may ask a security question, such as a previous password or the month the account opened.",
+          "Answer from memory rather than guessing, since wrong answers delay the process."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "A reset screen will ask for the last password you remember, which is why writing a hint for yourself matters. A hint that only you would understand is enough."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about the questions you cannot answer. Most services offer a second route, such as a code sent to a recovery phone, when a question fails."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a route, and the first step is the same in each."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The recovery email is one you cannot open: go to that provider first and recover it, then return.",
+          "The recovery number belongs to an old SIM: call the network and ask if the number can be restored.",
+          "The code does not arrive: check spam, wait a minute, then request again once.",
+          "You are asked for an old password: try two or three you have used, then use the phone route.",
+          "The account is locked after attempts: wait twenty-four hours rather than trying again.",
+          "You have no recovery method at all: add both today from a device that is still signed in."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Set it up while you are still signed in, which is the only time no code is needed."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open the security settings of your main email account.",
+          "Add a recovery email and confirm it.",
+          "Add a recovery phone and confirm it.",
+          "Check both show as verified.",
+          "Write the recovery email address on paper and keep it at home."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now lose a password without losing the account. In the next lesson you will add the second lock that stops a thief who already has the password."
+      }
+    ]
+  },
+  {
+    "slug": "the-second-lock",
+    "excerpt": "How two-step verification works, which method to choose, where the backup codes go, and what to do when the phone with the codes is gone.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson sets up two-step verification, which asks for a second proof after the password. You will choose a method, save the backup codes, and know what to do when the usual phone is not available."
+      },
+      {
+        "type": "p",
+        "text": "Two-step verification means a password alone is not enough. Even somebody who knows it needs the code that reaches your phone, which is a lock they cannot copy."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The account you most want to protect.",
+          "The phone that will receive codes.",
+          "A pen and paper for the backup codes.",
+          "About fifteen minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Turn it on"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open Security, then Two-step verification, then Get started.",
+          "Choose the method: a prompt on your phone is the easiest.",
+          "Or choose an authenticator app, which works without a network.",
+          "Or choose text message, which is the most familiar and the least secure.",
+          "Confirm by approving the prompt or entering a code.",
+          "The account now shows two-step verification as on."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see a short list of your methods with the newest at the top, and a button to add another. Adding two methods is the habit that prevents a locked account."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/second-lock.jpg",
+        "alt": "A login screen asking for a second verification code after a password.",
+        "caption": "The second screen appears after the password. That extra step is what stops a thief who already has the password."
+      },
+      {
+        "type": "p",
+        "text": "It looks like the extra step will slow you down every morning. It appears once per device, and the device then stays trusted for weeks."
+      },
+      {
+        "type": "h2",
+        "text": "Which method to choose"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A prompt on the phone is quick and needs no typing.",
+          "An authenticator app works in a place with no signal, which matters on travel.",
+          "A text message is simple and fails when the SIM is lost or the network is down.",
+          "A hardware key is the strongest and costs money, so it suits a business account.",
+          "Choose one primary method and one backup, never only one.",
+          "Avoid email as the second step for the same account, which circles back on itself."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of these need a new phone. The authenticator app is free, and it works on the device you already have."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/backup-codes-paper.jpg",
+        "alt": "A sheet of printed backup codes kept beside a computer.",
+        "caption": "Backup codes printed on paper. They are the way in when the phone is lost, and they work only once each."
+      },
+      {
+        "type": "h2",
+        "text": "The backup codes"
+      },
+      {
+        "type": "p",
+        "text": "Every service gives you a list of one-time codes for the day the phone is gone. Almost nobody saves them, and that is how accounts are lost."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Find Backup codes in the two-step verification settings.",
+          "Print them, or write them on paper by hand.",
+          "Keep the paper somewhere dry and away from the phone.",
+          "Do not store them only in a note on the phone they protect.",
+          "Each code works once, so cross one out as you use it.",
+          "Generate a fresh set after you use two or three."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about losing the paper in a house move. Generate a new set every year, which takes a minute and keeps the list current."
+      },
+      {
+        "type": "h2",
+        "text": "When the phone is not there"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Use one backup code, which replaces the missing phone for that sign-in.",
+          "If the phone is lost, sign out that device from the security page first.",
+          "Add the new phone as a method before removing the old one.",
+          "Ask the service for account recovery if no method works, which takes days.",
+          "Tell your bank and your email provider, since both may be linked.",
+          "Change the password after any lost-device event, even if nothing looks wrong."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a way through, and the paper list solves most of them."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The prompt never arrives: the phone has no data. Connect it to wifi and try again.",
+          "The codes are all used: generate a new set from a signed-in device.",
+          "You changed phones: add the new one before removing the old one.",
+          "The authenticator app shows wrong codes: the phone clock is off. Set the time automatically.",
+          "You are locked out entirely: use account recovery, and expect a delay of several days.",
+          "Two-step verification was switched off by somebody else: change the password at once."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "One account today, the rest over a month."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Turn on two-step verification for your main email.",
+          "Add a second method as a backup.",
+          "Print the backup codes and store them away from the phone.",
+          "Sign out and back in to see the second step.",
+          "Note the date, so you remember to review it next year."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now lose a password and still keep the account. In the next lesson you will recognise the forwarded message that invents its own evidence."
+      }
+    ]
+  },
+  {
+    "slug": "the-forward-that-lies",
+    "excerpt": "How a message changes as it is forwarded, why a screenshot proves less than it seems, and the two checks that stop you passing on a lie.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is about messages that spread because they are forwarded, not because they are true. You will learn how a claim changes as it travels, what a screenshot actually proves, and the two checks to run before you pass something on."
+      },
+      {
+        "type": "p",
+        "text": "A forwarded message arrives without its source. The person who sent it to you did not write it, and the person before them did not either, so nobody is responsible for the claim."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Any forwarded message on your phone.",
+          "A browser, for the checks.",
+          "About ten minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "The signs it has travelled far"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The message begins with FW or a chain of forwarded arrows.",
+          "It says forward to ten people or something will happen.",
+          "The claim is dramatic and has no date, place, or name attached.",
+          "The text uses capital letters for words like URGENT or BEWARE.",
+          "It names a bank, a network, or a government office without a reference number.",
+          "The same message arrives from three contacts in one week."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the forwarding header at the top of the message, which is the clearest evidence that you are not the first reader. That header is usually the only fact in the whole message."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/forwarded-many-times.jpg",
+        "alt": "A phone message showing several layers of forwarded headers.",
+        "caption": "Each header is one more person who passed it on without checking. The chain is the warning."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a screenshot is proof, since a picture is hard to fake in a hurry. A screenshot is a picture of a message somebody typed, and typing is free."
+      },
+      {
+        "type": "h2",
+        "text": "Two checks, two minutes"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Search the exact claim, in quotation marks, and read what comes up.",
+          "Look for the same claim on the organisation's own website or verified account.",
+          "Check the date, since old warnings return every year with a new year attached.",
+          "Call the number printed on the organisation's official page, not the one in the message.",
+          "Ask what the sender would gain, which is often nothing, and what the original author would gain.",
+          "If a news story is quoted, find that story on the news site itself."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The search results will show either the same claim repeated on unknown pages or a correction from a known one. A claim that appears only on forwarded pages has no evidence behind it."
+      },
+      {
+        "type": "p",
+        "text": "You will see the search page return a handful of results, and the address of each site sits under its title. Read those addresses before you read the headlines."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/check-the-forward.jpg",
+        "alt": "A browser showing a search for a claim and a fact-check result.",
+        "caption": "One search with the claim in quotation marks. If the top results are all unknown pages, stop there."
+      },
+      {
+        "type": "h2",
+        "text": "What not to forward"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Anything that asks you to forward it, which exists to spread rather than to inform.",
+          "Warnings about a product that name no authority and no date.",
+          "Messages about a missing child, which are often years old and already resolved.",
+          "Health advice with no clinic or doctor attached, especially about cures.",
+          "Screenshots of a bank alert, since alerts are easy to make with a template.",
+          "Anything that would frighten a family member if it were untrue."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this means every forwarded message is false. It means the sender is not the evidence, and the check takes less time than the forwarding."
+      },
+      {
+        "type": "p",
+        "text": "A fact-check page will show the claim in bold at the top and a verdict such as false or misleading underneath. If no such page exists, that absence is the answer."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about offending the person who sent it. A short reply saying you could not find it anywhere is usually enough, and it stops the next round."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here is repairable, and a correction travels faster than people expect."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "You forwarded something false: send a short correction to the same people, which is the whole fix.",
+          "Somebody acted on it: help them undo the step, whether it was a payment or a form.",
+          "You cannot find the original: say plainly that it has no source, which is the finding.",
+          "The claim looks official: check the domain of the website, since a near-copy is common.",
+          "A family group keeps forwarding: post one correction with the link, then let it rest.",
+          "You are unsure whether it is true: waiting a day costs nothing and usually settles it."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Take one forwarded message and check it properly."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Copy the main claim into a search box in quotation marks.",
+          "Read the first three results and note who published them.",
+          "Look for a date on the original claim.",
+          "Decide whether you would forward it now.",
+          "Send one correction or one confirmation to the person who sent it."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now slow a rumour down instead of carrying it. In the next lesson you will pay for something online without losing money to a fake shop."
+      }
+    ]
+  },
+  {
+    "slug": "paying-for-something-online",
+    "excerpt": "How to check an online shop before paying, when to choose pay on delivery, what the checkout padlock means, and the records to keep afterwards.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to pay for something online without losing money to a fake shop. You will check the seller, choose the safest payment method, read the checkout page, and keep a record that helps if something goes wrong."
+      },
+      {
+        "type": "p",
+        "text": "Online payment sends money before the goods arrive, which is why the seller matters as much as the price. A careful check of five minutes protects a whole month's income."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The item and the shop page.",
+          "A card or a transfer method you are willing to use.",
+          "About fifteen minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Check the shop before the price"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Read the shop's contact page, which should show an address and a phone number.",
+          "Check how long the domain has existed, using a free whois lookup.",
+          "Search the shop's name with the word review, and read the recent results.",
+          "Look for a returns policy written in full sentences rather than a line.",
+          "Check whether the same photos appear on several unrelated shops, which is a warning.",
+          "Avoid a shop whose only contact is a chat app and a personal account name."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the shop's page either fill with specific detail about delivery and returns or stay vague. Detail is the sign of a business that expects a complaint, which is exactly what you want."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/pay-on-delivery.jpg",
+        "alt": "A delivery agent handing over a parcel with payment on delivery.",
+        "caption": "Pay on delivery is the safest option where it exists. You see the goods before the money leaves."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a big discount on a known brand means a bargain. A price far below every other seller is the most common sign of a fake listing."
+      },
+      {
+        "type": "h2",
+        "text": "Choose the payment that protects you"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Choose pay on delivery where it is offered, since you inspect before paying.",
+          "Use a card rather than a direct transfer, because a card can be disputed.",
+          "Avoid sending money to a personal account for a business purchase.",
+          "Never send the full amount for a custom order before seeing one photograph of progress.",
+          "Keep the card's own app open, so you see the alert as it happens.",
+          "Decline any request to move the conversation off the shop and pay through chat."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of these remove all risk. They shorten the distance between your money and your proof, which decides whether a complaint can succeed."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/checkout-padlock.jpg",
+        "alt": "A checkout page showing a padlock in the address bar beside a card form.",
+        "caption": "The padlock means the page is encrypted. It says nothing about whether the shop is honest, so it is one check among several."
+      },
+      {
+        "type": "h2",
+        "text": "Read the checkout page"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Check the total, including delivery, before you enter card details.",
+          "Look for a padlock and a full web address, not a shortened one.",
+          "Check the delivery date, which is often later than the page suggests.",
+          "Read the returns line and note the number of days.",
+          "Check the name of the company receiving the money on the final screen.",
+          "Take a screenshot of the confirmation, since that is your record."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about taking screenshots of every purchase. The confirmation page and the delivery date are the two things you will need, and both are on one screen."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a next step, and acting within days matters more than the amount."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The item never arrives: contact the seller in writing, then the platform, then the card issuer.",
+          "The item is not what was described: photograph it as it arrived, before unpacking further.",
+          "The shop stops replying: raise a dispute with your card issuer, with the screenshots attached.",
+          "You paid a personal account: report to your bank at once, since recovery is harder but possible.",
+          "The price changed at checkout: stop, and check the total before confirming.",
+          "A courier asks for an extra fee: call the seller on the number on their site, not the courier's."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Check a shop you already use, then one you have never used."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open a shop page and find its contact details.",
+          "Search the shop's name with the word review.",
+          "Read the returns policy to the end.",
+          "Note whether pay on delivery is offered.",
+          "Compare the total, including delivery, with the price on the listing."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now buy online with your eyes open. In the next lesson you will set up the bank app on your phone and use it safely."
+      }
+    ]
+  }
+]
