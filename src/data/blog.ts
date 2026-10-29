@@ -6115,6 +6115,9 @@ export const blogPosts: BlogPost[] = [
       p(
         "A photograph from a phone camera is large because it holds millions of tiny dots. Most forms want fewer dots, and most inboxes refuse anything over about 25 MB. Reducing the size changes how many dots are kept, not what the picture shows.",
       ),
+      p(
+        "It looks like a large file must be a better photograph. The size mostly comes from the number of pixels, and a form that asks for a small file is asking for fewer of them.",
+      ),
       h2("Before you start"),
       ul([
         "One photograph from your phone, already on the computer.",

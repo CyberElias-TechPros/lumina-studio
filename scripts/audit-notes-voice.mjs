@@ -60,7 +60,7 @@ const LITERARY = [
   "the cupboard",
   "the workbench",
   "the kitchen stool",
-  "like a small",
+  "like a small ",
   "is not a fire",
   "the gate is",
   "the plate",
