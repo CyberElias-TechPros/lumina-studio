@@ -25,7 +25,7 @@ class PublicLessonsUiTest {
         }
         compose.onNodeWithText("Search public lessons").performTextInput("sitting down at a computer")
         compose.onNodeWithText("Sitting down at a computer for the first time").performScrollTo().performClick()
-        compose.onNodeWithTag("public-lesson-list").performScrollToNode(hasText("Name the four things in front of you"))
-        compose.onNodeWithText("Name the four things in front of you").assertIsDisplayed()
+        compose.onNodeWithTag("public-lesson-list").performScrollToNode(hasText("Type your first words"))
+        compose.onNodeWithText("Type your first words").assertIsDisplayed()
     }
 }

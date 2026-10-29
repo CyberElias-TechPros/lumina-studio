@@ -29,6 +29,21 @@ export const CHANGELOG_STARTED = "2026-10-26";
 
 export const changelog: ChangeEntry[] = [
   {
+    date: "2026-10-29",
+    kind: "revised",
+    title: "Every lesson rewritten as direct teaching, in plain English",
+    detail:
+      "The rewrite is finished. All two hundred and ten lessons, chapters one to twenty-one, are now in the plain, direct voice: what you will be able to do, the steps in the order you do them, what your screen should look like, one common misunderstanding, what to do when it fails, and a short practice task. Metaphor, invented characters and em dashes are gone, and the local detail, the figures and the honest limits are kept. The shortest lesson is 608 words and the longest is 1,062, averaging 781. The standard we wrote to is published in docs/notes-rewrite-standard.md.",
+    affected: [
+      { label: "Start at lesson one", href: "/blog/sitting-down-at-a-computer" },
+      { label: "Where your work lives", href: "/blog/files-and-folders" },
+      { label: "Backup before the light goes", href: "/blog/backup-before-the-light-goes" },
+      { label: "Asking for help safely", href: "/blog/asking-for-help-without-the-password" },
+      { label: "Copy and paste between programs", href: "/blog/copy-and-paste-between-programs" },
+      { label: "The last lesson", href: "/blog/the-road-ahead" },
+    ],
+  },
+  {
     date: "2026-10-26",
     kind: "infrastructure",
     title: "Editorial maintenance record opened",
