@@ -1,0 +1,756 @@
+[
+  {
+    "slug": "the-assistant-that-types",
+    "excerpt": "What a chat assistant can and cannot do: the work it saves, the errors it makes without warning, and the rule about what never goes in the box.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson explains the assistant that types back. You will learn what it does well, where it fails without warning, and what you should never paste into it."
+      },
+      {
+        "type": "p",
+        "text": "A chat assistant is a program trained on a large amount of text. It predicts likely wording rather than looking things up, which is the reason it can sound certain and be wrong."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A phone or a computer with internet.",
+          "One real task, such as a letter you owe somebody.",
+          "About twenty minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "What it does well"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Turning rough notes into a readable paragraph.",
+          "Shortening something that has grown too long.",
+          "Explaining a term in plainer words than the original.",
+          "Drafting a letter you will edit anyway.",
+          "Listing options you had not thought of.",
+          "Rewriting the same message in a different tone."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see an answer appear as a block of text, often within a few seconds, and it will look finished. The polish is the trap, since a confident paragraph can still be wrong on the one fact that matters."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/chat-window-laptop-evening.jpg",
+        "alt": "A laptop showing a chat window in the evening.",
+        "caption": "A chat box and a cursor. What comes back is a draft, not a source."
+      },
+      {
+        "type": "p",
+        "text": "It looks like the assistant knows the answer because it answers at once. It is producing likely words, and likely is not the same as true."
+      },
+      {
+        "type": "h2",
+        "text": "Where it fails"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Prices, opening hours, and addresses change, and the training does not.",
+          "Dates and names are often mixed up, and it rarely says so.",
+          "Quotes from a book or a law may be invented, in perfect style.",
+          "Local details, such as a Nigerian office's rules, may be a guess.",
+          "It cannot see your files unless you give them to it.",
+          "It agrees with you when you push, which is a poor sign of truth."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "A reply will sometimes invent a reference with a name, a year, and a page, and the reference will not exist. Treat every citation as unproven until you find the source yourself."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/phone-chat-mic-keyboard.jpg",
+        "alt": "A phone showing a chat microphone and keyboard.",
+        "caption": "Voice or typing, the same caution applies. Speak the question plainly and check the answer."
+      },
+      {
+        "type": "h2",
+        "text": "What never goes in the box"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Passwords, PINs, and one-time codes.",
+          "Bank details, card numbers, or account statements.",
+          "A customer's name with their address or phone number.",
+          "Medical results or another person's private letter.",
+          "Your employer's internal documents.",
+          "Anything you would not send to a stranger by message."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The chat window will keep your words in a history, and many services store them on a server you do not control. Once a detail is pasted, deleting the message does not unsend it."
+      },
+      {
+        "type": "p",
+        "text": "The box at the bottom of the screen will show a blinking cursor and a small arrow beside it, and that arrow sends the message whether it is ready or not. Read what you pasted once more before pressing it."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about using it at all. The rule is simple: talk about the task, not about real people's private details."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a check, and none of them needs a technical background."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The answer sounds certain and is wrong: verify the fact in a second place.",
+          "The tone is too formal: ask for a shorter version in plain words.",
+          "It gives a link that does not open: the link was invented, so search the title instead.",
+          "It forgets what you said earlier: the conversation is too long, so restate the task.",
+          "It refuses a fair request: rephrase without the private detail, or do that part yourself.",
+          "You pasted something private: change the password or the code at once."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Use it once on work you can check."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Write three rough notes about a task.",
+          "Ask the assistant to turn them into one paragraph.",
+          "Find one claim in the paragraph and verify it elsewhere.",
+          "Rewrite the paragraph in your own words.",
+          "Note how long the whole thing took."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now use the assistant without trusting it blindly. In the next lesson you will learn to ask so the answer is useful."
+      }
+    ]
+  },
+  {
+    "slug": "asking-clearly",
+    "excerpt": "Four parts of a good request: context, task, format, and limits, and why a vague question returns a vague answer.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to ask clearly. You will learn the four parts of a useful request, why the answer is only as good as the question, and how to correct one without starting again."
+      },
+      {
+        "type": "p",
+        "text": "A request has four parts: what the situation is, what you want done, what shape the answer should take, and what to avoid. Most disappointing answers are missing one of them."
+      },
+      {
+        "type": "p",
+        "text": "The same four parts work when you ask a colleague for help. A request that carries the situation, the job, the shape, and the limit gets a useful reply the first time, and nobody has to guess what you meant."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A task you need help with today.",
+          "A notebook to write the four parts.",
+          "About fifteen minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "The four parts"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Context: who it is for, and why it is needed.",
+          "Task: the one thing you want produced.",
+          "Format: a list, a paragraph, a table, or a message of a set length.",
+          "Limits: what to leave out, the tone, and the reading level."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the reply follow the shape you asked for, which is why the third part matters. Ask for a table and you get a table, and ask for nothing in particular and you get a page of prose."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/writing-brief-notebook-laptop.jpg",
+        "alt": "A person writing a brief in a notebook beside a laptop.",
+        "caption": "Write the four parts before typing. The brief takes a minute and saves three drafts."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a longer question is a better question. A specific question is better, and long background can bury the one instruction that matters."
+      },
+      {
+        "type": "h2",
+        "text": "A weak request and a strong one"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Weak: write about my business.",
+          "Strong: write a message of four sentences to a customer who paid late, firm but polite.",
+          "Weak: explain the internet.",
+          "Strong: explain how a router shares one line, in six short sentences, for a beginner.",
+          "Weak: make it better.",
+          "Strong: cut this to half the length, keep the price, and remove the apology."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The answer to a weak request will arrive looking complete and be useless, and you will spend the time you saved on rewrites."
+      },
+      {
+        "type": "p",
+        "text": "Your notebook page will show the four lines, and the reply will appear as one paragraph that follows them in order. If a part is missing from the answer, the matching line is missing from your request."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/four-part-note-card.jpg",
+        "alt": "A note card with four lines written on it.",
+        "caption": "Context, task, format, limits. Four lines that change the quality of the reply."
+      },
+      {
+        "type": "h2",
+        "text": "Correcting without starting again"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Say what is wrong, then what to keep.",
+          "Give one instruction at a time when the answer drifts.",
+          "Use the same conversation, so the earlier context stays.",
+          "Ask for a shorter version before asking a different question.",
+          "Keep your best phrasing in the notebook for next time.",
+          "Stop when the answer is good enough, since perfect is a long road."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Keep your best requests in the notebook, because a good request is reusable. The next letter, the next notice, and the next explanation all start from a form that already worked once."
+      },
+      {
+        "type": "p",
+        "text": "None of this needs special knowledge. Four lines written down before you type is the whole skill, and it works with people as well as programs."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about the first answer being poor. The second request, written with the four parts, is where the useful work happens."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here is a question problem rather than a program problem."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The answer is too general: add the audience and the purpose.",
+          "It writes too much: ask for a set number of sentences.",
+          "The tone is wrong: name the tone and the person it is for.",
+          "It repeats your question: the task part is missing, so say what to produce.",
+          "It ignores a limit: repeat the limit alone, in one line.",
+          "The topic is too big: ask one part of it at a time."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Rewrite one old request using the four parts."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Find a question that gave a poor answer.",
+          "Write the four parts in your notebook.",
+          "Send the rewritten request.",
+          "Compare the two answers.",
+          "Keep the better phrasing for future use."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now get a useful draft on the first try. In the next lesson you will check it before anybody else reads it."
+      }
+    ]
+  },
+  {
+    "slug": "checking-the-homework",
+    "excerpt": "Verifying an answer before it leaves your hands: two sources, the facts that drift, and the habit that keeps your name safe.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is about checking the assistant's work. You will learn which facts to verify first, how to use two sources, and the habit that protects your name when the answer is wrong."
+      },
+      {
+        "type": "p",
+        "text": "A draft is a claim until somebody checks it. The check is short, and it is the difference between using a tool and vouching for one."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A draft from the assistant.",
+          "Two ways to look something up.",
+          "About fifteen minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "What to check first"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Numbers: prices, dates, ages, and quantities.",
+          "Names: people, places, companies, and titles.",
+          "Quotes: any sentence in quotation marks.",
+          "Rules: anything that says what is allowed or required.",
+          "Links: every one, opened rather than trusted.",
+          "The conclusion, which can be sound while a detail is wrong."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see a quotation that reads beautifully and is attributed to a person who never said it. Search the words in quotation marks, and if the search returns nothing, treat the line as invented."
+      },
+      {
+        "type": "p",
+        "text": "The results page will show your words in bold wherever they appear, and that is how you see whether a quotation exists anywhere else. A search that returns nothing at all is the strongest sign that the line was made up."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/verifying-with-two-sources.jpg",
+        "alt": "A person comparing two sources on paper and a screen.",
+        "caption": "Two sources, one answer. If they disagree, the fact is not settled yet."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a second answer from the same assistant is a check. The same training produces the same mistake twice, so the second source must come from somewhere else."
+      },
+      {
+        "type": "h2",
+        "text": "Two sources, used properly"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open the official source for anything with rules or prices.",
+          "Use a second, independent source for the same fact.",
+          "Compare the date on each page, since old pages stay online.",
+          "Prefer a page that names its author and its update date.",
+          "Write the fact, the source, and the date in your notes.",
+          "If the two sources disagree, do not use the fact yet."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "A page's footer will often show when it was last updated, and that line decides whether a price from 2021 is still a price. Your notes should carry the same date beside the fact."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/crossed-out-draft-paper.jpg",
+        "alt": "A printed draft with corrections crossed out in pen.",
+        "caption": "Cross out what you cannot prove. A shorter true paragraph beats a longer doubtful one."
+      },
+      {
+        "type": "h2",
+        "text": "Keeping your name safe"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Never send a fact you have not checked yourself.",
+          "Say where a figure came from when you quote one.",
+          "Remove anything you cannot confirm rather than softening it.",
+          "Keep the assistant's draft and your edited version, so you can show your work.",
+          "Tell the person you used a tool if the document is formal.",
+          "Read the final version aloud, which catches what the eye skips."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs a research budget. A browser, a second tab, and a notebook settle most claims in a minute or two."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about slowing down. One careful check before sending protects a reputation that took years to build."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a repair, and honesty is faster than a cover-up."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "You sent a wrong figure: correct it at once, in one line, without excuses.",
+          "The quote was invented: remove it, and say the line was misattributed.",
+          "A link is dead: find the same fact in a stable source and update the reference.",
+          "Two sources disagree: say the figure is disputed rather than choosing one.",
+          "The whole draft is shaky: rewrite it from your own notes.",
+          "You cannot remember what you changed: keep both versions from now on."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Check three claims in one draft."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Ask the assistant for a short paragraph with two numbers in it.",
+          "Find the first number in an official source.",
+          "Find the second in a different source.",
+          "Open every link in the paragraph.",
+          "Correct the draft with a pen, then type the clean version."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now use a draft without becoming its guarantor. In the next lesson you will use the tool for study without cheating yourself."
+      }
+    ]
+  },
+  {
+    "slug": "the-assistant-at-school",
+    "excerpt": "Using a chat assistant for study: the difference between understanding and submitting, and the questions that make it teach rather than answer.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is about using an assistant for school and study. You will learn the difference between learning with it and letting it do the work, and the questions that make it teach rather than answer."
+      },
+      {
+        "type": "p",
+        "text": "A tool that writes your essay has done your assignment and taken your practice. The same tool can explain a topic until you understand it, which is the version worth having."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "One topic you find difficult.",
+          "Your own notes, open beside the chat.",
+          "About thirty minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Study, not submission"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Ask for an explanation at your level, then ask again in simpler words.",
+          "Ask for three practice questions, and answer them before reading the reply.",
+          "Ask it to check your answer and say where the reasoning broke.",
+          "Ask for an example from your own subject or town.",
+          "Ask what a student usually gets wrong on this topic.",
+          "Write your own summary afterwards, with the chat closed."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the same idea return in three different shapes, and the third shape is usually the one that lands. That repetition is the teaching, and it cannot happen if the tool writes the answer for you."
+      },
+      {
+        "type": "p",
+        "text": "The chat window will show your question and then a reply broken into short sections, and the sections are easier to copy by hand than to read once. Copying by hand is the part that makes the topic stay."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/student-studying-with-laptop-night.jpg",
+        "alt": "A student studying at night with a laptop and notes.",
+        "caption": "The chat explains, the hand writes. Learning lives in the writing you do afterwards."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a good answer means you have learned the topic. Reading a clear explanation feels like understanding, and the test is whether you can produce it with the screen turned off."
+      },
+      {
+        "type": "h2",
+        "text": "Where the line is"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A submitted essay written by the tool is not your work.",
+          "A translation you copy without reading teaches you nothing.",
+          "A solved maths problem is useful only after your own attempt.",
+          "A summary of a book is not a substitute for the book your course set.",
+          "Your school's rules decide what is allowed, and they are the authority.",
+          "Asking a teacher is always permitted and usually faster."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The chat window will keep every question you asked, and a school that asks about your process may see a trail of drafts that are not in your voice. Write in your own hand, in your own words, and the question does not arise."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/phone-lesson-notes.jpg",
+        "alt": "A phone showing lesson notes beside a notebook.",
+        "caption": "Notes on the phone, notes in the book. The book is where the topic becomes yours."
+      },
+      {
+        "type": "h2",
+        "text": "Questions that teach"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Explain this in the simplest words you have, for somebody who missed the class.",
+          "Give me one example and one exception.",
+          "Ask me a question and wait for my answer before correcting me.",
+          "Here is my answer: find the first mistake in it, and say nothing else.",
+          "What would a teacher look for in a good answer on this topic?",
+          "Make a five-question test, and mark it after I answer."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs a paid plan. The free version explains, questions, and corrects, and your notebook does the rest."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about asking a question twice. Asking again in plainer words is how anybody learns a hard topic, and the tool does not tire of it."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a correction, and none of them is a disaster."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The explanation is still confusing: ask for an example with numbers or names you know.",
+          "It gives the answer too early: ask for a hint only, then try again yourself.",
+          "It marks your work too kindly: ask it to be strict and to list every error.",
+          "It contradicts your textbook: follow your syllabus, and ask your teacher which is right.",
+          "You feel you are copying: close the chat and write from memory for five minutes.",
+          "You have already submitted its words: tell your teacher before they find out."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Learn one topic with the chat and your notebook."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Write what you already know about the topic.",
+          "Ask for an explanation at your level.",
+          "Answer three practice questions before reading the reply.",
+          "Ask it to find your first mistake.",
+          "Close the screen and write a half-page summary by hand."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now use the assistant to learn rather than to hide. In the next lesson you will use it at work, where the stakes are different."
+      }
+    ]
+  },
+  {
+    "slug": "the-assistant-at-work",
+    "excerpt": "A chat assistant in an office: the drafts it does well, the data that must stay out of it, and who signs off before anything is sent.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is about the assistant at work. You will learn which office tasks it speeds up, which information must never enter the chat, and the approval habit that keeps a team out of trouble."
+      },
+      {
+        "type": "p",
+        "text": "Work documents carry a name, a price, and a promise. A tool can draft the wording, and a person still has to stand behind every line that leaves the building."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "One repetitive writing task from your week.",
+          "Your employer's rules on outside tools, if they exist.",
+          "About twenty minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Where it saves time"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Turning meeting notes into a list of decisions and owners.",
+          "Drafting a first reply to a routine enquiry.",
+          "Shortening a long report to one page.",
+          "Writing the same update for three different audiences.",
+          "Turning a policy into a plain-language notice for staff.",
+          "Preparing a checklist for a task the team repeats."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see a tidy draft in half the time it takes to start from an empty page, and the first sentence is usually the hardest one it solves. Editing a draft is faster than facing the blank screen."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/office-desk-laptop-letter.jpg",
+        "alt": "A laptop on an office desk with a letter being drafted.",
+        "caption": "Draft in the tool, finish in your own words. The signature belongs to a person."
+      },
+      {
+        "type": "p",
+        "text": "It looks like the assistant can be trusted with a customer's file because the file is small. A name, a phone number, and an address together are enough to identify a person, which is exactly what should stay out."
+      },
+      {
+        "type": "h2",
+        "text": "What stays out of the chat"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Customer names with contact details or account numbers.",
+          "Salary, medical, or disciplinary information.",
+          "Contracts and internal reports marked confidential.",
+          "Passwords, access codes, and system addresses.",
+          "Anything a competitor would pay to read.",
+          "Anything your employer's policy names as restricted."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The chat box will accept anything you paste, and it will not warn you. Replace real names with labels such as Customer A, and the draft is equally useful."
+      },
+      {
+        "type": "p",
+        "text": "You will see the same tidy layout in both files, which is why the difference has to be written in the file name. A reader cannot tell which is which by looking."
+      },
+      {
+        "type": "p",
+        "text": "A warning box will appear beside the chat when the service thinks the content is sensitive, and that warning is worth reading before you continue. It does not stop you, and it does tell you that somebody thought about it."
+      },
+      {
+        "type": "p",
+        "text": "On the screen, your edited version and the tool's draft will look equally tidy, which is why the difference has to be written in the file name. A reader cannot tell which is which by looking."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/closed-file-folder-on-desk.jpg",
+        "alt": "A closed file folder on an office desk.",
+        "caption": "Some files stay closed. The task can be described without the person's details."
+      },
+      {
+        "type": "h2",
+        "text": "The approval habit"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Draft with the tool, then read every line yourself.",
+          "Check names, figures, and dates against the file.",
+          "Have the person who owns the relationship read it before sending.",
+          "Keep the draft and the final version in the same folder.",
+          "Note in the file that a tool was used, if policy requires it.",
+          "Send from the team address, not from a personal account."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs a licence or a budget. A clear rule about what stays out, and one reader before sending, covers most of the risk."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about asking permission. A short question to your manager about which tools are allowed protects you more than a clever workaround."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a next step, and speed matters more than dignity."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A draft went out with a wrong figure: correct it in one short message.",
+          "Private details were pasted: tell your manager the same day.",
+          "The reply sounds unlike the company: rewrite it in the team's voice before sending.",
+          "A colleague is using it for everything: share the four-part request and the privacy rule.",
+          "The tool invents a policy: check the staff handbook, which is the authority.",
+          "A customer asks whether a person wrote it: answer honestly and briefly."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Use it on one task with the details removed."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Choose a routine message you write often.",
+          "Replace every real name and number with a label.",
+          "Ask for a draft of a set length and tone.",
+          "Edit it into your own voice.",
+          "Save both versions and note the time saved."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now use the tool at work without lending it your reputation. In the next lesson you will look at pictures and voices, and what they can no longer prove."
+      }
+    ]
+  }
+]
