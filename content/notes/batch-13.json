@@ -1,0 +1,741 @@
+[
+  {
+    "slug": "undo-and-redo",
+    "excerpt": "What Ctrl and Z can bring back, what it cannot, how far back it reaches, and the moment when you should stop working and reach for the Recycle Bin instead.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to undo a mistake and redo it if you change your mind. You will learn the two shortcuts, how far back they reach, and the mistakes they cannot fix. If you have ever deleted a paragraph by accident, this is the key that brings it back."
+      },
+      {
+        "type": "p",
+        "text": "Most programs keep a list of your recent actions. Undo walks backwards through that list. Redo walks forwards again. The list only covers actions inside the program, and it only lasts while the program stays open."
+      },
+      {
+        "type": "p",
+        "text": "You will see the last change disappear from the page each time you press the keys, and the text return exactly as it was."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Any document you are happy to practise on.",
+          "About five minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "The two shortcuts"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Press Ctrl and Z to undo the last thing you did.",
+          "Press it again to undo the one before that, and so on.",
+          "Press Ctrl and Y to redo, which puts back what you just removed.",
+          "On a Mac, use Command and Z, and Command and Shift and Z for redo.",
+          "Look for the curved arrow buttons at the top of the window if you prefer clicking.",
+          "Press Ctrl and Z the moment you notice a mistake, not after three more edits."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the change disappear as you press the keys, one step at a time. If nothing changes, there is either nothing to undo or the program does not support it, which happens in a few simple viewers."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/undo-menu.jpg",
+        "alt": "A word processor toolbar with the undo arrow and its dropdown list.",
+        "caption": "The small arrow beside the undo button opens a list of recent actions, and you can jump back several steps at once."
+      },
+      {
+        "type": "p",
+        "text": "It looks like undo only works once. It works repeatedly, and the limit is the program's memory rather than your patience, usually at least twenty steps."
+      },
+      {
+        "type": "h2",
+        "text": "What undo will not bring back"
+      },
+      {
+        "type": "p",
+        "text": "Undo is powerful inside a program and powerless outside it. Knowing the boundary saves an hour of pressing a key that cannot help."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A file you closed without saving is gone, because undo lives in the open window.",
+          "A file deleted from a folder is a Recycle Bin matter, not an undo matter.",
+          "A mail you already sent cannot be undone from the mail program.",
+          "A change made on another computer is not in your undo list.",
+          "A paste that replaced text can be undone, but only if you have not closed the file.",
+          "An action in a different program is undoable in that program, not in this one."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this is a reason to fear editing. It is a reason to press Ctrl and S often, because a saved file is what makes recovery possible after the window closes."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/recovered-letter.jpg",
+        "alt": "A printed letter with a paragraph restored after an undo.",
+        "caption": "Undo works inside the open window. However, a saved file is what survives the window closing."
+      },
+      {
+        "type": "h2",
+        "text": "When the rope is cut"
+      },
+      {
+        "type": "p",
+        "text": "There are moments when undo cannot help, and each of them has a different answer."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The program closed suddenly: reopen it, since many programs offer to recover the last version.",
+          "You saved over a file you needed: look for version history in the program or the cloud folder.",
+          "You emptied the Recycle Bin: stop using the machine and ask a repairer about recovery.",
+          "You sent an email with a mistake: send a short correction at once, which is normal in offices.",
+          "You deleted a file on a shared drive: tell the owner at once, because they may have a history of it.",
+          "You cannot remember what changed: compare the file with your backup, if you have one."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about losing an afternoon to a single slip. The habit of saving often, plus the Recycle Bin, covers almost every case in the list above."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Each of these is common, and none of them means your work is lost for good."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Ctrl and Z does nothing: the program does not support it, or there is nothing to undo.",
+          "You undid too far: press Ctrl and Y to redo, one step at a time.",
+          "The redo stopped working: you made a new edit after undoing, which clears the redo list.",
+          "You undid a change in the wrong program: switch to that window and press Ctrl and Z again.",
+          "The whole document became blank after undoing: press Ctrl and Y at once, or close without saving and reopen.",
+          "You cannot remember how many steps back: use the dropdown beside the undo arrow to see the list."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Five minutes of deliberate mistakes, and the reflex is built."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Type three sentences in a blank document.",
+          "Delete the middle sentence, then bring it back with Ctrl and Z.",
+          "Undo three more times, then redo three times.",
+          "Open the dropdown beside the undo arrow and read the list.",
+          "Close the document without saving, reopen it, and notice which changes survived."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now take the fear out of editing, because almost everything is one key press away from being reversed. In the next lesson you will select exactly the text you want, instead of fighting the mouse."
+      }
+    ]
+  },
+  {
+    "slug": "selecting-text",
+    "excerpt": "Click, drag, double-click, and Shift-click: four ways to select exactly the text you meant, and how to fix a selection that went wrong.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to select the exact text you want. You will learn four methods, from a single word to a whole document, and how to fix a selection that overshoots. Selecting well makes copying, deleting, and formatting fast."
+      },
+      {
+        "type": "p",
+        "text": "Selecting tells the computer what to act on. Without a selection, a command like delete or bold applies to nothing, or to whatever is next to the cursor. That is why a half-made selection feels like the program is ignoring you."
+      },
+      {
+        "type": "p",
+        "text": "You will see the words turn blue or grey and stay that way until you click somewhere else or press an arrow key."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A page of text you did not write, such as a page from this site.",
+          "About ten minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Four ways to select"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Click once to place the cursor where the next letter will go.",
+          "Double-click a word to select the whole word, including the space after it.",
+          "Triple-click to select the whole paragraph.",
+          "Click at the start, then hold Shift and click at the end, to select a long range.",
+          "Click and drag for anything in between, holding the button down.",
+          "Press Ctrl and A to select everything in the document or page."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the selection change colour, usually blue or grey, and the words stay highlighted after you release the button. If the colour does not appear, the program has not registered the selection and your next command will do nothing."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/selecting-text.jpg",
+        "alt": "Text highlighted in a document after a selection.",
+        "caption": "The colour is the confirmation. A command only acts on what is highlighted, so check before you press anything."
+      },
+      {
+        "type": "p",
+        "text": "It looks like dragging is the only way to select. Dragging across three pages is how a selection goes wrong, and Shift-click does the same job in one press."
+      },
+      {
+        "type": "h2",
+        "text": "Select with the keyboard"
+      },
+      {
+        "type": "p",
+        "text": "For anything longer than a line, the keyboard is more accurate than the mouse."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Hold Shift and press an arrow key to extend the selection one character at a time.",
+          "Hold Shift and press Ctrl and an arrow key to extend it one word at a time.",
+          "Hold Shift and press Ctrl and End to select to the end of the document.",
+          "Press Ctrl and Shift and Home to select from the cursor to the beginning.",
+          "Press an arrow key on its own to cancel the selection and move the cursor.",
+          "On a Mac, use Command in place of Ctrl."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this changes the text. A selection is only a highlight until you give it an instruction, which is why an accidental Ctrl and A is harmless."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/shift-select.jpg",
+        "alt": "Two hands on a keyboard using Shift to extend a selection.",
+        "caption": "Click the start, hold Shift, click the end. That is the whole technique for selecting across several pages."
+      },
+      {
+        "type": "h2",
+        "text": "What to do with a selection"
+      },
+      {
+        "type": "p",
+        "text": "The point of selecting is the command that follows. These are the ones worth knowing on the first day."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Ctrl and C copies it, and Ctrl and X cuts it.",
+          "Ctrl and B makes it bold, Ctrl and I italic, and Ctrl and U underlined.",
+          "The Delete key removes it, which Ctrl and Z can undo.",
+          "Ctrl and F searches within it in some programs, which narrows a search to one section.",
+          "Drag a selection with the mouse to move it somewhere else in the same document.",
+          "Click anywhere else to deselect and keep the text as it was."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about making a perfect selection first time. Selecting is reversible, and pressing an arrow key cancels it without changing anything."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here is undone in a second, and none of them damages the document."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The selection keeps jumping: your palm is touching the laptop trackpad, or the mouse button is not held down.",
+          "You selected too much: hold Shift and click again at the right end, or press an arrow key and start again.",
+          "Ctrl and A selected the whole page instead of the box: click inside the text box first.",
+          "The text will not highlight at all: the page may be an image, or the document may be read-only.",
+          "You deleted the wrong selection: press Ctrl and Z at once.",
+          "The selection disappears when you click a toolbar button: choose the button first, then select and apply, or leave the selection in place."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Ten deliberate selections, and the mouse stops fighting you."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Double-click a word, then copy it with Ctrl and C.",
+          "Triple-click a paragraph, then press an arrow key to cancel.",
+          "Click the first word of a page, hold Shift, and click the last word.",
+          "Select to the end of the document with Ctrl, Shift and End.",
+          "Select one sentence with the keyboard arrows and make it bold."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now choose exactly what a command acts on. In the next lesson you will add page numbers to a document that will be printed and read in order."
+      }
+    ]
+  },
+  {
+    "slug": "page-numbers-and-headers",
+    "excerpt": "How to add page numbers and a header to a long document, why the first page can be different, and what belongs at the top of an official letter.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to add page numbers and a header to a document. You will number pages, put your name and the title at the top, and keep the first page different when the document needs it. It takes ten minutes and saves a reader from shuffling loose pages."
+      },
+      {
+        "type": "p",
+        "text": "A header is the strip at the top of every page. A footer is the strip at the bottom, where page numbers usually live. Both repeat automatically, which is why you set them once rather than typing on each page."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A document that runs to at least three pages, or a practice file you can pad out.",
+          "About ten minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Add the number"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open the Insert menu, then Page number.",
+          "Choose the bottom of the page, and the centre or the right.",
+          "The number appears on every page, and you cannot type it by hand.",
+          "Click the number to change its font or size, which affects all of them at once.",
+          "To start at a different number, choose Format page numbers and set the start value.",
+          "Save and check the print preview, which shows how it will look on paper."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the number sit inside a faint box that only appears while you are editing the header or footer. Click outside it and the numbers look like ordinary text on the page."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/page-numbers.jpg",
+        "alt": "A document footer showing page numbers on several pages.",
+        "caption": "One setting numbers every page. Typing numbers by hand breaks the moment you add or remove a page."
+      },
+      {
+        "type": "p",
+        "text": "It looks like typing the numbers yourself is quicker for a short document. It works until you add a page in the middle, and then every number after it is wrong."
+      },
+      {
+        "type": "h2",
+        "text": "Add a quiet header"
+      },
+      {
+        "type": "p",
+        "text": "A header tells a reader what the document is without turning to the first page. Keep it short and grey, so it does not compete with the writing."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Double-click the top margin to open the header.",
+          "Type your name, then the document title, on one line.",
+          "Use 10 point and a grey colour, so the header does not shout.",
+          "Add the date if the document will be revised, such as Version 2, October 2026.",
+          "Close the header by double-clicking in the body of the page.",
+          "Check one middle page in print preview, not only the first."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this changes the body text. A header is a separate area, and the writing underneath stays exactly where you put it."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/header-letter.jpg",
+        "alt": "A printed document with a small header at the top of the page.",
+        "caption": "Name, title, date. A quiet header helps a reader who finds page four of your document on a desk."
+      },
+      {
+        "type": "h2",
+        "text": "When the first page is different"
+      },
+      {
+        "type": "p",
+        "text": "A letter or a report usually has a title page with no number on it. That is a setting, not a separate document."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open the header, and find the option for a different first page.",
+          "Turn it on, and the first page loses its header and number.",
+          "The numbering continues, so page two still shows two.",
+          "For a letter, skip page numbers entirely unless it runs beyond two pages.",
+          "For a form, number the pages so a reader knows nothing is missing.",
+          "Number the appendix pages separately if the document has one."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry if the setting is hidden in a different place on your version. Search the program's help for different first page, and the path appears in one line."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "These six cases cover almost every numbering complaint, and each has a one-step fix."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The number appears on the first page and should not: turn on Different first page.",
+          "Every page shows one: the numbers were typed by hand. Delete them and insert a real page number.",
+          "The numbering restarts in the middle: there is a section break. Link it to the previous section.",
+          "The number overlaps the text: reduce the footer margin, or move the number to the right.",
+          "The header is missing on one page: that page starts a new section. Link it to the previous one.",
+          "The numbers vanish when you print: the footer margin is outside the printable area. Increase it slightly."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "One document, numbered and headed, checked in print preview."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Take a document of three pages or more.",
+          "Insert page numbers at the bottom centre.",
+          "Add a header with your name and the title in 10 point grey.",
+          "Turn on Different first page and confirm page one has no number.",
+          "Check the print preview for the last page."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now produce a document that stays in order on a desk or in a photocopier. In the next lesson you will use Cc and Bcc without embarrassing yourself in front of thirty people."
+      }
+    ]
+  },
+  {
+    "slug": "cc-bcc-and-reply-all",
+    "excerpt": "What Cc and Bcc actually do, when Reply all is right and when it is a small disaster, and how to write to a group without exposing anyone's address.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson explains Cc, Bcc, and Reply all. You will learn which field shows an address to everybody and which hides it, when the whole group needs your reply, and how to send one message to thirty parents without publishing their addresses."
+      },
+      {
+        "type": "p",
+        "text": "These three controls decide who sees what. Getting them wrong is not a technical failure, it is a small social disaster that people remember, and two minutes of understanding prevents it."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "An email account, and a friend willing to receive a test message.",
+          "About fifteen minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "To, Cc, and Bcc"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "To: the person who must act on the message.",
+          "Cc: people who should know, but do not need to act. Everyone on the mail sees this list.",
+          "Bcc: people who receive a copy without their address appearing to anybody.",
+          "Use Bcc for a group that does not know each other, such as thirty parents.",
+          "Use Cc when your manager needs to see that you have written, and nothing more.",
+          "Bcc yourself when you want a record of what you sent, which is useful for applications."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the Cc and Bcc fields appear under the To field when you click them, and the address chips sit in a row. On most mail programs the Bcc field stays hidden until you click it, which is why people forget it exists."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/cc-bcc.jpg",
+        "alt": "An email compose window showing To, Cc and Bcc fields.",
+        "caption": "To is the person, Cc is the audience, Bcc is the hidden copy. Only Bcc keeps addresses private."
+      },
+      {
+        "type": "p",
+        "text": "It looks like putting everyone in To shows that the message matters to all of them. It also shows everybody else's address, which is the thing people complain about afterwards."
+      },
+      {
+        "type": "h2",
+        "text": "Reply, Reply all, and Forward"
+      },
+      {
+        "type": "p",
+        "text": "The difference matters most on a list of fifty people, where one careless press sends a private sentence to forty-nine strangers."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Reply goes to the sender only.",
+          "Reply all goes to the sender and everyone on the To and Cc lists.",
+          "Forward sends the letter to somebody new, and is how mail leaves a group.",
+          "Use Reply all when the whole group needs your answer, such as a change of time.",
+          "Use Reply when your answer concerns only the sender, such as an apology or a personal detail.",
+          "Never use Reply all to say thank you, and never to argue with one person in front of the others."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this is reversible once sent. The only defence is reading the recipient line before you press Send, every time."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/reply-all.jpg",
+        "alt": "An email with several addresses and the reply all button visible.",
+        "caption": "Reply all sends to every name on the line. On a big list, that is a decision rather than a convenience."
+      },
+      {
+        "type": "h2",
+        "text": "Send to a group without exposing anyone"
+      },
+      {
+        "type": "p",
+        "text": "If you are writing to a class, a church group, or a set of parents, Bcc is not a trick. It is the correct way to protect the list."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Put your own address in To, so the mail has a visible sender.",
+          "Put the group in Bcc, one address at a time or pasted as a list.",
+          "Write the greeting for the group: Dear parents, rather than a single name.",
+          "Check the Bcc list twice, because a typo there goes to a stranger.",
+          "Keep the list in a spreadsheet so you do not rebuild it next month.",
+          "Tell the group that addresses are hidden, which reassures people."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about it looking impersonal. A group mail with hidden addresses is the normal professional form, and the alternative is thirty strangers with each other's emails."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a next step, and the first one is the most common mistake in offices."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "You replied to everybody by accident: send one short apology to the same list, and change nothing else.",
+          "You exposed a group's addresses: tell the group, apologise once, and use Bcc next time.",
+          "Someone asks to be removed from a thread: remove them and confirm it in one line.",
+          "The Bcc did not arrive: check the spam folder of one recipient before resending.",
+          "You cannot find the Bcc field: click the small Cc or Bcc label under the To line.",
+          "A reply went only to the sender by mistake: forward it to the group with a note."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Send three test mails to a friend, and look at what they see."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Send one mail with a friend in To and somebody else in Cc.",
+          "Send one mail with the second address in Bcc instead.",
+          "Ask your friend to tell you which addresses were visible in each.",
+          "Reply to one mail with Reply, and once with Reply all.",
+          "Write a group mail to five addresses, using Bcc, and check the result."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now write to several people without giving away their addresses or your own mistake. In the next lesson you will finish a mail with a signature that looks the same every time."
+      }
+    ]
+  },
+  {
+    "slug": "an-email-signature",
+    "excerpt": "What belongs in an email signature, what never does, how to set it once so every mail ends properly, and why four lines beat a paragraph.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to set an email signature that ends every message properly. You will write four lines that tell a stranger who you are and how to reach you, and you will set it once so it appears automatically. Short signatures get replies; long ones get ignored."
+      },
+      {
+        "type": "p",
+        "text": "A signature is the block of text at the bottom of your mail: your name, your role, and one way to reach you. It exists so that the reader does not have to search through old messages for your number."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "An email account you can open in a browser.",
+          "A phone number and, if you have one, a job title you can state truthfully.",
+          "About ten minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Four lines are enough"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Line one: your full name, as it appears on official documents.",
+          "Line two: your role, if you have one, such as Tailor, or Student, University of Port Harcourt.",
+          "Line three: one phone number, written with the country code.",
+          "Line four: your email address, only if it is different from the one you are sending from.",
+          "No inspirational quote, no coloured background, and no image you did not choose deliberately.",
+          "No home address, no date of birth, and nothing you would not read out in a shop."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the signature appear in the compose window at the bottom of a new mail, separated by a blank line. If it appears in a reply as well, that is normal, and it is why the block must stay short."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/email-signature.jpg",
+        "alt": "An email compose window with a short signature at the bottom.",
+        "caption": "Four lines: name, role, phone, and nothing you would not say aloud. A short signature is read, and a long one is skipped."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a longer signature appears more professional. Most readers stop at the second line, and a paragraph of quotes makes the mail harder to search later."
+      },
+      {
+        "type": "h2",
+        "text": "Set it once"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open the mail program settings and find Signature.",
+          "Create one, and type the four lines.",
+          "Set it to appear on new mails, and on replies if you want it there too.",
+          "Save, then open a new mail and check it appears.",
+          "Send yourself a test mail, and look at it on a phone as well as a computer.",
+          "Update the signature when your role or number changes, which is the part people forget."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs a template or an app. Plain text is more reliable than an image, and it copies correctly into any inbox."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/signature-block.jpg",
+        "alt": "A settings page showing a signature being edited.",
+        "caption": "Set it in the settings, once. Then send yourself a test mail, because it can look different on a phone."
+      },
+      {
+        "type": "h2",
+        "text": "When to leave it out"
+      },
+      {
+        "type": "p",
+        "text": "A signature is a default, not a rule. There are moments when a shorter ending is better."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "In a long thread between colleagues, the signature is noise after the third reply.",
+          "In an application, keep the formal closing in the letter and let the signature repeat your name once.",
+          "Never add an advertisement for your business to a mail you send as an employee.",
+          "Remove the signature when you write from a shared or role address, such as an office inbox.",
+          "In a mail to a friend, a first name is enough."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about being judged for a plain ending. A reader wants your name and a number, and both are easier to find in four lines than in a small poster."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Each case here is a settings fix, and none of them affects the mails already sent."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The signature does not appear: it is switched off, or set only for one type of message.",
+          "It appears twice: delete the second copy in each mail, or set it for new mails only.",
+          "The formatting is broken on a phone: choose plain text rather than an image.",
+          "It shows an old number: update it in settings, and check one sent mail.",
+          "It appears in the wrong place: the cursor was above it. Put the cursor at the end before you type.",
+          "You cannot find the settings: search the mail program's help for signature, which shows the path."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "One signature, set once, checked on a phone."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Write your four lines in a note first, and read them aloud.",
+          "Add them in the mail settings.",
+          "Open a new mail and confirm they appear.",
+          "Send yourself a test mail and open it on a phone.",
+          "Update one detail, such as a role or number, and check it changed."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now end every mail in a way that a stranger can act on. In the next lesson the series moves from the desk to the shop, and the file transfer everyone actually uses."
+      }
+    ]
+  }
+]
