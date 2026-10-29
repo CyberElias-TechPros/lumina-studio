@@ -27,6 +27,7 @@
     "audit:content": "node scripts/adsense-content-quality.mjs",
     "generate:editorial": "node scripts/generate-lesson-editorial.mjs",
     "validate:lessons": "node scripts/validate-lessons.mjs",
+    "audit:notes": "node scripts/audit-notes-voice.mjs",
     "audit:images": "node scripts/audit-image-provenance.mjs",
     "check:ads": "node scripts/check-ad-slots.mjs && node scripts/test-ad-placement.mjs",
     "audit:structure": "node scripts/audit-site-structure.mjs",

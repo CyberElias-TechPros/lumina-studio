@@ -1,0 +1,609 @@
+[
+  {
+    "slug": "a-letter-that-looks-like-one",
+    "excerpt": "Margins, font size, spacing, a real subject line, and why a PDF is the version you send. How to type an application letter that an office will take seriously.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you to type a formal letter in Word or Google Docs and send it as a file that looks the same everywhere. You will set the margins, choose a readable font, write the parts an office expects, and save the result as a PDF." },
+      { "type": "p", "text": "A letter is judged in the first second, before anyone reads a word. Clean margins, one font, and space between paragraphs say that the writer is careful. That impression is free, and most people lose it by changing font size every second line." },
+      { "type": "h2", "text": "Set the page before you type" },
+      { "type": "ul", "items": [
+        "Open Word, Google Docs, or LibreOffice Writer, and start a blank document.",
+        "Set the margins to 2.5 cm on every side. In Word: Layout, then Margins, then Normal.",
+        "Choose one font for the whole letter, such as Calibri or Times New Roman, at size 11 or 12.",
+        "Set the line spacing to 1.15 or 1.5. Never single without space between paragraphs.",
+        "Turn off any background colour, border, or clip art that came with the template."
+      ] },
+      { "type": "p", "text": "Type the letter first and decorate nothing. A letter with five fonts and three colours reads as a poster, not as a message from a serious person." },
+      { "type": "h2", "text": "The parts of a formal letter" },
+      { "type": "p", "text": "Nigerian offices expect the same order, and following it costs you no extra work." },
+      { "type": "ul", "items": [
+        "Your address, then the date, written in full: 29 October 2026.",
+        "The receiver's name and address, if you know them.",
+        "A subject line in bold, such as Application for the Computer Basics programme.",
+        "A greeting that names the person: Dear Mrs Amadi, or Dear Sir or Madam if you truly do not know.",
+        "The body, in two or three short paragraphs. Say who you are, what you want, and what you have attached.",
+        "A closing: Yours faithfully if you did not use a name, Yours sincerely if you did.",
+        "Your full name, your phone number, and your email address under your signature."
+      ] },
+      { "type": "figure", "src": "/images/blog/word-letter.jpg", "alt": "A laptop screen showing a formal letter in a word processor.", "caption": "One font, one size, clear space between paragraphs. The address, date, subject, and closing do most of the work." },
+      { "type": "h2", "text": "Write so the reader can act" },
+      { "type": "p", "text": "The person reading your letter has forty others. Help them by putting the request in the first sentence and the details after it." },
+      { "type": "ul", "items": [
+        "One letter, one request. Do not apply for a job and ask for a loan in the same page.",
+        "Give the reference number if there is one.",
+        "Say what you have attached, and attach it.",
+        "Keep it to one page unless the form asks for more.",
+        "Do not use capitals for emphasis. Use a full stop and a new sentence."
+      ] },
+      { "type": "p", "text": "Check the spelling of the receiver's name twice. A misspelled name at the top of a letter cancels the good impression made by the formatting underneath it." },
+      { "type": "figure", "src": "/images/blog/letter-paper.jpg", "alt": "A printed letter on white paper with a pen beside it.", "caption": "Read the printed page before you sign it. Mistakes that hide on a screen are easy to see on paper." },
+      { "type": "h2", "text": "Save it as a PDF before you send" },
+      { "type": "p", "text": "A .docx file can move when it opens on another computer, especially if the fonts are missing. A PDF keeps every margin and line break exactly where you put them." },
+      { "type": "ul", "items": [
+        "In Word: File, then Save As, then choose PDF.",
+        "In Google Docs: File, then Download, then PDF Document.",
+        "Open the PDF and read it once before you send it.",
+        "Name the file with your name and the purpose: cv-ada-okoro.pdf or application-admission-2026.pdf.",
+        "Attach the PDF, not the .docx, unless the office asks for an editable file."
+      ] },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "ul", "items": [
+        "The text jumps to a new page for no reason: delete the empty paragraphs and check the margins again.",
+        "The font looks different on another computer: save and send the PDF instead.",
+        "The letter spills onto page two with three lines: tighten the spacing or cut a sentence, then check the preview.",
+        "The receiver's name is unknown: use Dear Sir or Madam and close with Yours faithfully.",
+        "You sent the .docx by mistake: send the PDF in a short follow-up, and say it is the same letter in a fixed format."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "ul", "items": [
+        "Type a one-page letter asking for a document from a school or an office.",
+        "Set the margins to 2.5 cm and use one font at size 12.",
+        "Add a bold subject line and a named greeting.",
+        "Save it as a PDF and read it on the screen at full size.",
+        "Print it if you can, and circle anything that looks untidy."
+      ] },
+      { "type": "p", "text": "You can now produce a letter that looks professional and arrives unchanged. The next lesson moves to the photographs that usually travel with it." }
+    ]
+  },
+  {
+    "slug": "photos-off-the-phone",
+    "excerpt": "How to move photographs from a phone to a computer without losing them, why you copy instead of cut, and which pictures are worth keeping.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you to move photographs off your phone and into a folder on a computer. You will use a cable, copy instead of cut, and decide what to keep so the phone does not fill up." },
+      { "type": "p", "text": "A phone is a small, breakable cupboard. Photographs on it are safe only until the screen cracks or the phone is stolen. Moving them to a computer gives you a second copy, and a second copy is the whole point." },
+      { "type": "h2", "text": "Connect the phone with a cable" },
+      { "type": "p", "text": "A charging cable usually carries data as well, but some cheap cables only charge. If the computer does not see the phone, try the cable that came in the box." },
+      { "type": "ul", "items": [
+        "Plug the phone into the computer with the cable.",
+        "On the phone, look for a notification about USB and choose File transfer or Transfer files. Charging only will not show your photographs.",
+        "On Windows, open File Explorer and look for the phone's name in the left column.",
+        "Open the phone, then Internal storage, then DCIM, then Camera.",
+        "On a Mac, open Image Capture or Photos, and wait for the phone to appear."
+      ] },
+      { "type": "figure", "src": "/images/blog/phone-usb.jpg", "alt": "A phone connected to a laptop with a USB cable.", "caption": "Choose File transfer on the phone. If only Charging is selected, the computer will see nothing at all." },
+      { "type": "h2", "text": "Copy, do not cut" },
+      { "type": "p", "text": "Copying leaves the original on the phone. Cutting moves it, and if the transfer fails halfway you have lost the only version. Copy first, check the copy, and only then delete from the phone." },
+      { "type": "ul", "items": [
+        "On the computer, open Pictures and make a folder with the month, such as 2026-10-phone.",
+        "Select the photographs on the phone: click the first, hold Shift, click the last.",
+        "Right-click and choose Copy.",
+        "Open the new folder, right-click an empty space, and choose Paste.",
+        "Wait until the progress window closes. Do not unplug while it is copying.",
+        "Open three photographs from the new folder to confirm they arrived."
+      ] },
+      { "type": "p", "text": "A folder named 2026-10-phone is easier to find than a folder named New folder. Use the year first, because that is how you will think of it later." },
+      { "type": "figure", "src": "/images/blog/pictures-folder.jpg", "alt": "A computer folder showing rows of photographs from a phone.", "caption": "Copy into a folder named for the month. Then the next transfer has an obvious place to go." },
+      { "type": "h2", "text": "Choose what to keep" },
+      { "type": "p", "text": "Phones fill with screenshots, duplicate shots, and videos nobody watches. Clearing them is not vanity. It keeps the phone fast and makes the pictures you care about easy to find." },
+      { "type": "ul", "items": [
+        "Delete blurry photographs as you go through the folder.",
+        "Keep one photograph from each set of five similar shots.",
+        "Keep receipts and documents as well, but rename them so they can be found.",
+        "Move anything you may need to show someone into Documents, not Pictures.",
+        "Empty the phone's Recently Deleted folder only after the computer copy is checked."
+      ] },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "ul", "items": [
+        "The computer does not see the phone: try another cable, another USB port, and choose File transfer again.",
+        "The transfer stops halfway: do not unplug. Cancel, wait, and start again with fewer photographs at a time.",
+        "The photographs are upside down: they will straighten when opened in most viewers, and rotating one saves the new direction.",
+        "You deleted from the phone too early: look in the phone's Recently Deleted or Trash folder within thirty days.",
+        "The computer is full: move older folders to a flash drive before copying more."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "ul", "items": [
+        "Connect your phone and choose File transfer.",
+        "Copy ten photographs into a folder named for this month.",
+        "Open three of them from the computer to prove the copy worked.",
+        "Delete those ten from the phone, then empty the phone's trash.",
+        "Rename one photograph that records something important, such as receipt-shop-october."
+      ] },
+      { "type": "p", "text": "You can now move photographs safely and keep the only copy from living in a phone that can be stolen. The next lesson deals with the messages that ask you to restart the computer." }
+    ]
+  },
+  {
+    "slug": "updates-without-panic",
+    "excerpt": "What a system update does, why it needs the charger and a backup, what never to do while it installs, and how to spot a fake update message.",
+    "body": [
+      { "type": "p", "text": "This lesson explains system updates, why they matter, and how to install one without losing work. You will learn the three things to do before you start, and how to tell a real update from a fake message that wants your money." },
+      { "type": "p", "text": "An update is a repair and a guard in one package. The maker fixes faults and closes security holes that criminals already know about. Skipping updates for a year leaves the machine weak in ways you cannot see." },
+      { "type": "h2", "text": "Save, plug in, then say yes" },
+      { "type": "p", "text": "An update restarts the computer, sometimes more than once. Anything unsaved at that moment is lost, and a laptop that runs out of battery in the middle can be left unable to start." },
+      { "type": "ul", "items": [
+        "Save every open file and close the programs you were using.",
+        "Plug the laptop into power. Do not start a large update on battery.",
+        "Check that you have at least an hour when you do not need the machine.",
+        "Open Settings, then Windows Update, then Check for updates.",
+        "Let it download, then choose Restart now when it asks.",
+        "Leave the machine alone until it reaches the desktop again."
+      ] },
+      { "type": "p", "text": "On a phone, the path is Settings, then System, then System update, or Settings, then General, then Software Update on an iPhone. The rule is the same: charge it, save your work, and wait." },
+      { "type": "figure", "src": "/images/blog/windows-update.jpg", "alt": "A Windows update screen showing a download in progress.", "caption": "Read the screen before you agree. A real update comes from Settings, not from a pop-up in your browser." },
+      { "type": "h2", "text": "What not to do while the bar moves" },
+      { "type": "ul", "items": [
+        "Do not switch the computer off. The bar can sit at thirty percent for twenty minutes, and that is normal.",
+        "Do not unplug the charger, even if the battery looks full.",
+        "Do not press the power button repeatedly. One press can cancel the repair.",
+        "Do not open other programs to pass the time, especially on an old machine.",
+        "Do not believe a message that says the update will delete your files unless you call a number."
+      ] },
+      { "type": "p", "text": "If the machine takes far longer than an hour, look at the screen before you worry. A spinning circle means it is still working. A black screen with a cursor means it is still working. A still screen with an error code means you should photograph the code and search for it on another device." },
+      { "type": "figure", "src": "/images/blog/update-wait.jpg", "alt": "A laptop on a desk showing an update progress bar.", "caption": "Let the bar move. Repeated pressing of the power button during an update is how a repair becomes a workshop bill." },
+      { "type": "h2", "text": "Real updates and fake ones" },
+      { "type": "p", "text": "Updates arrive through the operating system's own settings screen, or through the app store. They do not arrive as a browser pop-up telling you to download a cleaner." },
+      { "type": "ul", "items": [
+        "Real: a notification from Settings, or a badge on the app store.",
+        "Fake: a page that says your computer is infected and offers a download.",
+        "Fake: a phone call saying your bank needs to install something on your phone.",
+        "Fake: an email attachment called update.exe or invoice.pdf.exe.",
+        "When unsure: close everything, open Settings yourself, and check for updates there."
+      ] },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "ul", "items": [
+        "The update is stuck for over two hours: wait another hour if the screen is moving, then hold the power button for ten seconds and start again.",
+        "It restarts in a loop: unplug everything except power, wait, and let it finish. If it repeats for a day, take it to a repairer and say what the screen showed.",
+        "Files look different afterwards: check Documents and the Desktop. Updates do not normally delete files, but they can move shortcuts.",
+        "The computer is very slow for a day: normal. Indexing and cleanup run after a large update.",
+        "An app stopped working: open the app store and update the app too."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "ul", "items": [
+        "Open Settings and find your update screen without using a search engine.",
+        "Note the date of the last update and the version number.",
+        "Save and close everything, plug in, and install any waiting update.",
+        "Write down how long it took, so next time you know what to expect.",
+        "Turn on automatic updates for security fixes, and keep large feature updates for a day you are free."
+      ] },
+      { "type": "p", "text": "You can now update a machine without losing work or panicking at a progress bar. The next lesson makes a copy of what matters, before anything goes wrong at all." }
+    ]
+  },
+  {
+    "slug": "backup-before-the-light-goes",
+    "excerpt": "What to copy, where to keep the copy, and how often. A one-hour monthly habit that survives theft, a dead drive, a repair shop, and a power cut.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you to back up your work: what to copy, where to keep the copy, and how often. One hour a month is enough to protect years of documents, photographs, and certificates." },
+      { "type": "p", "text": "A backup is a second copy kept somewhere else. A copy on the same laptop is not a backup, because theft, fire, and a failed drive take both copies at once. Somewhere else means a flash drive in another room, a cloud account, or both." },
+      { "type": "h2", "text": "Decide what is worth copying" },
+      { "type": "p", "text": "You do not need to copy everything. Programs can be installed again. Your documents cannot be recreated." },
+      { "type": "ul", "items": [
+        "Documents: letters, forms, CVs, school work, certificates.",
+        "Pictures: family photographs and any image you cannot retake.",
+        "A folder of scanned identity papers, kept separately and protected.",
+        "Small business records: invoices, stock lists, customer contacts.",
+        "Anything you would pay money to get back."
+      ] },
+      { "type": "p", "text": "Skip the folders you can download again: music libraries, old installers, and the Downloads folder. Copying them makes the backup slow, and a slow backup is one you stop doing." },
+      { "type": "figure", "src": "/images/blog/backup-drives.jpg", "alt": "Two external drives and a flash drive on a desk beside a notebook.", "caption": "Two copies in two places. A drive in the same bag as the laptop travels with the same thief." },
+      { "type": "h2", "text": "The monthly hour" },
+      { "type": "ul", "items": [
+        "Choose one day a month and write it in your notebook, such as the first Saturday.",
+        "Plug in an external drive or flash drive with enough space.",
+        "Open File Explorer, select Documents and Pictures, then right-click and Copy.",
+        "Open the drive, make a folder named backup-2026-10, and Paste.",
+        "Wait until the progress window closes, then open three files from the copy.",
+        "Unplug safely: click the USB icon near the clock and choose Eject."
+      ] },
+      { "type": "p", "text": "Keep the drive at home in a drawer, not in the laptop bag. If the house is robbed, the bag goes and the drawer stays. If you carry work to the office, use a second small drive that lives in the office." },
+      { "type": "figure", "src": "/images/blog/copying-files.jpg", "alt": "A progress window copying files to an external drive.", "caption": "Wait for the copy to finish, then open the new folder and check. A backup nobody tested is a hope, not a copy." },
+      { "type": "h2", "text": "Cloud, theft, and the repair shop" },
+      { "type": "p", "text": "A cloud service such as Google Drive or OneDrive keeps a copy on a company's computer as well as yours. It protects you from theft and a dead drive, and it lets you reach the file from another machine. It does not protect you from losing access to your own account, so keep the password and the recovery phone number current." },
+      { "type": "ul", "items": [
+        "Upload the important folders, not the whole machine.",
+        "Check the upload finished, and look for the small tick beside the file.",
+        "Use one account for personal files and another for business, so a shared laptop cannot expose both.",
+        "Never store the only copy of a certificate in a cloud account you cannot log into.",
+        "Before leaving a laptop at a repair shop, back up and sign out of your accounts."
+      ] },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "ul", "items": [
+        "The drive is full: delete older backups after the new one is checked, keeping at least two months.",
+        "The copy stopped halfway: start again with one folder at a time.",
+        "The drive makes a clicking sound: stop using it and copy what you can to a new drive.",
+        "You cannot open a file from the backup: open a different program, and try the original on the computer.",
+        "The laptop is stolen: change your email and bank passwords first, then restore the files when you have a machine.",
+        "The repair shop says the disk is dead: ask them not to format it, and take it to a data recovery service if the files matter."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "ul", "items": [
+        "Write down the three folders you would be saddest to lose.",
+        "Copy those three folders to a flash drive today.",
+        "Open three files from the drive to prove the copy is real.",
+        "Set a repeating reminder in your phone for the first Saturday of each month.",
+        "Upload one folder to a cloud account and confirm it appears on a second device."
+      ] },
+      { "type": "p", "text": "You can now make a copy that survives theft, a dead drive, and a power cut. The next lesson shows you how to set up the account that holds the online copy." }
+    ]
+  },
+  {
+    "slug": "a-google-account-on-purpose",
+    "excerpt": "How to create a Google account you will still control in five years: a real name, a recovery phone number, a strong password, and two-step verification.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you to create a Google account on purpose, with details you will still recognise in five years. You will set a recovery phone number and email, add two-step verification, and know which services the account unlocks." },
+      { "type": "p", "text": "A Google account is more than email. It is the key to your Drive files, your phone backup, your YouTube history, and the account details for many other websites that let you sign in with Google. Losing it can lock you out of things you forgot were connected." },
+      { "type": "h2", "text": "Walk there yourself" },
+      { "type": "p", "text": "Type the address yourself instead of following a link, even a link from a friend. That habit, from the lesson on dangerous links, protects the whole account." },
+      { "type": "ul", "items": [
+        "Open a browser and type accounts.google.com.",
+        "Choose Create account, then For my personal use.",
+        "Fill in your first name and surname as they appear on your papers.",
+        "Choose a username you will not be embarrassed to give an employer.",
+        "Avoid numbers that change, such as your age or your current phone number."
+      ] },
+      { "type": "p", "text": "A username like ada.okoro.2026 is easy to read over the phone. A username like sweetgal4life is harder to put on a job application, and you cannot rename it later without creating a new account." },
+      { "type": "figure", "src": "/images/blog/account-form.jpg", "alt": "A laptop showing an account creation form with name and password fields.", "caption": "Use the name on your papers. The account will follow you through school, work, and every phone you own." },
+      { "type": "h2", "text": "Password, phone, recovery" },
+      { "type": "p", "text": "The recovery details are the part people skip, and they are the reason people lose accounts. A recovery phone number is how Google proves the account is yours when you forget the password." },
+      { "type": "ul", "items": [
+        "Use a long password you have not used anywhere else, such as four words joined together.",
+        "Add a phone number you will keep, and keep it active. A number given away can cost you the account.",
+        "Add a second email address you can still open, such as a work or school address.",
+        "Write the username, the phone number, and the password in your notebook.",
+        "Open Security, then Two-step verification, and turn it on.",
+        "Save the backup codes on paper in the same drawer."
+      ] },
+      { "type": "figure", "src": "/images/blog/writing-address.jpg", "alt": "A person writing an email address in a notebook beside a laptop.", "caption": "Write the username and recovery phone down on the day you create the account. Memory is not a recovery method." },
+      { "type": "h2", "text": "What this account is for, and what it is not" },
+      { "type": "p", "text": "Use the account for school, work, documents, and the phone backup. Do not use the same account for everything you would hate to lose." },
+      { "type": "ul", "items": [
+        "Good: email, Google Drive, Google Docs, phone backup, YouTube.",
+        "Good: signing in to a small website that offers Sign in with Google, when you do not care about that site.",
+        "Careful: your bank, your school portal, and your business account deserve their own long password.",
+        "Never: a shared account for an entire family. One person changes the password and everyone is locked out.",
+        "Never: an account you made with a fake name, because you will fail identity checks later."
+      ] },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "ul", "items": [
+        "You forgot the password: use Forgot password, and complete the check on the recovery phone.",
+        "The recovery phone number is dead: use the recovery email, then change the number as soon as you are in.",
+        "You are signed out of everything: sign in on one device, then check Security for sessions you do not recognise.",
+        "Somebody created an account with your name: report it to Google, and tell the people who might be tricked.",
+        "Two-step codes never arrive: check the network, wait for the timer, then use a backup code.",
+        "You cannot create an account: some networks block bulk sign-ups. Try again later on a different connection."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "ul", "items": [
+        "Create the account by typing accounts.google.com yourself.",
+        "Add a recovery phone number and a second email address.",
+        "Turn on two-step verification and save the backup codes on paper.",
+        "Open Drive and upload one document.",
+        "Sign out, sign in again, and confirm the two-step code arrives."
+      ] },
+      { "type": "p", "text": "You can now open an account that you control rather than one that controls you. The next lesson is about the network that carries it." }
+    ]
+  },
+  {
+    "slug": "wifi-at-home-without-mystery",
+    "excerpt": "How Wi-Fi works in the house, how to join a network, how to keep strangers off it, and what to do when the router shows a green light but nothing loads.",
+    "body": [
+      { "type": "p", "text": "This lesson explains home Wi-Fi in plain words. You will learn how the router works, how to join a network, how to keep neighbours off your connection, and what to check when the page will not load." },
+      { "type": "p", "text": "Wi-Fi is a radio inside the house. The router is the small box with one or two lights, connected to the internet by a cable or a phone line. It sends the internet through the air to your phone and laptop." },
+      { "type": "h2", "text": "The box, the light, and the name" },
+      { "type": "ul", "items": [
+        "The router needs power from the wall, and a cable from your internet provider.",
+        "Its light should be steady. A red or blinking light usually means the provider connection is down.",
+        "The network name, called the SSID, is what appears in the list on your phone.",
+        "The Wi-Fi password is printed on a sticker under the router, unless someone changed it.",
+        "The router has an admin password too, which is different from the Wi-Fi password."
+      ] },
+      { "type": "h2", "text": "Join a network" },
+      { "type": "ul", "items": [
+        "On the phone or laptop, open the Wi-Fi list.",
+        "Tap or click the network name you know belongs to that house.",
+        "Type the password exactly. The password is case sensitive, so ABC is not the same as abc.",
+        "Tick Show password if the device offers it, so you can see what you typed.",
+        "Open a page to test the connection."
+      ] },
+      { "type": "figure", "src": "/images/blog/wifi-router.jpg", "alt": "A Wi-Fi router on a shelf with its lights visible.", "caption": "Steady light, network name, password on the sticker. Check those three before you call the provider." },
+      { "type": "h2", "text": "Keep strangers off it" },
+      { "type": "p", "text": "A network with no password is a network any person on the street can use. In a compound, that often means three extra phones sharing the data you paid for." },
+      { "type": "ul", "items": [
+        "Set a password of at least twelve characters, using the strongest option the router offers.",
+        "Never use the router's default password forever. Change it on the day it is installed.",
+        "Write the new Wi-Fi password on a card and stick it inside a drawer, not on the wall.",
+        "Use the guest network for visitors and for a shop, so they cannot see your devices.",
+        "Turn off remote management in the router settings if you do not use it."
+      ] },
+      { "type": "figure", "src": "/images/blog/wifi-list.jpg", "alt": "A phone screen showing a list of available Wi-Fi networks.", "caption": "Names you do not recognise are not automatically threats, but a second strong signal in a compound deserves a question." },
+      { "type": "h2", "text": "Share from a phone, and forget a network" },
+      { "type": "p", "text": "When the router is down, a phone can share its data as a hotspot. Settings, then Hotspot and tethering, then Portable hotspot. Give it a strong password, and switch it off when you finish, because it drains the battery fast." },
+      { "type": "p", "text": "On a computer you used somewhere else, forget that network. Settings, then Network and internet, then Wi-Fi, then Manage known networks, then Forget. On a phone, long-press the network name and choose Forget. This stops the device from reconnecting automatically to a network you no longer trust." },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "ul", "items": [
+        "The network appears but will not connect: forget it, then join again and retype the password.",
+        "The router light is red: the provider connection is down. Call them before you touch any setting.",
+        "Only one device is slow: move closer to the router, and check if the device is updating.",
+        "Pages load slowly for everyone: too many devices or a weak plan. Test with one device first.",
+        "The internet works on the phone but not the laptop: check the laptop is on the right network, then restart the laptop.",
+        "You changed the router password and forgot it: press the reset button on the back for ten seconds, then set it up again."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "ul", "items": [
+        "Find the sticker under your router and read the network name out loud.",
+        "Join the network on one device, typing the password with Show password switched on.",
+        "Check the router's light and note what colour a working connection shows.",
+        "Ask somebody to join the guest network instead of the main one.",
+        "Forget one network your phone joins but you do not need."
+      ] },
+      { "type": "p", "text": "You can now join a network, secure it, and tell the difference between a router problem and a provider problem. The next lesson closes the day with the right way to switch the machine off." }
+    ]
+  },
+  {
+    "slug": "shutdown-sleep-and-the-power-button",
+    "excerpt": "Sleep, shut down, and restart are three different things. What each one does, when to use it, and what to press when the screen stops responding.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you the difference between sleep, shut down, and restart. You will know which one to use at the end of the day, how to store a laptop safely, and what to do when the screen freezes." },
+      { "type": "p", "text": "The power button is not the only way to stop a computer, and using it for everything is hard on the machine. A computer has three ordinary ways to stop, and each one keeps or clears different work." },
+      { "type": "h2", "text": "What each one does" },
+      { "type": "ul", "items": [
+        "Sleep keeps your programs open and uses a little battery. It wakes in seconds.",
+        "Shut down closes every program and starts fresh next time. It takes longer.",
+        "Restart closes everything and starts again immediately, which is what clears a stuck machine.",
+        "Hibernate saves the open screen to the disk and uses no power. It is slower to wake."
+      ] },
+      { "type": "p", "text": "At the end of a working day at a desk, shut down. Between two short tasks, sleep. When something is misbehaving, restart before you try anything else." },
+      { "type": "h2", "text": "Shut down properly" },
+      { "type": "ul", "items": [
+        "Save every file and close the programs you can see.",
+        "Click the Start button.",
+        "Click the power symbol.",
+        "Choose Shut down.",
+        "Wait until the screen goes dark and the machine stops making noise.",
+        "If you are using a laptop, unplug it only after it is off."
+      ] },
+      { "type": "figure", "src": "/images/blog/shutdown-menu.jpg", "alt": "A Windows Start menu open with the shutdown options visible.", "caption": "Start, power, Shut down. This closes your work properly and lets the next start be clean." },
+      { "type": "h2", "text": "The lid, the nap, and the bag" },
+      { "type": "p", "text": "A closed laptop is not necessarily off. It may be asleep, with the work still in memory, and it can wake inside a bag, heat up, and drain the battery." },
+      { "type": "ul", "items": [
+        "Before you close the lid for a journey, shut down, or at least set sleep to happen.",
+        "Do not put a sleeping laptop into a tight bag. Give the fan room while it settles.",
+        "If the machine is hot when you take it out, shut down and let it cool before using it.",
+        "Set the lid action in Settings so closing the lid shuts down, if you always carry it.",
+        "Never leave a laptop asleep on a bed or a cushion, where the vents are covered."
+      ] },
+      { "type": "figure", "src": "/images/blog/power-button.jpg", "alt": "A finger pressing the round power button on a laptop keyboard.", "caption": "A short press starts the machine. Holding the button for ten seconds forces it off, and should be the last resort." },
+      { "type": "h2", "text": "When the screen is frozen" },
+      { "type": "p", "text": "A frozen screen is not always a broken machine. It is often one program that stopped responding. Close the misbehaving program first, and restart only if it refuses." },
+      { "type": "ul", "items": [
+        "Press Ctrl, Shift and Escape together. Task Manager opens.",
+        "Find the program that says Not responding.",
+        "Click it, then click End task.",
+        "Save your other work, then restart from the Start menu.",
+        "If nothing responds at all, hold the power button for ten seconds. Wait, then press it once to start again."
+      ] },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "ul", "items": [
+        "The computer will not start: check the charger and the wall socket, then hold the power button for ten seconds and try once more.",
+        "It starts but the screen stays black: shine a light on the screen. If you can see a faint image, the backlight is failing, not the computer.",
+        "It restarts on its own: an update or an overheating problem. Note what you were doing, and let it cool.",
+        "Everything looks different after a restart: you may be in a temporary profile. Restart once more before worrying.",
+        "The battery drains overnight while asleep: something is keeping it awake. Shut down instead of using sleep."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "ul", "items": [
+        "Open two programs and a document, then put the computer to sleep and wake it.",
+        "Save and shut down properly, using Start and the power symbol.",
+        "Start the machine again and time how long it takes.",
+        "Open Task Manager with Ctrl, Shift and Escape, then close it without ending any task.",
+        "Set the lid behaviour in Settings to what you actually do with the laptop."
+      ] },
+      { "type": "p", "text": "You can now stop a computer in the way that fits the moment, and recover from a freeze without damage. The next lesson is about typing into a website form without losing what you wrote." }
+    ]
+  },
+  {
+    "slug": "filling-a-form-on-a-website",
+    "excerpt": "How to move through a long form without losing your place, what a required field looks like, how to fix the red errors, and why you submit only once when money is involved.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you to fill a website form correctly the first time. You will move through the boxes with the keyboard, fix errors without starting again, and submit once, which matters most when the form involves money." },
+      { "type": "p", "text": "A form is a list of questions the website needs answered before it can act. The boxes are called fields. Some are required, and the page will not continue until they are filled. That is normal, not a rejection." },
+      { "type": "h2", "text": "Read the whole form first" },
+      { "type": "p", "text": "Before you type, scroll from the top to the bottom. Look for what the form will ask, and gather it: a passport photograph, a certificate number, a card, a reference code." },
+      { "type": "ul", "items": [
+        "Note the required fields, usually marked with an asterisk.",
+        "Check the file size and format allowed for an upload, such as PDF under 2 MB.",
+        "Have your reference or application number ready.",
+        "Check whether the form times out. Long forms often do after twenty minutes.",
+        "Read the fee and what it covers before you reach the payment step."
+      ] },
+      { "type": "figure", "src": "/images/blog/web-form.jpg", "alt": "A laptop showing a long online form with several input fields.", "caption": "Scroll the whole form before you type. Most failed submissions are caused by a missing document, not by the website." },
+      { "type": "h2", "text": "Move through the boxes" },
+      { "type": "ul", "items": [
+        "Click the first box and type.",
+        "Press Tab to move to the next box. Shift and Tab moves back.",
+        "Use the space bar to tick a checkbox, and the arrow keys to choose from a drop-down list.",
+        "Press Enter only when you mean to submit. On many forms, Enter submits.",
+        "Do not use the browser back button in the middle of a form. It can clear everything.",
+        "Save a draft if the form offers it, or copy your long answers into a note as you go."
+      ] },
+      { "type": "p", "text": "Type your name exactly as it appears on your papers. A missing middle name can delay a certificate for months. Check your email address and phone number twice, because every reply will go to what you typed." },
+      { "type": "figure", "src": "/images/blog/form-learner.jpg", "alt": "A person filling a form on a laptop with a notebook beside them.", "caption": "Write the answers in a notebook first when the form is long. Then a timeout costs you a retype, not the information." },
+      { "type": "h2", "text": "Required fields and red text" },
+      { "type": "p", "text": "When you press Continue, the website checks what you typed. If something is missing or wrong, it usually scrolls you back to the field and writes an error in red." },
+      { "type": "ul", "items": [
+        "Read the red message. It says what is wrong, not that you failed.",
+        "A red box around a field means that field, not the whole form.",
+        "A phone number may need ten or eleven digits with no spaces.",
+        "An email address needs the @ sign and a dot in the part after it.",
+        "A date field may want day, month, year in a fixed order.",
+        "Fix one error at a time and press Continue again."
+      ] },
+      { "type": "h2", "text": "Submit once" },
+      { "type": "p", "text": "The most expensive mistake on a form is pressing Submit three times because nothing seemed to happen. On a slow connection, that can create three applications or three payments." },
+      { "type": "ul", "items": [
+        "Press Submit once.",
+        "Wait at least thirty seconds. Watch for a spinning circle, which means it is working.",
+        "Look for a reference number or a confirmation message, and take a screenshot.",
+        "Check your email for a copy of the submission.",
+        "Never pay twice because the first page did not load. Check your bank alert first.",
+        "If money left your account and no confirmation came, contact the organisation with the transaction reference before you pay again."
+      ] },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "ul", "items": [
+        "The page times out: sign in again and look for a saved draft before you start over.",
+        "The upload fails: check the file type and size, then try a smaller PDF.",
+        "Your session expires: this is a safety feature. Sign in again and refill the short sections.",
+        "The form will not accept your phone number: try without spaces, then without the leading zero and country code, and read the hint beside the field.",
+        "You submitted the wrong information: use the reference number to contact support. Do not submit a second form with different details.",
+        "A form asks for your card on a page without a padlock: stop and check the address before typing anything."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "ul", "items": [
+        "Open a harmless form, such as a contact page, and move through it with Tab only.",
+        "Deliberately leave a required field empty to see what the error looks like.",
+        "Upload a small PDF and note the file types the site accepts.",
+        "Take a screenshot of a confirmation page and save it in Documents.",
+        "Copy a long paragraph from a form into a note, so you know how to save your work before submitting."
+      ] },
+      { "type": "p", "text": "You can now finish a long form, fix errors, and keep proof of what you submitted. The next lesson takes the same calm approach into a video call." }
+    ]
+  },
+  {
+    "slug": "a-video-call-without-panic",
+    "excerpt": "How to join a meeting, check your microphone and camera, control background noise, and get back in when the link refuses to work.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you to join a video call, check your microphone and camera before it starts, and fix the problems that stop people getting in. You will also learn the habits that make a call easier for everybody on it." },
+      { "type": "p", "text": "A video call is a room made of software. Your microphone is your voice, your camera is your face, and your network is the door. If any of the three is closed, the others do not help." },
+      { "type": "h2", "text": "Before the call" },
+      { "type": "ul", "items": [
+        "Charge the device or plug it in. A call drains a battery quickly.",
+        "Sit with the light in front of you, not behind you, or your face will be a shadow.",
+        "Join from a quiet room if you can. A generator or a market is louder on a call than in the room.",
+        "Close other programs that use the camera or the microphone.",
+        "Keep a pen and paper beside you for notes and for the meeting link."
+      ] },
+      { "type": "h2", "text": "Join and test" },
+      { "type": "ul", "items": [
+        "Open the link in a browser, or in the app the organiser named.",
+        "Allow the site to use the camera and the microphone when the browser asks.",
+        "Look at the preview of yourself before you join the room.",
+        "Speak one sentence and watch the level meter move, so you know the microphone works.",
+        "Join five minutes early if the meeting matters.",
+        "Check your name is correct, because it is what everybody sees."
+      ] },
+      { "type": "figure", "src": "/images/blog/video-call.jpg", "alt": "A laptop showing a video meeting with several participants.", "caption": "Test the microphone before you join. A working camera with a dead microphone looks like confidence and sounds like silence." },
+      { "type": "h2", "text": "Mute, camera, and the noise around you" },
+      { "type": "p", "text": "Most meeting problems are sound problems. Your microphone picks up the fan, the road, the television, and the person beside you, and the others hear all of it." },
+      { "type": "ul", "items": [
+        "Stay muted until you are invited to speak, or until the chair asks for questions.",
+        "Unmute, speak, then mute again. The button is usually at the bottom of the screen.",
+        "Use earphones. They stop the speaker's voice from entering your microphone twice.",
+        "Switch the camera on for the first minute if it is a formal meeting, then follow the others.",
+        "Look at the camera when you speak, not at your own picture.",
+        "Use the chat for links and spelling, not for side conversations."
+      ] },
+      { "type": "figure", "src": "/images/blog/mute-earphones.jpg", "alt": "A phone with earphones and a video call on the screen.", "caption": "Earphones and a muted microphone are the two habits that keep a call usable for everyone else." },
+      { "type": "h2", "text": "When the call ends" },
+      { "type": "ul", "items": [
+        "Leave the meeting with the Leave button, not by closing the browser.",
+        "Write down what you were asked to do and when it is due.",
+        "Save any file that was shared while you still have the link.",
+        "Send one short message to confirm what you understood, if anything involved money or a deadline.",
+        "Switch off the hotspot or meeting app if you used data."
+      ] },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "ul", "items": [
+        "The link does not open: copy it into a browser, or open the app and paste the meeting code.",
+        "The browser says the camera is blocked: click the icon beside the address bar and allow camera and microphone.",
+        "Nobody can hear you: unmute, check the right microphone is selected, then leave and rejoin.",
+        "You cannot hear anybody: check the speaker is not muted or set to earphones you are not wearing.",
+        "The picture freezes: switch your camera off and keep the sound on. Sound uses less data.",
+        "You are removed from the room: the host may have locked it. Message the organiser and rejoin with the same name.",
+        "The call drops completely: rejoin through the same link. Do not create a new meeting unless you are the host."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "ul", "items": [
+        "Start a test call with one friend or family member.",
+        "Turn the microphone off and on, and have them tell you what changed.",
+        "Switch on the camera and check the light is in front of you, not behind.",
+        "Leave the call with the Leave button, then rejoin with the same link.",
+        "Write two sentences of notes during the call and read them back afterwards."
+      ] },
+      { "type": "p", "text": "You can now enter a call prepared, keep it comfortable for others, and recover when the link misbehaves. The next lesson looks at the machine itself, when it slows down without an obvious reason." }
+    ]
+  },
+  {
+    "slug": "when-the-computer-is-slow",
+    "excerpt": "Why a computer slows down, which reasons are fixable in ten minutes, and when the honest answer is a new drive or a new machine rather than a cleaner you were sold.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you to find out why a computer has become slow. You will check the three usual causes in order, fix the ones that are free, and know when the machine needs a real repair rather than another cleaner program." },
+      { "type": "p", "text": "A computer slows down for a few ordinary reasons: too many programs open, a full disk, too many programs starting with the machine, or failing hardware. Each has a different answer, so the order of the checks matters." },
+      { "type": "h2", "text": "Close the crowd first" },
+      { "type": "p", "text": "Most slow computers have twenty programs open and three browser windows with thirty tabs. That is the first check, because it costs nothing." },
+      { "type": "ul", "items": [
+        "Look at the row of open programs at the bottom of the screen.",
+        "Close every window you are not using right now.",
+        "In the browser, close the tabs you are not reading. Each tab uses memory.",
+        "Press Ctrl, Shift and Escape to open Task Manager.",
+        "Sort by the CPU and Memory columns and see which program is using the most.",
+        "Right-click a program you do not need and choose End task, then try again."
+      ] },
+      { "type": "figure", "src": "/images/blog/cluttered-windows.jpg", "alt": "A laptop screen crowded with many open windows.", "caption": "Twenty open windows is the most common cause of a slow machine, and the cheapest to fix." },
+      { "type": "h2", "text": "Make room on the disk" },
+      { "type": "p", "text": "When the disk is nearly full, the computer has no room to work and slows down badly. Check the free space before you install anything else." },
+      { "type": "ul", "items": [
+        "Open File Explorer and click This PC. Read the free space under the main drive.",
+        "Empty the Recycle Bin after checking what is inside it.",
+        "Open Downloads and delete old installers and files you no longer need.",
+        "Move photographs and videos to an external drive, keeping one copy elsewhere.",
+        "Use Disk Cleanup on Windows, or Storage settings, to remove temporary files.",
+        "Aim to keep at least fifteen percent of the drive free."
+      ] },
+      { "type": "figure", "src": "/images/blog/task-manager.jpg", "alt": "A Task Manager window showing programs sorted by memory use.", "caption": "Task Manager shows what is really using the machine. Sort by Memory or CPU and read the top of the list." },
+      { "type": "h2", "text": "Stop programs starting by themselves" },
+      { "type": "p", "text": "Many programs install a small helper that starts with the computer. Ten of those make a fresh start take five minutes, even when you are not using any of them." },
+      { "type": "ul", "items": [
+        "Open Task Manager and click the Startup tab.",
+        "Look at the Status column for programs marked Enabled.",
+        "Right-click anything you do not need at every start, such as a game launcher or an updater.",
+        "Choose Disable. This does not uninstall the program, and you can start it yourself.",
+        "Restart once and time the start."
+      ] },
+      { "type": "h2", "text": "When it is the machine, not the settings" },
+      { "type": "p", "text": "If the steps above change nothing, the cause may be physical. A traditional hard disk in an old laptop is the usual culprit, and the honest fix is a solid state drive, which makes an old machine feel new." },
+      { "type": "ul", "items": [
+        "The fan runs loudly all the time: the vents are blocked with dust, or the machine is overheating.",
+        "The machine freezes and then restarts: heat or a failing power supply.",
+        "It beeps or clicks: a failing drive. Back up now.",
+        "It is four years old or more and slow even after cleanup: ask a repairer to quote for an SSD before you buy a new machine.",
+        "A stranger offers a paid cleaner because your computer is slow: decline. Change nothing you cannot explain."
+      ] },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "ul", "items": [
+        "The computer takes minutes to start: disable startup programs, then check the drive health.",
+        "It slows down only on the browser: close tabs, clear the cache, and disable extensions you do not use.",
+        "It slows down after an update: give it a day, then check for a further update.",
+        "A program uses all the memory: close it, update it, and use a lighter alternative.",
+        "It is hot and slow: switch off, clean the vents with a dry brush, and keep it off soft surfaces.",
+        "Nothing helps and the disk light stays on: back up your files today and let a repairer test the disk."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "ul", "items": [
+        "Open Task Manager and note the two programs using the most memory.",
+        "Close those programs and check whether the machine feels different.",
+        "Read the free space on your main drive and write the number down.",
+        "Disable one startup program you never use and restart.",
+        "Delete the files in Downloads you no longer need, then empty the Recycle Bin."
+      ] },
+      { "type": "p", "text": "You can now find the reason a computer is slow instead of guessing, and you know when the answer is a repair. The next chapter begins with files that leave the machine: installing, copying, and sending them on." }
+    ]
+  }
+]

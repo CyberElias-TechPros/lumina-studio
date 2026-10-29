@@ -1,0 +1,765 @@
+[
+  {
+    "slug": "charging-without-killing-the-battery",
+    "excerpt": "How laptop batteries age, why the old advice about draining to zero is wrong, the charging habit that makes a battery last years, and the warning that matters more than any rule.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson explains how to charge a laptop so that the battery lasts years instead of months. You will learn what the battery icon is telling you, the two habits that shorten a battery's life, and the warning sign that means stop using the charger."
+      },
+      {
+        "type": "p",
+        "text": "A battery is a container of chemical energy that slowly loses the ability to hold a charge. Every full cycle wears it a little, and heat wears it faster than anything else. Good charging is mostly about avoiding heat and avoiding extremes."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A laptop with its own charger. A phone charger is usually too weak.",
+          "About ten minutes to read and set one habit."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "The icon, and the old story about zero"
+      },
+      {
+        "type": "p",
+        "text": "Click the battery icon at the right of the taskbar to see the percentage and how long it has left. That number is an estimate and it changes with what you are doing, so treat it as a guide rather than a promise."
+      },
+      {
+        "type": "p",
+        "text": "You will see the percentage, a short line about how long it estimates, and a note about the charger. Those three lines answer most battery questions in one click."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Keep the charge between about twenty and eighty percent when you can.",
+          "Plug in when it drops below twenty, and unplug when it reaches eighty if you are near a socket.",
+          "Leaving it plugged in at a hundred percent for days is what ages a battery fastest.",
+          "A full discharge to zero, every day, also wears it out.",
+          "The old advice about draining to zero and recharging fully belonged to a battery type that has not been sold for years."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see a small lightning bolt or plug symbol on the battery icon while it is charging, and a percentage that climbs. If the icon shows a plug but the percentage does not move, the charger is connected but not delivering power, which usually means a weak or damaged adapter."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/battery-icon.jpg",
+        "alt": "A laptop taskbar showing the battery icon and percentage.",
+        "caption": "The icon shows the charge and whether it is charging. A plug symbol with no rising number means the charger is not working."
+      },
+      {
+        "type": "p",
+        "text": "It looks like keeping a laptop at a hundred percent is looking after it. In fact a battery held at full charge and warm is the one that swells first, and many laptops now offer a setting that stops charging at eighty percent."
+      },
+      {
+        "type": "h2",
+        "text": "The night on the hard table"
+      },
+      {
+        "type": "p",
+        "text": "Charging overnight is not a disaster, but charging overnight on a bed, a cushion, or a lap is. The vents are blocked, the heat cannot leave, and the battery sits in the warmest place in the machine."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Charge on a hard, flat surface, never on cloth or a mattress.",
+          "Take the laptop out of its bag before you plug it in.",
+          "Give the vents five centimetres of clear air underneath.",
+          "Do not stack books or papers on a closed laptop that is charging.",
+          "If the underside feels hot to the touch, unplug and let it cool."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs a special charger or an app. A table and a little air are the whole method."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/laptop-charging.jpg",
+        "alt": "A laptop charging on a wooden desk with its vents clear.",
+        "caption": "A hard surface and clear vents. Heat is what ages a battery, and cloth is what traps the heat."
+      },
+      {
+        "type": "h2",
+        "text": "The warning that matters more than any rule"
+      },
+      {
+        "type": "p",
+        "text": "A battery that swells is a fire risk. You can see it before it fails: the trackpad lifts, the case bulges, or the laptop will not sit flat on the desk."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Stop using the laptop as soon as you notice a bulge, and unplug it.",
+          "Do not press the case back down or screw it tighter.",
+          "Do not put it in a bag and carry it around.",
+          "Take it to a repairer and say the battery has swollen.",
+          "Keep using the charger only if the battery has been removed, which is not possible on most modern laptops."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about the normal warmth of a working laptop. Warm is expected. A swollen case, a hot smell, or a fan that never stops are the signs that deserve action."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a clear next step, and the last one is a safety matter rather than a repair."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The laptop will not charge: try another socket, then another charger of the same voltage, then check the plug for damage.",
+          "The battery drains while plugged in: the charger is too weak for the work you are doing, or the cable is failing.",
+          "The percentage jumps from eighty to twenty: the battery is worn and reports its level badly. Plan for a replacement.",
+          "It only runs with the charger connected: the battery has failed. Replace it rather than carrying the plug everywhere.",
+          "The laptop is hot and slows down on charge: the vents are blocked or the charger is wrong. Stop and let it cool.",
+          "The case is bulging: stop using it today, and take it to a repairer. This one is not a settings problem."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "One setting and one habit, done today, add years to a battery."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Click the battery icon and read the percentage and the remaining time.",
+          "Find the battery health or charge limit setting in your laptop's own control panel.",
+          "Set a charge limit of eighty percent if your machine offers it.",
+          "Charge tonight on a table instead of a bed or a cushion.",
+          "Feel the underside after an hour and note how warm it is normally."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now charge a laptop in a way that keeps the battery useful for years. In the next lesson you will deal with the heat itself, which is the other half of the same problem."
+      }
+    ]
+  },
+  {
+    "slug": "heat-and-the-vents",
+    "excerpt": "Why a laptop gets hot, where the air goes in and out, how dust and soft surfaces cause most overheating, and what to do before you take it to a repairer.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson explains why computers get hot and what to do about it. You will find the vents, clear the way for air, deal with dust, and know the difference between a warm laptop and an overheating one. Most overheating is caused by where the machine is sitting."
+      },
+      {
+        "type": "p",
+        "text": "A computer does work by moving electricity, and some of that energy leaves as heat. The fan pushes air through the case to carry the heat away. Block the air and the heat stays inside, so the machine slows itself down to survive."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The laptop, switched off.",
+          "A soft dry brush or a clean cloth.",
+          "A hard table, and a torch to see into the vents."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Find where the air goes"
+      },
+      {
+        "type": "p",
+        "text": "Vents are the slots along the side, the back, or underneath. Air comes in at some and leaves at others, usually near the fan at one edge."
+      },
+      {
+        "type": "p",
+        "text": "You will see dust collected in a grey line along one edge of the grille, and that line is the thing to brush away."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Switch off and unplug the laptop.",
+          "Turn it over and look for slots in the base, usually near the hinge.",
+          "Look along the sides and back for a grille.",
+          "Note where the warm air comes out when the machine runs.",
+          "Keep those slots clear of fabric, paper, and the desk itself."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see a thin layer of grey fluff in the grille of a machine that has been used for a year. That fluff is the most common cause of a fan that runs all the time."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/laptop-vents.jpg",
+        "alt": "The underside of a laptop showing the ventilation slots.",
+        "caption": "Air in at the base, out at the side or back. Block either end and the heat stays inside."
+      },
+      {
+        "type": "h2",
+        "text": "The bed is the enemy"
+      },
+      {
+        "type": "p",
+        "text": "A mattress, a pillow, a cushion, a blanket, and a lap all do the same thing: they cover the vents and hold the heat in. This is the single most common reason a laptop overheats at home."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Use the laptop on a table or a hard board, not on cloth.",
+          "If you must use it on a bed, put a tray or a book underneath.",
+          "Keep it out of the sun, and away from a generator or a hot wall.",
+          "Raise the back edge slightly, using a book, so air can pass underneath.",
+          "Never put a running laptop inside a closed bag."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "It looks like a fan that runs loudly is a sign of a powerful machine. In most cases it is a sign of blocked air, and cleaning the vents makes the fan quiet again within a day."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/laptop-on-bed.jpg",
+        "alt": "A laptop resting on a bed with its vents covered by cloth.",
+        "caption": "A soft surface covers the vents. Anything you would not put a hot plate on is too soft for a laptop."
+      },
+      {
+        "type": "h2",
+        "text": "Dust, and the season for it"
+      },
+      {
+        "type": "p",
+        "text": "Dust builds up faster in the harmattan, near a road, and in a room where somebody sweeps every morning. A dry brush once a month is enough for most homes."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Switch off and unplug before you touch anything.",
+          "Brush the outside of the grille with a dry, soft brush.",
+          "Do not push the brush inside the case.",
+          "Do not use water, and do not spray anything into the vents.",
+          "Never open the case unless you have done it before or a repairer is guiding you.",
+          "Once a year, ask a repairer to clean the fan properly if the machine is noisy."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs a toolkit. The outside brush and a hard surface prevent most of the heat problems people pay to fix."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "A warm laptop is normal. These six signs mean it has gone past warm, and each has an action."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The fan runs constantly: clear the vents, use a hard surface, and close programs you are not using.",
+          "The machine becomes very slow and hot: stop the heavy work, save, and switch off for ten minutes.",
+          "It switches itself off suddenly: overheating protection. Let it cool, then check the vents before you use it again.",
+          "It is hot even when idle: a program is running in the background. Check Task Manager, then look for dust in the fan.",
+          "There is a burning smell: unplug it at once, do not charge it, and take it to a repairer.",
+          "The battery is swollen as well as hot: stop using the machine today. This is a fire risk, not an inconvenience."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Ten minutes with a brush and a hard surface, and the fan will sound different."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Switch off and find every vent on your laptop.",
+          "Brush the grille gently with a dry brush.",
+          "Move the laptop to a hard surface for a full working session.",
+          "Note how long the fan runs during a normal hour.",
+          "Feel the underside after that hour and compare it with before."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now keep a laptop cool, which protects both the processor and the battery. In the next lesson you will check what the small camera above the screen can see."
+      }
+    ]
+  },
+  {
+    "slug": "the-webcam-and-who-can-see-you",
+    "excerpt": "How to know when the camera is on, how to switch it off with the keyboard or a sticker, how to check which apps have permission, and what to do if you think someone watched.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson explains the small camera above a laptop screen: when it is on, which programs can use it, and how to switch it off when you do not need it. You will check the permissions and set a habit that costs nothing."
+      },
+      {
+        "type": "p",
+        "text": "The webcam is a camera with no shutter on most machines. It is on whenever a program is using it, and the only reliable sign is the small light beside the lens, which is wired to the camera itself."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The laptop or monitor with the camera.",
+          "A small sticker or a folded piece of paper and tape.",
+          "About ten minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "The light is the truth"
+      },
+      {
+        "type": "p",
+        "text": "Most laptops show a small white or green light when the camera is active. That light is connected to the camera's power, so it comes on whenever the camera has power, even if a program tried to hide its use."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Find the camera above the screen and note whether a light sits beside it.",
+          "Open a video call app and see whether the light comes on.",
+          "Close the app and check that the light goes off.",
+          "If the light is on and no app explains it, restart and check again.",
+          "If the light stays on after a restart, cover the lens and get the machine checked."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the light, a small solid dot, rather than a flash. It does not blink, and it does not care what the screen shows."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/webcam-preview.jpg",
+        "alt": "A laptop screen showing a camera preview with a light beside the lens.",
+        "caption": "The light beside the lens is the only reliable sign. When it is on, the camera has power."
+      },
+      {
+        "type": "p",
+        "text": "It looks like closing the app switches the camera off. Sometimes a background process keeps it, which is exactly when the light earns its keep."
+      },
+      {
+        "type": "h2",
+        "text": "Turn it off three ways"
+      },
+      {
+        "type": "p",
+        "text": "You have a hard cover, a physical switch on some machines, and a software permission. Use the first one when you are not on a call."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Stick a small cover over the lens, and keep it there when the laptop is idle.",
+          "Use the shutter button if your laptop has one, which slides across the lens.",
+          "Open Settings, then Privacy and security, then Camera, and see which apps are allowed.",
+          "Turn off camera access for apps you do not use.",
+          "Check the same settings on a phone, where the list is longer."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this breaks a video call. When you need the camera, slide the cover or switch the permission back on, and the call works."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/webcam-cover.jpg",
+        "alt": "A laptop webcam covered by a small sliding shutter.",
+        "caption": "A cover you can slide is the simplest protection. It works whether or not the software behaves."
+      },
+      {
+        "type": "h2",
+        "text": "Other people, shops, and repairers"
+      },
+      {
+        "type": "p",
+        "text": "The camera is only one part of the question. What sits behind you tells a stranger where you live, and that matters more than the lens."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Turn the laptop so the background shows a wall, not a doorway, a certificate, or a child.",
+          "Cover documents with names, account numbers, or school details.",
+          "Do not let a repairer take the machine without signing out of your accounts.",
+          "Do not leave a shared or office laptop signed in with the camera allowed to anyone.",
+          "Assume that anything a call app records may be kept, and behave as you would in a room."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about being interesting enough to watch. Most camera use is ordinary: a program you installed asking for a permission you did not notice."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every item here has a practical next step, and no case is improved by panic."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The camera light stays on: cover the lens, restart, and check the app list in Settings.",
+          "You cannot find the camera in Settings: on some machines a switch or function key owns it, and the software menu is empty.",
+          "A video call shows a black picture: the privacy cover is on, or the app lacks permission.",
+          "An app you did not install asks for the camera: refuse it, then uninstall the app.",
+          "You think someone watched: cover the camera, change the passwords on the accounts you use on that machine, and run a scan.",
+          "A shared laptop shows another person's camera: sign out of your school or work account before you leave it."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Five minutes today, and the camera stops being a worry."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Find the light and the lens on your machine.",
+          "Open the camera app, watch the light, then close it and watch the light go off.",
+          "Cover the lens and open the app again to see what the screen shows.",
+          "Review the camera permission list and turn off one app you do not need.",
+          "Look at what is behind you when you sit at the desk, and move one private thing out of view."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now tell when the camera is on and decide for yourself what it can see. In the next lesson you will deal with the small permission pop-ups every website asks you for."
+      }
+    ]
+  },
+  {
+    "slug": "cookies-and-accept-all",
+    "excerpt": "What a cookie actually stores, what Accept all really agrees to, how to choose the useful ones, and why clearing them fixes so many strange website problems.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson explains cookies in plain words and what the Accept all button really agrees to. You will learn the difference between the cookie that keeps you signed in and the ones that follow you between sites, and how clearing them fixes problems."
+      },
+      {
+        "type": "p",
+        "text": "A cookie is a small note a website leaves in your browser. It can hold a login, a language choice, or a shopping basket. It can also hold an identifier that lets advertisers recognise your browser on other sites."
+      },
+      {
+        "type": "p",
+        "text": "You will see the banner in the corner or across the bottom of the page, and it usually returns on each new device until you choose."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A browser open on a website with a cookie banner.",
+          "About ten minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Three kinds of small note"
+      },
+      {
+        "type": "p",
+        "text": "The banner usually groups them, and the grouping is worth reading once."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Necessary cookies keep you signed in and remember your basket. Refusing them breaks the site.",
+          "Preference cookies remember your language, region, or text size.",
+          "Advertising cookies follow your browser across sites to build a profile of what you look at.",
+          "Analytics cookies count visits and are usually harmless in small numbers.",
+          "Third-party cookies come from another company than the one whose site you are on."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see a panel open when you click Manage options or Customise, with a list and a switch for each kind. The switches for advertising are usually on by default, which is the reason the banner exists at all."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/cookie-dialog.jpg",
+        "alt": "A cookie settings dialog with category switches and two buttons.",
+        "caption": "Manage options shows the switches. The advertising one is usually on by default, and turning it off costs you nothing."
+      },
+      {
+        "type": "h2",
+        "text": "What Accept all agrees to"
+      },
+      {
+        "type": "p",
+        "text": "Accept all agrees to every category at once, including the ones that follow you elsewhere. It takes two extra clicks to refuse those, and the site works the same."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Click Manage options or Customise rather than Accept all, when the banner offers it.",
+          "Leave necessary cookies on, and turn off advertising.",
+          "Save your choice, or click Reject all if the banner provides it.",
+          "Expect some banners to ask again in a few months, which is normal.",
+          "Do not pay for a subscription just to refuse cookies on a site you rarely use."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "It looks like refusing cookies will log you out every time. Necessary cookies stay on, so the login still works, and only the tracking note is removed."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/cookie-banner.jpg",
+        "alt": "A website cookie banner with accept and manage options.",
+        "caption": "The banner is a permission slip. Reading it once and choosing takes ten seconds and applies for months."
+      },
+      {
+        "type": "h2",
+        "text": "Fix a strange website with a clear"
+      },
+      {
+        "type": "p",
+        "text": "Many odd website problems are old cookies: a page that will not load, a basket that empties, a site that keeps showing the wrong language. Clearing them is the standard first fix."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open the browser menu and find Settings, then Privacy, then Clear browsing data.",
+          "Choose Cookies and other site data, and a time range of All time.",
+          "Leave passwords unticked unless you are sure you know them.",
+          "Clear, then reload the page and sign in again if needed.",
+          "For one site only, use the padlock icon beside the address and clear its cookies alone."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this deletes your files or your bookmarks. It removes small notes, and the only cost is signing in again on some sites."
+      },
+      {
+        "type": "h2",
+        "text": "Shared machines, and fear"
+      },
+      {
+        "type": "p",
+        "text": "On a shared computer, cookies are how the next person sees your account already open. That is a reason to sign out, not a reason to fear the technology."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Sign out of every account before you leave a shared machine.",
+          "Use a private window when you must check something on someone else's computer.",
+          "Close the browser fully, which ends the session in most cases.",
+          "Do not tick Remember me on a machine you do not own.",
+          "On a public computer, clear cookies after you finish."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Cookies cause small annoyances rather than damage, and each one has a short fix."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The site says cookies are required and will not continue: allow necessary cookies for that site only.",
+          "You are logged out of everything: you cleared cookies. Sign in again and let the browser save the ones you need.",
+          "A banner will not go away: clear that site's cookies, or open the site in a private window.",
+          "You keep seeing adverts for something you looked at once: turn off third-party cookies in the browser settings.",
+          "A shop basket empties by itself: allow cookies for that shop, and do not clear them mid-purchase.",
+          "You are on a shared machine and forgot to sign out: sign out now, then change the password if the account is important."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Two banners, handled properly, and the habit is set."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "On the next banner you meet, click Manage options instead of Accept all.",
+          "Turn off advertising cookies and save.",
+          "Check that you are still signed in to the site you were using.",
+          "Find the clear-cookies option in your browser settings without clearing anything yet.",
+          "On a shared machine, sign out of one account and confirm the site no longer knows you."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now choose what a website is allowed to remember about you. In the next lesson you will keep your own space separate on a machine other people use."
+      }
+    ]
+  },
+  {
+    "slug": "a-browser-profile-on-a-shared-computer",
+    "excerpt": "How to keep your accounts separate on a family or office computer, what a guest window is for, and how to leave a machine without leaving your email open behind you.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to keep your own space on a shared computer. You will make a browser profile, use a guest window for a quick check, and leave the machine without leaving your accounts open. Nothing here needs a second laptop."
+      },
+      {
+        "type": "p",
+        "text": "A browser profile is a separate shelf for one person: their bookmarks, their saved passwords, their history. Two profiles on one computer behave like two different machines, which is exactly what a shared office needs."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A shared computer you are allowed to set up.",
+          "About fifteen minutes.",
+          "Permission from the owner if the machine is not yours."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Your profile, a guest window, and the house"
+      },
+      {
+        "type": "p",
+        "text": "There are three levels of separation, and they are used for different things."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Your own profile: your bookmarks and passwords, kept apart from everyone else's.",
+          "A guest window: open for one task, closed at the end, and it keeps nothing.",
+          "A private window: no history, but it does not hide you from the network or your employer.",
+          "A separate Windows user account: the strongest separation, with its own files and desktop.",
+          "The same profile for everybody: the weakest, and the reason people find their email already open."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see a small person icon at the top right of the browser. Clicking it shows the profiles on the machine and offers Guest or Add. That icon is the whole control panel."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/browser-profile.jpg",
+        "alt": "A browser profile menu open with two profiles listed.",
+        "caption": "One profile per person. The icon at the top right switches between them without signing anybody out by accident."
+      },
+      {
+        "type": "h2",
+        "text": "Make your own"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Click the profile icon, then Add, then Continue without an account if you prefer.",
+          "Give it your name, and choose a colour you can recognise.",
+          "A new browser window opens with your profile.",
+          "Pin that window to the taskbar, so you open yours rather than somebody else's.",
+          "Sign in to your own accounts in that window only.",
+          "Use Guest when a visitor needs to check something, and close it afterwards."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "It looks like two profiles are fussy on a family laptop. In practice they stop the one problem that matters: somebody else's session on your account, with your messages and your bank already open."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry if a website asks you to sign in again in the new profile. That is the point of the separation, and it happens once per site."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/shared-computer.jpg",
+        "alt": "Two people using one desktop computer at a shared desk.",
+        "caption": "One machine, two people. Separate profiles and a guest window keep the accounts apart without a second laptop."
+      },
+      {
+        "type": "h2",
+        "text": "Passwords saved in the browser"
+      },
+      {
+        "type": "p",
+        "text": "A browser will offer to save your password. On your own machine that is convenient. On a shared one it hands your account to the next person who sits down."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Say Never when a shared machine offers to save a password.",
+          "On your own profile, saving is fine if the computer needs a password to start.",
+          "Check the saved list in Settings, then Passwords, and delete anything old.",
+          "Turn on the browser's warning about reused passwords.",
+          "Never save a bank password in a browser on any machine you do not own."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this is about distrusting the people you live with. It is about the visitor, the repairer, and the cousin who borrowed the laptop for one evening."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case below ends with your account closed, and none of them needs a technician."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Your profile has somebody else's bookmarks: you are in their profile. Switch using the icon at the top right.",
+          "A website signs you in automatically as another person: sign out, then clear that site's cookies.",
+          "You cannot delete a profile: sign out of it first, then remove it from the profile menu.",
+          "A saved password appears that you never saved: delete it in Settings, then change that password.",
+          "You forgot to sign out: sign out on the spot, and change the password if the account matters.",
+          "The machine is a workplace one: ask before adding a profile. Some are managed and reset at every restart."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Set this up once, and a shared laptop stops being a risk."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Create your own browser profile and pin it to the taskbar.",
+          "Sign in to one account in your profile only.",
+          "Open a guest window, check a site, then close it fully.",
+          "Look at the saved password list and delete one old entry.",
+          "Sign out of everything and confirm the browser shows nobody's account."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now share a computer without sharing your accounts. In the next lesson you will save the pages you use every week so you stop searching for them."
+      }
+    ]
+  }
+]

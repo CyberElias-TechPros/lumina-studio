@@ -1,0 +1,294 @@
+[
+  {
+    "slug": "installing-a-program-on-purpose",
+    "excerpt": "How to download software from the official source, read the installer boxes, say no to the extras, and know when a Windows security warning is worth listening to.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you to install a program deliberately: where to get it, which buttons to read, and how to refuse the extras that arrive with it. By the end you will be able to install what you need without filling the machine with things you did not ask for." },
+      { "type": "p", "text": "Most computers are slowed down by programs nobody decided to install. They arrived in a hurry, through a download button in an advert, or through the Next button of an installer that offered four other products in small print." },
+      { "type": "h2", "text": "Get it from the official source" },
+      { "type": "p", "text": "The safest download is the one you go looking for, not the one that appears in front of you. Type the maker's name in the address bar and use the site that carries the maker's own address." },
+      { "type": "ul", "items": [
+        "Open a new tab and search for the program name plus official download.",
+        "Read the address of the site before you click anything on it.",
+        "For VLC, use videolan.org. For Chrome, use google.com. For a printer, use the maker's site.",
+        "Avoid softonic, free-download and similar sites that wrap the program in other software.",
+        "On a work or school machine, ask which programs are allowed before you install anything."
+      ] },
+      { "type": "figure", "src": "/images/blog/installer-window.jpg", "alt": "A software installer window with options and a next button.", "caption": "Read the small print and the ticked boxes. An installer shows its real offer on the second or third screen, not the first." },
+      { "type": "h2", "text": "Read the installer screens" },
+      { "type": "p", "text": "An installer is a short interview. It asks where to put the program, whether to create a shortcut, and often whether to add something else. The last question is the one that matters." },
+      { "type": "ul", "items": [
+        "Choose the default location unless you have a reason not to.",
+        "Look for Custom or Advanced. It usually reveals the extra offers.",
+        "Untick any box that offers a second program, a browser toolbar, or a trial.",
+        "Untick Change my homepage and Set as default search provider unless you want them.",
+        "Decline Accept all offers when a single button would add three programs.",
+        "Press Install, then wait without clicking again."
+      ] },
+      { "type": "p", "text": "If the installer refuses to continue until you accept something you do not want, cancel it and find the program somewhere else. A program that insists on installing another one is telling you what it thinks of its users." },
+      { "type": "h2", "text": "The word free, and the boxes underneath it" },
+      { "type": "p", "text": "Free programs still cost money to make, so some of them show adverts in a corner, or offer a paid version at the end of installation. That is normal. What is not normal is a free copy of a program that usually costs money, especially a full office suite or a security tool you did not ask for." },
+      { "type": "ul", "items": [
+        "Check the maker's own site for the free version before trusting a download from anywhere else.",
+        "Read what the licence allows. Free for personal use is not the same as free for a business.",
+        "Never enter a card number to receive something advertised as free.",
+        "Avoid any program that arrives as a zip file with a password and instructions from a stranger."
+      ] },
+      { "type": "figure", "src": "/images/blog/install-usb.jpg", "alt": "A USB drive beside a laptop with an installation window on screen.", "caption": "A flash drive from a friend is an unknown source. Copy the file, scan it, and check who made it before you run it." },
+      { "type": "h2", "text": "When Windows blocks it" },
+      { "type": "p", "text": "Windows shows a blue box, SmartScreen, when it does not recognise the publisher. That is not an infection. It means nobody at Microsoft has seen this file enough times to vouch for it." },
+      { "type": "ul", "items": [
+        "Read the name of the app and the publisher in the box.",
+        "If you typed the maker's address yourself and the name matches, choose More info, then Run anyway.",
+        "If you arrived from a link in a message, close the box and delete the file.",
+        "If Windows Defender reports a virus, do not run the file at all.",
+        "If a browser tells you an update is needed and offers a download, close it and update through the program's own menu."
+      ] },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "ul", "items": [
+        "The program will not open: restart the computer, then check the program is listed in the Start menu.",
+        "You installed something you did not want: uninstall it from Settings, then check the browser for a new toolbar or homepage.",
+        "The installer is stuck: wait five minutes, then close it with Task Manager.",
+        "You see three new programs after one installation: uninstall the two you did not ask for, and note the site that gave them to you.",
+        "The download is a zip file with an instruction to disable your antivirus: delete it.",
+        "The program asks for administrator permission and you are not the owner: stop and ask the owner."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "ul", "items": [
+        "Open the official site of one program you use and find its download page without a search engine.",
+        "Read the address bar carefully before clicking Download.",
+        "Run the installer slowly and write down every box that offered something extra.",
+        "Untick the extras and finish the installation.",
+        "Open Settings, then Apps, and count the programs installed in the last month."
+      ] },
+      { "type": "p", "text": "You can now install a program from its source and refuse the passengers it tries to bring. The next lesson is the other half: removing what somebody else installed." }
+    ]
+  },
+  {
+    "slug": "uninstalling-what-a-shop-added",
+    "excerpt": "Which programs a shop or a friend added without asking, how to remove them safely, and which ones you should leave alone because the machine needs them.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you to remove programs you did not ask for, without removing the ones the computer needs. You will learn where the list of installed programs lives, what is safe to uninstall, and how to clear the icons that remain after the program is gone." },
+      { "type": "p", "text": "A new laptop often arrives with trial software, a shop's driver tool, and two or three programs nobody can explain. Most of it is harmless, some of it slows the machine, and a little of it is genuinely better gone." },
+      { "type": "h2", "text": "Find the real list" },
+      { "type": "ul", "items": [
+        "Open Settings, then Apps, then Installed apps.",
+        "Sort by date installed, so the newest arrivals appear first.",
+        "Read the publisher name under each entry.",
+        "On Windows 10 the path is Settings, then Apps, then Apps and features.",
+        "On a Mac, open Finder, then Applications, and look for the program there.",
+        "Do not uninstall from the Start menu, because that only removes the icon."
+      ] },
+      { "type": "figure", "src": "/images/blog/apps-list.jpg", "alt": "A Windows settings screen listing installed applications.", "caption": "Sort by date installed. Anything you did not choose in the last month is worth a second look." },
+      { "type": "h2", "text": "What is safe, and what to leave" },
+      { "type": "p", "text": "The rule is simple: remove programs you recognise as unwanted, and leave anything with a name that sounds like a driver, a security tool installed by the maker, or part of Windows itself." },
+      { "type": "ul", "items": [
+        "Safe to remove: trial antivirus that keeps asking for money, shopping toolbars, game launchers you stopped playing, duplicate browsers.",
+        "Safe to remove: a program you installed for one task and will not use again.",
+        "Leave alone: anything from Microsoft, Intel, AMD, Realtek, or Nvidia.",
+        "Leave alone: a security program that the owner paid for and uses.",
+        "Ask before removing: anything installed for a business, such as accounting or billing software.",
+        "Never remove: a program a technician installed for a repair, unless they say it is temporary."
+      ] },
+      { "type": "figure", "src": "/images/blog/settings-learner.jpg", "alt": "A person reading the Settings screen on a laptop.", "caption": "Read the publisher and the date. A program installed by your bank or your office is not the shop's clutter." },
+      { "type": "h2", "text": "Remove a program properly" },
+      { "type": "ul", "items": [
+        "Click the three dots or the program name, then choose Uninstall.",
+        "Read the question the uninstaller asks. Some offer to keep your data, some offer a survey.",
+        "Confirm the removal and wait for the progress bar to finish.",
+        "Restart the computer if it asks.",
+        "Check the Start menu and the desktop for a leftover icon, and delete the icon only.",
+        "Open the browser and check the homepage and search engine, because toolbars change them."
+      ] },
+      { "type": "p", "text": "A leftover icon is not the program. It is a shortcut pointing at a file that no longer exists. Right-click it and delete it. If the program folder is still in Program Files, the uninstaller did not finish, so run it again rather than deleting files by hand." },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "ul", "items": [
+        "The uninstaller asks for a password: you need the owner's account. Stop and ask.",
+        "The program returns after a restart: another program reinstalled it. Check for a tool from the maker or the shop.",
+        "Something you use stops working: reinstall that program from the official site.",
+        "The uninstall freezes: restart, then try again from Settings.",
+        "You removed a program the office needs: reinstall it, and tell the person who set it up what happened.",
+        "The machine is full of programs and you cannot tell which matter: write the list down and ask somebody who knows, rather than guessing."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "ul", "items": [
+        "Open the installed apps list and sort by date.",
+        "Write down three programs you do not recognise.",
+        "Search each name once to learn what it does, without downloading anything.",
+        "Uninstall the one you are sure is unwanted.",
+        "Restart and check the browser homepage still opens where you expect."
+      ] },
+      { "type": "p", "text": "You can now clean a machine without breaking it, and tell the difference between clutter and a tool the machine needs. The next lesson is about typing characters that have no obvious key." }
+    ]
+  },
+  {
+    "slug": "naira-and-accents",
+    "excerpt": "How to type the naira sign, accented letters, and names that matter, on Windows, a Mac, and a phone. Includes the copy-and-paste trick that always works.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you to type the naira sign, accented letters, and characters from another language. You will use the method that works on your device, and a simple fallback that never fails." },
+      { "type": "p", "text": "A keyboard shows about a hundred keys. A computer can type thousands of characters, including ours. The naira sign is one of them, and it is missing from most keyboards, which is why people write N1,500 instead." },
+      { "type": "h2", "text": "The naira sign on Windows" },
+      { "type": "p", "text": "Windows does not give the naira sign its own key. You have three reliable ways to reach it." },
+      { "type": "ul", "items": [
+        "Copy it once from this page and paste it wherever you need it.",
+        "Use Insert Symbol in Word or Google Docs, search naira, and click Insert.",
+        "Type 20A6 and press Alt and X in Microsoft Word, which turns the code into the sign.",
+        "On a full keyboard, hold Alt and type 8358 on the number pad, then release Alt.",
+        "On Windows 11, press the Windows key and the full stop together to open the emoji panel, then choose Symbols, then Currency."
+      ] },
+      { "type": "p", "text": "For a document that will be printed or sent, write NGN 1,500 as well as the sign if the reader may not recognise it. Two characters of caution cost nothing, and a wrong amount costs a great deal." },
+      { "type": "figure", "src": "/images/blog/naira-typing.jpg", "alt": "A laptop keyboard with a hand reaching for the number pad.", "caption": "The number pad on a full keyboard is what makes the Alt code work. On a laptop without one, use Insert Symbol instead." },
+      { "type": "h2", "text": "Accents and other languages" },
+      { "type": "p", "text": "Names such as Chidinma Ọkeke, Adebayo Adéyẹmí, or a French client's address need letters the English keyboard hides. You do not need a new keyboard for this. You need a second layout, which you can switch on and off." },
+      { "type": "ul", "items": [
+        "Open Settings, then Time and language, then Language and region.",
+        "Add the language you need, such as French, Yoruba, or Igbo.",
+        "Press Windows key and Space to switch between layouts.",
+        "In the accented layout, the apostrophe key and the backtick key become accent keys.",
+        "Press the accent key, then the letter: apostrophe then e gives é.",
+        "Switch back with Windows key and Space when you are finished."
+      ] },
+      { "type": "p", "text": "On a Mac, hold a letter key down until a menu of accents appears, then press the number beside the one you want. On both systems, Insert Symbol or the emoji panel will find a character by name if you know what it is called." },
+      { "type": "figure", "src": "/images/blog/keyboard-language.jpg", "alt": "A Windows language switcher showing two keyboard layouts.", "caption": "Two layouts on one keyboard. Switch with Windows key and Space, and switch back when you finish." },
+      { "type": "h2", "text": "On a phone" },
+      { "type": "ul", "items": [
+        "Press and hold a letter to see its accented versions, then slide to choose one.",
+        "Add a language in the phone keyboard settings to get a dedicated key.",
+        "For the naira sign, open the numbers and symbols screen and press and hold the currency symbol.",
+        "Check that the person's name is spelled as they spell it, especially on certificates and forms.",
+        "Do not replace a person's name with a plain version because the keyboard is difficult."
+      ] },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "ul", "items": [
+        "The Alt code types nothing: use the number row only if it is a full pad, or use Insert Symbol instead.",
+        "The naira sign shows as a box or a question mark: the font does not contain it. Change to Calibri, Arial, or Times New Roman.",
+        "The wrong character appears on a shared document: the file opened in a different layout. Retype it in the same layout the document uses.",
+        "Your letters have changed places entirely: another keyboard layout is switched on. Press Windows key and Space.",
+        "An accent appears on the wrong letter: delete both characters and type the accent key first, then the letter.",
+        "A form rejects a name with an accent: enter it without the accent, then write the accented spelling in a notes field if there is one."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "ul", "items": [
+        "Type the naira sign in a blank document using two different methods.",
+        "Type a sentence with one accented name in it.",
+        "Switch to a second keyboard layout, type your name, then switch back.",
+        "Copy the naira sign into a note on your phone so it is always one tap away.",
+        "Write a price as both naira sign and NGN in the same line and check it reads clearly."
+      ] },
+      { "type": "p", "text": "You can now type the money and the names correctly, on the machine you actually own. The next lesson is about the file you deleted by accident." }
+    ]
+  },
+  {
+    "slug": "the-recycle-bin-and-i-deleted-it",
+    "excerpt": "How to get a deleted file back, why some deletions are permanent, and what emptying the bin really does. Read this before you retype anything.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you to recover a file you deleted by accident. You will learn where deleted files go, how to restore one, and the difference between a deletion you can undo and one you cannot." },
+      { "type": "p", "text": "Deleting a file usually moves it somewhere else rather than destroying it. The Recycle Bin on Windows, or Trash on a Mac, holds it until somebody empties that bin or the space is needed for something else." },
+      { "type": "h2", "text": "Walk to the bin and look inside" },
+      { "type": "ul", "items": [
+        "Open the Recycle Bin icon on the desktop. On a Mac, open Trash in the Dock.",
+        "Look at the Date deleted column and sort by it.",
+        "Find the file by name, type, or the date you deleted it.",
+        "Right-click the file and choose Restore.",
+        "Open the folder it came from and confirm it is there.",
+        "On a Mac, right-click the file and choose Put Back."
+      ] },
+      { "type": "p", "text": "Restore returns the file to the folder it was deleted from, not to the desktop. If you cannot remember the folder, restore it and then search for the name in File Explorer." },
+      { "type": "figure", "src": "/images/blog/recycle-bin.jpg", "alt": "A Windows Recycle Bin window showing deleted files and a restore option.", "caption": "Sort by date deleted and restore from the right-click menu. The file returns to the folder it left." },
+      { "type": "h2", "text": "Two kinds of delete" },
+      { "type": "ul", "items": [
+        "Delete key or right-click Delete: moves the file to the Recycle Bin. Recoverable.",
+        "Shift and Delete together: deletes without using the bin. Much harder to recover.",
+        "Empty Recycle Bin: removes everything inside it for good.",
+        "Delete from a flash drive: usually permanent, because the bin does not manage external drives.",
+        "Delete from a shared drive or a cloud folder: often permanent, and sometimes visible to everybody."
+      ] },
+      { "type": "p", "text": "This is why the Delete key is safe and Shift and Delete is not. Use the plain Delete key unless you are certain, and look at what you selected before you press it." },
+      { "type": "figure", "src": "/images/blog/recycle-desktop.jpg", "alt": "A desktop showing a Recycle Bin icon and a few stray files.", "caption": "The bin holds files until it is emptied. Clearing it is a decision, not housekeeping." },
+      { "type": "h2", "text": "Empty the bin on purpose" },
+      { "type": "p", "text": "Emptying the bin frees disk space, which matters on a small laptop. It also removes your last easy chance to recover a file. Do it after a look, not automatically." },
+      { "type": "ul", "items": [
+        "Open the bin and read the list before you empty it.",
+        "Restore anything you might still need, even if you are unsure.",
+        "Right-click and choose Empty Recycle Bin only when the list is genuinely rubbish.",
+        "If you run low on space, empty the bin before you delete more files.",
+        "Remember that a file restored from the bin has no protection until it is backed up."
+      ] },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "ul", "items": [
+        "The file is not in the bin: it was deleted with Shift, was on a flash drive, or the bin was emptied.",
+        "The bin itself is missing from the desktop: open Settings, then Personalisation, then Themes, then Desktop icon settings, and tick Recycle Bin.",
+        "You emptied the bin by mistake: stop using the computer for new work, and ask a repairer about recovery software before you install anything yourself.",
+        "The file will not restore: it may be too large for the bin, which sends large files straight past it.",
+        "The file restored but will not open: the file itself was damaged before deletion. Restore an older copy from your backup.",
+        "You deleted from a shared folder: tell the owner of the folder at once, because they may have a version history."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "ul", "items": [
+        "Create a test file, delete it with the Delete key, and restore it from the bin.",
+        "Delete another test file with Shift and Delete, then look for it in the bin.",
+        "Open the bin and read the oldest item without restoring it.",
+        "Restore one file and confirm which folder it returned to.",
+        "Empty the bin only after reading the whole list."
+      ] },
+      { "type": "p", "text": "You can now undo the most common mistake in computing, and you know which deletions cannot be undone. The next lesson is about getting help without giving away the keys." }
+    ]
+  },
+  {
+    "slug": "asking-for-help-without-the-password",
+    "excerpt": "How to get real help with a computer or an account while keeping your passwords private, including what to do when someone offers to take remote control.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you to ask for help in a way that keeps your account and your money safe. You will learn what a helper actually needs, what they must never have, and how to allow remote help without handing over control for longer than necessary." },
+      { "type": "p", "text": "Helpful people and thieves ask for different things. A helper needs to see the screen or the error message. A thief needs your password, your code, or a payment. Learning that difference protects you even when the person sounds kind and confident." },
+      { "type": "h2", "text": "What you never read out loud" },
+      { "type": "ul", "items": [
+        "Your password, to anybody, in any circumstance.",
+        "A one-time code sent to your phone, even if the caller says they are from the bank.",
+        "Your card number with the three digits on the back.",
+        "Your BVN or NIN, unless you contacted the organisation yourself through an address you typed.",
+        "A PIN from a banking app, including to a person standing beside you.",
+        "Screenshots of a page that shows your balances and your full name."
+      ] },
+      { "type": "p", "text": "There is no support desk, bank, or technician whose job requires your password. They can reset it, unlock an account, or work around it. If somebody asks for it, the conversation is over." },
+      { "type": "h2", "text": "Give a helper what they actually need" },
+      { "type": "ul", "items": [
+        "Describe what you see, and read the exact error message.",
+        "Send a screenshot with the private parts covered or cropped.",
+        "Say which version of Windows or the app you use.",
+        "Say what you tried already, and what happened.",
+        "Share the smallest useful file rather than the whole folder.",
+        "Stay present. Do not leave a stranger alone with your machine."
+      ] },
+      { "type": "figure", "src": "/images/blog/asking-help.jpg", "alt": "Two people looking at a laptop screen together at a table.", "caption": "The helper needs the screen, the error message, and the steps you tried. None of that is a password." },
+      { "type": "h2", "text": "Remote help without losing control" },
+      { "type": "p", "text": "Remote assistance lets another person see and sometimes control your screen through the internet. It is genuinely useful for a parent teaching a child, or a technician solving a printer problem. It is also the favourite tool of fraud." },
+      { "type": "ul", "items": [
+        "Only accept a remote session from somebody you contacted yourself, not somebody who called you.",
+        "Use the tool's own site, such as TeamViewer or Quick Assist, typed by you.",
+        "Watch the screen while the person works. Do not go and do something else.",
+        "Close the session when the task is finished, and end the program completely.",
+        "Change any password the person could have seen, once the session is over.",
+        "Never let a remote helper open your bank app or move money while you watch without understanding."
+      ] },
+      { "type": "figure", "src": "/images/blog/cover-password.jpg", "alt": "A hand covering a notebook page beside a laptop keyboard.", "caption": "What a helper needs is the problem. A password is not part of the problem, and not part of the solution." },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "ul", "items": [
+        "You already gave a password: change it now on the real site, then sign out of all devices.",
+        "You read out a code: call the bank immediately and tell them a code was shared.",
+        "Somebody has remote control and will not leave: unplug the network cable or switch off Wi-Fi, then restart the machine.",
+        "Money has left your account: call the bank, ask for the transaction to be reversed, and report it the same day.",
+        "You are unsure whether a helper is genuine: end the session and call the organisation's published number.",
+        "You feel foolish: do not stay silent. Every bank has heard this before, and speed matters more than pride."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "ul", "items": [
+        "Write down the three things you will never share, and keep the note where you work.",
+        "Take a screenshot of an error message and crop out your name and any number.",
+        "Send that screenshot to somebody with one sentence describing the problem.",
+        "Find the remote-help app you would trust, and note where its official site is.",
+        "Practise ending a session on your own, so you know the button before you need it."
+      ] },
+      { "type": "p", "text": "You can now ask for help and still keep your keys. The next chapter takes this further, into the habits that protect a phone and a laptop every day." }
+    ]
+  }
+]

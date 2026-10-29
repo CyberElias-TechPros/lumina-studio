@@ -1,0 +1,324 @@
+[
+  {
+    "slug": "passwords-you-can-keep",
+    "excerpt": "How to make a password you can remember, store it safely, and add a second lock to the accounts that matter. Includes what to do when someone gets in.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you to make strong passwords, keep them somewhere safe, and add a second lock to the accounts that matter most. You will set one up today, then build the habit over the next week." },
+      { "type": "p", "text": "A password is a key. It should be long and hard for another person to guess. It should also be different for each important account, because one copied key opens every door in the house." },
+      { "type": "h2", "text": "What makes a password strong" },
+      { "type": "p", "text": "Length matters more than symbols. A long phrase of ordinary words is stronger than a short word with a capital letter and an exclamation mark, and it is far easier to remember." },
+      { "type": "ul", "items": [
+        "Use at least twelve characters. Sixteen is better.",
+        "Join four unrelated words, such as mango-bicycle-lagos-cup.",
+        "Add a number you will not forget, but not your year of birth or phone number.",
+        "Never use your name, your child's name, your school, or 123456.",
+        "Never reuse the password from your bank on a shopping site.",
+        "Change a password at once if a company tells you its customer list was leaked."
+      ] },
+      { "type": "p", "text": "A password like P@ssw0rd fails on two counts. Many people already use it, and a program can try it in less than a second. A phrase like blue-basket-river-27 is long, unusual, and still easy for you to type." },
+      { "type": "h2", "text": "Make one you can actually remember" },
+      { "type": "ul", "items": [
+        "Think of a sentence you will not forget, such as my first shop opened near Ojo market.",
+        "Take four strong words from it, in the same order: shop, Ojo, market, first.",
+        "Add a number and a capital letter: Shop-Ojo-Market-First-27.",
+        "Type it five times slowly on the real keyboard before you save it anywhere.",
+        "If the account asks for a symbol, add one at the end and write the exact version down."
+      ] },
+      { "type": "p", "text": "You will be tempted to simplify it after a week. Do not. The moment you shorten a good password, you start reusing the short one everywhere, which is the habit this lesson exists to stop." },
+      { "type": "figure", "src": "/images/blog/password-notebook.jpg", "alt": "A small notebook and pen beside a laptop keyboard.", "caption": "A paper notebook kept at home beats the same short password on twenty websites. Write the site, the name, and the password in the same order every time." },
+      { "type": "h2", "text": "Where to keep the list" },
+      { "type": "p", "text": "Nobody remembers twenty long passwords. You have two honest choices, and both are better than reuse." },
+      { "type": "ul", "items": [
+        "A password manager, which is a program that stores them behind one master password.",
+        "A notebook that stays at home in a drawer, not in your bag and not on the office desk.",
+        "The browser's saved passwords, if the computer itself needs a password to start."
+      ] },
+      { "type": "p", "text": "Never keep the list in a message to yourself on WhatsApp, in a draft email, or in a note called passwords on the desktop. If somebody takes the phone, those are the first places they look." },
+      { "type": "h2", "text": "Add the second lock" },
+      { "type": "p", "text": "Two-step verification means the account asks for your password and then one more proof, such as a code sent to your phone. A thief with your password still cannot get in without the second step." },
+      { "type": "p", "text": "Turn it on for your email first, because email can reset every other account you own. Then do your bank and your school portal." },
+      { "type": "ul", "items": [
+        "Open your email account settings and find Security.",
+        "Look for Two-step verification or 2-Step Verification and turn it on.",
+        "Choose the code by SMS if you always have your number, or an authenticator app if your network is unreliable.",
+        "Save the backup codes it shows you, on paper, in the same drawer as the notebook.",
+        "Sign out of every device once, then sign in again with the new password."
+      ] },
+      { "type": "figure", "src": "/images/blog/phone-login.jpg", "alt": "A phone showing a login screen with a verification code field.", "caption": "The code on the phone is the second lock. Nobody needs it except you, and no support desk will ask you to read it out." },
+      { "type": "h2", "text": "What you never type into a surprise" },
+      { "type": "ul", "items": [
+        "A password on a page you reached from a link in a message, even if the page looks exactly like your bank.",
+        "A one-time code read out to you by someone who called first. Your bank will not ask for it.",
+        "A password on a website that does not show a padlock and an address you recognise.",
+        "Your login details in a reply to an email, however urgent the message sounds.",
+        "The same password on a small site you will never use again."
+      ] },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "ul", "items": [
+        "You forgot the password: use Forgot password on the real site, and reset through the email or phone number on the account.",
+        "Somebody has changed your password: use the recovery option, then check the recovery email and phone number are still yours.",
+        "You cannot receive the code: check the number on the account, restart the phone, and use a backup code if you saved one.",
+        "You typed the password into a page that felt wrong: change it now, on the real site, and sign out of all devices.",
+        "The account is locked after several wrong tries: stop guessing and wait thirty minutes before trying again.",
+        "A site emails you a password in plain text: treat that account as weak, change the password, and do not use it for anything important."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "ul", "items": [
+        "Write down the three accounts that would hurt most to lose: email, bank, and school or work.",
+        "Make one long password for email and type it five times correctly.",
+        "Turn on two-step verification for that email account.",
+        "Write the password and the backup codes in the notebook and keep it at home.",
+        "List any website where you used that email password. Change those in the next seven days."
+      ] },
+      { "type": "p", "text": "You can now build a password you can keep, store it without embarrassment, and put a second lock on the accounts that matter. The next lesson shows you the message that tries to steal the key." }
+    ]
+  },
+  {
+    "slug": "the-link-you-should-not-open",
+    "excerpt": "How to spot a dangerous link before you click it, how to reach a real website safely, and exactly what to do if you already tapped and typed your password.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you to recognise a dangerous link before you click it, and what to do if you already did. Most stolen accounts in Nigeria start with one message and one tap, not with a genius hacker." },
+      { "type": "p", "text": "A link is an address with a disguise. The words you see can say one thing while the real destination is somewhere else. The trick works because the message creates hurry, and hurry is the only thing an attacker really needs." },
+      { "type": "figure", "src": "/images/blog/inbox-caution.jpg", "alt": "A phone inbox showing an unexpected message with a link.", "caption": "A message you did not ask for, with a link and a deadline, is the standard shape of a scam. Read it slowly instead of quickly." },
+      { "type": "h2", "text": "Three things you can check without clicking" },
+      { "type": "p", "text": "Before you touch the link, look at three details. Any one of them is enough reason to stop and check somewhere else." },
+      { "type": "ul", "items": [
+        "The sender. Read the full address, not just the name. gtbank-alerts@mail-secure.com is not gtbank.com.",
+        "The hurry. Your account will be closed today, your parcel is held, your payment failed. Real organisations give you days, not minutes.",
+        "The greeting. Dear customer means the sender does not know your name, which a bank you use already does.",
+        "The request. A password, a card number, a code sent to your phone, or a small payment to release a larger one.",
+        "The shape of the address. Look for extra words and strange endings, such as gtbank-verify.xyz or paystack.support-login.info."
+      ] },
+      { "type": "h2", "text": "Check the real address before you tap" },
+      { "type": "p", "text": "You can see where a link really goes without opening it. On a computer, rest the mouse pointer on the link and look at the address that appears at the bottom of the window. On a phone, press and hold the link, then read the address in the menu that appears. Do not tap the link itself." },
+      { "type": "figure", "src": "/images/blog/address-check.jpg", "alt": "A browser address bar being read carefully beside a smartphone.", "caption": "The address bar tells you the real owner of a page. Read the part just before the first single slash, because that is the actual site." },
+      { "type": "h2", "text": "Walk there yourself instead" },
+      { "type": "p", "text": "This is the habit that protects you for the rest of your life online. Never arrive at a bank, a school, or a shop through a link in a message. Go there the way you would walk to a shop you know." },
+      { "type": "ul", "items": [
+        "Close the message, or leave it open without touching the link.",
+        "Open a new tab and type the address you already know, such as gtbank.com.",
+        "Sign in there and look for the message or the payment the email mentioned.",
+        "If the story was true, it will still be true inside your real account.",
+        "If you are still unsure, call the number printed on your card or on the organisation's own website."
+      ] },
+      { "type": "p", "text": "If the message claims to be about a parcel, use the tracking number on the courier's own website. If it claims to be your school, open the portal as you normally do. The extra minute costs you nothing and defeats almost every version of this trick." },
+      { "type": "h2", "text": "If you already tapped" },
+      { "type": "p", "text": "A tap alone is usually harmless. What matters is what you typed after it. Act quickly and in this order." },
+      { "type": "ul", "items": [
+        "Close the page. Do not download anything it offers, even if it says it is a security update.",
+        "If you typed a password, change that password now on the real site, then sign out of all devices.",
+        "If you typed a card number, call your bank immediately and ask them to block the card.",
+        "If you read out a code or sent money, call the bank at once. Some transfers can still be stopped in the first hour.",
+        "Turn on two-step verification so that a stolen password is not enough on its own.",
+        "Tell one person you trust. Silence is what scammers rely on, because shame keeps people from blocking the card in time."
+      ] },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "ul", "items": [
+        "You cannot tell whether the message is real: treat it as fake and use the official address instead.",
+        "The page will not close: press the back button, or close the whole browser tab.",
+        "Your phone keeps showing pop-ups after you leave: close the browser and clear its history and site data.",
+        "The bank says the money has gone: report it the same day and keep the message, the time, and the account number.",
+        "A friend's account sends you a link: their account may be stolen. Call them on the phone before you reply."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "ul", "items": [
+        "Open your inbox and find one message that asks you to click something.",
+        "Read the sender address in full, then rest the pointer on the link without clicking it.",
+        "Compare the destination with the name of the organisation and say out loud whether they match.",
+        "Open a new tab, type the official address, and confirm you can reach the same service yourself.",
+        "Delete one message you now know is a scam, and mark it as spam."
+      ] },
+      { "type": "p", "text": "You can now read a link before you trust it, reach a service without help from a stranger, and limit the damage if you tap too fast. The next lesson takes you back to ordinary work: printing a page without wasting paper or money." }
+    ]
+  },
+  {
+    "slug": "printing-without-waste",
+    "excerpt": "How to print one page instead of five, choose the right settings, use a business centre without being overcharged, and fix the paper jam yourself.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you to print the page you meant, on the paper you meant, without wasting ink or money. You will learn the settings that matter, what to check before you pay at a business centre, and how to clear a simple jam." },
+      { "type": "p", "text": "A printer is a machine with four needs: power, paper, ink or toner, and a connection to the computer. When one of those is missing, the printer is not broken. It is waiting." },
+      { "type": "h2", "text": "Look before you print" },
+      { "type": "p", "text": "Most waste happens in the ten seconds before printing, not during it. A preview shows you exactly what will come out, so you can cancel a mistake while it is still free." },
+      { "type": "ul", "items": [
+        "Press Ctrl and P. On a Mac, press Command and P.",
+        "Read the preview on the right side of the window.",
+        "Check the page count. If it says 12 pages and you wanted one, stop.",
+        "Choose Pages and type the range, such as 1 or 1-3.",
+        "Set Copies to 1 unless you really need more.",
+        "Choose black and white when colour adds nothing to the page."
+      ] },
+      { "type": "figure", "src": "/images/blog/print-preview.jpg", "alt": "A laptop screen showing a print preview with page range settings.", "caption": "The preview is the cheapest page you will ever print. Read the page count before you press the button." },
+      { "type": "h2", "text": "Send the job" },
+      { "type": "ul", "items": [
+        "Press Ctrl and P.",
+        "Choose the correct printer from the list. A laptop often remembers a printer from another office.",
+        "Set the pages, the copies, and the colour choice.",
+        "Look for Double-sided or Print on both sides if you need it, and Portait or Landscape for wide tables.",
+        "Press Print once, then wait. Pressing it three times sends three copies."
+      ] },
+      { "type": "p", "text": "A queue is the list of jobs waiting for the printer. If you sent the wrong page, open the printer window from the taskbar and choose Cancel on that job before it starts. Cancel works while the job is still in the queue, so do it quickly." },
+      { "type": "h2", "text": "Printing at a business centre" },
+      { "type": "p", "text": "Business centres charge per page, and prices in Lagos and Port Harcourt usually fall between one hundred and three hundred naira for a black and white page, more for colour. A little preparation protects your money." },
+      { "type": "ul", "items": [
+        "Save your document as a PDF before you go, so the layout cannot move on their computer.",
+        "Put the PDF on a flash drive, or email it to yourself and open it there.",
+        "Ask the price per page before the job starts, not after.",
+        "Ask for one test page if the document is long or the formatting matters.",
+        "Check the first page before they print the rest.",
+        "Collect your flash drive, and delete your file from their computer if you can."
+      ] },
+      { "type": "figure", "src": "/images/blog/printer-desk.jpg", "alt": "A small office printer with a stack of paper beside it.", "caption": "Ask for the price per page and see one test copy. A print shop that refuses a test page is telling you something." },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "ul", "items": [
+        "Nothing comes out: check the printer is switched on, has paper, and shows no red light.",
+        "The job stays in the queue: right-click it and choose Restart, or cancel and send it again.",
+        "The pages are faded or streaked: the toner or ink is low. Replace it, or ask the attendant.",
+        "Paper jams: switch the printer off, open the cover, and pull the sheet slowly in the direction it was travelling. Never tear it out.",
+        "The wrong pages print: cancel any remaining jobs in the queue before you change the settings.",
+        "You are charged for pages that failed: ask to see the counter on the machine, and pay only for pages you received."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "ul", "items": [
+        "Open any document and press Ctrl and P, then close the window without printing.",
+        "Set the pages to 1 and the copies to 1, and look at how the preview changes.",
+        "Save a document as a PDF and open it to check the layout is unchanged.",
+        "Print one page at a business centre and confirm the price before and after.",
+        "Clear a jam on a printer you are allowed to open, with the power off."
+      ] },
+      { "type": "p", "text": "You can now print exactly what you need, keep your money at the business centre, and solve the small failures yourself. The next lesson moves from paper to a grid that does your arithmetic for you." }
+    ]
+  },
+  {
+    "slug": "spreadsheets-the-grid-that-counts",
+    "excerpt": "Rows, columns, and the cell where they meet. How to enter numbers a spreadsheet can actually use, total a column, and catch the mistakes that look like correct maths.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you to use a spreadsheet for real work: a budget, a list of sales, or a record of school fees. You will enter numbers correctly, add a column with a formula, and spot the errors that make a total wrong." },
+      { "type": "p", "text": "A spreadsheet is a page of boxes. Each box holds one thing: a word, a number, or a formula. Because the boxes are connected, you can change one number and every total updates on its own." },
+      { "type": "h2", "text": "The map of the page" },
+      { "type": "p", "text": "Open Excel, Google Sheets, or LibreOffice Calc. The page looks the same in all three, and what you learn in one works in the others." },
+      { "type": "ul", "items": [
+        "Columns run down the page and are named with letters: A, B, C.",
+        "Rows run across the page and are numbered: 1, 2, 3.",
+        "A cell is one box where a column and a row meet. B3 means column B, row 3.",
+        "The name box at the top left shows which cell you are in.",
+        "The formula bar beside it shows what the cell really contains, which is not always what you see."
+      ] },
+      { "type": "figure", "src": "/images/blog/spreadsheet-grid.jpg", "alt": "A spreadsheet with columns, rows and a selected cell highlighted.", "caption": "Columns are letters, rows are numbers, and B3 is one cell. Every formula is written using these addresses." },
+      { "type": "h2", "text": "Type numbers, not pictures of numbers" },
+      { "type": "p", "text": "A spreadsheet can only add a number it recognises as a number. A naira sign, a space, or a comma typed into the cell can turn a number into text, and text is invisible to a formula." },
+      { "type": "ul", "items": [
+        "Type 1500, not N1,500 and not 1 500.",
+        "Put the currency in the column heading instead, such as Amount in naira.",
+        "Use a full stop for kobo, such as 1500.50. A comma may be read differently on another computer.",
+        "Leave out units such as kg or bags. Put them in the heading.",
+        "A number that sits on the left of the cell is probably being treated as text. Numbers usually sit on the right."
+      ] },
+      { "type": "h2", "text": "Build a small budget" },
+      { "type": "ul", "items": [
+        "In A1 type Item, in B1 type Amount, and in C1 type Notes.",
+        "In A2 to A6, type five things you buy in a month.",
+        "In B2 to B6, type the amount for each one, as plain numbers.",
+        "In A7 type Total.",
+        "In B7 type =SUM(B2:B6) and press Enter.",
+        "Change one amount in B2. Watch the total change by itself."
+      ] },
+      { "type": "p", "text": "The equals sign tells the program that you are writing a formula, not a sentence. SUM means add everything in the range. B2:B6 means from B2 down to B6. If you type the amounts by hand and the total as a typed number, the total will be wrong the moment one price changes." },
+      { "type": "figure", "src": "/images/blog/spreadsheet-learner.jpg", "alt": "A learner entering numbers into a spreadsheet on a laptop.", "caption": "One formula at the bottom of a column saves an hour and prevents the arithmetic mistake everybody makes at midnight." },
+      { "type": "h2", "text": "Mistakes that look like correct maths" },
+      { "type": "ul", "items": [
+        "Text pretending to be numbers: the total is lower than it should be because one cell is text.",
+        "A range that misses a row: =SUM(B2:B6) will not count the new row you typed in B7.",
+        "A hard-typed total: someone overwrote the formula with a number and the sheet is now frozen in the past.",
+        "Merged cells: they break sorting and copying. Use them for titles only, never for data.",
+        "Two sheets with the same name for different months: keep one sheet, add a Date column."
+      ] },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "ul", "items": [
+        "The cell shows ####: the column is too narrow. Drag the line between the column letters to widen it.",
+        "The formula appears as text: you forgot the equals sign at the start.",
+        "The total is zero: the numbers are stored as text. Retype one without spaces or symbols and watch the total.",
+        "You see #DIV/0!: a formula is dividing by an empty cell. Fill the cell or change the formula.",
+        "You deleted a row by mistake: press Ctrl and Z at once.",
+        "The file will not open for someone else: save it as a PDF for reading, and keep the spreadsheet for editing."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "ul", "items": [
+        "Build the five-item budget above and total it with =SUM.",
+        "Add a sixth item in row 7, then widen the formula to include it.",
+        "Change one amount and check that the total moves.",
+        "Format the amount column as currency and see whether the numbers still add.",
+        "Save the file as practice-budget and open it again tomorrow."
+      ] },
+      { "type": "p", "text": "You can now set up a sheet that adds for you and change one number without doing the arithmetic again. The next lesson is about choosing the right place to send a message." }
+    ]
+  },
+  {
+    "slug": "whatsapp-is-not-email",
+    "excerpt": "A chat is a tap on the shoulder. Email is a letter on a desk. When each one is right, how to send files properly, and what disappears when you rely on a phone.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you when to use WhatsApp and when to use email. Choosing the wrong one is why applications go unanswered, documents arrive unreadable, and important messages disappear with a lost phone." },
+      { "type": "p", "text": "WhatsApp is a conversation. It is fast, it lives on a phone, and it is excellent for short questions between people who know each other. Email is a letter. It is slower, it keeps a record, and it is what offices, schools, and banks read on a computer." },
+      { "type": "h2", "text": "When the phone is the right room" },
+      { "type": "ul", "items": [
+        "A quick question with somebody you already know.",
+        "Family, friends, and the group for a class or an event.",
+        "Confirming a delivery, a time, or a meeting place.",
+        "Sending a photograph of a receipt that only needs to be seen.",
+        "Reaching a small business that publishes its number for orders."
+      ] },
+      { "type": "h2", "text": "When only email will do" },
+      { "type": "ul", "items": [
+        "A job application, an admission request, or anything with a deadline.",
+        "A complaint or a request you may need to prove later.",
+        "Any document that must arrive with its formatting intact.",
+        "A message to a bank, a school, a government office, or a company.",
+        "Anything you need to find again in six months."
+      ] },
+      { "type": "figure", "src": "/images/blog/phone-and-laptop.jpg", "alt": "A phone beside a laptop on a desk, both showing messages.", "caption": "The phone is for the conversation. The laptop is for the record. Use the one that matches what you need afterwards." },
+      { "type": "p", "text": "An office that receives your application on WhatsApp has no reference number, no thread, and nobody whose job is to read it. The same application by email sits in a queue with a date on it. That is not snobbery. It is how records work." },
+      { "type": "h2", "text": "Send a file that survives" },
+      { "type": "p", "text": "WhatsApp treats photographs and documents differently. A photo is compressed, which means the phone shrinks it to save data, and small print in a photograph can become unreadable. A document is sent as it is." },
+      { "type": "ul", "items": [
+        "Rename the file before you send it, so it says what it is: cv-ada-okoro.pdf.",
+        "Attach it with the paperclip, then choose Document rather than Gallery.",
+        "Prefer a PDF for anything that has to be printed or filled.",
+        "Check the file size. Large videos may not send on a weak connection.",
+        "On a computer, open web.whatsapp.com to type with a keyboard and see the document clearly."
+      ] },
+      { "type": "figure", "src": "/images/blog/whatsapp-vs-letter.jpg", "alt": "A phone showing a chat beside a printed letter on a desk.", "caption": "A chat is read once and buried. A letter can be forwarded, printed, and filed. Choose the one your reader needs." },
+      { "type": "h2", "text": "Groups and forwarding" },
+      { "type": "ul", "items": [
+        "Read a forwarded message before you pass it on. A voice note and a screenshot can both be false.",
+        "Do not forward messages that promise money, cures, or jobs to everybody in your contact list.",
+        "Mute a group rather than leaving it in anger, and reply to the person privately when the matter is personal.",
+        "Keep work groups for work. Personal arguments in a group are permanent screenshots.",
+        "Check who is in the group before you discuss money or a person."
+      ] },
+      { "type": "h2", "text": "What disappears" },
+      { "type": "p", "text": "A chat lives on one phone. If the phone is stolen, broken, or reset, the conversation goes with it unless you made a backup. Messages deleted for everyone can still be screenshotted before they disappear." },
+      { "type": "ul", "items": [
+        "Turn on chat backup in WhatsApp settings, and check when it last ran.",
+        "Email yourself any document that matters, or save it in Documents with a clear name.",
+        "Do not use a chat as your only copy of a receipt or a certificate.",
+        "Export a chat only when you need it. It creates a file you can lose as well."
+      ] },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "ul", "items": [
+        "You sent a message to the wrong chat: delete it for everyone straight away, then correct it.",
+        "The message will not deliver: check data or Wi-Fi, then the person's number, then try a normal SMS.",
+        "The document will not open on their phone: send it as a PDF, or send it by email.",
+        "You lost the conversation with a new phone: restore from the backup in WhatsApp settings during setup.",
+        "Storage is full: delete videos and forwards, then check the phone's storage screen for the largest files."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "ul", "items": [
+        "Rename a PDF on your phone so it says what it contains.",
+        "Send that PDF to yourself by email, then open it on a computer.",
+        "Check the date of your last WhatsApp backup and turn automatic backup on.",
+        "Write one message you have been planning to send on WhatsApp, and send it by email instead.",
+        "Find the chat you would miss most if the phone was lost, and save its important document by email."
+      ] },
+      { "type": "p", "text": "You can now choose the room that fits the message, send a file that stays readable, and keep a copy that survives a lost phone. The next lesson returns to email and shows you how to write one that reads like a real letter." }
+    ]
+  }
+]

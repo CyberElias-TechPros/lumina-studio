@@ -1,0 +1,794 @@
+[
+  {
+    "slug": "copy-and-paste-between-programs",
+    "excerpt": "Select, copy, switch window, paste. How to move text and files between programs, when to use Cut instead, and how to stop a paste arriving in the wrong style.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to move text and files between programs without retyping them. You will select, copy, switch windows, and paste, and you will know when to use Cut instead. If you have ever given up and retyped an address, this fixes that for good."
+      },
+      {
+        "type": "p",
+        "text": "The computer keeps one item in a temporary place called the clipboard. Copy puts a piece of work there. Paste takes it out and places it where you are working. The original stays where it was, which is why copying is the safer habit."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Two programs open, such as a browser and Notepad.",
+          "Something to copy, such as your own name and address from a note.",
+          "About fifteen minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Select, copy, walk over, paste"
+      },
+      {
+        "type": "p",
+        "text": "The order never changes, and the fourth step is the one people forget. A copy that is never pasted looks like nothing happened."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Click at the start of the text you want, hold the button, and drag to the end.",
+          "Let go. The text stays highlighted.",
+          "Press Ctrl and C. On a Mac, press Command and C.",
+          "Click inside the other program, at the place you want the text to land.",
+          "Press Ctrl and V. On a Mac, press Command and V.",
+          "Check what arrived before you do anything else."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the text change colour as you select it, and stay that colour after you let go. That colour is the only sign the computer has noticed what you chose, so look for it before you press Ctrl and C."
+      },
+      {
+        "type": "p",
+        "text": "To switch programs, click the window you want, or hold Alt and press Tab. On a Mac, press Command and Tab. You do not need to close anything, because both programs can stay open at once."
+      },
+      {
+        "type": "p",
+        "text": "You will see the other window come to the front with its title bar in colour, while the first one stays open behind it."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/selected-text.jpg",
+        "alt": "Text highlighted in a document window with a selection cursor.",
+        "caption": "Selected text stays highlighted. If it is not highlighted, the computer does not know what to copy."
+      },
+      {
+        "type": "h2",
+        "text": "Cut moves, copy leaves a copy"
+      },
+      {
+        "type": "p",
+        "text": "Cut is Ctrl and X. It removes the selection and puts it on the clipboard, ready to paste somewhere else. Use it when the text should leave the first place, and copy when it should stay."
+      },
+      {
+        "type": "p",
+        "text": "Most beginners cut when they meant to copy, then paste something over the top of it and lose the original. When you are unsure, copy. You can always delete the leftover afterwards, and nobody has ever lost work by copying twice."
+      },
+      {
+        "type": "p",
+        "text": "It looks like the clipboard holds everything you have copied today. It holds one item at a time, so the second copy replaces the first. Copy, paste, then copy the next thing, rather than copying five things and hoping."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/copy-between.jpg",
+        "alt": "Two windows side by side with text being pasted into the second one.",
+        "caption": "Copy in one window, paste in the other. The original stays where it was until you change it yourself."
+      },
+      {
+        "type": "h2",
+        "text": "When the paste arrives dressed wrongly"
+      },
+      {
+        "type": "p",
+        "text": "Text copied from a website often brings its own font, size, and colour with it, and the result looks nothing like the document you pasted into. This is a formatting problem, not a broken paste."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Use Paste as plain text, usually Ctrl, Shift and V, when you want the words without the decoration.",
+          "In Word, choose Keep text only from the small paste menu that appears after pasting.",
+          "Select the pasted text and set the font yourself, which takes five seconds.",
+          "So not copy from a webpage into a form that has its own font rules. Type the short parts instead.",
+          "If the paste turned into a picture, the source was an image and not text."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this damages the document. A badly dressed paste is easy to undo with Ctrl and Z, and easier to avoid once you know the plain-text shortcut."
+      },
+      {
+        "type": "h2",
+        "text": "One rule about passwords"
+      },
+      {
+        "type": "p",
+        "text": "Copying a password from a notebook app is normal and useful. Copying a password you have just typed into a website is not, because the clipboard is shared by every program on the machine, including anything you install later."
+      },
+      {
+        "type": "p",
+        "text": "Never copy a one-time code or a bank PIN, and clear the clipboard after a sensitive copy by copying a blank space or a harmless word. On Windows, press Windows and V to see the clipboard history and clear it."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every item here is common, and none of them means the machine is faulty."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Nothing pastes: press Ctrl and C again, because the clipboard may have been replaced by a later copy.",
+          "The wrong text pastes: that was the last thing copied. Copy the correct piece and try again.",
+          "Ctrl and V does nothing in a particular program: right-click and choose Paste from the menu instead.",
+          "The paste is in the wrong place: press Ctrl and Z and click where you actually wanted the cursor.",
+          "The pasted text is huge or tiny: it carried the source font. Select it and set the size yourself.",
+          "You pasted over something you needed: press Ctrl and Z once, and the old text comes back."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "This is one of the few skills that pays back on the same day you learn it."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Copy your own address from a note and paste it into Notepad.",
+          "Copy a sentence from a website into Notepad twice, once normally and once with Ctrl, Shift and V.",
+          "Compare the two, and notice which one carries the website's font.",
+          "Cut a line from the middle of your note and paste it at the end.",
+          "Undo everything with Ctrl and Z, and watch the order reverse."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now move anything you can select, without retyping it. In the next lesson you will copy what is on the screen itself, which is how most support cases are solved."
+      }
+    ]
+  },
+  {
+    "slug": "taking-a-screenshot",
+    "excerpt": "How to capture all or part of a screen, name the file so it can be found again, and what never to capture when a bank balance or a password is on the screen.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to capture what is on the screen and save it as a file you can send. You will take a full screenshot, a cropped one, and an error message a support person can actually read. You will also learn what not to capture."
+      },
+      {
+        "type": "p",
+        "text": "A screenshot is a photograph taken by the computer itself. It is the fastest way to show a problem, keep proof of a payment, or explain a screen to somebody who is not in the room."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A computer with Windows 10, Windows 11, or macOS.",
+          "A second device, if you want the file on your phone as well.",
+          "About ten minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "The whole screen"
+      },
+      {
+        "type": "p",
+        "text": "The Print Screen key sits near the top right of most keyboards, and may be labelled PrtSc, PrtScn, or Print Screen. On a laptop it sometimes shares a key with another function."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about the odd names on the key. PrtSc, PrtScn, and Print Screen all do the same job."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Press the Print Screen key once. Nothing visible happens, because the picture goes to the clipboard.",
+          "Open Paint, Word, or WhatsApp, and press Ctrl and V.",
+          "The picture appears, ready to save or send.",
+          "On Windows 11, press Windows, Shift and S together to choose an area instead.",
+          "On a Mac, press Command, Shift and 3 for the whole screen, or Command, Shift and 4 to drag an area."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see a small preview appear at the corner of the screen on Windows 11, and hear a shutter sound on a Mac. If nothing appears anywhere, the key press did not register, so try the shortcut again rather than pressing harder."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/printscreen-key.jpg",
+        "alt": "A laptop keyboard with the Print Screen key marked.",
+        "caption": "Print Screen copies the screen without a sound. The picture is on the clipboard until you paste and save it."
+      },
+      {
+        "type": "h2",
+        "text": "One window, or one error message"
+      },
+      {
+        "type": "p",
+        "text": "A full screenshot of a busy desktop is hard for a support person to read. Crop to the part that matters, which is usually one window or one red message."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Press Windows, Shift and S together.",
+          "The screen dims and a small toolbar appears at the top.",
+          "Choose Rectangle and drag around the error message.",
+          "Let go, then click the preview that appears.",
+          "Use the pen tool to circle the line that matters, if the reader may miss it.",
+          "Press Ctrl and S to save, and give the file a name you will recognise."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the whole screen turn grey with a thin outline around the area you are choosing. On a Mac, Command, Shift and 4 does the same, and the file lands on the desktop by itself."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a screenshot of the whole screen is more helpful because it shows everything. In practice the reader spends the first minute looking at the wrong corner, and the message you wanted to show is six pixels wide."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/screenshot-file.jpg",
+        "alt": "A folder showing screenshot files with descriptive names.",
+        "caption": "A named file is evidence. A file called Screenshot (14) is a picture nobody can find again in March."
+      },
+      {
+        "type": "h2",
+        "text": "Name the file for the day you need it"
+      },
+      {
+        "type": "p",
+        "text": "Screenshots arrive with names like Screenshot (14). That name tells you nothing when you are looking for proof of a payment three months later."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Save into Pictures, in a folder called Screenshots.",
+          "Name the file for what it proves: bank-transfer-29-oct-2026.",
+          "Include the amount or the reference if the picture shows one.",
+          "Keep receipts and error messages, and delete the rest at the end of the week.",
+          "Send the file itself, not a photograph of the screen taken with another phone."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "What never to capture"
+      },
+      {
+        "type": "p",
+        "text": "A screenshot is permanent, and it is sent to the wrong place more often than people expect. Look at the whole screen before you capture it, not only the part you care about."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "An open bank page with your balance and account number visible.",
+          "A password field with the password revealed by the eye icon.",
+          "A message from another person, which is theirs as much as yours.",
+          "A page that shows your card number, even partly.",
+          "A child's school details, if the picture will be posted publicly."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "If you must send one of these, crop it first, and cover the private part with a shape before you save. None of this is difficult, and it takes ten seconds."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Screenshots fail in a few ordinary ways, and every one of them has a second method."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Nothing happens when you press Print Screen: the key may need Fn held with it, or the function key is doing the job instead.",
+          "The paste is empty: the screenshot went to a file instead of the clipboard. Look in Pictures, then Screenshots.",
+          "The picture is black: some video and banking windows block capture on purpose. Use your phone camera instead.",
+          "You cannot find the file: search Pictures for the word screenshot, sorted by date.",
+          "The file is too large to send: crop it, or save it as a JPG rather than a PNG.",
+          "You captured something private by mistake: delete the file, and empty the Recycle Bin once you are sure it is not already sent."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Take three today, and name them properly. The habit forms faster with real files than with a description."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Capture the whole screen and paste it into a document.",
+          "Capture one window on its own.",
+          "Capture a small area, and circle one line inside it.",
+          "Save all three into a folder called Screenshots, with names that say what they show.",
+          "Send one screenshot to yourself by email and open it on a phone."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now show somebody exactly what you are seeing, which ends most support conversations in one message. In the next lesson you will send a whole folder without sending twenty separate files."
+      }
+    ]
+  },
+  {
+    "slug": "zipping-a-folder-to-email",
+    "excerpt": "How to pack a folder into one file, why email has a weight limit, how to open a zip somebody sent you, and when a zip is a warning rather than a convenience.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to pack a folder into one file, send it by email, and open a zip that somebody sends you. You will learn the size limits, what to do when a zip is refused, and when a zip should make you suspicious. Nothing here can damage the files inside."
+      },
+      {
+        "type": "p",
+        "text": "A zip is a suitcase. The files inside keep their names and their folders, but they travel as one item. Email limits are counted per item, so one suitcase passes where twenty loose files would be refused."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A folder with several files that belong together, such as scanned certificates.",
+          "An email account you can send from.",
+          "About ten minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Pack the folder"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open File Explorer and find the folder you want to send.",
+          "Right-click the folder itself, not the files inside it.",
+          "Choose Send to, then Compressed (zipped) folder.",
+          "A new file appears beside the folder, with the same name and a zip icon.",
+          "Rename it so a stranger can tell what it is: certificates-ada-okoro.zip.",
+          "Open the zip once by double-clicking it, and check the files are all inside."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the zip file appear in the same window, usually with a small zipper on the icon, and the original folder still beside it. The folder is not moved or changed, so you can keep working in it."
+      },
+      {
+        "type": "p",
+        "text": "On a Mac, right-click the folder and choose Compress. The result appears in the same place with a zip extension."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/zip-folder.jpg",
+        "alt": "A file window showing a folder beside its zipped copy.",
+        "caption": "Right-click the folder, not the files, then choose Compressed (zipped) folder. The zip is a copy, and the original stays."
+      },
+      {
+        "type": "h2",
+        "text": "Email has a weight limit"
+      },
+      {
+        "type": "p",
+        "text": "Most email services refuse an attachment above about 25 MB, and many refuse far less. A folder of scanned documents can pass that in four pages, especially if the scans came from a phone camera."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Check the file size before you attach it: right-click the zip and choose Properties.",
+          "Reduce photographs in size before zipping, or scan at a lower resolution.",
+          "Split a large folder into two zips that each fit.",
+          "Use a cloud link instead when the files are genuinely large, and send the link rather than the files.",
+          "Never send a document as a picture of a document if the reader needs to print it."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "It looks like zipping makes a folder small enough to send. Zipping helps a little with documents, and hardly at all with photographs and videos, which are already compressed. The honest fix for a large folder is a link."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/zip-email.jpg",
+        "alt": "An email compose window with one zip attachment listed.",
+        "caption": "One attachment is easier to check than twenty. Confirm the name and the size before you send."
+      },
+      {
+        "type": "h2",
+        "text": "Open a zip that somebody sent you"
+      },
+      {
+        "type": "p",
+        "text": "Receiving a zip is normal in offices. Receiving a password-protected zip from a stranger, with the password in the same email, is not."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Save the attachment to Downloads first, then open it from there.",
+          "Right-click the zip and choose Extract All, and pick a folder inside Documents.",
+          "Read the file names before you open anything inside. A file ending .exe is a program, not a document.",
+          "Keep the zip until you have checked the extracted files, in case one of them failed.",
+          "Delete both once you have what you need."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "A file called invoice.pdf.exe is a program pretending to be a PDF. Turn on file name extensions in File Explorer, under View, so that the real ending is always visible."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Zips rarely fail, and none of these problems means the files are lost."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The zip will not attach: the file is too large. Split it or send a link.",
+          "The recipient cannot open it: some mail systems block zip files. Send a PDF for documents, or use a link.",
+          "The zip will not open on your machine: the file may be damaged in transit. Ask the sender to send it again, or to use a link.",
+          "Extracted files are missing: extract the whole zip rather than dragging one file out of it.",
+          "The zip asks for a password you were not given: ask the sender. Never guess, and never run a tool a website offers for it.",
+          "Windows warns the file may be unsafe: that is normal for a downloaded zip. It is a reason to check the sender, not to panic."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Practise on files you do not need, so that a mistake costs nothing."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Make a folder with three files inside it.",
+          "Zip the folder and check the file size.",
+          "Open the zip and confirm all three files are there.",
+          "Email the zip to yourself and open it on a phone.",
+          "Extract it into a different folder, then delete both copies."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now send a set of files as one, and open one safely when it arrives. In the next lesson you will send a single file to a phone without any account at all."
+      }
+    ]
+  },
+  {
+    "slug": "bluetooth-to-a-phone",
+    "excerpt": "Pair two devices, send a file phone to laptop without data or a cable, and know when Bluetooth is the wrong tool because the file is too large.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to send a file between a computer and a phone using Bluetooth, with no cable and no data. You will pair the two devices, send the file, and accept it on the other side. You will also learn when Bluetooth is the wrong tool."
+      },
+      {
+        "type": "p",
+        "text": "Bluetooth is a short radio link between two devices that are close together. It works without a network, which makes it useful when there is no data and no cable in the house."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A computer and a phone within about ten metres of each other.",
+          "Both devices charged, because Bluetooth uses power on both.",
+          "A file small enough to send, such as a photograph or a document."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Pair, then send"
+      },
+      {
+        "type": "p",
+        "text": "Pairing is the introduction. It happens once per pair of devices, and after that they can send without asking again."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "On the computer, open Settings, then Bluetooth and devices, and switch Bluetooth on.",
+          "On the phone, open Settings, then Bluetooth, and switch it on.",
+          "On the computer, choose Add device, then Bluetooth.",
+          "Pick the phone's name from the list. Both devices will show a number.",
+          "Check the number matches on both screens, then confirm on both.",
+          "On the phone, open the file, choose Share, then Bluetooth, then the computer's name.",
+          "On the computer, click the notification that asks you to accept the file."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see a small Bluetooth icon appear in the computer's system tray once it is on, and a pop-up asking you to accept the incoming file. If that pop-up closes before you click it, the transfer is cancelled and must be started again."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/bluetooth-share.jpg",
+        "alt": "A phone showing a Bluetooth share menu with a nearby device listed.",
+        "caption": "Share, then Bluetooth, then the computer's name. Both devices must be on and within a few metres."
+      },
+      {
+        "type": "h2",
+        "text": "Where the file lands"
+      },
+      {
+        "type": "p",
+        "text": "Windows puts received files in the Downloads folder, or in a Bluetooth folder inside Documents, depending on the version. Look for a notification first, then search Downloads for the file name."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Move the file out of Downloads into the folder where it belongs.",
+          "Rename it if the name is a string of numbers.",
+          "Check the file opens before you delete it from the sending device.",
+          "Turn Bluetooth off on both devices when you finish, because it uses battery and it is another door left open."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the file name appear in Downloads with today's date beside it. If the name looks like a random string, that is normal, and the file is still whole."
+      },
+      {
+        "type": "p",
+        "text": "It looks like Bluetooth has failed when nothing arrives. In most cases the pop-up was never accepted, or the two devices drifted more than ten metres apart while the transfer was waiting."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/phone-received.jpg",
+        "alt": "A phone showing a received file notification.",
+        "caption": "Accept on the receiving device, or the transfer is dropped. Two devices, one confirmation on each."
+      },
+      {
+        "type": "h2",
+        "text": "When it is the wrong tool"
+      },
+      {
+        "type": "p",
+        "text": "Bluetooth is slow compared with every other method, and it is honest about it. A single photograph takes a few seconds. A video takes long enough to fail."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Under about 20 MB, Bluetooth is fine.",
+          "Above that, use a cable, which is faster and does not depend on pairing.",
+          "When both devices have internet, WhatsApp to yourself or email is simpler.",
+          "For a whole folder, zip it first, then send one file.",
+          "For anything you will need again, save it into Documents rather than leaving it in Downloads."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "None of this means either device is broken, and the third item solves most cases."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The phone does not appear in the list: make sure it is discoverable, and bring the two devices closer.",
+          "Pairing asks for a code: check the same six digits show on both screens, then confirm.",
+          "The transfer stops halfway: the devices moved apart or the phone screen locked. Keep both awake and close, then start again.",
+          "The file never arrives: check that Accept was pressed on the receiving device within the time limit.",
+          "The computer cannot receive at all: some workplace machines block it. Use a cable instead.",
+          "You paired with the wrong device: remove the pairing in Bluetooth settings and pair again."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "One photograph each way is enough to learn the whole process."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Switch Bluetooth on for both devices and pair them.",
+          "Send one photograph from the phone to the computer, and accept it.",
+          "Find the file in Downloads and move it into Pictures.",
+          "Send one document from the computer to the phone.",
+          "Turn Bluetooth off on both devices when you finish."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now move a file between your own devices when there is no cable and no data. In the next lesson you will make a document that looks the same on every computer it reaches."
+      }
+    ]
+  },
+  {
+    "slug": "what-a-pdf-is-for",
+    "excerpt": "Why a PDF keeps its layout, how to make one from a document, how to fill and sign a form inside it, and when a PDF is the wrong file to send.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson explains the PDF, how to make one, and when to send one instead of a Word file. You will convert a document, open one safely, fill a form inside it, and know the case where a PDF is the wrong choice."
+      },
+      {
+        "type": "p",
+        "text": "A PDF is a photograph of a page that still contains real text. Every margin, font, and line break is fixed, so the page looks the same on a phone, a printer, and a ten-year-old laptop. That is why schools, banks, and employers ask for one."
+      },
+      {
+        "type": "p",
+        "text": "None of this needs a paid program. Every method below is built into the tools you already have."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A document you wrote, in Word, Google Docs, or LibreOffice.",
+          "A PDF reader, which most computers already have.",
+          "About fifteen minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Make one from your document"
+      },
+      {
+        "type": "p",
+        "text": "A PDF is made from a finished document, not typed from the beginning. Write in Word first, because editing a PDF is far harder than editing the file it came from."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open the document and read it once at full size.",
+          "In Word, choose File, then Save As, then choose PDF from the file type list.",
+          "In Google Docs, choose File, then Download, then PDF Document.",
+          "Name the file with your name and the purpose, such as cv-ada-okoro-2026.pdf.",
+          "Open the new PDF and check every page, especially the last one.",
+          "Keep the original Word file as well, because you will edit it again next year."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the PDF open in a reader with a page count at the top and a download button in the corner. Check that the page count matches the document, and that no table has slipped off the edge."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/pdf-letter.jpg",
+        "alt": "A PDF letter open on a laptop screen with a page count visible.",
+        "caption": "A PDF holds the layout. What you see on your screen is what the reader sees on theirs."
+      },
+      {
+        "type": "h2",
+        "text": "Open one safely"
+      },
+      {
+        "type": "p",
+        "text": "PDFs are the most common attachment in business, and also the most common disguise for a scam. The file itself is usually harmless, and the danger is in what it asks you to do."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open it in the browser or a reader, not by running a program it offers to install.",
+          "If the PDF asks you to enable editing or install a viewer to see it, close it and open it another way.",
+          "If it is an invoice you were not expecting, check with the sender by phone before you pay anything.",
+          "If it contains a link to a bank page, do not use the link. Type the bank's address yourself.",
+          "Read the file name ending before you double-click: a real PDF ends in .pdf and nothing else."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "It looks like a PDF cannot contain anything harmful because it is only a document. It can carry links, forms, and requests for payment, so treat it as a letter written by a stranger rather than as a safe file."
+      },
+      {
+        "type": "h2",
+        "text": "Fill a form inside a PDF"
+      },
+      {
+        "type": "p",
+        "text": "Some PDFs have real fields that you can click and type into. Others are pictures of a form, and those need printing or a proper editor."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Click inside a box. If a cursor appears, the field is real and you can type.",
+          "Use Tab to move to the next field, and read the hints beside each one.",
+          "For a signature, use the reader's Fill and Sign tool, or print, sign by hand, and scan.",
+          "Save a copy under a new name, so the blank form stays blank for next time.",
+          "Check the saved copy before you send it, because some readers save without telling you."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see a thin blue outline appear around a field you can type into. A page with no outlines anywhere is a scanned image, and it needs printing or a converter."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/pdf-print.jpg",
+        "alt": "A printer producing pages of a PDF document.",
+        "caption": "A PDF prints the same way it appears. Print one page first when the document matters."
+      },
+      {
+        "type": "h2",
+        "text": "When a PDF is the wrong file"
+      },
+      {
+        "type": "p",
+        "text": "A PDF is a final copy. When the other person needs to edit or fill something in, it is the wrong choice, and sending it wastes a week of replies."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Send a PDF to an office that will only read or print it.",
+          "Send a Word file when the reader must edit the text.",
+          "Send both when you are unsure, and say which one is for reading and which is for editing.",
+          "Never send a screenshot of a document when the reader may need to copy text out of it.",
+          "Never send a PDF of a form that the office must fill in themselves."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "None of these loses the document, and the original file is still there to make a fresh PDF."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The PDF has a blank page at the end: an empty paragraph in the Word file. Delete it and save again.",
+          "The text looks scrambled: a font was missing. Use a common font such as Calibri or Arial, then export again.",
+          "The file is too large to email: choose a smaller image setting when saving, or send a link.",
+          "The form will not accept typing: it is a scanned image. Print it, fill it by hand, and scan the result.",
+          "The signature did not save: use Save As under a new name before closing the reader.",
+          "The reader shows a blank page: try opening it in the browser by dragging the file into a tab."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Make one real PDF today, and you will use the skill every month after."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Write half a page in Word and set the margins properly.",
+          "Save it as a PDF, then open the PDF and check the page count.",
+          "Fill one field in any official PDF form you can download.",
+          "Save the filled form under a new name.",
+          "Email both files to yourself and open them on a phone."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now send a document that arrives exactly as you made it, and open one without being led somewhere else. In the next lesson you will give your files a home that survives a busy year."
+      }
+    ]
+  }
+]

@@ -1,3 +1,10 @@
+> **Superseded for voice, 29 October 2026.** This audit fixed the machine patterns of the
+> first draft and its substance still stands: scenarios, misconception contrasts, recovery
+> paragraphs and local grounding are required. The *voice* it produced — literary, metaphor-led,
+> long-sentenced — has since been replaced by the straight teaching standard in
+> [`notes-rewrite-standard.md`](./notes-rewrite-standard.md). Read that document before editing a
+> lesson; read this one for the reasoning behind the teaching moments it added.
+
 # Human-Teaching Voice Audit — Pass 1 (site-wide)
 
 Date: 2026-09-23 · Scope: every educational collection on the site · Method: the two-pass operation (this document is the audit; reconstruction follows in `blog.ts` and tracked in the queue below)
