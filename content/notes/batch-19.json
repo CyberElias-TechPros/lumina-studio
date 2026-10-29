@@ -1,0 +1,784 @@
+[
+  {
+    "slug": "photographing-a-document",
+    "excerpt": "How to photograph a document with a phone so every word is readable, what causes the dark shadow, and how to keep the pages in order.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to photograph a document with a phone so the words come out readable. You will fix the light, hold the phone square, and check the picture before sending it. An unreadable photo means a wasted trip, and this lesson prevents that."
+      },
+      {
+        "type": "p",
+        "text": "A document photo fails for three reasons: too little light, an angle, and a shadow from the phone itself. Fix those three and a cheap phone takes a usable picture."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The document, on a flat surface.",
+          "A phone with a working camera.",
+          "A window, or a lamp you can move."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Set the light first"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Put the document near a window during the day, which gives the softest light.",
+          "Avoid direct sunlight, which makes one side white and the other black.",
+          "Stand so your own shadow falls beside the paper, not across it.",
+          "If you use a lamp, place it to the side rather than above the phone.",
+          "Turn off the camera flash, which creates a bright patch in the middle.",
+          "Keep the paper flat, with a book at two corners if it curls."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the paper go evenly bright in the preview, with the text sharp on both sides of the page. If one corner is darker, move the lamp rather than the paper."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/document-photo.jpg",
+        "alt": "A phone held flat above a document on a table with even daylight.",
+        "caption": "Even light and the phone directly above the page. The text should look the same brightness at both edges."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a better camera takes a better document photo. Light and angle matter far more than the camera, and the same advice works on a ten-year-old phone."
+      },
+      {
+        "type": "h2",
+        "text": "Hold the phone square to the page"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Hold the phone parallel to the paper, with the lens straight above it.",
+          "Keep the whole page inside the frame, with a small margin on each side.",
+          "Tap the document on the screen once so the camera focuses on the text.",
+          "Watch for two thin lines on the edges in most camera apps, which show the angle.",
+          "Hold still for a second after the tap, since the shot takes a moment.",
+          "Take two pictures, one slightly further back, and choose the sharper one."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "A square, evenly lit photo opens with the text running straight across the screen rather than sloping. That straightness is what makes a photograph readable."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/document-glare.jpg",
+        "alt": "A phone screen showing a document photo with a strong glare across one side.",
+        "caption": "This is glare from a lamp above the phone. Move the light to the side and the patch disappears."
+      },
+      {
+        "type": "p",
+        "text": "None of this needs a scanner. A phone held flat, over a page near a window, produces a picture that any office will accept."
+      },
+      {
+        "type": "h2",
+        "text": "Check before you send"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open the photo and pinch to zoom into the smallest text.",
+          "If the smallest print is readable, the whole document will pass.",
+          "Check that all four corners are inside the picture.",
+          "Check the page number or the signature is visible.",
+          "Straighten the photo with the edit tools if it is slightly tilted.",
+          "Rename the file so the receiver knows what it is, such as bvn-slip-today."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about the photo looking rough around the edges. Even light and readable text matter, and nobody judges the background."
+      },
+      {
+        "type": "h2",
+        "text": "Several pages, kept in order"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Photograph the pages in order, without skipping back and forth.",
+          "Check the first page on the screen before starting the second.",
+          "Name the files with a number, such as page-1 and page-2.",
+          "Or send them as one PDF, which keeps the order without naming anything.",
+          "Count the pages against the document before you send, since a missing page means a repeat visit.",
+          "Keep the photos until the office confirms receipt."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here is a retake, and a retake takes ten seconds."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Text is blurry: the phone moved. Rest the phone on a book or a wall and retake.",
+          "There is a bright band across the page: that is glare. Change the angle of the light.",
+          "Half the page is grey: your shadow is on it. Step to one side.",
+          "Text is too small even when zoomed: move the phone closer, or crop to two halves.",
+          "The page looks curved: the paper is not flat. Press the corners down.",
+          "The receiver says the file is too large: use a scanning app, which compresses it."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Two attempts today beats a rejected form tomorrow."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Find any document with small print.",
+          "Photograph it once in poor light, then once near a window.",
+          "Zoom into the smallest text in both photos.",
+          "Rename the good one with a descriptive name.",
+          "Send it to yourself and open it on the smaller screen."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now turn paper into a file a stranger can read. In the next lesson you will scan a page straight into a PDF on the phone."
+      }
+    ]
+  },
+  {
+    "slug": "scanning-to-pdf-on-the-phone",
+    "excerpt": "Using a free scanning app to turn pages into one tidy PDF, cropping the edges, naming the file, and sending something small enough to arrive.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to scan pages on a phone and save them as one PDF. You will use a free app, crop the edges, name the file, and send something small enough to arrive. A scanned PDF looks like paper and opens on any device."
+      },
+      {
+        "type": "p",
+        "text": "A PDF keeps the pages in order and the layout fixed, so the receiver sees what you saw. Scanning apps do the same job as an office scanner, using the camera you already own."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The pages you need, flat on a table.",
+          "Google Drive on the phone, which scans without an extra app, or any scanning app.",
+          "About fifteen minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Scan with what you already have"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open Google Drive and tap the plus button at the bottom.",
+          "Choose Scan, which opens the camera in document mode.",
+          "Hold the phone above the page and wait for the blue outline to snap to the edges.",
+          "Tap the shutter, then review the cropped result.",
+          "Choose Add another page and repeat for the rest.",
+          "Tap the tick to save, then name the file in the box that appears."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the app draw a coloured border around the page and straighten it automatically. The result looks flatter and cleaner than the photograph, and the edges of the table are gone."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/phone-scan.jpg",
+        "alt": "A phone camera in document scanning mode with an outline around a page.",
+        "caption": "The outline shows what the app will keep. Wait for it to snap to all four corners before tapping."
+      },
+      {
+        "type": "p",
+        "text": "It looks like scanning needs a machine in a business centre. The camera plus a free app produces a file that banks, schools, and offices accept every day."
+      },
+      {
+        "type": "h2",
+        "text": "Clean up the edges"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Crop each page so the dark table does not show around the paper.",
+          "Use the rotate button if the page is sideways.",
+          "Choose black and white for typed documents, which makes text sharper and the file smaller.",
+          "Choose colour only when a stamp or a signature matters.",
+          "Check the page order before saving, since apps sometimes save the last page first.",
+          "Look at the bottom of each page, where signatures usually sit."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the thumbnails redraw as each page is cropped, and the page count at the top change as you add more. The file name box will appear at the end, with a suggested name you can replace."
+      },
+      {
+        "type": "p",
+        "text": "A black-and-white scan of five pages is often smaller than one colour photograph. That difference decides whether the email arrives at all."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/scan-pdf.jpg",
+        "alt": "A phone showing a finished scanned PDF with page thumbnails.",
+        "caption": "Thumbnails show the page order. Drag them before saving if the pages are out of sequence."
+      },
+      {
+        "type": "h2",
+        "text": "Name it and send it"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Name the file so a stranger understands it, such as statement-october-2026.",
+          "Avoid names like scan001, which nobody can find later.",
+          "Check the size in the app, and keep it under about five megabytes for email.",
+          "Share it through the app's share button, and choose email or WhatsApp.",
+          "Send it to yourself first if the receiver is a bank or an office.",
+          "Keep the original pages until you receive a confirmation."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs an account with the app. Google Drive scans without any extra sign-up beyond the account you already have."
+      },
+      {
+        "type": "p",
+        "text": "Open the finished file and the pages will show one after another, with a small page number at the corner of the screen. Pinch to zoom and the text stays sharp, which is the sign of a good scan."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about the scan looking different from the paper. The receiver needs to read the words and see the stamps, and a black-and-white scan does both."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a fix inside the app, and none of them loses the file."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The page is cut off: the outline snapped inside the text. Re-scan and drag the corners out.",
+          "The scan is too dark: use the light or colour setting instead of black and white.",
+          "The file is too large to send: re-scan in black and white, which shrinks it a great deal.",
+          "Pages are in the wrong order: open the file and drag the thumbnails before saving.",
+          "The app will not save: the phone storage is full. Free some space first.",
+          "The receiver cannot open the file: it was sent as a photo. Share the PDF itself."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "One two-page scan is enough to learn the whole process."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Scan two pages of any document into one file.",
+          "Crop the edges and straighten both.",
+          "Switch one page to black and white.",
+          "Name the file clearly and note its size.",
+          "Share it to yourself and open it from your email."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now produce a tidy document without leaving the room. In the next lesson you will handle the short codes that arrive by text and expire in minutes."
+      }
+    ]
+  },
+  {
+    "slug": "one-time-passwords",
+    "excerpt": "What the six-digit code in a text message is for, why it expires, why nobody should ever ask for it, and what to do if you gave one away.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson explains the short codes that arrive by text, usually six digits, that prove it is you. You will learn what they are for, why they expire, and why no bank, app, or person needs you to read one aloud."
+      },
+      {
+        "type": "p",
+        "text": "A one-time password, or OTP, is a code that works once and dies. It protects you because a thief with your password still cannot get in without the code that only reaches your phone."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A phone that receives texts.",
+          "About ten minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "When a code appears"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "You typed a password or requested a reset on a website.",
+          "A text arrives within seconds with a code and a name, such as your bank.",
+          "Type the code into the same page that asked for it.",
+          "The code works once, and the page then lets you continue.",
+          "Codes usually expire in five to ten minutes.",
+          "If it expires, ask the site for a new one, which replaces the old."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the message appear at the top of the phone with the sender name, a code, and a warning line saying not to share it. Read that warning each time, since it is the whole lesson in one sentence."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/otp-sms.jpg",
+        "alt": "A phone showing an SMS with a six-digit code and a do-not-share warning.",
+        "caption": "A real code message names the service and warns you not to share it. Nobody legitimate asks you to read it out."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a code is harmless because it dies in ten minutes. Ten minutes is enough time for somebody to empty an account, which is why the warning exists."
+      },
+      {
+        "type": "h2",
+        "text": "The one rule"
+      },
+      {
+        "type": "p",
+        "text": "No bank, network, or app will ever call and ask for the code. Anybody who does is trying to enter your account as you read it."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Never read a code to a caller, however official they sound.",
+          "Never type a code into a message somebody sent you.",
+          "Never send a screenshot of the message.",
+          "Never forward it to a number you do not recognise.",
+          "If you did not request it, somebody has your password. Change it at once.",
+          "A code that arrives when you did nothing is a warning, not a mistake."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of these rules cost you anything. The genuine site will always send a new code when you ask, and a person on the phone never needs it."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/otp-waiting.jpg",
+        "alt": "A website sign-in screen waiting for a code with a resend link.",
+        "caption": "The only place a code belongs is the box that asked for it. A resend link appears if the code expires."
+      },
+      {
+        "type": "h2",
+        "text": "If you gave one away"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Change the password on that account immediately, from another device.",
+          "Call the bank on the number printed on the card, not one from the message.",
+          "Ask the bank to freeze transfers for a day while you check.",
+          "Check the account for transfers you do not recognise and report any at once.",
+          "Turn on two-step verification again, since a thief sometimes switches it off.",
+          "Report the number that called, and block it."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about feeling foolish. These calls are written by people who do this all day, and they catch careful people too."
+      },
+      {
+        "type": "h2",
+        "text": "When the code does not arrive"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Wait a full minute before asking for another, since repeated requests cancel each other.",
+          "Check the signal bars, and move near a window.",
+          "Check whether the message went into a spam or promotions folder in the messaging app.",
+          "Turn airplane mode on and off to refresh the network.",
+          "Ask the site to send the code by voice call instead of text.",
+          "Do not keep pressing resend ten times, which locks the account for a while."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a next step, and the first one matters most."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "You typed the code and it was rejected: it expired. Request a new one.",
+          "You entered a code on a page that then asked for a card: close it. That page was not your bank.",
+          "Codes keep arriving that you did not ask for: change that password now.",
+          "The code arrived on another person's phone: update the number on the account before anything else.",
+          "A caller said the code was for a refund: there is no such process. End the call.",
+          "You shared a code by mistake: change the password and call the bank, in that order."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Recognise the message before you ever need to act on one."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open one account that uses a code and request one on purpose.",
+          "Read the whole message, including the warning line.",
+          "Type it, and notice how the page then moves on.",
+          "Request a second code and watch the first one fail.",
+          "Save your bank's real number in your contacts."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now treat a code as a key rather than an inconvenience. In the next lesson you will decide when public wifi is safe enough for banking."
+      }
+    ]
+  },
+  {
+    "slug": "public-wifi-and-the-bank",
+    "excerpt": "Why a cafe or hotel network is not private, what a stranger on the same network can see, and which tasks to move to mobile data instead.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson explains what public wifi can and cannot see, and when to do your banking on mobile data instead. You will learn the safe habits for cafe, hotel, and campus networks, and the tasks that should wait."
+      },
+      {
+        "type": "p",
+        "text": "Public wifi is shared. The router owner and anybody with the right skills on the same network can see which sites you visit, and older networks can expose more than that."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A phone with mobile data available as an alternative.",
+          "About ten minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "What a shared network sees"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The names of the sites you visit, even when the page itself is encrypted.",
+          "Any page without the padlock, which is readable in full.",
+          "The times you connected, on the router owner's records.",
+          "Your device name, which is often your own name.",
+          "The files you share if file sharing is switched on.",
+          "Nothing at all on an encrypted site, as long as the padlock is genuine."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see a padlock beside the address in the browser and a warning that says Not secure when it is absent. A missing padlock on a bank page is the signal to stop."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/cafe-wifi.jpg",
+        "alt": "A cafe table with a laptop connected to a public wifi network.",
+        "caption": "Shared networks are fine for reading. The trouble starts when a password or a card number goes across them."
+      },
+      {
+        "type": "p",
+        "text": "It looks like the padlock makes any network safe. It protects the page between you and the site, and it says nothing about who owns the router."
+      },
+      {
+        "type": "h2",
+        "text": "Move these tasks to mobile data"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Banking, and anything that moves money.",
+          "Buying with a card, including online shopping.",
+          "Changing a password, which is the worst thing to lose on a shared network.",
+          "Opening an email that contains a reset link.",
+          "Anything with a passport number or a BVN.",
+          "For everything else, such as reading news and watching a video, public wifi is fine."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Mobile data is not perfectly private either, and it is not shared with the stranger at the next table. That difference is enough for a two-minute banking task."
+      },
+      {
+        "type": "p",
+        "text": "You will see the wifi symbol disappear from the top bar as you switch, and the mobile data arrows take its place within a second. The bank page then loads exactly as it does at home."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/bank-on-public.jpg",
+        "alt": "A phone banking app being used on mobile data rather than wifi.",
+        "caption": "Banks are safest on your own data. Switch wifi off for five minutes and the risk disappears."
+      },
+      {
+        "type": "h2",
+        "text": "Habits for the network you did not set up"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Ask the staff for the exact network name, since copycat names are common.",
+          "Avoid networks that ask you to install a certificate or an app.",
+          "Turn off file sharing in the system settings before you connect.",
+          "Sign out of accounts when you finish, rather than closing the tab.",
+          "Forget the network when you leave, so the phone stops rejoining it.",
+          "Use a page that needs a login only if you must, and sign out afterwards."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs extra software. Careful choices cover almost every risk on a shared network."
+      },
+      {
+        "type": "p",
+        "text": "In the browser settings, a page that is not secure shows a small warning beside the address. Tap that warning and a short explanation appears, naming what is missing."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about the data bundle. A banking session uses a few megabytes, which is less than one video."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a clear next step, and acting early is the whole defence."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The browser warns the certificate is not valid: leave the page. A warning is never a formality.",
+          "A network asks for a card number to connect: refuse. Real venues do not charge for wifi in that way.",
+          "You banked on a shared network by mistake: change the password on mobile data, then call the bank.",
+          "The signal keeps dropping mid-transfer: check the transaction on the bank's app before retrying.",
+          "A page looks slightly wrong, with strange fonts: close it and type the bank's address yourself.",
+          "Your phone reconnects on its own later: forget the network so it cannot."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Practise the switch once, on a day nothing is urgent."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Connect to any public network and find the padlock in the address bar.",
+          "Turn wifi off and confirm the phone is on data.",
+          "Open your bank's app on data and sign in.",
+          "Sign out and turn wifi back on.",
+          "Forget the network before you leave."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now use a shared network without carrying the risk home. In the next lesson you will read the message that says you have won something and pay nothing."
+      }
+    ]
+  },
+  {
+    "slug": "you-have-won",
+    "excerpt": "Why a prize that asks for a fee is not a prize, the four signs that give a scam message away, and the safe way to check before you send anything.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is about the message that says you have won money, a phone, or a contract, and asks you to pay something small to collect it. You will learn the pattern, the four signs, and how to check safely. The short answer is that a real prize never asks you for a fee."
+      },
+      {
+        "type": "p",
+        "text": "These messages work by turning a gift into a bill. The fee looks small next to the prize, and each payment leads to another one, each larger than the last."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Any message you are unsure about.",
+          "Ten minutes and a second opinion from somebody at home."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "The four signs"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The message arrives from a number or an account you never entered anything with.",
+          "It asks for a fee: a delivery charge, a tax, a clearance, or a registration.",
+          "It creates urgency, saying the prize expires today or the money returns to the pool.",
+          "It asks for details no prize needs, such as a BVN, a card number, or an OTP.",
+          "The sender's email address has extra letters, such as a bank name with two letters changed.",
+          "The spelling and grammar slip in ways an official message would not."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see at least two of these in almost every scam message, and often all four. Any one of them is enough reason to stop and check."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/you-have-won.jpg",
+        "alt": "A phone showing a message claiming a prize win and asking for a payment.",
+        "caption": "The pattern is a gift plus a bill. Real promotions do not ask a winner to pay to receive."
+      },
+      {
+        "type": "p",
+        "text": "It looks like the fee is the only thing standing between you and the money. The fee is the product they are selling, and the prize does not exist."
+      },
+      {
+        "type": "h2",
+        "text": "Check without paying anything"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Ask which company is running the promotion, then look up that company's own website.",
+          "Call the number printed on the company's official site, not the one in the message.",
+          "Search the exact phrase from the message, which often brings up other people's warnings.",
+          "Ask the sender a question only the real company could answer, such as an office address.",
+          "Never send a fee to a personal account, which no company uses for a prize.",
+          "Ask somebody else to read the message, since another pair of eyes sees the odd parts."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "A genuine promotion will show its rules on the company's own page, with a closing date and a list of winners. If it exists nowhere except in the message, it is not real."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/prize-message.jpg",
+        "alt": "A scam message with a link and a fee request highlighted on a phone screen.",
+        "caption": "A link plus a fee plus urgency. Those three together are the whole scam in one screen."
+      },
+      {
+        "type": "h2",
+        "text": "What to do with it"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Do not reply, since a reply confirms your number is active.",
+          "Do not tap the link, which may install something or copy a login page.",
+          "Block the number and delete the message.",
+          "Report it to your network provider, and to the platform if it arrived on social media.",
+          "Tell the people at home, because these messages often reach several numbers in one family.",
+          "If money already left, report to the bank at once and keep every message as evidence."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You are not the only person to receive this message. The same text reaches thousands of numbers in one afternoon, and refusing it is a normal thing that careful people do."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about losing a real prize by ignoring it. A real one can be claimed through the company's official page, and it will not vanish because you refused to send a fee."
+      },
+      {
+        "type": "h2",
+        "text": "The versions that look like work"
+      },
+      {
+        "type": "p",
+        "text": "Some scams offer a contract, a job, or a loan rather than a prize. The shape is the same, and so is the defence."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A job that asks you to pay for training before starting is usually selling the training.",
+          "A loan that requires an insurance fee before release is not a loan.",
+          "A contract that asks for a clearance payment to a personal account is a fraud.",
+          "A supplier who wants full payment before any goods exist deserves a check.",
+          "A message from a relative in trouble, sent from a new number, needs a phone call to confirm.",
+          "Any request to keep it secret is a reason to tell somebody."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a next step, and speed matters more than shame."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "You paid the fee: report to the bank within hours, since early reports sometimes recover funds.",
+          "You sent your BVN: tell your bank and ask them to watch the account.",
+          "You tapped the link: run a scan with your phone's security app and change the passwords you typed.",
+          "You shared a card number: call the card issuer and ask for a new card.",
+          "You feel foolish: keeping quiet is what lets the same message reach the next person.",
+          "They keep calling: block the number and tell your network provider."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Read the last suspicious message you received and find the signs in it."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Count how many of the four signs appear in that message.",
+          "Look up the sender's company on its official site.",
+          "Find one detail that a real company would never ask for.",
+          "Block and delete the message.",
+          "Show one person at home how you spotted it."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now read a promise and see the bill behind it. In the next lesson you will rest your hands and eyes before the ache becomes an injury."
+      }
+    ]
+  }
+]
