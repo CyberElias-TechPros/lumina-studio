@@ -1,0 +1,745 @@
+[
+  {
+    "slug": "tables-in-a-letter",
+    "excerpt": "How to put a small table into a Word document, keep the columns from jumping, and decide when a table is better than a paragraph.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to put a table into a document: a list of fees, a schedule, a stock count. You will make one, keep the columns from jumping, and know when a table helps a letter and when it does not. A table is easier than it looks, and it takes about ten minutes to learn."
+      },
+      {
+        "type": "p",
+        "text": "A table is a grid of boxes inside a document. Each box is a cell, and the boxes in a row line up whether you type two words or twenty. That lining up is the whole point: it lets a reader compare amounts without hunting across the page."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Word, Google Docs, or LibreOffice Writer.",
+          "A short list you want to put in order, such as school fees by term.",
+          "About fifteen minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Make the grid"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Click where the table should start, on a line of its own.",
+          "Choose Insert, then Table, then drag across the squares for two columns and four rows.",
+          "Type the headings first: Item, Amount.",
+          "Press Tab to move to the next cell, and Tab again at the end of a row to add a new row.",
+          "Fill in your list, then click outside the table to stop editing it.",
+          "Save the file before you change anything else."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see a grid of dotted lines appear, and a small handle at the top left corner of the table. Those lines do not print, and the handle is how you select or move the whole table later."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/word-table.jpg",
+        "alt": "A document showing a simple two column table.",
+        "caption": "Two columns and four rows is enough for a fee list. Tab adds the next cell, and Tab at the end of a row adds a row."
+      },
+      {
+        "type": "p",
+        "text": "It looks like spaces or the Tab key can line up columns in a plain paragraph. They line up on your screen and fall apart on another computer, which is why a table exists."
+      },
+      {
+        "type": "h2",
+        "text": "Stop the columns jumping"
+      },
+      {
+        "type": "p",
+        "text": "A table that changes width as you type is the usual complaint. The cause is almost always autofit, and one setting fixes it."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Click inside the table, then right-click and choose Table Properties.",
+          "Turn off the setting that sizes columns to the text, and set a fixed width.",
+          "Drag the vertical line between two columns to a width you like.",
+          "Keep the amount column wide enough for your largest figure.",
+          "Avoid merging cells in a data table, which breaks sorting and copying."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this is permanent, and a table can be deleted with one click outside it. Practise on a copy if the document matters."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/table-learner.jpg",
+        "alt": "A learner entering figures into a table on a laptop.",
+        "caption": "Fixed column widths stop the jumping. Set the width once, then type without watching the layout."
+      },
+      {
+        "type": "h2",
+        "text": "When a table is the wrong choice"
+      },
+      {
+        "type": "p",
+        "text": "A table is for comparison. When you are explaining or persuading, it is the wrong tool, and a paragraph reads better."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Use a table for amounts, dates, quantities, and anything a reader will compare.",
+          "Use a paragraph for reasons, explanations, and requests.",
+          "Use a numbered list for steps, not a table.",
+          "Keep an application letter free of tables unless the form demands figures.",
+          "If the table needs a sentence to explain each cell, you wanted paragraphs."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about making it look decorative. A plain grid with clear headings is what an office wants, and shading usually prints badly anyway."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here is a two-click fix, and none of them loses your figures."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The table runs off the page: drag the right edge in, or reduce the font size to 10.",
+          "Columns jump while you type: set fixed widths in Table Properties.",
+          "Extra rows appear at the end: press Backspace in an empty row, or delete the row.",
+          "The table sits inside the text: add a blank line above and below it.",
+          "The grid lines do not print: choose a border style, since dotted guides are on screen only.",
+          "Rows split across pages: turn on Keep with next in the row settings."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "One real table today, and the skill stays."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Make a two-column, four-row table in a blank document.",
+          "Add headings and fill in a fee list or a shopping list.",
+          "Set a fixed width for both columns.",
+          "Add one row, then delete it.",
+          "Save as a PDF and check the table looks the same."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now line up figures so that a reader can compare them at a glance. In the next lesson you will meet the feature that promises to write the same letter to forty people at once."
+      }
+    ]
+  },
+  {
+    "slug": "mail-merge-you-can-skip",
+    "excerpt": "What mail merge is for, the parts it needs, and the honest cases where typing twenty letters yourself is faster and safer.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson explains mail merge: what it does, what it needs, and when you should skip it. You will learn the three parts it depends on, and the point at which doing it by hand is the better decision. Most people never need it, and knowing that saves hours."
+      },
+      {
+        "type": "p",
+        "text": "Mail merge takes one letter and one list of names, and produces one letter per person with the name filled in. It is a factory for letters, and like a factory it needs clean materials before it can run."
+      },
+      {
+        "type": "p",
+        "text": "You will see the merge run through the list one row at a time, building a page for each person, and the whole document appear at the end ready to check."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "One letter you send to several people.",
+          "A list with one person per row, as a spreadsheet.",
+          "About thirty minutes, or ten if you decide to skip it."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "The three parts"
+      },
+      {
+        "type": "p",
+        "text": "A merge needs a letter, a list, and a decision about printing or emailing. If any of the three is missing or untidy, the merge produces rubbish at speed."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The letter: a normal document with a placeholder where the name goes.",
+          "The list: a spreadsheet with one column for names and one for addresses, one person per row.",
+          "The placeholders: fields in the letter that match the column headings exactly.",
+          "The output: one document or one set of emails, checked before anything is printed.",
+          "A test run: merge to one person first, and read the result."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see placeholders appear between pairs of angle brackets, like «Name», once you insert a field. They look odd on screen and disappear in the finished letter, which surprises people into thinking the merge failed."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/name-list.jpg",
+        "alt": "A spreadsheet with columns for name, address and amount.",
+        "caption": "One person per row, one heading per column, no blank rows. The merge copies whatever the list says, mistakes included."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a merge is quicker than twenty letters. It is, if the list is clean. If the list has three spellings of one town and a blank row, you will spend longer repairing the output than typing the letters."
+      },
+      {
+        "type": "h2",
+        "text": "When to skip it"
+      },
+      {
+        "type": "p",
+        "text": "There is no prize for using the harder tool. Skip the merge when any of these is true."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "You are writing to fewer than about fifteen people.",
+          "The letters need different paragraphs, not only different names.",
+          "The list has never been checked, and names are spelled differently in three places.",
+          "You are sending by WhatsApp, which wants one message at a time anyway.",
+          "You have a deadline in the next hour.",
+          "You have not used the feature before and nobody can check your output."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this makes the feature bad. It makes it a tool for a job you may not have, and knowing the difference is the skill."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/letter-and-list.jpg",
+        "alt": "A printed letter beside a printed list of names.",
+        "caption": "A letter and a list. The merge copies exactly what the list says, so check the list before you trust the output."
+      },
+      {
+        "type": "h2",
+        "text": "If you do it, do it once properly"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Clean the list first: no blank rows, no merged cells, one name per row.",
+          "Check every name against the source before you merge.",
+          "Insert the fields you need, and nothing else.",
+          "Merge to a new document or to email preview, never straight to the printer.",
+          "Read the first two and the last one before you send the rest."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about the settings screen looking complicated. The buttons you need are three: insert field, preview, finish."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "A bad merge is not a disaster, because nothing is sent until you send it."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Every letter has the same name: the field was copied as text. Insert the field again from the menu.",
+          "The fields show as code: turn on preview, which hides the codes and shows the real text.",
+          "Some names are missing: there are blank rows or merged cells in the list.",
+          "The whole letter repeats for each person on one page: add a page break between records.",
+          "Accents appear wrong: save the list as a recent format, and use a common font.",
+          "You merged to the printer by mistake: cancel the job in the printer queue before it starts."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Practise with three names you invented, so a mistake costs nothing."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Make a spreadsheet with three names and three addresses.",
+          "Write a short letter with one placeholder for the name.",
+          "Merge to a new document and check all three letters.",
+          "Count the time it took, and compare it with typing three letters.",
+          "Decide, honestly, which method you would use for fifteen people."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now choose between merging and typing with a reason rather than a guess. In the next lesson you will keep dates in one place so that nothing important is forgotten."
+      }
+    ]
+  },
+  {
+    "slug": "calendar-and-reminders",
+    "excerpt": "How to keep a calendar you actually check, put a reminder where you will see it, and stop carrying dates in your head.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to keep a calendar and a reminder system that you actually use. You will add a date, set a reminder that arrives before the deadline, and clear the dates you are carrying in your head. It takes fifteen minutes to set up and a minute a day after that."
+      },
+      {
+        "type": "p",
+        "text": "A calendar holds the dates. A reminder nudges you before the date arrives. Used together, they replace the mental list that keeps you awake, and they work even when the power is off."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A phone with a calendar app, or Google Calendar in a browser.",
+          "Three real dates you are carrying in your head.",
+          "About fifteen minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Put the date in, with the time it matters"
+      },
+      {
+        "type": "p",
+        "text": "The mistake most people make is writing the event without the time they need to act. A form due on Friday needs a reminder on Wednesday, not a note that says Friday."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open the calendar and tap the day.",
+          "Give the event a name you will understand in a month: JAMB form closes.",
+          "Set the time when you will do the work, not only the deadline.",
+          "Add the place or the link if there is one.",
+          "Save it, then open the day again to check it landed correctly."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the event appear as a coloured block on the week view, and a small dot under the date in the month view. If it does not appear, the date was set for the wrong year, which is the most common calendar mistake."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/calendar-week.jpg",
+        "alt": "A phone calendar showing a week with several events.",
+        "caption": "An event with a time is a decision. An event without a time is a wish, and it gets moved three times."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a calendar is only for meetings. The dates that matter most are fees, forms, renewals, and birthdays, and those are exactly the ones people forget."
+      },
+      {
+        "type": "h2",
+        "text": "Set the reminder where you will see it"
+      },
+      {
+        "type": "p",
+        "text": "A reminder that arrives in an app you never open is not a reminder. Choose the channel you already check, and give it two chances."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open the event and find the notification setting.",
+          "Set one reminder two days before, and one on the morning of the deadline.",
+          "Choose notifications, not email, if email is a place you visit weekly.",
+          "For money, set the reminder three days before, because transfers can fail.",
+          "Check the notification permission for the calendar app is allowed on the phone."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs a paid app. Every phone has a calendar, and a paper diary on the desk works just as well if you look at it every morning."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/reminder-phone.jpg",
+        "alt": "A phone showing a reminder notification on the lock screen.",
+        "caption": "Two reminders: one early, one on the day. Money and forms deserve the earlier one."
+      },
+      {
+        "type": "h2",
+        "text": "The five-minute Sunday"
+      },
+      {
+        "type": "p",
+        "text": "A calendar is only useful if you look forward. Five minutes on a Sunday prevents most of the week's surprises."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open the week view once on Sunday evening.",
+          "Check for anything due in the next seven days.",
+          "Add the things you have been carrying in your head.",
+          "Move anything that clashes, and tell the person affected.",
+          "Delete events that no longer happen, so the week stays honest."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about a perfect system. One calendar, one place for reminders, and one look a week is enough for a busy life."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Calendar problems are small, and each one here has a quick fix."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The event is on the wrong day: the year or the time zone was wrong. Open it and correct both.",
+          "No reminder arrived: notifications are blocked for the app. Allow them in the phone settings.",
+          "Two calendars show and you see one: the second is hidden. Turn it on in the calendar list.",
+          "An event keeps moving itself: it is a repeating event with a wrong rule. Edit the series, not one instance.",
+          "You lost the calendar after changing phones: sign in to the same account, and let it sync.",
+          "You have reminders in three places and trust none: choose one, and move everything into it this week."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Three real dates, today, with reminders."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Add the three dates you are carrying in your head.",
+          "Set two reminders for each: one early, one on the day.",
+          "Open the month view and confirm each date is in the right month.",
+          "Set a weekly five-minute appointment with yourself on Sunday.",
+          "Delete one old event that no longer happens."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now stop holding dates in your head, which is the quietest way to reduce stress. In the next lesson you will keep the people attached to those dates in one place."
+      }
+    ]
+  },
+  {
+    "slug": "contacts-versus-the-phone-book",
+    "excerpt": "Why a contact list is not the same as a phone book, how to keep numbers usable across phones, and what to do when a number changes or a phone is lost.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson explains contacts: how they differ from numbers saved in a phone, how to keep them when you change devices, and how to use them for work without mixing up clients and family. It takes a few minutes, and it prevents the small disaster of a lost phone."
+      },
+      {
+        "type": "p",
+        "text": "A phone book is a list of numbers on one handset. A contact list is a set of records tied to an account, so it can move to a new phone, carry an email address, and be sorted into groups."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A phone with a Google or Apple account signed in.",
+          "Five numbers you would hate to lose.",
+          "About fifteen minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Save to the account, not the phone"
+      },
+      {
+        "type": "p",
+        "text": "When you add a number, the phone asks where to keep it. That choice decides whether the contact survives a broken screen."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open Contacts and add a new person.",
+          "Choose the Google account or iCloud, not Phone or SIM.",
+          "Type the name in the way you will search for it: first name first.",
+          "Add the email address and a note about how you know them.",
+          "Save, then check the contact appears under the account, not only on the device."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the account name under the contact when you open it, and a small cloud or account symbol beside it in the list. A contact saved to the phone only has no symbol, and it will not follow you."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/contacts-list.jpg",
+        "alt": "A phone contact list with names and account icons.",
+        "caption": "Saved to an account means it travels. Saved to the phone means it goes when the phone goes."
+      },
+      {
+        "type": "p",
+        "text": "It looks like the phone is the natural place for numbers. The phone is the most stolen object you own, and the account is the copy that survives it."
+      },
+      {
+        "type": "h2",
+        "text": "Make the list usable"
+      },
+      {
+        "type": "p",
+        "text": "A list of four hundred unsorted names is not much better than no list. A little naming discipline makes it searchable."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Use one format for names, so search works: first name, surname.",
+          "Add a label to work contacts, such as the shop or the office name.",
+          "Create groups for the people you message together, such as a class group.",
+          "Delete duplicate contacts, which appear when you change phones twice.",
+          "Never save a contact called Mummy 2 without noting which is which."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this is fussy. It is the difference between finding a number in two seconds and scrolling through four hundred."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/address-book.jpg",
+        "alt": "A paper address book open beside a phone.",
+        "caption": "Paper still works. A written list of ten essential numbers survives a dead battery and a stolen phone."
+      },
+      {
+        "type": "h2",
+        "text": "Work contacts and private ones"
+      },
+      {
+        "type": "p",
+        "text": "If you use one phone for a shop, a job, and family, the contact list is doing three jobs. Keep them apart so that a mistake does not reach a customer."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Use labels rather than separate accounts, which is simpler to manage.",
+          "Name business contacts with the business, such as Ada (Tailoring).",
+          "Do not save a client's bank details in a contact note.",
+          "Share a contact only after asking the person, since the number is theirs.",
+          "Remove old clients once the work is finished, or move them to a list you rarely open."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about losing the list when you change phones. Signing in to the same account restores it, which is why the first step in this lesson matters more than the rest."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a recovery, and the first two are the most common."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A contact is missing after changing phones: it was saved to the phone, not the account. Check the old device, then re-save it properly.",
+          "Two entries for one person: merge them, or delete the older and keep the newer.",
+          "A number changed and you cannot reach them: message the old number once, then update the contact.",
+          "Somebody's number appears in a group you did not expect: check the group settings before sending anything.",
+          "Your list appeared on a shared computer: sign out of the account on that machine.",
+          "You gave the wrong contact to somebody: correct it at once, and tell them the number is wrong."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Five numbers today, saved where they will survive."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Take five numbers you would hate to lose.",
+          "Save each one to your account rather than the phone.",
+          "Add a label to two of them so the list sorts better.",
+          "Merge or delete one duplicate contact.",
+          "Write the three most important numbers on paper as well."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now keep the people attached to your work and your family in one recoverable place. In the next lesson you will scan the square patterns that are suddenly on every shop wall, poster, and form."
+      }
+    ]
+  },
+  {
+    "slug": "what-a-qr-code-is-doing",
+    "excerpt": "What the square code actually contains, how to scan one safely, why a code can lead anywhere, and what to do if you already scanned a bad one.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson explains QR codes: what the square pattern holds, how to scan one without getting caught, and how to check where it leads before you type anything. You will scan a real code, look at the address first, and know what to do if a code turns out to be a trap."
+      },
+      {
+        "type": "p",
+        "text": "A QR code is a link printed as a picture. Inside the square pattern is a web address, a phone number, or a payment detail. Your camera reads the pattern and offers to open it, and the whole risk is that you follow a printed link without reading it."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A phone with a camera.",
+          "One QR code you trust, such as the one on this page or a bank's own poster.",
+          "About ten minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Scan, then read before you tap"
+      },
+      {
+        "type": "p",
+        "text": "Almost every phone opens the camera, shows the code, and offers a link at the top of the screen. That offer is the moment to check, not to tap."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open the camera, and point it so the code sits inside the frame.",
+          "Wait for the link or number to appear at the top of the screen.",
+          "Read the address before you tap it, exactly as you would read a link in a message.",
+          "Tap only if the address belongs to the organisation you expected.",
+          "If the code opens a payment page, check the account name before sending money."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the address in small grey text above a button, and it stays visible for several seconds while the camera is still pointed at the code. That pause is your opportunity, and it is the whole skill of this lesson."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/qr-scan.jpg",
+        "alt": "A phone camera pointed at a QR code with a link shown on screen.",
+        "caption": "The address appears before you tap. Read it, and if it does not match the organisation, cancel."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a printed code must be trustworthy because a business printed it. Codes are stickers, and a sticker can be placed over another one on the same poster in ten seconds."
+      },
+      {
+        "type": "h2",
+        "text": "Where codes are used here"
+      },
+      {
+        "type": "p",
+        "text": "QR codes are everywhere in Nigeria now, and most of them are ordinary and convenient. Knowing the legitimate uses makes the odd one easier to spot."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A bank or payment app, to send money to an account.",
+          "A shop, for its menu, price list, or WhatsApp order line.",
+          "A school or office, for a form or a timetable.",
+          "A poster or a flyer, for an event or a website.",
+          "A transfer app, to add a contact's account details."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of these ask for your bank password, your card number, or a code sent to your phone. A code that leads to a page asking for those is not doing any of the five things above."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/qr-result.jpg",
+        "alt": "A phone showing the web page a QR code opened.",
+        "caption": "A code opens a page, and the page can ask for anything. Judge the page, not the square."
+      },
+      {
+        "type": "h2",
+        "text": "If you already scanned a bad one"
+      },
+      {
+        "type": "p",
+        "text": "Scanning a code is harmless. What you do afterwards is what matters, and the order of the next five minutes decides everything."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Close the page without entering anything.",
+          "If you typed a password, change it now on the real site.",
+          "If you entered card details, call your bank and block the card.",
+          "If you sent money, call the bank at once and report the transaction.",
+          "Do not install anything the page offers, even if it says it is required."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about the money you did not send. A cautious pause costs nothing, and it is the only defence that works against a sticker."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "These six cases cover almost every QR problem, and none of them needs a technician."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The camera will not read the code: clean the lens, move closer, and hold the phone still.",
+          "The code opens nothing: it may be damaged or made for an app you do not have.",
+          "The address is a string of letters you do not recognise: close it and find the organisation's own address.",
+          "The page asks for a bank password: leave at once. No payment code needs it.",
+          "You paid into the wrong account: call your bank immediately and report the transfer reference.",
+          "A poster's code looks like a sticker over another: do not scan it, and tell the shop."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Two scans, both read before tapping, and the habit is formed."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Scan one code you trust and read the address before tapping.",
+          "Scan a second code and cancel it once, to practise the pause.",
+          "Find the link history in your camera or browser and see where a scan went.",
+          "Look at a shop poster and check whether the code is printed or a stuck-on label.",
+          "Ask a shopkeeper what their code is for, and compare the answer with where it leads."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now scan a code without following it blindly. In the next lesson you will handle payment on a website, where the same caution protects actual money."
+      }
+    ]
+  }
+]
