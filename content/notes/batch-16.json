@@ -1,0 +1,332 @@
+[
+  {
+    "slug": "making-numbers-look-like-money",
+    "excerpt": "How to format a column as naira so it reads as money, why the currency belongs in the format and not the cell, and how to keep totals adding correctly.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you to make a column of numbers read as money: ₦1,500.00 instead of 1500. You will set the format, choose how many decimals to show, and keep the total adding correctly. It takes five minutes, and it makes a sheet look like a record rather than a list." },
+      { "type": "p", "text": "Formatting changes how a number looks, not what it is. The cell still holds 1500, so formulas still add it. This is the whole reason to use formatting rather than typing the sign yourself." },
+      { "type": "h2", "text": "Before you start" },
+      { "type": "ul", "items": [
+        "A spreadsheet with a column of amounts.",
+        "About ten minutes."
+      ] },
+      { "type": "h2", "text": "Format the column, not each cell" },
+      { "type": "ul", "items": [
+        "Type the amounts as plain numbers first: 1500, not N1,500.",
+        "Select the whole column, or only the cells you need.",
+        "Open Format, then Number, then Currency, in Excel or Google Sheets.",
+        "Choose the naira symbol if it is offered, or type it in the format field.",
+        "Set two decimal places for money, or none if you never record kobo.",
+        "Look at the formula bar: it still shows 1500, which proves the number is unchanged."
+      ] },
+      { "type": "p", "text": "You will see the same figures now displayed with the sign, commas, and decimals, and they stay lined up on the right of the cell. That right alignment is how you know they are still numbers." },
+      { "type": "figure", "src": "/images/blog/currency-format.jpg", "alt": "A spreadsheet column formatted as currency with a naira symbol.", "caption": "Format the column once. Every new number typed into it takes the same money format." },
+      { "type": "p", "text": "It looks like typing the naira sign shows the sheet is professional. Typing it turns the number into text, the total ignores it, and the change takes a hundred keystrokes instead of one." },
+      { "type": "h2", "text": "Several currencies in one sheet" },
+      { "type": "p", "text": "If you invoice in naira and sometimes receive dollars, the format can hold the distinction without mixing the sums." },
+      { "type": "ul", "items": [
+        "Keep one currency per column, and name the column for it, such as Amount in naira.",
+        "Use a separate column for the exchange rate, so the arithmetic is visible.",
+        "Format the dollar column with a dollar sign, using the same method.",
+        "Never add a naira total to a dollar total, even if the numbers look similar.",
+        "Record the rate you used and the date, because the rate changes.",
+        "Round only at the end, not at every step, or the totals drift."
+      ] },
+      { "type": "p", "text": "None of this needs a second sheet. Two columns and one rate cell are enough for a small business, and they keep the record honest." },
+      { "type": "figure", "src": "/images/blog/naira-column.jpg", "alt": "A spreadsheet showing a naira amount column and a total.", "caption": "One currency per column, formatted as money. The total then reads as money too." },
+      { "type": "h2", "text": "Decimals, rounding, and kobo" },
+      { "type": "p", "text": "Money needs a consistent number of decimals, and small choices here cause the disagreements." },
+      { "type": "ul", "items": [
+        "Choose two decimals if you record kobo, and none if you round to the naira.",
+        "Keep the same choice in every column of the same sheet.",
+        "A total of 1,500.0000001 means the arithmetic used fractions. Round the display to two.",
+        "Add the sum with =SUM(range) rather than typing it, so the display and the maths agree.",
+        "For a price list, show no decimals, which reads faster at a counter.",
+        "For an invoice, show two, because a customer will check."
+      ] },
+      { "type": "p", "text": "Do not worry about the formatting looking different when somebody else opens the file. The format travels with the spreadsheet, and a PDF keeps it exactly." },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "p", "text": "Every case here is a formatting fix, and your figures are never changed by it." },
+      { "type": "ul", "items": [
+        "The total does not include some numbers: those cells are text. Retype one and watch the total move.",
+        "The column shows a strange date: the numbers were read as dates. Reformat the cells as Currency.",
+        "Everything shows many decimals: the format is set to General. Choose Currency with two decimals.",
+        "The sign is missing on new rows: the format applies to selected cells only. Copy the format down.",
+        "The numbers are left aligned: they are stored as text. Clear the cell and retype without a sign or space.",
+        "Printing shows #### instead of the total: the column is too narrow. Widen it."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "p", "text": "One column, formatted once, and the sheet looks like a record." },
+      { "type": "ul", "items": [
+        "Type five amounts as plain numbers.",
+        "Select the column and apply a currency format with two decimals.",
+        "Click one cell and confirm the formula bar shows the plain number.",
+        "Add a total with =SUM and check it displays as money.",
+        "Print or preview the sheet and confirm the sign appears."
+      ] },
+      { "type": "p", "text": "You can now present figures that read as money and still calculate correctly. In the next lesson you will keep the heading visible while you scroll through a long list." }
+    ]
+  },
+  {
+    "slug": "freeze-the-top-row",
+    "excerpt": "How to keep the header row visible while you scroll, freeze a name column as well, and turn it off again when somebody needs the whole sheet.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you to freeze the top row of a spreadsheet so the headings stay visible as you scroll. You will freeze a row, freeze two columns, and unfreeze when you are done. On a list of two hundred rows, it is the difference between working and guessing." },
+      { "type": "p", "text": "Freezing pins rows or columns in place while the rest scrolls underneath. It changes nothing in the data, and it is stored with the file, so the next person who opens it sees the same view." },
+      { "type": "h2", "text": "Before you start" },
+      { "type": "ul", "items": [
+        "A spreadsheet with a header row and at least thirty rows of data.",
+        "About ten minutes."
+      ] },
+      { "type": "h2", "text": "Freeze the header" },
+      { "type": "ul", "items": [
+        "Click a cell directly below the header row, in the first data row.",
+        "Open View, then Freeze panes, then Freeze rows above, in Excel or Sheets.",
+        "Scroll down and confirm the header stays at the top.",
+        "To freeze the first column as well, click a cell below and to the right of both.",
+        "Choose Freeze panes rather than Freeze top row when you need both.",
+        "To undo it, choose Unfreeze from the same menu."
+      ] },
+      { "type": "p", "text": "You will see a thin grey line under the frozen row and the header remain in place while the rest scrolls under it. That line is the only visible mark, and it does not print." },
+      { "type": "figure", "src": "/images/blog/freeze-panes.jpg", "alt": "A spreadsheet with the top row frozen and a grey line beneath it.", "caption": "A thin grey line marks where the freeze begins. The header stays, and everything below scrolls." },
+      { "type": "p", "text": "It looks like freezing is a permanent change to the file. It is a view, like a zoom, and it can be switched off in two clicks." },
+      { "type": "h2", "text": "Freeze a name column too" },
+      { "type": "p", "text": "A wide list of customers has names on the left and figures far to the right. Freezing both keeps the row and the person identifiable." },
+      { "type": "ul", "items": [
+        "Put the important identifier, such as the name, in the first column.",
+        "Click the cell directly below and to the right of the header block.",
+        "Choose Freeze panes, which pins everything above and to the left of that cell.",
+        "Scroll right and confirm the name column stays visible.",
+        "Scroll down and confirm the header stays visible.",
+        "Unfreeze before you send the file to somebody who needs a clean view."
+      ] },
+      { "type": "p", "text": "None of this affects formulas, sorting, or printing. It only changes what stays on screen while you move around the sheet." },
+      { "type": "figure", "src": "/images/blog/header-stuck.jpg", "alt": "A spreadsheet scrolled down with the header row still visible.", "caption": "Header frozen, list scrolled to row ninety. The reader still knows which column is which." },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "p", "text": "Every case here is a view fix, and none of them touches your figures." },
+      { "type": "ul", "items": [
+        "The freeze is in the wrong place: unfreeze, then click a cell in the right position and freeze again.",
+        "You cannot find the option: it is under View, not Format or Data.",
+        "The lines disappeared: another freeze or a filter was applied. Reset the view.",
+        "The frozen row scrolls away: the freeze was applied to a selection, not a pane. Unfreeze and repeat.",
+        "Printing now shows a repeated header: that is a separate print-title setting, and it is helpful.",
+        "A colleague finds the sheet odd: unfreeze before you share it, and let them choose."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "p", "text": "Freeze, scroll, unfreeze, and the habit is clear." },
+      { "type": "ul", "items": [
+        "Open a long list and scroll to the bottom before freezing.",
+        "Freeze the header row and repeat the scroll.",
+        "Freeze the name column as well and scroll sideways.",
+        "Unfreeze everything and check the sheet looks normal.",
+        "Save and reopen the file to confirm the freeze was kept."
+      ] },
+      { "type": "p", "text": "You can now read a long list without losing your place. In the next lesson you will use one formula for a whole column instead of typing it forty times." }
+    ]
+  },
+  {
+    "slug": "filling-a-formula-down",
+    "excerpt": "How to copy a formula down a column in one action, why the references move as you fill, and how to stop one cell from changing.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you to fill a formula down a column without retyping it. You will use the fill handle, understand why the cell references move, and lock one reference when it must not change. It turns an hour of typing into three seconds." },
+      { "type": "p", "text": "A formula written in one row can be copied to the rows below. The row numbers in the formula shift as it copies, so a formula that adds B2 and C2 becomes B3 and C3 in the next row, which is why the method works." },
+      { "type": "h2", "text": "Before you start" },
+      { "type": "ul", "items": [
+        "A sheet with two or three columns of numbers.",
+        "One formula working correctly in the first data row.",
+        "About fifteen minutes."
+      ] },
+      { "type": "h2", "text": "Fill with the handle" },
+      { "type": "ul", "items": [
+        "Write the formula in the first data row, such as =B2*C2, and check it gives the right answer.",
+        "Click that cell once.",
+        "Point at the small square in the bottom-right corner of the cell.",
+        "The pointer becomes a thin cross, which is the fill handle.",
+        "Drag down to the last row, then release.",
+        "Read three cells in the column to confirm each one uses its own row."
+      ] },
+      { "type": "p", "text": "You will see a faint outline follow the pointer down, and a small box showing the last value. Release and the whole column fills with formulas, not with copies of the first answer." },
+      { "type": "figure", "src": "/images/blog/fill-handle.jpg", "alt": "A spreadsheet cell with the fill handle being dragged down a column.", "caption": "The small square is the fill handle. Drag it down and every row gets the formula with its own numbers." },
+      { "type": "p", "text": "It looks like dragging copies the first answer to every row. It copies the formula, and the references move with it, which is why the results differ down the column." },
+      { "type": "h2", "text": "Faster ways to fill a long column" },
+      { "type": "p", "text": "Dragging is fine for twenty rows and painful for two thousand. Two quicker methods exist." },
+      { "type": "ul", "items": [
+        "Double-click the fill handle, which fills to the bottom of the neighbouring data automatically.",
+        "Or select the first cell, hold Shift, and click the last cell, then press Ctrl and D to fill down.",
+        "Or type the range in the name box, such as D2:D500, then press Ctrl and D.",
+        "Check the very last row, because a double-click fill stops where the next column stops.",
+        "If a row has a gap beside it, the double-click fill stops there, and you must drag further.",
+        "Save before filling a very long column, in case the range was wrong."
+      ] },
+      { "type": "p", "text": "None of this needs a macro or an add-on. The name box and Ctrl and D are on every version of every spreadsheet." },
+      { "type": "figure", "src": "/images/blog/formula-column.jpg", "alt": "A spreadsheet with a filled formula column showing results per row.", "caption": "One formula, filled down. Each row shows its own result, and the formula bar proves the pattern moved." },
+      { "type": "h2", "text": "Lock a cell that must not move" },
+      { "type": "p", "text": "Sometimes one cell in the formula should stay the same for every row, such as an exchange rate or a tax percentage. A dollar sign locks it." },
+      { "type": "ul", "items": [
+        "Write the formula pointing at the fixed cell, such as =B2*$F$1.",
+        "The dollar signs before the letter and the number lock both, which is what you usually want.",
+        "Fill down, and every row still refers to F1.",
+        "Press F4 after typing the cell reference to add the dollar signs automatically.",
+        "Use one dollar sign only when the column or the row should stay fixed, not both.",
+        "Read the formula bar in the last row, which is the quickest way to confirm the lock worked."
+      ] },
+      { "type": "p", "text": "Do not worry about remembering which dollar sign does what. Press F4 until the formula behaves, and read the last row to be sure." },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "p", "text": "Every case here is a two-second fix, and the first is the most common." },
+      { "type": "ul", "items": [
+        "Every row shows the same answer: the references were locked. Remove the dollar signs from the row references.",
+        "The answer is wrong in one row only: a cell in that row is text or empty. Check it.",
+        "The fill handle is missing: the cell is not selected, or the sheet is protected.",
+        "Error values appear down the column: the formula divides by an empty cell somewhere. Find the first error.",
+        "The fill copied the formatting as well as the formula: use Paste Special, then Formulas, in future.",
+        "The last row is empty: the fill stopped at a gap. Drag to the true end of the data."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "p", "text": "Three fills, one lock, and the skill is permanent." },
+      { "type": "ul", "items": [
+        "Make three columns: Quantity, Price, and Total.",
+        "Write =B2*C2 in the first Total row and check the answer.",
+        "Fill down ten rows with the handle and read three answers.",
+        "Add a tax rate in a single cell and multiply by it with dollar signs.",
+        "Fill down again and confirm every row uses the same rate cell."
+      ] },
+      { "type": "p", "text": "You can now apply one calculation to a whole column without touching forty cells. In the next lesson you will build a weekly money list that shows where the week went." }
+    ]
+  },
+  {
+    "slug": "a-simple-weekly-money-list",
+    "excerpt": "A five-minute weekly record of money in and money out, what columns it needs, and how to read it honestly at the end of the week.",
+    "body": [
+      { "type": "p", "text": "This lesson teaches you to build a simple weekly money list: what came in, what went out, and what is left. You will set it up in ten minutes and keep it in three minutes a day. You do not need accounting experience, only honesty and a habit." },
+      { "type": "p", "text": "A money list is not a budget you fail at. It is a record of what actually happened, written down the day it happened. Once the week is visible, the decisions become obvious without anybody telling you what to do." },
+      { "type": "h2", "text": "Before you start" },
+      { "type": "ul", "items": [
+        "A spreadsheet, on a computer or a phone.",
+        "Ten minutes, and your memory of the last two days.",
+        "A pen and paper if you prefer to plan before typing."
+      ] },
+      { "type": "h2", "text": "The columns that matter" },
+      { "type": "ul", "items": [
+        "Date: the day the money moved.",
+        "What: a short description, such as transport or sales.",
+        "In: money received, entered as a plain number.",
+        "Out: money spent.",
+        "Category: one or two words, such as food, transport, stock, family.",
+        "Balance: a formula that keeps a running total."
+      ] },
+      { "type": "p", "text": "You will see the table look too simple to be useful at first. After seven days it becomes a picture of the week, and the categories tell you more than the total." },
+      { "type": "figure", "src": "/images/blog/weekly-budget.jpg", "alt": "A spreadsheet showing a weekly money list with in and out columns.", "caption": "Date, what, in, out, category. Five columns answer the question where the week went." },
+      { "type": "p", "text": "It looks like a money list needs an app with bank connections. A plain sheet you fill in yourself is more reliable in a week with cash sales and one shared phone." },
+      { "type": "h2", "text": "Set up the totals" },
+      { "type": "ul", "items": [
+        "Under the In and Out columns, add =SUM for each.",
+        "Add a row called Left with a formula subtracting Out from In.",
+        "Add a category total using =SUMIF, which adds only the rows matching a category.",
+        "Format the money columns as naira, with no decimals for cash.",
+        "Freeze the header row so it stays visible as the week grows.",
+        "Add a new row at the top of the list each day, so the newest is first."
+      ] },
+      { "type": "p", "text": "None of this needs a second sheet. One table, three formulas, and the week adds itself." },
+      { "type": "figure", "src": "/images/blog/money-list.jpg", "alt": "A simple money list on paper beside a phone showing the same list.", "caption": "Paper and sheet both work. What matters is writing it on the day, not after three weeks." },
+      { "type": "h2", "text": "Read it honestly" },
+      { "type": "p", "text": "The value comes from reading it without excuses. A money list you argue with is still more useful than one you do not have." },
+      { "type": "ul", "items": [
+        "At the end of the week, look at the category totals rather than the grand total.",
+        "Find the one category that grew without a reason, and name it.",
+        "Compare two weeks before you conclude anything.",
+        "Record cash as carefully as transfers, because cash is where the gaps hide.",
+        "Keep one row for a bill that arrives monthly, so it does not surprise you.",
+        "Do not adjust last week's numbers to look better. The record is the point."
+      ] },
+      { "type": "p", "text": "Do not worry about a bad week. A record that shows a bad week is doing its job, and it is the reason the next one is better." },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "p", "text": "Every case here is a correction, and the first one causes most of them." },
+      { "type": "ul", "items": [
+        "The total is lower than expected: some numbers are stored as text. Retype one and watch the total move.",
+        "The balance goes negative for no reason: a spend was typed into the In column.",
+        "Categories are spelled three ways: choose from one list, and fix the spellings once.",
+        "You missed three days: enter them from memory, marked with an approximate note, rather than leaving gaps.",
+        "The sheet is on one phone and you use another: use a cloud sheet, or keep a paper copy.",
+        "You stopped after two weeks: reduce it to one line a day, which is enough to keep the habit."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "p", "text": "Build it today, fill in two days, and decide tomorrow whether it stays." },
+      { "type": "ul", "items": [
+        "Build the six columns and the three totals.",
+        "Enter today's money in and out, honestly.",
+        "Add yesterday from memory, marked as approximate.",
+        "Format the money columns and freeze the header.",
+        "Look at the category totals and name the one you would change."
+      ] },
+      { "type": "p", "text": "You can now see a week of money instead of remembering it. In the next lesson you will read the error messages a spreadsheet shows and fix them without panic." }
+    ]
+  },
+  {
+    "slug": "when-the-cell-looks-broken",
+    "excerpt": "What #####, #DIV/0!, #VALUE! and #NAME? each mean, the one cause behind most of them, and the checks that fix a broken cell in a minute.",
+    "body": [
+      { "type": "p", "text": "This lesson explains the error messages a spreadsheet shows: #####, #DIV/0!, #VALUE!, and #NAME?. You will learn what each one means, find the cause in a minute, and fix it without deleting your work. None of these messages means your file is damaged." },
+      { "type": "p", "text": "An error message is the spreadsheet telling you what it could not do. Each message names a different problem, and reading it is faster than guessing." },
+      { "type": "h2", "text": "Before you start" },
+      { "type": "ul", "items": [
+        "A sheet, even a practice one, and two minutes of patience.",
+        "About ten minutes."
+      ] },
+      { "type": "h2", "text": "The four messages, in plain words" },
+      { "type": "ul", "items": [
+        "##### means the column is too narrow to show the number. Widen it by dragging the line between the column letters.",
+        "#DIV/0! means a formula is dividing by an empty cell or by zero.",
+        "#VALUE! means the formula is using text where a number should be.",
+        "#NAME? means the formula contains a word the program does not recognise, usually a misspelt function.",
+        "#REF! means a cell the formula pointed at has been deleted.",
+        "#N/A means a lookup could not find what it was asked for."
+      ] },
+      { "type": "p", "text": "You will see the message in the cell itself, in a small coloured font, and a tiny warning triangle beside it. Clicking the triangle gives a short explanation and, often, a suggested fix." },
+      { "type": "figure", "src": "/images/blog/cell-error.jpg", "alt": "A spreadsheet cell showing an error value with a warning triangle.", "caption": "The message names the problem. Click the triangle for a plain explanation, then fix the cause rather than retyping the cell." },
+      { "type": "p", "text": "It looks like an error means the whole sheet is wrong. It means one cell could not calculate, and the rest of the sheet is usually fine." },
+      { "type": "h2", "text": "One cause behind most of them" },
+      { "type": "p", "text": "Most errors come from a number that is really text, or an empty cell where a formula expects a value." },
+      { "type": "ul", "items": [
+        "Click the cell and read the formula bar, not the display.",
+        "Check the cells the formula points at, one at a time.",
+        "A number typed with a space or a naira sign may be stored as text.",
+        "An empty cell in a division makes #DIV/0! by definition.",
+        "A misspelt function, such as =SUMM(, creates #NAME?.",
+        "Deleting a row that a formula used creates #REF!."
+      ] },
+      { "type": "p", "text": "None of these needs the cell to be retyped from scratch. Correct the input, and the formula recalculates on its own." },
+      { "type": "figure", "src": "/images/blog/wide-column.jpg", "alt": "A spreadsheet with a widened column showing the full number.", "caption": "##### is a display problem, not a data problem. Widen the column and the number appears." },
+      { "type": "h2", "text": "Find all the errors at once" },
+      { "type": "p", "text": "In a long sheet, hunting for cells one by one wastes an afternoon. Three shortcuts find them." },
+      { "type": "ul", "items": [
+        "Press Ctrl and F and search for #, which lists every error cell.",
+        "Use Find All to see the count, then work through them.",
+        "Sort by the column with errors, since error values sort together.",
+        "Print or preview the sheet, which shows where the errors cluster.",
+        "Fix the first error in a column: later errors are often caused by it.",
+        "Recalculate with F9 if the sheet looks stale after an edit."
+      ] },
+      { "type": "p", "text": "Do not worry about the count. Errors arrive in groups, and fixing the first one in a column usually fixes five." },
+      { "type": "h2", "text": "If it goes wrong" },
+      { "type": "p", "text": "Every case here has a plain fix, and none of them needs the sheet rebuilt." },
+      { "type": "ul", "items": [
+        "##### will not go away after widening: the number is huge. Format the cell to fewer decimals.",
+        "#DIV/0! appears in a total: one row is blank. Wrap the formula in IFERROR to show a blank instead.",
+        "#VALUE! appears after pasting: the pasted numbers are text. Use Paste Special, then Values.",
+        "Every cell shows #REF!: a row was deleted under a formula. Undo, or repoint the formula.",
+        "The error clears but the total is still wrong: a cell is still text. Check the alignment.",
+        "A formula works alone but fails in a table: a cell inside the table has a stray space."
+      ] },
+      { "type": "h2", "text": "Practice" },
+      { "type": "p", "text": "Create each error on purpose once, and you will never fear them again." },
+      { "type": "ul", "items": [
+        "Type a long number into a narrow column and watch ##### appear.",
+        "Divide by an empty cell and read #DIV/0!.",
+        "Multiply a cell containing a word and read #VALUE!.",
+        "Misspell =SUM and read #NAME?.",
+        "Fix each one, and note which took the longest."
+      ] },
+      { "type": "p", "text": "You can now read what a sheet is telling you and repair it quickly. In the next lesson you will watch a video without losing your place, or your data." }
+    ]
+  }
+]
