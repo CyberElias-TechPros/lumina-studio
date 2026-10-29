@@ -19070,7 +19070,10 @@ export const blogPosts: BlogPost[] = [
         "You will see the internet light go off during an outage, while the power and wifi lights stay on. That pattern tells you the fault is outside the house.",
       ),
       p(
-        "In the router's settings page, the status line will show the connection as connected or disconnected, and the uptime figure shows how long it has held. A short uptime that keeps resetting means the line is dropping and reconnecting.",
+        "The router's settings page will show the connection state as connected or disconnected, with an uptime figure beside it. A short uptime that keeps resetting means the line is dropping and reconnecting.",
+      ),
+      p(
+        "The wifi menu will open with a list of every device attached, each with a name and an address. Reading that list is how you find the guest who never left, and the device somebody forgot to remove.",
       ),
       fig(
         "/images/blog/home-router-wooden-shelf.jpg",

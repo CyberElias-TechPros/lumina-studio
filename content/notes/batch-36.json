@@ -195,7 +195,11 @@
       },
       {
         "type": "p",
-        "text": "In the router's settings page, the status line will show the connection as connected or disconnected, and the uptime figure shows how long it has held. A short uptime that keeps resetting means the line is dropping and reconnecting."
+        "text": "The router's settings page will show the connection state as connected or disconnected, with an uptime figure beside it. A short uptime that keeps resetting means the line is dropping and reconnecting."
+      },
+      {
+        "type": "p",
+        "text": "The wifi menu will open with a list of every device attached, each with a name and an address. Reading that list is how you find the guest who never left, and the device somebody forgot to remove."
       },
       {
         "type": "figure",
