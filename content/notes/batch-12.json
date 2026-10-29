@@ -1,0 +1,755 @@
+[
+  {
+    "slug": "two-windows-at-once",
+    "excerpt": "How to put two windows side by side, switch between them with the keyboard, and copy from one to the other without losing your place in either.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to work with two windows at once: a letter and a spreadsheet, a form and your bank statement, a video and your notes. You will put them side by side, switch with the keyboard, and copy between them without losing your place."
+      },
+      {
+        "type": "p",
+        "text": "A window is one program or one document, and Windows allows as many as the machine can carry. Working with two at once is the difference between copying an address by hand and copying it in one press."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Two programs or documents open, such as a browser and a document.",
+          "About ten minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Put them side by side"
+      },
+      {
+        "type": "p",
+        "text": "There are three ways to arrange two windows, and the first is the fastest."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Click a window and press Windows and the left arrow. It snaps to the left half.",
+          "Click the other window and press Windows and the right arrow.",
+          "Or drag a window by its title bar to the left edge until an outline appears, then let go.",
+          "Or hover over the maximise button to see a layout menu and choose a half.",
+          "On a Mac, click and hold the green button on a window to choose a side.",
+          "On a small laptop, the two halves will be narrow. Use the keyboard to switch instead."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see a faint outline of the window cover half the screen while you drag, and the window drop into that half when you release. On Windows 11 the two windows then offer a layout you can choose from at the bottom of the screen."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/two-windows.jpg",
+        "alt": "Two windows arranged side by side on one screen.",
+        "caption": "Two windows, one screen. Drag to the edge and let go, or use Windows and an arrow key."
+      },
+      {
+        "type": "p",
+        "text": "It looks like two windows need two screens. A snapped window on a laptop is enough for copying an address, comparing figures, or reading while you type."
+      },
+      {
+        "type": "h2",
+        "text": "Switch without touching the mouse"
+      },
+      {
+        "type": "p",
+        "text": "The keyboard is faster than the mouse for switching, and it keeps your hands where they were."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Hold Alt and press Tab to move through the open windows.",
+          "Keep Alt held and press Tab again to go further down the list.",
+          "Release both keys to land on the window you chose.",
+          "Press Alt and Tab twice quickly to jump back to the previous window.",
+          "On a Mac, press Command and Tab instead.",
+          "Click the taskbar icon of a window to bring it forward in one press."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this closes anything. Both windows stay open and keep their place, which is what makes the habit useful rather than confusing."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/alt-tab.jpg",
+        "alt": "A screen showing the Alt and Tab window switcher.",
+        "caption": "Hold Alt, tap Tab, release. The switcher shows every open window, and you land on the highlighted one."
+      },
+      {
+        "type": "h2",
+        "text": "Copy between them"
+      },
+      {
+        "type": "p",
+        "text": "Two windows are most useful when you move something between them. The order matters: select, copy, switch, paste."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Select the text or the file in the first window.",
+          "Press Ctrl and C.",
+          "Switch with Alt and Tab, without closing anything.",
+          "Click where the text should land, then press Ctrl and V.",
+          "Check what arrived, then save with Ctrl and S.",
+          "For files, open both folders in separate windows and drag between them."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry if the first paste lands in the wrong place. Ctrl and Z removes it, and the clipboard still holds the copy, so a second paste costs one key press."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a fix, and none of them loses work."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A window has vanished: it is minimised. Click its taskbar icon.",
+          "Alt and Tab does nothing: another program is capturing the keys. Use the taskbar instead.",
+          "The windows will not stay side by side: one is maximised. Press Windows and the arrow to snap it.",
+          "The paste went to the wrong window: press Ctrl and Z there, then switch and paste again.",
+          "The two windows overlap and you cannot move one: drag it by the title bar, not the edges.",
+          "Everything is tiny in two halves: use the browser zoom, Ctrl and plus, or close the second window."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Two windows, one copy, and the habit is yours."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open a document and a browser.",
+          "Snap them to opposite halves with the arrow keys.",
+          "Copy one sentence from the browser into the document.",
+          "Use Alt and Tab to switch back without clicking.",
+          "Close one window and check the other kept your work."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now hold two things in view at once, which is how most office work is actually done. In the next lesson you will make small text readable without breaking the page."
+      }
+    ]
+  },
+  {
+    "slug": "making-text-larger",
+    "excerpt": "How to make text bigger in a browser and in a document, the difference between zoom and font size, and the setting that keeps it for every page you open.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to make text bigger without breaking the layout of a page. You will zoom a website, enlarge a document properly, and set a default that keeps your choice. Nothing here damages a file, and everything can be undone."
+      },
+      {
+        "type": "p",
+        "text": "Zoom makes the whole page bigger, like moving your chair closer. Font size changes the text itself in a document you are writing. They solve different problems, and using the wrong one is why people lose the layout."
+      },
+      {
+        "type": "p",
+        "text": "You will see everything on the page grow together, including buttons and pictures, and a small percentage appear at the right of the address bar."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A browser, and one document you are happy to practise on.",
+          "About ten minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Zoom a website"
+      },
+      {
+        "type": "p",
+        "text": "Zoom is the correct tool for reading, because it leaves the page intact and can be undone in a second."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Press Ctrl and the plus key to make the page bigger.",
+          "Press Ctrl and minus to make it smaller.",
+          "Press Ctrl and zero to return to normal.",
+          "Or hold Ctrl and scroll the mouse wheel.",
+          "On a Mac, use Command instead of Ctrl.",
+          "Check the address bar, where a small percentage appears while the zoom is not at 100 percent."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see everything on the page grow together: text, buttons, pictures, and the menu. That is how you know zoom is working, and it is why nothing overlaps."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/zoom-page.jpg",
+        "alt": "A browser page zoomed in with large readable text.",
+        "caption": "Ctrl and plus enlarges the whole page. Ctrl and zero puts it back, which is why zoom is safe to try."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a bigger font on a web page is the same as a bigger page. A website's font is fixed by its owner, so the setting that actually helps is zoom."
+      },
+      {
+        "type": "h2",
+        "text": "Make the size stay"
+      },
+      {
+        "type": "p",
+        "text": "Most browsers remember a zoom level for each site, which is useful and occasionally confusing."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Set the zoom to what you can read, and the browser keeps it for that site.",
+          "Open Settings and find Appearance, then Page zoom, to change the default for all sites.",
+          "Avoid raising the operating system's scaling to 150 percent unless you need it everywhere.",
+          "If one site looks huge and another normal, a per-site zoom is set. Reset it with Ctrl and zero.",
+          "For a printed page, zoom has no effect. Change the font size in the document instead."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this changes the document for anyone else. Zoom is a setting on your machine, and the page is unchanged for the person who receives it."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/large-text.jpg",
+        "alt": "A document with a larger font size selected in a toolbar.",
+        "caption": "In a document you own, change the font size, not the zoom. Zoom is for reading, and font size is for the file itself."
+      },
+      {
+        "type": "h2",
+        "text": "Enlarge text in a document you are writing"
+      },
+      {
+        "type": "p",
+        "text": "In Word or Google Docs, the reader's experience depends on the font size you set, so choosing 12 point matters more than your own zoom level."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Select the text, or press Ctrl and A for the whole document.",
+          "Set the size in the font box, such as 12 for body text and 16 for headings.",
+          "Use one font size for the body throughout, and resist enlarging single sentences.",
+          "For a letter or a form, never go below 11 point.",
+          "For a poster or a notice, use 24 point or larger.",
+          "Check the page count after enlarging, since a longer document may spill onto a second page."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about the document looking different on another computer. The font size travels with the file, which is why a PDF is a good way to send it."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here is reversible, and the first one is the most common."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The page is stuck huge or tiny: press Ctrl and zero.",
+          "Ctrl and plus does nothing: click inside the page first, then try again.",
+          "The whole computer looks large, not just the browser: the display scaling changed, in Settings then Display.",
+          "The document no longer fits one page after enlarging: reduce the margins, or use 11 point.",
+          "Everything is bold or double spaced after pasting: the paste carried formatting. Use Paste as plain text.",
+          "Printing looks smaller than the screen: zoom does not affect print, so check the print preview."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "One page, two settings, and you will know which to reach for."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Zoom a website to 150 percent and read a paragraph.",
+          "Return it to normal with Ctrl and zero.",
+          "Open a document and set the body text to 12 point.",
+          "Check the page count before and after.",
+          "Set the browser's default page zoom to your comfortable level."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now read comfortably and write documents other people can read. In the next lesson you will use lists so that steps and points stay clear."
+      }
+    ]
+  },
+  {
+    "slug": "bullets-and-numbered-lists",
+    "excerpt": "When to use dots and when to use numbers, how to make a list in Word without typing dashes, and how to fix a list that has gone wrong.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to use bullet points and numbered lists properly. You will learn which one to choose, how to make a list with the keyboard, and how to fix the spacing problems that annoy people most. It takes ten minutes and improves every document you write."
+      },
+      {
+        "type": "p",
+        "text": "A list breaks a paragraph into separate items a reader can count. Numbers mean order matters. Dots mean order does not. Choosing the wrong one makes a reader wonder whether to follow the steps in sequence."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A blank document in Word, Google Docs, or LibreOffice.",
+          "One real list you need to write, such as what to bring to an office.",
+          "About ten minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Choose numbers or dots"
+      },
+      {
+        "type": "p",
+        "text": "The test is simple: would swapping two items change the meaning? If yes, number them."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Numbered list: steps to follow, in order. Turn on the computer, then sign in.",
+          "Bulleted list: items of equal weight, in any order. A passport photograph, a CV, and a fee receipt.",
+          "Numbered list: anything a reader will do one after another, such as a recipe or an application.",
+          "Bulleted list: reasons, features, and the contents of a folder.",
+          "Neither: a paragraph that explains an idea. A list of one item is a sentence with extra steps."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the difference at a glance: a numbered list invites a reader to start at one, and a dotted list invites them to scan."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/numbered-list.jpg",
+        "alt": "A document showing a numbered list of steps.",
+        "caption": "Numbers for steps, dots for items. A reader who sees numbers assumes an order, so give them one."
+      },
+      {
+        "type": "h2",
+        "text": "Make a list with the keyboard"
+      },
+      {
+        "type": "p",
+        "text": "You do not need to type dashes or numbers yourself. The program does it, and it keeps the list tidy when you add an item in the middle."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Type an asterisk or a hyphen, then a space, and the program starts a bulleted list.",
+          "Type a number and a full stop, then a space, and it starts a numbered list.",
+          "Press Enter for the next item, and the marker continues automatically.",
+          "Press Tab to indent an item under the one above it.",
+          "Press Enter twice, or Backspace, to leave the list and return to normal text.",
+          "Or use the toolbar buttons for bullets and numbering, which is the safer method."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this changes the font or the margins. A list is still ordinary text, and it can be copied into another document like any paragraph."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/word-bullets.jpg",
+        "alt": "A word processor toolbar showing the bullets and numbering buttons.",
+        "caption": "Two buttons in the toolbar: dots and numbers. Use them rather than typing the marks by hand."
+      },
+      {
+        "type": "h2",
+        "text": "Fix a list that has gone wrong"
+      },
+      {
+        "type": "p",
+        "text": "Lists misbehave in a few familiar ways, and each has a one-step fix."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The numbers restart in the middle: right-click the number and choose Continue numbering.",
+          "The spacing is huge between items: set the paragraph spacing to zero after, and use the list spacing instead.",
+          "The list jumps to a strange indent: drag the marker on the ruler, rather than pressing Tab repeatedly.",
+          "A bullet appears in the middle of a sentence: press Backspace twice, then continue typing.",
+          "The whole list is bold or coloured: the list took the formatting of the line before it. Select and reset.",
+          "Pasting a list into another document loses the numbers: use Paste as plain text and apply the list again."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about a list looking plain. A reader wants to follow it, not admire it, and the plainest list is usually the clearest."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Six small cases, and every one is undone with Ctrl and Z or a toolbar button."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Every new line becomes a bullet: press Enter twice, or click the bullet button to switch it off.",
+          "Numbers are all ones: the program is restarting the list at each line. Select the list and apply numbering once.",
+          "Cannot remove a bullet: place the cursor at the start of the line and press Backspace once.",
+          "The list is indented into the margin: reset the indentation in the paragraph settings.",
+          "A numbered list continues from an earlier one: choose Restart at 1.",
+          "The list prints without markers: the marker colour is white, or the paragraph style removed it."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Write one real list today, using the right marker for the job."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Write a numbered list of five steps for a task you know.",
+          "Write a bulleted list of five things to bring somewhere.",
+          "Indent one item under another with Tab.",
+          "Turn the numbered list into bullets, then back again.",
+          "Save as a PDF and check both lists look right."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now write instructions a reader can follow in order, and items they can scan. In the next lesson you will meet the red underline that is helpful and sometimes wrong."
+      }
+    ]
+  },
+  {
+    "slug": "spell-check-is-a-cousin",
+    "excerpt": "What the red underline knows, what it misses, the mistakes it never catches, and the three-minute read that catches more than any checker.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson explains the spell checker: what it catches, what it misses, and how to use it without trusting it too much. You will learn the settings that matter and the reading habit that finds the mistakes software cannot."
+      },
+      {
+        "type": "p",
+        "text": "A spell checker compares each word with a list. If the word is not on the list, it underlines it. That means it catches typing mistakes and misses real words used in the wrong place, which are the ones that embarrass people."
+      },
+      {
+        "type": "p",
+        "text": "You will see a thin coloured line under the word the moment you press the space bar, and it disappears when the word is fixed."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A document you wrote, with at least one page of text.",
+          "About ten minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "What the red line means"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Red underline: the word is not in the dictionary, so it may be misspelled.",
+          "Blue or grey underline: the grammar may be wrong.",
+          "Right-click the word for suggestions, then choose the one you meant.",
+          "Choose Add to dictionary for your own name, your town, and local words.",
+          "Turn the checker on in Review, then Spelling, if it is off."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see a small menu of suggestions and three options: change to one of them, ignore once, or add to the dictionary. Reading the whole sentence before choosing is what stops a wrong correction becoming a new mistake."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/spellcheck-red.jpg",
+        "alt": "A document showing a word underlined in red with suggestions open.",
+        "caption": "The menu offers suggestions, and only one of them is your word. Read the sentence before you pick."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a document without red lines is correct. The checker never flags a word that exists, so form is caught when you meant from, and that is the mistake a reader notices."
+      },
+      {
+        "type": "h2",
+        "text": "The mistakes it never catches"
+      },
+      {
+        "type": "p",
+        "text": "These are the errors that survive a spell check, and they are the ones worth learning by name."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Wrong word, right spelling: form and from, then and than, of and off.",
+          "Missing small words: to, a, the, and is.",
+          "Doubled words: the the, and and.",
+          "Names spelled differently in three places.",
+          "Numbers typed without the right digits, which no checker reads.",
+          "A sentence that is grammatical and says the wrong thing."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this makes the checker useless. It removes the noise, so that you can spend your attention on meaning."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/reading-letter.jpg",
+        "alt": "A person reading a printed letter with a pen in hand.",
+        "caption": "Read the printed page aloud. Your ear catches more than the red line ever will."
+      },
+      {
+        "type": "h2",
+        "text": "The three-minute read"
+      },
+      {
+        "type": "p",
+        "text": "Before you send anything important, read it out loud once. Your mouth slows you down enough to see what your eyes skip."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Read the letter out loud, slowly, from the first line.",
+          "Check the receiver's name and the date at the top.",
+          "Check every number, including amounts and phone numbers.",
+          "Look for the words that sound alike, which is where most errors hide.",
+          "Ask one other person to read it, if the letter matters.",
+          "Print it if you can, because mistakes hide less well on paper."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about sounding slow. An error in a fee amount costs more than the five minutes you saved by sending early."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here is fixable, and the second one is the most common complaint."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Every word is underlined: the document language is set wrong. Change it in Review, then Language.",
+          "Your name is underlined: right-click and add it to the dictionary.",
+          "The checker suggests a wrong word: choose Ignore, and fix the sentence yourself.",
+          "The checker is not working at all: it is switched off in settings, or the document is in the wrong language.",
+          "A correction was applied to every copy: press Ctrl and Z at once.",
+          "Autocorrect keeps changing a word you want: turn off that replacement in the autocorrect settings."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "One letter, checked twice, teaches the difference."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Write five sentences that each contain one common confusion, such as form and from.",
+          "Run the spell check and notice which errors it catches.",
+          "Fix the rest by reading aloud.",
+          "Add your own name to the dictionary.",
+          "Change the document language and watch the underlines change."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now use the checker as a helper rather than a judge. In the next lesson you will change a word throughout a long document in one go."
+      }
+    ]
+  },
+  {
+    "slug": "find-and-replace",
+    "excerpt": "How to find a word anywhere in a document, replace it everywhere at once, and avoid the one mistake that ruins a long letter.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to find a word in a document and replace it, either one at a time or every time. You will learn the two shortcuts, the mistake that can ruin a long letter, and the case where replacing everything is the right call."
+      },
+      {
+        "type": "p",
+        "text": "Find searches the document for the exact text you type. Replace does the same and substitutes something else. Both work in Word, Google Docs, browsers, and most programs you will ever open."
+      },
+      {
+        "type": "p",
+        "text": "You will see the words highlighted in the document and a small box showing how many matches were found."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A document with a word that appears several times.",
+          "About ten minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Find it first"
+      },
+      {
+        "type": "p",
+        "text": "Finding before replacing is how you learn how many matches exist. That number decides whether to replace all or one at a time."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Press Ctrl and F to open Find.",
+          "Type the word or phrase, and read the count of matches.",
+          "Press Enter to jump to each match in turn.",
+          "Press Escape to close the box and stay where you are.",
+          "In a browser, Ctrl and F searches the page, which is useful for long pages.",
+          "On a Mac, use Command and F."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see each match highlighted as you press Enter, and a small note saying one of three or similar. That note is the information you need before replacing anything."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/find-replace.jpg",
+        "alt": "A document with the find and replace dialog open.",
+        "caption": "Read the count before you replace. Three matches are safe to check one by one, and two hundred are not."
+      },
+      {
+        "type": "p",
+        "text": "It looks like Replace all is always faster. It is faster, and it is also how a name gets changed inside another word by accident."
+      },
+      {
+        "type": "h2",
+        "text": "Replace one, or all"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Press Ctrl and H to open Replace.",
+          "Type the text to find, then the text to replace it with.",
+          "Click Replace to change one match, and check it before continuing.",
+          "Click Replace all only when the count is small or the word is unique.",
+          "Read the confirmation the program shows, which states how many were changed.",
+          "Press Ctrl and Z once if the result is wrong, which undoes the whole replacement."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this is permanent. A replace-all is a single action, so one undo puts every instance back, which is why it is safe to try on a document you have saved."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/replace-all.jpg",
+        "alt": "A replace dialog showing the replace all button and a match count.",
+        "caption": "Replace all changes every match at once, and one Ctrl and Z undoes it. Save first, then try."
+      },
+      {
+        "type": "h2",
+        "text": "The mistake that ruins a letter"
+      },
+      {
+        "type": "p",
+        "text": "Replacing a short word changes longer words that contain it. This is the classic accident in a formal letter."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Replacing is with was also changes this and his.",
+          "Replacing an with and also changes January.",
+          "Replacing a name changes it inside an address or an email.",
+          "Always use Find first, and read the matches before replacing.",
+          "For short words, use Match case or Find whole words only if the dialog offers it.",
+          "Save a copy before a large replacement, so the original is one file away."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about remembering every trap. The habit of finding first and reading the count prevents almost all of them."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here is recoverable, and the first two matter most."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Everything changed wrongly: press Ctrl and Z once, immediately.",
+          "You already saved the bad version: restore the previous version from the program's history, or from your backup.",
+          "The search finds nothing though the word is there: the text has a different case or a stray space. Try a shorter part.",
+          "Replace all changed nothing: the box for the replacement is empty.",
+          "The dialog closed and you lost the text: press Ctrl and H again, and retype it.",
+          "A formatting change came with the replacement: use Paste as plain text, or reformat the new text."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Two minutes on a copy, and the shortcuts stay with you."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Write ten lines that use the word is several times.",
+          "Find it, and read the count.",
+          "Replace one instance, then check the sentence reads correctly.",
+          "Replace all, then undo once and confirm every instance returned.",
+          "Try replacing a short word and watch what happens to longer words containing it."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now change a name or a date throughout a long document without reading every line. In the next lesson you will print a page that is not on a website, without losing it."
+      }
+    ]
+  }
+]
