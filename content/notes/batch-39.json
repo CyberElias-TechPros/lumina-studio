@@ -1,0 +1,769 @@
+[
+  {
+    "slug": "setting-up-a-new-computer",
+    "excerpt": "A new machine, set up for a real person: updates first, junk off, accounts named properly, and a handover that leaves the owner confident.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson sets up a new computer for somebody else. You will learn the order that avoids trouble, how to remove what slows a new machine, and how to hand it over so the owner can use it alone."
+      },
+      {
+        "type": "p",
+        "text": "A new machine is not ready when it comes out of the box. It needs updates, a sensible name, and a short session with the person who will use it."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The machine, its charger, and the network password.",
+          "An hour, plus time for updates.",
+          "A notebook for passwords and settings."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "The order that works"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Charge the machine before starting, since an update can take an hour.",
+          "Connect it to the network and let the first setup finish.",
+          "Run all updates until the machine says it is current.",
+          "Name the machine after the person, not after the shop.",
+          "Remove trial software the owner did not ask for.",
+          "Install the programs they will actually use."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the update screen restart the machine two or three times, which looks alarming and is normal. Do not close the lid while it works, since the update will pause and start again later."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/new-laptop-unboxing-desk.jpg",
+        "alt": "A new laptop being unboxed on a desk.",
+        "caption": "Out of the box is not the same as ready. Updates and a sensible name come first."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a new machine should be fast from the first minute. The first day is spent updating, and the machine settles after that."
+      },
+      {
+        "type": "h2",
+        "text": "Accounts and names"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Create one account for the owner, with a name they recognise.",
+          "Make a second administrator account for repairs, with its own password.",
+          "Write both passwords in the notebook you will leave with them.",
+          "Turn on the screen lock with a short code they can type without looking.",
+          "Set the language and the keyboard to what they actually use.",
+          "Skip any account that ties the machine to a shop's email."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The sign-in screen will show the owner's name in large letters, and that detail matters more than it sounds. A machine that greets you by name feels like yours."
+      },
+      {
+        "type": "h2",
+        "text": "The handover"
+      },
+      {
+        "type": "p",
+        "text": "The setup is finished when the owner can do three things without you."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Switch it on, sign in, and open a browser.",
+          "Find the folder where their files will live.",
+          "Save a document and find it again.",
+          "Connect to the wifi if the password changes.",
+          "Ask for help with the notebook open, so the answer gets written down.",
+          "Shut it down properly at the end of the day."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The desktop will show a few icons and not forty, and you should resist adding more. A short desktop is a map the owner can learn in a week."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/handover-tutoring-two-people.jpg",
+        "alt": "Two people at a desk, one showing the other how to use a laptop.",
+        "caption": "The handover, with the owner's hands on the keyboard rather than yours."
+      },
+      {
+        "type": "p",
+        "text": "None of this needs a paid service. Updates, a name, and twenty minutes of teaching turn a box into a working machine."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about explaining everything. Three tasks and a notebook cover the first week, and the rest can wait for a question."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a way forward, and most are about patience rather than skill."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The update stalls at a percentage: leave it an hour before touching anything.",
+          "The owner forgets the password: the notebook is the backup, so write it down.",
+          "The machine runs hot during updates: put it on a hard surface and let the vents breathe.",
+          "A program will not install: check the version the shop sold, since some are older.",
+          "The printer will not connect: install the driver before blaming the cable.",
+          "The owner is nervous about breaking it: tell them what cannot be broken by tapping."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Write your own setup checklist and use it twice."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Charge, connect, and update.",
+          "Name the machine after the owner.",
+          "Remove the trial software.",
+          "Create the two accounts and write the passwords down.",
+          "Teach the three tasks and watch the owner do them."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now hand over a machine that is genuinely ready. In the next lesson you will put a job on paper before you start."
+      }
+    ]
+  },
+  {
+    "slug": "the-job-card",
+    "excerpt": "Written work for a small repair business: the card that records the fault, the price you agreed, and what happens when the job grows.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is about the job card and the boundary. You will learn what to write before you start, how to quote without guessing, and how to stop a small repair from becoming unpaid work."
+      },
+      {
+        "type": "p",
+        "text": "A job card is a page with the fault, the price, and the date. It protects you and the customer, and it ends more arguments than any technical skill."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A notebook or a pad of printed cards.",
+          "A pen that works.",
+          "About ten minutes per job."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "What goes on the card"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The date and the customer's name.",
+          "The machine, with its model and serial.",
+          "The fault in the customer's own words.",
+          "What you will do, and what you will not do.",
+          "The price, and whether parts are included.",
+          "The date they can collect it."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The card will show the fault in the customer's words and your plan in yours, side by side. That pairing is what makes the card fair to both of you."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/paper-job-card-handwriting.jpg",
+        "alt": "A handwritten job card on paper with a pen.",
+        "caption": "One card per job, filled before the repair starts. The words at the top are the customer's."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a written card slows the work. It saves the conversation where a customer remembers a different price."
+      },
+      {
+        "type": "h2",
+        "text": "Quoting without guessing"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Ask what the machine does, and price the most likely fault.",
+          "Say plainly that the price may change if the fault is different.",
+          "Give a range for the first look, and a fixed price for the repair.",
+          "Charge for the inspection when you must open the machine.",
+          "Write the diagnosis fee on the card before you begin.",
+          "Agree the price by message if the customer is not present."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "A message from the customer will show the price they agreed to, and that message is worth keeping. Screenshot it into a folder named for the month."
+      },
+      {
+        "type": "p",
+        "text": "Your phone's message thread will show the quote and the customer's reply underneath it, which is why the reply matters more than a spoken yes. Screenshot that thread and the picture will appear in the folder with a date on it."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/tools-and-phone-on-counter.jpg",
+        "alt": "Tools and a phone on a work counter.",
+        "caption": "The phone holds the agreement. The tools do the work, and the message settles the price."
+      },
+      {
+        "type": "h2",
+        "text": "When the job grows"
+      },
+      {
+        "type": "p",
+        "text": "A fault found during a repair is a new decision, and the customer makes it."
+      },
+      {
+        "type": "p",
+        "text": "When you send the new price, the chat window will show your message as a single line until they open it. You will see two small ticks when it is delivered, and the answer usually follows within the hour."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Stop when the work is larger than the card describes.",
+          "Photograph what you found, so the customer can see it.",
+          "Send the new price and wait for a reply.",
+          "Continue only after the customer agrees in writing.",
+          "Offer to close the machine and return it as it came.",
+          "Write the new agreement on the same card."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs a printed form. A page with six lines and a signature is a job card, and it holds up when everybody remembers differently."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about asking for a signature. Most customers are relieved that somebody wrote the price down."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here is about money and memory, and the card is the answer to both."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The customer remembers a lower price: show the card, without arguing.",
+          "The repair fails after a week: say what you will check and at what price.",
+          "Parts cost more than quoted: ask before ordering, and keep the message.",
+          "The customer is unavailable: set a collection date on the card and keep to it.",
+          "A machine is left for months: write a storage note and a date to sell or return.",
+          "Somebody else worked on it first: note the state of the screws and the seals."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Design a card you will actually use."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Write six lines: date, name, machine, fault, work, price.",
+          "Fill one card for a real job this week.",
+          "Ask the customer to sign it.",
+          "Photograph the card into a folder named for the month.",
+          "Keep the cards for a year, since they answer later questions."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now work on paper as well as on machines. In the next lesson you will help somebody from across town."
+      }
+    ]
+  },
+  {
+    "slug": "helping-from-across-town",
+    "excerpt": "Remote help that respects the person: guiding by voice, seeing the screen, and knowing when a visit is the honest answer.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is about helping somebody from across town. You will learn how to guide a person by voice, how to see what they see, and when a journey is the honest answer."
+      },
+      {
+        "type": "p",
+        "text": "Most support is a conversation. A calm voice, a clear next step, and a way to see the screen solve more faults than a long journey."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A phone call, or a video call if the network allows.",
+          "The person in front of the machine.",
+          "Twenty minutes, and patience."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Guiding by voice"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Ask them to describe what they see, not what they think is wrong.",
+          "Give one step at a time, and wait for them to finish it.",
+          "Use the words on their screen rather than your own.",
+          "Ask them to read the message aloud, including any number.",
+          "Confirm each step before the next, which prevents two faults at once.",
+          "Write the steps down as you give them, so the notes can be sent after."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the person's confidence rise as a step works. That confidence is what lets them repeat the fix without you next time."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/remote-help-video-call-laptop.jpg",
+        "alt": "A person on a video call from a laptop while helping somebody remotely.",
+        "caption": "One step, then wait. The pause is where most remote help succeeds or fails."
+      },
+      {
+        "type": "p",
+        "text": "It looks like the fastest help is a tool that takes over the screen. A person who understands the step keeps the skill after the call ends."
+      },
+      {
+        "type": "h2",
+        "text": "Seeing the screen"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Ask them to hold the phone camera at the screen, steady, with the light behind them.",
+          "Ask for a screenshot instead, which is clearer than a photograph.",
+          "Read the error number together and write it in the notes.",
+          "Avoid asking them to install anything during a crisis.",
+          "Use a shared screen only with permission, and say when you will stop.",
+          "End the sharing when the call ends, and confirm that it has stopped."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The screenshot will open on your phone at full size, and you can zoom into one corner without losing the rest. Tell them to look at the lower half of their screen, since that is where most messages sit."
+      },
+      {
+        "type": "p",
+        "text": "A screenshot will arrive in the chat with the message visible in full, and you can point at one line by describing where it sits. Tell them to look at the lower half, or beside the big button, rather than at the whole screen."
+      },
+      {
+        "type": "p",
+        "text": "On the call, their screen will appear as a small window beside their face, and the words on it will be too small to read. Ask them to switch the view so the screen fills your side of the call."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/customer-pointing-phone-camera-at-screen.jpg",
+        "alt": "A person pointing a phone camera at a computer screen.",
+        "caption": "A steady camera and light behind the person. A screenshot is better when they can manage it."
+      },
+      {
+        "type": "h2",
+        "text": "When to travel"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The machine will not start at all.",
+          "The fault needs a screwdriver or a part.",
+          "The person cannot use a phone and a computer at once.",
+          "The connection is too poor for a call.",
+          "The data must be copied to a drive.",
+          "The job is urgent and the person is distressed."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs a paid remote tool. A phone call, a screenshot, and a written list carry most jobs, and the visit is saved for the ones that need hands."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about saying the call is not working. Saying so early saves an hour of guessing, and the person will trust the next suggestion more."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a next move, and none of them is a reason to blame the person."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "They describe the screen wrongly: ask for a screenshot before the next step.",
+          "They cannot find a menu: ask what is written at the top of their screen.",
+          "The call keeps dropping: switch to voice and send written steps.",
+          "A step makes it worse: stop, write what changed, and undo it first.",
+          "They are frightened of breaking it: say which taps are safe.",
+          "You cannot diagnose it: book a visit rather than guessing further."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Help one person by voice this week, without touching the machine."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Ask them to describe the fault while you write.",
+          "Give one step at a time.",
+          "Ask for a screenshot at the second step.",
+          "Write the steps into a message and send them.",
+          "Ask them to try it alone the next day."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now help without travelling. In the next lesson you will say the harder sentence, that a job is beyond you."
+      }
+    ]
+  },
+  {
+    "slug": "this-is-beyond-me",
+    "excerpt": "Knowing the edge of your skill: the faults that need a bench, a specialist, or a recovery lab, and how to refer without losing trust.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is about saying that a job is beyond you. You will learn which faults need another pair of hands, how to refer a customer well, and why an honest limit builds more trust than a brave attempt."
+      },
+      {
+        "type": "p",
+        "text": "Every technician has an edge, and the edge moves as skills grow. Recognising it before you open the machine is the mark of somebody who works carefully."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "About ten minutes to think about your own limits.",
+          "The names of two people you can refer work to."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Faults that need somebody else"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A drive that clicks, when the data matters more than the part.",
+          "Water damage on a board with visible corrosion.",
+          "A cracked screen on a device with glued layers.",
+          "A machine under a shop's warranty.",
+          "A phone that holds the only copy of a family's photographs.",
+          "Anything that needs a microscope, a stencil, or a heat station."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see a customer relax when you name the limit early. Naming it before the repair begins is very different from naming it after a failure."
+      },
+      {
+        "type": "p",
+        "text": "When you open a machine, the inside will show dust, a battery, and one or two parts you can name. The moment you see corrosion or a clicking drive, the picture on your phone will appear as the record you send on."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/referral-handshake-bench.jpg",
+        "alt": "Two technicians shaking hands at a workbench.",
+        "caption": "A referral is a handover rather than a refusal. The customer keeps the relationship and gains the skill."
+      },
+      {
+        "type": "p",
+        "text": "It looks like refusing work loses a customer. A careful referral keeps the customer, and the person you refer to sends work back."
+      },
+      {
+        "type": "h2",
+        "text": "How to refer well"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Say what the fault is and what you have already checked.",
+          "Explain why it needs different equipment.",
+          "Give the name of a person, not only a shop.",
+          "Send a message to that person before the customer arrives.",
+          "Give the customer the notes you made, so nothing is repeated.",
+          "Follow up once, a week later, to see how it went."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The message you send will show the customer's name, the fault, and the checks already done. A referral with notes arrives as a colleague's request rather than a stranger's problem."
+      },
+      {
+        "type": "p",
+        "text": "The colleague's reply will appear as a short message, usually a price and a time. Forward that message to the customer, since a name and a time on their screen settles more worry than a long explanation."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/referring-customer-to-shop.jpg",
+        "alt": "A technician pointing a customer toward a nearby shop.",
+        "caption": "A name and a direction. The customer is helped more by one honest referral than by three guesses."
+      },
+      {
+        "type": "h2",
+        "text": "The sentence itself"
+      },
+      {
+        "type": "p",
+        "text": "Keep it short and free of apology. The customer needs information, not a performance."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Say what you found, in one sentence.",
+          "Say what it needs, in one sentence.",
+          "Say who can do it, with a name.",
+          "Say what you have not charged for, and what you have.",
+          "Say what you would do in their place.",
+          "Leave the notes with them."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this costs you anything except a minute. It also means you never carry the weight of a repair you were not ready for."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about the customer's first reaction. Most people accept a clear limit, and the ones who do not were going to be difficult about something else."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a way to end well, and none of them needs an argument."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The customer insists you try: say what the risk is, and let them decide.",
+          "You have already opened it: close it, write what you saw, and stop.",
+          "The referred shop is closed: keep the card and call them yourself.",
+          "The other technician is far away: offer to send the customer with the notes.",
+          "The customer blames you for the fault: show the notes from the first visit.",
+          "You feel you should have known: write the fault down and learn it for next time."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Write your own list of limits."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "List three faults you will not open.",
+          "Name one person for each kind.",
+          "Save their numbers in your phone under a clear name.",
+          "Write your referral sentence and say it aloud.",
+          "Send one message to a colleague you would refer to."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now protect a customer's data and your own name at once. In the next lesson you will look at support as honest work."
+      }
+    ]
+  },
+  {
+    "slug": "support-as-honest-work",
+    "excerpt": "The business side of small repairs: fair prices, receipts, a logbook, and the habits that bring a customer back.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is about support as honest work. You will learn how to price fairly, keep a logbook, give a receipt, and build the habits that turn one repair into steady customers."
+      },
+      {
+        "type": "p",
+        "text": "Support is skilled work, and pricing it properly is not greed. A charge that covers your time and parts keeps you available when a customer needs you again."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A notebook for the logbook.",
+          "A receipt book, or a phone app that prints one.",
+          "About an hour to plan the month."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Pricing that holds"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Work out your cost for a day, including transport and data.",
+          "Decide a minimum charge for a visit, and say it before you go.",
+          "Price common jobs once, and keep the list in the notebook.",
+          "Separate the diagnosis from the repair in your prices.",
+          "Charge for parts at cost plus a small margin, written on the card.",
+          "Review the list every quarter, since prices move."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The price list will show three columns: job, price, and time. A customer who sees the list understands that the charge is for work rather than for a mood."
+      },
+      {
+        "type": "p",
+        "text": "Your price list will appear in the notebook as three columns, and it is worth photographing it once a quarter. The photograph on your phone is faster than opening the book while a customer waits."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/support-logbook-and-phone.jpg",
+        "alt": "A support logbook beside a phone on a desk.",
+        "caption": "The logbook and the phone. One records the work, the other records the agreement."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a lower price wins the customer. A price too low to cover the return visit is a loan you gave without agreeing to it."
+      },
+      {
+        "type": "h2",
+        "text": "Records that protect"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Write each job in the logbook with the date and the price.",
+          "Give a receipt every time, even for a small repair.",
+          "Keep the job cards for a year, in date order.",
+          "Photograph serial numbers when you take a machine in.",
+          "Note the parts used and where they came from.",
+          "Write what you advised the customer to do next."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The receipt will show the date, the work, the price, and your name. A customer who has that page can recommend you without trying to remember details."
+      },
+      {
+        "type": "p",
+        "text": "A printed receipt will show the date, the work, the price, and your name in one block. You will see customers photograph it immediately, and that photograph travels to the next person who needs you."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/asking-help.jpg",
+        "alt": "A person asking a colleague for help at a desk.",
+        "caption": "Ask for help when you need it. Nobody runs a repair bench alone, and a colleague's five minutes can save a customer's data."
+      },
+      {
+        "type": "h2",
+        "text": "Habits that bring people back"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Return calls the same day, even when the answer is that you are busy.",
+          "Finish what you promised before taking the next job.",
+          "Tell the customer what you could not fix, in plain words.",
+          "Charge what you quoted, and nothing more.",
+          "Follow up once after a repair, with one short message.",
+          "Keep the notebook open during every call."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs an office. A notebook, a receipt book, and a phone build the same trust that a shop front does."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about asking for your price. Saying the number plainly, once, is easier for the customer than a conversation that circles it."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a way back to a fair ending."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The customer disputes the bill: show the card and the receipt, without heat.",
+          "A repair fails under your own time: fix it once, without charging twice.",
+          "Work dries up for a month: call six past customers, and ask what they need.",
+          "You are paid late: write the date owed, and ask once by message.",
+          "A job took twice the time: note why, and price that kind of job better.",
+          "A customer wants free advice all day: give one answer, then quote the rest."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Put your work on paper for one month."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Write your three common jobs and their prices.",
+          "Start the logbook with today's date.",
+          "Give a receipt for the next repair, however small.",
+          "Follow up with one past customer.",
+          "Count the jobs at the end of the month."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now run support as work rather than favours. The next chapter turns to the tools that are changing every desk."
+      }
+    ]
+  }
+]
