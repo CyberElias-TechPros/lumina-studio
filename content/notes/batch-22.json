@@ -1,0 +1,776 @@
+[
+  {
+    "slug": "bank-in-your-hand",
+    "excerpt": "Setting up a bank app on a phone, what the confirmation screens mean, how to check a transfer really landed, and the habits that keep the account safe.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson sets up your bank's app on a phone and shows you how to use it without worry. You will confirm the app is genuine, move a small amount, check a transfer really landed, and keep the account safe from the phone itself."
+      },
+      {
+        "type": "p",
+        "text": "A bank app is a direct line to your account. It saves a trip to the branch, and it puts a great deal of power behind one screen lock, which is why the setup matters more than the features."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Your debit card and the phone number registered with the bank.",
+          "A screen lock on the phone, set up already.",
+          "About twenty minutes, in a private place."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Install the right app"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open the Play Store or the App Store, not a link from a message.",
+          "Search the bank's full name and read the developer name under the listing.",
+          "Check the download count and the number of recent reviews.",
+          "Install, then open the app and choose Register or Activate.",
+          "Enter the card number, the expiry date, and the last four digits of the phone number.",
+          "Create a password the app accepts, and note it nowhere on the phone."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the app ask for a one-time code, which arrives by text within a minute. Type it, and the app opens onto an account summary with your balance and recent transactions."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/bank-app-confirm.jpg",
+        "alt": "A bank app showing a transfer confirmation screen with amount and recipient.",
+        "caption": "The confirmation screen is the last stop. Read the name and the amount before you approve, since approval is final."
+      },
+      {
+        "type": "p",
+        "text": "It looks like any app with the bank's logo is the bank's app. Logos are copied every week, and only the developer name in the store tells you who published it."
+      },
+      {
+        "type": "h2",
+        "text": "Test with a small amount"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Send a small amount to a number you know, ideally your own second account.",
+          "Read the confirmation screen: the name, the last digits, and the amount.",
+          "Approve using the code or the prompt, whichever the bank uses.",
+          "Wait for the success screen and take a screenshot of it.",
+          "Check that the recipient receives the money before sending anything larger.",
+          "Note the fee, since some transfers cost more than the amount sent."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "A successful transfer will show a reference number and a message saying the transfer was successful. That reference is the number to quote if anything goes wrong later."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/bank-statement-phone.jpg",
+        "alt": "A phone showing a bank statement with a list of transactions and dates.",
+        "caption": "The statement is the record that matters. A screenshot of a success screen is not proof that money left or arrived."
+      },
+      {
+        "type": "p",
+        "text": "The transaction list will show each payment with a date, an amount, and a reference number. Tap one and a detail page opens with the recipient's name and the status of the transfer."
+      },
+      {
+        "type": "h2",
+        "text": "Check that money arrived"
+      },
+      {
+        "type": "p",
+        "text": "A success screen on the sender's phone is not proof. The receiver's own statement is the proof, and the difference matters in every dispute."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Ask the receiver to check their balance, or open the app in front of you.",
+          "Check the transaction reference matches on both sides.",
+          "Allow a few minutes before assuming the transfer failed.",
+          "On weekends and at night, some transfers take until the next working day.",
+          "If the money is missing, call the bank with the reference number, not the screenshot alone.",
+          "Never send a second payment before the first is confirmed, since that is how double payments happen."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs a visit to the branch. A reference number and a statement line settle almost every question."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about the balance showing less than expected. Pending card payments often sit outside the available balance until they clear."
+      },
+      {
+        "type": "h2",
+        "text": "Habits that keep the account safe"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Keep the phone lock on, since the app is only as safe as the screen.",
+          "Never share the app password, the PIN, or a one-time code with anybody.",
+          "Turn on the bank's own alerts, so every transaction sends a message.",
+          "Watch for messages that claim a problem with your account and offer a link.",
+          "Log out of the app after use on a shared phone, and delete the app afterwards.",
+          "Check the statement once a week, which catches small unauthorised charges early."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a route, and the bank's own line is the first call."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The app will not activate: the phone number on the account differs from the SIM in the phone.",
+          "You forgot the app password: use the reset in the app, which needs the card and a code.",
+          "A transfer failed but the balance dropped: the amount is usually reversed within a day.",
+          "Money left without you sending it: call the bank immediately and ask for the card to be blocked.",
+          "The app crashes on opening: update it, then clear its cache, then reinstall from the store.",
+          "A caller offers to fix your account: end the call and dial the number on the back of your card."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "One small transfer teaches more than a page of instructions."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Install the app from the official store listing.",
+          "Activate it with the card and the code.",
+          "Send a small amount to yourself or a family member.",
+          "Check the statement on both sides.",
+          "Turn on transaction alerts and confirm one arrives."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now handle money without joining a queue. In the next lesson you will move to a new phone without losing your photos or your chats."
+      }
+    ]
+  },
+  {
+    "slug": "new-phone-without-losing-your-life",
+    "excerpt": "The order to do things when changing phones: back up chats, copy photos, move the SIM, sign in, and wipe the old phone last.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is the order of steps for moving to a new phone without losing photos, chats, or accounts. You will back up first, sign in on the new device, check everything arrived, and wipe the old one only at the end."
+      },
+      {
+        "type": "p",
+        "text": "Most losses during a phone change happen because the old phone was wiped or sold too early. Doing the steps in the right order prevents that entirely."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Both phones, charged, and a wifi connection.",
+          "Your Google or Apple account password.",
+          "About two hours, since a backup can be slow."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Back up the old phone first"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open WhatsApp, then Settings, then Chats, then Chat backup.",
+          "Choose Back up now, and wait for it to finish on wifi.",
+          "In the phone's own settings, turn on backup for photos and contacts.",
+          "Check the backup date afterwards, which should read today.",
+          "Copy the whole camera folder to a computer as a second copy.",
+          "Note the account passwords you will need, since some are hard to recall."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see a progress bar and then a line giving the time of the last backup. If that line still shows last month, the backup did not run, and nothing else should happen until it does."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/whatsapp-backup-screen.jpg",
+        "alt": "A phone showing the WhatsApp chat backup screen with a last backup time.",
+        "caption": "The last backup line is the one to read. Today's date means the chats are safe, and last month's means they are not."
+      },
+      {
+        "type": "p",
+        "text": "It looks like the new phone will copy everything by itself. It copies what was backed up, and nothing that was never backed up appears, which is why the first step matters."
+      },
+      {
+        "type": "h2",
+        "text": "Move the number and sign in"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Put the SIM in the new phone, or ask the network for a new one with the same number.",
+          "Sign in with the same Google or Apple account during setup.",
+          "Choose Restore, and let the phone rebuild the apps and contacts.",
+          "Install WhatsApp and verify the number, then choose Restore from backup.",
+          "Keep the old phone switched on and connected until the restore finishes.",
+          "Open five apps and check that each one has your data."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The new phone will show a list of apps being installed, which takes a while on a slow connection. The messages in WhatsApp restore after the app is installed, not before."
+      },
+      {
+        "type": "p",
+        "text": "The setup screen will show a list of apps to restore, with a tick beside each one already installed. Leave the screen open and let it work through the list."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/two-phones-move.jpg",
+        "alt": "An old phone and a new phone side by side during a transfer.",
+        "caption": "Both phones on, both charged. The old one stays awake until the new one has everything."
+      },
+      {
+        "type": "h2",
+        "text": "Check before you let go"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open the gallery and count the photo albums, comparing with the old phone.",
+          "Open WhatsApp and check three long chats have their history.",
+          "Check contacts, including the ones saved on the SIM.",
+          "Open the bank app and confirm it works, then re-register the device if asked.",
+          "Sign in to email and confirm the inbox loads.",
+          "Take a photo on the new phone and check it saves."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs a shop assistant. The steps are in the setup screens, and the checking is the part that matters."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about the old phone for a week. Keep it switched on and signed in until you are sure, then wipe it."
+      },
+      {
+        "type": "h2",
+        "text": "Wipe the old phone last"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Sign out of the Google or Apple account on the old phone, which removes the activation lock.",
+          "Remove the SIM and the memory card.",
+          "Use Erase all content and settings, which is in the phone's settings.",
+          "If you are selling it, check the phone starts again to the setup screen.",
+          "Delete the old device from your account's device list.",
+          "Change the passwords for accounts you signed into on the old phone, if it left your hands."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here is recoverable while the old phone still exists, which is the reason to wait."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "WhatsApp shows no chats: restore did not run. Reinstall and choose Restore during setup.",
+          "Photos are missing: check the cloud account, which may still be uploading.",
+          "Contacts are gone: sign in again and enable contact sync.",
+          "The bank app asks for re-registration: that is normal on a new device.",
+          "The old phone was wiped too early: some data can come from the cloud backup, and some cannot.",
+          "The new phone is locked to the old account: the previous owner must remove it."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Even without a new phone, run the first half of this today."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Back up WhatsApp now and read the last backup date.",
+          "Check that photo backup is on.",
+          "Copy one folder of photos to a computer.",
+          "Write down the accounts you would need on a new device.",
+          "Set a reminder to repeat the backup next month."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now change phones without losing the things that matter. In the next lesson you will sell something you own without being cheated at the handover."
+      }
+    ]
+  },
+  {
+    "slug": "selling-the-thing-you-own",
+    "excerpt": "How to photograph an item for sale, write a description that answers questions, confirm a payment before handing anything over, and meet safely.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to sell something you own online: photograph it honestly, describe it fully, agree a price, and hand it over without being cheated. You will learn the one rule about payments that prevents most losses."
+      },
+      {
+        "type": "p",
+        "text": "A sale online is two strangers agreeing on a price. Most trouble comes from a vague listing or a payment that was never really made, and both are easy to prevent."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The item, cleaned and charged if it needs power.",
+          "Daylight, for photographs.",
+          "A bank account that sends alerts."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Photographs that sell honestly"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Take six pictures: the front, the back, both sides, the label, and any damage.",
+          "Use daylight by a window rather than a flash.",
+          "Put a plain cloth or paper behind the item, so the background does not distract.",
+          "Photograph the scratches rather than hiding them.",
+          "Include the charger, the box, or the receipt if you have them.",
+          "Check each photo on the screen before uploading, since a blurred one wastes a week."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the item more clearly in the photos than in the room, which is the test of a usable picture. If you cannot read the model number, the buyer cannot either."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/selling-photo-item.jpg",
+        "alt": "A phone photographing an item on a plain cloth in daylight.",
+        "caption": "Plain background, daylight, and the damage shown. Honest photographs bring fewer arguments and better offers."
+      },
+      {
+        "type": "p",
+        "text": "It looks like hiding the fault gets a faster sale. It gets a returned item, an argument, and a reputation that follows your number."
+      },
+      {
+        "type": "h2",
+        "text": "Describe it so nobody has to ask"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "State the model, the age, and what is included.",
+          "Say what works and what does not, in plain words.",
+          "Give the reason for selling, which builds trust in a listing.",
+          "Set a price, and a lower figure you would accept quietly.",
+          "Say whether the price is fixed, since haggling starts there.",
+          "Add your location at area level, not your street."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "A listing that answers ten likely questions gets serious buyers. A listing with three words gets thirty messages that go nowhere."
+      },
+      {
+        "type": "p",
+        "text": "The listing will appear with your photos in a row, and the first one is the picture buyers see before they click. Drag the clearest photo to the front."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/verify-payment-seller.jpg",
+        "alt": "A seller checking a bank alert on a phone before handing over an item.",
+        "caption": "Check the credit in your own app, not in a screenshot. An alert can be faked, and a balance cannot."
+      },
+      {
+        "type": "h2",
+        "text": "The payment rule"
+      },
+      {
+        "type": "p",
+        "text": "Never hand over the item until the money shows as available in your own account, opened by you."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open your own bank app and look at the balance, rather than reading a screenshot.",
+          "A transfer that shows as pending is not available money yet.",
+          "Do not accept a payment link the buyer sends, which is a common trick.",
+          "Do not send money to anybody to release a payment, since no bank works that way.",
+          "Meet in a public place, ideally with another person, in daylight.",
+          "Hand over the item only after the balance moves, and say so plainly."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this is rude. Sellers who check the balance in front of the buyer lose nothing, and the honest buyer expects it."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about losing a sale by asking for a check. A buyer who refuses to wait five minutes was never going to pay."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a next step, and the first one is the most common."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A screenshot shows a transfer that never arrived: wait for the balance, not the picture.",
+          "The buyer sends an overpayment and asks for a refund: refuse and report it, since it is a known trick.",
+          "The buyer wants to take the item and pay later: decline, which is the whole rule.",
+          "The listing gets no replies: retake the photos in daylight and add the model number.",
+          "The buyer disputes the condition: point to the damage photo in the listing.",
+          "Somebody asks for your account details to pay you: give only the account number, never a PIN or a code."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Prepare one listing properly, even if you never post it."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Choose one item and clean it.",
+          "Take six photographs in daylight.",
+          "Write a description answering ten likely questions.",
+          "Set a price and a lower figure you would accept.",
+          "Practise checking a balance in your own app before a sale."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now sell without being hurried into a loss. In the next lesson you will use a ride app and check the car before you enter it."
+      }
+    ]
+  },
+  {
+    "slug": "the-ride-that-comes-to-you",
+    "excerpt": "Ordering a ride from a phone app: reading the map, matching the number plate, sharing the trip, and what to do when the driver asks to cancel.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to order a ride from a phone app and arrive safely. You will set the pickup point, read the map, check the number plate before entering, and share the trip with somebody at home."
+      },
+      {
+        "type": "p",
+        "text": "A ride app connects you to a driver, shows the fare, and records the trip. The record is the part that protects you, and using the app properly keeps that record accurate."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A ride app installed and signed in.",
+          "Location switched on, and data.",
+          "A phone with enough battery for the journey."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Order it properly"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open the app and wait for the map to show your position accurately.",
+          "Type the destination rather than choosing from guesses.",
+          "Check the pickup point, and drag the pin to a landmark you can see.",
+          "Read the fare estimate and the waiting time before confirming.",
+          "Confirm the request and note the driver's name, the number plate, and the car model.",
+          "Watch the car approach on the map, which shows whether it is really near."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the car move along the map towards your pin, with a countdown showing the minutes. The countdown is an estimate, and a car stuck in traffic can sit at three minutes for a while."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/ride-app-map.jpg",
+        "alt": "A phone showing a ride app map with a car approaching a pickup pin.",
+        "caption": "Move the pin to a place you can see. A pin inside a compound is hard for a driver to find, and the wait costs you."
+      },
+      {
+        "type": "p",
+        "text": "It looks like the first car to arrive is your ride. Any car can stop beside you, and the number plate and the driver's name in the app are the only proof."
+      },
+      {
+        "type": "p",
+        "text": "A box appears at the bottom of the screen naming the driver, the car, and the number plate. Read it before you step outside, since the car may arrive before you expect."
+      },
+      {
+        "type": "h2",
+        "text": "Before you open the door"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Match the number plate letter by letter with the app.",
+          "Ask the driver's name, rather than offering yours first.",
+          "Check the car model and colour against the app.",
+          "Sit in the back, unless you are the only passenger and prefer the front.",
+          "Confirm the destination out loud before the car moves.",
+          "Decline any request to cancel the trip and pay in cash outside the app."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The app will show the trip as started once the driver taps the screen, and the fare will then be final rather than an estimate. Check the destination on that screen before it starts."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/ride-plate-check.jpg",
+        "alt": "A close view of a car number plate being compared with a phone screen.",
+        "caption": "The number plate is the check that matters. A driver who cannot match the app is not your driver, whatever the reason."
+      },
+      {
+        "type": "h2",
+        "text": "Share the trip"
+      },
+      {
+        "type": "p",
+        "text": "Most ride apps can send a live view of the journey to a contact. It takes ten seconds and it changes how the trip feels."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Look for Share trip or Safety in the trip screen.",
+          "Send it to one person at home, who then sees the route and the car.",
+          "Tell them the expected arrival time in one message.",
+          "Keep the app open enough for the share to stay live.",
+          "Note the driver's name and plate in a message, which is quicker than describing the car later.",
+          "Call somebody if the route changes without a reason you accept."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about seeming anxious by sharing a trip. It is a normal feature, and drivers see it as a sign that the trip is recorded."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a next step inside the app, and the record is on your side."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The driver asks you to cancel and pay cash: refuse, since you lose the record and the fare protection.",
+          "The number plate does not match: do not enter. Cancel in the app and report the driver.",
+          "The route is not the one on the map: ask the driver to follow it, and share the trip if the answer is poor.",
+          "The fare is higher than the estimate: check the app's receipt for waiting time or a route change, then raise a complaint.",
+          "You left something in the car: use the trip history to contact the driver through the app.",
+          "The driver cannot find you: message through the app rather than by phone, which keeps the record."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Practise the checks on your next ordinary trip."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Move the pickup pin to a landmark and read the new estimate.",
+          "Note the number plate before the car arrives.",
+          "Match the number plate and ask the driver's name.",
+          "Share the trip with one contact.",
+          "Find the receipt in the app after the trip and read the fare breakdown."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now travel with a record behind you. In the next lesson you will handle a government form online without paying an agent for a free page."
+      }
+    ]
+  },
+  {
+    "slug": "government-things-online",
+    "excerpt": "Finding the real government website, filling a form without an agent, paying only through official channels, and keeping the reference numbers afterwards.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson helps you do a government task online: find the real website, fill the form yourself, pay only through the official channel, and keep the reference. You will also learn when an agent is genuinely useful and when they are selling a free page."
+      },
+      {
+        "type": "p",
+        "text": "Government portals have moved a great deal of paperwork online. The form is free to fill, the fee is fixed, and an agent who charges for typing is charging for something you can do."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The documents the form will ask for.",
+          "A phone or computer, and a browser.",
+          "A card or the official payment channel for the fee."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Find the real page"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Type the agency's name into a search engine, then read the address before clicking.",
+          "Official addresses end in gov.ng, or a similar government domain.",
+          "Avoid the first result if it is marked as an advert, since those are often agents.",
+          "Check the page for a physical address and a phone number.",
+          "Bookmark the page once you are sure, so you never search again.",
+          "Ask at the agency's office for the address if you are unsure, which costs one visit."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the official page carry the agency's crest, a plain layout, and a list of services in the menu. Agent pages usually copy the crest and add several phone numbers and a chat button."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/gov-portal-form.jpg",
+        "alt": "A government website form with fields for name, address, and reference number.",
+        "caption": "The real portal shows the form itself, with fields you fill and a fixed fee beside it. An agent page shows a phone number instead."
+      },
+      {
+        "type": "p",
+        "text": "It looks like the portal is too complicated to use without help. Most forms ask for the same six things: name, date of birth, address, phone, email, and one document number."
+      },
+      {
+        "type": "p",
+        "text": "You are not alone in finding this form awkward. It is written for offices rather than for people, and reading it slowly is the right way to approach it."
+      },
+      {
+        "type": "h2",
+        "text": "Fill the form without hurry"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Have every document beside you before you start, since the page times out.",
+          "Type names exactly as they appear on the documents, including the order.",
+          "Use an email address you can open immediately, because the reference goes there.",
+          "Check the phone number twice, since a wrong digit means no messages.",
+          "Save each page as you go, or note the details in a text file.",
+          "Take a screenshot of the confirmation page, and write the reference number on paper."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "A successful submission will show a reference number in large text, often with a reminder to keep it. That number is the only thing the office will ask for later, so copy it in three places."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/official-papers-desk.jpg",
+        "alt": "A desk with documents, a phone showing a reference number, and a pen and paper.",
+        "caption": "Documents, reference number, and a written note. The screenshot is useful, and the paper copy survives a lost phone."
+      },
+      {
+        "type": "h2",
+        "text": "Paying the fee"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Pay inside the portal, or at the bank named on the portal's payment page.",
+          "Check the fee on the official page rather than the figure an agent quotes.",
+          "Never pay into a personal account for a government fee.",
+          "Ask for a receipt with a reference number, which the portal usually generates.",
+          "Keep the payment receipt with the form reference, in the same place.",
+          "If the portal sends you to a payment provider, check the provider's name before paying."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about the form disappearing after payment. The reference number and the receipt are the record, and the portal keeps both on the account you created."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a route, and the reference number is the key to most of them."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The page times out mid-form: your progress is usually lost. Keep documents ready and move faster next time.",
+          "The name is spelled wrongly on the submission: contact the agency with the reference before paying.",
+          "The fee was paid but no confirmation came: keep the receipt and visit the office with it.",
+          "An agent offers to finish it for a fee: check whether the remaining step is free first.",
+          "The site looks official but asks for a card PIN: it is not official. Leave the page.",
+          "You cannot find the confirmation email: search the inbox for the reference number."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Find one official page and bookmark it, without submitting anything."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Search for one agency you will need this year.",
+          "Check the address ends in a government domain.",
+          "Read the list of services and find your task.",
+          "Note the documents the form asks for.",
+          "Bookmark the page and write the fee on paper."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now handle official business without paying a middleman for a free page. In the next lesson you will learn online without spending money on courses that teach nothing."
+      }
+    ]
+  }
+]
