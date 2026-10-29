@@ -1,0 +1,782 @@
+[
+  {
+    "slug": "electricity-units-online",
+    "excerpt": "Buying prepaid electricity units from an app or a USSD menu, the meter number that must be exact, and where to keep the token until it is entered.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to buy prepaid electricity units from a phone, enter the token on the meter, and keep the record until the light stays on. You will learn the number that must be exact and the mistakes that waste a purchase."
+      },
+      {
+        "type": "p",
+        "text": "A prepaid meter accepts a token, which is a long number that carries the units you paid for. Buy through a channel that gives a receipt, and the money is recoverable when something goes wrong."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The meter number, which is printed on the meter itself.",
+          "A bank app, a USSD code, or an official vending point.",
+          "The amount you intend to spend.",
+          "About fifteen minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Copy the meter number correctly"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Read the meter number from the meter, not from memory or an old receipt.",
+          "Write it on paper and check it twice, digit by digit.",
+          "Keep the paper in the same place every month, so it does not change.",
+          "Note the meter type, since some buildings have two meters.",
+          "Check the reading on the meter before you buy, so you know what you started with.",
+          "Never type the number from a message somebody sent you."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the number on the meter printed in small text under the display, often above a barcode. Photograph it once, and keep the photograph in your documents folder."
+      },
+      {
+        "type": "p",
+        "text": "The vending screen will show the token in a box of its own, with a copy button beside it. Press that button rather than reading the digits aloud to somebody, and keep the receipt until the meter confirms."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/meter-number-notebook.jpg",
+        "alt": "A notebook with a meter number written in large clear digits.",
+        "caption": "The meter number on paper, checked twice. One wrong digit sends the units to somebody else's meter."
+      },
+      {
+        "type": "p",
+        "text": "It looks like any vending point is the same as the next. The channel decides whether you get a receipt with a reference number, and the receipt is what recovers a failed purchase."
+      },
+      {
+        "type": "h2",
+        "text": "Buy through a channel with a receipt"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Use your bank's app, which keeps a record you can find later.",
+          "Or use the bank's USSD code, if data is finished.",
+          "Or use an official vending point with a printed receipt.",
+          "Avoid sending money to a personal account for units.",
+          "Check the amount and the meter number on the confirmation screen before approving.",
+          "Save the token and the reference in one place, together."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The confirmation will show the token, which is usually twenty digits, and a reference number beside it. Copy both before closing the app, since the screen is hard to find again."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/prepaid-meter-token.jpg",
+        "alt": "A prepaid meter display with a token being entered on the keypad.",
+        "caption": "The token goes into the meter keypad. Read it from the paper, and enter it slowly, since a wrong digit is rejected."
+      },
+      {
+        "type": "h2",
+        "text": "Enter it on the meter"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Write the token on paper before you walk to the meter.",
+          "Type it slowly, checking each group of digits against the paper.",
+          "Wait for the meter to show the units added.",
+          "If it is rejected, retype once, since a mistyped digit is the usual cause.",
+          "Note the new reading, so the next purchase can be compared.",
+          "Keep the paper until the meter shows the units, then file it."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The meter will show the units added and the new balance, and most meters beep once. If the display does not change, the token was rejected, and the purchase is still waiting to be used."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about a rejected token. It is not lost, and the same number can be entered again tomorrow when you are calmer."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry if the meter asks you to try again, because a rejected token stays valid and the units are still waiting for you. Nobody has taken the money a second time."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/meter-receipt-kept.jpg",
+        "alt": "A printed electricity receipt kept in a folder with other bills.",
+        "caption": "The receipt goes in the folder with the token written on it. A purchase is only finished when the meter agrees."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here is recoverable with the receipt, and the first call is the vendor rather than the meter."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The token is rejected twice: check the meter number on the receipt, which is the usual fault.",
+          "The units went to another meter: call the vendor with the receipt, and report the wrong number.",
+          "The money left but no token arrived: wait ten minutes, then call the vendor's support line.",
+          "The meter shows units but no light: the problem is the supply, not the meter.",
+          "You lost the token: the vending app keeps it under the transaction, so search by date.",
+          "The meter number changed after a meter replacement: update the number on paper and in the app."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Set the record up once, and every purchase gets easier."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Photograph the meter number and write it on paper.",
+          "Buy the smallest amount available and check the receipt.",
+          "Enter the token and note the new reading.",
+          "Keep the receipt with the token written on it.",
+          "File the paper where the next month's purchase will be kept."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now keep the lights on without guessing. In the next lesson you will book a flight yourself and avoid the fees that come with a middleman."
+      }
+    ]
+  },
+  {
+    "slug": "booking-a-flight-online",
+    "excerpt": "Booking a flight directly: reading the fare rules, the luggage that is not included, the names that must match, and the check-in that saves a queue.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson teaches you to book a flight online yourself. You will compare fares properly, read the luggage rules, enter names exactly as they appear on the ID, and check in before the airport. Each step prevents a cost at the counter."
+      },
+      {
+        "type": "p",
+        "text": "A cheap fare is often cheap because luggage is excluded. The price you compare should be the price of the journey you actually need, with the bag included."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The passenger's ID or passport, in front of you.",
+          "The travel dates, and some flexibility if there is any.",
+          "A card or a payment method that works online.",
+          "About thirty minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Compare the whole journey"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Search the route on the airline's own site, not only on a comparison site.",
+          "Note the times, since a cheap flight at an awkward hour costs a night in a hotel.",
+          "Add the checked luggage price to each fare before comparing.",
+          "Check the airport, since some cities have more than one.",
+          "Read the change and cancel rules for that specific fare.",
+          "Screenshot the two best options before choosing."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the total rise once a bag is added, and the cheapest option often becomes the middle one. That moment is the whole point of comparing properly."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/flight-booking-screen.jpg",
+        "alt": "A laptop showing a flight booking page with fare options and luggage prices.",
+        "caption": "Fare, times, and luggage on one screen. Compare the total with the bag, not the headline price."
+      },
+      {
+        "type": "p",
+        "text": "It looks like the comparison site has the best price. Airlines often keep the lowest fares on their own site, and a booking made directly is easier to change."
+      },
+      {
+        "type": "h2",
+        "text": "Names, dates, and details"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Type the name exactly as it appears on the ID, including the order.",
+          "Check the date of birth, which is a common source of airport trouble.",
+          "Check the travel dates twice, since the return date is often mistyped.",
+          "Enter a phone number and an email you can check immediately.",
+          "Check whether the fare allows a name correction, and at what cost.",
+          "Read the summary page line by line before paying."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The summary will show the passenger name, the route, the dates, and the total. Read it aloud to somebody, which catches errors that the eye skips."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/luggage-bathroom-scale.jpg",
+        "alt": "A suitcase weighed on a bathroom scale before a trip.",
+        "caption": "Weigh the bag at home. Excess luggage at the counter costs more than the fare difference you saved."
+      },
+      {
+        "type": "h2",
+        "text": "Luggage and the airport"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Check the weight and the number of pieces included in your fare.",
+          "Weigh the bag at home on a bathroom scale.",
+          "Keep medicines and documents in the cabin bag, never the checked one.",
+          "Check in online as soon as it opens, which shortens the queue.",
+          "Save the boarding pass to the phone and photograph it.",
+          "Arrive early enough for the queue, not only for the flight time."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this needs a travel agent. The airline's own site, a card, and a printer or a phone screen cover the whole journey."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about the site asking for a passport number. It is required for the booking, and the confirmation page is the only place it should appear."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/boarding-pass-phone.jpg",
+        "alt": "A phone showing a boarding pass with a barcode at the airport gate.",
+        "caption": "The boarding pass on the phone, and a screenshot as a backup. A flat battery at the gate would be the reason for the screenshot."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a next step, and the airline's support line is faster than an agent at the airport."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The name is misspelt: call the airline immediately, since some corrections are free within a day.",
+          "The dates are wrong: check the change fee before canceling, since changing is often cheaper.",
+          "The payment failed but the seat is held: check the booking with the reference before paying again.",
+          "The fare rose while you were deciding: check the airline's own site, which may still have the old fare.",
+          "The flight is cancelled: ask for a rebooking first, and a refund second.",
+          "The bag is over the limit: move items to the cabin bag before the counter, not at it."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Rehearse a booking without paying."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Search a route on the airline's own site.",
+          "Add a bag and note the new total.",
+          "Read the change rules for the cheapest fare.",
+          "Type the passenger name exactly from the ID.",
+          "Stop at the payment page, and note what the summary asked for."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now travel without paying somebody to press the buttons. In the next lesson you will understand what a VPN does and does not protect."
+      }
+    ]
+  },
+  {
+    "slug": "the-vpn-explained",
+    "excerpt": "What a VPN changes about your connection, the three things it does not protect, and how to choose one without paying for nothing.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson explains a VPN in plain words: what it changes, what it hides, and what it cannot protect. You will learn when it is worth using and how to avoid paying for one that does nothing."
+      },
+      {
+        "type": "p",
+        "text": "A VPN makes a private tunnel between your device and a server somewhere else. The network in between sees the tunnel rather than your traffic, and the VPN company sees what the network used to see."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "About twenty minutes.",
+          "No purchase needed for this lesson."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "What it does"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Hides the sites you visit from the wifi owner, such as a cafe or a hotel.",
+          "Replaces your visible address with the VPN server's address.",
+          "Protects traffic on a network you do not control.",
+          "Keeps the connection encrypted between you and the server.",
+          "Can make a site behave as though you were in another country.",
+          "Costs a little speed, since the traffic takes a longer route."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the VPN icon appear in the status bar, usually a small key, and the address on a what-is-my-ip page change to another city. Both are the tunnel working as described."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/vpn-road-tunnel.jpg",
+        "alt": "A road entering a tunnel, illustrating a private route between two points.",
+        "caption": "A tunnel with two ends. The road in the middle sees the tunnel, and the company at the far end sees the traffic."
+      },
+      {
+        "type": "p",
+        "text": "It looks like a VPN makes you anonymous. It moves the trust from the wifi owner to the VPN company, which is a change of who sees, not a disappearance."
+      },
+      {
+        "type": "h2",
+        "text": "What it does not do"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "It does not protect you from a fake website, which is still fake.",
+          "It does not stop a virus you install yourself.",
+          "It does not hide your activity from the sites you sign into.",
+          "It does not make a slow connection fast.",
+          "It does not replace the screen lock or a strong password.",
+          "It does not make an illegal act legal, wherever the server sits."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this makes a VPN useless. It makes it one tool among several, and the others matter more for most people."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/vpn-cafe-laptop.jpg",
+        "alt": "A laptop on a cafe table with a VPN indicator on screen.",
+        "caption": "The cafe network sees the tunnel, not the pages. The same care about passwords still applies."
+      },
+      {
+        "type": "h2",
+        "text": "When it is worth it"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "On a hotel or cafe network, for anything you would not do in public.",
+          "On a network you do not recognise, such as an airport lounge.",
+          "When a service you pay for is not available where you are travelling.",
+          "For work, where the employer provides and requires one.",
+          "Not for banking at home on your own connection, where it adds nothing.",
+          "Not as a substitute for checking a link before you tap it."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about choosing perfectly. A free VPN with a clear privacy policy is better than none on a strange network, and a paid one is only worth it if you travel often."
+      },
+      {
+        "type": "h2",
+        "text": "Choosing one without paying for nothing"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Read what the company says it records, and avoid one that keeps everything.",
+          "Check who owns it, since free services are often owned by advertising firms.",
+          "Avoid a free VPN that asks for unusual permissions on a phone.",
+          "Test the speed before subscribing, using a speed test with it on and off.",
+          "Check whether it works on the devices you actually use.",
+          "Cancel within the trial period if it does not do what you need."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a plain answer, and the first step is to switch it off."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The connection is much slower: change the server, or turn it off for video.",
+          "A bank app blocks the connection: turn the VPN off for banking, which is safer anyway.",
+          "The VPN will not connect on a hotel network: try another server, since some ports are blocked.",
+          "A page keeps asking you to prove you are human: the address is shared. Change the server.",
+          "You were charged after a trial: cancel in the store, then contact the provider.",
+          "The app asks for full device access: decline, and choose another provider."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Look at what changes with one switch."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Note your visible address on a what-is-my-ip page.",
+          "Turn on any VPN you already have.",
+          "Refresh the page and note the new address.",
+          "Run a speed test with it on and off.",
+          "Turn it off, and write down when you would use it."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now use a tunnel without believing it is a cloak. In the next lesson you will read a loan app offer before it costs more than the money."
+      }
+    ]
+  },
+  {
+    "slug": "loan-apps-the-real-cost",
+    "excerpt": "Reading a loan app before you accept: the true cost of a short loan, the permissions that expose your contacts, and the legal limits on recovery.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is about loan apps: how the cost is hidden in a short term, the permissions that expose your contacts, and the limits on what a lender may do when you are late. You will learn to read an offer before accepting it."
+      },
+      {
+        "type": "p",
+        "text": "A loan app lends small amounts for short periods. The fee looks small because the term is short, and the annual cost is often far higher than any bank's."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "One loan offer, open in the app.",
+          "A calculator, or the calculator on the phone.",
+          "About twenty minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Work out the real cost"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Find the amount you receive and the amount you repay.",
+          "Subtract one from the other, which is the total cost.",
+          "Divide the cost by the amount, then by the number of days, and multiply by 365.",
+          "Compare that figure with a bank's annual rate, which is usually far lower.",
+          "Add any service fee, insurance, or late charge shown in the terms.",
+          "Write the repayment date in a calendar before accepting."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the annual figure come out in the hundreds of per cent for a two-week loan. That number is the one to compare, rather than the fee shown on the first screen."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/loan-app-offer.jpg",
+        "alt": "A phone showing a loan offer with an amount and a repayment date.",
+        "caption": "Amount, fee, and repayment date. The annual cost is the figure that decides whether it is affordable."
+      },
+      {
+        "type": "p",
+        "text": "It looks like the fee is small because the number is small. A small fee repeated every two weeks becomes a large annual cost, which is how the business works."
+      },
+      {
+        "type": "h2",
+        "text": "The permissions that matter"
+      },
+      {
+        "type": "p",
+        "text": "Many loan apps ask for access to contacts and messages. That permission is how pressure is applied later, and it is the main reason to refuse the app."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Refuse contact access, and choose a lender that works without it.",
+          "Refuse access to messages, which no lending decision needs.",
+          "Check the app's privacy policy for what it shares with third parties.",
+          "Avoid a lender whose only contact is a chat account.",
+          "Check whether the company is registered, and note the name behind the app.",
+          "Read the reviews that mention recovery practices, not only speed of payment."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The permission screen will list contacts, messages, photos, and location. Each one can be refused separately, and an app that refuses to work without contacts has told you what it intends."
+      },
+      {
+        "type": "p",
+        "text": "The repayment screen will show a date and an amount, and that date is the one to put in your calendar before you accept anything. If you cannot see a date, the offer is not complete enough to agree to."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/contacts-permission-denied.jpg",
+        "alt": "A phone permission dialog for contacts with the deny option selected.",
+        "caption": "Deny contacts. A lender that needs your address book is planning to use it, and that is not a lending decision."
+      },
+      {
+        "type": "h2",
+        "text": "If you are late"
+      },
+      {
+        "type": "p",
+        "text": "There are limits on what a lender may do, and knowing them changes how you respond."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A lender may call you about the debt, and may not threaten violence.",
+          "A lender may not message your contacts with details of the debt.",
+          "A lender may not post your name publicly as a defaulter.",
+          "A lender may not use your photographs to shame you.",
+          "Keep every message and record the calls, since evidence changes the outcome.",
+          "Report the lender to the regulator and to the app store, with the evidence attached."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about having borrowed. The useful step is to work out the total owed, agree a plan in writing, and stop new borrowing while you repay."
+      },
+      {
+        "type": "p",
+        "text": "Nothing here is made easier by hiding, and most people who borrow short-term are managing a timing gap rather than living beyond their means. The figures and the plan are what change."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/loan-threat-screenshots.jpg",
+        "alt": "Screenshots of threatening messages saved in a phone folder.",
+        "caption": "Save the messages. A folder of evidence is what a regulator and the app store need to act."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here has a next step, and the written record is what protects you."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A contact was messaged: screenshot it, tell the contact, and report the lender.",
+          "The app keeps calling at night: ask for contact by message only, in writing.",
+          "The debt grew with charges: request a written statement of the amount and each fee.",
+          "You cannot repay on time: ask for a revised date before the due date, in writing.",
+          "The app will not delete your data: request deletion in writing, and report it if refused.",
+          "A new loan is offered to cover the old one: decline, since that is how the debt grows."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Read one offer and calculate one annual figure."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open an offer and note the amount and the repayment.",
+          "Calculate the cost, then the annual figure.",
+          "Read the permission list before installing anything.",
+          "Write the repayment date in your calendar.",
+          "Decide whether a cheaper option exists, such as family or a cooperative."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now borrow with your eyes open, or not borrow at all. In the next lesson you will recognise the investment that promises to double your money."
+      }
+    ]
+  },
+  {
+    "slug": "the-money-that-doubles",
+    "excerpt": "Why a scheme promising to double your money must fail, the three signs of a Ponzi, and the questions that end the conversation politely.",
+    "body": [
+      {
+        "type": "p",
+        "text": "This lesson is about schemes that promise to double your money. You will learn why the arithmetic cannot work, the three signs that give a Ponzi away, and the questions that end the conversation without an argument."
+      },
+      {
+        "type": "p",
+        "text": "A scheme that doubles money in weeks must pay from new deposits rather than from profit. That works until the deposits stop, and then everybody who joined late loses."
+      },
+      {
+        "type": "h2",
+        "text": "Before you start"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Any offer you have been sent, or one you have heard about.",
+          "A calculator.",
+          "About twenty minutes."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "The arithmetic that cannot work"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Doubling every month turns one unit into sixty-four in six months.",
+          "Doubling every week turns one unit into more than four thousand in twelve weeks.",
+          "Nothing in the ordinary economy grows at that rate, including land and business.",
+          "So the money must come from the next person who joins.",
+          "The scheme needs new deposits every day, and it stops when they slow.",
+          "The people who joined first are paid with the money of the people who joined last."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You will see the numbers get absurd quickly when you write them down. Six doublings of a thousand naira reach sixty-four thousand, which no trade produces in half a year."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/roi-dashboard-phone.jpg",
+        "alt": "A phone showing a scheme's dashboard with a promised return and a rising balance.",
+        "caption": "A balance that rises without a business behind it is a number on a screen. Ask what was sold to produce it."
+      },
+      {
+        "type": "p",
+        "text": "It looks like early members are being paid, which proves the scheme works. Early members are paid from later deposits, which is the design rather than the proof."
+      },
+      {
+        "type": "h2",
+        "text": "The three signs"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A fixed return that is far above any bank or business, promised in advance.",
+          "Recruitment rewards, where bringing others pays more than the product.",
+          "Withdrawals that work at first and then need a fee, a upgrade, or a delay.",
+          "No product, or a product nobody would buy without the promise of returns.",
+          "Pressure to join today, since the window is closing.",
+          "Testimonials from people who joined last month, never from a regulator."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The withdrawal screen will show a grey button, or a message asking for a tax or a fee before release. That message is the end of the scheme, and the fee is the last payment it will ask for."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/withdraw-button-grey.jpg",
+        "alt": "A phone screen with a disabled withdraw button and a message about a fee.",
+        "caption": "A grey withdraw button with a new condition is the moment the scheme ends. Fees for release do not exist in real investments."
+      },
+      {
+        "type": "h2",
+        "text": "Questions that end it politely"
+      },
+      {
+        "type": "p",
+        "text": "You do not need to argue. Three questions, asked calmly, are usually enough to protect the relationship and the money."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "What is sold, and who buys it at that price?",
+          "Where does the profit come from, if not from new members?",
+          "Which regulator supervises this, and what is the registration number?",
+          "Can I see the last three months of audited accounts?",
+          "Would you put your mother's savings in it, and why?",
+          "Can I withdraw today, in front of you, without a fee?"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of these need a finance background. A real investment can answer them, and a scheme answers with a story about the people who are already winning."
+      },
+      {
+        "type": "p",
+        "text": "Do not worry about being called negative. The person who asks the question is the one the family thanks later."
+      },
+      {
+        "type": "figure",
+        "src": "/images/blog/family-investment-meeting.jpg",
+        "alt": "A family group discussing an investment offer around a table.",
+        "caption": "Ask in front of the family, not in a private message. Public questions get honest answers."
+      },
+      {
+        "type": "h2",
+        "text": "If it goes wrong"
+      },
+      {
+        "type": "p",
+        "text": "Every case here is painful, and the steps are still clear."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "You have already paid: report to the police and the regulator with every message and receipt.",
+          "The app has disappeared: keep the screenshots, and note the account names you paid.",
+          "A relative recruited you: say plainly that you have stopped, without blaming them.",
+          "You are being asked for a release fee: refuse, since paying it recovers nothing.",
+          "You introduced others: tell them at once, which is the only honest step left.",
+          "You feel ashamed: the shame keeps people from reporting, which protects the scheme."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Practice"
+      },
+      {
+        "type": "p",
+        "text": "Practise the three questions on paper."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Take any scheme you have heard about.",
+          "Write the promised return and calculate one month of doubling.",
+          "Write the three questions in your own words.",
+          "Decide what a real answer would look like.",
+          "Share the questions with one person who might be invited."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You can now hear a promise and see the arithmetic. In the next lesson you will start with a screen that stays dark."
+      }
+    ]
+  }
+]
