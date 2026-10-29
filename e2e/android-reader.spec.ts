@@ -58,7 +58,9 @@ test("bundled public lessons support search, progress, larger text and resume wi
   await page.getByLabel("Find a lesson").fill("sitting down");
   await page.locator("#results button").first().click();
   await expect(page.locator("#title")).toBeFocused();
-  await expect(page.locator("#body")).toContainText("Madam Grace");
+  await expect(page.locator("#body")).toContainText(
+    "This lesson teaches you the parts of a computer",
+  );
   await page.getByRole("button", { name: "Mark as read", exact: true }).click();
   await expect(page.getByRole("status").filter({ hasText: "Marked as read" })).toBeVisible();
   await page.getByLabel("Text size").selectOption("26");
