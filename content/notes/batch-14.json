@@ -435,6 +435,10 @@
       },
       {
         "type": "p",
+        "text": "If the mouse still feels unnatural, take your time. Nothing you drag can be lost for good, and the file can always be put back."
+      },
+      {
+        "type": "p",
         "text": "You will see the file icon follow the pointer, and the folder under it highlight when it is ready to receive."
       },
       {
@@ -521,7 +525,7 @@
       },
       {
         "type": "p",
-        "text": "A drag that goes wrong is almost always recoverable, and the first fix works in most cases."
+        "text": "Most people drop a file in the wrong folder in their first week, and none of these fixes take more than a minute."
       },
       {
         "type": "ul",
@@ -582,7 +586,7 @@
         "type": "ul",
         "items": [
           "A document program, such as Word or Google Docs.",
-          "One quiet hour, and paper to plan on.",
+          "One uninterrupted hour, and paper to plan on.",
           "The dates of your schooling, any training, and any work, including informal work."
         ]
       },

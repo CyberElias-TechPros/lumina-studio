@@ -7614,6 +7614,9 @@ export const blogPosts: BlogPost[] = [
         "Dragging a file takes it from one place and puts it in another. Whether it moves or copies depends on where it came from: within one drive it moves, and between two drives it copies.",
       ),
       p(
+        "If the mouse still feels unnatural, take your time. Nothing you drag can be lost for good, and the file can always be put back.",
+      ),
+      p(
         "You will see the file icon follow the pointer, and the folder under it highlight when it is ready to receive.",
       ),
       h2("Before you start"),
@@ -7668,7 +7671,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("If it goes wrong"),
       p(
-        "A drag that goes wrong is almost always recoverable, and the first fix works in most cases.",
+        "Most people drop a file in the wrong folder in their first week, and none of these fixes take more than a minute.",
       ),
       ul([
         "You dropped it in the wrong folder: press Ctrl and Z at once.",
@@ -7715,7 +7718,7 @@ export const blogPosts: BlogPost[] = [
       h2("Before you start"),
       ul([
         "A document program, such as Word or Google Docs.",
-        "One quiet hour, and paper to plan on.",
+        "One uninterrupted hour, and paper to plan on.",
         "The dates of your schooling, any training, and any work, including informal work.",
       ]),
       h2("The seven parts, in order"),
@@ -8323,6 +8326,9 @@ export const blogPosts: BlogPost[] = [
       p(
         "You will see the same figures now displayed with the sign, commas, and decimals, and they stay lined up on the right of the cell. That right alignment is how you know they are still numbers.",
       ),
+      p(
+        "The Format Cells box will open with a list of categories down the left side, and Currency near the top of that list. A preview line at the bottom shows exactly how your number will look.",
+      ),
       fig(
         "/images/blog/currency-format.jpg",
         "A spreadsheet column formatted as currency with a naira symbol.",
@@ -8423,6 +8429,9 @@ export const blogPosts: BlogPost[] = [
       ]),
       p(
         "You will see a thin grey line under the frozen row and the header remain in place while the rest scrolls under it. That line is the only visible mark, and it does not print.",
+      ),
+      p(
+        "The View menu will open with Freeze panes in the middle of the list, and a small arrow beside it for the choices. Moving the pointer over each choice shows a short description of what it locks.",
       ),
       fig(
         "/images/blog/freeze-panes.jpg",
@@ -8617,6 +8626,9 @@ export const blogPosts: BlogPost[] = [
         "/images/blog/weekly-budget.jpg",
         "A spreadsheet showing a weekly money list with in and out columns.",
         "Date, what, in, out, category. Five columns answer the question where the week went.",
+      ),
+      p(
+        "The sheet will open with your six columns across the top and an empty row waiting underneath, and the cursor will sit in the first cell ready for today's date.",
       ),
       p(
         "It looks like a money list needs an app with bank connections. A plain sheet you fill in yourself is more reliable in a week with cash sales and one shared phone.",
