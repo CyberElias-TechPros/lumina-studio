@@ -33,7 +33,7 @@ export const changelog: ChangeEntry[] = [
     kind: "revised",
     title: "The notes are being rewritten as direct teaching, in plain English",
     detail:
-      "We are rewriting the series from literary prose into straightforward teaching: what you will be able to do, the steps in the order you do them, what to do when it goes wrong, and a short practice task. Longer sentences, metaphor, em dashes and invented characters are being removed, and the local detail, figures and technical honesty are kept. The first fifty-five lessons, chapters one to six, are live in the new voice. The remaining chapters follow in reading order, and the standard we are writing to is published in docs/notes-rewrite-standard.md.",
+      "We are rewriting the series from literary prose into straightforward teaching: what you will be able to do, the steps in the order you do them, what to do when it goes wrong, and a short practice task. Longer sentences, metaphor, em dashes and invented characters are being removed, and the local detail, figures and technical honesty are kept. The first sixty-five lessons, chapters one to seven, are live in the new voice. The remaining chapters follow in reading order, and the standard we are writing to is published in docs/notes-rewrite-standard.md.",
     affected: [
       { label: "Start at lesson one", href: "/blog/sitting-down-at-a-computer" },
       { label: "Where your work lives", href: "/blog/files-and-folders" },
