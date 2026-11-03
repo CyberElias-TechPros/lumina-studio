@@ -30,6 +30,9 @@ class HttpsAuthTransport : AuthTransport {
         val idPart = "[a-zA-Z0-9_-]{1,120}"
         val cursorPart = "[a-zA-Z0-9_-]{1,200}"
         val refPart = "CEA-[0-9]{4}-[A-Z0-9]{6}"
+        val slugPart = "[a-zA-Z0-9_-]{1,80}"
+        val codePart = "[A-Za-z0-9-]{8,64}"
+        val portalPart = "[a-z-]{1,40}"
 
         val authCore = path in setOf(
             "sign-in", "sign-up", "forgot-password", "reset-password",
@@ -61,6 +64,7 @@ class HttpsAuthTransport : AuthTransport {
 
         val notificationList = path == "notifications" || path.matches(Regex("notifications\\?cursor=$cursorPart"))
         val notificationRead = path.matches(Regex("notifications/$idPart/read")) || path == "notifications/read-all"
+        val notificationUnread = path == "notifications/unread-count"
 
         val enrollmentCreate = path == "enrollments"
         val enrollmentMine = path == "enrollments/mine"
@@ -72,16 +76,57 @@ class HttpsAuthTransport : AuthTransport {
         val paymentProofs = path == "enrollments/payment-proofs"
         val paymentProofDecision = path.matches(Regex("enrollments/payment-proofs/$idPart/(confirm|reject)"))
 
+        // Learning engine
+        val courseList = path == "courses" || path.matches(Regex("courses\\?cursor=$cursorPart"))
+        val courseGradebook = path == "courses/gradebook" || path.matches(Regex("courses/gradebook\\?cursor=$cursorPart"))
+        val courseDetail = path.matches(Regex("courses/$slugPart"))
+        val calendarEvents = path == "calendar/events" || path.matches(Regex("calendar/events\\?cursor=$cursorPart"))
+        val certificatesMine = path == "certificates/mine"
+        val certificateVerify = path.matches(Regex("certificates/verify\\?code=$codePart"))
+        val attendanceCheckIn = path == "attendance/check-in"
+        // Live classes; chat path is dual-use (GET history, POST message)
+        val liveList = path == "live/classes" || path.matches(Regex("live/classes\\?cursor=$cursorPart"))
+        val liveDetail = path.matches(Regex("live/classes/$idPart"))
+        val liveChat = path.matches(Regex("live/classes/$idPart/chat")) || path.matches(Regex("live/classes/$idPart/chat\\?cursor=$cursorPart"))
+        // Community (cohorts + library catalog are public)
+        val cohortsList = path == "cohorts" || path.matches(Regex("cohorts\\?program=$slugPart"))
+        val cohortsNext = path == "cohorts/next" || path.matches(Regex("cohorts/next\\?program=$slugPart"))
+        val libraryCatalog = path == "library/catalog" || path.matches(Regex("library/catalog\\?cursor=$cursorPart"))
+        val libraryList = path == "library" || path.matches(Regex("library\\?cursor=$cursorPart"))
+        val libraryDetail = path.matches(Regex("library/$idPart"))
+        // Career engine
+        val mentorProfiles = path == "mentor/profiles" || path.matches(Regex("mentor/profiles\\?cursor=$cursorPart"))
+        val mentorRequest = path == "mentor/requests"
+        val mentorMatch = path == "mentor/match"
+        val jobPostings = path == "recruitment/postings" || path.matches(Regex("recruitment/postings\\?cursor=$cursorPart"))
+        val jobTalent = path == "recruitment/talent" || path.matches(Regex("recruitment/talent\\?cursor=$cursorPart"))
+        val jobInterviews = path == "recruitment/interviews" || path.matches(Regex("recruitment/interviews\\?cursor=$cursorPart"))
+        // Money & portal
+        val paymentHistory = path == "payments/history" || path.matches(Regex("payments/history\\?cursor=$cursorPart"))
+        val portalSummary = path == "portal/summary" || path.matches(Regex("portal/summary\\?portal=$portalPart"))
+        // AI tutor (authenticated)
+        val aiAsk = path == "ai/ask"
+        val aiRecommendations = path == "ai/recommendations"
+        // Public digital shop catalog
+        val shopCatalog = path == "shop/catalog"
+
         val allowed =
             auth || accountGet || accountPost || studentDashboard || completion ||
                 assignmentList || assignmentDetail || assignmentSubmission || assignmentSubmit ||
                 assessmentList || assessmentDetail || assessmentSubmit ||
                 instructorCourses || instructorList || instructorDetail || instructorGrade ||
                 messageList || messageDetail || messageSend ||
-                notificationList || notificationRead ||
+                notificationList || notificationRead || notificationUnread ||
                 enrollmentCreate || enrollmentMine || enrollmentDetail ||
                 enrollmentOfferAccept || enrollmentTransfer || enrollmentReceipt ||
-                staffEnrollments || paymentProofs || paymentProofDecision
+                staffEnrollments || paymentProofs || paymentProofDecision ||
+                courseList || courseGradebook || courseDetail || calendarEvents ||
+                certificatesMine || certificateVerify || attendanceCheckIn ||
+                liveList || liveDetail || liveChat ||
+                cohortsList || cohortsNext || libraryCatalog || libraryList || libraryDetail ||
+                mentorProfiles || mentorRequest || mentorMatch ||
+                jobPostings || jobTalent || jobInterviews ||
+                paymentHistory || portalSummary || aiAsk || aiRecommendations || shopCatalog
         require(allowed)
 
         val isGet =
@@ -89,10 +134,17 @@ class HttpsAuthTransport : AuthTransport {
                 assignmentList || assignmentDetail || assignmentSubmission ||
                 assessmentList || assessmentDetail ||
                 instructorCourses || instructorList || instructorDetail ||
-                messageList || messageDetail || notificationList ||
+                messageList || messageDetail || notificationList || notificationUnread ||
                 enrollmentMine || enrollmentDetail || enrollmentReceipt ||
-                staffEnrollments || paymentProofs
-        require(isGet == (body == null))
+                staffEnrollments || paymentProofs ||
+                courseList || courseGradebook || courseDetail || calendarEvents ||
+                certificatesMine || certificateVerify ||
+                liveList || liveDetail ||
+                cohortsList || cohortsNext || libraryCatalog || libraryList || libraryDetail ||
+                mentorProfiles || jobPostings || jobTalent || jobInterviews ||
+                paymentHistory || portalSummary || aiRecommendations || shopCatalog
+        // live chat intentionally serves both GET (history) and POST (send) on one path.
+        require(isGet == (body == null) || liveChat)
 
         val route = if (auth) "auth/$path" else path
         val connection = URL("https://cea-api.cyber-e54.workers.dev/v1/$route").openConnection() as HttpsURLConnection
@@ -104,7 +156,7 @@ class HttpsAuthTransport : AuthTransport {
             connection.requestMethod = if (body == null) "GET" else "POST"
             connection.setRequestProperty("Accept", "application/json")
             connection.setRequestProperty("Cache-Control", "no-store")
-            connection.setRequestProperty("User-Agent", "CEA-Native-Android/0.6")
+            connection.setRequestProperty("User-Agent", "CEA-Native-Android/0.7")
             if (token != null) connection.setRequestProperty("Authorization", "Bearer $token")
             if (body != null) {
                 connection.doOutput = true
@@ -118,9 +170,14 @@ class HttpsAuthTransport : AuthTransport {
             val maxBytes = when {
                 studentDashboard -> 2 * 1024 * 1024
                 assignmentList || assessmentList || instructorList || instructorCourses ||
-                    messageList || notificationList || staffEnrollments || paymentProofs -> 512 * 1024
+                    messageList || notificationList || staffEnrollments || paymentProofs ||
+                    courseList || calendarEvents || liveList || liveChat || libraryList || libraryCatalog ||
+                    mentorProfiles || jobPostings || jobTalent || jobInterviews || shopCatalog -> 512 * 1024
+                courseGradebook || courseDetail || certificatesMine || liveDetail ||
+                    cohortsList || cohortsNext || paymentHistory || portalSummary || aiAsk || aiRecommendations -> 256 * 1024
                 assignmentDetail || assignmentSubmission || assessmentDetail || instructorDetail ||
-                    messageDetail || enrollmentDetail || enrollmentReceipt -> 128 * 1024
+                    messageDetail || enrollmentDetail || enrollmentReceipt || libraryDetail -> 128 * 1024
+                certificateVerify || attendanceCheckIn || notificationUnread -> 16 * 1024
                 else -> 65536
             }
             val deadline = System.nanoTime() + 20_000_000_000L
@@ -555,6 +612,248 @@ class NativeAuthClient(
         call("enrollments/payment-proofs/$id/reject", payload)
     }
 
+    /* ---------------- Learning engine: courses, grades, calendar, certificates, attendance ---------------- */
+
+    private fun requireVerified() {
+        require(session.user != null && !session.mfaRequired)
+    }
+
+    private fun cursorParam(cursor: String?): String {
+        require(cursor == null || cursor.matches(StudentAssignmentItem.CURSOR_PATTERN))
+        return if (cursor == null) "" else "?cursor=$cursor"
+    }
+
+    suspend fun coursesPage(cursor: String? = null): CoursePage {
+        requireVerified()
+        val body = call("courses${cursorParam(cursor)}", null).body
+        return decodeChecked { CoursePage.decode(body) }
+    }
+
+    suspend fun courseDetail(slug: String): StudentCourse {
+        requireVerified()
+        require(slug.matches(Regex("[a-zA-Z0-9_-]{1,80}")))
+        val body = call("courses/$slug", null).body
+        return decodeChecked {
+            val course = json.decodeFromString<StudentCourse>(body)
+            require(course.slug == slug && course.title.isNotBlank() && course.pct in 0..100)
+            val lessons = course.modules.flatMap { it.lessons }
+            require(lessons.size <= 1000 && lessons.map { it.id }.distinct().size == lessons.size)
+            course
+        }
+    }
+
+    suspend fun gradebook(cursor: String? = null): Pair<List<GradebookEntry>, String?> {
+        requireVerified()
+        val body = call("courses/gradebook${cursorParam(cursor)}", null).body
+        return decodeChecked { GradebookEntry.decodePage(body) }
+    }
+
+    suspend fun calendarEvents(cursor: String? = null): Pair<List<CalendarEventItem>, String?> {
+        requireVerified()
+        val body = call("calendar/events${cursorParam(cursor)}", null).body
+        return decodeChecked { CalendarEventItem.decodePage(body) }
+    }
+
+    suspend fun certificatesMine(): List<CertificateItem> {
+        requireVerified()
+        val body = call("certificates/mine", null).body
+        return decodeChecked { CertificateItem.decodeList(body) }
+    }
+
+    /** Public: verify any certificate by its code — no session required. */
+    suspend fun verifyCertificate(code: String): CertificateVerification {
+        val clean = code.trim().uppercase(Locale.US)
+        require(clean.matches(Regex("[A-Z0-9-]{8,64}")))
+        val body = call("certificates/verify?code=$clean", null).body
+        return decodeChecked { CertificateVerification.decode(body) }
+    }
+
+    suspend fun attendanceCheckIn(sessionCode: String): AttendanceCheckInResult {
+        requireVerified()
+        val clean = sessionCode.trim().uppercase(Locale.US)
+        require(clean.matches(Regex("[A-Z0-9-]{6,80}")))
+        val payload = buildJsonObject { put("sessionCode", clean) }
+        val reply = call("attendance/check-in", payload)
+        return decodeChecked { AttendanceCheckInResult.decode(reply.body) }
+    }
+
+    /* ---------------- Live classes ---------------- */
+
+    suspend fun liveClasses(cursor: String? = null): Pair<List<LiveClassItem>, String?> {
+        requireVerified()
+        val body = call("live/classes${cursorParam(cursor)}", null).body
+        return decodeChecked { LiveClassItem.decodePage(body) }
+    }
+
+    suspend fun liveClass(id: String): LiveClassItem {
+        requireVerified()
+        require(id.matches(StudentAssignmentItem.ID_PATTERN))
+        val body = call("live/classes/$id", null).body
+        return decodeChecked { LiveClassItem.decodeOne(body) }
+    }
+
+    suspend fun liveChat(classId: String, cursor: String? = null): Pair<List<LiveChatMessage>, String?> {
+        requireVerified()
+        require(classId.matches(StudentAssignmentItem.ID_PATTERN))
+        val body = call("live/classes/$classId/chat${cursorParam(cursor)}", null).body
+        return decodeChecked { LiveChatMessage.decodePage(body) }
+    }
+
+    suspend fun sendLiveChat(classId: String, text: String): LiveChatMessage {
+        requireVerified()
+        require(classId.matches(StudentAssignmentItem.ID_PATTERN))
+        val clean = text.trim()
+        require(clean.length in 1..2000)
+        val payload = buildJsonObject { put("body", clean) }
+        val reply = call("live/classes/$classId/chat", payload)
+        return decodeChecked { LiveChatMessage.decodeOne(reply.body) }
+    }
+
+    /* ---------------- Community: cohorts (public) & library ---------------- */
+
+    suspend fun cohorts(program: String? = null): List<CohortItem> {
+        val path = if (program == null) {
+            "cohorts"
+        } else {
+            require(program.matches(Regex("[a-zA-Z0-9_-]{1,80}")))
+            "cohorts?program=$program"
+        }
+        val body = call(path, null).body
+        return decodeChecked { CohortItem.decodeList(body) }
+    }
+
+    suspend fun cohortsNext(program: String? = null): CohortNext {
+        val path = if (program == null) {
+            "cohorts/next"
+        } else {
+            require(program.matches(Regex("[a-zA-Z0-9_-]{1,80}")))
+            "cohorts/next?program=$program"
+        }
+        val body = call(path, null).body
+        return decodeChecked { CohortNext.decode(body) }
+    }
+
+    /** Public catalog: sources + public items only, no session required. */
+    suspend fun libraryCatalog(cursor: String? = null): Triple<List<LibrarySource>, List<LibraryItem>, String?> {
+        val body = call("library/catalog${cursorParam(cursor)}", null).body
+        return decodeChecked { LibraryItem.decodeCatalog(body) }
+    }
+
+    /** Full library including protected course materials — authenticated. */
+    suspend fun libraryItems(cursor: String? = null): Pair<List<LibraryItem>, String?> {
+        requireVerified()
+        val body = call("library${cursorParam(cursor)}", null).body
+        return decodeChecked { LibraryItem.decodePage(body) }
+    }
+
+    suspend fun libraryItem(id: String): LibraryItem {
+        requireVerified()
+        require(id.matches(StudentAssignmentItem.ID_PATTERN))
+        val body = call("library/$id", null).body
+        return decodeChecked { LibraryItem.decodeOne(body) }
+    }
+
+    /* ---------------- Career engine: mentors, jobs, talent, interviews ---------------- */
+
+    suspend fun mentorProfiles(cursor: String? = null): Pair<List<MentorProfile>, String?> {
+        requireVerified()
+        val body = call("mentor/profiles${cursorParam(cursor)}", null).body
+        return decodeChecked { MentorProfile.decodePage(body) }
+    }
+
+    suspend fun requestMentor(mentorId: String, goal: String, program: String? = null): MentorRequestResult {
+        requireVerified()
+        require(mentorId.isNotBlank() && mentorId.length <= 120)
+        require(goal.trim().length in 1..500)
+        val payload = buildJsonObject {
+            put("mentorId", mentorId)
+            put("goal", goal.trim())
+            if (!program.isNullOrBlank()) put("program", program.trim().take(120))
+        }
+        val reply = call("mentor/requests", payload)
+        return decodeChecked { MentorRequestResult.decode(reply.body) }
+    }
+
+    suspend fun matchMentor(goal: String, program: String? = null): MentorMatch {
+        requireVerified()
+        require(goal.trim().length in 1..500)
+        val payload = buildJsonObject {
+            put("goal", goal.trim())
+            if (!program.isNullOrBlank()) put("program", program.trim().take(120))
+        }
+        val body = call("mentor/match", payload).body
+        return decodeChecked { MentorMatch.decode(body) }
+    }
+
+    suspend fun jobPostings(cursor: String? = null): Pair<List<JobPosting>, String?> {
+        requireVerified()
+        val body = call("recruitment/postings${cursorParam(cursor)}", null).body
+        return decodeChecked { JobPosting.decodePage(body) }
+    }
+
+    suspend fun talentPool(cursor: String? = null): Pair<List<TalentCandidate>, String?> {
+        requireVerified()
+        val body = call("recruitment/talent${cursorParam(cursor)}", null).body
+        return decodeChecked { TalentCandidate.decodePage(body) }
+    }
+
+    suspend fun interviews(cursor: String? = null): Pair<List<InterviewItem>, String?> {
+        requireVerified()
+        val body = call("recruitment/interviews${cursorParam(cursor)}", null).body
+        return decodeChecked { InterviewItem.decodePage(body) }
+    }
+
+    /* ---------------- Money, portal home, AI tutor, shop ---------------- */
+
+    suspend fun paymentHistory(cursor: String? = null): Pair<List<PaymentHistoryItem>, String?> {
+        requireVerified()
+        val body = call("payments/history${cursorParam(cursor)}", null).body
+        return decodeChecked { PaymentHistoryItem.decodePage(body) }
+    }
+
+    suspend fun portalSummary(portal: String? = null): PortalSummary {
+        requireVerified()
+        val path = if (portal == null) {
+            "portal/summary"
+        } else {
+            require(portal.matches(Regex("[a-z-]{1,40}")))
+            "portal/summary?portal=$portal"
+        }
+        val body = call(path, null).body
+        return decodeChecked { PortalSummary.decode(body) }
+    }
+
+    suspend fun unreadCount(): Int {
+        requireVerified()
+        val body = call("notifications/unread-count", null).body
+        return decodeChecked {
+            val count = json.parseToJsonElement(body).jsonObject.getValue("count").jsonPrimitive.intOrNull
+            require(count != null && count in 0..100_000)
+            count
+        }
+    }
+
+    suspend fun aiAsk(question: String): AiAnswer {
+        requireVerified()
+        val clean = question.trim()
+        require(clean.length in 1..2000)
+        val payload = buildJsonObject { put("question", clean) }
+        val body = call("ai/ask", payload).body
+        return decodeChecked { AiAnswer.decode(body) }
+    }
+
+    suspend fun aiRecommendations(): List<AiRecommendation> {
+        requireVerified()
+        val body = call("ai/recommendations", null).body
+        return decodeChecked { AiRecommendation.decodeList(body) }
+    }
+
+    /** Public digital shop catalog — checkout itself stays on the official store. */
+    suspend fun shopCatalog(): ShopCatalog {
+        val body = call("shop/catalog", null).body
+        return decodeChecked { ShopProduct.decodeCatalog(body) }
+    }
+
     suspend fun signOut(): Boolean {
         if (token == null) return true
         return try {
@@ -580,12 +879,11 @@ class NativeAuthClient(
     }
 
     private suspend fun call(path: String, body: JsonObject?): AuthReply {
-        val publicEndpoint = path in setOf("sign-in", "sign-up", "forgot-password", "reset-password", "enrollments")
-        if (!publicEndpoint && (token == null || (path != "sign-out" && session.expiresAt <= now()))) {
+        if (!isPublicPath(path) && (token == null || (path != "sign-out" && session.expiresAt <= now()))) {
             forget()
             throw AuthFailure(401)
         }
-        val activeToken = if (path in setOf("sign-in", "sign-up", "forgot-password", "reset-password")) null else token
+        val activeToken = if (path in CREDENTIAL_PATHS) null else token
         val reply = transport.request(path, body, activeToken)
         if (reply.status !in 200..299) {
             val authRejection =
@@ -631,6 +929,18 @@ class NativeAuthClient(
     }
 
     companion object {
+        private val CREDENTIAL_PATHS = setOf("sign-in", "sign-up", "forgot-password", "reset-password")
+
+        /** Paths the server exposes without a session; the transport allowlist still applies. */
+        fun isPublicPath(path: String): Boolean =
+            path in CREDENTIAL_PATHS || path == "enrollments" || path == "shop/catalog" ||
+                path == "cohorts" || path == "cohorts/next" ||
+                Regex("cohorts\\?program=[a-zA-Z0-9_-]{1,80}").matches(path) ||
+                Regex("cohorts/next\\?program=[a-zA-Z0-9_-]{1,80}").matches(path) ||
+                path == "library/catalog" ||
+                Regex("library/catalog\\?cursor=[a-zA-Z0-9_-]{1,200}").matches(path) ||
+                Regex("certificates/verify\\?code=[A-Za-z0-9-]{8,64}").matches(path)
+
         fun sessionCookie(headers: List<String>): String? {
             val matching = headers.filter { it.substringBefore('=').trim() == "cea_session" }
             require(matching.size <= 1)

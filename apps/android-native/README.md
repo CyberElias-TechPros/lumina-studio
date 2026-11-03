@@ -100,7 +100,41 @@ sign-out endpoint cannot revoke a pending MFA session, so cancellation does not
 claim server revocation. Pending sessions still require MFA to authorize access.
 No automatic credential retries or test logins against production are performed.
 
-## Current increment: 0.6 (`0.6.0-native-preview`, `versionCode = 6`)
+## Current increment: 0.7 (`0.7.0-native-preview`, `versionCode = 7`)
+
+The app is now a five-tab native shell — **Home, Learn, Discover, Connect, Account** — every
+screen rendered in Kotlin + Jetpack Compose against the HTTPS API. Still no WebView, Capacitor,
+or HTML anywhere (CI greps for those).
+
+New in 0.7, on top of the 0.6 surface:
+
+- **Home**: role-scoped `GET /v1/portal/summary` metric cards + recent activity, unread-count
+  badge (`/v1/notifications/unread-count`), and AI tutor recommendations
+  (`/v1/ai/recommendations`) for students. Visitors get catalogue highlights, next intake,
+  apply and certificate-verify shortcuts.
+- **Learn**: student hub over `GET /v1/courses` (paginated), gradebook
+  (`GET /v1/courses/gradebook`), certificates (`GET /v1/certificates/mine`), attendance
+  check-in (`POST /v1/attendance/check-in`), class calendar (`GET /v1/calendar/events`),
+  payment history (`GET /v1/payments/history`), live classes with native class chat
+  (`GET/POST /v1/live/classes/:id/chat`), and an authenticated AI tutor conversation
+  (`POST /v1/ai/ask`). The existing courses/lessons/assignments/assessments workspace is
+  unchanged, now opened from the Learn hub.
+- **Discover**: native course catalogue (search/saved/detail/apply), bundled offline public
+  lessons, upcoming intake cohorts incl. next intake (`GET /v1/cohorts`, `/cohorts/next`),
+  resource library with public catalog (`GET /v1/library/catalog`) and authenticated full
+  library (`GET /v1/library`), digital shop catalog (`GET /v1/shop/catalog` — checkout stays
+  on the official hosted store), opportunities & mentors (`GET /v1/recruitment/postings`,
+  `/talent`, `/interviews`; `GET /v1/mentor/profiles`, `POST /v1/mentor/requests`,
+  `POST /v1/mentor/match`), and public certificate verification
+  (`GET /v1/certificates/verify?code=`).
+- **Connect**: messages and notifications hub (same workspaces as 0.6) with an unread badge
+  in the bottom navigation.
+- **Security posture unchanged**: the transport allowlist gained exactly the new paths above
+  (GET/POST-constrained, response-size-capped); public endpoints (`cohorts`, `library/catalog`,
+  `shop/catalog`, `certificates/verify`) work without a session and never attach a credential.
+  All new response decoders validate ids, cursors, ranges and sizes and fail closed.
+
+## Previous increment: 0.6 (`0.6.0-native-preview`, `versionCode = 6`)
 
 - **Account & security lifecycle**: Native registration (`POST /v1/auth/sign-up`),
   existing-account sign-in, 2FA/recovery-code verification, password recovery

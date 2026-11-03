@@ -23,9 +23,9 @@ android {
             ?: "ng.cea.app.nativepreview"
         minSdk = 23
         targetSdk = 35
-        versionCode = System.getenv("CEA_VERSION_CODE")?.trim()?.toIntOrNull() ?: 6
+        versionCode = System.getenv("CEA_VERSION_CODE")?.trim()?.toIntOrNull() ?: 7
         versionName = System.getenv("CEA_VERSION_NAME")?.trim()?.takeIf { it.isNotEmpty() }
-            ?: "0.6.0-native-preview"
+            ?: "0.7.0-native-preview"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {

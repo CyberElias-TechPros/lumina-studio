@@ -40,6 +40,11 @@ data class AccountState(
     val applicationDraft: ApplicationDraft = ApplicationDraft(),
     val draftSavedLocally: Boolean = false,
     val lastSubmittedRef: String? = null,
+    val home: HomeState = HomeState(),
+    val learn: LearnExtrasState = LearnExtrasState(),
+    val live: LiveHubState = LiveHubState(),
+    val career: CareerState = CareerState(),
+    val discover: DiscoverState = DiscoverState(),
 )
 
 class AccountViewModel(application: Application) : AndroidViewModel(application) {
@@ -605,6 +610,326 @@ class AccountViewModel(application: Application) : AndroidViewModel(application)
             paymentProofs = proofs,
             message = "Transfer claim marked rejected.",
         )
+    }
+
+    /* ---------------- Home hub (portal summary, unread, AI recommendations) ---------------- */
+
+    fun loadHome() = action("Could not load your home overview. Check your connection and try again.") {
+        if (client.session.user == null || client.session.mfaRequired) {
+            mutable.value = mutable.value.copy(home = mutable.value.home.copy(loaded = true))
+            return@action
+        }
+        verifyCurrentRole()
+        val portal = client.portalSummary(null)
+        val unread = client.unreadCount()
+        mutable.value = mutable.value.copy(
+            home = mutable.value.home.copy(portal = portal, unread = unread, loaded = true),
+        )
+    }
+
+    fun loadAiRecommendations() = action("Could not load tutor recommendations.") {
+        verifyCurrentRole(setOf("student"))
+        val items = client.aiRecommendations()
+        mutable.value = mutable.value.copy(home = mutable.value.home.copy(recommendations = items))
+    }
+
+    /* ---------------- Learn hub extras ---------------- */
+
+    fun loadCourseCatalog() = action("Could not load the course list.") {
+        verifyCurrentRole()
+        val page = client.coursesPage(null)
+        mutable.value = mutable.value.copy(
+            learn = mutable.value.learn.copy(
+                coursesList = page.items,
+                coursesCursor = page.nextCursor,
+                coursesLoaded = true,
+            ),
+        )
+    }
+
+    fun loadMoreCourseCatalog() = action("Could not load more courses.") {
+        val cursor = mutable.value.learn.coursesCursor ?: return@action
+        val page = client.coursesPage(cursor)
+        mutable.value = mutable.value.copy(
+            learn = mutable.value.learn.copy(
+                coursesList = (mutable.value.learn.coursesList + page.items).distinctBy { it.slug },
+                coursesCursor = page.nextCursor,
+            ),
+        )
+    }
+
+    fun loadGradebook(more: Boolean = false) = action("Could not load your gradebook.") {
+        verifyCurrentRole(setOf("student"))
+        val cursor = if (more) mutable.value.learn.gradebookCursor else null
+        val page = client.gradebook(cursor)
+        val current = if (more) mutable.value.learn.gradebook else emptyList()
+        mutable.value = mutable.value.copy(
+            learn = mutable.value.learn.copy(
+                gradebook = (current + page.first).distinctBy { it.name },
+                gradebookCursor = page.second,
+                gradebookLoaded = true,
+            ),
+        )
+    }
+
+    fun loadCertificates() = action("Could not load your certificates.") {
+        verifyCurrentRole()
+        val items = client.certificatesMine()
+        mutable.value = mutable.value.copy(
+            learn = mutable.value.learn.copy(certificates = items, certificatesLoaded = true),
+        )
+    }
+
+    fun loadCalendar(more: Boolean = false) = action("Could not load the class calendar.") {
+        verifyCurrentRole()
+        val cursor = if (more) mutable.value.learn.calendarCursor else null
+        val page = client.calendarEvents(cursor)
+        val current = if (more) mutable.value.learn.calendar else emptyList()
+        mutable.value = mutable.value.copy(
+            learn = mutable.value.learn.copy(
+                calendar = (current + page.first).distinctBy { it.id },
+                calendarCursor = page.second,
+                calendarLoaded = true,
+            ),
+        )
+    }
+
+    fun attendanceCheckIn(code: String) = action("That class code is invalid or has expired.") {
+        verifyCurrentRole(setOf("student"))
+        val result = client.attendanceCheckIn(code)
+        mutable.value = mutable.value.copy(
+            learn = mutable.value.learn.copy(lastCheckIn = result),
+            message = if (result.alreadyCheckedIn) {
+                "You are already marked present for ${result.course.ifBlank { "this class" }}."
+            } else {
+                "Checked in as present for ${result.course.ifBlank { "class" }}."
+            },
+        )
+    }
+
+    fun loadPaymentHistory(more: Boolean = false) = action("Could not load your payment history.") {
+        verifyCurrentRole()
+        val cursor = if (more) mutable.value.learn.paymentCursor else null
+        val page = client.paymentHistory(cursor)
+        val current = if (more) mutable.value.learn.paymentHistory else emptyList()
+        mutable.value = mutable.value.copy(
+            learn = mutable.value.learn.copy(
+                paymentHistory = (current + page.first).distinctBy { it.id },
+                paymentCursor = page.second,
+                paymentsLoaded = true,
+            ),
+        )
+    }
+
+    /* ---------------- Live classes hub ---------------- */
+
+    fun loadLiveClasses(more: Boolean = false) = action("Could not load live classes.") {
+        verifyCurrentRole()
+        val cursor = if (more) mutable.value.live.nextCursor else null
+        val page = client.liveClasses(cursor)
+        val current = if (more) mutable.value.live.classes else emptyList()
+        mutable.value = mutable.value.copy(
+            live = mutable.value.live.copy(
+                classes = (current + page.first).distinctBy { it.id },
+                nextCursor = page.second,
+                loaded = true,
+            ),
+        )
+    }
+
+    fun openLiveClass(id: String) = action("Could not open that live class.") {
+        verifyCurrentRole()
+        val detail = client.liveClass(id)
+        val chat = client.liveChat(id, null)
+        mutable.value = mutable.value.copy(
+            live = mutable.value.live.copy(
+                selectedId = id,
+                selected = detail,
+                chat = chat.first,
+                chatCursor = chat.second,
+                chatLoaded = true,
+            ),
+        )
+    }
+
+    fun closeLiveClass() {
+        mutable.value = mutable.value.copy(
+            live = mutable.value.live.copy(selectedId = null, selected = null, chat = emptyList(), chatCursor = null, chatLoaded = false),
+        )
+    }
+
+    fun refreshLiveChat() = action("Could not refresh class chat.") {
+        val id = mutable.value.live.selectedId ?: return@action
+        val chat = client.liveChat(id, null)
+        mutable.value = mutable.value.copy(
+            live = mutable.value.live.copy(chat = chat.first, chatCursor = chat.second, chatLoaded = true),
+        )
+    }
+
+    fun sendLiveChat(text: String, onSent: () -> Unit = {}) = action("Could not post to class chat.") {
+        val id = mutable.value.live.selectedId ?: return@action
+        val sent = client.sendLiveChat(id, text)
+        val chat = client.liveChat(id, null)
+        mutable.value = mutable.value.copy(
+            live = mutable.value.live.copy(
+                chat = chat.first.ifEmpty { mutable.value.live.chat + sent },
+                chatCursor = chat.second,
+            ),
+            message = "Posted to class chat.",
+        )
+        onSent()
+    }
+
+    /* ---------------- Career hub ---------------- */
+
+    fun loadMentors(more: Boolean = false) = action("Could not load mentor profiles.") {
+        verifyCurrentRole(setOf("student", "alumni", "mentor", "admin"))
+        val cursor = if (more) mutable.value.career.mentorsCursor else null
+        val page = client.mentorProfiles(cursor)
+        val current = if (more) mutable.value.career.mentors else emptyList()
+        mutable.value = mutable.value.copy(
+            career = mutable.value.career.copy(
+                mentors = (current + page.first).distinctBy { it.id },
+                mentorsCursor = page.second,
+                mentorsLoaded = true,
+            ),
+        )
+    }
+
+    fun requestMentor(mentorId: String, goal: String) = action("Could not send your mentor request.") {
+        verifyCurrentRole(setOf("student", "alumni", "mentor", "admin"))
+        val result = client.requestMentor(mentorId, goal)
+        mutable.value = mutable.value.copy(
+            message = if (result.alreadyRequested) {
+                "You already have a pending request with ${result.mentor}."
+            } else {
+                "Mentor request sent to ${result.mentor}. The Academy will review it."
+            },
+        )
+    }
+
+    fun matchMentor(goal: String) = action("Could not find mentor matches right now.") {
+        verifyCurrentRole(setOf("student", "alumni", "mentor", "admin"))
+        val match = client.matchMentor(goal)
+        mutable.value = mutable.value.copy(career = mutable.value.career.copy(match = match))
+    }
+
+    fun loadJobs(more: Boolean = false) = action("Could not load opportunities.") {
+        verifyCurrentRole()
+        val cursor = if (more) mutable.value.career.jobsCursor else null
+        val page = client.jobPostings(cursor)
+        val current = if (more) mutable.value.career.jobs else emptyList()
+        mutable.value = mutable.value.copy(
+            career = mutable.value.career.copy(
+                jobs = (current + page.first).distinctBy { it.id },
+                jobsCursor = page.second,
+                jobsLoaded = true,
+            ),
+        )
+    }
+
+    fun loadTalentPool(more: Boolean = false) = action("Could not load the talent pool.") {
+        verifyCurrentRole()
+        val cursor = if (more) mutable.value.career.talentCursor else null
+        val page = client.talentPool(cursor)
+        val current = if (more) mutable.value.career.talent else emptyList()
+        mutable.value = mutable.value.copy(
+            career = mutable.value.career.copy(
+                talent = (current + page.first).distinctBy { it.id },
+                talentCursor = page.second,
+                talentLoaded = true,
+            ),
+        )
+    }
+
+    fun loadInterviews(more: Boolean = false) = action("Could not load interviews.") {
+        verifyCurrentRole()
+        val cursor = if (more) mutable.value.career.interviewsCursor else null
+        val page = client.interviews(cursor)
+        val current = if (more) mutable.value.career.interviews else emptyList()
+        mutable.value = mutable.value.copy(
+            career = mutable.value.career.copy(
+                interviews = (current + page.first).distinctBy { it.id },
+                interviewsCursor = page.second,
+                interviewsLoaded = true,
+            ),
+        )
+    }
+
+    /* ---------------- Discover hub (public data + certificate verify + AI tutor) ---------------- */
+
+    fun loadCohorts() = action("Could not load intake dates.") {
+        val items = client.cohorts(null)
+        val next = client.cohortsNext(null)
+        mutable.value = mutable.value.copy(
+            discover = mutable.value.discover.copy(
+                cohorts = items,
+                cohortsLoaded = true,
+                nextCohort = next,
+                nextCohortLoaded = true,
+            ),
+        )
+    }
+
+    fun loadLibraryCatalog(more: Boolean = false) = action("Could not load the public library.") {
+        val cursor = if (more) mutable.value.discover.libraryCursor else null
+        val page = client.libraryCatalog(cursor)
+        val current = if (more) mutable.value.discover.libraryItems else emptyList()
+        mutable.value = mutable.value.copy(
+            discover = mutable.value.discover.copy(
+                librarySources = page.first,
+                libraryItems = (current + page.second).distinctBy { it.id },
+                libraryCursor = page.third,
+                libraryLoaded = true,
+            ),
+        )
+    }
+
+    fun loadLibraryAuthed(more: Boolean = false) = action("Sign in to open protected course materials.") {
+        verifyCurrentRole()
+        val cursor = if (more) mutable.value.discover.libraryCursor else null
+        val page = client.libraryItems(cursor)
+        val current = if (more) mutable.value.discover.libraryItems else emptyList()
+        mutable.value = mutable.value.copy(
+            discover = mutable.value.discover.copy(
+                libraryItems = (current + page.first).distinctBy { it.id },
+                libraryCursor = page.second,
+                libraryLoaded = true,
+                libraryAuthed = true,
+            ),
+        )
+    }
+
+    fun loadShop() = action("Could not load the digital shop catalog.") {
+        val catalog = client.shopCatalog()
+        mutable.value = mutable.value.copy(
+            discover = mutable.value.discover.copy(shop = catalog, shopLoaded = true),
+        )
+    }
+
+    fun verifyCertificate(code: String) = action("Could not verify that certificate code.") {
+        val result = client.verifyCertificate(code)
+        mutable.value = mutable.value.copy(
+            discover = mutable.value.discover.copy(verification = result),
+            message = if (result.valid) "Certificate ${result.code} is valid." else "No certificate matches that code.",
+        )
+    }
+
+    fun askAssistant(question: String) = action("The tutor could not answer right now. Try again.") {
+        verifyCurrentRole()
+        val turns = mutable.value.discover.assistant + AssistantTurn("user", question.trim())
+        mutable.value = mutable.value.copy(discover = mutable.value.discover.copy(assistant = turns))
+        val answer = client.aiAsk(question)
+        mutable.value = mutable.value.copy(
+            discover = mutable.value.discover.copy(
+                assistant = mutable.value.discover.assistant + AssistantTurn("assistant", answer.answer),
+            ),
+            message = if (answer.mock) "Tutor answered in offline practice mode." else null,
+        )
+    }
+
+    fun resetAssistant() {
+        mutable.value = mutable.value.copy(discover = mutable.value.discover.copy(assistant = emptyList()))
     }
 
     fun signOut() = action(

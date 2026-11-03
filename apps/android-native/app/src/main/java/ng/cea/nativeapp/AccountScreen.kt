@@ -29,6 +29,7 @@ fun NativeAccount(
     programs: List<Program> = emptyList(),
     initialApplySlug: String? = null,
     onConsumeApplySlug: () -> Unit = {},
+    applyNonce: Int = 0,
 ) {
     val model: AccountViewModel = viewModel()
     val state by model.state.collectAsStateWithLifecycle()
@@ -37,12 +38,15 @@ fun NativeAccount(
     var learning by remember { mutableStateOf(false) }
     var applyRequested by remember { mutableStateOf(false) }
 
-    LaunchedEffect(initialApplySlug) {
+    LaunchedEffect(initialApplySlug, applyNonce) {
         if (!initialApplySlug.isNullOrBlank()) {
             model.prefillApplicationProgram(initialApplySlug)
             applyRequested = true
             learning = false
             onConsumeApplySlug()
+        } else if (applyNonce > 0) {
+            applyRequested = true
+            learning = false
         }
     }
 

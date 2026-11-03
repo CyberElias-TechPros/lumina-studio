@@ -12,18 +12,30 @@ class NativeCatalogTest {
     @Test fun browseSearchSaveAndNativeBackWithoutAnyNetwork() {
         compose.setContent {
             var favorites by remember { mutableStateOf(emptySet<String>()) }
-            CeaNativeApp(CatalogState(programs=courses,loading=false,favorites=favorites),{}, { slug -> favorites=if(slug in favorites) favorites-slug else favorites+slug },{})
+            MaterialTheme {
+                ExploreBrowser(
+                    catalog = CatalogState(programs=courses,loading=false,favorites=favorites),
+                    refresh = {},
+                    favorite = { slug -> favorites=if(slug in favorites) favorites-slug else favorites+slug },
+                    onApply = {},
+                    callAcademy = {},
+                    onBack = {},
+                )
+            }
         }
         compose.onNodeWithText("Search courses").performTextInput("Office")
         compose.onNodeWithText("Office skills").performScrollTo().performClick()
         compose.onNodeWithText("Save course").performScrollTo().performClick()
         compose.onNodeWithText("Remove from saved courses").assertExists()
-        compose.onNodeWithContentDescription("Back to courses").performClick()
+        compose.onNodeWithText("Back to Discover").performClick()
         compose.onNodeWithText("Saved", useUnmergedTree=true).performClick()
         compose.onNodeWithText("Office skills").assertExists()
     }
     @Test fun honestOfflineErrorOffersRetry() {
-        compose.setContent { CeaNativeApp(CatalogState(loading=false,error=true),{}, {},{}) }
+        compose.setContent {
+            MaterialTheme {
+                ExploreBrowser(CatalogState(loading=false,error=true),{},{},{},{},{}) }
+        }
         compose.onNodeWithText("Couldn't load courses. Check your connection and try again.").assertExists()
         compose.onNodeWithText("Refresh catalogue").assertIsEnabled()
         compose.onNodeWithText("No saved catalogue is available on this phone yet.").performScrollTo().assertIsDisplayed()
