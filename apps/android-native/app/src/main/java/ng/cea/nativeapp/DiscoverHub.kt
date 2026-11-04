@@ -73,7 +73,7 @@ fun DiscoverHub(
                 Box(Modifier.weight(1f)) { BundledLessons() }
             }
         }
-        "cohorts" -> CohortsSection(state, onBack = { section = null }, onLoad = loadCohorts, onApply = { section = null; onApply(it) }, catalog.programs)
+        "cohorts" -> CohortsSection(state, onBack = { section = null }, onLoad = loadCohorts, onApply = { section = null; onApply(it) }, onShareIcs = shareCohortIcs, programs = catalog.programs)
         "library" -> LibrarySection(
             state = state,
             onBack = { section = null },
@@ -277,6 +277,7 @@ private fun CohortsSection(
     onBack: () -> Unit,
     onLoad: () -> Unit,
     onApply: (String) -> Unit,
+    onShareIcs: (String) -> Unit,
     programs: List<Program>,
 ) {
     var programFilter by rememberSaveable { mutableStateOf<String?>(null) }
@@ -285,7 +286,11 @@ private fun CohortsSection(
         item { Text("Intake cohorts", style = MaterialTheme.typography.headlineMedium, modifier = Modifier.semantics { heading() }) }
         item { Text("Upcoming scheduled intakes published by the Academy. Applications are free.") }
         item { OutlinedButton(onClick = onLoad, enabled = !state.busy) { Text("Refresh intakes") } }
+        if (state.discover.cohortsFromCache) {
+            item { Text("You are offline — showing the last saved copy of the intake list.", color = MaterialTheme.colorScheme.secondary, style = MaterialTheme.typography.bodySmall) }
+        }
         val next = state.discover.nextCohort?.cohort
+        val nextIcs = state.discover.nextCohort?.ics
         if (next != null) {
             item {
                 Card(Modifier.fillMaxWidth()) {
@@ -296,6 +301,11 @@ private fun CohortsSection(
                             Button(onClick = { onApply(next.programSlug.ifBlank { "" }) }, enabled = next.programSlug.isNotBlank()) { Text("Apply for this intake") }
                         } else {
                             Text("Enrolment for this intake is closed.", color = MaterialTheme.colorScheme.error)
+                        }
+                        if (!nextIcs.isNullOrBlank()) {
+                            OutlinedButton(onClick = { onShareIcs(nextIcs) }, enabled = !state.busy, modifier = Modifier.fillMaxWidth()) {
+                                Text("Share intake invite (.ics)")
+                            }
                         }
                     }
                 }
@@ -375,6 +385,9 @@ private fun LibrarySection(
             item { Text("Showing public items only. Sign in to also see protected course materials.", style = MaterialTheme.typography.bodySmall) }
         }
         val items = discover.libraryItems
+        if (discover.libraryFromCache) {
+            item { Text("You are offline — showing the last saved copy of the library.", color = MaterialTheme.colorScheme.secondary, style = MaterialTheme.typography.bodySmall) }
+        }
         if (discover.libraryLoaded && items.isEmpty()) {
             item { Text("The public library is empty right now.") }
         }
@@ -414,6 +427,9 @@ private fun ShopSection(state: AccountState, onBack: () -> Unit, onLoad: () -> U
             )
         }
         item { OutlinedButton(onClick = onLoad, enabled = !state.busy) { Text("Refresh shop") } }
+        if (state.discover.shopFromCache) {
+            item { Text("You are offline — showing the last saved copy of the shop catalog.", color = MaterialTheme.colorScheme.secondary, style = MaterialTheme.typography.bodySmall) }
+        }
         if (state.discover.shopLoaded && (shop == null || shop.products.isEmpty())) {
             item { Text("No digital products are on sale right now.") }
         }
@@ -517,14 +533,24 @@ private fun CareerSection(
     loadJobs: (Boolean) -> Unit,
     loadTalentPool: (Boolean) -> Unit,
     loadInterviews: (Boolean) -> Unit,
+    loadPortfolioProjects: (Boolean) -> Unit = { _ -> },
+    addPortfolioProject: (String, String, List<String>, String) -> Unit = { _, _, _, _ -> },
 ) {
     var tab by rememberSaveable { mutableStateOf("mentors") }
+    val isStudent = state.session.user?.roleKey == "student" && !state.session.mfaRequired
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
         item { OutlinedButton(onClick = onBack) { Text("Back to Discover") } }
         item { Text("Opportunities & mentors", style = MaterialTheme.typography.headlineMedium, modifier = Modifier.semantics { heading() }) }
         item {
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                listOf("mentors" to "Mentors", "jobs" to "Jobs", "talent" to "Talent pool", "interviews" to "Interviews").forEach { (key, label) ->
+                val tabs = buildList {
+                    add("mentors" to "Mentors")
+                    add("jobs" to "Jobs")
+                    add("talent" to "Talent pool")
+                    add("interviews" to "Interviews")
+                    if (isStudent) add("portfolio" to "My portfolio")
+                }
+                tabs.forEach { (key, label) ->
                     FilterChip(
                         selected = tab == key,
                         onClick = {
@@ -534,6 +560,7 @@ private fun CareerSection(
                                 "jobs" -> if (!state.career.jobsLoaded) loadJobs(false)
                                 "talent" -> if (!state.career.talentLoaded) loadTalentPool(false)
                                 "interviews" -> if (!state.career.interviewsLoaded) loadInterviews(false)
+                                "portfolio" -> if (!state.career.projectsLoaded) loadPortfolioProjects(false)
                             }
                         },
                         label = { Text(label) },
@@ -655,6 +682,84 @@ private fun CareerSection(
                 }
                 if (state.career.interviewsCursor != null) {
                     item { OutlinedButton(onClick = { loadInterviews(true) }, enabled = !state.busy, modifier = Modifier.fillMaxWidth()) { Text("Load more") } }
+                }
+            }
+            "portfolio" -> {
+                item { Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+                    Text("My portfolio (${state.career.projects.size})", style = MaterialTheme.typography.titleLarge, modifier = Modifier.semantics { heading() })
+                    OutlinedButton(onClick = { loadPortfolioProjects(false) }, enabled = !state.busy) { Text("Refresh") }
+                } }
+                item { Text("Projects you publish to your student portfolio. Recruiters with access can see these.") }
+                if (state.career.projectsLoaded && state.career.projects.isEmpty()) {
+                    item { Text("No projects yet — add your first one below.") }
+                }
+                items(state.career.projects, key = { "proj-${it.id}" }) { project ->
+                    Card(Modifier.fillMaxWidth()) {
+                        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                            Text(project.name, fontWeight = FontWeight.SemiBold)
+                            if (project.detail.isNotBlank()) Text(project.detail, maxLines = 4, style = MaterialTheme.typography.bodySmall)
+                            if (project.tags.isNotEmpty()) Text(project.tags.joinToString(", "), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.secondary)
+                            if (project.url.isNotBlank()) Text(project.url, style = MaterialTheme.typography.labelSmall)
+                            if (project.featured != 0) Text("Featured", color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.labelMedium)
+                        }
+                    }
+                }
+                if (state.career.projectsCursor != null) {
+                    item { OutlinedButton(onClick = { loadPortfolioProjects(true) }, enabled = !state.busy, modifier = Modifier.fillMaxWidth()) { Text("Load more") } }
+                }
+                item { HorizontalDivider() }
+                item { Text("Add a project", style = MaterialTheme.typography.titleMedium) }
+                var name by rememberSaveable { mutableStateOf("") }
+                var detail by rememberSaveable { mutableStateOf("") }
+                var tags by rememberSaveable { mutableStateOf("") }
+                var url by rememberSaveable { mutableStateOf("") }
+                item {
+                    OutlinedTextField(
+                        value = name,
+                        onValueChange = { if (it.length <= 160) name = it },
+                        label = { Text("Project name") },
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+                item {
+                    OutlinedTextField(
+                        value = detail,
+                        onValueChange = { if (it.length <= 2000) detail = it },
+                        label = { Text("What you built and achieved") },
+                        minLines = 3,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+                item {
+                    OutlinedTextField(
+                        value = tags,
+                        onValueChange = { if (it.length <= 300) tags = it },
+                        label = { Text("Skills tags, comma separated") },
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+                item {
+                    OutlinedTextField(
+                        value = url,
+                        onValueChange = { if (it.length <= 2000) url = it },
+                        label = { Text("Link (https://…) — optional") },
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+                item {
+                    Button(
+                        onClick = {
+                            addPortfolioProject(
+                                name,
+                                detail,
+                                tags.split(',').map { it.trim() }.filter { it.isNotEmpty() },
+                                url,
+                            )
+                            name = ""; detail = ""; tags = ""; url = ""
+                        },
+                        enabled = !state.busy && name.trim().isNotEmpty() && detail.trim().isNotEmpty(),
+                        modifier = Modifier.fillMaxWidth(),
+                    ) { Text("Add to portfolio") }
                 }
             }
         }

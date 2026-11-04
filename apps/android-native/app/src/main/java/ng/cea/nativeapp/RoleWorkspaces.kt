@@ -139,8 +139,63 @@ fun ColumnScope.InstructorWorkspace(
             onClick = { subTab = 1 },
             label = { Text("My courses (${courses.size})") },
         )
+        FilterChip(
+            selected = subTab == 2,
+            onClick = { subTab = 2 },
+            label = { Text("Attendance") },
+        )
         Spacer(Modifier.weight(1f))
         OutlinedButton(onClick = onRefresh, enabled = !busy) { Text("Refresh") }
+    }
+
+    if (subTab == 2) {
+        // Live attendance: instructor opens a session, students check in with the code.
+        Text("Start an attendance session", style = MaterialTheme.typography.titleMedium, modifier = Modifier.semantics { heading() })
+        Text(
+            "Creates a timed session code. Students use it on the Learn tab to mark themselves present.",
+            style = MaterialTheme.typography.bodySmall,
+        )
+        var courseInput by remember { mutableStateOf("") }
+        var durationInput by remember { mutableStateOf("30") }
+        OutlinedTextField(
+            value = courseInput,
+            onValueChange = { if (it.length <= 160) courseInput = it },
+            label = { Text("Course or class name") },
+            singleLine = true,
+            modifier = Modifier.fillMaxWidth(),
+        )
+        OutlinedTextField(
+            value = durationInput,
+            onValueChange = { if (it.length <= 3) durationInput = it.filter(Char::isDigit) },
+            label = { Text("Duration (minutes, 1–120)") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            singleLine = true,
+            modifier = Modifier.fillMaxWidth(),
+        )
+        val duration = durationInput.toIntOrNull()
+        Button(
+            onClick = {
+                val d = duration ?: return@Button
+                onCreateAttendanceSession(courseInput.trim(), d)
+            },
+            enabled = !busy && courseInput.trim().isNotEmpty() && duration != null && duration in 1..120,
+            modifier = Modifier.fillMaxWidth(),
+        ) { Text("Start session") }
+        if (attendanceSession != null) {
+            Card(Modifier.fillMaxWidth()) {
+                Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Text("Session started for ${attendanceSession.course}", fontWeight = FontWeight.SemiBold)
+                    Text(
+                        "Share this code with the class: ${attendanceSession.code}",
+                        style = MaterialTheme.typography.titleLarge,
+                        color = MaterialTheme.colorScheme.primary,
+                    )
+                    if (attendanceSession.startsAt.isNotBlank()) Text("Opens: ${attendanceSession.startsAt}", style = MaterialTheme.typography.bodySmall)
+                    if (attendanceSession.closesAt.isNotBlank()) Text("Closes: ${attendanceSession.closesAt}", style = MaterialTheme.typography.bodySmall)
+                }
+            }
+        }
+        return
     }
 
     if (subTab == 0) {

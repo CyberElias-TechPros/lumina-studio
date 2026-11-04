@@ -21,7 +21,7 @@ class EngineApiTest {
         }
     }
 
-    private suspend fun signedInClient(fake: FakeTransport, role: String = "student"): NativeAuthClient {
+    private suspend fun signedInClient(fake: AuthTransport, role: String = "student"): NativeAuthClient {
         val client = NativeAuthClient(fake)
         client.signIn("$role@cea.ng", "password-123")
         return client
@@ -204,4 +204,170 @@ class EngineApiTest {
         try { client.calendarEvents(null); fail("Blank title accepted") } catch (error: AuthFailure) { assertEquals(502, error.status) }
         try { client.verifyCertificate("CEA-2026-AB12CD"); fail("Invalid verification accepted") } catch (error: AuthFailure) { assertEquals(502, error.status) }
     }
+
+    /* ---------------- 0.8: online payment, uploads, polls, attendance sessions, portfolio, ICS ---------------- */
+
+    private class FakeUploadTransport(val replies: MutableList<AuthReply>) : AuthTransport {
+        val requests = mutableListOf<Triple<String, JsonObject?, String?>>()
+        val uploads = mutableListOf<Triple<String, String, ByteArray>>()
+        override suspend fun request(path: String, body: JsonObject?, token: String?): AuthReply {
+            requests.add(Triple(path, body, token))
+            return replies.removeAt(0)
+        }
+        override suspend fun upload(path: String, contentType: String, bytes: ByteArray, token: String?): AuthReply {
+            uploads.add(Triple(path, contentType, bytes))
+            return replies.removeAt(0)
+        }
+    }
+
+    @Test fun tuitionPaymentFlowUsesEnrollmentPathsAndUppercasesRef() = runBlocking {
+        val fake = FakeTransport(
+            mutableListOf(
+                AuthReply(201, sessionBody(), listOf(cookie())),
+                AuthReply(200, """{"reference":"CEA-CHK-0001","authorizationUrl":"https://checkout.paystack.example/cea-chk-0001","amount":50000,"mock":false}"""),
+                AuthReply(200, """{"reference":"CEA-CHK-0001","amount":50000,"status":"success","enrollmentPaymentStatus":"paid","verified":true}"""),
+            ),
+        )
+        val client = signedInClient(fake)
+        val start = client.startTuitionPayment(" cea-2026-ab12cd ", "deposit", "chk-key-0123456789ab")
+        assertEquals("CEA-CHK-0001", start.reference)
+        assertFalse(start.mock)
+        assertEquals("enrollments/CEA-2026-AB12CD/payments", fake.requests[1].first)
+        assertEquals("deposit", fake.requests[1].second?.get("kind")?.jsonPrimitive?.content)
+        assertEquals("chk-key-0123456789ab", fake.requests[1].second?.get("checkoutKey")?.jsonPrimitive?.content)
+        assertEquals(token, fake.requests[1].third)
+        val status = client.verifyTuitionPayment("CEA-2026-AB12CD")
+        assertTrue(status.verified)
+        assertEquals("paid", status.enrollmentPaymentStatus)
+        assertEquals("enrollments/CEA-2026-AB12CD/payments/verify", fake.requests[2].first)
+        assertNull(fake.requests[2].second)
+    }
+
+    @Test fun tuitionPaymentRejectsBadKindAndCheckoutKey() = runBlocking {
+        val fake = FakeTransport(mutableListOf(AuthReply(201, sessionBody(), listOf(cookie()))))
+        val client = signedInClient(fake)
+        try { client.startTuitionPayment("CEA-2026-AB12CD", "half", "chk-key-0123456789ab"); fail("bad kind accepted") }
+        catch (_: IllegalArgumentException) { }
+        try { client.startTuitionPayment("CEA-2026-AB12CD", "full", "short"); fail("bad checkoutKey accepted") }
+        catch (_: IllegalArgumentException) { }
+        assertEquals(1, fake.requests.size) // only the sign-in call happened
+    }
+
+    @Test fun uploadFlowPresignsPutsBytesThenSubmitsFileReference() = runBlocking {
+        val fake = FakeUploadTransport(
+            mutableListOf(
+                AuthReply(201, sessionBody(), listOf(cookie())),
+                AuthReply(201, """{"key":"u-1/assignments/abc.pdf","uploadUrl":"/v1/uploads/u-1/assignments/abc.pdf","method":"PUT","expiresIn":3600,"mock":true,"contentType":"application/pdf"}"""),
+                AuthReply(200, """{"ok":true,"key":"u-1/assignments/abc.pdf","size":1234}"""),
+                AuthReply(200, """{"id":"as-1","status":"submitted"}"""),
+            ),
+        )
+        val client = signedInClient(fake)
+        val presigned = client.presignUpload("essay.pdf", "application/pdf")
+        assertEquals("u-1/assignments/abc.pdf", presigned.key)
+        assertEquals("uploads/presign", fake.requests[1].first)
+        val bytes = ByteArray(1234) { 7 }
+        val result = client.uploadFile(presigned, bytes)
+        assertTrue(result.ok)
+        assertEquals("uploads/u-1/assignments/abc.pdf", fake.uploads.single().first)
+        assertEquals("application/pdf", fake.uploads.single().second)
+        assertEquals(1234, fake.uploads.single().third.size)
+        client.submitAssignmentWithFile("as-1", "See attached.", presigned.key, "1.2 KB")
+        assertEquals("assignments/as-1/submit", fake.requests[3].first)
+        assertEquals(presigned.key, fake.requests[3].second?.get("file")?.jsonPrimitive?.content)
+        assertEquals("1.2 KB", fake.requests[3].second?.get("size")?.jsonPrimitive?.content)
+        assertEquals("See attached.", fake.requests[3].second?.get("body")?.jsonPrimitive?.content)
+    }
+
+    @Test fun uploadRejectsDisallowedTypeAndOversizeBeforeAnyNetwork() = runBlocking {
+        val fake = FakeUploadTransport(mutableListOf(AuthReply(201, sessionBody(), listOf(cookie()))))
+        val client = signedInClient(fake)
+        try { client.presignUpload("virus.exe", "application/x-msdownload"); fail("disallowed mime accepted") }
+        catch (_: IllegalArgumentException) { }
+        val presigned = PresignedUpload("u-1/x.pdf", contentType = "application/pdf")
+        try { client.uploadFile(presigned, ByteArray(10 * 1024 * 1024 + 1)); fail("oversize upload accepted") }
+        catch (_: IllegalArgumentException) { }
+        assertTrue(fake.uploads.isEmpty())
+        assertEquals(1, fake.requests.size)
+    }
+
+    @Test fun livePollsLoadAndVoteHitClassScopedPaths() = runBlocking {
+        val fake = FakeTransport(
+            mutableListOf(
+                AuthReply(201, sessionBody(), listOf(cookie())),
+                AuthReply(200, """{"items":[{"id":"poll-1","question":"Async or sync?","options":["async","sync"],"status":"open","totalVotes":4}],"total":1,"nextCursor":null}"""),
+                AuthReply(200, """{"id":"poll-1","question":"Async or sync?","options":["async","sync"],"status":"open","results":{"async":3,"sync":2},"totalVotes":5}"""),
+            ),
+        )
+        val client = signedInClient(fake)
+        val (polls, cursor) = client.livePolls("lc-1", null)
+        assertEquals("live/classes/lc-1/polls", fake.requests[1].first)
+        assertNull(cursor)
+        assertTrue(polls.single().canVote())
+        val voted = client.voteLivePoll("lc-1", "poll-1", "async")
+        assertEquals("live/classes/lc-1/polls/poll-1/vote", fake.requests[2].first)
+        assertEquals("async", fake.requests[2].second?.get("option")?.jsonPrimitive?.content)
+        assertEquals(5, voted.totalVotes)
+        assertEquals(3, voted.results?.get("async"))
+    }
+
+    @Test fun attendanceSessionRequiresInstructorRole() = runBlocking {
+        val fake = FakeTransport(mutableListOf(AuthReply(201, sessionBody("student"), listOf(cookie()))))
+        val student = signedInClient(fake, "student")
+        try { student.createAttendanceSession("Algebra", 30); fail("student allowed to create session") }
+        catch (_: IllegalArgumentException) { }
+
+        val instructorFake = FakeTransport(
+            mutableListOf(
+                AuthReply(201, sessionBody("instructor"), listOf(cookie())),
+                AuthReply(201, """{"id":"ses-1","course":"Algebra","code":"482913","startsAt":"2026-11-04T10:00:00.000Z","closesAt":"2026-11-04T10:30:00.000Z"}"""),
+            ),
+        )
+        val instructor = signedInClient(instructorFake, "instructor")
+        val session = instructor.createAttendanceSession(" Algebra ", 30)
+        assertEquals("482913", session.code)
+        assertEquals("attendance/sessions", instructorFake.requests[1].first)
+        assertEquals("Algebra", instructorFake.requests[1].second?.get("course")?.jsonPrimitive?.content)
+        assertEquals(30, instructorFake.requests[1].second?.get("durationMinutes")?.jsonPrimitive?.int?.toInt())
+    }
+
+    @Test fun portfolioAndRecordsUseSelfDashboardCollections() = runBlocking {
+        val fake = FakeTransport(
+            mutableListOf(
+                AuthReply(201, sessionBody(), listOf(cookie())),
+                AuthReply(200, """{"items":[{"id":"pr-1","name":"Portfolio site","detail":"Built with Kotlin","tags":["kotlin"],"featured":1,"url":"https://example.com"}],"total":1,"nextCursor":"cur-9"}"""),
+                AuthReply(201, """{"id":"pr-2","name":"API","detail":"REST API","tags":["api"],"featured":0,"url":""}"""),
+                AuthReply(200, """{"items":[{"id":"rec-1","dateLabel":"2026-11-03","course":"Algebra","status":"Present"}],"total":1,"nextCursor":null}"""),
+            ),
+        )
+        val client = signedInClient(fake)
+        val (projects, cursor) = client.portfolioProjects(null)
+        assertEquals("student-self-dashboard/projects", fake.requests[1].first)
+        assertEquals("cur-9", cursor)
+        assertEquals("kotlin", projects.single().tags.single())
+        val added = client.addPortfolioProject("API", "REST API", listOf("api"), "")
+        assertEquals("pr-2", added.id)
+        assertEquals("student-self-dashboard/projects", fake.requests[2].first)
+        val (records, _) = client.selfRecords(null)
+        assertEquals("student-self-dashboard/records", fake.requests[3].first)
+        assertEquals("Present", records.single().status)
+    }
+
+    @Test fun cohortIcsIsPublicAndMustBeCalendarText() = runBlocking {
+        val fake = FakeTransport(
+            mutableListOf(
+                AuthReply(200, "BEGIN:VCALENDAR\r\nBEGIN:VEVENT\r\nSUMMARY:Jan 2027 intake\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n"),
+            ),
+        )
+        val client = NativeAuthClient(fake)
+        val ics = client.cohortIcs("co-1")
+        assertTrue(ics.startsWith("BEGIN:VCALENDAR"))
+        assertEquals("cohorts/co-1/ics", fake.requests[0].first)
+        assertNull(fake.requests[0].third)
+
+        val bad = FakeTransport(mutableListOf(AuthReply(200, """{"error":"nope"}""")))
+        try { NativeAuthClient(bad).cohortIcs("co-1"); fail("non-ics body accepted") }
+        catch (_: IllegalArgumentException) { }
+    }
+
 }

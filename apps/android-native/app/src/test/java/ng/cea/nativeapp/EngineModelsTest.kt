@@ -131,4 +131,100 @@ class EngineModelsTest {
             fail("Negative amount accepted")
         } catch (_: IllegalArgumentException) { }
     }
+
+    /* ---------------- 0.8 models ---------------- */
+
+    @Test fun tuitionPaymentStartDecodesAndRejectsNonHttpsUrl() {
+        val start = TuitionPaymentStart.decode(
+            """{"reference":"CEA-CHK-1","authorizationUrl":"https://pay.example/x","amount":25000.5,"mock":true}""",
+        )
+        assertEquals("CEA-CHK-1", start.reference)
+        assertEquals(25000.5, start.amount, 0.001)
+        assertTrue(start.mock)
+        try {
+            TuitionPaymentStart.decode("""{"reference":"R","authorizationUrl":"http://insecure.example/x","amount":1}""")
+            fail("non-https authorization URL accepted")
+        } catch (_: IllegalArgumentException) { }
+    }
+
+    @Test fun tuitionPaymentStatusDecodesVerifiedAndPending() {
+        val ok = TuitionPaymentStatus.decode(
+            """{"reference":"R1","amount":100,"status":"success","enrollmentPaymentStatus":"paid","verified":true}""",
+        )
+        assertTrue(ok.verified)
+        val pending = TuitionPaymentStatus.decode(
+            """{"status":"pending","enrollmentPaymentStatus":"partial","verified":false}""",
+        )
+        assertFalse(pending.verified)
+        assertEquals("partial", pending.enrollmentPaymentStatus)
+    }
+
+    @Test fun presignedUploadValidatesKeyAndAllowlistedMime() {
+        val good = PresignedUpload.decode(
+            """{"key":"u-1/a/b.pdf","uploadUrl":"/v1/uploads/u-1/a/b.pdf","method":"PUT","expiresIn":3600,"mock":false,"contentType":"application/pdf"}""",
+        )
+        assertEquals("u-1/a/b.pdf", good.key)
+        try {
+            PresignedUpload.decode("""{"key":"../evil","method":"PUT","contentType":"application/pdf"}""")
+            fail("path traversal key accepted")
+        } catch (_: IllegalArgumentException) { }
+        try {
+            PresignedUpload.decode("""{"key":"u-1/x.gif","method":"PUT","contentType":"image/gif"}""")
+            fail("disallowed content type accepted")
+        } catch (_: IllegalArgumentException) { }
+    }
+
+    @Test fun uploadResultRequiresOkFlagAndCappedSize() {
+        val result = UploadResult.decode("""{"ok":true,"key":"u-1/x.pdf","size":2048}""")
+        assertTrue(result.ok)
+        assertEquals(2048L, result.size)
+        try {
+            UploadResult.decode("""{"ok":false,"key":"u-1/x.pdf","size":2048}""")
+            fail("ok=false accepted")
+        } catch (_: IllegalArgumentException) { }
+    }
+
+    @Test fun livePollPageValidatesOptionsAndResults() {
+        val (polls, cursor) = LivePoll.decodePage(
+            """{"items":[{"id":"p1","question":"Q?","options":["a","b"],"status":"open","results":{"a":2,"b":1},"totalVotes":3}],"nextCursor":"c1"}""",
+        )
+        assertEquals("c1", cursor)
+        assertTrue(polls.single().canVote())
+        assertEquals(3, polls.single().totalVotes)
+        try {
+            LivePoll.decodePage("""{"items":[{"id":"p1","question":"Q","options":["a"],"status":"open","results":{"zzz":1},"totalVotes":1}]}""")
+            fail("result for unknown option accepted")
+        } catch (_: IllegalArgumentException) { }
+    }
+
+    @Test fun attendanceSessionDecodesAndValidatesCode() {
+        val session = AttendanceSession.decode(
+            """{"id":"s1","course":"Algebra","code":"123456","startsAt":"2026-11-04T10:00:00Z","closesAt":"2026-11-04T10:30:00Z"}""",
+        )
+        assertEquals("123456", session.code)
+        try {
+            AttendanceSession.decode("""{"id":"s1","course":"Algebra","code":""}""")
+            fail("blank code accepted")
+        } catch (_: IllegalArgumentException) { }
+    }
+
+    @Test fun portfolioProjectPageDecodesAndRejectsNonHttpsUrl() {
+        val (items, cursor) = PortfolioProject.decodePage(
+            """{"items":[{"id":"p1","name":"Site","detail":"d","tags":["web"],"featured":0,"url":"https://example.com"}],"nextCursor":null}""",
+        )
+        assertNull(cursor)
+        assertEquals("web", items.single().tags.single())
+        try {
+            PortfolioProject.decodePage("""{"items":[{"id":"p1","name":"Site","url":"http://insecure.example"}]}""")
+            fail("non-https project url accepted")
+        } catch (_: IllegalArgumentException) { }
+    }
+
+    @Test fun attendanceRecordPageDecodes() {
+        val (records, _) = AttendanceRecord.decodePage(
+            """{"items":[{"id":"r1","dateLabel":"2026-11-03","course":"Algebra","status":"Present"}]}""",
+        )
+        assertEquals("Algebra", records.single().course)
+    }
+
 }

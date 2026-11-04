@@ -15,6 +15,12 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import java.util.Locale
 
+/** Open an https URL (e.g. the hosted payment page) in the system browser — never inside a WebView. */
+internal fun openExternalUrl(context: Context, url: String) {
+    val safe = url.takeIf { it.startsWith("https://") } ?: return
+    runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(safe))) }
+}
+
 @Composable
 fun PublicApplicationCard(
     programs: List<Program>,
@@ -197,6 +203,11 @@ fun ColumnScope.MyAdmissionsWorkspace(
     onReportTransfer: (String, String, Double, String, String, String, () -> Unit) -> Unit,
     onLoadReceipt: (String) -> Unit,
     onStartNewApplication: () -> Unit,
+    paymentStart: TuitionPaymentStart? = null,
+    paymentStatus: TuitionPaymentStatus? = null,
+    onStartOnlinePayment: (String, String) -> Unit = { _, _ -> },
+    onVerifyPayment: (String) -> Unit = {},
+    onOpenUrl: (String) -> Unit = {},
 ) {
     var confirmOffer by remember { mutableStateOf(false) }
 
@@ -304,6 +315,62 @@ fun ColumnScope.MyAdmissionsWorkspace(
                             }
                         }
                     }
+                }
+
+                HorizontalDivider()
+                Text("Pay tuition online", fontWeight = FontWeight.SemiBold)
+                Text(
+                    "Start a secure hosted payment (card, bank transfer or USSD). The payment page opens outside this app; come back and check the status here.",
+                    style = MaterialTheme.typography.bodySmall,
+                )
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    listOf("deposit" to "Deposit", "full" to "Full tuition", "balance" to "Balance").forEach { (value, label) ->
+                        OutlinedButton(
+                            onClick = { onStartOnlinePayment(selectedDetail.ref, value) },
+                            enabled = !busy && selectedDetail.amountDue > 0,
+                        ) { Text(label) }
+                    }
+                }
+                if (paymentStart != null) {
+                    Card(Modifier.fillMaxWidth()) {
+                        Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                            Text("Payment reference: ${paymentStart.reference}", style = MaterialTheme.typography.labelMedium)
+                            Text(
+                                String.format(
+                                    Locale.US,
+                                    "Amount: NGN %,.0f%s",
+                                    paymentStart.amount,
+                                    if (paymentStart.mock) " (practice mode)" else "",
+                                ),
+                                style = MaterialTheme.typography.bodySmall,
+                            )
+                            Button(
+                                onClick = { onOpenUrl(paymentStart.authorizationUrl) },
+                                enabled = !busy,
+                                modifier = Modifier.fillMaxWidth(),
+                            ) { Text("Open secure payment page") }
+                            Text(
+                                "Complete the payment on the hosted page, then return here and check the status.",
+                                style = MaterialTheme.typography.bodySmall,
+                            )
+                        }
+                    }
+                }
+                OutlinedButton(
+                    onClick = { onVerifyPayment(selectedDetail.ref) },
+                    enabled = !busy,
+                    modifier = Modifier.fillMaxWidth(),
+                ) { Text("I've completed payment — check status") }
+                if (paymentStatus != null) {
+                    Text(
+                        if (paymentStatus.verified) {
+                            "Payment verified by the Academy — your enrollment is marked paid."
+                        } else {
+                            "Latest status: ${paymentStatus.status} • Enrollment: ${paymentStatus.enrollmentPaymentStatus.ifBlank { "unpaid" }}"
+                        },
+                        color = if (paymentStatus.verified) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary,
+                        style = MaterialTheme.typography.bodySmall,
+                    )
                 }
 
                 if (selectedDetail.transferReviewStatus == "pending_review") {

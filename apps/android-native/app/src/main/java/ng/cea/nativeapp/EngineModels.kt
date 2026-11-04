@@ -1,6 +1,7 @@
 package ng.cea.nativeapp
 
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonNull
@@ -697,6 +698,7 @@ data class ShopProduct(
     }
 }
 
+@Serializable
 data class ShopCatalog(
     val currency: String,
     val country: String,
@@ -708,4 +710,201 @@ data class ShopCatalog(
 
 data class AssistantTurn(val role: String, val content: String) {
     fun isUser() = role == "user"
+}
+
+/* ---------------- 0.8: online payments, uploads, polls, attendance sessions, portfolio ---------------- */
+
+data class TuitionPaymentStart(
+    val reference: String,
+    val authorizationUrl: String,
+    val amount: Double,
+    val mock: Boolean,
+) {
+    companion object {
+        fun decode(raw: String): TuitionPaymentStart {
+            val obj = engineJson.parseToJsonElement(raw).jsonObject
+            val reference = obj.getValue("reference").jsonPrimitive.content
+            val url = obj.getValue("authorizationUrl").jsonPrimitive.content
+            require(reference.isNotBlank() && reference.length <= 120)
+            require(url.startsWith("https://"))
+            val amount = obj.getValue("amount").jsonPrimitive.doubleOrNull
+            require(amount != null && amount in 0.01..1_000_000_000.0)
+            return TuitionPaymentStart(
+                reference = reference,
+                authorizationUrl = url,
+                amount = amount,
+                mock = obj["mock"]?.jsonPrimitive?.booleanOrNull == true,
+            )
+        }
+    }
+}
+
+data class TuitionPaymentStatus(
+    val reference: String = "",
+    val amount: Double = 0.0,
+    val status: String,
+    val enrollmentPaymentStatus: String,
+    val verified: Boolean,
+) {
+    companion object {
+        fun decode(raw: String): TuitionPaymentStatus {
+            val obj = engineJson.parseToJsonElement(raw).jsonObject
+            val status = obj.getValue("status").jsonPrimitive.content
+            require(status.isNotBlank() && status.length <= 40)
+            return TuitionPaymentStatus(
+                reference = obj["reference"]?.jsonPrimitive?.contentOrNull ?: "",
+                amount = obj["amount"]?.jsonPrimitive?.doubleOrNull ?: 0.0,
+                status = status,
+                enrollmentPaymentStatus = obj["enrollmentPaymentStatus"]?.jsonPrimitive?.contentOrNull ?: "",
+                verified = obj["verified"]?.jsonPrimitive?.booleanOrNull == true,
+            )
+        }
+    }
+}
+
+@Serializable
+data class PresignedUpload(
+    val key: String,
+    val uploadUrl: String = "",
+    val method: String = "PUT",
+    val expiresIn: Int = 0,
+    val mock: Boolean = false,
+    val contentType: String = "",
+) {
+    companion object {
+        fun decode(raw: String): PresignedUpload {
+            val upload = engineJson.decodeFromString<PresignedUpload>(raw)
+            require(upload.key.matches(Regex("[a-zA-Z0-9_./-]{1,300}")) && !upload.key.contains(".."))
+            require(upload.method == "PUT")
+            require(upload.contentType in NativeAuthClient.ALLOWED_UPLOAD_TYPES)
+            return upload
+        }
+    }
+}
+
+data class UploadResult(val ok: Boolean, val key: String, val size: Long) {
+    companion object {
+        fun decode(raw: String): UploadResult {
+            val obj = engineJson.parseToJsonElement(raw).jsonObject
+            require(obj["ok"]?.jsonPrimitive?.booleanOrNull == true)
+            val key = obj.getValue("key").jsonPrimitive.content
+            require(key.matches(Regex("[a-zA-Z0-9_./-]{1,300}")) && !key.contains(".."))
+            val size = obj["size"]?.jsonPrimitive?.content?.toLongOrNull()
+            require(size != null && size in 1..10 * 1024 * 1024)
+            return UploadResult(ok = true, key = key, size = size)
+        }
+    }
+}
+
+@Serializable
+data class LivePoll(
+    val id: String,
+    val question: String = "",
+    val options: List<String> = emptyList(),
+    val status: String = "",
+    val results: Map<String, Int>? = null,
+    val totalVotes: Int = 0,
+) {
+    fun canVote() = status == "open" && options.isNotEmpty() && id.matches(StudentAssignmentItem.ID_PATTERN)
+
+    companion object {
+        @Serializable
+        private data class RawPage(val items: List<LivePoll>, val nextCursor: String? = null)
+
+        fun decodePage(raw: String): Pair<List<LivePoll>, String?> {
+            val page = engineJson.decodeFromString<RawPage>(raw)
+            require(page.items.size <= MAX_PAGE)
+            checkCursor(page.nextCursor)
+            page.items.forEach {
+                checkId(it.id)
+                require(it.options.size in 1..10 && it.options.all { o -> o.isNotBlank() && o.length <= 300 })
+                require(it.totalVotes in 0..1_000_000)
+                it.results?.forEach { (option, count) ->
+                    require(option in it.options && count in 0..1_000_000)
+                }
+            }
+            return page.items to page.nextCursor
+        }
+
+        fun decodeOne(raw: String): LivePoll {
+            val poll = engineJson.decodeFromString<LivePoll>(raw)
+            checkId(poll.id)
+            require(poll.options.size in 1..10)
+            return poll
+        }
+    }
+}
+
+@Serializable
+data class AttendanceSession(
+    val id: String,
+    val course: String,
+    val code: String,
+    val startsAt: String = "",
+    val closesAt: String = "",
+) {
+    companion object {
+        fun decode(raw: String): AttendanceSession {
+            val session = engineJson.decodeFromString<AttendanceSession>(raw)
+            checkId(session.id)
+            require(session.course.isNotBlank() && session.course.length <= 160)
+            require(session.code.isNotBlank() && session.code.length in 4..80)
+            return session
+        }
+    }
+}
+
+@Serializable
+data class PortfolioProject(
+    val id: String,
+    val name: String,
+    val detail: String = "",
+    val tags: List<String> = emptyList(),
+    val featured: Int = 0,
+    val url: String = "",
+) {
+    companion object {
+        @Serializable
+        private data class RawPage(val items: List<PortfolioProject>, val nextCursor: String? = null)
+
+        fun decodePage(raw: String): Pair<List<PortfolioProject>, String?> {
+            val page = engineJson.decodeFromString<RawPage>(raw)
+            require(page.items.size <= MAX_PAGE)
+            checkCursor(page.nextCursor)
+            page.items.forEach {
+                checkId(it.id)
+                require(it.name.isNotBlank() && it.name.length <= 160 && it.detail.length <= 2_000 && it.tags.size <= 12)
+                if (it.url.isNotBlank()) require(it.url.startsWith("https://"))
+            }
+            return page.items to page.nextCursor
+        }
+
+        fun decodeOne(raw: String): PortfolioProject {
+            val project = engineJson.decodeFromString<PortfolioProject>(raw)
+            checkId(project.id)
+            require(project.name.isNotBlank())
+            return project
+        }
+    }
+}
+
+@Serializable
+data class AttendanceRecord(
+    val id: String,
+    val dateLabel: String = "",
+    val course: String = "",
+    val status: String = "",
+) {
+    companion object {
+        @Serializable
+        private data class RawPage(val items: List<AttendanceRecord>, val nextCursor: String? = null)
+
+        fun decodePage(raw: String): Pair<List<AttendanceRecord>, String?> {
+            val page = engineJson.decodeFromString<RawPage>(raw)
+            require(page.items.size <= MAX_PAGE)
+            checkCursor(page.nextCursor)
+            page.items.forEach { checkId(it.id) }
+            return page.items to page.nextCursor
+        }
+    }
 }

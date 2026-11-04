@@ -100,7 +100,53 @@ sign-out endpoint cannot revoke a pending MFA session, so cancellation does not
 claim server revocation. Pending sessions still require MFA to authorize access.
 No automatic credential retries or test logins against production are performed.
 
-## Current increment: 0.7 (`0.7.0-native-preview`, `versionCode = 7`)
+## Current increment: 0.8 (`0.8.0-native-preview`, `versionCode = 8`)
+
+Increment 0.8 closes the remaining native gaps between the app and the platform's money,
+file, live-class and portfolio flows:
+
+- **Online tuition payment**: from an enrollment detail (Account → Admissions & fees) a
+  student starts a hosted online payment — deposit / full / balance via
+  `POST /v1/enrollments/:ref/payments` — and the app opens the returned
+  `authorizationUrl` in the **system browser** (`Intent.ACTION_VIEW`, never a WebView).
+  Retries reuse a stable per-enrollment `checkoutKey` so the server can resume the same
+  checkout instead of starting a second one. "Check status" calls
+  `GET /v1/enrollments/:ref/payments/verify` and refreshes the enrollment's payment status.
+- **Assignment file uploads**: students attach a file (system file picker,
+  `ActivityResultContracts.GetContent`) to an assignment. The app presigns
+  (`POST /v1/uploads/presign`), PUTs the bytes straight to the API's upload proxy
+  (`PUT /v1/uploads/:key`, new `AuthTransport.upload` with its own path/MIME/10 MB checks —
+  MIME allowlist mirrors the server: PNG/JPG/WebP/SVG/PDF/TXT/ZIP/DOC/DOCX), then submits
+  `POST /v1/assignments/:id/submit` with the returned object key as the `file` reference.
+  Picked bytes live in memory only and are never logged.
+- **Live-class polls**: inside an open live class the Learn tab lists
+  `GET /v1/live/classes/:id/polls` and votes with
+  `POST /v1/live/classes/:id/polls/:pollId/vote` (upsert per user); results/totals render
+  inline when the server includes them.
+- **Instructor attendance sessions**: the instructor workspace gained an Attendance tab that
+  creates a timed session (`POST /v1/attendance/sessions`) and shows the shareable code
+  students use for QR/code check-in on the Learn tab.
+- **Student portfolio**: the Discover → Opportunities tab has a "My portfolio" sub-tab for
+  students over `GET/POST /v1/student-self-dashboard/projects`, and the Learn attendance
+  section lists past records (`GET /v1/student-self-dashboard/records`).
+- **Offline public data**: cohorts, library catalog and shop catalog are cached (public data
+  only, ≤512 KiB per entry, app-private files) and shown with a "last saved copy" label when
+  the network is unavailable. No credentials or user-scoped data are ever cached.
+- **Cohort calendar invite**: the next-intake card can share the cohort `.ics`
+  (`GET /v1/cohorts/:id/ics`, public) through the system share sheet (`ACTION_SEND`,
+  `text/calendar`) so any calendar app can add the intake.
+
+Security posture is unchanged and extended, not weakened: every new endpoint is registered
+in the `HttpsAuthTransport` allowlist with GET/POST constraints and byte caps
+(`enrollments/:ref/payments*` 16 KiB, `uploads/presign` 16 KiB, `live/.../polls*` 128 KiB,
+`attendance/sessions` 16 KiB, `student-self-dashboard/*` 256 KiB, `cohorts/:id/ics` 16 KiB),
+the binary upload path is separately validated (fixed host, no redirects, allowlisted content
+type, 1 B–10 MB), the payment page and calendar files always leave the app via system intents,
+and all new decoders (`TuitionPaymentStart`, `TuitionPaymentStatus`, `PresignedUpload`,
+`UploadResult`, `LivePoll`, `AttendanceSession`, `PortfolioProject`, `AttendanceRecord`)
+validate ids, cursors, URL schemes, MIME types, ranges and sizes and fail closed.
+
+## Previous increment: 0.7 (`0.7.0-native-preview`, `versionCode = 7`)
 
 The app is now a five-tab native shell — **Home, Learn, Discover, Connect, Account** — every
 screen rendered in Kotlin + Jetpack Compose against the HTTPS API. Still no WebView, Capacitor,

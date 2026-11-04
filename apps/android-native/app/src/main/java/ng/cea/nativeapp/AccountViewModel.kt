@@ -11,6 +11,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.util.UUID
 
 data class AccountState(
@@ -45,11 +48,17 @@ data class AccountState(
     val live: LiveHubState = LiveHubState(),
     val career: CareerState = CareerState(),
     val discover: DiscoverState = DiscoverState(),
+    val paymentStart: TuitionPaymentStart? = null,
+    val paymentStatus: TuitionPaymentStatus? = null,
+    val attendanceSession: AttendanceSession? = null,
 )
 
 class AccountViewModel(application: Application) : AndroidViewModel(application) {
     private val client = NativeAuthClient(store = KeystoreSessionStore(application))
     private val draftStore: DraftStore = KeystoreDraftStore(application)
+    private val publicCache = PublicCache(application)
+    private val cacheJson = Json { ignoreUnknownKeys = true }
+    private val checkoutKeys = mutableMapOf<String, String>()
     private val mutable = MutableStateFlow(AccountState())
     val state = mutable.asStateFlow()
     private var expiryJob: Job? = null
@@ -349,6 +358,50 @@ class AccountViewModel(application: Application) : AndroidViewModel(application)
         )
     }
 
+    /** Presign → upload → submit in one flow so the file reference always matches the bytes sent. */
+    fun submitAssignmentWithFile(
+        assignmentId: String,
+        answer: String,
+        fileName: String,
+        contentType: String,
+        bytes: ByteArray,
+    ) = action(
+        "Could not submit the file. Your written answer was not sent either — nothing was submitted yet, so retry once the connection is stable.",
+    ) {
+        val current = mutable.value.assignments
+        val item = current.items.firstOrNull { it.id == assignmentId }
+        require(
+            mutable.value.session.user?.roleKey == "student" &&
+                item != null &&
+                assignmentId in current.submissions &&
+                assignmentId !in current.submissionErrors &&
+                item.submittable(current.submissions[assignmentId]),
+        )
+        require(bytes.size in 1..10 * 1024 * 1024)
+        require(contentType in NativeAuthClient.ALLOWED_UPLOAD_TYPES)
+        val presigned = client.presignUpload(fileName, contentType)
+        client.uploadFile(presigned, bytes)
+        client.submitAssignmentWithFile(assignmentId, answer, presigned.key, formatBytes(bytes.size))
+        val refreshedItem = client.assignment(assignmentId)
+        val refreshedSub = client.assignmentSubmission(assignmentId, refreshedItem.max)
+        val nextToken = (current.submittedDraftTokens[assignmentId] ?: 0) + 1
+        mutable.value = mutable.value.copy(
+            assignments = current.copy(
+                items = current.items.map { if (it.id == assignmentId) refreshedItem else it },
+                submissions = current.submissions + (assignmentId to refreshedSub),
+                submissionErrors = current.submissionErrors - assignmentId,
+                submittedDraftTokens = current.submittedDraftTokens + (assignmentId to nextToken),
+            ),
+            message = "File uploaded securely and submitted. Confirmed by the Academy.",
+        )
+    }
+
+    private fun formatBytes(size: Int): String = when {
+        size >= 1024 * 1024 -> String.format(java.util.Locale.US, "%.1f MB", size / (1024.0 * 1024.0))
+        size >= 1024 -> String.format(java.util.Locale.US, "%.1f KB", size / 1024.0)
+        else -> "$size B"
+    }
+
     fun loadAssessments() = action("Could not load your assessments. Check your connection and try again.") {
         verifyCurrentRole(setOf("student"))
         val (items, cursor) = client.assessments(null)
@@ -549,6 +602,39 @@ class AccountViewModel(application: Application) : AndroidViewModel(application)
 
     fun closeEnrollment() {
         mutable.value = mutable.value.copy(selectedEnrollment = null, selectedReceipt = null)
+    }
+
+    /* ---------------- 0.8: online tuition payment ---------------- */
+
+    fun startOnlinePayment(ref: String, kind: String) = action(
+        "Could not start online payment. If a payment page was already opened, finish it there instead of starting again.",
+    ) {
+        verifyCurrentRole()
+        val clean = ref.trim().uppercase(java.util.Locale.US)
+        // Stable per-enrollment key: retrying the same intent resumes the same checkout.
+        val checkoutKey = checkoutKeys.getOrPut(clean) { UUID.randomUUID().toString() }
+        val start = client.startTuitionPayment(clean, kind, checkoutKey)
+        mutable.value = mutable.value.copy(paymentStart = start)
+    }
+
+    fun verifyOnlinePayment(ref: String) = action("Could not check the payment status.") {
+        verifyCurrentRole()
+        val clean = ref.trim().uppercase(java.util.Locale.US)
+        val status = client.verifyTuitionPayment(clean)
+        val refreshed = runCatching { client.enrollmentDetail(clean) }.getOrNull()
+        mutable.value = mutable.value.copy(
+            paymentStatus = status,
+            selectedEnrollment = refreshed ?: mutable.value.selectedEnrollment,
+            message = when {
+                status.verified -> "Payment verified — the Academy has marked this enrollment paid."
+                status.status == "pending" -> "Payment is still pending. Complete the checkout page, then check again."
+                else -> "No completed online payment yet for this enrollment."
+            },
+        )
+    }
+
+    fun clearPaymentStart() {
+        mutable.value = mutable.value.copy(paymentStart = null)
     }
 
     fun acceptTuitionOffer(ref: String, version: Int) = action("Could not accept tuition offer.") {
@@ -780,6 +866,32 @@ class AccountViewModel(application: Application) : AndroidViewModel(application)
         onSent()
     }
 
+    /* ---------------- 0.8: live class polls ---------------- */
+
+    fun loadLivePolls(more: Boolean = false) = action("Could not load the class polls.") {
+        val id = mutable.value.live.selectedId ?: return@action
+        val cursor = if (more) mutable.value.live.pollsCursor else null
+        val page = client.livePolls(id, cursor)
+        val current = if (more) mutable.value.live.polls else emptyList()
+        mutable.value = mutable.value.copy(
+            live = mutable.value.live.copy(
+                polls = (current + page.first).distinctBy { it.id },
+                pollsCursor = page.second,
+                pollsLoaded = true,
+            ),
+        )
+    }
+
+    fun voteLivePoll(pollId: String, option: String) = action("Could not register your vote.") {
+        val id = mutable.value.live.selectedId ?: return@action
+        val updated = client.voteLivePoll(id, pollId, option)
+        val polls = mutable.value.live.polls.map { if (it.id == pollId) updated else it }
+        mutable.value = mutable.value.copy(
+            live = mutable.value.live.copy(polls = polls),
+            message = "Vote recorded.",
+        )
+    }
+
     /* ---------------- Career hub ---------------- */
 
     fun loadMentors(more: Boolean = false) = action("Could not load mentor profiles.") {
@@ -856,33 +968,153 @@ class AccountViewModel(application: Application) : AndroidViewModel(application)
         )
     }
 
-    /* ---------------- Discover hub (public data + certificate verify + AI tutor) ---------------- */
+    /* ---------------- 0.8: portfolio projects (career engine) ---------------- */
 
-    fun loadCohorts() = action("Could not load intake dates.") {
-        val items = client.cohorts(null)
-        val next = client.cohortsNext(null)
+    fun loadPortfolioProjects(more: Boolean = false) = action("Could not load your portfolio projects.") {
+        verifyCurrentRole(setOf("student", "admin"))
+        val cursor = if (more) mutable.value.career.projectsCursor else null
+        val page = client.portfolioProjects(cursor)
+        val current = if (more) mutable.value.career.projects else emptyList()
         mutable.value = mutable.value.copy(
-            discover = mutable.value.discover.copy(
-                cohorts = items,
-                cohortsLoaded = true,
-                nextCohort = next,
-                nextCohortLoaded = true,
+            career = mutable.value.career.copy(
+                projects = (current + page.first).distinctBy { it.id },
+                projectsCursor = page.second,
+                projectsLoaded = true,
             ),
         )
     }
 
-    fun loadLibraryCatalog(more: Boolean = false) = action("Could not load the public library.") {
-        val cursor = if (more) mutable.value.discover.libraryCursor else null
-        val page = client.libraryCatalog(cursor)
-        val current = if (more) mutable.value.discover.libraryItems else emptyList()
+    fun addPortfolioProject(name: String, detail: String, tags: List<String>, url: String) = action(
+        "Could not add the project to your portfolio. Check the details and try again.",
+    ) {
+        verifyCurrentRole(setOf("student", "admin"))
+        val project = client.addPortfolioProject(name, detail, tags, url.ifBlank { null })
         mutable.value = mutable.value.copy(
-            discover = mutable.value.discover.copy(
-                librarySources = page.first,
-                libraryItems = (current + page.second).distinctBy { it.id },
-                libraryCursor = page.third,
-                libraryLoaded = true,
+            career = mutable.value.career.copy(projects = listOf(project) + mutable.value.career.projects),
+            message = "Project added to your portfolio.",
+        )
+    }
+
+    fun loadSelfRecords(more: Boolean = false) = action("Could not load your attendance records.") {
+        verifyCurrentRole(setOf("student", "admin"))
+        val cursor = if (more) mutable.value.learn.selfRecordsCursor else null
+        val page = client.selfRecords(cursor)
+        val current = if (more) mutable.value.learn.selfRecords else emptyList()
+        mutable.value = mutable.value.copy(
+            learn = mutable.value.learn.copy(
+                selfRecords = (current + page.first).distinctBy { it.id },
+                selfRecordsCursor = page.second,
+                selfRecordsLoaded = true,
             ),
         )
+    }
+
+    /* ---------------- 0.8: instructor attendance session ---------------- */
+
+    fun createAttendanceSession(course: String, durationMinutes: Int) = action(
+        "Could not start an attendance session. Enter a course name and duration, then retry.",
+    ) {
+        verifyCurrentRole(setOf("instructor", "admin"))
+        val session = client.createAttendanceSession(course, durationMinutes)
+        mutable.value = mutable.value.copy(
+            attendanceSession = session,
+            message = "Attendance session started. Share code ${session.code} with the class.",
+        )
+    }
+
+    /* ---------------- Discover hub (public data + certificate verify + AI tutor) ---------------- */
+
+    fun loadCohorts() = action("Could not load intake dates.") {
+        try {
+            val items = client.cohorts(null)
+            val next = client.cohortsNext(null)
+            publicCache.write("cohorts", cacheJson.encodeToString(PublicCache.CachedCohorts(items, System.currentTimeMillis())))
+            mutable.value = mutable.value.copy(
+                discover = mutable.value.discover.copy(
+                    cohorts = items,
+                    cohortsLoaded = true,
+                    nextCohort = next,
+                    nextCohortLoaded = true,
+                    cohortsFromCache = false,
+                ),
+            )
+        } catch (error: Exception) {
+            if (error is CancellationException) throw error
+            // Offline fallback: last good public snapshot.
+            val cached = publicCache.read("cohorts")
+                ?.let { raw -> runCatching { cacheJson.decodeFromString<PublicCache.CachedCohorts>(raw) }.getOrNull() }
+            if (cached != null) {
+                mutable.value = mutable.value.copy(
+                    discover = mutable.value.discover.copy(
+                        cohorts = cached.items,
+                        cohortsLoaded = true,
+                        cohortsFromCache = true,
+                    ),
+                )
+            } else {
+                throw error
+            }
+        }
+    }
+
+    /** Public: fetch the cohort .ics file so the UI can hand it to a calendar app. */
+    fun shareCohortIcs(icsPath: String) = action("Could not fetch the cohort calendar file.") {
+        val id = icsPath.trim().substringAfterLast('/')
+        val ics = client.cohortIcs(id)
+        mutable.value = mutable.value.copy(discover = mutable.value.discover.copy(cohortIcs = ics))
+    }
+
+    fun clearCohortIcs() {
+        mutable.value = mutable.value.copy(discover = mutable.value.discover.copy(cohortIcs = null))
+    }
+
+    fun loadLibraryCatalog(more: Boolean = false) = action("Could not load the public library.") {
+        val cursor = if (more) mutable.value.discover.libraryCursor else null
+        try {
+            val page = client.libraryCatalog(cursor)
+            val current = if (more) mutable.value.discover.libraryItems else emptyList()
+            if (!more) {
+                publicCache.write(
+                    "library",
+                    cacheJson.encodeToString(
+                        PublicCache.CachedLibrary(
+                            sources = page.first,
+                            items = current + page.second,
+                            nextCursor = page.third,
+                            fetchedAt = System.currentTimeMillis(),
+                        ),
+                    ),
+                )
+            }
+            mutable.value = mutable.value.copy(
+                discover = mutable.value.discover.copy(
+                    librarySources = page.first,
+                    libraryItems = (current + page.second).distinctBy { it.id },
+                    libraryCursor = page.third,
+                    libraryLoaded = true,
+                    libraryFromCache = false,
+                ),
+            )
+        } catch (error: Exception) {
+            if (error is CancellationException) throw error
+            if (!more) {
+                val cached = publicCache.read("library")
+                    ?.let { raw -> runCatching { cacheJson.decodeFromString<PublicCache.CachedLibrary>(raw) }.getOrNull() }
+                if (cached != null) {
+                    mutable.value = mutable.value.copy(
+                        discover = mutable.value.discover.copy(
+                            librarySources = cached.sources,
+                            libraryItems = cached.items,
+                            libraryCursor = cached.nextCursor,
+                            libraryLoaded = true,
+                            libraryFromCache = true,
+                        ),
+                    )
+                    return@action
+                }
+            }
+            throw error
+        }
     }
 
     fun loadLibraryAuthed(more: Boolean = false) = action("Sign in to open protected course materials.") {
@@ -901,10 +1133,24 @@ class AccountViewModel(application: Application) : AndroidViewModel(application)
     }
 
     fun loadShop() = action("Could not load the digital shop catalog.") {
-        val catalog = client.shopCatalog()
-        mutable.value = mutable.value.copy(
-            discover = mutable.value.discover.copy(shop = catalog, shopLoaded = true),
-        )
+        try {
+            val catalog = client.shopCatalog()
+            publicCache.write("shop", cacheJson.encodeToString(PublicCache.CachedShop(catalog, System.currentTimeMillis())))
+            mutable.value = mutable.value.copy(
+                discover = mutable.value.discover.copy(shop = catalog, shopLoaded = true, shopFromCache = false),
+            )
+        } catch (error: Exception) {
+            if (error is CancellationException) throw error
+            val cached = publicCache.read("shop")
+                ?.let { raw -> runCatching { cacheJson.decodeFromString<PublicCache.CachedShop>(raw) }.getOrNull() }
+            if (cached != null) {
+                mutable.value = mutable.value.copy(
+                    discover = mutable.value.discover.copy(shop = cached.catalog, shopLoaded = true, shopFromCache = true),
+                )
+            } else {
+                throw error
+            }
+        }
     }
 
     fun verifyCertificate(code: String) = action("Could not verify that certificate code.") {

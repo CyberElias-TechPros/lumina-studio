@@ -1,6 +1,8 @@
 package ng.cea.nativeapp
 
 import androidx.activity.compose.BackHandler
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -9,6 +11,7 @@ import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.liveRegion
@@ -48,6 +51,7 @@ fun StudentWorkspace(
     loadMoreAssignments: () -> Unit = {},
     openAssignment: (String) -> Unit = {},
     submitAssignment: (String, String) -> Unit = { _, _ -> },
+    submitAssignmentWithFile: (String, String, String, String, ByteArray) -> Unit = { _, _, _, _, _ -> },
     loadAssessments: () -> Unit = {},
     openAssessment: (String) -> Unit = {},
     submitAssessment: (String, List<Int>) -> Unit = { _, _ -> },
@@ -69,6 +73,47 @@ fun StudentWorkspace(
     val draftToken = assignmentId?.let { state.assignments.submittedDraftTokens[it] } ?: 0
     var draftAnswer by remember(assignmentId, draftToken) { mutableStateOf("") }
     var assessmentChoices by remember(assessmentId) { mutableStateOf<Map<Int, Int>>(emptyMap()) }
+
+    // File attachment for assignment submission: picked via the system file picker, held in
+    // memory only, capped at the server's 10 MB upload limit, MIME-checked against the allowlist.
+    var pendingFile by remember(assignmentId, draftToken) { mutableStateOf<PendingFile?>(null) }
+    var fileError by remember(assignmentId) { mutableStateOf<String?>(null) }
+    val context = LocalContext.current
+    val pickFile = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        if (uri == null) return@rememberLauncherForActivityResult
+        fileError = null
+        val resolved = runCatching {
+            val name = context.contentResolver.query(uri, arrayOf("_display_name"), null, null, null)?.use { cursor ->
+                if (cursor.moveToFirst()) cursor.getString(0) else null
+            }?.takeIf { it.isNotBlank() } ?: "assignment-file"
+            val declared = context.contentResolver.getType(uri)
+            val mime = uploadMimeFor(name, declared)
+            if (mime == null) {
+                fileError = "That file type is not accepted. Use PNG, JPG, WebP, SVG, PDF, TXT, ZIP, DOC or DOCX."
+                return@rememberLauncherForActivityResult
+            }
+            val bytes = context.contentResolver.openInputStream(uri)?.use { input ->
+                val output = java.io.ByteArrayOutputStream()
+                val buffer = ByteArray(8192)
+                while (true) {
+                    val count = input.read(buffer)
+                    if (count < 0) break
+                    check(output.size() + count <= 10 * 1024 * 1024) { "too large" }
+                    output.write(buffer, 0, count)
+                }
+                output.toByteArray()
+            } ?: throw IllegalStateException("unreadable")
+            PendingFile(name = name.take(200), mime = mime, bytes = bytes)
+        }.getOrElse { error ->
+            fileError = if (error.message == "too large") {
+                "Files up to 10 MB are accepted. Choose a smaller file."
+            } else {
+                "Could not read that file. Try another copy."
+            }
+            null
+        }
+        if (resolved != null) pendingFile = resolved
+    }
 
     val atRoot = courseSlug == null && lessonId == null && assignmentId == null && assessmentId == null
     val goBack = {
@@ -101,17 +146,31 @@ fun StudentWorkspace(
     }
 
     if (confirmSubmission && assignment != null && state.session.user?.roleKey == "student") {
+        val attached = pendingFile
         AlertDialog(
             onDismissRequest = { confirmSubmission = false },
-            title = { Text("Submit written answer?") },
-            text = { Text("Send this written answer to your instructor for grading? Submitting again before grading creates a new attempt.") },
+            title = { Text(if (attached != null) "Submit answer and file?" else "Submit written answer?") },
+            text = {
+                Text(
+                    if (attached != null) {
+                        "Upload ${attached.name} (${formatUploadSize(attached.bytes.size)}) securely and send it with your written answer to your instructor for grading? Submitting again before grading creates a new attempt."
+                    } else {
+                        "Send this written answer to your instructor for grading? Submitting again before grading creates a new attempt."
+                    },
+                )
+            },
             confirmButton = {
                 TextButton(
                     onClick = {
                         confirmSubmission = false
-                        submitAssignment(assignment.id, draftAnswer)
+                        if (attached != null) {
+                            submitAssignmentWithFile(assignment.id, draftAnswer, attached.name, attached.mime, attached.bytes)
+                            pendingFile = null
+                        } else {
+                            submitAssignment(assignment.id, draftAnswer)
+                        }
                     },
-                    enabled = !state.busy && draftAnswer.trim().isNotEmpty(),
+                    enabled = !state.busy && (draftAnswer.trim().isNotEmpty() || attached != null),
                 ) { Text("Confirm submission") }
             },
             dismissButton = { TextButton(onClick = { confirmSubmission = false }) { Text("Keep editing") } },
@@ -425,19 +484,38 @@ fun StudentWorkspace(
                             }
                             item {
                                 Text(
-                                    "Drafts stay in memory on this screen only and are not saved if you leave or close the app. File uploads are not supported in native preview yet. Submitting again before grading sends a new attempt for instructor review.",
+                                    "Drafts and picked files stay in memory on this screen only and are not saved if you leave or close the app. Uploads go straight to the Academy's secure storage (max 10 MB: PNG, JPG, WebP, SVG, PDF, TXT, ZIP, DOC, DOCX). Submitting again before grading sends a new attempt for instructor review.",
                                 )
+                            }
+                            item {
+                                OutlinedButton(
+                                    onClick = { pickFile.launch("*/*") },
+                                    enabled = !state.busy,
+                                    modifier = Modifier.fillMaxWidth().testTag("assignment-attach-file"),
+                                ) { Text(if (pendingFile == null) "Attach file" else "Replace attached file") }
+                            }
+                            if (pendingFile != null) {
+                                item {
+                                    AssistChip(
+                                        onClick = { pendingFile = null },
+                                        label = { Text("${pendingFile!!.name} • ${formatUploadSize(pendingFile!!.bytes.size)} • tap to remove") },
+                                    )
+                                }
+                            }
+                            if (fileError != null) {
+                                item { Text(fileError!!, color = MaterialTheme.colorScheme.error) }
                             }
                             item {
                                 val canSubmit =
                                     !state.busy &&
                                         hasLoadedSubmission &&
                                         !hasSubmissionError &&
-                                        draftAnswer.trim().isNotEmpty()
+                                        (draftAnswer.trim().isNotEmpty() || pendingFile != null)
                                 Button(
                                     onClick = { confirmSubmission = true },
                                     enabled = canSubmit,
-                                ) { Text("Submit written answer") }
+                                    modifier = Modifier.testTag("assignment-submit"),
+                                ) { Text(if (pendingFile != null) "Submit answer and file" else "Submit written answer") }
                             }
                         }
                     }
@@ -491,4 +569,30 @@ fun StudentWorkspace(
             }
         }
     }
+}
+
+/** In-memory picked file for assignment submission — never persisted. */
+private data class PendingFile(val name: String, val mime: String, val bytes: ByteArray)
+
+/** Map a picked file to a server-allowed MIME type, trusting the extension over the declared type. */
+private fun uploadMimeFor(name: String, declared: String?): String? {
+    if (declared != null && declared in NativeAuthClient.ALLOWED_UPLOAD_TYPES) return declared
+    return when (name.substringAfterLast('.', "").lowercase(java.util.Locale.US)) {
+        "png" -> "image/png"
+        "jpg", "jpeg" -> "image/jpeg"
+        "webp" -> "image/webp"
+        "svg" -> "image/svg+xml"
+        "pdf" -> "application/pdf"
+        "txt" -> "text/plain"
+        "zip" -> "application/zip"
+        "doc" -> "application/msword"
+        "docx" -> "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        else -> null
+    }
+}
+
+private fun formatUploadSize(size: Int): String = when {
+    size >= 1024 * 1024 -> String.format(java.util.Locale.US, "%.1f MB", size / (1024.0 * 1024.0))
+    size >= 1024 -> String.format(java.util.Locale.US, "%.1f KB", size / 1024.0)
+    else -> "$size B"
 }

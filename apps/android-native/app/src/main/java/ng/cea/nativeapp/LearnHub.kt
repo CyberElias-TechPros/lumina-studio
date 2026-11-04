@@ -168,6 +168,27 @@ fun LearnHub(
                         }
                     }
                 }
+                item { HorizontalDivider() }
+                item { Text("My attendance records", style = MaterialTheme.typography.titleMedium) }
+                item {
+                    OutlinedButton(onClick = { loadSelfRecords(false) }, enabled = !state.busy, modifier = Modifier.fillMaxWidth()) {
+                        Text("Load my attendance records")
+                    }
+                }
+                if (state.learn.selfRecordsLoaded && state.learn.selfRecords.isEmpty()) {
+                    item { Text("No attendance records yet. Check in during a live class.") }
+                }
+                items(state.learn.selfRecords, key = { "rec-${it.id}" }) { record ->
+                    Card(Modifier.fillMaxWidth()) {
+                        Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                            Text(record.course.ifBlank { "Class session" }, fontWeight = FontWeight.SemiBold)
+                            Text("${record.dateLabel} • ${record.status}", style = MaterialTheme.typography.bodySmall)
+                        }
+                    }
+                }
+                if (state.learn.selfRecordsCursor != null) {
+                    item { OutlinedButton(onClick = { loadSelfRecords(true) }, enabled = !state.busy, modifier = Modifier.fillMaxWidth()) { Text("Load older records") } }
+                }
             }
             "calendar" -> {
                 item { OutlinedButton(onClick = { section = null }) { Text("Back to Learn") } }
@@ -354,6 +375,8 @@ private fun LiveSection(
     onClose: () -> Unit,
     onRefreshChat: () -> Unit,
     onSend: (String, () -> Unit) -> Unit,
+    onLoadPolls: () -> Unit,
+    onVotePoll: (String, String) -> Unit,
     currentUserId: String?,
 ) {
     if (live.selected != null) {

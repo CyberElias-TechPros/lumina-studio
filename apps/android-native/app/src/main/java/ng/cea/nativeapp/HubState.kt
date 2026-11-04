@@ -25,6 +25,9 @@ data class LearnExtrasState(
     val paymentHistory: List<PaymentHistoryItem> = emptyList(),
     val paymentCursor: String? = null,
     val paymentsLoaded: Boolean = false,
+    val selfRecords: List<AttendanceRecord> = emptyList(),
+    val selfRecordsCursor: String? = null,
+    val selfRecordsLoaded: Boolean = false,
 )
 
 /** Live classes hub: list + selected class chat. */
@@ -37,6 +40,9 @@ data class LiveHubState(
     val chat: List<LiveChatMessage> = emptyList(),
     val chatCursor: String? = null,
     val chatLoaded: Boolean = false,
+    val polls: List<LivePoll> = emptyList(),
+    val pollsCursor: String? = null,
+    val pollsLoaded: Boolean = false,
 )
 
 /** Career engine hub: mentors, jobs, talent pool, interviews. */
@@ -54,6 +60,9 @@ data class CareerState(
     val interviews: List<InterviewItem> = emptyList(),
     val interviewsCursor: String? = null,
     val interviewsLoaded: Boolean = false,
+    val projects: List<PortfolioProject> = emptyList(),
+    val projectsCursor: String? = null,
+    val projectsLoaded: Boolean = false,
 )
 
 /** Discover tab: public cohorts, library, shop, certificate verification, AI tutor. */
@@ -69,6 +78,10 @@ data class DiscoverState(
     val libraryAuthed: Boolean = false,
     val shop: ShopCatalog? = null,
     val shopLoaded: Boolean = false,
+    val cohortsFromCache: Boolean = false,
+    val libraryFromCache: Boolean = false,
+    val shopFromCache: Boolean = false,
+    val cohortIcs: String? = null,
     val verification: CertificateVerification? = null,
     val assistant: List<AssistantTurn> = emptyList(),
 )

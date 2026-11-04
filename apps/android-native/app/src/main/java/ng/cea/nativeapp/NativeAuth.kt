@@ -7,6 +7,7 @@ import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.*
 import java.net.URL
 import java.text.SimpleDateFormat
@@ -20,9 +21,15 @@ class AuthFailure(val status: Int) : Exception("Native API request failed")
 data class AuthReply(val status: Int, val body: String, val cookies: List<String> = emptyList()) {
     override fun toString() = "AuthReply(status=$status, content=[redacted])"
 }
-fun interface AuthTransport {
+interface AuthTransport {
     suspend fun request(path: String, body: JsonObject?, token: String?): AuthReply
+
+    /** Binary PUT to a presigned/proxied upload object. Default: unsupported. */
+    suspend fun upload(path: String, contentType: String, bytes: ByteArray, token: String?): AuthReply =
+        throw UnsupportedOperationException("Binary uploads are not supported by this transport")
 }
+
+private const val API_BASE = "https://cea-api.cyber-e54.workers.dev/v1/"
 
 /** Fixed API only; no browser cookie jar, redirects, response cache or credential logging. */
 class HttpsAuthTransport : AuthTransport {
@@ -33,6 +40,7 @@ class HttpsAuthTransport : AuthTransport {
         val slugPart = "[a-zA-Z0-9_-]{1,80}"
         val codePart = "[A-Za-z0-9-]{8,64}"
         val portalPart = "[a-z-]{1,40}"
+        val collPart = "[a-zA-Z]{1,40}"
 
         val authCore = path in setOf(
             "sign-in", "sign-up", "forgot-password", "reset-password",
@@ -109,6 +117,21 @@ class HttpsAuthTransport : AuthTransport {
         val aiRecommendations = path == "ai/recommendations"
         // Public digital shop catalog
         val shopCatalog = path == "shop/catalog"
+        // Online tuition payment start/status for an enrollment
+        val enrollmentPaymentStart = path.matches(Regex("enrollments/$refPart/payments"))
+        val enrollmentPaymentVerify = path.matches(Regex("enrollments/$refPart/payments/verify"))
+        // Resumable file upload: presign metadata, then binary PUT via upload()
+        val uploadsPresign = path == "uploads/presign"
+        // Live class polls
+        val livePolls = path.matches(Regex("live/classes/$idPart/polls")) || path.matches(Regex("live/classes/$idPart/polls\\?cursor=$cursorPart"))
+        val livePollVote = path.matches(Regex("live/classes/$idPart/polls/$idPart/vote"))
+        // Instructor attendance session creation
+        val attendanceSession = path == "attendance/sessions"
+        // Student self dashboard collections (projects, records, ...)
+        val ssdList = path.matches(Regex("student-self-dashboard/$collPart")) || path.matches(Regex("student-self-dashboard/$collPart\\?cursor=$cursorPart"))
+        val ssdProjectsPost = path == "student-self-dashboard/projects"
+        // Public cohort calendar file
+        val cohortIcs = path.matches(Regex("cohorts/$idPart/ics"))
 
         val allowed =
             auth || accountGet || accountPost || studentDashboard || completion ||
@@ -126,7 +149,9 @@ class HttpsAuthTransport : AuthTransport {
                 cohortsList || cohortsNext || libraryCatalog || libraryList || libraryDetail ||
                 mentorProfiles || mentorRequest || mentorMatch ||
                 jobPostings || jobTalent || jobInterviews ||
-                paymentHistory || portalSummary || aiAsk || aiRecommendations || shopCatalog
+                paymentHistory || portalSummary || aiAsk || aiRecommendations || shopCatalog ||
+                enrollmentPaymentStart || enrollmentPaymentVerify || uploadsPresign ||
+                livePolls || livePollVote || attendanceSession || ssdList || ssdProjectsPost || cohortIcs
         require(allowed)
 
         val isGet =
@@ -177,7 +202,11 @@ class HttpsAuthTransport : AuthTransport {
                     cohortsList || cohortsNext || paymentHistory || portalSummary || aiAsk || aiRecommendations -> 256 * 1024
                 assignmentDetail || assignmentSubmission || assessmentDetail || instructorDetail ||
                     messageDetail || enrollmentDetail || enrollmentReceipt || libraryDetail -> 128 * 1024
-                certificateVerify || attendanceCheckIn || notificationUnread -> 16 * 1024
+                certificateVerify || attendanceCheckIn || notificationUnread ||
+                    enrollmentPaymentStart || enrollmentPaymentVerify || uploadsPresign ||
+                    attendanceSession || cohortIcs -> 16 * 1024
+                livePolls -> 128 * 1024
+                ssdList -> 256 * 1024
                 else -> 65536
             }
             val deadline = System.nanoTime() + 20_000_000_000L
@@ -854,6 +883,140 @@ class NativeAuthClient(
         return decodeChecked { ShopProduct.decodeCatalog(body) }
     }
 
+    /* ---------------- 0.8: online tuition payment, uploads, polls, attendance sessions, portfolio ---------------- */
+
+    /** Start (or resume) a hosted online tuition payment. `checkoutKey` makes retries idempotent. */
+    suspend fun startTuitionPayment(ref: String, kind: String, checkoutKey: String): TuitionPaymentStart {
+        requireVerified()
+        val clean = ref.trim().uppercase(Locale.US)
+        require(clean.matches(MyEnrollmentSummary.REF_PATTERN))
+        require(kind in setOf("deposit", "full", "balance"))
+        require(checkoutKey.matches(Regex("[a-zA-Z0-9-]{16,80}")))
+        val payload = buildJsonObject {
+            put("kind", kind)
+            put("checkoutKey", checkoutKey)
+        }
+        val reply = call("enrollments/$clean/payments", payload)
+        return decodeChecked { TuitionPaymentStart.decode(reply.body) }
+    }
+
+    /** Check the latest status of the enrollment's online payment. */
+    suspend fun verifyTuitionPayment(ref: String): TuitionPaymentStatus {
+        requireVerified()
+        val clean = ref.trim().uppercase(Locale.US)
+        require(clean.matches(MyEnrollmentSummary.REF_PATTERN))
+        val body = call("enrollments/$clean/payments/verify", null).body
+        return decodeChecked { TuitionPaymentStatus.decode(body) }
+    }
+
+    suspend fun presignUpload(filename: String, contentType: String): PresignedUpload {
+        requireVerified()
+        require(filename.trim().length in 1..200)
+        require(contentType in ALLOWED_UPLOAD_TYPES)
+        val payload = buildJsonObject {
+            put("filename", filename.trim())
+            put("contentType", contentType)
+        }
+        val reply = call("uploads/presign", payload)
+        return decodeChecked { PresignedUpload.decode(reply.body) }
+    }
+
+    /** PUT the bytes through the API's upload proxy, then confirm the object landed. */
+    suspend fun uploadFile(presigned: PresignedUpload, bytes: ByteArray): UploadResult {
+        requireVerified()
+        require(bytes.size in 1..10 * 1024 * 1024)
+        val reply = transport.upload("uploads/${presigned.key}", presigned.contentType, bytes, token)
+        if (reply.status !in 200..299) throw AuthFailure(reply.status)
+        return decodeChecked { UploadResult.decode(reply.body) }
+    }
+
+    /** Submit an assignment with a written answer and/or an uploaded file reference. */
+    suspend fun submitAssignmentWithFile(id: String, answer: String, fileKey: String?, sizeLabel: String) {
+        requireVerified()
+        require(id.matches(StudentAssignmentItem.ID_PATTERN))
+        require(answer.length <= 20_000)
+        require(fileKey == null || (fileKey.matches(Regex("[a-zA-Z0-9_./-]{1,300}")) && !fileKey.contains("..")))
+        require(sizeLabel.length <= 100)
+        require(answer.isNotBlank() || fileKey != null)
+        val payload = buildJsonObject {
+            if (answer.isNotBlank()) put("body", answer)
+            if (fileKey != null) {
+                put("file", fileKey)
+                put("size", sizeLabel)
+            }
+        }
+        call("assignments/$id/submit", payload)
+    }
+
+    suspend fun livePolls(classId: String, cursor: String? = null): Pair<List<LivePoll>, String?> {
+        requireVerified()
+        require(classId.matches(StudentAssignmentItem.ID_PATTERN))
+        val body = call("live/classes/$classId/polls${cursorParam(cursor)}", null).body
+        return decodeChecked { LivePoll.decodePage(body) }
+    }
+
+    suspend fun voteLivePoll(classId: String, pollId: String, option: String): LivePoll {
+        requireVerified()
+        require(classId.matches(StudentAssignmentItem.ID_PATTERN) && pollId.matches(StudentAssignmentItem.ID_PATTERN))
+        require(option.isNotBlank() && option.length <= 300)
+        val payload = buildJsonObject { put("option", option) }
+        val reply = call("live/classes/$classId/polls/$pollId/vote", payload)
+        return decodeChecked { LivePoll.decodeOne(reply.body) }
+    }
+
+    suspend fun createAttendanceSession(course: String, durationMinutes: Int): AttendanceSession {
+        requireVerified()
+        require(session.user?.roleKey in setOf("instructor", "admin") && !session.mfaRequired)
+        val clean = course.trim()
+        require(clean.length in 1..160 && durationMinutes in 1..120)
+        val payload = buildJsonObject {
+            put("course", clean)
+            put("durationMinutes", durationMinutes)
+        }
+        val reply = call("attendance/sessions", payload)
+        return decodeChecked { AttendanceSession.decode(reply.body) }
+    }
+
+    suspend fun portfolioProjects(cursor: String? = null): Pair<List<PortfolioProject>, String?> {
+        requireVerified()
+        val body = call("student-self-dashboard/projects${cursorParam(cursor)}", null).body
+        return decodeChecked { PortfolioProject.decodePage(body) }
+    }
+
+    suspend fun addPortfolioProject(name: String, detail: String, tags: List<String>, url: String?): PortfolioProject {
+        requireVerified()
+        require(session.user?.roleKey == "student" && !session.mfaRequired)
+        val cleanName = name.trim()
+        val cleanDetail = detail.trim()
+        require(cleanName.length in 1..160 && cleanDetail.length in 1..2000)
+        require(tags.size <= 12 && tags.all { it.trim().length in 1..40 })
+        require(url.isNullOrBlank() || url.startsWith("https://"))
+        val payload = buildJsonObject {
+            put("name", cleanName)
+            put("detail", cleanDetail)
+            put("tags", kotlinx.serialization.json.JsonArray(tags.map { kotlinx.serialization.json.JsonPrimitive(it.trim()) }))
+            if (!url.isNullOrBlank()) put("url", url.trim().take(2000))
+        }
+        val reply = call("student-self-dashboard/projects", payload)
+        return decodeChecked { PortfolioProject.decodeOne(reply.body) }
+    }
+
+    suspend fun selfRecords(cursor: String? = null): Pair<List<AttendanceRecord>, String?> {
+        requireVerified()
+        val body = call("student-self-dashboard/records${cursorParam(cursor)}", null).body
+        return decodeChecked { AttendanceRecord.decodePage(body) }
+    }
+
+    /** Public: raw .ics calendar file for a cohort. */
+    suspend fun cohortIcs(id: String): String {
+        require(id.matches(Regex("[a-zA-Z0-9_-]{1,120}")))
+        val body = call("cohorts/$id/ics", null).body
+        return decodeChecked {
+            require(body.startsWith("BEGIN:VCALENDAR") && body.contains("END:VCALENDAR") && body.length <= 16 * 1024)
+            body
+        }
+    }
+
     suspend fun signOut(): Boolean {
         if (token == null) return true
         return try {
@@ -930,6 +1093,13 @@ class NativeAuthClient(
 
     companion object {
         private val CREDENTIAL_PATHS = setOf("sign-in", "sign-up", "forgot-password", "reset-password")
+
+        /** Mirrors the server's upload allowlist (uploads.ts ALLOWED_TYPES). */
+        val ALLOWED_UPLOAD_TYPES = setOf(
+            "image/png", "image/jpeg", "image/webp", "image/svg+xml", "application/pdf",
+            "text/plain", "application/zip", "application/msword",
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        )
 
         /** Paths the server exposes without a session; the transport allowlist still applies. */
         fun isPublicPath(path: String): Boolean =

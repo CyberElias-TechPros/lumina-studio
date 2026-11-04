@@ -10,6 +10,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.heading
@@ -329,6 +330,11 @@ fun AccountScreen(
                             onReportTransfer = reportTransferProof,
                             onLoadReceipt = loadOfficialReceipt,
                             onStartNewApplication = { signedInTab = "apply" },
+                            paymentStart = state.paymentStart,
+                            paymentStatus = state.paymentStatus,
+                            onStartOnlinePayment = startOnlinePayment,
+                            onVerifyPayment = verifyOnlinePayment,
+                            onOpenUrl = { url -> openExternalUrl(context, url) },
                         )
                     }
 
