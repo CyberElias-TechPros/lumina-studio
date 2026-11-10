@@ -122,8 +122,8 @@ export function PortalPage({ config }: { config: PortalConfig }) {
                   <p className="text-muted-foreground text-sm">
                     Portal figures are live and specific to your account and role.
                   </p>
-                  <Button asChild indentOnPress iconExplosion>
-                    <Link to="/auth/sign-in">
+                  <Button indentOnPress iconExplosion>
+                    <Link to="/auth/sign-in" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 relative overflow-hidden bg-primary text-primary-foreground shadow hover:bg-primary/90">
                       <motion.span
                         initial={{ scale: 1 }}
                         whileHover={{ scale: 1.15, rotate: 4 }}
@@ -131,7 +131,11 @@ export function PortalPage({ config }: { config: PortalConfig }) {
                       >
                         <LogIn className="mr-1.5 size-4" />
                       </motion.span>
-                      Sign in
+                      <motion.span className="relative z-10" animate="idle" variants={{ idle: { scale: 1, transition: { type: "spring", stiffness: 340, damping: 30 } }, pressed: { scale: 0.965, transition: { type: "spring", stiffness: 340, damping: 30 } } }}>
+                        Sign in
+                      </motion.span>
+                      <motion.span className="absolute inset-0 rounded-md pointer-events-none" style={{ background: "radial-gradient(340px circle at 50% 50%, color-mix(in oklab, var(--primary-glow) 16%, transparent), transparent 68%)", opacity: 0 }} animate={{ opacity: 0 }} transition={{ duration: 0.2, ease: EASE }} />
+                      <motion.span className="inline-block transition-colors" variants={{ idle: { scale: 1, rotate: 0, filter: "blur(0px)" }, hover: { scale: 1.15, rotate: 4, filter: "blur(0px)", transition: { duration: 0.2, ease: EASE } } }} initial="idle" whileHover="hover" whileTap="idle" />
                     </Link>
                   </Button>
                 </CardContent>
@@ -347,8 +351,8 @@ export function PortalPage({ config }: { config: PortalConfig }) {
                               </Reveal>
                             ))}\n                          </ul>
                         )}
-                        <Button asChild variant="ghost" size="sm" className="mt-2 px-0 font-semibold" indentOnPress iconExplosion>
-                          <Link to="/app/notifications">
+                        <Button variant="ghost" size="sm" className="mt-2 px-0 font-semibold" indentOnPress iconExplosion>
+                          <Link to="/app/notifications" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 relative overflow-hidden text-primary underline-offset-4 hover:underline">
                             <motion.span
                               initial={{ scale: 1 }}
                               whileHover={{ scale: 1.15, rotate: 4 }}
@@ -356,7 +360,11 @@ export function PortalPage({ config }: { config: PortalConfig }) {
                             >
                               <ArrowRight className="ml-1 size-3.5" />
                             </motion.span>
-                            All notifications
+                            <motion.span className="relative z-10" animate="idle" variants={{ idle: { scale: 1, transition: { type: "spring", stiffness: 340, damping: 30 } }, pressed: { scale: 0.965, transition: { type: "spring", stiffness: 340, damping: 30 } } }}>
+                              All notifications
+                            </motion.span>
+                            <motion.span className="absolute inset-0 rounded-md pointer-events-none" style={{ background: "radial-gradient(340px circle at 50% 50%, color-mix(in oklab, var(--primary-glow) 16%, transparent), transparent 68%)", opacity: 0 }} animate={{ opacity: 0 }} transition={{ duration: 0.2, ease: EASE }} />
+                            <motion.span className="inline-block transition-colors" variants={{ idle: { scale: 1, rotate: 0, filter: "blur(0px)" }, hover: { scale: 1.15, rotate: 4, filter: "blur(0px)", transition: { duration: 0.2, ease: EASE } } }} initial="idle" whileHover="hover" whileTap="idle" />
                           </Link>
                         </Button>
                       </CardContent>
