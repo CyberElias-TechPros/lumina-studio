@@ -1297,7 +1297,7 @@ export function AppShell({
                   <Search className="size-5" aria-hidden="true" />
                 </Button>
                 <ThemeToggle />
-                <Button variant="ghost" size="icon" className="relative" asChild>
+                <div className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 relative overflow-hidden text-primary underline-offset-4 hover:underline indent-on-press icon-explosion" onClick={() => {}}>
                   <Link
                     to="/app/notifications"
                     title="Notifications"
@@ -1306,6 +1306,7 @@ export function AppShell({
                         ? `Notifications, ${unreadNotifications?.count} unread`
                         : "Notifications"
                     }
+                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 relative overflow-hidden text-primary underline-offset-4 hover:underline"
                   >
                     <Bell className="size-5" aria-hidden="true" />
                     {(unreadNotifications?.count ?? 0) > 0 && (
@@ -1319,7 +1320,7 @@ export function AppShell({
                       </span>
                     )}
                   </Link>
-                </Button>
+                </div>
                 <div className="h-6 w-px bg-border" />
                 <Avatar className="size-9">
                   <AvatarFallback className={cn("text-xs text-white", role.gradient)}>
@@ -1372,9 +1373,11 @@ export function AppShell({
                   <strong>Verify your email</strong> to secure your account and receive receipts,
                   reminders and certificates.
                 </span>
-                <Button asChild size="sm" variant="outline">
-                  <Link to="/auth/verify-email">Verify now</Link>
-                </Button>
+                <div className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 relative overflow-hidden indent-on-press icon-explosion" onClick={() => {}}>
+                  <Link to="/auth/verify-email" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 relative overflow-hidden">
+                    Verify now
+                  </Link>
+                </div>
               </div>
             )}
             {accessDenied ? (
@@ -1389,13 +1392,15 @@ export function AppShell({
                   Your signed-in role does not have access to this area. Use the workspace
                   navigation to open the tools available to you.
                 </p>
-                <Button asChild className="bg-gradient-brand shadow-glow mt-5 border-0">
-                  <Link to="/app">Return to my dashboard</Link>
-                </Button>
+                <div className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 relative overflow-hidden bg-gradient-brand shadow-glow mt-5 border-0 indent-on-press icon-explosion" onClick={() => {}}>
+                  <Link to="/app" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 relative overflow-hidden bg-gradient-brand shadow-glow mt-5 border-0">
+                    Return to my dashboard
+                  </Link>
+                </div>
               </div>
             ) : (
               children
-            )}
+            )}}
           </motion.main>
         </div>
       </div>
