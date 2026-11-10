@@ -2,10 +2,23 @@ import type { AppEnv } from "../types";
 
 /** Return the explicitly configured browser origins for this deployment. */
 export function configuredOrigins(env: Pick<AppEnv, "FRONTEND_ORIGINS">): string[] {
-  return (env.FRONTEND_ORIGINS ?? "")
+  const origins = (env.FRONTEND_ORIGINS ?? "")
     .split(",")
     .map((origin) => origin.trim())
     .filter(Boolean);
+    
+  // Automatically include preview environment domains for local/dev testing
+  // This ensures the frontend preview (e2b.app) can communicate with the backend
+  if (env.APP_ENV === "development") {
+    // In Cloudflare Workers, `process` is not available. Use environment variables or fallback.
+    // We'll inject the preview host via env var or default to a wildcard-like check for dev
+    const previewHost = env.PREVIEW_HOST || "";
+    if (previewHost && !origins.includes(previewHost)) {
+      origins.push(previewHost);
+    }
+  }
+  
+  return origins;
 }
 
 /**
