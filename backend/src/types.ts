@@ -37,4 +37,6 @@ export interface AppEnv {
   SMS_API_KEY?: string;
   /** Sender ID (Termii, registered) or sending number (Twilio, E.164). */
   SMS_SENDER?: string;
+  /** Optional preview host for development CORS injection. */
+  PREVIEW_HOST?: string;
 }

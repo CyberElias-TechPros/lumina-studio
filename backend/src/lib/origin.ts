@@ -1,7 +1,7 @@
 import type { AppEnv } from "../types";
 
 /** Return the explicitly configured browser origins for this deployment. */
-export function configuredOrigins(env: Pick<AppEnv, "FRONTEND_ORIGINS">): string[] {
+export function configuredOrigins(env: AppEnv): string[] {
   const origins = (env.FRONTEND_ORIGINS ?? "")
     .split(",")
     .map((origin) => origin.trim())
@@ -28,7 +28,7 @@ export function configuredOrigins(env: Pick<AppEnv, "FRONTEND_ORIGINS">): string
  */
 export function corsOrigin(
   origin: string | undefined,
-  env: Pick<AppEnv, "APP_ENV" | "FRONTEND_ORIGINS">,
+  env: AppEnv,
 ): string {
   if (!origin) return "";
   const allowed = configuredOrigins(env);
@@ -39,7 +39,7 @@ export function corsOrigin(
 /** Validate browser-originated state-changing requests independently of CORS. */
 export function isTrustedOrigin(
   origin: string | undefined,
-  env: Pick<AppEnv, "APP_ENV" | "FRONTEND_ORIGINS">,
+  env: AppEnv,
 ): boolean {
   if (!origin) return true;
   return corsOrigin(origin, env) === origin;
