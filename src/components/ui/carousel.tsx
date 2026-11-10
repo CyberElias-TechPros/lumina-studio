@@ -6,6 +6,8 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { motion, useSpring, useMotionValue, type Variants } from "motion/react";
+import { SPRING, EASE } from "@/components/motion";
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -158,19 +160,68 @@ CarouselContent.displayName = "CarouselContent";
 const CarouselItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => {
     const { orientation } = useCarousel();
+    
+    // Macro-animations: Choreography staggered entry for carousel items
+    const itemVariants: Variants = {
+      hidden: { opacity: 0, scale: 0.92, filter: "blur(6px)" },
+      visible: {
+        opacity: 1,
+        scale: 1,
+        filter: "blur(0px)",
+        transition: { duration: 0.7, ease: EASE },
+      },
+    };
+
+    // Scroll-Driven Mechanics: Parallax depth background layer
+    const [inView, setInView] = React.useState(false);
+    const mx = useMotionValue(0.5);
+    const my = useMotionValue(0.5);
+    const rx = useSpring(useMotionValue(0), SPRING.tilt);
+    const ry = useSpring(useMotionValue(0), SPRING.tilt);
 
     return (
-      <div
+      <motion.div
         ref={ref}
         role="group"
         aria-roledescription="slide"
         className={cn(
-          "min-w-0 shrink-0 grow-0 basis-full",
+          "min-w-0 shrink-0 grow-0 basis-full relative overflow-hidden group",
           orientation === "horizontal" ? "pl-4" : "pt-4",
           className,
         )}
+        variants={itemVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-60px" }}
+        onMouseMove={(e) => {
+          const rect = ref.current?.getBoundingClientRect();
+          if (!rect) return;
+          mx.set((e.clientX - rect.left) / rect.width);
+          my.set((e.clientY - rect.top) / rect.height);
+          rx.set(((e.clientX - rect.left) / rect.width - 0.5) * 8);
+          ry.set(((e.clientX - rect.top) / rect.height - 0.5) * -8);
+        }}
+        onMouseLeave={() => {
+          rx.set(0);
+          ry.set(0);
+        }}
+        style={{ rotateX: rx, rotateY: ry, transformPerspective: 900 }}
+        onMouseEnter={() => setInView(true)}
         {...props}
-      />
+      >
+        {/* Heavy-Hitting Technical Rendering: Liquid distortion overlay */}
+        <motion.span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 rounded-xl group-hover:opacity-100 transition-opacity duration-300"
+          style={{
+            background: `radial-gradient(340px circle at ${mx.get() * 100}% ${my.get() * 100}%, color-mix(in oklab, var(--primary-glow) 14%, transparent), transparent 68%)`,
+            opacity: 0,
+          }}
+        />
+        <div className="relative z-10">
+          {props.children}
+        </div>
+      </motion.div>
     );
   },
 );
@@ -180,23 +231,36 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
   ({ className, variant = "outline", size = "icon", ...props }, ref) => {
     const { orientation, scrollPrev, canScrollPrev } = useCarousel();
 
+    // Micro-interactions: indent button on press
+    const [isPressed, setIsPressed] = React.useState(false);
+
     return (
       <Button
         ref={ref}
         variant={variant}
         size={size}
         className={cn(
-          "absolute  h-8 w-8 rounded-full",
+          "absolute h-8 w-8 rounded-full transition-transform duration-200",
           orientation === "horizontal"
             ? "-left-12 top-1/2 -translate-y-1/2"
             : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
           className,
+          isPressed ? "scale-90" : "scale-100"
         )}
         disabled={!canScrollPrev}
         onClick={scrollPrev}
+        onPointerDown={() => setIsPressed(true)}
+        onPointerUp={() => setIsPressed(false)}
+        onPointerLeave={() => setIsPressed(false)}
         {...props}
       >
-        <ArrowLeft className="h-4 w-4" />
+        <motion.span
+          initial={{ scale: 1 }}
+          animate={{ scale: isPressed ? 0.85 : 1 }}
+          transition={{ type: "spring", stiffness: 340, damping: 30 }}
+        >
+          <ArrowLeft className="h-4 w-4" />
+        </motion.span>
         <span className="sr-only">Previous slide</span>
       </Button>
     );
@@ -208,23 +272,36 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
   ({ className, variant = "outline", size = "icon", ...props }, ref) => {
     const { orientation, scrollNext, canScrollNext } = useCarousel();
 
+    // Micro-interactions: indent button on press
+    const [isPressed, setIsPressed] = React.useState(false);
+
     return (
       <Button
         ref={ref}
         variant={variant}
         size={size}
         className={cn(
-          "absolute h-8 w-8 rounded-full",
+          "absolute h-8 w-8 rounded-full transition-transform duration-200",
           orientation === "horizontal"
             ? "-right-12 top-1/2 -translate-y-1/2"
             : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
           className,
+          isPressed ? "scale-90" : "scale-100"
         )}
         disabled={!canScrollNext}
         onClick={scrollNext}
+        onPointerDown={() => setIsPressed(true)}
+        onPointerUp={() => setIsPressed(false)}
+        onPointerLeave={() => setIsPressed(false)}
         {...props}
       >
-        <ArrowRight className="h-4 w-4" />
+        <motion.span
+          initial={{ scale: 1 }}
+          animate={{ scale: isPressed ? 0.85 : 1 }}
+          transition={{ type: "spring", stiffness: 340, damping: 30 }}
+        >
+          <ArrowRight className="h-4 w-4" />
+        </motion.span>
         <span className="sr-only">Next slide</span>
       </Button>
     );
