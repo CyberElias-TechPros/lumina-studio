@@ -105,30 +105,165 @@ test.describe("Public marketing + application journey", () => {
     await expect(page.getByText(/html|css|javascript/i).first()).toBeVisible();
   });
 
-  test("course finder gives a catalogue-backed beginner path and resets cleanly", async ({
+  test("course assessment explains a beginner path, updates answers and resets", async ({
     page,
   }) => {
     await page.goto("/classes");
-    await expect(page.locator('input[name="course-finder-task"]')).toHaveCount(13);
-
-    const recommendation = page.getByLabel("Course recommendation");
-    await page.getByText("Build a website with code", { exact: true }).click();
-    await page.getByText("I am new to using a computer", { exact: true }).click();
+    const guide = page.locator("#course-finder");
+    const result = guide.getByLabel("Course recommendation");
+    const progress = guide.getByRole("progressbar", { name: "Questions answered" });
+    await expect(progress).toHaveAttribute("aria-valuenow", "0");
+    await guide.getByText("Websites and coding", { exact: true }).click();
+    await expect(progress).toHaveAttribute("aria-valuetext", "1 of 4 questions answered");
+    await guide.getByText("Build interactive websites with code", { exact: true }).click();
+    const typing = guide.getByRole("group", { name: /you want to type/i });
+    const saving = guide.getByRole("group", { name: /keep a document/i });
+    await typing.getByText("I'm not sure yet", { exact: true }).click();
+    await expect(result.getByRole("heading", { name: "Your guide is ready" })).toBeVisible();
+    await saving.getByText("Close it without saving", { exact: true }).click();
+    await expect(result.getByRole("heading", { name: "Typing & Computer Basics" })).toBeVisible();
+    await expect(result.getByRole("heading", { name: "Web Development" })).toBeVisible();
+    await expect(progress).toHaveAttribute("aria-valuenow", "4");
+    await expect(result).toContainText("Your exploration is complete");
+    await expect(result).toContainText("a suggestion, not a requirement");
+    await expect(result).toContainText("Use Save or Save As");
+    await expect(result).toContainText("Listed fee");
+    await expect(result).toContainText("Course length");
+    await expect(result).toContainText("You practise toward");
     await expect(
-      recommendation.getByRole("heading", { name: "Typing & Computer Basics" }),
+      result.getByRole("link", { name: /see fee, requirements and syllabus/i }).last(),
+    ).toHaveAttribute("href", "/classes/web-development");
+
+    await typing
+      .getByText("Click inside the document, then use the keyboard", { exact: true })
+      .click();
+    await saving
+      .getByText("Use Save or Save As and choose a name and location", { exact: true })
+      .click();
+    await expect(result.getByRole("heading", { name: "Web Development" })).toBeVisible();
+    await expect(result.getByRole("heading", { name: "Typing & Computer Basics" })).toHaveCount(0);
+    await guide.getByText("Creative work and content", { exact: true }).click();
+    await expect(progress).toHaveAttribute("aria-valuenow", "3");
+    await expect(result.getByRole("heading", { name: "Your guide is ready" })).toBeVisible();
+    await result.getByRole("button", { name: /start over/i }).click();
+    await expect(progress).toHaveAttribute("aria-valuenow", "0");
+    await expect(guide.locator('input[type="radio"]:checked')).toHaveCount(0);
+    await expect(guide.getByRole("group", { name: /what would you most like to do/i })).toHaveCount(
+      0,
+    );
+  });
+
+  test("assessment maps all thirteen core goals to course pages", async ({ page }) => {
+    await page.goto("/classes");
+    const guide = page.locator("#course-finder");
+    const result = guide.getByLabel("Course recommendation");
+    await guide
+      .getByText("Click inside the document, then use the keyboard", { exact: true })
+      .click();
+    await guide
+      .getByText("Use Save or Save As and choose a name and location", { exact: true })
+      .click();
+    const groups = [
+      [
+        "Everyday computer and office skills",
+        [
+          [
+            "Learn the basics of using a computer",
+            "Typing & Computer Basics",
+            "computer-basics-typing",
+          ],
+          [
+            "Make documents, spreadsheets and presentations",
+            "Microsoft Office",
+            "microsoft-office",
+          ],
+          ["Organise records and enter data accurately", "Data Entry", "data-entry"],
+        ],
+      ],
+      [
+        "Creative work and content",
+        [
+          ["Create flyers and visual designs", "Graphic Design", "graphic-design"],
+          ["Create photo and video content", "Content Creation", "content-creation"],
+        ],
+      ],
+      [
+        "Websites and coding",
+        [
+          ["Design web pages with HTML and CSS", "Web Design", "web-design"],
+          ["Build interactive websites with code", "Web Development", "web-development"],
+        ],
+      ],
+      [
+        "Business, marketing and teaching",
+        [
+          ["Promote a business online", "Digital Marketing", "digital-marketing"],
+          [
+            "Manage a business's social media",
+            "Social Media Management",
+            "social-media-management",
+          ],
+          ["Price and deliver freelance work", "Business & Freelancing", "business-freelancing"],
+          ["Teach a class or course online", "Online Teaching", "online-teaching"],
+        ],
+      ],
+      [
+        "Computers and digital safety",
+        [
+          ["Understand and troubleshoot computers", "Computer Repairs", "computer-repairs"],
+          ["Improve my digital safety skills", "Cybersecurity", "cybersecurity"],
+        ],
+      ],
+    ] as const;
+    for (const [interest, goals] of groups) {
+      await guide.getByText(interest, { exact: true }).click();
+      for (const [label, title, slug] of goals) {
+        await guide.getByText(label, { exact: true }).click();
+        await expect(result.getByRole("heading", { name: title, exact: true })).toBeVisible();
+        await expect(
+          result.getByRole("link", { name: /see fee, requirements and syllabus/i }),
+        ).toHaveAttribute("href", `/classes/${slug}`);
+      }
+    }
+    await guide
+      .getByRole("group", { name: /which area/i })
+      .getByText("I'm not sure yet", { exact: true })
+      .click();
+    await guide.getByText("Start by building computer confidence", { exact: true }).click();
+    await expect(result.getByRole("heading", { name: "Typing & Computer Basics" })).toBeVisible();
+    await page.reload();
+    await expect(guide.locator('input[type="radio"]:checked')).toHaveCount(0);
+  });
+
+  test("assessment has a keyboard path and a no-JavaScript alternative", async ({
+    page,
+    browser,
+    baseURL,
+  }) => {
+    await page.goto("/");
+    const guide = page.locator("#home-course-finder");
+    const first = guide.getByRole("radio", { name: /everyday computer and office skills/i });
+    await first.focus();
+    await page.keyboard.press("Space");
+    await expect(first).toBeChecked();
+    await expect(
+      guide.getByRole("group", { name: /what would you most like to do/i }),
     ).toBeVisible();
-    await expect(recommendation.getByRole("heading", { name: "Web Development" })).toBeVisible();
-
-    await page.getByText("I use a computer regularly", { exact: true }).click();
-    await expect(recommendation.getByRole("heading", { name: "Web Development" })).toBeVisible();
-    await expect(
-      recommendation.getByRole("heading", { name: "Typing & Computer Basics" }),
-    ).toHaveCount(0);
-
-    await recommendation.getByRole("button", { name: /start over/i }).click();
-    await expect(
-      recommendation.getByRole("heading", { name: "Your guide is ready" }),
-    ).toBeVisible();
+    const context = await browser.newContext({ javaScriptEnabled: false, baseURL });
+    try {
+      const noScript = await context.newPage();
+      await noScript.goto("/");
+      await expect(noScript.locator("#home-course-finder")).toContainText(
+        "This interactive guide needs JavaScript",
+      );
+      await expect(
+        noScript
+          .locator("#home-course-finder")
+          .getByRole("link", { name: "browse all courses", exact: true }),
+      ).toHaveAttribute("href", "/classes");
+    } finally {
+      await context.close();
+    }
   });
 
   test("visitor fills the full application form end-to-end", async ({ page }) => {

@@ -1,137 +1,160 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { ArrowRight, CheckCircle2, RotateCcw } from "lucide-react";
+import { useState } from "react";
+import {
+  ArrowRight,
+  Check,
+  CircleHelp,
+  Code2,
+  Compass,
+  FileText,
+  Folder,
+  Keyboard,
+  Lightbulb,
+  Megaphone,
+  Monitor,
+  MousePointer2,
+  Palette,
+  RotateCcw,
+  ShieldCheck,
+  Sparkles,
+  type LucideIcon,
+} from "lucide-react";
 import { Link } from "@/lib/next-compat/router";
 import { flyerCourses } from "@/data/academy/catalog";
 import type { AcademyCourse } from "@/data/academy/types";
 
-const tasks = [
+// Each specific goal maps to one course in the canonical flyer catalogue.
+const interests = [
   {
-    slug: "computer-basics-typing",
-    title: "Get comfortable using a computer",
-    detail: "Mouse, keyboard, files, email and safe everyday use.",
+    value: "everyday",
+    icon: Monitor,
+    label: "Everyday computer and office skills",
+    detail: "Get comfortable on a computer or work with documents and data.",
+    goals: [
+      { slug: "computer-basics-typing", label: "Learn the basics of using a computer" },
+      { slug: "microsoft-office", label: "Make documents, spreadsheets and presentations" },
+      { slug: "data-entry", label: "Organise records and enter data accurately" },
+    ],
   },
   {
-    slug: "microsoft-office",
-    title: "Make documents, spreadsheets and slides",
-    detail: "Create useful work for school, an office or a small business.",
+    value: "creative",
+    icon: Palette,
+    label: "Creative work and content",
+    detail: "Make designs, photos or videos for a project or business.",
+    goals: [
+      { slug: "graphic-design", label: "Create flyers and visual designs" },
+      { slug: "content-creation", label: "Create photo and video content" },
+    ],
   },
   {
-    slug: "graphic-design",
-    title: "Create flyers and visual designs",
-    detail: "Turn an idea into a clear, finished design.",
+    value: "web",
+    icon: Code2,
+    label: "Websites and coding",
+    detail: "Design web pages or learn to build interactive websites.",
+    goals: [
+      { slug: "web-design", label: "Design web pages with HTML and CSS" },
+      { slug: "web-development", label: "Build interactive websites with code" },
+    ],
   },
   {
-    slug: "web-design",
-    title: "Build a website with HTML and CSS",
-    detail: "Structure, style and publish real pages for a business or project.",
+    value: "business",
+    icon: Megaphone,
+    label: "Business, marketing and teaching",
+    detail: "Promote a business, work with clients or teach online.",
+    goals: [
+      { slug: "digital-marketing", label: "Promote a business online" },
+      { slug: "social-media-management", label: "Manage a business's social media" },
+      { slug: "business-freelancing", label: "Price and deliver freelance work" },
+      { slug: "online-teaching", label: "Teach a class or course online" },
+    ],
   },
   {
-    slug: "web-development",
-    title: "Build a website with code",
-    detail: "Learn the foundations behind interactive web pages.",
+    value: "technical",
+    icon: ShieldCheck,
+    label: "Computers and digital safety",
+    detail: "Understand computer hardware or practise safer digital habits.",
+    goals: [
+      { slug: "computer-repairs", label: "Understand and troubleshoot computers" },
+      { slug: "cybersecurity", label: "Improve my digital safety skills" },
+    ],
   },
   {
-    slug: "digital-marketing",
-    title: "Promote a business online",
-    detail: "Plan digital campaigns and understand how to measure them.",
-  },
-  {
-    slug: "social-media-management",
-    title: "Plan and manage a business's social media",
-    detail: "Build a content calendar, handle customer interactions and read performance.",
-  },
-  {
-    slug: "content-creation",
-    title: "Create useful photo and video content",
-    detail: "Plan, shoot and edit material for a brand, project or campaign.",
-  },
-  {
-    slug: "business-freelancing",
-    title: "Price and deliver freelance work",
-    detail: "Practise client briefs, proposals, pricing and professional handover.",
-  },
-  {
-    slug: "online-teaching",
-    title: "Teach a class or course online",
-    detail: "Plan lessons and practise clear, effective online teaching.",
-  },
-  {
-    slug: "data-entry",
-    title: "Organise records and enter data accurately",
-    detail: "Build careful, consistent data-entry and spreadsheet habits.",
-  },
-  {
-    slug: "computer-repairs",
-    title: "Understand and troubleshoot computers",
-    detail: "Learn the safe foundations of hardware diagnosis and care.",
-  },
-  {
-    slug: "cybersecurity",
-    title: "Improve my digital safety skills",
-    detail: "Understand everyday security risks and safer practices.",
+    value: "unsure",
+    icon: Compass,
+    label: "I'm not sure yet",
+    detail: "Explore a foundation for using a computer while you decide.",
+    goals: [{ slug: "computer-basics-typing", label: "Start by building computer confidence" }],
   },
 ] as const;
 
-const startingPoints = [
-  { value: "new", label: "I am new to using a computer" },
-  { value: "some", label: "I can do basic tasks, but need more practice" },
-  { value: "comfortable", label: "I use a computer regularly" },
+type Interest = (typeof interests)[number]["value"];
+type Answer = "yes" | "no" | "unsure";
+
+const skillQuestions = [
+  {
+    key: "typing",
+    legend: "3. You want to type in an open document. What would you do?",
+    options: [
+      { value: "yes", label: "Click inside the document, then use the keyboard" },
+      { value: "no", label: "Press the computer's power button" },
+      { value: "unsure", label: "I'm not sure yet" },
+    ],
+    explanation: "Click inside the document to place the cursor, then type with the keyboard.",
+  },
+  {
+    key: "saving",
+    legend: "4. How would you keep a document so you can open it later?",
+    options: [
+      { value: "yes", label: "Use Save or Save As and choose a name and location" },
+      { value: "no", label: "Close it without saving" },
+      { value: "unsure", label: "I'm not sure yet" },
+    ],
+    explanation: "Use Save or Save As, choose a name and location, and save the file.",
+  },
 ] as const;
 
-type StartingPoint = (typeof startingPoints)[number]["value"];
-type Recommendation = { course: AcademyCourse; reason: string };
+type Recommendation = { course: AcademyCourse; label: string; reason: string };
 
-function formatCourseFee(fee: number): string {
-  return `₦${fee.toLocaleString("en-NG")}`;
-}
-
-function recommend(taskSlug: string, startingPoint: StartingPoint): Recommendation[] {
-  const target = flyerCourses.find((course) => course.slug === taskSlug);
+function recommend(
+  interest: Interest,
+  goal: string,
+  answers: { typing: Answer; saving: Answer },
+): Recommendation[] {
+  const target = flyerCourses.find((course) => course.slug === goal);
   const basics = flyerCourses.find((course) => course.slug === "computer-basics-typing");
   if (!target) return [];
 
-  if (startingPoint === "new" && target.slug !== "computer-basics-typing" && basics) {
+  const needsFoundation = answers.typing !== "yes" || answers.saving !== "yes";
+  const targetReason =
+    interest === "unsure"
+      ? "You said you are still deciding; this course is one way to explore the basics."
+      : "This course matches the goal you chose. Review its requirements before applying.";
+  if (needsFoundation && target.slug !== "computer-basics-typing" && basics) {
     return [
       {
         course: basics,
+        label: "Consider starting here",
         reason:
-          "Start with the foundations. This beginner course covers the computer habits the other practical courses assume.",
+          "One or both computer-basics answers need practice or were unsure. This course may help you build confidence first; it is a suggestion, not a requirement.",
       },
-      {
-        course: target,
-        reason: "Then follow the course that matches the task you chose.",
-      },
+      { course: target, label: "Your interest match", reason: targetReason },
     ];
   }
-
-  return [
-    {
-      course: target,
-      reason:
-        target.slug === "computer-basics-typing"
-          ? "A practical first step if you want to build confidence with a computer."
-          : "This is the closest match to the task you selected. Check the prerequisites on the course page before applying.",
-    },
-  ];
+  return [{ course: target, label: "Your interest match", reason: targetReason }];
 }
 
-function RecommendationCard({ item, number }: { item: Recommendation; number: number }) {
+function RecommendationCard({ item }: { item: Recommendation }) {
   const { course } = item;
-
   return (
     <article className="border-border bg-card rounded-xl border p-5">
-      <p className="text-primary text-xs font-semibold tracking-[0.12em] uppercase">
-        {number === 1 ? "Recommended starting point" : "Next step to explore"}
-      </p>
-      <h3 className="font-display mt-2 text-xl font-semibold tracking-tight">{course.title}</h3>
+      <p className="text-primary text-xs font-semibold tracking-[0.12em] uppercase">{item.label}</p>
+      <h4 className="font-display mt-2 text-xl font-semibold tracking-tight">{course.title}</h4>
       <p className="text-muted-foreground mt-2 text-sm leading-relaxed">{item.reason}</p>
-
       <dl className="border-border mt-4 grid grid-cols-2 gap-3 border-y py-4 text-sm">
         <div>
           <dt className="text-muted-foreground text-xs">Listed fee</dt>
-          <dd className="mt-1 font-semibold">{formatCourseFee(course.fee)}</dd>
+          <dd className="mt-1 font-semibold">₦{course.fee.toLocaleString("en-NG")}</dd>
         </div>
         <div>
           <dt className="text-muted-foreground text-xs">Course length</dt>
@@ -142,30 +165,98 @@ function RecommendationCard({ item, number }: { item: Recommendation; number: nu
           <dd className="mt-1 font-semibold">{course.deliverable.title}</dd>
         </div>
       </dl>
-
       <Link
         to="/classes/$courseSlug"
         params={{ courseSlug: course.slug }}
-        className="text-primary mt-4 inline-flex items-center gap-2 text-sm font-semibold hover:underline"
+        className="text-primary mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold hover:underline"
       >
-        See fee, requirements and syllabus <ArrowRight className="size-4" />
+        See fee, requirements and syllabus <ArrowRight aria-hidden="true" className="size-4" />
       </Link>
     </article>
   );
 }
 
-export function CourseFinder({ id = "course-finder" }: { id?: string }) {
-  const [taskSlug, setTaskSlug] = useState("");
-  const [startingPoint, setStartingPoint] = useState<StartingPoint | "">("");
-
-  const recommendations = useMemo(
-    () => (taskSlug && startingPoint ? recommend(taskSlug, startingPoint) : []),
-    [taskSlug, startingPoint],
+function Choice({
+  name,
+  value,
+  label,
+  detail,
+  icon: Icon,
+  selected,
+  onChange,
+}: {
+  name: string;
+  value: string;
+  label: string;
+  detail?: string;
+  icon?: LucideIcon;
+  selected: boolean;
+  onChange: () => void;
+}) {
+  return (
+    <label className="cursor-pointer">
+      <input
+        className="peer sr-only"
+        type="radio"
+        name={name}
+        value={value}
+        checked={selected}
+        onChange={onChange}
+      />
+      <span
+        className={`border-border bg-card hover:border-primary/50 flex h-full min-h-11 items-start gap-3 rounded-xl border p-4 transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2 ${selected ? "border-primary bg-primary/5 shadow-sm" : ""}`}
+      >
+        {Icon && (
+          <span
+            aria-hidden="true"
+            className={`grid size-10 shrink-0 place-items-center rounded-xl ${selected ? "bg-primary text-primary-foreground" : "bg-primary/10 text-primary"}`}
+          >
+            <Icon className="size-5" />
+          </span>
+        )}
+        <span className="min-w-0 flex-1">
+          <span className="block text-sm font-semibold leading-snug">{label}</span>
+          {detail && (
+            <span className="text-muted-foreground mt-1.5 block text-xs leading-relaxed">
+              {detail}
+            </span>
+          )}
+        </span>
+        <span
+          aria-hidden="true"
+          className={`mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border ${selected ? "border-primary bg-primary text-primary-foreground" : "border-muted-foreground/45"}`}
+        >
+          {selected && <Check className="size-3" strokeWidth={3} />}
+        </span>
+      </span>
+    </label>
   );
+}
+
+export function CourseFinder({ id = "course-finder" }: { id?: string }) {
+  const [interest, setInterest] = useState<Interest | "">("");
+  const [goal, setGoal] = useState("");
+  const [answers, setAnswers] = useState<
+    Partial<Record<(typeof skillQuestions)[number]["key"], Answer>>
+  >({});
+  const selectedInterest = interests.find((item) => item.value === interest);
+  const recommendations =
+    interest && goal && answers.typing && answers.saving
+      ? recommend(interest, goal, { typing: answers.typing, saving: answers.saving })
+      : [];
+  const hasAnswers = Boolean(interest || goal || answers.typing || answers.saving);
+  const checkpoints = [
+    Boolean(interest),
+    Boolean(goal),
+    Boolean(answers.typing),
+    Boolean(answers.saving),
+  ];
+  const completed = checkpoints.filter(Boolean).length;
 
   const reset = () => {
-    setTaskSlug("");
-    setStartingPoint("");
+    setInterest("");
+    setGoal("");
+    setAnswers({});
   };
 
   return (
@@ -174,112 +265,219 @@ export function CourseFinder({ id = "course-finder" }: { id?: string }) {
         <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div>
             <p className="text-primary text-xs font-semibold tracking-[0.14em] uppercase">
-              A practical course guide
+              Find your starting point
             </p>
             <h2 className="font-display mt-3 max-w-2xl text-3xl font-semibold tracking-tight text-balance md:text-4xl">
-              Start with the task you want to do.
+              What could you learn next?
             </h2>
             <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed">
-              Choose a real task and tell us where you are starting from. We will match it to one of
-              the {flyerCourses.length} core courses, show the listed fee and final project, and
-              explain when computer basics should come first. Some specialist courses rotate through
-              the timetable;{" "}
-              <Link
-                to="/classes#rotating-courses"
-                className="text-primary font-medium hover:underline"
-              >
-                check the specialist-course list
-              </Link>
-              .
+              Tell us what interests you, then try two everyday computer questions. We will suggest
+              a path from our {flyerCourses.length} core courses. It is not an exam or an admissions
+              decision—it's fine to be unsure.
             </p>
 
-            <fieldset className="mt-8">
-              <legend className="font-display text-base font-semibold">
-                1. What would you like to learn to do?
+            <p className="text-muted-foreground mt-4 text-sm">
+              This interactive guide needs JavaScript. You can also{" "}
+              <Link className="text-primary underline" to="/classes">
+                browse all courses
+              </Link>{" "}
+              and compare their fees and requirements.
+            </p>
+            <div className="mt-8 overflow-hidden rounded-2xl bg-[#101f34] p-5 text-white sm:p-6">
+              <div className="flex flex-wrap items-start justify-between gap-4">
+                <div>
+                  <p className="text-xs font-semibold tracking-[0.14em] uppercase text-[#a4dce7]">
+                    Your discovery journey
+                  </p>
+                  <p className="font-display mt-2 text-xl font-semibold">
+                    Explore at your own pace.
+                  </p>
+                  <p className="mt-1 text-sm leading-relaxed text-slate-300">
+                    No scores, no timer. Every answer is a step forward.
+                  </p>
+                </div>
+                <span className="rounded-full border border-white/25 px-3 py-1.5 text-xs font-semibold">
+                  {completed} of 4 answered
+                </span>
+              </div>
+              <div
+                role="progressbar"
+                aria-label="Questions answered"
+                aria-valuemin={0}
+                aria-valuemax={4}
+                aria-valuenow={completed}
+                aria-valuetext={`${completed} of 4 questions answered`}
+                className="mt-5 h-1.5 overflow-hidden rounded-full bg-white/15"
+              >
+                <div
+                  className="h-full rounded-full bg-[#8ed9e4] transition-[width] duration-300 motion-reduce:transition-none"
+                  style={{ width: `${completed * 25}%` }}
+                />
+              </div>
+              <ol aria-label="Assessment checkpoints" className="mt-5 grid grid-cols-4 gap-2">
+                {(["Interest", "Goal", "Try one", "Try two"] as const).map((label, index) => (
+                  <li
+                    key={label}
+                    className="flex min-w-0 flex-col items-start gap-2 text-xs text-slate-200"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className={`grid size-8 place-items-center rounded-full border text-xs font-bold ${checkpoints[index] ? "border-[#8ed9e4] bg-[#8ed9e4] text-[#101f34]" : "border-white/35 text-white"}`}
+                    >
+                      {checkpoints[index] ? (
+                        <Check className="size-4" strokeWidth={3} />
+                      ) : (
+                        String(index + 1).padStart(2, "0")
+                      )}
+                    </span>
+                    <span>
+                      {label}
+                      <span className="sr-only">
+                        {checkpoints[index] ? ": answered" : ": not answered"}
+                      </span>
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <fieldset className="mt-9">
+              <legend className="font-display text-lg font-semibold">
+                <span className="text-primary mr-2 text-xs tracking-widest">01 / EXPLORE</span>
+                <br />
+                1. Which area interests you most?
               </legend>
-              <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                {tasks.map((task) => {
-                  const selected = taskSlug === task.slug;
-                  return (
-                    <label key={task.slug} className="cursor-pointer">
-                      <input
-                        className="peer sr-only"
-                        type="radio"
-                        name={`${id}-task`}
-                        value={task.slug}
-                        checked={selected}
-                        onChange={() => setTaskSlug(task.slug)}
-                      />
-                      <span
-                        className={`border-border bg-card hover:border-primary/45 flex h-full gap-3 rounded-lg border p-3.5 transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-ring ${selected ? "border-primary bg-primary/5" : ""}`}
-                      >
-                        <CheckCircle2
-                          aria-hidden="true"
-                          className={`mt-0.5 size-4 shrink-0 ${selected ? "text-primary" : "text-muted-foreground/45"}`}
+              <p className="text-muted-foreground mt-2 text-sm">
+                Pick the world you are curious about. You can change your mind.
+              </p>
+              <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                {interests.map((item) => (
+                  <Choice
+                    key={item.value}
+                    name={`${id}-interest`}
+                    value={item.value}
+                    label={item.label}
+                    detail={item.detail}
+                    icon={item.icon}
+                    selected={interest === item.value}
+                    onChange={() => {
+                      setInterest(item.value);
+                      setGoal("");
+                    }}
+                  />
+                ))}
+              </div>
+            </fieldset>
+
+            {selectedInterest && (
+              <fieldset className="mt-9">
+                <legend className="font-display text-lg font-semibold">
+                  <span className="text-primary mr-2 text-xs tracking-widest">
+                    02 / CHOOSE A GOAL
+                  </span>
+                  <br />
+                  2. What would you most like to do?
+                </legend>
+                <p className="text-muted-foreground mt-2 text-sm">
+                  Choose the outcome that sounds most exciting to you.
+                </p>
+                <div className="mt-4 grid gap-2">
+                  {selectedInterest.goals.map((item) => (
+                    <Choice
+                      key={item.slug}
+                      name={`${id}-goal`}
+                      value={item.slug}
+                      label={item.label}
+                      selected={goal === item.slug}
+                      onChange={() => setGoal(item.slug)}
+                    />
+                  ))}
+                </div>
+              </fieldset>
+            )}
+
+            {skillQuestions.map((question, index) => (
+              <fieldset key={question.key} className="mt-9">
+                <legend className="font-display text-lg font-semibold">
+                  <span className="text-primary mr-2 text-xs tracking-widest">
+                    0{index + 3} / QUICK CHALLENGE
+                  </span>
+                  <br />
+                  {question.legend}
+                </legend>
+                <div className="mt-4 grid gap-4 rounded-2xl border border-border bg-card p-4 sm:grid-cols-[10rem_1fr] sm:p-5">
+                  <div
+                    aria-hidden="true"
+                    className="relative flex min-h-28 items-center justify-center overflow-hidden rounded-xl bg-[#e8f2f7] text-[#194587] dark:bg-[#263b4e] dark:text-[#b6d7ff]"
+                  >
+                    <span className="absolute top-3 left-3 text-[10px] font-bold tracking-widest uppercase opacity-70">
+                      SCENARIO 0{index + 1}
+                    </span>
+                    <span className="absolute -right-5 -bottom-8 size-28 rounded-full border-[18px] border-current opacity-[0.07]" />
+                    <span className="relative mt-4 grid size-16 place-items-center rounded-2xl border border-current/15 bg-white/70 shadow-sm dark:bg-black/20">
+                      {question.key === "typing" ? (
+                        <FileText className="size-8" strokeWidth={1.4} />
+                      ) : (
+                        <Folder className="size-8" strokeWidth={1.4} />
+                      )}
+                      <span className="absolute -right-3 -bottom-2 grid size-8 place-items-center rounded-full bg-[#194587] text-white">
+                        {question.key === "typing" ? (
+                          <MousePointer2 className="size-4" />
+                        ) : (
+                          <Keyboard className="size-4" />
+                        )}
+                      </span>
+                    </span>
+                  </div>
+                  <div>
+                    <p className="text-muted-foreground mb-3 flex items-center gap-2 text-xs leading-relaxed">
+                      <Lightbulb aria-hidden="true" className="text-primary size-4 shrink-0" /> Take
+                      your best guess. It's okay not to know.
+                    </p>
+                    <div className="grid gap-2">
+                      {question.options.map((option) => (
+                        <Choice
+                          key={option.value}
+                          name={`${id}-${question.key}`}
+                          value={option.value}
+                          label={option.label}
+                          selected={answers[question.key] === option.value}
+                          onChange={() =>
+                            setAnswers((previous) => ({
+                              ...previous,
+                              [question.key]: option.value,
+                            }))
+                          }
                         />
-                        <span>
-                          <span className="block text-sm font-medium leading-snug">
-                            {task.title}
-                          </span>
-                          <span className="text-muted-foreground mt-1 block text-xs leading-relaxed">
-                            {task.detail}
-                          </span>
-                        </span>
-                      </span>
-                    </label>
-                  );
-                })}
-              </div>
-            </fieldset>
-
-            <fieldset className="mt-7">
-              <legend className="font-display text-base font-semibold">
-                2. Where are you starting from?
-              </legend>
-              <div className="mt-3 grid gap-2">
-                {startingPoints.map((option) => {
-                  const selected = startingPoint === option.value;
-                  return (
-                    <label key={option.value} className="cursor-pointer">
-                      <input
-                        className="peer sr-only"
-                        type="radio"
-                        name={`${id}-starting-point`}
-                        value={option.value}
-                        checked={selected}
-                        onChange={() => setStartingPoint(option.value)}
-                      />
-                      <span
-                        className={`border-border bg-card hover:border-primary/45 flex items-center gap-3 rounded-lg border px-4 py-3 text-sm transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-ring ${selected ? "border-primary bg-primary/5 font-medium" : ""}`}
-                      >
-                        <span
-                          aria-hidden="true"
-                          className={`flex size-4 shrink-0 items-center justify-center rounded-full border ${selected ? "border-primary bg-primary text-primary-foreground" : "border-muted-foreground/45"}`}
-                        >
-                          {selected && <span className="size-1.5 rounded-full bg-current" />}
-                        </span>
-                        {option.label}
-                      </span>
-                    </label>
-                  );
-                })}
-              </div>
-            </fieldset>
-
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            ))}
+            {recommendations.length > 0 && (
+              <a
+                href={`#${id}-results`}
+                className="text-primary mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4"
+              >
+                View your suggestions <ArrowRight aria-hidden="true" className="size-4" />
+              </a>
+            )}
             <p className="text-muted-foreground mt-5 text-xs leading-relaxed">
-              This guide is private to your browser: your selections are not submitted or stored.
-              Course fees and schedules can change; confirm details with admissions before you pay.
+              Your answers stay on this page and are not submitted or stored. This short guide
+              checks only two basic concepts, not your full skills or potential. Fees and schedules
+              can change; confirm details with admissions before paying.
             </p>
           </div>
 
           <aside
+            id={`${id}-results`}
             aria-label="Course recommendation"
-            className="border-border bg-background rounded-2xl border p-5 md:p-6"
+            className="border-border bg-background scroll-mt-24 rounded-2xl border p-5 md:p-6"
           >
             <p className="sr-only" aria-live="polite">
               {recommendations.length
-                ? `Recommended courses: ${recommendations.map((item) => item.course.title).join(", ")}.`
-                : "Choose a task and starting point to get a course recommendation."}
+                ? `Your suggestions are ready: ${recommendations.map((item) => item.course.title).join(", ")}.`
+                : "Answer all four questions for a suggestion."}
             </p>
             <div className="flex items-start justify-between gap-4">
               <div>
@@ -287,55 +485,98 @@ export function CourseFinder({ id = "course-finder" }: { id?: string }) {
                   Your next step
                 </p>
                 <h3 className="font-display mt-2 text-2xl font-semibold tracking-tight">
-                  {recommendations.length ? "A course path to explore" : "Your guide is ready"}
+                  {recommendations.length ? "A path to explore" : "Your guide is ready"}
                 </h3>
               </div>
-              {recommendations.length > 0 && (
+              {hasAnswers && (
                 <button
                   type="button"
                   onClick={reset}
-                  className="text-muted-foreground hover:text-foreground inline-flex shrink-0 items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium focus-visible:ring-2 focus-visible:ring-ring"
+                  className="text-muted-foreground hover:text-foreground inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-md px-2 text-xs font-medium focus-visible:ring-2 focus-visible:ring-ring"
                 >
-                  <RotateCcw className="size-3.5" /> Start over
+                  <RotateCcw aria-hidden="true" className="size-3.5" /> Start over
                 </button>
               )}
             </div>
-
-            {recommendations.length > 0 ? (
+            {recommendations.length ? (
               <div className="mt-5 space-y-3">
-                {recommendations.map((item, index) => (
-                  <RecommendationCard
-                    key={`${item.course.slug}-${index}`}
-                    item={item}
-                    number={index + 1}
-                  />
+                <div className="flex items-center gap-3 rounded-xl bg-primary/10 p-4 text-primary">
+                  <span
+                    aria-hidden="true"
+                    className="grid size-10 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground"
+                  >
+                    <Sparkles className="size-5" />
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold">Your exploration is complete</p>
+                    <p className="mt-0.5 text-xs leading-relaxed">
+                      A starting point, not a score. Change any answer to explore again.
+                    </p>
+                  </div>
+                </div>
+                {recommendations.map((item) => (
+                  <RecommendationCard key={item.course.slug} item={item} />
                 ))}
+                <div className="border-border rounded-xl border p-4">
+                  <h4 className="font-display text-base font-semibold">
+                    About the computer questions
+                  </h4>
+                  {skillQuestions.map((question) => (
+                    <p
+                      key={question.key}
+                      className="text-muted-foreground mt-2 text-sm leading-relaxed"
+                    >
+                      <span className="text-foreground font-medium">
+                        {answers[question.key] === "yes"
+                          ? "You chose the helpful action. "
+                          : answers[question.key] === "unsure"
+                            ? "Not sure yet? "
+                            : "A helpful action: "}
+                      </span>
+                      {question.explanation}
+                    </p>
+                  ))}
+                </div>
                 <p className="text-muted-foreground text-xs leading-relaxed">
-                  This is a starting suggestion, not an admissions decision. Review each course's
-                  listed requirements and ask the Academy if you are unsure.
+                  These are starting suggestions, not a measure of your potential or a guarantee of
+                  admission. Check each course's requirements and ask admissions if you are unsure.
                 </p>
               </div>
             ) : (
               <div className="border-border bg-muted/30 mt-5 rounded-xl border border-dashed p-6">
+                <span
+                  aria-hidden="true"
+                  className="bg-primary/10 text-primary mb-4 grid size-12 place-items-center rounded-2xl"
+                >
+                  <CircleHelp className="size-6" />
+                </span>
                 <p className="font-display text-lg font-semibold">
-                  Two choices make a useful plan.
+                  Four questions, one starting point.
                 </p>
                 <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                  Select a task and your current comfort level. No account is needed, and nothing is
-                  sent to the Academy.
+                  Choose an interest and a goal, then answer the two computer questions. No account
+                  is needed.
                 </p>
-                <p className="text-muted-foreground mt-5 text-sm leading-relaxed">
-                  Not sure yet? Start with the course outlines and compare fees, entry requirements
-                  and the work each course is designed around.
-                </p>
-                <Link
-                  to="/classes"
-                  className="text-primary mt-4 inline-flex items-center gap-2 text-sm font-semibold hover:underline"
-                >
-                  Browse all courses <ArrowRight className="size-4" />
-                </Link>
               </div>
             )}
+            <p className="text-muted-foreground mt-5 text-sm leading-relaxed">
+              Want to compare for yourself? Browse all courses, including specialist courses that
+              rotate through the timetable.
+            </p>
+            <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
+              <Link
+                to="/classes"
+                className="text-primary inline-flex min-h-11 items-center gap-2 text-sm font-semibold hover:underline"
+              >
+                Browse all courses <ArrowRight aria-hidden="true" className="size-4" />
+              </Link>
+              <Link
+                to="/classes#rotating-courses"
+                className="text-primary inline-flex min-h-11 items-center gap-2 text-sm font-semibold hover:underline"
+              >
+                Specialist courses <ArrowRight aria-hidden="true" className="size-4" />
+              </Link>
+            </div>
           </aside>
         </div>
       </div>

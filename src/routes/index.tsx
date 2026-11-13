@@ -348,6 +348,15 @@ function Home() {
               All notes
             </Link>
             <Link
+              to="/practice/computer-basics"
+              className="text-primary text-sm font-medium hover:underline"
+            >
+              Try the Computer Basics Lab
+            </Link>
+            <Link to="/learning-trail" className="text-primary text-sm font-medium hover:underline">
+              Your learning trail
+            </Link>
+            <Link
               to="/editorial"
               className="text-muted-foreground text-sm font-medium hover:text-foreground"
             >

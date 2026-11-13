@@ -66,6 +66,8 @@ jobs:
       # (test-ad-placement) — including every surface that must never carry a unit.
       - name: Ad placement policy and behaviour
         run: npm run check:ads
+      - name: Learning content and measurement safety
+        run: npm run test:learning
       - name: Content quality report
         run: npm run audit:content
       - name: Image provenance report (non-blocking)
@@ -119,7 +121,7 @@ jobs:
       - run: npm run build
         env:
           NEXT_PUBLIC_ENABLE_MOCKS: "true"
-      - run: npx playwright test e2e/tuition.spec.ts e2e/private-cache.spec.ts --project=chromium
+      - run: npx playwright test e2e/tuition.spec.ts e2e/private-cache.spec.ts e2e/public.spec.ts e2e/practice-lab.spec.ts e2e/learning-trail.spec.ts --project=chromium
         env:
           E2E_BASE_URL: http://127.0.0.1:3000
           E2E_API_BASE: http://127.0.0.1:8787
