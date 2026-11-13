@@ -9,11 +9,8 @@ import {
   ChevronRight,
   Clock,
   FileText,
-  GraduationCap,
   Laptop,
-  Target,
   Users,
-  Wallet,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -124,105 +121,100 @@ function CoursePage() {
   return (
     <PageShell>
       <article>
-        {/* Hero */}
-        <header className="border-border relative border-b py-12 md:py-16">
-          <div className="container-page">
-            <Reveal>
-              <nav aria-label="Breadcrumb">
-                <Link
-                  to="/classes"
-                  className="text-foreground/60 hover:text-foreground inline-flex items-center gap-1.5 text-sm font-semibold transition-colors"
-                >
-                  <ArrowLeft className="size-4" /> All classes
-                </Link>
-              </nav>
-            </Reveal>
-
-            <Reveal delay={0.05}>
-              <div className="mt-7 flex flex-wrap items-center gap-2">
-                <Badge variant="secondary" className="font-semibold">
-                  {course.category}
-                </Badge>
-                <Badge variant="outline" className="border-foreground/15 font-normal">
-                  {course.level}
-                </Badge>
-                {course.rotating && (
-                  <Badge variant="outline" className="border-foreground/15 font-normal">
-                    Rotating short course
+        {/* Course facts remain visible without motion or JavaScript. */}
+        <header className="border-border border-b">
+          <div className="container-page py-12 md:py-20">
+            <nav aria-label="Breadcrumb">
+              <Link
+                to="/classes"
+                className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm font-semibold"
+              >
+                <ArrowLeft className="size-4" /> All classes
+              </Link>
+            </nav>
+            <div className="mt-8 grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
+              <div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <Badge variant="secondary" className="font-semibold">
+                    {course.category}
                   </Badge>
-                )}
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.1}>
-              <h1 className="font-display mt-6 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-                {course.title}
-              </h1>
-            </Reveal>
-
-            <Reveal delay={0.14}>
-              <p className="text-foreground/80 mt-6 max-w-2xl text-body-lg text-pretty">
-                {course.hook}
-              </p>
-            </Reveal>
-
-            <Reveal delay={0.16}>
-              <figure className="border-foreground/12 mt-8 max-w-3xl overflow-hidden rounded-[14px] border">
-                <div className="bg-muted aspect-[16/9]">
-                  <CourseCover slug={course.slug} />
+                  <Badge variant="outline">{course.level}</Badge>
+                  {course.rotating && <Badge variant="outline">Rotating short course</Badge>}
                 </div>
-              </figure>
-            </Reveal>
-
-            <Reveal delay={0.18}>
-              <dl className="border-foreground/10 mt-10 grid grid-cols-2 border-t lg:grid-cols-4">
-                {[
-                  { icon: Wallet, label: "Course fee", value: formatFee(course.fee) },
-                  { icon: Clock, label: "Duration", value: `${course.weeks} weeks` },
-                  {
-                    icon: GraduationCap,
-                    label: "Sessions",
-                    value: `${course.sessions.length} · ${course.sessionsPerWeek} per week`,
-                  },
-                  {
-                    icon: Target,
-                    label: "You leave with",
-                    value: course.deliverable.title,
-                  },
-                ].map(({ icon: Icon, label, value }) => (
-                  <div
-                    key={label}
-                    className="border-foreground/10 border-b px-1 py-5 lg:border-r lg:border-b-0 lg:pr-6 lg:last:border-r-0"
-                  >
-                    <dt className="font-label text-foreground/55 flex items-center gap-2 text-[10px] tracking-[0.14em] uppercase">
-                      <Icon className="size-3.5" /> {label}
-                    </dt>
-                    <dd className="font-display mt-2 text-lg leading-snug font-semibold">
-                      {value}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </Reveal>
-
-            <Reveal delay={0.22}>
-              <div className="mt-9 flex flex-wrap gap-3">
-                <Button asChild>
-                  {course.rotating ? (
-                    <a href={availabilityUrl} target="_blank" rel="noopener noreferrer">
-                      Ask admissions about availability
-                    </a>
-                  ) : (
-                    <Link to="/apply" search={{ program: course.slug }}>
-                      Apply for this course
-                    </Link>
-                  )}
-                </Button>
-                <Button asChild variant="outline">
-                  <Link to="/contact">Ask a question</Link>
-                </Button>
+                <h1 className="font-display mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">
+                  {course.title}
+                </h1>
+                <p className="text-muted-foreground mt-5 max-w-xl text-base leading-relaxed sm:text-lg">
+                  {course.hook}
+                </p>
+                <p className="mt-6 max-w-xl text-sm leading-relaxed">
+                  <span className="text-muted-foreground">What you practise toward: </span>
+                  <strong>{course.deliverable.title}</strong>
+                </p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Button asChild>
+                    {course.rotating ? (
+                      <a href={availabilityUrl} target="_blank" rel="noopener noreferrer">
+                        Ask admissions about availability
+                      </a>
+                    ) : (
+                      <Link to="/apply" search={{ program: course.slug }}>
+                        Apply for this course
+                      </Link>
+                    )}
+                  </Button>
+                  <Button asChild variant="outline">
+                    <Link to="/contact">Ask a question</Link>
+                  </Button>
+                </div>
               </div>
-            </Reveal>
+              <aside
+                className="border-border bg-card rounded-xl border p-6 sm:p-8"
+                aria-label="Course facts"
+              >
+                <p className="text-primary text-xs font-semibold tracking-[0.16em] uppercase">
+                  Course at a glance
+                </p>
+                <dl className="mt-5 divide-y divide-border text-sm">
+                  {[
+                    { label: "Listed fee", value: formatFee(course.fee) },
+                    { label: "Duration", value: `${course.weeks} weeks` },
+                    {
+                      label: "Sessions",
+                      value: `${course.sessions.length} · ${course.sessionsPerWeek} per week`,
+                    },
+                    { label: "Level", value: course.level },
+                    {
+                      label: "Availability",
+                      value: course.rotating
+                        ? "Rotating · ask admissions"
+                        : "Dates confirmed by admissions",
+                    },
+                  ].map(({ label, value }) => (
+                    <div key={label} className="flex justify-between gap-4 py-3">
+                      <dt className="text-muted-foreground">{label}</dt>
+                      <dd className="text-right font-semibold">{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <div className="border-border border-t pt-4">
+                  <h2 className="text-sm font-semibold">What you need</h2>
+                  <ul className="text-muted-foreground mt-2 space-y-1 text-sm leading-relaxed">
+                    {course.requirements.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+                <p className="text-muted-foreground mt-4 text-xs leading-relaxed">
+                  {TUITION_POLICY.payment}
+                </p>
+              </aside>
+            </div>
+            <figure className="border-border mt-10 max-w-3xl overflow-hidden rounded-xl border">
+              <div className="bg-muted aspect-[16/9]">
+                <CourseCover slug={course.slug} />
+              </div>
+            </figure>
           </div>
         </header>
 

@@ -322,7 +322,7 @@ function ApplyPage() {
 
   if (!draftReady)
     return (
-      <PageShell>
+      <PageShell hideAssistant>
         <p role="status" className="container-page py-12">
           Opening your application…
         </p>
@@ -331,7 +331,7 @@ function ApplyPage() {
 
   if (done) {
     return (
-      <PageShell>
+      <PageShell hideAssistant>
         <section className="container-page py-16 sm:py-20">
           <SuccessScreen
             refCode={done.ref}
@@ -346,7 +346,7 @@ function ApplyPage() {
   }
 
   return (
-    <PageShell>
+    <PageShell hideAssistant>
       <PageHero
         eyebrow="Admissions"
         title="Register for a course"

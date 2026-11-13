@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0",
     "predev": "node scripts/generate-lesson-editorial.mjs && node scripts/generate-next-routes.mjs",
-    "prebuild": "node scripts/generate-lesson-editorial.mjs && node scripts/generate-library-data.mjs && node scripts/generate-merchant-feeds.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-next-routes.mjs",
+    "prebuild": "node scripts/check-production-env.mjs && node scripts/generate-lesson-editorial.mjs && node scripts/generate-library-data.mjs && node scripts/generate-merchant-feeds.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-next-routes.mjs",
     "build": "next build",
     "build:dev": "next build",
     "start": "next start --hostname 0.0.0.0",

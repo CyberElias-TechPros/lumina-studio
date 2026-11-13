@@ -3,7 +3,7 @@ import { Link } from "@/lib/next-compat/router";
 import { ArrowRight, ArrowUpRight, Check, Clock, GraduationCap, Wallet } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { CTASection, PageHero, PageShell } from "@/components/marketing/shell";
+import { CTASection, PageShell } from "@/components/marketing/shell";
 import { CampusImg, CourseCover, CourseIcon } from "@/components/marketing/photos";
 import { Reveal } from "@/components/motion";
 import { CourseFinder } from "@/components/marketing/course-finder";
@@ -93,11 +93,11 @@ const HUB_FAQS = [
 
 function CourseCard({ course, index }: { course: ResolvedCourse; index: number }) {
   return (
-    <Reveal delay={Math.min(index, 6) * 0.05}>
+    <div className="h-full">
       <Link
         to="/classes/$courseSlug"
         params={{ courseSlug: course.slug }}
-        className="group border-foreground/12 hover:border-primary/35 bg-card/70 flex h-full flex-col overflow-hidden rounded-[14px] border backdrop-blur-md transition-all duration-500 hover:-translate-y-1"
+        className="group border-foreground/12 hover:border-primary/35 bg-card flex h-full flex-col overflow-hidden rounded-[14px] border transition-colors duration-200"
       >
         <div className="bg-muted aspect-[16/9] overflow-hidden">
           <CourseCover slug={course.slug} />
@@ -122,6 +122,15 @@ function CourseCard({ course, index }: { course: ResolvedCourse; index: number }
             {course.title}
           </h3>
           <p className="text-foreground/70 mt-3 text-sm leading-relaxed">{course.hook}</p>
+          <p className="mt-4 text-sm leading-relaxed">
+            <span className="text-foreground/60">You practise toward: </span>
+            {course.deliverable.title}
+          </p>
+
+          <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+            <span className="font-medium">You need: </span>
+            {course.requirements.join(" · ")}
+          </p>
 
           <div className="text-foreground/60 mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px]">
             <span className="flex items-center gap-1.5">
@@ -148,7 +157,7 @@ function CourseCard({ course, index }: { course: ResolvedCourse; index: number }
           </div>
         </div>
       </Link>
-    </Reveal>
+    </div>
   );
 }
 
@@ -175,7 +184,11 @@ function CourseGroup({
         </div>
 
         {categories.map((category) => (
-          <div key={category} className="mt-12">
+          <div
+            key={category}
+            id={`${id ?? "core"}-${category.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+            className="mt-12 scroll-mt-24"
+          >
             <div className="border-foreground/10 flex items-center gap-4 border-b pb-3">
               <span className="font-label text-primary text-[10px] tracking-[0.16em] uppercase">
                 {category}
@@ -403,29 +416,83 @@ function HubFaqs() {
 function Classes() {
   return (
     <PageShell>
-      <PageHero
-        eyebrow="Practical digital skills curriculum"
-        title="Find a practical course for the work you want to do"
-        description="Practical classes at the Port Harcourt centre, and online where noted. Two sessions a week. Compare fees, requirements and final projects before you apply; published lesson counts and session outlines make it clear what is available to read."
-        meta={[
-          `${resolvedFlyerCourses.length} core courses`,
-          `${resolvedFlyerCourses.reduce((sum, c) => sum + c.sessions.length, 0)} sessions`,
-          "Certificate on the deliverable",
-        ]}
-      >
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Button asChild>
-            <Link to="/apply">
-              Apply <ArrowRight className="ml-2 size-4" />
-            </Link>
-          </Button>
-          <Button asChild variant="outline">
-            <Link to="/contact">Ask a question</Link>
-          </Button>
+      <section className="border-border border-b">
+        <div className="container-page grid gap-8 py-16 lg:grid-cols-[1.3fr_0.7fr] lg:items-end lg:py-24">
+          <div>
+            <p className="text-primary text-xs font-semibold tracking-[0.16em] uppercase">
+              The Academy / Learning paths
+            </p>
+            <h1 className="font-display mt-5 max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
+              Find a practical course for the work you want to do.
+            </h1>
+            <p className="text-muted-foreground mt-5 max-w-2xl text-base leading-relaxed sm:text-lg">
+              Start where you are. Compare fees, requirements and projects before you apply, and
+              read the class notes for free.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Button asChild>
+                <Link to="/apply">
+                  Apply <ArrowRight className="ml-2 size-4" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link to="/contact">Ask a question</Link>
+              </Button>
+            </div>
+          </div>
+          <div className="border-border border-t pt-5 lg:border-t-0 lg:border-l lg:pl-8">
+            <p className="text-primary text-xs font-semibold tracking-[0.16em] uppercase">
+              Made for real work
+            </p>
+            <p className="font-display mt-3 text-xl leading-snug font-semibold">
+              {resolvedFlyerCourses.length} core courses. A practical project in every one.
+            </p>
+            <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+              Dates and equipment arrangements are confirmed by admissions before payment.
+            </p>
+          </div>
         </div>
-      </PageHero>
+      </section>
 
       <CourseFinder id="course-finder" />
+
+      <section className="border-border border-b" aria-labelledby="browse-areas">
+        <div className="container-page py-12 md:py-16">
+          <p className="text-primary text-xs font-semibold tracking-[0.16em] uppercase">
+            Explore by interest
+          </p>
+          <h2
+            id="browse-areas"
+            className="font-display mt-3 text-2xl font-semibold tracking-tight sm:text-3xl"
+          >
+            Choose a starting point.
+          </h2>
+          <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+            Jump to a subject area in our core course list.
+          </p>
+          <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {courseCategories
+              .filter((category) =>
+                resolvedFlyerCourses.some((course) => course.category === category),
+              )
+              .map((category, i) => (
+                <a
+                  key={category}
+                  href={`#core-${category.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+                  className="group border-border hover:border-primary flex min-h-28 flex-col justify-between rounded-lg border p-4 transition-colors"
+                >
+                  <span className="text-primary text-xs tabular-nums">
+                    {String(i + 1).padStart(2, "0")} /
+                  </span>
+                  <span className="flex justify-between gap-3 text-sm font-semibold">
+                    {category}
+                    <span aria-hidden="true">↗</span>
+                  </span>
+                </a>
+              ))}
+          </div>
+        </div>
+      </section>
 
       <CourseGroup
         title="The core courses"

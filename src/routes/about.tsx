@@ -1,7 +1,7 @@
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
 import { Button } from "@/components/ui/button";
-import { CTASection, PageHero, PageShell } from "@/components/marketing/shell";
+import { CTASection, PageShell } from "@/components/marketing/shell";
 import { CampusImg } from "@/components/marketing/photos";
 import { flyerCourses, rotatingCourses } from "@/data/academy";
 import { FounderPhoto } from "@/components/marketing/founder-photo";
@@ -21,25 +21,34 @@ export const Route = createFileRoute("/about")({
 function About() {
   return (
     <PageShell>
-      <PageHero
-        eyebrow="About"
-        title="A digital-skills training centre in Port Harcourt"
-        description="Cyber Elias Academy Ltd teaches practical computer and workplace-digital skills in short courses. We are a registered Nigerian company (RC 8413776), based at 24 Ebony Road."
-      />
-
-      <section className="container-page grid gap-4 py-10 sm:grid-cols-2 md:py-12">
-        <figure className="border-border overflow-hidden rounded-lg border">
-          <CampusImg id="lab-1" className="aspect-[16/10]" />
-          <figcaption className="text-muted-foreground px-3 py-2 text-xs">
-            The classroom at 24 Ebony Road
-          </figcaption>
-        </figure>
-        <figure className="border-border overflow-hidden rounded-lg border">
-          <CampusImg id="lab-4" className="aspect-[16/10]" />
-          <figcaption className="text-muted-foreground px-3 py-2 text-xs">
-            Whiteboard, wall screen and practice machines
-          </figcaption>
-        </figure>
+      <section className="border-border border-b">
+        <div className="container-page grid gap-10 py-16 lg:grid-cols-[1fr_1.1fr] lg:items-end lg:py-24">
+          <div>
+            <p className="text-primary text-xs font-semibold tracking-[0.16em] uppercase">
+              About CEA / Port Harcourt
+            </p>
+            <h1 className="font-display mt-5 max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl">
+              A place to learn by making.
+            </h1>
+            <p className="text-muted-foreground mt-5 max-w-xl text-base leading-relaxed sm:text-lg">
+              Cyber Elias Academy Ltd teaches practical computer and workplace-digital skills in
+              short courses. We are a registered Nigerian company (RC 8413776), based at 24 Ebony
+              Road.
+            </p>
+            <Link
+              to="/classes"
+              className="text-primary mt-7 inline-flex min-h-11 items-center text-sm font-semibold hover:underline"
+            >
+              Explore our courses ↗
+            </Link>
+          </div>
+          <figure className="border-border overflow-hidden rounded-sm border">
+            <CampusImg id="lab-1" eager className="aspect-[16/10]" />
+            <figcaption className="text-muted-foreground px-3 py-3 text-xs">
+              The classroom at 24 Ebony Road
+            </figcaption>
+          </figure>
+        </div>
       </section>
 
       <section className="container-page grid gap-8 py-8 md:grid-cols-[10rem_1fr] md:items-center md:py-10">

@@ -14,15 +14,15 @@ import { cn } from "@/lib/utils";
 /** Primary navigation: what most visitors come for. */
 const nav = [
   { label: "Courses", to: "/classes" },
-  { label: "Shop", to: "/shop" },
-  { label: "Notes", to: "/blog" },
+  { label: "IT Services", to: "/services" },
+  { label: "Free learning", to: "/blog" },
   { label: "Admissions", to: "/admissions" },
   { label: "About", to: "/about" },
 ] as const;
 
 /** Secondary links, grouped under "More" on desktop and listed after the primary links on mobile. */
 const moreNav = [
-  { label: "Services", to: "/services" },
+  { label: "Shop", to: "/shop" },
   { label: "Schools & partners", to: "/schools" },
   { label: "Contact", to: "/contact" },
   { label: "FAQ", to: "/faq" },
@@ -172,14 +172,14 @@ export function SiteHeader() {
           </DropdownMenu>
         </nav>
         <div className="flex items-center gap-2">
-          <FeaturedLink className="hidden lg:inline-flex" />
+          <FeaturedLink className="hidden xl:inline-flex" />
           <ThemeToggle />
           <Link
             to="/auth/sign-in"
             rel="nofollow"
             className="text-muted-foreground hover:text-foreground hidden text-sm whitespace-nowrap sm:block"
           >
-            Sign in
+            Portal
           </Link>
           <Link
             to="/apply"
