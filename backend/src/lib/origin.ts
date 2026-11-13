@@ -6,7 +6,7 @@ export function configuredOrigins(env: AppEnv): string[] {
     .split(",")
     .map((origin) => origin.trim())
     .filter(Boolean);
-    
+
   // Automatically include preview environment domains for local/dev testing
   // This ensures the frontend preview (e2b.app) can communicate with the backend
   if (env.APP_ENV === "development") {
@@ -17,7 +17,7 @@ export function configuredOrigins(env: AppEnv): string[] {
       origins.push(previewHost);
     }
   }
-  
+
   return origins;
 }
 
@@ -26,10 +26,7 @@ export function configuredOrigins(env: AppEnv): string[] {
  * Development keeps the convenient permissive fallback when no origins were
  * configured; production deliberately fails closed.
  */
-export function corsOrigin(
-  origin: string | undefined,
-  env: AppEnv,
-): string {
+export function corsOrigin(origin: string | undefined, env: AppEnv): string {
   if (!origin) return "";
   const allowed = configuredOrigins(env);
   if (allowed.length > 0) return allowed.includes(origin) ? origin : "";
@@ -37,10 +34,7 @@ export function corsOrigin(
 }
 
 /** Validate browser-originated state-changing requests independently of CORS. */
-export function isTrustedOrigin(
-  origin: string | undefined,
-  env: AppEnv,
-): boolean {
+export function isTrustedOrigin(origin: string | undefined, env: AppEnv): boolean {
   if (!origin) return true;
   return corsOrigin(origin, env) === origin;
 }
