@@ -7,9 +7,15 @@ import { ChatWidget } from "@/components/assistant/chat-widget";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-export function PageShell({ children }: { children: ReactNode }) {
+export function PageShell({
+  children,
+  hideAssistant = false,
+}: {
+  children: ReactNode;
+  hideAssistant?: boolean;
+}) {
   return (
-    <div className="bg-background text-foreground relative flex min-h-screen flex-col">
+    <div className="marketing-shell bg-background text-foreground relative flex min-h-screen flex-col">
       <ThemeSync />
       <a
         href="#main-content"
@@ -24,7 +30,7 @@ export function PageShell({ children }: { children: ReactNode }) {
       <SiteFooter />
       {/* Public assistant: answers fee/schedule/enrolment questions on every
           marketing page and hands over to WhatsApp when it doesn't know. */}
-      <ChatWidget />
+      {!hideAssistant && <ChatWidget />}
     </div>
   );
 }

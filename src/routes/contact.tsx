@@ -103,6 +103,14 @@ function Contact() {
               <br />
               Mon–Sat, 8:00–20:00 WAT
             </p>
+            <a
+              href="https://wa.me/2349058628386"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary mt-3 inline-flex min-h-11 items-center font-semibold underline underline-offset-4"
+            >
+              Message us on WhatsApp
+            </a>
           </div>
           <div>
             <h2 className="font-display flex items-center gap-2 text-base font-semibold">

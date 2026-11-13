@@ -3,7 +3,7 @@ import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { CTASection, PageHero, PageShell } from "@/components/marketing/shell";
+import { CTASection, PageShell } from "@/components/marketing/shell";
 import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/services")({
@@ -53,22 +53,44 @@ const services = [
 function ServicesPage() {
   return (
     <PageShell>
-      <PageHero
-        eyebrow="Digital projects"
-        title="A clearer path from idea to useful software."
-        description="Tell us what your organisation needs to do. We will review the goals, constraints and budget before recommending a sensible next step — whether that is a website, an app, an internal tool or a smaller improvement."
-      >
-        <div className="mt-7 flex flex-wrap gap-3">
-          <Button asChild size="lg">
-            <Link to="/request-project">
-              Start a project brief <ArrowRight className="size-4" />
-            </Link>
-          </Button>
-          <Button asChild size="lg" variant="outline">
-            <Link to="/contact">Ask a general question</Link>
-          </Button>
+      <section className="bg-[#101923] text-[#f6f5f0]">
+        <div className="container-page grid gap-10 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:py-24">
+          <div>
+            <p className="text-xs font-semibold tracking-[0.16em] text-[#96dce8] uppercase">
+              CEA / Digital projects
+            </p>
+            <h1 className="font-display mt-5 max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
+              A clearer path from idea to useful software.
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#d3dbe4] sm:text-lg">
+              Tell us what your organisation needs to do. We will review the goals, constraints and
+              budget before recommending a sensible next step.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                to="/request-project"
+                className="inline-flex min-h-11 items-center gap-2 rounded-md bg-[#f6f5f0] px-5 py-3 text-sm font-semibold text-[#101923] hover:bg-white"
+              >
+                Start a project brief <ArrowRight className="size-4" />
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-flex min-h-11 items-center rounded-md border border-white/40 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10"
+              >
+                Ask a general question
+              </Link>
+            </div>
+          </div>
+          <div className="border-t border-white/25 pt-5 lg:border-t-0 lg:border-l lg:pl-8">
+            <p className="text-xs font-semibold tracking-[0.16em] text-[#96dce8] uppercase">
+              From idea to implementation
+            </p>
+            <p className="font-display mt-4 text-2xl leading-snug">
+              Thoughtful technology, built around the work that matters.
+            </p>
+          </div>
         </div>
-      </PageHero>
+      </section>
 
       <section className="container-page py-14 md:py-20">
         <div className="max-w-2xl">

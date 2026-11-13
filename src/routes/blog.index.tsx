@@ -96,14 +96,18 @@ function Blog() {
   };
   const goToPage = (next: number) => {
     setPage(next);
-    resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    resultsRef.current?.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "start",
+    });
   };
 
   return (
     <PageShell>
       {/* Hero */}
-      <section className="border-border bg-muted/30 border-b">
-        <div className="container-page py-12 md:py-16">
+      <section className="border-border border-b">
+        <div className="container-page py-16 md:py-20">
           <nav aria-label="Breadcrumb" className="text-muted-foreground text-sm">
             <ol className="flex items-center gap-2">
               <li>
@@ -119,9 +123,9 @@ function Blog() {
           <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
             <div className="max-w-3xl">
               <p className="text-primary text-xs font-semibold tracking-[0.12em] uppercase">
-                Notes · Free self-study
+                Free learning / Notes
               </p>
-              <h1 className="font-display mt-4 text-3xl font-semibold tracking-tight text-balance sm:text-4xl md:text-[2.75rem] md:leading-tight">
+              <h1 className="font-display mt-4 text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
                 Computer skills, one lesson at a time
               </h1>
               <p className="text-muted-foreground mt-5 text-base leading-relaxed text-pretty sm:text-[17px]">

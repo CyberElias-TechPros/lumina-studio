@@ -5,7 +5,7 @@ test.describe("Public marketing + application journey", () => {
   test("home page loads with core navigation", async ({ page }) => {
     await page.goto("/");
     await expect(
-      page.getByRole("heading", { name: /learn digital skills by doing real work/i }),
+      page.getByRole("heading", { name: /the future is built by those who learn to create it/i }),
     ).toBeVisible();
     await expect(page.getByRole("link", { name: /^courses$/i }).first()).toBeVisible();
     await expect(page.getByRole("link", { name: /^apply$/i }).first()).toBeVisible();
@@ -17,9 +17,12 @@ test.describe("Public marketing + application journey", () => {
       await expect(page.locator("main")).toContainText("24 Ebony Road");
       await expect(page.locator("footer")).toContainText("24 Ebony Road, Off Rumuola Road");
       await expect(page.locator("body")).not.toContainText(/(?:24\/26|26) Ebony Road/);
-      await expect(page.locator('meta[name="description"]')).toHaveAttribute(
-        "content",
-        /24 Ebony Road/,
+      const descriptions = await page
+        .locator('meta[name="description"]')
+        .evaluateAll((nodes) => nodes.map((node) => node.getAttribute("content")));
+      expect(descriptions.length).toBeGreaterThan(0);
+      expect(descriptions.every((description) => description?.includes("24 Ebony Road"))).toBe(
+        true,
       );
 
       const entities = (
@@ -35,6 +38,63 @@ test.describe("Public marketing + application journey", () => {
       }
     });
   }
+
+  test("redesigned course discovery keeps essential details accessible", async ({ page }) => {
+    await page.goto("/classes");
+    const areas = page.getByRole("region", { name: "Choose a starting point." });
+    await expect(areas.getByRole("link", { name: /Office & Data/i })).toHaveAttribute(
+      "href",
+      "#core-office-data",
+    );
+    await areas.getByRole("link", { name: /Office & Data/i }).click();
+    await expect(page.locator("#core-office-data")).toBeVisible();
+
+    await page.goto("/classes/microsoft-office");
+    const facts = page.getByLabel("Course facts");
+    await expect(facts).toContainText("₦30,000");
+    await expect(facts).toContainText("3 weeks");
+    await expect(facts).toContainText("What you need");
+    await expect(page.getByRole("link", { name: "Apply for this course" }).first()).toHaveAttribute(
+      "href",
+      /\/apply\?program=microsoft-office/,
+    );
+  });
+
+  test("essential course facts render without JavaScript", async ({ browser, baseURL }) => {
+    const context = await browser.newContext({ javaScriptEnabled: false, baseURL });
+    try {
+      const page = await context.newPage();
+      await page.goto("/classes/microsoft-office");
+      await expect(page.getByRole("heading", { level: 1, name: "Microsoft Office" })).toBeVisible();
+      await expect(page.getByLabel("Course facts")).toContainText("₦30,000");
+    } finally {
+      await context.close();
+    }
+  });
+
+  test("admissions explains the offer before payment", async ({ page }) => {
+    await page.goto("/admissions");
+    await expect(page.getByRole("heading", { name: /how to enrol/i })).toBeVisible();
+    await expect(page.getByText("Applying is free.")).toBeVisible();
+    await expect(page.getByText(/unscheduled courses collect interest only/i)).toBeVisible();
+    await expect(page.getByText(/do not pay until you have reviewed and accepted/i)).toBeVisible();
+    await expect(page.getByRole("link", { name: /start an application/i })).toHaveAttribute(
+      "href",
+      "/apply",
+    );
+  });
+
+  test("mobile admissions is not covered by floating help controls", async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
+    await page.goto("/apply");
+    await expect(page.getByRole("heading", { name: "Register for a course" })).toBeVisible();
+    await expect(page.getByRole("button", { name: /ask the CEA assistant/i })).toHaveCount(0);
+    await expect(
+      page.getByRole("link", { name: /chat with cyber elias academy on whatsapp/i }),
+    ).toHaveCount(0);
+    await page.goto("/contact");
+    await expect(page.getByRole("link", { name: "Message us on WhatsApp" })).toBeVisible();
+  });
 
   test("classes list + detail pages load", async ({ page }) => {
     await page.goto("/classes");
@@ -52,14 +112,14 @@ test.describe("Public marketing + application journey", () => {
     await expect(page.locator('input[name="course-finder-task"]')).toHaveCount(13);
 
     const recommendation = page.getByLabel("Course recommendation");
-    await page.locator('input[name="course-finder-task"][value="web-development"]').check();
-    await page.locator('input[name="course-finder-starting-point"][value="new"]').check();
+    await page.getByText("Build a website with code", { exact: true }).click();
+    await page.getByText("I am new to using a computer", { exact: true }).click();
     await expect(
       recommendation.getByRole("heading", { name: "Typing & Computer Basics" }),
     ).toBeVisible();
     await expect(recommendation.getByRole("heading", { name: "Web Development" })).toBeVisible();
 
-    await page.locator('input[name="course-finder-starting-point"][value="comfortable"]').check();
+    await page.getByText("I use a computer regularly", { exact: true }).click();
     await expect(recommendation.getByRole("heading", { name: "Web Development" })).toBeVisible();
     await expect(
       recommendation.getByRole("heading", { name: "Typing & Computer Basics" }),
@@ -75,7 +135,7 @@ test.describe("Public marketing + application journey", () => {
     const email = `e2e.apply.${Date.now()}@example.com`;
 
     await page.goto("/apply");
-    await expect(page).toHaveTitle(/Apply/);
+    await expect(page).toHaveTitle(/Register for a course/);
 
     // Programme, schedule preference and plan preference; no money is collected.
     await page.getByRole("button", { name: /microsoft office/i }).click();
