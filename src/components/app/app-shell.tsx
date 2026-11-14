@@ -102,6 +102,7 @@ export const appRoles: AppRole[] = [
       { label: "Library", icon: <Library className="size-4" />, to: "/app/library" },
       { label: "Assignments", icon: <FileText className="size-4" />, to: "/app/assignments" },
       { label: "Assessments", icon: <ShieldCheck className="size-4" />, to: "/app/assessments" },
+      { label: "Mentorship", icon: <HeartHandshake className="size-4" />, to: "/app/mentorship" },
       { label: "Grades", icon: <GraduationCap className="size-4" />, to: "/app/grades" },
       { label: "Portfolio", icon: <BriefcaseBusiness className="size-4" />, to: "/app/portfolio" },
       { label: "Calendar", icon: <CalendarDays className="size-4" />, to: "/app/calendar" },
@@ -1134,9 +1135,9 @@ export function AppShell({
             )}
           >
             <span
-              className={cn("grid size-9 place-items-center rounded-lg text-lg", role.gradient)}
+              className={cn("grid size-9 place-items-center rounded-lg text-white", role.gradient)}
             >
-              {role.emoji}
+              <LayoutDashboard className="size-4" aria-hidden="true" />
             </span>
             <span className="flex-1">
               <span className="block text-xs font-bold">Viewing as</span>
@@ -1147,9 +1148,9 @@ export function AppShell({
         ) : (
           <div className="flex w-full items-center gap-2.5 rounded-xl border p-2.5">
             <span
-              className={cn("grid size-9 place-items-center rounded-lg text-lg", role.gradient)}
+              className={cn("grid size-9 place-items-center rounded-lg text-white", role.gradient)}
             >
-              {role.emoji}
+              <LayoutDashboard className="size-4" aria-hidden="true" />
             </span>
             <span className="flex-1">
               <span className="block text-xs font-bold">Your role</span>
@@ -1213,7 +1214,7 @@ export function AppShell({
           <span className="flex-1">
             <span className="block truncate text-sm font-bold">{user?.name ?? "Signed in"}</span>
             <span className="text-muted-foreground block text-[11px]">
-              {user?.email ?? `${role.label} · Cohort 15`}
+              {user?.email ?? role.label}
             </span>
           </span>
           <LogOut className="text-muted-foreground size-4" aria-hidden="true" />
@@ -1225,14 +1226,14 @@ export function AppShell({
 
   return (
     <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
-      <div className="bg-muted/30 flex min-h-screen">
+      <div className="cea-workspace bg-muted/30 flex min-h-screen">
         <a
           href="#app-main"
           className="bg-primary text-primary-foreground focus-visible:ring-ring fixed top-3 left-1/2 z-[100] -translate-x-1/2 -translate-y-28 rounded-md px-4 py-2 text-sm font-medium transition-transform focus-visible:translate-y-0 focus-visible:ring-2"
         >
           Skip to main content
         </a>
-        <aside className="bg-card fixed inset-y-0 left-0 z-40 hidden w-64 border-r lg:block">
+        <aside className="cea-workspace-sidebar bg-card fixed inset-y-0 left-0 z-40 hidden w-64 border-r lg:block">
           {sidebar}
         </aside>
         <SheetContent
@@ -1250,7 +1251,7 @@ export function AppShell({
         </SheetContent>
 
         <div className="flex min-w-0 flex-1 flex-col lg:pl-64">
-          <header className="bg-card/80 sticky top-0 z-30 border-b backdrop-blur">
+          <header className="cea-workspace-header bg-card/80 sticky top-0 z-30 border-b backdrop-blur">
             <span
               aria-hidden="true"
               className="hairline-brand pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-px opacity-50"

@@ -2,8 +2,8 @@ import { apiFetch } from "@/lib/api/client";
 import type { Paginated } from "@/lib/api/types";
 import type { LearningCourse, GradebookCourse } from "@/data/learning";
 
-export function fetchCourses(): Promise<Paginated<LearningCourse>> {
-  return apiFetch<Paginated<LearningCourse>>("/v1/courses");
+export function fetchCourses(cursor?: string): Promise<Paginated<LearningCourse>> {
+  return apiFetch<Paginated<LearningCourse>>("/v1/courses", { query: { cursor } });
 }
 
 export function fetchCourse(slug: string): Promise<LearningCourse> {

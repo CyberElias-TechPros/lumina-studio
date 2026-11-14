@@ -267,6 +267,14 @@ shop.post("/checkout", async (c) => {
   });
   await verifyTurnstile(c, input.turnstileToken, ip);
 
+  const secret = c.env.PAYSTACK_SECRET_KEY;
+  if (!secret && c.env.APP_ENV !== "test" && c.env.APP_ENV !== "development") {
+    throw new ApiError(
+      503,
+      "PAYMENT_PROVIDER_UNAVAILABLE",
+      "Online payment is unavailable. Please contact the Academy before paying.",
+    );
+  }
   const reference = `cea_shop_${randomToken(10)}`;
   const now = isoNow();
   await c.env.DB.prepare(
@@ -289,7 +297,6 @@ shop.post("/checkout", async (c) => {
     )
     .run();
 
-  const secret = c.env.PAYSTACK_SECRET_KEY;
   if (!secret) {
     return c.json(
       {

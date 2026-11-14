@@ -24,7 +24,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
 import {
@@ -36,6 +35,8 @@ import {
   useUpdateNotificationPreferences,
 } from "@/lib/query/notifications";
 import { useSendPush } from "@/lib/query/push";
+import { useFlag } from "@/lib/flags";
+import { subscribeToPush, resetBrowserPush, type PushRegistrationStatus } from "@/lib/pwa";
 import { useCertificateCandidates } from "@/lib/query/certificates";
 import { useSessionRole } from "@/lib/auth/session";
 import type { AppNotification } from "@/lib/api/notifications";
@@ -315,15 +316,17 @@ function Notifications() {
           </CardContent>
         </Card>
 
-        <SendPushCard />
+        <div className="space-y-5">
+          <BrowserPushCard />
+          <SendPushCard />
+        </div>
       </div>
       <Dialog open={preferencesOpen} onOpenChange={setPreferencesOpen}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Notification preferences</DialogTitle>
             <DialogDescription>
-              Choose where routine updates are delivered. Urgent safeguarding and security alerts
-              may still be sent through the required channel.
+              Choose where routine updates are delivered and set quiet hours.
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
@@ -440,33 +443,93 @@ function Notifications() {
   );
 }
 
+function BrowserPushCard() {
+  const enabled = useFlag("pwa.push");
+  const [status, setStatus] = useState<PushRegistrationStatus | null>(null);
+  const [busy, setBusy] = useState(false);
+  const register = async () => {
+    setBusy(true);
+    try {
+      setStatus(await subscribeToPush(enabled, true));
+    } finally {
+      setBusy(false);
+    }
+  };
+  const reset = async () => {
+    if (
+      !window.confirm(
+        "Reset this browser's push subscription? This may stop notifications for another account using this browser. No other account's server record will be deleted.",
+      )
+    )
+      return;
+    setBusy(true);
+    try {
+      setStatus(await resetBrowserPush(enabled));
+    } finally {
+      setBusy(false);
+    }
+  };
+  const messages: Record<PushRegistrationStatus, string> = {
+    registered:
+      "This browser is registered for your current session. Registration does not guarantee delivery.",
+    "permission-required": "Browser permission was not granted. You can try again when ready.",
+    denied: "Notifications are blocked in your browser settings. Allow them there, then try again.",
+    conflict:
+      "This browser subscription belongs to another account. Ask that account holder to remove it, or reset the subscription on this browser.",
+    unavailable: "Browser push is unavailable or not configured in this environment.",
+    error:
+      "Could not register this browser. Check browser support and your connection, then try again.",
+  };
+  return (
+    <Card className="bg-card shadow-soft border">
+      <CardHeader>
+        <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+          <Bell className="text-primary size-4" /> Browser notifications
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-3 text-sm">
+        <p className="text-muted-foreground">
+          Enable generic browser hints for this session. They may be missed when your browser is
+          offline. Your saved app notification preference and quiet hours apply.
+        </p>
+        {!enabled && <p className="text-muted-foreground">Browser push is not enabled here.</p>}
+        {status && (
+          <p role="status" className="text-muted-foreground">
+            {messages[status]}
+          </p>
+        )}
+        <Button
+          type="button"
+          variant="outline"
+          disabled={!enabled || busy}
+          onClick={() => void register()}
+        >
+          {busy ? "Working…" : "Enable or reconnect this browser"}
+        </Button>
+        {status === "conflict" && (
+          <Button type="button" variant="outline" disabled={busy} onClick={() => void reset()}>
+            Reset this browser subscription
+          </Button>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
 function SendPushCard() {
   const role = useSessionRole();
-  const canTarget = role === "instructor" || role === "admin";
+  const canTarget = role === "admin";
   const candidates = useCertificateCandidates(canTarget);
   const send = useSendPush();
   const [userId, setUserId] = useState("");
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
-  const [url, setUrl] = useState("");
-
   const submit = () => {
-    if (!title.trim() || !body.trim()) return;
     send.mutate(
       {
         ...(canTarget && userId ? { userId } : {}),
-        title: title.trim(),
-        body: body.trim(),
-        ...(url.trim() ? { url: url.trim() } : {}),
+        title: "CEA update",
+        body: "Open CEA to check your notifications.",
       },
-      {
-        onSuccess: () => {
-          setTitle("");
-          setBody("");
-          setUrl("");
-          setUserId("");
-        },
-      },
+      { onSuccess: () => setUserId("") },
     );
   };
 
@@ -475,13 +538,14 @@ function SendPushCard() {
       <Card className="bg-card shadow-soft border">
         <CardHeader>
           <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-            <Radio className="text-primary size-4" /> Send a push
+            <Radio className="text-primary size-4" /> Send a browser hint
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <p className="text-muted-foreground text-xs leading-relaxed">
-            Delivered instantly to the recipient&apos;s subscribed browsers.
-            {!canTarget && " (sends to your own devices here.)"}
+            Send a generic reminder to open the notification inbox. This does not create an inbox
+            message or send custom content. Browsers that are offline may miss it.
+            {!canTarget && " You can send to your own devices here."}
           </p>
 
           {canTarget && (
@@ -501,47 +565,13 @@ function SendPushCard() {
                   ))}
                 </SelectContent>
               </Select>
+              {candidates.isError && (
+                <p role="alert" className="text-destructive text-xs">
+                  Recipient list unavailable.
+                </p>
+              )}
             </div>
           )}
-
-          <div className="space-y-1.5">
-            <Label htmlFor="push-title" className="text-xs font-semibold">
-              Title
-            </Label>
-            <Input
-              id="push-title"
-              value={title}
-              maxLength={120}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="e.g. Class starts in 5 minutes"
-            />
-          </div>
-
-          <div className="space-y-1.5">
-            <Label htmlFor="push-body" className="text-xs font-semibold">
-              Message
-            </Label>
-            <Textarea
-              id="push-body"
-              value={body}
-              maxLength={500}
-              onChange={(e) => setBody(e.target.value)}
-              placeholder="Short message…"
-              rows={3}
-            />
-          </div>
-
-          <div className="space-y-1.5">
-            <Label htmlFor="push-url" className="text-xs font-semibold">
-              Open link <span className="text-muted-foreground">(optional)</span>
-            </Label>
-            <Input
-              id="push-url"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              placeholder="https://www.cea.ng/app/…"
-            />
-          </div>
 
           {send.isError && (
             <p className="text-destructive text-xs font-semibold">
@@ -554,17 +584,23 @@ function SendPushCard() {
           )}
           {send.isSuccess && (
             <p className="bg-success/10 text-success rounded-lg px-3 py-2 text-xs font-semibold">
-              Sent to {send.data.sent} device{send.data.sent === 1 ? "" : "s"}
-              {send.data.removed > 0 ? ` · ${send.data.removed} stale subscription(s) pruned` : ""}.
+              Accepted by push services for {send.data.sent} subscription
+              {send.data.sent === 1 ? "" : "s"}
+              {send.data.removed > 0 ? ` · ${send.data.removed} stale subscription(s) pruned` : ""}
+              {send.data.skipped
+                ? ` · ${send.data.skipped} inactive, muted, quiet-hour or unsupported subscription(s) skipped`
+                : ""}
+              {send.data.failed ? ` · ${send.data.failed} attempt(s) failed` : ""}. Acceptance does
+              not confirm delivery; offline notifications are not retained.
             </p>
           )}
 
           <Button
             className="w-full font-semibold"
             onClick={submit}
-            disabled={send.isPending || !title.trim() || !body.trim()}
+            disabled={send.isPending || (canTarget && !userId)}
           >
-            <Send className="size-4" /> {send.isPending ? "Sending…" : "Send push"}
+            <Send className="size-4" /> {send.isPending ? "Sending…" : "Send browser hint"}
           </Button>
         </CardContent>
       </Card>
@@ -574,8 +610,8 @@ function SendPushCard() {
           <Sparkles className="text-primary size-5" />
           <p className="font-display mt-3 text-base font-extrabold">Channels</p>
           <p className="text-ink-foreground/70 mt-1 text-sm">
-            Pushes complement in-app, email and SMS delivery — best for urgent class, grading and
-            payment updates.
+            Browser hints do not carry the details of an update and should not be relied on as the
+            only channel for urgent information.
           </p>
         </CardContent>
       </Card>

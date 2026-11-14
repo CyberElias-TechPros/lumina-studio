@@ -174,6 +174,61 @@ describe("written assignment handoff", () => {
     ).toBe(403);
   });
 
+  it("does not authorize another instructor using a matching course title", async () => {
+    const f = await fixture();
+    const attempt = (await (await f.submit("Private work")).json()) as { id: string };
+    const otherTeacher = await createTestSession("same.title.teacher@cea.ng");
+    await env.DB.prepare("UPDATE users SET role_key = 'instructor' WHERE id = ?")
+      .bind(otherTeacher.session.user.id)
+      .run();
+    await env.DB.prepare(
+      "INSERT OR IGNORE INTO enrollments (id,user_id,course_slug,pct) VALUES (?,?,?,0)",
+    )
+      .bind(crypto.randomUUID(), f.student.session.user.id, "full-stack")
+      .run();
+    await env.DB.prepare(
+      "INSERT INTO instructor_courses (id,user_id,title,cohort,status,modules) VALUES (?,?,?,'','active','[]')",
+    )
+      .bind(crypto.randomUUID(), otherTeacher.session.user.id, "Full-Stack Software Development")
+      .run();
+    const result = await api(`/v1/instructor/submissions/${attempt.id}`, {
+      method: "PATCH",
+      headers: authHeaders(otherTeacher.cookie),
+      body: JSON.stringify({ score: 20 }),
+    });
+    expect(result.status).toBe(403);
+    expect(
+      (
+        await env.DB.prepare("SELECT score FROM submissions WHERE id = ?")
+          .bind(attempt.id)
+          .first<{ score: number | null }>()
+      )?.score,
+    ).toBeNull();
+  });
+
+  it("does not permit instructor publishing based only on a matching title", async () => {
+    const course = await env.DB.prepare("SELECT slug,title FROM courses LIMIT 1").first<{
+      slug: string;
+      title: string;
+    }>();
+    await env.DB.prepare(
+      "INSERT INTO instructor_courses (id,user_id,title,cohort,status,modules) VALUES (?,?,?,'','active','[]')",
+    )
+      .bind(crypto.randomUUID(), teacher.session.user.id, course!.title)
+      .run();
+    const result = await api("/v1/instructor/assignments", {
+      method: "POST",
+      headers: authHeaders(teacher.cookie),
+      body: JSON.stringify({
+        courseSlug: course!.slug,
+        title: "Test assignment",
+        dueAt: "2099-01-01T00:00:00Z",
+        notify: false,
+      }),
+    });
+    expect(result.status).toBe(409);
+  });
+
   it("supports the native Android bearer contract for listing, submitting and reading feedback", async () => {
     const f = await fixture();
     const bearer = { Authorization: `Bearer ${f.student.cookie}` };

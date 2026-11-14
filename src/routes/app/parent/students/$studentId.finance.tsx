@@ -1,17 +1,8 @@
 "use client";
 
 import { createFileRoute } from "@/lib/next-compat/route-definition";
-import { Link, useNavigate } from "@/lib/next-compat/router";
-import { useCreateCheckout } from "@/lib/query/payments";
-import {
-  ArrowLeft,
-  Banknote,
-  CreditCard,
-  Download,
-  Receipt,
-  ShieldCheck,
-  Wallet,
-} from "lucide-react";
+import { Link } from "@/lib/next-compat/router";
+import { ArrowLeft, Banknote, Download, Receipt, ShieldCheck, Wallet } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -44,29 +35,6 @@ function ParentStudentFinance() {
   const student = useParentStudent(studentId);
   const data = finance.data;
   const name = student.data?.name;
-  const checkout = useCreateCheckout();
-  const navigate = useNavigate();
-
-  const payOutstanding = (amount: number) => {
-    if (amount < 1 || checkout.isPending) return;
-    checkout.mutate(
-      {
-        amount,
-        description: `${name ?? "Learner"} tuition payment`,
-        redirectUrl: `${window.location.origin}/app/finance/pay-verify`,
-      },
-      {
-        onSuccess: (result) => {
-          if (result.mock) {
-            navigate({ to: "/app/finance/pay-verify", search: { reference: result.reference } });
-          } else {
-            window.open(result.authorizationUrl, "_blank", "noopener,noreferrer");
-          }
-        },
-      },
-    );
-  };
-
   return (
     <AppShell
       roleKey="parent"
@@ -125,7 +93,7 @@ function ParentStudentFinance() {
               label: "Invoices",
               value: String(current.items.length),
               delta: "on this account",
-              icon: CreditCard,
+              icon: Receipt,
               tone: "bg-learning/10 text-learning",
             },
           ];
@@ -191,7 +159,7 @@ function ParentStudentFinance() {
                                 onClick={() => window.print()}
                                 title="Open the browser print dialog, then choose Save as PDF"
                               >
-                                <Download className="size-3.5" /> Print receipt
+                                <Download className="size-3.5" /> Print record
                               </Button>
                             )}
                           </div>
@@ -201,28 +169,15 @@ function ParentStudentFinance() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-gradient-ink text-ink-foreground shadow-elevated border-0">
-                  <CardContent className="p-6">
-                    <CreditCard className="text-warning size-5" />
-                    <p className="font-display mt-3 text-base font-extrabold">Pay online</p>
-                    <p className="text-ink-foreground/70 mt-1 text-sm">
-                      Card, bank transfer or USSD — receipts land in your email instantly and the
-                      registrar's ledger updates automatically.
-                    </p>
-                    <Button
-                      className="bg-ink-foreground text-ink mt-4 w-full font-semibold hover:bg-ink-foreground/90"
-                      onClick={() => payOutstanding(current.totals.outstanding)}
-                      disabled={checkout.isPending || current.totals.outstanding < 1}
-                    >
-                      {checkout.isPending
-                        ? "Opening payment…"
-                        : `Pay ${formatNaira(current.totals.outstanding)} now`}
-                    </Button>
-                    {checkout.error && (
-                      <p role="alert" className="text-destructive mt-2 text-xs font-semibold">
-                        {checkout.error.message}
-                      </p>
-                    )}
+                <Card className="bg-card shadow-soft border self-start">
+                  <CardHeader>
+                    <CardTitle className="font-display text-base font-bold">
+                      Online payment unavailable
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-muted-foreground text-sm">
+                    Payment for these invoices is not connected to this ledger. Contact the academy
+                    before paying.
                   </CardContent>
                 </Card>
               </div>

@@ -32,8 +32,8 @@ export interface AdminAccount {
 }
 
 /** Real sign-in accounts from the `users` table (admin only). */
-export function fetchAdminAccounts(): Promise<Paginated<AdminAccount>> {
-  return apiFetch<Paginated<AdminAccount>>("/v1/admin/accounts");
+export function fetchAdminAccounts(cursor?: string): Promise<Paginated<AdminAccount>> {
+  return apiFetch<Paginated<AdminAccount>>("/v1/admin/accounts", { query: { cursor } });
 }
 
 export function fetchAuditLog(): Promise<Paginated<AuditEntry>> {

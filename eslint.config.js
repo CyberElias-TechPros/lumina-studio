@@ -9,6 +9,8 @@ export default tseslint.config(
   {
     ignores: [
       "dist",
+      ".agents/skills/**",
+      ".agents/references/**",
       ".next",
       "next-env.d.ts",
       "src/app/(generated)",

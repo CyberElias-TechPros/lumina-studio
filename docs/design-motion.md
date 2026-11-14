@@ -1,0 +1,9 @@
+# Design and motion implementation
+
+The public homepage uses an editorial hero with the existing classroom image (`public/images/campus/lab-1.jpg`) and locally hosted type. The course catalogue has a matching editorial hero and course-card treatment; sign-in uses a decorative colour treatment on wide screens while keeping the form prominent on mobile. The original image's provenance and permissions remain subject to the existing image-provenance review. Shared public page heroes and the signed-in workspace shell receive complementary styling; individual routes and workflows have not all been redesigned or audited.
+
+GSAP is loaded on the homepage and course catalogue for short, transform-only entrances. Markup is visible without JavaScript and animation is skipped for reduced motion. Lenis is loaded only in the public marketing shell for fine-pointer devices that have not requested reduced motion. It is torn down when leaving the shell or when the preference changes; touch scrolling remains native and dialog/nested scrolling is excluded. Neither library is used to control private workspace scrolling.
+
+`src/components/react-bits/shiny-text.tsx` and its CSS are adapted from React Bits ShinyText, revision `24b0e1692da541e11526f4f4d9899dbe417b55fb`, copyright David Haz. The original license and Commons Clause are retained in `src/components/react-bits/LICENSE.md`. The animation is disabled for reduced motion. Review the license's restrictions before reusing or redistributing the component separately.
+
+Browser tests cover the homepage with and without JavaScript, course navigation, mobile menu and overflow, sign-in layout, reduced motion, and teardown when navigating from a public page to sign-in. These are local browser tests, not proof of production rollout or full cross-browser compatibility.

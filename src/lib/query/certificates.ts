@@ -14,7 +14,7 @@ export const certificateKeys = {
 };
 
 export function useMyCertificates() {
-  return useApiQuery<{ items: CertificateItem[]; total: number }>(
+  return useApiQuery<{ items: CertificateItem[]; total: number; truncated?: boolean }>(
     certificateKeys.mine,
     fetchMyCertificates,
   );
@@ -31,8 +31,7 @@ export function useCertificateCandidates(enabled = true) {
 export function useIssueCertificate() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (input: { userId: string; courseSlug: string; title: string }) =>
-      apiIssueCertificate(input),
+    mutationFn: apiIssueCertificate,
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: certificateKeys.mine });
     },

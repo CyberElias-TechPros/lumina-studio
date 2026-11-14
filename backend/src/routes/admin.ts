@@ -96,7 +96,7 @@ admin.get("/accounts", async (c) => {
   const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM users`).first<{ n: number }>();
   const rows = await c.env.DB.prepare(
     `SELECT id, name, email, role_key, status, created_at FROM users
-      ${cursor ? "WHERE id > ?" : ""} ORDER BY created_at ASC LIMIT ?`,
+      ${cursor ? "WHERE id > ?" : ""} ORDER BY id ASC LIMIT ?`,
   )
     .bind(...(cursor ? [base64UrlDecode(cursor) ?? ""] : []), limit)
     .all<{

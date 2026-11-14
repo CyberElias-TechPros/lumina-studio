@@ -89,7 +89,13 @@ function SignInPage() {
       {
         onSuccess: (result) => {
           if ("user" in result) {
-            navigate({ to: getRoleHomePath(result.user.roleKey) });
+            const pendingInvite = sessionStorage.getItem("cea_pending_invite");
+            sessionStorage.removeItem("cea_pending_invite");
+            if (pendingInvite) {
+              navigate({ to: "/app/parent/invitation/accept", search: { token: pendingInvite } });
+            } else {
+              navigate({ to: getRoleHomePath(result.user.roleKey) });
+            }
           } else {
             navigate({ to: "/auth/mfa", search: { email } });
           }
@@ -104,157 +110,179 @@ function SignInPage() {
   const busy = passwordSignIn.isPending || magicLink.isPending;
 
   return (
-    <div className="bg-muted/40 grid min-h-screen place-items-center px-4 py-16">
-      <div className="w-full max-w-md">
-        <div className="mb-6 text-center">
-          <Link
-            to="/"
-            className="bg-primary mx-auto grid size-11 place-items-center rounded-lg text-white"
-          >
-            <span className="font-display text-sm font-semibold">CE</span>
-          </Link>
-          <h1 className="font-display mt-4 text-2xl font-semibold">Sign in</h1>
-          <p className="text-muted-foreground mt-1 text-sm">
-            Use the same CEA email and password on the website and Android app. You do not need a
-            separate Google or Firebase account.
+    <div className="cea-auth-layout min-h-screen lg:grid lg:grid-cols-2">
+      <aside className="cea-auth-art relative hidden overflow-hidden lg:flex" aria-hidden="true">
+        <div className="cea-auth-art-content relative z-10 flex w-full flex-col justify-between p-12 xl:p-16">
+          <p className="font-mono text-xs tracking-[0.2em] text-[#a9caff] uppercase">
+            Cyber Elias Academy / CEA-OS
+          </p>
+          <div>
+            <p className="font-display max-w-lg text-5xl leading-[1.05] font-semibold tracking-[-0.05em] xl:text-6xl">
+              Make room for{" "}
+              <span className="font-serif font-normal italic text-[#a9caff]">what's next.</span>
+            </p>
+            <p className="mt-6 max-w-xs text-sm leading-relaxed text-[#c4d2e6]">
+              Your learning and workspace, in one place.
+            </p>
+          </div>
+          <p className="font-mono text-[10px] tracking-[0.18em] text-[#a2b5d0] uppercase">
+            PORT HARCOURT · LEARN / PRACTISE / CREATE
           </p>
         </div>
+      </aside>
+      <main className="cea-auth-main grid min-h-screen place-items-center px-4 py-12 sm:px-8">
+        <div className="w-full max-w-md">
+          <div className="mb-7 text-center">
+            <Link
+              to="/"
+              aria-label="Cyber Elias Academy — home"
+              className="cea-auth-logo mx-auto grid size-12 place-items-center rounded-2xl text-white"
+            >
+              <span className="font-display text-sm font-semibold">CE</span>
+            </Link>
+            <h1 className="font-display mt-5 text-3xl font-semibold tracking-tight">Sign in</h1>
+            <p className="text-muted-foreground mt-1 text-sm">
+              Use the same CEA email and password on the website and Android app. You do not need a
+              separate Google or Firebase account.
+            </p>
+          </div>
 
-        <div className="border-border bg-card rounded-lg border p-6 sm:p-8">
-          {sent ? (
-            <div className="text-center" role="status" aria-live="polite">
-              <span className="bg-success/10 text-success mx-auto grid size-12 place-items-center rounded-full">
-                <MailCheck className="size-6" />
-              </span>
-              <h2 className="font-display mt-4 text-lg font-semibold">Check your inbox</h2>
-              <p className="text-muted-foreground mt-2 text-sm">
-                We sent a one-time sign-in link. It expires in 15 minutes.
-              </p>
-              {devToken && (
-                <Button asChild className="mt-6">
-                  <Link to="/auth/magic-link" search={{ token: devToken }}>
-                    Open sign-in link (dev) <ArrowRight className="ml-1.5 size-4" />
-                  </Link>
-                </Button>
-              )}
-              <button
-                type="button"
-                onClick={() => {
-                  turnstile.reset();
-                  setSent(false);
-                  setError("");
-                  setDevToken(undefined);
-                }}
-                disabled={magicLink.isPending}
-                className="text-muted-foreground hover:text-foreground mt-3 block w-full text-center text-xs"
-              >
-                Request another link
-              </button>
-            </div>
-          ) : (
-            <>
-              <form onSubmit={submit} className="space-y-4">
-                <div className="space-y-1.5">
-                  <Label htmlFor="email">Email address</Label>
-                  <div className="relative">
-                    <Mail className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
-                    <Input
-                      id="email"
-                      ref={emailInputRef}
-                      value={email}
-                      onChange={(event) => setEmail(event.target.value)}
-                      autoComplete="username"
-                      autoCapitalize="none"
-                      spellCheck={false}
-                      type="email"
-                      placeholder="you@example.com"
-                      className="pl-9"
-                      required
-                    />
-                  </div>
-                </div>
-
-                {!magic && (
-                  <div className="space-y-1.5">
-                    <div className="flex items-center justify-between">
-                      <Label htmlFor="password">Password</Label>
-                      <Link
-                        to="/auth/forgot-password"
-                        className="text-primary hover:text-primary/80 text-xs"
-                      >
-                        Forgot password?
-                      </Link>
-                    </div>
-                    <div className="relative">
-                      <LockKeyhole className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
-                      <Input
-                        id="password"
-                        ref={passwordRef}
-                        autoComplete="current-password"
-                        type={show ? "text" : "password"}
-                        placeholder="••••••••"
-                        className="pl-9 pr-10"
-                        required={!magic}
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setShow((s) => !s)}
-                        aria-label={show ? "Hide password" : "Show password"}
-                        aria-pressed={show}
-                        className="text-muted-foreground hover:text-foreground absolute top-1/2 right-3 -translate-y-1/2"
-                      >
-                        {show ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
-                      </button>
-                    </div>
-                  </div>
+          <div className="cea-auth-card border-border bg-card rounded-2xl border p-6 sm:p-8">
+            {sent ? (
+              <div className="text-center" role="status" aria-live="polite">
+                <span className="bg-success/10 text-success mx-auto grid size-12 place-items-center rounded-full">
+                  <MailCheck className="size-6" />
+                </span>
+                <h2 className="font-display mt-4 text-lg font-semibold">Check your inbox</h2>
+                <p className="text-muted-foreground mt-2 text-sm">
+                  We sent a one-time sign-in link. It expires in 15 minutes.
+                </p>
+                {devToken && (
+                  <Button asChild className="mt-6">
+                    <Link to="/auth/magic-link" search={{ token: devToken }}>
+                      Open sign-in link (dev) <ArrowRight className="ml-1.5 size-4" />
+                    </Link>
+                  </Button>
                 )}
-
-                <label className="flex items-center gap-2 text-sm">
-                  <Checkbox checked={remember} onCheckedChange={(c) => setRemember(!!c)} /> Remember
-                  me
-                </label>
-
-                {magic && <turnstile.Widget />}
-                {error && (
-                  <p role="alert" className="text-error text-sm">
-                    {error}
-                  </p>
-                )}
-
-                <Button
-                  type="submit"
-                  disabled={busy || (magic && !turnstile.ready)}
-                  className="w-full"
+                <button
+                  type="button"
+                  onClick={() => {
+                    turnstile.reset();
+                    setSent(false);
+                    setError("");
+                    setDevToken(undefined);
+                  }}
+                  disabled={magicLink.isPending}
+                  className="text-muted-foreground hover:text-foreground mt-3 block w-full text-center text-xs"
                 >
-                  {busy && <Loader2 className="mr-1.5 size-4 animate-spin" />}
-                  {magic ? "Send sign-in link" : "Sign in"}
-                </Button>
-              </form>
+                  Request another link
+                </button>
+              </div>
+            ) : (
+              <>
+                <form onSubmit={submit} className="space-y-4">
+                  <div className="space-y-1.5">
+                    <Label htmlFor="email">Email address</Label>
+                    <div className="relative">
+                      <Mail className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
+                      <Input
+                        id="email"
+                        ref={emailInputRef}
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
+                        autoComplete="username"
+                        autoCapitalize="none"
+                        spellCheck={false}
+                        type="email"
+                        placeholder="you@example.com"
+                        className="pl-9"
+                        required
+                      />
+                    </div>
+                  </div>
 
-              <button
-                type="button"
-                onClick={() => {
-                  setMagic((m) => !m);
-                  setError("");
-                  turnstile.reset();
-                }}
-                disabled={busy}
-                className="text-primary mt-3 flex w-full items-center justify-center gap-1.5 text-xs"
-              >
-                <Link2 className="size-3.5" />
-                {magic ? "Use password instead" : "Sign in with a link instead"}
-              </button>
-            </>
-          )}
+                  {!magic && (
+                    <div className="space-y-1.5">
+                      <div className="flex items-center justify-between">
+                        <Label htmlFor="password">Password</Label>
+                        <Link
+                          to="/auth/forgot-password"
+                          className="text-primary hover:text-primary/80 text-xs"
+                        >
+                          Forgot password?
+                        </Link>
+                      </div>
+                      <div className="relative">
+                        <LockKeyhole className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
+                        <Input
+                          id="password"
+                          ref={passwordRef}
+                          autoComplete="current-password"
+                          type={show ? "text" : "password"}
+                          placeholder="••••••••"
+                          className="pl-9 pr-10"
+                          required={!magic}
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setShow((s) => !s)}
+                          aria-label={show ? "Hide password" : "Show password"}
+                          aria-pressed={show}
+                          className="text-muted-foreground hover:text-foreground absolute top-1/2 right-3 -translate-y-1/2"
+                        >
+                          {show ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  <label className="flex items-center gap-2 text-sm">
+                    <Checkbox checked={remember} onCheckedChange={(c) => setRemember(!!c)} />{" "}
+                    Remember me
+                  </label>
+
+                  {magic && <turnstile.Widget />}
+                  {error && (
+                    <p role="alert" className="text-error text-sm">
+                      {error}
+                    </p>
+                  )}
+
+                  <Button
+                    type="submit"
+                    disabled={busy || (magic && !turnstile.ready)}
+                    className="w-full"
+                  >
+                    {busy && <Loader2 className="mr-1.5 size-4 animate-spin" />}
+                    {magic ? "Send sign-in link" : "Sign in"}
+                  </Button>
+                </form>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMagic((m) => !m);
+                    setError("");
+                    turnstile.reset();
+                  }}
+                  disabled={busy}
+                  className="text-primary mt-3 flex w-full items-center justify-center gap-1.5 text-xs"
+                >
+                  <Link2 className="size-3.5" />
+                  {magic ? "Use password instead" : "Sign in with a link instead"}
+                </button>
+              </>
+            )}
+          </div>
+
+          <p className="text-muted-foreground mt-6 text-center text-sm">
+            New here?{" "}
+            <Link to="/auth/sign-up" className="text-primary underline-offset-2 hover:underline">
+              Create an account
+            </Link>
+          </p>
         </div>
-
-        <p className="text-muted-foreground mt-6 text-center text-sm">
-          New here?{" "}
-          <Link to="/auth/sign-up" className="text-primary underline-offset-2 hover:underline">
-            Create an account
-          </Link>
-        </p>
-      </div>
+      </main>
     </div>
   );
 }

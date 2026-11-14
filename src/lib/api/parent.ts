@@ -8,7 +8,7 @@ export interface ParentStudent {
   course: string;
   courseDetail: string;
   pct: number;
-  gpa: string;
+  gpa: string | null;
   due: number;
   dueCount: number;
 }
@@ -33,7 +33,7 @@ export interface ParentStudentDetail {
   studentId: string;
   name: string;
   email: string;
-  gpa: string;
+  gpa: string | null;
   due: number;
   dueCount: number;
   courses: ParentCourse[];

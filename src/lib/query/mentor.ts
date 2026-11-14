@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { useApiQuery, usePaginatedQuery } from "@/lib/query/hooks";
+import { useApiQuery } from "@/lib/query/hooks";
 import {
   fetchMentorProfiles,
   matchMentor,
@@ -7,15 +7,13 @@ import {
   type MentorMatchResult,
   type MentorProfile,
 } from "@/lib/api/mentor";
-
-export const mentorKeys = {
-  profiles: ["mentor", "profiles"] as const,
-};
-
+export const mentorKeys = { profiles: ["mentor", "profiles"] as const };
 export function useMentorProfiles() {
-  return usePaginatedQuery<MentorProfile>(mentorKeys.profiles, fetchMentorProfiles);
+  return useApiQuery<{ items: MentorProfile[]; truncated: boolean }>(
+    mentorKeys.profiles,
+    fetchMentorProfiles,
+  );
 }
-
 export function useMentorMatch(input: { program?: string; goal?: string }, enabled = false) {
   return useApiQuery<MentorMatchResult>(
     [...mentorKeys.profiles, "match", input.program ?? "", input.goal ?? ""],
@@ -23,10 +21,6 @@ export function useMentorMatch(input: { program?: string; goal?: string }, enabl
     { enabled },
   );
 }
-
 export function useRequestMentor() {
-  return useMutation({
-    mutationFn: (input: { mentorId: string; goal: string; program?: string }) =>
-      requestMentor(input),
-  });
+  return useMutation({ mutationFn: requestMentor, retry: false });
 }

@@ -176,7 +176,11 @@ const GROUP_METRICS: Record<PortalGroup, (c: Ctx) => Promise<PortalMetric[]>> = 
         "certificates",
         "Certificates",
         "number",
-        num(env.DB, `SELECT COUNT(*) AS n FROM certificates WHERE user_id = ?`, userId),
+        num(
+          env.DB,
+          `SELECT COUNT(*) AS n FROM certificates c WHERE c.user_id = ? AND NOT EXISTS (SELECT 1 FROM certificate_revocations r WHERE r.certificate_id = c.id)`,
+          userId,
+        ),
       ],
       [
         "unread",
@@ -195,7 +199,11 @@ const GROUP_METRICS: Record<PortalGroup, (c: Ctx) => Promise<PortalMetric[]>> = 
         "children",
         "Linked learners",
         "number",
-        num(env.DB, `SELECT COUNT(*) AS n FROM parent_students WHERE parent_id = ?`, userId),
+        num(
+          env.DB,
+          `SELECT COUNT(*) AS n FROM verified_parent_students WHERE parent_id = ?`,
+          userId,
+        ),
       ],
       [
         "pending",
@@ -203,7 +211,7 @@ const GROUP_METRICS: Record<PortalGroup, (c: Ctx) => Promise<PortalMetric[]>> = 
         "number",
         num(
           env.DB,
-          `SELECT COUNT(*) AS n FROM assignments WHERE status IN ('pending','draft') AND user_id IN (SELECT student_id FROM parent_students WHERE parent_id = ?)`,
+          `SELECT COUNT(*) AS n FROM assignments WHERE status IN ('pending','draft') AND user_id IN (SELECT student_id FROM verified_parent_students WHERE parent_id = ?)`,
           userId,
         ),
       ],
@@ -213,7 +221,7 @@ const GROUP_METRICS: Record<PortalGroup, (c: Ctx) => Promise<PortalMetric[]>> = 
         "number",
         num(
           env.DB,
-          `SELECT COUNT(*) AS n FROM assignments WHERE status IN ('pending','draft') AND due_at > ? AND due_at <= ? AND user_id IN (SELECT student_id FROM parent_students WHERE parent_id = ?)`,
+          `SELECT COUNT(*) AS n FROM assignments WHERE status IN ('pending','draft') AND due_at > ? AND due_at <= ? AND user_id IN (SELECT student_id FROM verified_parent_students WHERE parent_id = ?)`,
           now,
           daysAhead(7),
           userId,
@@ -221,11 +229,11 @@ const GROUP_METRICS: Record<PortalGroup, (c: Ctx) => Promise<PortalMetric[]>> = 
       ],
       [
         "certificates",
-        "Certificates earned",
+        "Certificate records",
         "number",
         num(
           env.DB,
-          `SELECT COUNT(*) AS n FROM certificates WHERE user_id IN (SELECT student_id FROM parent_students WHERE parent_id = ?)`,
+          `SELECT COUNT(*) AS n FROM certificates c WHERE c.user_id IN (SELECT student_id FROM verified_parent_students WHERE parent_id = ?) AND NOT EXISTS (SELECT 1 FROM certificate_revocations r WHERE r.certificate_id = c.id)`,
           userId,
         ),
       ],
@@ -460,9 +468,12 @@ const GROUP_METRICS: Record<PortalGroup, (c: Ctx) => Promise<PortalMetric[]>> = 
       ],
       [
         "certificates",
-        "Certificates issued",
+        "Current certificate records",
         "number",
-        num(env.DB, `SELECT COUNT(*) AS n FROM certificates`),
+        num(
+          env.DB,
+          `SELECT COUNT(*) AS n FROM certificates c WHERE NOT EXISTS (SELECT 1 FROM certificate_revocations r WHERE r.certificate_id = c.id)`,
+        ),
       ],
       [
         "live",

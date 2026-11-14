@@ -1,4 +1,5 @@
 import { beforeAll, describe, expect, it } from "vitest";
+import { env } from "cloudflare:workers";
 import { api, cookieHeaders, createTestSession, setupDb } from "./helpers";
 
 type TestSession = Awaited<ReturnType<typeof createTestSession>>;
@@ -6,6 +7,7 @@ type TestSession = Awaited<ReturnType<typeof createTestSession>>;
 let admin: TestSession;
 let instructor: TestSession;
 let student: TestSession;
+let guardian: TestSession;
 
 let inviteToken: string;
 
@@ -14,6 +16,10 @@ beforeAll(async () => {
   admin = await createTestSession("admin@cea.ng");
   instructor = await createTestSession("instructor@cea.ng");
   student = await createTestSession("student@cea.ng");
+  await env.DB.prepare("INSERT INTO users (id, name, email, role_key) VALUES (?, ?, ?, 'parent')")
+    .bind("guardian-fixture", "Guardian fixture", "guardian-fixture@example.test")
+    .run();
+  guardian = await createTestSession("guardian-fixture@example.test");
 });
 
 describe("POST /v1/invitations (create ??? parent invitation)", () => {
@@ -41,7 +47,7 @@ describe("POST /v1/invitations (create ??? parent invitation)", () => {
       headers: { ...cookieHeaders(admin.cookie), "Content-Type": "application/json" },
       body: JSON.stringify({
         studentId: "00000000-0000-4000-8000-000000000001",
-        guardianName: "Chiamaka Okafor",
+        guardianUserId: "guardian-fixture",
         note: "Primary guardian",
         expiresInDays: 30,
       }),
@@ -64,7 +70,7 @@ describe("POST /v1/invitations (create ??? parent invitation)", () => {
     const res = await api("/v1/invitations", {
       method: "POST",
       headers: { ...cookieHeaders(admin.cookie), "Content-Type": "application/json" },
-      body: JSON.stringify({ studentId: "no-such-user", guardianName: "G" }),
+      body: JSON.stringify({ studentId: "no-such-user", guardianUserId: "guardian-fixture" }),
     });
     expect(res.status).toBe(404);
   });
@@ -75,7 +81,7 @@ describe("POST /v1/invitations (create ??? parent invitation)", () => {
       headers: { ...cookieHeaders(admin.cookie), "Content-Type": "application/json" },
       body: JSON.stringify({
         studentId: "00000000-0000-4000-8000-000000000002",
-        guardianName: "G",
+        guardianUserId: "guardian-fixture",
       }),
     });
     expect(res.status).toBe(400);
@@ -86,17 +92,11 @@ describe("GET /v1/invitations/:token (public verify)", () => {
   it("returns pending invitation details without auth", async () => {
     const res = await api(`/v1/invitations/${inviteToken}`);
     expect(res.status).toBe(200);
-    const body = (await res.json()) as {
-      status: string;
-      studentName: string;
-      guardianName: string;
-      note: string;
-      expiresAt: string;
-    };
+    const body = (await res.json()) as { status: string; expiresAt: string };
     expect(body.status).toBe("pending");
-    expect(body.studentName).toBeTruthy();
-    expect(body.guardianName).toBe("Chiamaka Okafor");
-    expect(body.note).toBe("Primary guardian");
+    expect(body).not.toHaveProperty("studentName");
+    expect(body).not.toHaveProperty("guardianName");
+    expect(body).not.toHaveProperty("note");
     expect(body.expiresAt).toBeTruthy();
   });
 
@@ -110,7 +110,7 @@ describe("POST /v1/invitations/:token/accept", () => {
   it("accepts and links the guardian to the student", async () => {
     const res = await api(`/v1/invitations/${inviteToken}/accept`, {
       method: "POST",
-      headers: cookieHeaders(student.cookie),
+      headers: cookieHeaders(guardian.cookie),
     });
     expect(res.status).toBe(200);
     const body = (await res.json()) as {
@@ -127,7 +127,7 @@ describe("POST /v1/invitations/:token/accept", () => {
   it("rejects re-accepting the same invitation", async () => {
     const res = await api(`/v1/invitations/${inviteToken}/accept`, {
       method: "POST",
-      headers: cookieHeaders(student.cookie),
+      headers: cookieHeaders(guardian.cookie),
     });
     expect(res.status).toBe(409);
   });
@@ -138,7 +138,7 @@ describe("POST /v1/invitations/:token/accept", () => {
   });
 
   it("lets the new parent list the linked student", async () => {
-    const res = await api("/v1/parent/students", { headers: cookieHeaders(student.cookie) });
+    const res = await api("/v1/parent/students", { headers: cookieHeaders(guardian.cookie) });
     expect(res.status).toBe(200);
     const body = (await res.json()) as { items: Array<{ studentId: string }> };
     expect(body.items.some((s) => s.studentId === "00000000-0000-4000-8000-000000000001")).toBe(

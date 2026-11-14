@@ -14,6 +14,8 @@
  */
 
 const { primarySlotForPath, slotsForPath, adsAllowedOn } = await import("../src/lib/ads/slots.ts");
+const { beginnerChallenges, beginnerLessonSlugs } =
+  await import("../src/data/practice/beginner-challenges.ts");
 
 const expectations = [
   // [path, allowed?, primary slot id or null, why]
@@ -22,6 +24,13 @@ const expectations = [
   ["/blog/", true, "blog-index", "trailing slash must not change policy"],
   ["/blog?page=2", false, null, "query strings are not paths — the component only sees pathname"],
   ["/blog/passwords-you-can-keep", true, "lesson-in-article", "lesson body"],
+  ["/blog/sitting-down-at-a-computer", false, null, "interactive beginner lesson"],
+  ["/blog/files-and-folders", false, null, "interactive beginner lesson"],
+  ["/blog/your-hands-on-the-keyboard", false, null, "interactive beginner lesson"],
+  ["/blog/the-internet-without-getting-lost", false, null, "interactive beginner lesson"],
+  ["/blog/your-first-email", false, null, "interactive beginner lesson"],
+  ["/practice/computer-basics", false, null, "interactive practice lab"],
+  ["/learning-trail", false, null, "personal learning trail"],
   ["/classes", true, null, "course catalogue: navigation, nothing declared"],
   ["/classes/web-development", true, "course-end", "course page, last block"],
   ["/classes/web-development/lesson-one", true, "course-end", "session lecture"],
@@ -56,6 +65,15 @@ const expectations = [
 ];
 
 const failures = [];
+
+for (const slug of Object.keys(beginnerChallenges)) {
+  if (!beginnerLessonSlugs.includes(slug))
+    failures.push(`${slug}: challenge not in beginner lesson list`);
+  if (adsAllowedOn(`/blog/${slug}`)) failures.push(`${slug}: interactive lesson permits ads`);
+}
+for (const slug of beginnerLessonSlugs) {
+  if (!beginnerChallenges[slug]) failures.push(`${slug}: beginner lesson has no challenge`);
+}
 
 for (const [path, allowed, primary, why] of expectations) {
   const pathname = path.split("?")[0];

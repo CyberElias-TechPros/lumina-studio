@@ -3,6 +3,7 @@ import { Link } from "@/lib/next-compat/router";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
 import { ThemeSync } from "./theme-sync";
+import { ScrollExperience } from "./scroll-experience";
 import { ChatWidget } from "@/components/assistant/chat-widget";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -17,6 +18,7 @@ export function PageShell({
   return (
     <div className="marketing-shell bg-background text-foreground relative flex min-h-screen flex-col">
       <ThemeSync />
+      <ScrollExperience />
       <a
         href="#main-content"
         className="bg-primary text-primary-foreground focus-visible:ring-ring fixed top-3 left-1/2 z-[95] -translate-x-1/2 -translate-y-28 rounded-md px-4 py-2 text-sm font-medium transition-transform focus-visible:translate-y-0 focus-visible:ring-2"
@@ -135,10 +137,10 @@ export function PageHero({
   meta?: string[];
 }) {
   return (
-    <section className="border-border border-b py-12 md:py-16">
+    <section className="cea-page-hero border-border border-b py-16 md:py-24">
       <div className="container-page">
         <Eyebrow>{eyebrow}</Eyebrow>
-        <h1 className="font-display mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+        <h1 className="font-display mt-5 max-w-4xl text-4xl leading-[1.02] font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
           {title}
         </h1>
         <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed text-pretty sm:text-[17px]">

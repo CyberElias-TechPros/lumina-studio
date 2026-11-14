@@ -3,12 +3,12 @@ import { api, cookieHeaders, createTestSession, setupDb } from "./helpers";
 
 type TestSession = Awaited<ReturnType<typeof createTestSession>>;
 
-let intern: TestSession;
+let admin: TestSession;
 let mentor: TestSession;
 
 beforeAll(async () => {
   await setupDb();
-  intern = await createTestSession("intern@cea.ng");
+  admin = await createTestSession("admin@cea.ng");
   mentor = await createTestSession("mentor@cea.ng");
 });
 
@@ -28,8 +28,8 @@ describe("GET /v1/intern-dashboard (Intern dashboard suite)", () => {
     "/v1/intern-dashboard/evaluations",
     "/v1/intern-dashboard/projects",
     "/v1/intern-dashboard/conversations",
-  ])("lists %s for an intern", async (path) => {
-    const res = await api(path, { headers: cookieHeaders(intern.cookie) });
+  ])("lists %s for an administrator", async (path) => {
+    const res = await api(path, { headers: cookieHeaders(admin.cookie) });
     expect(res.status).toBe(200);
     const body = (await res.json()) as { items: Array<Record<string, unknown>>; total: number };
     expect(body.total).toBeGreaterThanOrEqual(1);
@@ -38,7 +38,7 @@ describe("GET /v1/intern-dashboard (Intern dashboard suite)", () => {
 
   it("returns tasks with camelCase fields", async () => {
     const res = await api("/v1/intern-dashboard/tasks", {
-      headers: cookieHeaders(intern.cookie),
+      headers: cookieHeaders(admin.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{
@@ -57,7 +57,7 @@ describe("GET /v1/intern-dashboard (Intern dashboard suite)", () => {
 
   it("returns timesheets with hours as numbers", async () => {
     const res = await api("/v1/intern-dashboard/timesheets", {
-      headers: cookieHeaders(intern.cookie),
+      headers: cookieHeaders(admin.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; weekLabel: string; hours: number; status: string }>;
@@ -69,7 +69,7 @@ describe("GET /v1/intern-dashboard (Intern dashboard suite)", () => {
 
   it("returns evaluations with scores", async () => {
     const res = await api("/v1/intern-dashboard/evaluations", {
-      headers: cookieHeaders(intern.cookie),
+      headers: cookieHeaders(admin.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; kind: string; score: number; status: string }>;
@@ -82,7 +82,7 @@ describe("GET /v1/intern-dashboard (Intern dashboard suite)", () => {
 
   it("returns projects with artifacts and views", async () => {
     const res = await api("/v1/intern-dashboard/projects", {
-      headers: cookieHeaders(intern.cookie),
+      headers: cookieHeaders(admin.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{
@@ -99,9 +99,9 @@ describe("GET /v1/intern-dashboard (Intern dashboard suite)", () => {
     expect(body.items[0]?.views).toBeTypeOf("number");
   });
 
-  it("returns conversation detail with thread for an intern", async () => {
+  it("returns conversation detail with thread for an administrator", async () => {
     const res = await api("/v1/intern-dashboard/conversations/itc-01", {
-      headers: cookieHeaders(intern.cookie),
+      headers: cookieHeaders(admin.cookie),
     });
     expect(res.status).toBe(200);
     const body = (await res.json()) as {
@@ -120,7 +120,7 @@ describe("GET /v1/intern-dashboard (Intern dashboard suite)", () => {
 
   it("404s unknown conversation", async () => {
     const res = await api("/v1/intern-dashboard/conversations/unknown", {
-      headers: cookieHeaders(intern.cookie),
+      headers: cookieHeaders(admin.cookie),
     });
     expect(res.status).toBe(404);
   });

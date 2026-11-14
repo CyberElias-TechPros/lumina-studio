@@ -47,6 +47,12 @@ function MfaPage() {
     }
     verify.mutate(trimmed, {
       onSuccess: (session) => {
+        const pendingInvite = sessionStorage.getItem("cea_pending_invite");
+        sessionStorage.removeItem("cea_pending_invite");
+        if (pendingInvite) {
+          navigate({ to: "/app/parent/invitation/accept", search: { token: pendingInvite } });
+          return;
+        }
         const back = sessionStorage.getItem("cea_tuition_return");
         sessionStorage.removeItem("cea_tuition_return");
         navigate({

@@ -13,11 +13,11 @@ beforeAll(async () => {
 });
 
 describe("GET /v1/parent-extras-dashboard (Parent extras suite)", () => {
-  it("403s non-staff roles", async () => {
+  it("blocks unowned parent data and rejects unrelated roles", async () => {
     const res = await api("/v1/parent-extras-dashboard/contacts", {
       headers: cookieHeaders(parent.cookie),
     });
-    expect(res.status).toBe(200);
+    expect(res.status).toBe(503);
 
     const mentor = await createTestSession("mentor@cea.ng");
     const denied = await api("/v1/parent-extras-dashboard/contacts", {
@@ -39,7 +39,7 @@ describe("GET /v1/parent-extras-dashboard (Parent extras suite)", () => {
 
   it("returns contacts with names and roles", async () => {
     const res = await api("/v1/parent-extras-dashboard/contacts", {
-      headers: cookieHeaders(parent.cookie),
+      headers: cookieHeaders(staff.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; name: string; role: string; kind: string }>;
@@ -53,7 +53,7 @@ describe("GET /v1/parent-extras-dashboard (Parent extras suite)", () => {
 
   it("returns meetings with dates and statuses", async () => {
     const res = await api("/v1/parent-extras-dashboard/meetings", {
-      headers: cookieHeaders(parent.cookie),
+      headers: cookieHeaders(staff.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; title: string; dateLabel: string; status: string }>;

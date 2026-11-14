@@ -17,7 +17,7 @@ export const Route = createFileRoute("/privacy")({
 });
 
 function PrivacyPage() {
-  const lastUpdated = "21 October 2026";
+  const lastUpdated = "12 November 2026";
 
   return (
     <PageShell>
@@ -63,6 +63,22 @@ function PrivacyPage() {
                 numbers
               </li>
             </ul>
+            <h3 className="mt-6 font-semibold">Optional learning trail</h3>
+            <p className="text-muted-foreground mt-3 leading-relaxed">
+              When you choose to bookmark or mark a lesson complete, the learning trail stores that
+              selection in this browser on this device. It does not sync to your account. Practice
+              answers and typed lab text are not saved by the trail. You can clear the trail from{" "}
+              <Link to="/learning-trail" className="text-primary underline">
+                your learning trail
+              </Link>{" "}
+              or your browser settings.
+            </p>
+            <p className="text-muted-foreground mt-3 leading-relaxed">
+              If optional analytics is enabled and you consent, we may count lab starts, lab
+              completions and lesson-check uses to understand whether the activities are useful.
+              These events do not include your answers or typed practice text. Analytics providers
+              may collect technical information under their own policies.
+            </p>
             <h3 className="mt-6 font-semibold">Optional Android phone notifications</h3>
             <p className="text-muted-foreground mt-3 leading-relaxed">
               If you enable phone notifications, Google Firebase provides a device registration

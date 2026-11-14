@@ -13,11 +13,11 @@ beforeAll(async () => {
 });
 
 describe("GET /v1/student-self-dashboard (Student self suite)", () => {
-  it("403s non-staff roles", async () => {
+  it("blocks unowned student data and rejects unrelated roles", async () => {
     const res = await api("/v1/student-self-dashboard/attendance", {
       headers: cookieHeaders(student.cookie),
     });
-    expect(res.status).toBe(200);
+    expect(res.status).toBe(503);
 
     const mentor = await createTestSession("mentor@cea.ng");
     const denied = await api("/v1/student-self-dashboard/attendance", {

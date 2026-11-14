@@ -208,6 +208,17 @@ export const RBAC_RULES: RbacRule[] = [
     path: "/v1/instructor/courses/:slug/lessons",
     roles: ["instructor", "admin"],
   },
+  { methods: ["GET", "PUT"], path: "/v1/instructor/assignment-roster", roles: ["admin"] },
+  {
+    methods: ["GET"],
+    path: "/v1/instructor/assignment-roster/courses",
+    roles: ["instructor", "admin"],
+  },
+  {
+    methods: ["GET"],
+    path: "/v1/instructor/assignment-publications/:key",
+    roles: ["instructor", "admin"],
+  },
   { methods: ["GET", "POST"], path: "/v1/instructor/assignments", roles: ["instructor", "admin"] },
   {
     methods: ["PATCH"],
@@ -250,13 +261,19 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["GET"], path: "/v1/parent/students/:id/finance", roles: ["parent", "admin"] },
   { methods: ["GET"], path: "/v1/parent/students/:id/attendance", roles: ["parent", "admin"] },
 
-  /* Mentor matchmaking — learners + mentors */
+  /* Reviewed mentoring workflow. Object ownership is checked by each route. */
   { methods: ["GET"], path: "/v1/mentor/profiles", roles: ["student", "alumni", "mentor"] },
   { methods: ["POST"], path: "/v1/mentor/match", roles: ["student", "alumni", "mentor"] },
+  { methods: ["GET", "PUT", "DELETE"], path: "/v1/mentor/profile", roles: ["mentor", "alumni"] },
+  { methods: ["GET", "PUT"], path: "/v1/mentor/admin/eligibility", roles: ["admin"] },
+  { methods: ["GET"], path: "/v1/mentor/admin/profile", roles: ["admin"] },
+  { methods: ["POST"], path: "/v1/mentor/admin/profile/approve", roles: ["admin"] },
+  { methods: ["GET", "POST"], path: "/v1/mentor/requests", roles: ["student", "alumni", "mentor"] },
+  { methods: ["POST"], path: "/v1/mentor/requests/:id/respond", roles: ["mentor", "alumni"] },
   {
     methods: ["POST"],
-    path: "/v1/mentor/requests",
-    roles: ["student", "alumni", "mentor", "admin"],
+    path: "/v1/mentor/requests/:id/cancel",
+    roles: ["student", "alumni", "mentor"],
   },
 
   /* Mentor dashboard — mentor + admin only */

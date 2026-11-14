@@ -5,6 +5,7 @@ import { paginate, parsePagination } from "../lib/pagination";
 import { requireAuth, requireAnyRole } from "../lib/auth";
 import { z } from "zod";
 import { parseBody } from "../lib/validate";
+import { ApiError } from "../lib/errors";
 
 const CLI_COLS: Record<string, { table: string; columns: string }> = {
   tickets: {
@@ -45,11 +46,21 @@ function registerLists(router: Hono<{ Bindings: AppEnv }>, collections: typeof C
   for (const [key, { table, columns }] of Object.entries(collections)) {
     router.get(`/${key}`, async (c) => {
       const { cursor, limit } = parsePagination(c);
-      const userScoped = key === "tickets";
-      const ownershipWhere = userScoped ? " WHERE (client_id = ? OR client_id IS NULL)" : "";
+      const user = c.get("authUser");
+      // The legacy collections have no client/project ownership columns. Until
+      // those are modelled, returning them to clients would expose other clients.
+      if (key !== "tickets" && user.roleKey !== "admin") {
+        throw new ApiError(
+          503,
+          "CLIENT_DATA_UNAVAILABLE",
+          "This workspace is unavailable until client-specific records are connected.",
+        );
+      }
+      const userScoped = key === "tickets" && user.roleKey !== "admin";
+      const ownershipWhere = userScoped ? " WHERE client_id = ?" : "";
       const cursorWhere = cursor ? `${userScoped ? " AND" : " WHERE"} id > ?` : "";
       const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM ${table}${ownershipWhere}`)
-        .bind(...(userScoped ? [c.get("authUser").id] : []))
+        .bind(...(userScoped ? [user.id] : []))
         .first<{
           n: number;
         }>();
@@ -57,7 +68,7 @@ function registerLists(router: Hono<{ Bindings: AppEnv }>, collections: typeof C
         `SELECT ${columns} FROM ${table}${ownershipWhere}${cursorWhere} ORDER BY sort_order ASC, id ASC LIMIT ?`,
       )
         .bind(
-          ...(userScoped ? [c.get("authUser").id] : []),
+          ...(userScoped ? [user.id] : []),
           ...(cursor ? [base64UrlDecode(cursor) ?? ""] : []),
           limit,
         )

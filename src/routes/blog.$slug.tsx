@@ -10,6 +10,8 @@ import { NoteCard } from "@/components/marketing/note-card";
 import { blogPosts, NOTES_AUTHOR, type BlogBlock } from "@/data/blog";
 import { FounderPhoto } from "@/components/marketing/founder-photo";
 import { LessonEndAd, LessonInArticleAd } from "@/components/marketing/ad-slots";
+import { LessonChallengeCard } from "@/components/practice/lesson-challenge";
+import { beginnerChallenges } from "@/data/practice/beginner-challenges";
 import { adjacentNotes, chapterForOrder, relatedNotes } from "@/data/note-chapters";
 import { getPageHead } from "@/lib/seo";
 import { readingTimeLabel } from "@/lib/blog-reading-time";
@@ -107,6 +109,7 @@ function Article() {
   const chapter = chapterForOrder(post.order);
   const related = relatedNotes(post, 3);
   const editorial = lessonEditorial(post.slug);
+  const challenge = beginnerChallenges[post.slug];
 
   return (
     <PageShell>
@@ -213,12 +216,16 @@ function Article() {
               {/* After the second section: a natural pause, with the rest of the
                   lesson still below. Renders nothing unless the path registry
                   allows it and the reader has accepted optional cookies. */}
-              {i === 1 && <LessonInArticleAd />}
+              {i === 1 && !challenge && <LessonInArticleAd />}
             </Fragment>
           ))}
         </div>
 
-        <LessonEndAd />
+        {challenge ? (
+          <LessonChallengeCard key={post.slug} slug={post.slug} challenge={challenge} />
+        ) : (
+          <LessonEndAd />
+        )}
 
         <aside className="border-primary/30 bg-primary/5 mt-12 rounded-xl border p-6">
           <p className="font-semibold">A note about examples</p>

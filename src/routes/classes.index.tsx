@@ -7,6 +7,7 @@ import { CTASection, PageShell } from "@/components/marketing/shell";
 import { CampusImg, CourseCover, CourseIcon } from "@/components/marketing/photos";
 import { Reveal } from "@/components/motion";
 import { CourseFinder } from "@/components/marketing/course-finder";
+import { HeroMotion } from "@/components/marketing/hero-motion";
 import {
   achievementLevels,
   courseCategories,
@@ -97,7 +98,7 @@ function CourseCard({ course, index }: { course: ResolvedCourse; index: number }
       <Link
         to="/classes/$courseSlug"
         params={{ courseSlug: course.slug }}
-        className="group border-foreground/12 hover:border-primary/35 bg-card flex h-full flex-col overflow-hidden rounded-[14px] border transition-colors duration-200"
+        className="cea-course-card group border-foreground/12 bg-card flex h-full flex-col overflow-hidden rounded-2xl border"
       >
         <div className="bg-muted aspect-[16/9] overflow-hidden">
           <CourseCover slug={course.slug} />
@@ -254,7 +255,7 @@ function HowWeTeach() {
                   "Instructor demonstration before you touch the keyboard",
                   "Guided practice, then individual practice",
                   "A weekly assignment and a practical project",
-                  "A final assessment and a certificate of completion",
+                  "A final assessment and a practical project",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <Check className="text-primary mt-0.5 size-4 shrink-0" />
@@ -310,8 +311,8 @@ function DeliverablesTable() {
             Don't just complete a course. Complete something you can show.
           </h2>
           <p className="text-foreground/75 mt-5 text-body-lg text-pretty">
-            Every course has a named deliverable, and the certificate is awarded for the deliverable
-            — not for attendance. Here is what you walk out with.
+            Every course lists a practical deliverable to work toward. Confirm assessment and
+            certificate requirements with the Academy before enrolling.
           </p>
         </div>
 
@@ -416,38 +417,63 @@ function HubFaqs() {
 function Classes() {
   return (
     <PageShell>
-      <section className="border-border border-b">
-        <div className="container-page grid gap-8 py-16 lg:grid-cols-[1.3fr_0.7fr] lg:items-end lg:py-24">
+      <section
+        id="cea-courses-hero"
+        className="cea-courses-hero relative overflow-hidden text-white"
+      >
+        <HeroMotion scope="#cea-courses-hero" />
+        <div className="container-page grid gap-12 py-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-16 lg:py-24">
           <div>
-            <p className="text-primary text-xs font-semibold tracking-[0.16em] uppercase">
-              The Academy / Learning paths
+            <p data-hero-copy className="cea-hero-kicker">
+              <span className="cea-live-dot" /> THE ACADEMY / LEARNING PATHS
             </p>
-            <h1 className="font-display mt-5 max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
-              Find a practical course for the work you want to do.
+            <h1
+              data-hero-copy
+              className="font-display mt-7 max-w-4xl text-[clamp(3rem,5vw,5.5rem)] leading-[1] font-semibold tracking-[-0.055em]"
+            >
+              Find a practical course for the{" "}
+              <span className="font-serif font-normal italic text-[#a9caff]">
+                work you want to do.
+              </span>
             </h1>
-            <p className="text-muted-foreground mt-5 max-w-2xl text-base leading-relaxed sm:text-lg">
+            <p
+              data-hero-copy
+              className="mt-7 max-w-2xl text-base leading-relaxed text-[#c5d0df] sm:text-lg"
+            >
               Start where you are. Compare fees, requirements and projects before you apply, and
               read the class notes for free.
             </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Button asChild>
-                <Link to="/apply">
-                  Apply <ArrowRight className="ml-2 size-4" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline">
-                <Link to="/contact">Ask a question</Link>
-              </Button>
+            <div data-hero-copy className="mt-9 flex flex-wrap gap-3">
+              <a href="#browse-areas" className="cea-hero-button cea-hero-button-primary">
+                Explore courses <ArrowRight className="size-4" />
+              </a>
+              <Link to="/contact" className="cea-hero-button cea-hero-button-secondary">
+                Ask a question <ArrowRight className="size-4" />
+              </Link>
             </div>
           </div>
-          <div className="border-border border-t pt-5 lg:border-t-0 lg:border-l lg:pl-8">
-            <p className="text-primary text-xs font-semibold tracking-[0.16em] uppercase">
-              Made for real work
+          <div
+            data-hero-art
+            className="cea-courses-feature rounded-3xl border border-white/15 p-7 sm:p-9"
+          >
+            <div className="flex items-center justify-between gap-4">
+              <span className="font-mono text-[10px] tracking-[0.18em] text-[#aac8f2] uppercase">
+                Made for real work
+              </span>
+              <span className="cea-courses-mark" aria-hidden="true">
+                ↗
+              </span>
+            </div>
+            <p className="font-display mt-12 text-[clamp(4.5rem,8vw,7rem)] leading-none font-semibold tracking-[-0.07em]">
+              {resolvedFlyerCourses.length}
+              <span className="font-serif ml-2 text-4xl font-normal italic tracking-normal text-[#a9caff]">
+                paths
+              </span>
             </p>
-            <p className="font-display mt-3 text-xl leading-snug font-semibold">
-              {resolvedFlyerCourses.length} core courses. A practical project in every one.
+            <p className="mt-4 max-w-sm text-lg leading-snug font-medium">
+              Core courses. A practical project in every one.
             </p>
-            <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+            <p className="mt-5 max-w-sm border-t border-white/15 pt-5 text-sm leading-relaxed text-[#bdcce0]">
               Dates and equipment arrangements are confirmed by admissions before payment.
             </p>
           </div>
@@ -463,7 +489,7 @@ function Classes() {
           </p>
           <h2
             id="browse-areas"
-            className="font-display mt-3 text-2xl font-semibold tracking-tight sm:text-3xl"
+            className="font-display mt-3 scroll-mt-24 text-2xl font-semibold tracking-tight sm:text-3xl"
           >
             Choose a starting point.
           </h2>

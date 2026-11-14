@@ -117,8 +117,8 @@ CI (`.github/workflows/ci.yml`) runs frontend typecheck + build, the editorial a
 ```sh
 cd backend
 npx wrangler d1 migrations apply DB --remote        # schema
-# seeds (idempotent):
-npx wrangler d1 execute DB --remote --file seeds/<file>-data.sql   # per suite, or db:seed:local's remote equivalent
+# Do not seed remote databases with demo data. Review each data source and ownership
+# model before importing production records; see docs/internal-production-readiness.md.
 npx wrangler secret put PAYSTACK_SECRET_KEY         # + EMAIL_API_KEY, TURNSTILE_SECRET_KEY, SENTRY_DSN, CONTACT_INBOX, AI_API_KEY, VAPID_*
 # full list + go-live steps: docs/go-live-checklist.md (template: backend/.dev.vars.example)
 npx wrangler deploy

@@ -3,6 +3,7 @@ import type { AppEnv } from "../types";
 import { base64UrlDecode, base64UrlEncode } from "../lib/crypto";
 import { paginate, parsePagination } from "../lib/pagination";
 import { requireAuth, requireAnyRole } from "../lib/auth";
+import { ApiError } from "../lib/errors";
 
 const INS_EXT_COLS: Record<string, { table: string; columns: string }> = {
   overview: {
@@ -30,6 +31,15 @@ const INS_EXT_COLS: Record<string, { table: string; columns: string }> = {
 function registerLists(router: Hono<{ Bindings: AppEnv }>, collections: typeof INS_EXT_COLS) {
   for (const [key, { table, columns }] of Object.entries(collections)) {
     router.get(`/${key}`, async (c) => {
+      // These legacy tables have no ownership model. Do not expose them to
+      // individual users until a verified relationship is available.
+      if (c.get("authUser").roleKey !== "admin") {
+        throw new ApiError(
+          503,
+          "INSTRUCTOR_DATA_UNAVAILABLE",
+          "Instructor workspace details are unavailable until instructor-specific records are connected.",
+        );
+      }
       const { cursor, limit } = parsePagination(c);
       const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM ${table}`).first<{
         n: number;

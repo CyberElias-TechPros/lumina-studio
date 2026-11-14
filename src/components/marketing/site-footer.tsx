@@ -29,6 +29,7 @@ const columns = [
     title: "Explore",
     links: [
       { label: "Notes", to: "/blog" },
+      { label: "Learning trail", to: "/learning-trail" },
       { label: "Editorial standards", to: "/editorial" },
       { label: "Change log", to: "/editorial/changelog" },
       { label: "Opportunities", to: "/opportunities" },

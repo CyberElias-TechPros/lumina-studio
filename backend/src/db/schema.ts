@@ -966,6 +966,8 @@ export const parentStudents = sqliteTable(
     studentId: text("student_id")
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
+    // Foreign key to parent_invitations is maintained by migration 0072.
+    verifiedInvitationId: text("verified_invitation_id"),
   },
   (t) => [
     primaryKey({ columns: [t.parentId, t.studentId] }),

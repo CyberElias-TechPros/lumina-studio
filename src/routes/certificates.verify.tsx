@@ -19,8 +19,7 @@ export const Route = createFileRoute("/certificates/verify")({
   head: () =>
     getPageHead({
       title: "Verify a Certificate",
-      description:
-        "Check a Cyber Elias Academy certificate by its code. We confirm whether we issued it.",
+      description: "Check whether a certificate code matches a registry record.",
       path: "/certificates/verify",
     }),
   component: VerifyPage,
@@ -56,15 +55,15 @@ function VerifyPage() {
       <PageHero
         eyebrow="Certificates"
         title="Verify a certificate"
-        description="Enter the code printed on a Cyber Elias Academy certificate. We will say whether we issued it."
+        description="Enter a certificate code to check for a matching registry record."
       />
 
       <section className="container-page pb-16">
         <div className="mx-auto max-w-xl">
           <p className="text-muted-foreground mb-8 text-sm leading-relaxed">
-            Certificates are awarded for the work produced on a course, not for attendance. This
-            page checks the code against our records. It is not a professional licence and it is not
-            a national qualification.
+            This page checks whether a code exists in the registry. A match alone does not confirm
+            eligibility, completion or the holder’s identity. Contact the academy for further
+            verification.
           </p>
 
           <div className="border-border rounded-lg border p-6">
@@ -97,7 +96,16 @@ function VerifyPage() {
                   <BadgeCheck className="size-5" />
                 </span>
                 <div>
-                  <p className="font-display font-semibold text-success">Valid</p>
+                  <p className="font-display font-semibold text-success">
+                    {result.status === "legacy"
+                      ? "Legacy registry record found"
+                      : "Registry record found"}
+                  </p>
+                  {result.status === "legacy" && (
+                    <p className="text-muted-foreground text-xs">
+                      This older record has no recorded review in this system.
+                    </p>
+                  )}
                   <p className="text-muted-foreground text-xs">
                     Checked {new Date().toLocaleDateString()}
                   </p>
@@ -132,7 +140,9 @@ function VerifyPage() {
                   <FileSearch className="size-5" />
                 </span>
                 <div>
-                  <p className="font-display font-semibold">No match</p>
+                  <p className="font-display font-semibold">
+                    {result.status === "revoked" ? "Record revoked" : "No match"}
+                  </p>
                   <p className="text-muted-foreground mt-1 text-sm">
                     {result.message ??
                       "We have no record of that code. Check the spelling, or contact us."}

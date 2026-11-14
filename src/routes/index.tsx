@@ -6,6 +6,8 @@ import { PageShell } from "@/components/marketing/shell";
 import { CampusImg, CourseCover } from "@/components/marketing/photos";
 import { FounderPhoto } from "@/components/marketing/founder-photo";
 import { CourseFinder } from "@/components/marketing/course-finder";
+import { HeroMotion } from "@/components/marketing/hero-motion";
+import { ShinyText } from "@/components/react-bits/shiny-text";
 import { faqs } from "@/data/site";
 import { blogPosts } from "@/data/blog";
 import { flyerCourses, formatFee, teachingLoop } from "@/data/academy";
@@ -75,50 +77,72 @@ function Home() {
         </div>
       </section>
 
-      <section className="overflow-hidden bg-[#101923] text-[#f6f5f0]">
-        <div className="container-page grid gap-12 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16 lg:py-24">
-          <div>
-            <p className="text-xs font-semibold tracking-[0.18em] text-[#96dce8] uppercase">
-              Port Harcourt · Practical digital skills
-            </p>
-            <h1 className="font-display mt-6 max-w-3xl text-4xl leading-[1.05] font-semibold tracking-tight sm:text-5xl lg:text-[4.5rem]">
-              The future is built by those who learn to create it.
+      <section id="cea-home-hero" className="cea-home-hero relative overflow-hidden text-[#f6f5f0]">
+        <HeroMotion />
+        <div className="cea-hero-grid container-page relative grid items-center gap-10 pt-16 pb-12 lg:grid-cols-[1.02fr_0.98fr] lg:gap-8 lg:pt-20 lg:pb-16">
+          <div className="relative z-10">
+            <div data-hero-copy className="cea-hero-kicker">
+              <span className="cea-live-dot" /> PORT HARCOURT · PRACTICAL DIGITAL SKILLS
+            </div>
+            <h1
+              data-hero-copy
+              className="font-display mt-7 max-w-3xl text-[clamp(3.25rem,6.2vw,6.6rem)] leading-[0.98] font-semibold tracking-[-0.06em]"
+            >
+              The future is built by those who{" "}
+              <span className="font-serif font-normal italic tracking-[-0.04em] text-[#a9caff]">
+                learn to create it.
+              </span>
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-[#d3dbe4] sm:text-lg">
+            <p
+              data-hero-copy
+              className="mt-7 max-w-lg text-base leading-relaxed text-[#c5d0df] sm:text-lg"
+            >
               Learn digital skills by doing real work. From your first computer lesson to a project
               you can show, we help you practise with purpose.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                to="/classes"
-                className="inline-flex min-h-11 items-center gap-2 rounded-md bg-[#f6f5f0] px-5 py-3 text-sm font-semibold text-[#101923] transition-colors hover:bg-white"
-              >
+            <div data-hero-copy className="mt-9 flex flex-wrap gap-3">
+              <Link to="/classes" className="cea-hero-button cea-hero-button-primary">
                 Explore courses <ArrowRight className="size-4" />
               </Link>
-              <Link
-                to="/about"
-                className="inline-flex min-h-11 items-center gap-2 rounded-md border border-white/40 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
-              >
+              <Link to="/about" className="cea-hero-button cea-hero-button-secondary">
                 Discover CEA <ArrowRight className="size-4" />
               </Link>
             </div>
-            <p className="mt-9 border-t border-white/20 pt-5 text-sm text-[#c4d0da]">
-              13 short courses · 24 Ebony Road, Port Harcourt
-            </p>
-          </div>
-          <figure className="relative">
             <div
-              aria-hidden="true"
-              className="absolute -top-4 right-5 h-16 w-16 border-t border-r border-[#74d7e7]/70"
-            />
-            <div className="overflow-hidden rounded-sm border border-white/20">
-              <CampusImg id="lab-1" eager className="aspect-[4/3]" />
+              data-hero-copy
+              className="cea-hero-bottom mt-12 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-white/15 pt-6"
+            >
+              <div>
+                <span className="block font-mono text-[10px] tracking-[0.18em] text-[#8da0ba] uppercase">
+                  Your starting point
+                </span>
+                <span className="mt-1 block text-sm font-medium">Learn at your pace</span>
+              </div>
+              <div>
+                <span className="block font-mono text-[10px] tracking-[0.18em] text-[#8da0ba] uppercase">
+                  Find us
+                </span>
+                <span className="mt-1 block text-sm font-medium">24 Ebony Road, Port Harcourt</span>
+              </div>
             </div>
-            <figcaption className="mt-3 flex justify-between gap-4 text-xs tracking-wide text-[#c4d0da]">
+          </div>
+          <figure data-hero-art className="cea-hero-art relative mx-auto w-full max-w-[620px]">
+            <div className="cea-hero-art-frame">
+              <CampusImg id="lab-1" eager />
+            </div>
+            <figcaption className="mt-4 flex flex-wrap justify-between gap-3 text-xs tracking-wide text-[#c4d0da]">
               <span>The CEA classroom · Port Harcourt</span>
               <span>01 / LEARN BY DOING</span>
             </figcaption>
           </figure>
+        </div>
+        <div className="cea-hero-marquee" aria-label="Learn, practise, create">
+          <div className="container-page flex flex-wrap items-center justify-between gap-3 py-4">
+            <ShinyText text="LEARN / PRACTISE / CREATE" />
+            <span className="font-mono text-[10px] tracking-[0.16em] text-[#91a4bd] uppercase">
+              Real skills. Your next chapter.
+            </span>
+          </div>
         </div>
       </section>
 
@@ -153,7 +177,7 @@ function Home() {
 
       <CourseFinder id="home-course-finder" />
 
-      <section className="container-page py-16 md:py-20">
+      <section className="container-page py-20 md:py-28">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <h2 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
@@ -174,7 +198,7 @@ function Home() {
               <Link
                 to="/classes/$courseSlug"
                 params={{ courseSlug: course.slug }}
-                className="border-border bg-card hover:border-primary/40 flex h-full flex-col overflow-hidden rounded-lg border transition-colors"
+                className="cea-course-card border-border bg-card flex h-full flex-col overflow-hidden rounded-2xl border"
               >
                 <div className="bg-muted aspect-[16/10] overflow-hidden">
                   <CourseCover slug={course.slug} />
@@ -346,6 +370,15 @@ function Home() {
           <div className="flex flex-wrap gap-x-5 gap-y-2">
             <Link to="/blog" className="text-primary text-sm font-medium hover:underline">
               All notes
+            </Link>
+            <Link
+              to="/practice/computer-basics"
+              className="text-primary text-sm font-medium hover:underline"
+            >
+              Try the Computer Basics Lab
+            </Link>
+            <Link to="/learning-trail" className="text-primary text-sm font-medium hover:underline">
+              Your learning trail
             </Link>
             <Link
               to="/editorial"

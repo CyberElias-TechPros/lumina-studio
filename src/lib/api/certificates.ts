@@ -3,6 +3,7 @@ import { apiFetch } from "@/lib/api/client";
 export interface CertificateVerifyResult {
   valid: boolean;
   message?: string;
+  status?: "issued" | "legacy" | "revoked";
   certificate?: {
     code: string;
     title: string;
@@ -16,12 +17,14 @@ export interface CertificateItem {
   title: string;
   code: string;
   issuedAt: string;
+  status?: "issued" | "revoked" | "legacy";
 }
 
 export interface IssueCertificateInput {
   userId: string;
   courseSlug: string;
-  title: string;
+  evidenceRef: string;
+  confirmed: true;
 }
 
 export interface CertificateCandidate {
@@ -39,11 +42,17 @@ export function verifyCertificate(code: string): Promise<CertificateVerifyResult
 }
 
 /** Your issued certificates. */
-export function fetchMyCertificates(): Promise<{ items: CertificateItem[]; total: number }> {
-  return apiFetch<{ items: CertificateItem[]; total: number }>("/v1/certificates/mine");
+export function fetchMyCertificates(): Promise<{
+  items: CertificateItem[];
+  total: number;
+  truncated?: boolean;
+}> {
+  return apiFetch<{ items: CertificateItem[]; total: number; truncated?: boolean }>(
+    "/v1/certificates/mine",
+  );
 }
 
-/** Active users a certificate can be issued to (instructor/admin only). */
+/** Active-user directory for administrators; enrollment and review are still required. */
 export function fetchCertificateCandidates(): Promise<{
   items: CertificateCandidate[];
   total: number;
@@ -51,7 +60,32 @@ export function fetchCertificateCandidates(): Promise<{
   return apiFetch<{ items: CertificateCandidate[]; total: number }>("/v1/certificates/candidates");
 }
 
-/** Issue a certificate (instructor/admin only). Returns the new code. */
+/** Issue after administrative review. Enrollment alone does not prove eligibility. */
 export function issueCertificate(input: IssueCertificateInput): Promise<CertificateItem> {
   return apiFetch<CertificateItem>("/v1/certificates", { method: "POST", body: input });
+}
+
+export interface CertificateReviewRecord {
+  id: string;
+  title: string;
+  code: string;
+  issuedAt: string;
+  status: "issued" | "revoked" | "legacy";
+  issuedBy: string | null;
+  evidenceRef: string | null;
+  revokedBy: string | null;
+  revokedAt: string | null;
+  reason: string | null;
+}
+export function fetchCertificateRecords(
+  userId: string,
+  courseSlug: string,
+): Promise<{ items: CertificateReviewRecord[]; truncated: boolean }> {
+  return apiFetch("/v1/certificates/admin/records", { query: { userId, courseSlug } });
+}
+export function revokeCertificate(id: string, reason: string): Promise<{ ok: boolean }> {
+  return apiFetch(`/v1/certificates/${encodeURIComponent(id)}/revoke`, {
+    method: "POST",
+    body: { reason, confirmed: true },
+  });
 }

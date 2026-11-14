@@ -16,8 +16,10 @@ export const invitationKeys = {
 
 /** Verify an invitation link. Disabled until a token is present. */
 export function useInvitation(token: string | undefined) {
-  return useApiQuery<InvitationInfo>(invitationKeys.info(token ?? ""), () =>
-    fetchInvitation(token ?? ""),
+  return useApiQuery<InvitationInfo>(
+    invitationKeys.info(token ?? ""),
+    () => fetchInvitation(token ?? ""),
+    { enabled: Boolean(token) },
   );
 }
 

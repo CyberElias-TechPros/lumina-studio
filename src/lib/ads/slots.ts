@@ -91,6 +91,15 @@ export const AD_INELIGIBLE_PREFIXES = [
   "/status",
 ] as const;
 
+/** Beginner lessons with practice controls stay ad-free, even if a slot is added later. */
+export const AD_INTERACTIVE_NOTE_PATHS = [
+  "/blog/sitting-down-at-a-computer",
+  "/blog/files-and-folders",
+  "/blog/your-hands-on-the-keyboard",
+  "/blog/the-internet-without-getting-lost",
+  "/blog/your-first-email",
+] as const;
+
 export const AD_SLOTS: AdSlot[] = [
   {
     id: "lesson-in-article",
@@ -160,6 +169,7 @@ function matchesPrefix(pathname: string, prefix: string): boolean {
 export function adsAllowedOn(pathname: string): boolean {
   const path = normalise(pathname);
   if (AD_INELIGIBLE_PREFIXES.some((prefix) => matchesPrefix(path, prefix))) return false;
+  if (AD_INTERACTIVE_NOTE_PATHS.some((note) => matchesPrefix(path, note))) return false;
   return AD_ELIGIBLE_PREFIXES.some((prefix) => matchesPrefix(path, prefix));
 }
 

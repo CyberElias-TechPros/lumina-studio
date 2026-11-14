@@ -14,6 +14,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
+      - name: Check project-local agent skills
+        run: npm run test:agent-skills
       - name: Test stale-override regression guard
         run: node --test scripts/test/dependency-contract.test.mjs
       - name: Verify npm and Bun lockfiles agree
@@ -35,6 +37,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Browser push registration safety
+        run: node --test scripts/test/push-registration.test.mjs
       - run: npm run build
       # Reads the prerendered HTML: word floor, FAQ schema, instructor, and
       # links into the lesson corpus. Guards the commercial half of the site.
@@ -66,6 +70,8 @@ jobs:
       # (test-ad-placement) — including every surface that must never carry a unit.
       - name: Ad placement policy and behaviour
         run: npm run check:ads
+      - name: Learning content and measurement safety
+        run: npm run test:learning
       - name: Content quality report
         run: npm run audit:content
       - name: Image provenance report (non-blocking)
@@ -119,7 +125,7 @@ jobs:
       - run: npm run build
         env:
           NEXT_PUBLIC_ENABLE_MOCKS: "true"
-      - run: npx playwright test e2e/tuition.spec.ts e2e/private-cache.spec.ts --project=chromium
+      - run: npx playwright test e2e/tuition.spec.ts e2e/private-cache.spec.ts e2e/public.spec.ts e2e/practice-lab.spec.ts e2e/learning-trail.spec.ts e2e/motion-experience.spec.ts --project=chromium
         env:
           E2E_BASE_URL: http://127.0.0.1:3000
           E2E_API_BASE: http://127.0.0.1:8787
@@ -142,7 +148,7 @@ jobs:
         env:
           NEXT_PUBLIC_API_URL: http://127.0.0.1:8787
           NEXT_PUBLIC_ENABLE_MOCKS: "false"
-      - run: npx playwright test e2e/auth-recovery.spec.ts e2e/student-learning.spec.ts e2e/assignment-handoff.spec.ts --project=chromium --reporter=line,github
+      - run: npx playwright test e2e/auth-recovery.spec.ts e2e/student-learning.spec.ts e2e/assignment-handoff.spec.ts e2e/internal-data-honesty.spec.ts e2e/guardian-invitations.spec.ts e2e/assignment-rosters.spec.ts e2e/certificate-review.spec.ts e2e/mentoring-workflow.spec.ts --project=chromium --reporter=line,github
         env:
           E2E_BASE_URL: http://127.0.0.1:3000
           E2E_API_BASE: http://127.0.0.1:8787

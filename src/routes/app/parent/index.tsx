@@ -2,16 +2,7 @@
 
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
-import {
-  ArrowRight,
-  BookOpen,
-  CalendarDays,
-  FileText,
-  MessageSquare,
-  Receipt,
-  Users,
-  Wallet,
-} from "lucide-react";
+import { ArrowRight, BookOpen, MessageSquare, Receipt, Users, Wallet } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -34,38 +25,17 @@ export const Route = createFileRoute("/app/parent/")({
   component: ParentDashboard,
 });
 
-const notices = [
-  {
-    t: "Term 2 exams begin Aug 18",
-    d: "Academic board",
-    icon: BookOpen,
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Parent–teacher meetings: Sep 5–9",
-    d: "Register your slot",
-    icon: Users,
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    t: "Inter-term break: Oct 23–31",
-    d: "Residential students",
-    icon: CalendarDays,
-    tone: "bg-warning/10 text-warning",
-  },
-];
-
 function ParentDashboard() {
   const students = useParentStudents();
   const kids = students.data?.items ?? [];
   const loaded = students.data !== undefined;
-  const avgGpa = kids.length
-    ? (kids.reduce((s, c) => s + Number(c.gpa), 0) / kids.length).toFixed(1)
-    : "0.0";
   const totalDue = kids.reduce((s, c) => s + c.due, 0);
   const dueCount = kids.reduce((s, c) => s + c.dueCount, 0);
-  const avgPct = kids.length ? Math.round(kids.reduce((s, c) => s + c.pct, 0) / kids.length) : 0;
-  const goodStanding = kids.every((c) => c.dueCount === 0);
+  const enrolledKids = kids.filter((c) => c.course);
+  const avgPct = enrolledKids.length
+    ? Math.round(enrolledKids.reduce((s, c) => s + c.pct, 0) / enrolledKids.length)
+    : null;
+  const hasBills = kids.some((c) => c.dueCount > 0);
 
   return (
     <AppShell
@@ -80,10 +50,14 @@ function ParentDashboard() {
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
             {loaded
-              ? goodStanding
-                ? "Accounts in good standing"
-                : "Payments pending"
-              : "Checking…"}
+              ? kids.length === 0
+                ? "No verified learners linked"
+                : hasBills
+                  ? "Outstanding records found"
+                  : "No outstanding records found"
+              : students.isError
+                ? "Learners unavailable"
+                : "Checking…"}
           </Badge>
           <Button asChild size="sm">
             <Link to="/app/messages">
@@ -104,22 +78,22 @@ function ParentDashboard() {
           },
           {
             label: "Avg. GPA",
-            value: loaded ? avgGpa : "…",
-            delta: "across children",
+            value: loaded ? "—" : "…",
+            delta: "Unavailable until the grading policy is verified",
             icon: BookOpen,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Outstanding bills",
-            value: loaded ? formatNaira(totalDue) : "…",
+            value: loaded ? (kids.length ? formatNaira(totalDue) : "—") : "…",
             delta: dueCount === 1 ? "1 instalment due" : `${dueCount} instalments due`,
             icon: Wallet,
             tone: "bg-warning/10 text-warning",
           },
           {
             label: "Avg. progress",
-            value: loaded ? `${avgPct}%` : "…",
-            delta: "across courses",
+            value: loaded ? (avgPct === null ? "—" : `${avgPct}%`) : "…",
+            delta: "across linked learners with enrollment records",
             icon: MessageSquare,
             tone: "bg-success/10 text-success",
           },
@@ -155,7 +129,8 @@ function ParentDashboard() {
                 error={{ title: "Children unavailable" }}
                 empty={{
                   title: "No linked learners",
-                  description: "Contact the school to link a learner to your account.",
+                  description:
+                    "Contact the academy to verify the relationship and issue a parent invitation. Previously linked learners may need to be verified again.",
                 }}
                 isEmpty={(d) => d.items.length === 0}
               >
@@ -176,7 +151,7 @@ function ParentDashboard() {
                           </div>
                           <div className="flex gap-2">
                             <Badge className="bg-white/15 text-white border-0 font-semibold">
-                              GPA {c.gpa}
+                              GPA {c.gpa ?? "unavailable"}
                             </Badge>
                           </div>
                         </div>
@@ -193,7 +168,7 @@ function ParentDashboard() {
                               ? `${formatNaira(c.due)} outstanding · ${c.dueCount} ${
                                   c.dueCount === 1 ? "instalment" : "instalments"
                                 }`
-                              : "No outstanding balance"}
+                              : "No outstanding records found"}
                           </p>
                           <Button
                             asChild
@@ -226,7 +201,9 @@ function ParentDashboard() {
               {kids.length === 0 && !loaded ? (
                 <p className="text-muted-foreground py-3 text-xs">Loading bills…</p>
               ) : kids.length === 0 ? (
-                <p className="text-muted-foreground py-3 text-xs">No outstanding bills.</p>
+                <p className="text-muted-foreground py-3 text-xs">
+                  No verified learners linked; billing is unavailable.
+                </p>
               ) : (
                 kids.map((c) => (
                   <div
@@ -237,7 +214,7 @@ function ParentDashboard() {
                     <span className="text-xs font-semibold">
                       {c.dueCount > 0
                         ? `${c.dueCount} ${c.dueCount === 1 ? "instalment" : "instalments"} due`
-                        : "All settled"}
+                        : "No outstanding records"}
                     </span>
                     <Badge
                       className={cn(
@@ -262,7 +239,7 @@ function ParentDashboard() {
                       to="/app/parent/students/$studentId"
                       params={{ studentId: kids[0]?.studentId ?? "" }}
                     >
-                      Pay online
+                      View billing
                     </Link>
                   </Button>
                 </div>
@@ -271,44 +248,15 @@ function ParentDashboard() {
           </Card>
         </div>
 
-        <div className="space-y-5">
-          <Card className="bg-card shadow-soft border">
-            <CardHeader>
-              <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                <FileText className="text-primary size-4" /> Notices
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {notices.map((n) => (
-                <div key={n.t} className="flex items-start gap-3 rounded-xl border p-3">
-                  <span
-                    className={cn(
-                      "mt-0.5 grid size-8 shrink-0 place-items-center rounded-lg",
-                      n.tone,
-                    )}
-                  >
-                    <n.icon className="size-4" />
-                  </span>
-                  <div>
-                    <p className="text-sm font-semibold">{n.t}</p>
-                    <p className="text-muted-foreground text-xs">{n.d}</p>
-                  </div>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
-
-          <Card className="bg-gradient-ink text-ink-foreground shadow-elevated border-0">
-            <CardContent className="p-6">
-              <CalendarDays className="text-warning size-5" />
-              <p className="font-display mt-3 text-base font-extrabold">Up next</p>
-              <p className="text-ink-foreground/70 mt-1 text-sm">
-                Parent–teacher meetings run Sep 5–9. Ada's mentor requested a check-in — slots close
-                Aug 25.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
+        <Card className="bg-card shadow-soft border self-start">
+          <CardHeader>
+            <CardTitle className="font-display text-base font-bold">Parent information</CardTitle>
+          </CardHeader>
+          <CardContent className="text-muted-foreground text-sm">
+            Notices and meeting information are not available here yet. Contact the academy for
+            current information.
+          </CardContent>
+        </Card>
       </div>
     </AppShell>
   );

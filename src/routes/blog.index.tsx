@@ -141,8 +141,19 @@ function Blog() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link to="/editorial">How we maintain the notes</Link>
+                <Link to="/practice/computer-basics">
+                  Try the Computer Basics Lab <ArrowRight className="size-4" />
+                </Link>
               </Button>
+              <Link
+                to="/learning-trail"
+                className="text-primary inline-flex min-h-11 items-center gap-2 text-sm font-semibold hover:underline"
+              >
+                Your learning trail <ArrowRight className="size-4" />
+              </Link>
+              <Link to="/editorial" className="text-muted-foreground text-sm hover:underline">
+                How we maintain the notes
+              </Link>
             </div>
           </div>
 

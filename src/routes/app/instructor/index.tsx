@@ -1,40 +1,20 @@
-"use client";
-
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
 import {
   ArrowRight,
   BarChart3,
   BookOpen,
-  CalendarCheck,
   CalendarDays,
-  CircleAlert,
-  Clock3,
   FileText,
   GraduationCap,
   LayoutDashboard,
-  ListChecks,
   Megaphone,
   Plus,
   ShieldCheck,
-  TrendingUp,
   Users,
 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { AppShell } from "@/components/app/app-shell";
-import { QueryState } from "@/components/ui/query-state";
-import { useInsOverview } from "@/lib/query/instructorExtras";
-import type { InsKpi } from "@/lib/api/instructorExtras";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/instructor/")({
@@ -43,7 +23,7 @@ export const Route = createFileRoute("/app/instructor/")({
       { title: "Instructor Dashboard — CEA-OS" },
       {
         name: "description",
-        content: "Your courses, grading queue and today's classes at a glance.",
+        content: "Courses, assignments and teaching tools.",
       },
     ],
   }),
@@ -116,134 +96,13 @@ const workspace = [
   },
 ];
 
-const classesToday = [
-  {
-    t: "09:00",
-    title: "Backend & APIs · live lab",
-    place: "Lab B3 · Yaba campus",
-    tone: "bg-gradient-learning",
-  },
-  {
-    t: "12:00",
-    title: "System design · mock interviews",
-    place: "Zoom · link sent 08:00",
-    tone: "bg-gradient-erp",
-  },
-  {
-    t: "16:00",
-    title: "Office hours",
-    place: "Room 12 · first come, first served",
-    tone: "bg-gradient-services",
-  },
-];
-
-const queue = [
-  {
-    student: "Chiamaka Eze",
-    item: "REST API Assignment 3",
-    course: "Backend & APIs",
-    submitted: "Jul 31 · 09:12",
-    due: "Due today",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    student: "Ibrahim Sule",
-    item: "SQL Fundamentals Quiz",
-    course: "Backend & APIs",
-    submitted: "Jul 30 · 18:40",
-    due: "Due today",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    student: "Funke Adeyemi",
-    item: "Auth & JWT Lab",
-    course: "Backend & APIs",
-    submitted: "Jul 30 · 14:22",
-    due: "Due Aug 1",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    student: "Tunde Bakare",
-    item: "Middleware Take-home",
-    course: "Backend & APIs",
-    submitted: "Jul 29 · 21:05",
-    due: "Due Aug 1",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    student: "Ngozi Umeh",
-    item: "Data Modelling Brief",
-    course: "Frontend Foundations",
-    submitted: "Jul 29 · 10:30",
-    due: "Overdue",
-    tone: "bg-error/10 text-error",
-  },
-];
-
-function kpiMeta(metric: string) {
-  switch (metric.toLowerCase()) {
-    case "active students":
-      return { icon: Users, tone: "bg-primary/10 text-primary" };
-    case "pending grading":
-      return { icon: ListChecks, tone: "bg-warning/10 text-warning" };
-    case "completion rate":
-      return { icon: TrendingUp, tone: "bg-success/10 text-success" };
-    case "avg class attendance":
-      return { icon: CalendarCheck, tone: "bg-learning/10 text-learning" };
-    default:
-      return { icon: ListChecks, tone: "bg-primary/10 text-primary" };
-  }
-}
-
 function InstructorDashboard() {
-  const overviewQuery = useInsOverview();
   return (
     <AppShell
       roleKey="instructor"
       title="Instructor dashboard"
-      subtitle="Backend & APIs · Cohort 15 · term 2 · week 8"
-      actions={
-        <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">
-            6 courses active
-          </Badge>
-          <Badge variant="secondary" className="font-semibold">
-            23 items awaiting grading
-          </Badge>
-        </>
-      }
+      subtitle="Courses, assignments and teaching tools"
     >
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <QueryState<InsKpi[]>
-          query={overviewQuery}
-          error={{ title: "Failed to load overview" }}
-          empty={{ title: "No metrics yet" }}
-          isEmpty={(rows) => rows.length === 0}
-        >
-          {(kpis) =>
-            kpis.map((k) => {
-              const meta = kpiMeta(k.metric);
-              return (
-                <Card key={k.id} className="bg-card shadow-soft border">
-                  <CardContent className="p-5">
-                    <div className="flex items-center justify-between">
-                      <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                        {k.metric}
-                      </p>
-                      <span className={cn("grid size-8 place-items-center rounded-lg", meta.tone)}>
-                        <meta.icon className="size-4" />
-                      </span>
-                    </div>
-                    <p className="font-display mt-3 text-2xl font-extrabold">{k.valueLabel}</p>
-                    <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
-                  </CardContent>
-                </Card>
-              );
-            })
-          }
-        </QueryState>
-      </div>
-
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader>
           <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
@@ -270,90 +129,10 @@ function InstructorDashboard() {
         </CardContent>
       </Card>
 
-      <div className="mt-5 grid gap-5 xl:grid-cols-2">
-        <Card className="bg-card shadow-soft border">
-          <CardHeader>
-            <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-              <CalendarDays className="text-primary size-4" /> Today's classes
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            {classesToday.map((c) => (
-              <div key={c.t} className={cn("rounded-2xl p-4 text-white", c.tone)}>
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <span className="bg-white/15 grid size-10 shrink-0 place-items-center rounded-xl">
-                      <Clock3 className="size-4" />
-                    </span>
-                    <div>
-                      <p className="font-display text-sm font-extrabold">{c.title}</p>
-                      <p className="text-white/70 text-xs">{c.place}</p>
-                    </div>
-                  </div>
-                  <Badge className="bg-white/15 text-white border-0 font-semibold">{c.t}</Badge>
-                </div>
-              </div>
-            ))}
-            <Button asChild variant="outline" size="sm" className="w-full font-semibold">
-              <Link to="/app/instructor/calendar">
-                Open calendar <ArrowRight className="ml-1 size-3.5" />
-              </Link>
-            </Button>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-card shadow-soft border">
-          <CardHeader className="flex-row items-center justify-between">
-            <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-              <ListChecks className="text-primary size-4" /> Pending grading queue
-            </CardTitle>
-            <Badge className="bg-error/10 text-error border-0 font-semibold">1 overdue</Badge>
-          </CardHeader>
-          <CardContent className="p-0">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Student</TableHead>
-                  <TableHead>Item</TableHead>
-                  <TableHead>Submitted</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead className="text-right">Action</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {queue.map((q) => (
-                  <TableRow key={q.student}>
-                    <TableCell>
-                      <p className="text-xs font-bold">{q.student}</p>
-                      <p className="text-muted-foreground text-[11px]">{q.course}</p>
-                    </TableCell>
-                    <TableCell className="text-xs font-semibold">{q.item}</TableCell>
-                    <TableCell className="text-muted-foreground text-xs">{q.submitted}</TableCell>
-                    <TableCell>
-                      <Badge className={cn("border-0 font-semibold", q.tone)}>{q.due}</Badge>
-                    </TableCell>
-                    <TableCell className="text-right">
-                      <Button variant="outline" size="sm" className="text-xs font-semibold">
-                        Grade
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-            <div className="flex flex-wrap items-center gap-3 border-t p-4 text-xs">
-              <CircleAlert className="text-error size-4 shrink-0" />
-              <p className="text-muted-foreground flex-1 font-semibold">
-                Ngozi's data modelling brief slipped past the grace window — flag for mentor
-                outreach after grading.
-              </p>
-              <Button size="sm" className="bg-gradient-brand border-0">
-                Grade all
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+      <p className="text-muted-foreground mt-5 text-sm">
+        Open the calendar or assignment center for available records. Dashboard totals and sample
+        schedules are not shown until their data sources can be verified.
+      </p>
     </AppShell>
   );
 }
