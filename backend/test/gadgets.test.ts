@@ -89,7 +89,7 @@ describe("supplier snapshot safeguards", () => {
       items: { priceKobo: number | null; observedQuantity: number | null; pricesKobo?: unknown }[];
     };
     expect(body.fresh).toBe(true);
-    expect(body.items[0]!.priceKobo).toBe(20590000);
+    expect(body.items[0]!.priceKobo).toBe(23240000);
     expect(body.items[0]!.observedQuantity).toBe(1);
     expect(body.items[0]!.pricesKobo).toBeUndefined();
     expect(body.items[1]!.priceKobo).toBeNull();
@@ -110,7 +110,7 @@ describe("supplier snapshot safeguards", () => {
     };
     expect(body.items[0]!.priceKobo).toBeNull();
     expect(body.items[0]!.observedQuantity).toBe(0);
-    expect(body.items[1]!.priceKobo).toBeGreaterThan(20590000);
+    expect(body.items[1]!.priceKobo).toBeGreaterThan(23240000);
     expect(body.items[1]!.observedQuantity).toBe(3);
   });
   it("hides prices and counts when stale or invalid configuration", async () => {
@@ -129,6 +129,11 @@ describe("supplier snapshot safeguards", () => {
     expect(stale.fresh).toBe(false);
     expect(stale.items[0]!.priceKobo).toBeNull();
     expect(stale.items[0]!.observedQuantity).toBeNull();
+  });
+  it("defaults to 18% while retaining an explicit Worker override", () => {
+    expect(pricingConfig(bindings).margin).toBe(1800);
+    expect(pricingConfig({ ...bindings, AFKIT_MARGIN_BPS: "2000" }).margin).toBe(2000);
+    expect(pricingConfig({ ...bindings, AFKIT_MARGIN_BPS: "800" }).margin).toBe(800);
   });
   it("keeps margin and minimum profit after rounded fees and reserve across prices", () => {
     const p = pricingConfig(bindings);

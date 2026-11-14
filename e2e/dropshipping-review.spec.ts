@@ -43,7 +43,8 @@ test("admin reviews an observation and bounded discount locally without publishi
   await page.addInitScript(() => localStorage.setItem("cea:onboarding:tour:v1", "test"));
   await page.route("**/*", async (route) => {
     const url = new URL(route.request().url());
-    if (!["localhost", "127.0.0.1"].includes(url.hostname)) return route.abort();
+    if (!["localhost", "127.0.0.1", "mock-api.example.test"].includes(url.hostname))
+      return route.abort();
     if (!url.pathname.startsWith("/v1/")) return route.continue();
     if (route.request().method() === "OPTIONS")
       return route.fulfill({ status: 204, headers: cors });
@@ -77,11 +78,29 @@ test("admin reviews an observation and bounded discount locally without publishi
   await page.getByLabel("Estimated supplier cost for this item (₦)").fill("175000");
   await page.getByLabel("Other per-item costs (₦)").fill("3000");
   await page.getByRole("checkbox", { name: /I have entered my estimated additional/ }).check();
-  await expect(page.getByText(/Suggested minimum:/)).toContainText("₦203,600.00");
-  await page.getByLabel("Optional proposed regular price (₦)").fill("210000");
-  await expect(page.getByText(/Maximum estimated discount:/)).toContainText("₦6,400.00");
+  await expect(page.getByText(/Suggested minimum:/)).toContainText("₦229,900.00");
+  await page.getByLabel("Optional proposed regular price (₦)").fill("229900");
+  await expect(page.getByText(/Normal offer floor:/)).toContainText("₦208,400.00");
+  await expect(page.getByText(/Maximum normal estimated discount:/)).toContainText("₦21,500.00");
+  await expect(page.getByText(/Exceptional offer floor:/)).toHaveCount(0);
+  const exception = page.getByRole("checkbox", { name: /I explicitly approve an exceptional/ });
+  await exception.check();
+  await expect(page.getByText(/Exceptional offer floor:/)).toContainText("₦203,600.00");
+  await expect(page.getByText(/Exceptional offer floor:/)).toContainText("₦26,300.00");
   await page.getByLabel("Optional proposed regular price (₦)").fill("200000");
-  await expect(page.getByText(/below the estimated floor/)).toBeVisible();
+  await expect(page.getByText(/below the target price/)).toBeVisible();
+  await expect(page.getByText(/no normal discount is available/)).toBeVisible();
+  await expect(exception).not.toBeChecked();
+  await exception.check();
+  await expect(page.getByText(/no exceptional discount is available/)).toBeVisible();
+  await page.getByLabel("Normal offer margin (%)").fill("9");
+  await expect(page.getByText(/normal offer margin must be at least 10%/)).toBeVisible();
+  await expect(page.getByText(/Normal offer floor:/)).toHaveCount(0);
+  await page.getByLabel("Normal offer margin (%)").fill("10");
+  await expect(exception).not.toBeChecked();
+  await page.getByLabel("Exceptional offer margin (%)").fill("7.99");
+  await expect(page.getByText(/normal offer margin must be at least 10%/)).toBeVisible();
+  await expect(page.getByText(/Normal offer floor:/)).toHaveCount(0);
   expect(writes).toEqual([]);
   await page.reload();
   await expect(page.getByRole("heading", { name: "Example laptop — casing scratch" })).toHaveCount(
@@ -92,7 +111,8 @@ test("admin reviews an observation and bounded discount locally without publishi
 test("signed-in non-admin cannot access the review workspace", async ({ page }) => {
   await page.route("**/*", async (route) => {
     const url = new URL(route.request().url());
-    if (!["localhost", "127.0.0.1"].includes(url.hostname)) return route.abort();
+    if (!["localhost", "127.0.0.1", "mock-api.example.test"].includes(url.hostname))
+      return route.abort();
     if (!url.pathname.startsWith("/v1/")) return route.continue();
     if (route.request().method() === "OPTIONS")
       return route.fulfill({ status: 204, headers: cors });

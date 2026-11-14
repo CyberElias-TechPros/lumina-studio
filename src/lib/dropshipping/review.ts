@@ -145,3 +145,49 @@ export function estimatePrice(p: PricingInputs): PriceEstimate {
     riskReserveKobo: Number(risk),
   };
 }
+
+export type OfferLimits = {
+  normalFloorKobo: number;
+  normalDiscountKobo: number | null;
+  exceptionalFloorKobo: number | null;
+  exceptionalDiscountKobo: number | null;
+};
+
+/** Local planning only: these estimates do not authorize, send or enforce an offer. */
+export function estimateOfferLimits(
+  inputs: PricingInputs,
+  regularPriceKobo: number,
+  normalMarginBps: number,
+  exceptionalMarginBps: number,
+  exceptionApproved: boolean,
+): OfferLimits {
+  if (!Number.isSafeInteger(regularPriceKobo) || regularPriceKobo <= 0)
+    throw new Error("Enter a valid regular price.");
+  // Validate the unchanged target assumptions too, not only the substituted offer margins.
+  estimatePrice(inputs);
+  if (
+    !Number.isSafeInteger(normalMarginBps) ||
+    !Number.isSafeInteger(exceptionalMarginBps) ||
+    exceptionalMarginBps < 800 ||
+    normalMarginBps < 1000 ||
+    exceptionalMarginBps > normalMarginBps ||
+    normalMarginBps > inputs.targetMarginBps
+  )
+    throw new Error(
+      "Normal margin must be at least 10%, exceptional margin at least 8%, and margins ordered below the target.",
+    );
+  const normal = estimatePrice({ ...inputs, targetMarginBps: normalMarginBps }).floorKobo;
+  const exceptional =
+    exceptionApproved === true
+      ? estimatePrice({ ...inputs, targetMarginBps: exceptionalMarginBps }).floorKobo
+      : null;
+  return {
+    normalFloorKobo: normal,
+    normalDiscountKobo: regularPriceKobo > normal ? regularPriceKobo - normal : null,
+    exceptionalFloorKobo: exceptional,
+    exceptionalDiscountKobo:
+      exceptional !== null && regularPriceKobo > exceptional
+        ? regularPriceKobo - exceptional
+        : null,
+  };
+}

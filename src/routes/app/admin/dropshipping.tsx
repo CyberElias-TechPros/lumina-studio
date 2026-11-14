@@ -8,9 +8,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import {
   estimatePrice,
+  estimateOfferLimits,
   parseAfkitSnapshot,
   parseNaira,
   type Observation,
+  type PricingInputs,
 } from "@/lib/dropshipping/review";
 
 export const Route = createFileRoute("/app/admin/dropshipping")({
@@ -36,19 +38,24 @@ function DropshippingReview() {
   const [items, setItems] = useState<Observation[]>([]);
   const [costs, setCosts] = useState<string[]>([]);
   const [regularPrices, setRegularPrices] = useState<string[]>([]);
+  const [exceptionApprovals, setExceptionApprovals] = useState<boolean[]>([]);
   const [error, setError] = useState("");
   const [warning, setWarning] = useState("");
   const [fee, setFee] = useState("1.5");
   const [fixed, setFixed] = useState("100");
   const [risk, setRisk] = useState("3");
-  const [margin, setMargin] = useState("8");
+  const [margin, setMargin] = useState("18");
+  const [normalMargin, setNormalMargin] = useState("10");
+  const [exceptionMargin, setExceptionMargin] = useState("8");
   const [minProfit, setMinProfit] = useState("5000");
   const [extra, setExtra] = useState("");
   const [round, setRound] = useState("100");
   const [confirmed, setConfirmed] = useState(false);
   const feeBps = percentage(fee),
     riskBps = percentage(risk),
-    marginBps = percentage(margin);
+    marginBps = percentage(margin),
+    normalBps = percentage(normalMargin),
+    exceptionBps = percentage(exceptionMargin);
   const fixedKobo = parseNaira(fixed),
     minKobo = parseNaira(minProfit),
     extraKobo = parseNaira(extra),
@@ -64,12 +71,25 @@ function DropshippingReview() {
     roundKobo !== null &&
     roundKobo > 0 &&
     feeBps + riskBps + marginBps < 10000;
+  const offerValid =
+    valid &&
+    normalBps !== null &&
+    exceptionBps !== null &&
+    marginBps !== null &&
+    exceptionBps >= 800 &&
+    normalBps >= 1000 &&
+    exceptionBps <= normalBps &&
+    normalBps <= marginBps;
+  function resetExceptionApprovals() {
+    setExceptionApprovals((previous) => previous.map(() => false));
+  }
   function analyze() {
     try {
       const result = parseAfkitSnapshot(text);
       setItems(result.items);
       setCosts(result.items.map(() => ""));
       setRegularPrices(result.items.map(() => ""));
+      setExceptionApprovals(result.items.map(() => false));
       setError(
         result.items.length
           ? ""
@@ -80,6 +100,7 @@ function DropshippingReview() {
       setItems([]);
       setCosts([]);
       setRegularPrices([]);
+      setExceptionApprovals([]);
       setError(err instanceof Error ? err.message : "Could not review the snapshot.");
     }
   }
@@ -127,6 +148,7 @@ function DropshippingReview() {
                   setItems([]);
                   setCosts([]);
                   setRegularPrices([]);
+                  setExceptionApprovals([]);
                   setError("");
                   setWarning("");
                 }}
@@ -162,6 +184,18 @@ function DropshippingReview() {
                 { id: "risk", label: "Risk reserve (%)", value: risk, set: setRisk },
                 { id: "margin", label: "Target net margin (%)", value: margin, set: setMargin },
                 {
+                  id: "normal-margin",
+                  label: "Normal offer margin (%)",
+                  value: normalMargin,
+                  set: setNormalMargin,
+                },
+                {
+                  id: "exception-margin",
+                  label: "Exceptional offer margin (%)",
+                  value: exceptionMargin,
+                  set: setExceptionMargin,
+                },
+                {
                   id: "profit",
                   label: "Minimum net profit (₦)",
                   value: minProfit,
@@ -180,7 +214,10 @@ function DropshippingReview() {
                     id={`ds-${field.id}`}
                     inputMode="decimal"
                     value={field.value}
-                    onChange={(e) => field.set(e.target.value)}
+                    onChange={(e) => {
+                      field.set(e.target.value);
+                      resetExceptionApprovals();
+                    }}
                   />
                 </label>
               ))}
@@ -189,11 +226,20 @@ function DropshippingReview() {
               <input
                 type="checkbox"
                 checked={confirmed}
-                onChange={(e) => setConfirmed(e.target.checked)}
+                onChange={(e) => {
+                  setConfirmed(e.target.checked);
+                  resetExceptionApprovals();
+                }}
               />{" "}
               I have entered my estimated additional per-item costs, including delivery and
               applicable taxes, or deliberately entered zero.
             </label>
+            {valid && !offerValid && (
+              <p className="text-destructive text-sm">
+                The normal offer margin must be at least 10% and the exceptional margin at least 8%.
+                The exceptional margin cannot exceed normal, and normal cannot exceed the target.
+              </p>
+            )}
             {!valid && (
               <p className="text-muted-foreground text-sm">
                 Enter valid values and confirm the additional costs to show an estimate. Combined
@@ -218,9 +264,10 @@ function DropshippingReview() {
                   const cost = parseNaira(costs[index] ?? "");
                   const regular = parseNaira(regularPrices[index] ?? "");
                   let estimate: ReturnType<typeof estimatePrice> | null = null;
+                  let offer: ReturnType<typeof estimateOfferLimits> | null = null;
                   if (valid && cost !== null && cost > 0) {
                     try {
-                      estimate = estimatePrice({
+                      const inputs: PricingInputs = {
                         supplierCostKobo: cost,
                         extraCostKobo: extraKobo!,
                         fixedFeeKobo: fixedKobo!,
@@ -229,7 +276,17 @@ function DropshippingReview() {
                         riskBps: riskBps!,
                         targetMarginBps: marginBps!,
                         roundToKobo: roundKobo!,
-                      });
+                      };
+                      estimate = estimatePrice(inputs);
+                      if (offerValid && regular !== null && regular > 0) {
+                        offer = estimateOfferLimits(
+                          inputs,
+                          regular,
+                          normalBps!,
+                          exceptionBps!,
+                          exceptionApprovals[index] === true,
+                        );
+                      }
                     } catch {
                       /* shown as unavailable */
                     }
@@ -258,11 +315,12 @@ function DropshippingReview() {
                         id={`cost-${index}`}
                         inputMode="decimal"
                         value={costs[index] ?? ""}
-                        onChange={(e) =>
+                        onChange={(e) => {
                           setCosts((previous) =>
                             previous.map((value, i) => (i === index ? e.target.value : value)),
-                          )
-                        }
+                          );
+                          resetExceptionApprovals();
+                        }}
                       />
                       {estimate && (
                         <p>
@@ -280,25 +338,68 @@ function DropshippingReview() {
                             id={`regular-${index}`}
                             inputMode="decimal"
                             value={regularPrices[index] ?? ""}
-                            onChange={(e) =>
+                            onChange={(e) => {
                               setRegularPrices((previous) =>
                                 previous.map((value, i) => (i === index ? e.target.value : value)),
-                              )
-                            }
+                              );
+                              resetExceptionApprovals();
+                            }}
                           />
-                          {regular !== null &&
-                            (regular >= estimate.floorKobo ? (
+                          {regular !== null && regular > 0 && regular < estimate.floorKobo && (
+                            <p className="text-destructive">
+                              The proposed regular price is below the target price; review it before
+                              making an offer.
+                            </p>
+                          )}
+                          {offer && (
+                            <div className="space-y-2 rounded-md bg-muted/40 p-3">
                               <p>
-                                Maximum estimated discount: {money(regular - estimate.floorKobo)}.
-                                Recheck current cost and eligibility before offering; no discount is
-                                sent or applied.
+                                Normal offer floor: <strong>{money(offer.normalFloorKobo)}</strong>{" "}
+                                ({normalMargin}% estimated net margin or minimum profit, whichever
+                                is higher).
                               </p>
-                            ) : (
-                              <p className="text-destructive">
-                                The proposed price is below the estimated floor. Do not offer a
-                                discount on these assumptions.
+                              {offer.normalDiscountKobo !== null ? (
+                                <p>
+                                  Maximum normal estimated discount:{" "}
+                                  {money(offer.normalDiscountKobo)}.
+                                </p>
+                              ) : (
+                                <p>
+                                  The regular price is at or below the normal floor; no normal
+                                  discount is available.
+                                </p>
+                              )}
+                              <label className="flex gap-2">
+                                <input
+                                  type="checkbox"
+                                  checked={exceptionApprovals[index] === true}
+                                  onChange={(e) =>
+                                    setExceptionApprovals((previous) =>
+                                      previous.map((value, i) =>
+                                        i === index ? e.target.checked : value,
+                                      ),
+                                    )
+                                  }
+                                />
+                                I explicitly approve an exceptional {exceptionMargin}% margin for
+                                this item after verifying its current cost, stock and other
+                                expenses.
+                              </label>
+                              {offer.exceptionalFloorKobo !== null && (
+                                <p>
+                                  Exceptional offer floor:{" "}
+                                  <strong>{money(offer.exceptionalFloorKobo)}</strong>.{" "}
+                                  {offer.exceptionalDiscountKobo !== null
+                                    ? `Maximum exceptional estimated discount: ${money(offer.exceptionalDiscountKobo)}.`
+                                    : "The regular price is at or below the exceptional floor; no exceptional discount is available."}
+                                </p>
+                              )}
+                              <p className="text-muted-foreground">
+                                Use a genuine current regular price. Recheck costs and availability
+                                before any offer; this calculator does not send or apply discounts.
                               </p>
-                            ))}
+                            </div>
+                          )}
                         </>
                       )}
                     </div>
