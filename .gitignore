@@ -64,3 +64,6 @@ playwright-report/
 # Generated isolated staging configuration and local resource inventory
 /backend/wrangler.staging.json
 /staging-resources.local.json
+
+# Private, local supplier catalogue observations
+/supplier-reviews.local/
