@@ -75,6 +75,7 @@ import assignmentRostersSql from "../migrations/0073_assignment_rosters.sql?raw"
 import certificateReviewSql from "../migrations/0074_certificate_review.sql?raw";
 import mentoringWorkflowSql from "../migrations/0075_mentoring_workflow.sql?raw";
 import assignmentPublicationSql from "../migrations/0076_assignment_publication_idempotency.sql?raw";
+import afkitSnapshotSql from "../migrations/0077_afkit_catalog_snapshot.sql?raw";
 import { seedContentSql } from "../seeds/content";
 import { seedLmsSql } from "../seeds/lms";
 import { seedDomainSql } from "../seeds/domain";
@@ -201,6 +202,7 @@ export async function setupDb(): Promise<void> {
     certificateReviewSql,
     mentoringWorkflowSql,
     assignmentPublicationSql,
+    afkitSnapshotSql,
   ]) {
     const statements = sql
       .split("\n")

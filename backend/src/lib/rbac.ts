@@ -87,6 +87,10 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["DELETE"], path: "/v1/schools/proposals/:ref", roles: ["admin"] },
   { methods: ["GET"], path: "/v1/library/catalog", public: true },
 
+  /* Supplier sync POST authenticates its dedicated bearer token in the handler. */
+  { methods: ["GET"], path: "/v1/gadgets/catalog", public: true },
+  { methods: ["POST"], path: "/v1/gadgets/snapshot", public: true },
+
   /* Public digital shop — Merchant Center requires guest checkout */
   { methods: ["GET"], path: "/v1/shop/catalog", public: true },
   { methods: ["POST"], path: "/v1/shop/checkout", public: true },

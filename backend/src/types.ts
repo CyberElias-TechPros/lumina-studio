@@ -31,6 +31,15 @@ export interface AppEnv {
   CONTACT_INBOX?: string;
   /** Protects GET /v1/cron/run for manual job triggering (optional). */
   CRON_SECRET?: string;
+  /** Shared server-to-server ingestion token; never exposed to the browser. */
+  AFKIT_SYNC_TOKEN?: string;
+  AFKIT_MARGIN_BPS?: string;
+  AFKIT_RESERVE_BPS?: string;
+  AFKIT_PAYMENT_FEE_BPS?: string;
+  AFKIT_FIXED_FEE_KOBO?: string;
+  AFKIT_OTHER_COST_KOBO?: string;
+  AFKIT_MIN_PROFIT_KOBO?: string;
+  AFKIT_ROUND_KOBO?: string;
   /** SMS provider: "termii" (default, Nigeria), "twilio", or "console". */
   SMS_PROVIDER?: string;
   /** Termii API key, or Twilio "ACCOUNT_SID:AUTH_TOKEN". */

@@ -33,3 +33,109 @@ test("gadget catalogue searches and directs inquiries to CEA without taking paym
   await page.getByLabel("Search gadgets").fill("no such gadget 123456");
   await expect(page.getByText("No matches. Try a different search.")).toBeVisible();
 });
+
+test("fresh supplier observations show estimated price; stale ones do not", async ({ page }) => {
+  await page.route("**/*", (route) => {
+    const url = new URL(route.request().url());
+    if (!["localhost", "127.0.0.1"].includes(url.hostname)) return route.abort();
+    if (url.pathname.endsWith("/v1/gadgets/catalog"))
+      return route.fulfill({
+        json: {
+          observedAt: new Date().toISOString(),
+          reportedTotal: 1,
+          fresh: true,
+          items: [
+            {
+              image: "https://images.afkit.ng/example.jpg",
+              title: "Fresh test laptop",
+              condition: "used",
+              observedQuantity: 2,
+              priceKobo: 20590000,
+            },
+          ],
+        },
+        headers: {
+          "Access-Control-Allow-Origin": new URL(
+            process.env.E2E_BASE_URL ?? "http://127.0.0.1:3000",
+          ).origin,
+        },
+      });
+    return route.continue();
+  });
+  await page.goto("/shop/gadgets");
+  await expect(page.getByRole("heading", { name: "Fresh test laptop" })).toBeVisible();
+  await expect(page.getByText("Estimated price: ₦205,900.00")).toBeVisible();
+  await expect(page.getByText("Supplier last reported 2; confirm availability.")).toBeVisible();
+  await page.unroute("**/*");
+  await page.route("**/*", (route) => {
+    const url = new URL(route.request().url());
+    if (!["localhost", "127.0.0.1"].includes(url.hostname)) return route.abort();
+    if (url.pathname.endsWith("/v1/gadgets/catalog"))
+      return route.fulfill({
+        json: {
+          observedAt: "2020-01-01T00:00:00.000Z",
+          reportedTotal: 1,
+          fresh: false,
+          items: [
+            {
+              image: "https://images.afkit.ng/example.jpg",
+              title: "Stale test laptop",
+              condition: "used",
+              observedQuantity: null,
+              priceKobo: null,
+            },
+          ],
+        },
+        headers: {
+          "Access-Control-Allow-Origin": new URL(
+            process.env.E2E_BASE_URL ?? "http://127.0.0.1:3000",
+          ).origin,
+        },
+      });
+    return route.continue();
+  });
+  await page.reload();
+  await expect(page.getByRole("heading", { name: "Stale test laptop" })).toBeVisible();
+  await expect(page.getByText(/Recent supplier data is unavailable/)).toBeVisible();
+  await expect(page.getByText(/Estimated price:/)).toHaveCount(0);
+  await expect(page.getByText(/Supplier last reported/)).toHaveCount(0);
+});
+
+test("a price disappears when a previously fresh observation expires in an open tab", async ({
+  page,
+}) => {
+  await page.route("**/*", (route) => {
+    const url = new URL(route.request().url());
+    if (!["localhost", "127.0.0.1"].includes(url.hostname)) return route.abort();
+    if (url.pathname.endsWith("/v1/gadgets/catalog"))
+      return route.fulfill({
+        json: {
+          observedAt: new Date(Date.now() - 18 * 60 * 60_000 + 5000).toISOString(),
+          reportedTotal: 1,
+          fresh: true,
+          items: [
+            {
+              image: "https://images.afkit.ng/example.jpg",
+              title: "Expiring laptop",
+              condition: "used",
+              observedQuantity: 1,
+              priceKobo: 20590000,
+            },
+          ],
+        },
+        headers: {
+          "Access-Control-Allow-Origin": new URL(
+            process.env.E2E_BASE_URL ?? "http://127.0.0.1:3000",
+          ).origin,
+        },
+      });
+    return route.continue();
+  });
+  await page.goto("/shop/gadgets");
+  await expect(page.getByText("Estimated price: ₦205,900.00")).toBeVisible();
+  await expect(page.getByText(/Recent supplier data is unavailable/)).toBeVisible({
+    timeout: 10000,
+  });
+  await expect(page.getByText(/Estimated price:/)).toHaveCount(0);
+  await expect(page.getByText(/Supplier last reported/)).toHaveCount(0);
+});
