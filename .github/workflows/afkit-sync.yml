@@ -1,0 +1,29 @@
+name: Afkit catalogue refresh
+on:
+  schedule:
+    - cron: "0 0,12 * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: afkit-catalogue-sync
+  cancel-in-progress: false
+jobs:
+  collect:
+    # A repository variable is an explicit operator attestation of supplier authorization.
+    if: ${{ vars.AFKIT_AUTOMATION_AUTHORIZED == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Read and publish an eligible observation
+        env:
+          AFKIT_AUTOMATION_AUTHORIZED: ${{ vars.AFKIT_AUTOMATION_AUTHORIZED }}
+          AFKIT_SYNC_TOKEN: ${{ secrets.AFKIT_SYNC_TOKEN }}
+        run: node scripts/afkit-sync.mjs

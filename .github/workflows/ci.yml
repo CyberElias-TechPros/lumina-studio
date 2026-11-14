@@ -40,7 +40,7 @@ jobs:
       - name: Browser push registration safety
         run: node --test scripts/test/push-registration.test.mjs
       - name: Supplier snapshot and pricing safety
-        run: node --test scripts/test/dropshipping-review.test.mjs scripts/test/afkit-catalogue.test.mjs
+        run: node --test scripts/test/dropshipping-review.test.mjs scripts/test/afkit-catalogue.test.mjs scripts/test/afkit-sync.test.mjs
       - run: npm run build
       # Reads the prerendered HTML: word floor, FAQ schema, instructor, and
       # links into the lesson corpus. Guards the commercial half of the site.

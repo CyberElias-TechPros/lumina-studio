@@ -3,7 +3,6 @@ import { Link } from "@/lib/next-compat/router";
 import { PageHero, PageShell } from "@/components/marketing/shell";
 import { GadgetsCatalog } from "@/components/shop/gadgets-catalog";
 import { getPageHead } from "@/lib/seo";
-import supplierSnapshot from "@/data/supplier/afkit-observations.json";
 
 export const Route = createFileRoute("/shop/gadgets")({
   head: () =>
@@ -30,10 +29,9 @@ function GadgetsPage() {
           <p className="font-semibold">Please check with us before ordering</p>
           <p className="text-muted-foreground mt-1">
             These product observations and photos come from an Afkit catalogue snapshot, not a live
-            stock feed. The snapshot was observed on {supplierSnapshot.observedOn} and is not
-            automatically updated. Items, specifications and condition may have changed or sold out.
-            We will confirm the current price, condition, delivery and availability with you. No
-            payment is collected on this page.
+            stock reservation. Items, specifications, prices and condition may have changed or sold
+            out since the last check. We will confirm the current price, condition, delivery and
+            availability with you. No payment is collected on this page.
           </p>
           <p className="text-muted-foreground mt-2">
             Browse our{" "}
