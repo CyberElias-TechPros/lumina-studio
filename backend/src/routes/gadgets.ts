@@ -70,7 +70,7 @@ function setting(value: string | undefined, fallback: number, max: number): numb
 }
 export function pricingConfig(env: AppEnv): Pricing {
   const p = {
-    margin: setting(env.AFKIT_MARGIN_BPS, 800, 9900),
+    margin: setting(env.AFKIT_MARGIN_BPS, 1800, 9900),
     reserve: setting(env.AFKIT_RESERVE_BPS, 300, 9900),
     fee: setting(env.AFKIT_PAYMENT_FEE_BPS, 150, 9900),
     fixed: setting(env.AFKIT_FIXED_FEE_KOBO, 10000, 100_000_000_000),

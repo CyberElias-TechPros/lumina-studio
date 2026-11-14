@@ -101,3 +101,75 @@ test("rounding safeguards maintain floors across varied costs and percentages", 
     assert.ok(r.estimatedProfitKobo * 10000 >= r.floorKobo * p.targetMarginBps);
   }
 });
+
+test("offer limits honor normal 10% floor and require explicit approval for 8% exception", async () => {
+  const { estimateOfferLimits } = await import("../../src/lib/dropshipping/review.ts");
+  const base = {
+    supplierCostKobo: 17500000,
+    extraCostKobo: 500000,
+    fixedFeeKobo: 10000,
+    minProfitKobo: 500000,
+    feeBps: 150,
+    riskBps: 300,
+    targetMarginBps: 1800,
+    roundToKobo: 10000,
+  };
+  const regular = estimatePrice(base).floorKobo;
+  assert.equal(regular, 23240000);
+  const normal = estimateOfferLimits(base, regular, 1000, 800, false);
+  assert.equal(normal.normalFloorKobo, 21070000);
+  assert.equal(normal.normalDiscountKobo, 2170000);
+  assert.equal(normal.exceptionalFloorKobo, null);
+  assert.equal(normal.exceptionalDiscountKobo, null);
+  const approved = estimateOfferLimits(base, regular, 1000, 800, true);
+  assert.equal(approved.exceptionalFloorKobo, 20590000);
+  assert.equal(approved.exceptionalDiscountKobo, 2650000);
+  assert.equal(estimateOfferLimits(base, 20000000, 1000, 800, true).normalDiscountKobo, null);
+  assert.equal(estimateOfferLimits(base, 20000000, 1000, 800, true).exceptionalDiscountKobo, null);
+  assert.throws(() => estimateOfferLimits(base, regular, 1000, 799, true), /margin/i);
+  assert.throws(() => estimateOfferLimits(base, regular, 900, 800, true), /margin/i);
+  assert.throws(() => estimateOfferLimits(base, regular, 700, 800, true), /margin/i);
+  assert.throws(
+    () => estimateOfferLimits({ ...base, targetMarginBps: 10000 }, regular, 1000, 800, true),
+    /percentage/i,
+  );
+  assert.throws(() => estimateOfferLimits(base, regular, 1900, 800, true), /margin/i);
+  assert.throws(() => estimateOfferLimits(base, 0, 1000, 800, true), /price/i);
+});
+
+test("offer tiers retain minimum profit and cost, fee and reserve safeguards", async () => {
+  const { estimateOfferLimits } = await import("../../src/lib/dropshipping/review.ts");
+  for (const supplierCostKobo of [10000, 100000, 17500000, 100000000]) {
+    const inputs = {
+      supplierCostKobo,
+      extraCostKobo: 76543,
+      fixedFeeKobo: 10203,
+      minProfitKobo: 500000,
+      feeBps: 157,
+      riskBps: 317,
+      targetMarginBps: 1800,
+      roundToKobo: 10000,
+    };
+    const limits = estimateOfferLimits(inputs, 500000000, 1000, 800, true);
+    for (const [floor, margin] of [
+      [limits.normalFloorKobo, 1000],
+      [limits.exceptionalFloorKobo, 800],
+    ]) {
+      const fee = Math.ceil((floor * inputs.feeBps) / 10000) + inputs.fixedFeeKobo;
+      const reserve = Math.ceil((floor * inputs.riskBps) / 10000);
+      const profit = floor - supplierCostKobo - inputs.extraCostKobo - fee - reserve;
+      assert.ok(profit >= inputs.minProfitKobo);
+      assert.ok(profit * 10000 >= floor * margin);
+      assert.equal(floor % inputs.roundToKobo, 0);
+    }
+    assert.equal(
+      estimateOfferLimits(inputs, limits.normalFloorKobo, 1000, 800, true).normalDiscountKobo,
+      null,
+    );
+    assert.equal(
+      estimateOfferLimits(inputs, limits.exceptionalFloorKobo, 1000, 800, true)
+        .exceptionalDiscountKobo,
+      null,
+    );
+  }
+});
