@@ -65,11 +65,7 @@ export function GadgetsCatalog() {
                   </p>
                   <div className="mt-auto pt-5">
                     <Button asChild className="w-full">
-                      <a
-                        href={`https://wa.me/2349058628386?text=${encodeURIComponent(message)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                      <a href={`https://wa.me/2349058628386?text=${encodeURIComponent(message)}`}>
                         Ask about this item
                       </a>
                     </Button>

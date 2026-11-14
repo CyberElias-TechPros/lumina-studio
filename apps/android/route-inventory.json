@@ -90,6 +90,10 @@
       "source": "src/routes/app/admin/config.tsx"
     },
     {
+      "route": "/app/admin/dropshipping",
+      "source": "src/routes/app/admin/dropshipping.tsx"
+    },
+    {
       "route": "/app/admin/intake",
       "source": "src/routes/app/admin/intake.tsx"
     },
@@ -978,6 +982,10 @@
       "source": "src/routes/app/mentor/settings.tsx"
     },
     {
+      "route": "/app/mentorship",
+      "source": "src/routes/app/mentorship.tsx"
+    },
+    {
       "route": "/app/messages",
       "source": "src/routes/app/messages.tsx"
     },
@@ -1390,6 +1398,10 @@
       "source": "src/routes/glossary.$slug.tsx"
     },
     {
+      "route": "/learning-trail",
+      "source": "src/routes/learning-trail.tsx"
+    },
+    {
       "route": "/library/",
       "source": "src/routes/library.index.tsx"
     },
@@ -1590,6 +1602,10 @@
       "source": "src/routes/portal/volunteer.tsx"
     },
     {
+      "route": "/practice/computer-basics",
+      "source": "src/routes/practice.computer-basics.tsx"
+    },
+    {
       "route": "/pricing",
       "source": "src/routes/pricing.tsx"
     },
@@ -1664,6 +1680,10 @@
     {
       "route": "/shop/$slug/return",
       "source": "src/routes/shop.$slug.return.tsx"
+    },
+    {
+      "route": "/shop/gadgets",
+      "source": "src/routes/shop.gadgets.tsx"
     },
     {
       "route": "/stories",
