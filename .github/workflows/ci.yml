@@ -39,6 +39,8 @@ jobs:
       - run: npm ci
       - name: Browser push registration safety
         run: node --test scripts/test/push-registration.test.mjs
+      - name: Supplier snapshot and pricing safety
+        run: node --test scripts/test/dropshipping-review.test.mjs scripts/test/afkit-catalogue.test.mjs
       - run: npm run build
       # Reads the prerendered HTML: word floor, FAQ schema, instructor, and
       # links into the lesson corpus. Guards the commercial half of the site.
@@ -148,7 +150,7 @@ jobs:
         env:
           NEXT_PUBLIC_API_URL: http://127.0.0.1:8787
           NEXT_PUBLIC_ENABLE_MOCKS: "false"
-      - run: npx playwright test e2e/auth-recovery.spec.ts e2e/student-learning.spec.ts e2e/assignment-handoff.spec.ts e2e/internal-data-honesty.spec.ts e2e/guardian-invitations.spec.ts e2e/assignment-rosters.spec.ts e2e/certificate-review.spec.ts e2e/mentoring-workflow.spec.ts --project=chromium --reporter=line,github
+      - run: npx playwright test e2e/auth-recovery.spec.ts e2e/student-learning.spec.ts e2e/assignment-handoff.spec.ts e2e/internal-data-honesty.spec.ts e2e/guardian-invitations.spec.ts e2e/assignment-rosters.spec.ts e2e/certificate-review.spec.ts e2e/mentoring-workflow.spec.ts e2e/dropshipping-review.spec.ts e2e/gadgets-catalog.spec.ts --project=chromium --reporter=line,github
         env:
           E2E_BASE_URL: http://127.0.0.1:3000
           E2E_API_BASE: http://127.0.0.1:8787

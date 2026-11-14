@@ -35,6 +35,7 @@ const staticRoutes = [
   "/request-project",
   "/shipping",
   "/shop",
+  "/shop/gadgets",
   "/team",
   "/terms",
   "/visit",

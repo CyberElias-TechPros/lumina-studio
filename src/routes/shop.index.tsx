@@ -49,6 +49,21 @@ function ShopPage() {
         meta={["Nigeria only", "Paystack checkout", "Email delivery within one business day"]}
       />
 
+      <section className="container-page pt-10">
+        <div className="bg-muted/40 flex flex-wrap items-center justify-between gap-4 rounded-xl border p-6">
+          <div>
+            <h2 className="font-display text-xl font-semibold">Looking for gadgets?</h2>
+            <p className="text-muted-foreground mt-1 text-sm">
+              Browse Afkit laptops, phones and accessories. Ask us to confirm price and
+              availability.
+            </p>
+          </div>
+          <Button asChild>
+            <Link to="/shop/gadgets">Browse gadgets</Link>
+          </Button>
+        </div>
+      </section>
+
       <section className="container-page py-16 md:py-20">
         <SectionHeading
           eyebrow="In stock now"
@@ -136,8 +151,8 @@ function ShopPage() {
             <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
               After Paystack confirms payment, our team prepares the file and emails it to you{" "}
               {deliveryWindowLabel(Math.min(...digitalProducts.map((p) => p.deliveryHours)))}. The
-              return page confirms payment status; it does not provide an instant download. We do
-              not ship physical goods.
+              return page confirms payment status; it does not provide an instant download. Digital
+              files are not shipped.
             </p>
           </div>
           <div>

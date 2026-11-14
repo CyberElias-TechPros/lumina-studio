@@ -43,6 +43,7 @@ import {
   Settings,
   Share2,
   ShieldCheck,
+  ShoppingBag,
   SlidersHorizontal,
   Sparkles,
   Star,
@@ -271,6 +272,11 @@ export const appRoles: AppRole[] = [
     gradient: "bg-gradient-services",
     nav: [
       { label: "Admin Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/admin" },
+      {
+        label: "Supplier review",
+        icon: <ShoppingBag className="size-4" />,
+        to: "/app/admin/dropshipping",
+      },
       { label: "User Management", icon: <Users className="size-4" />, to: "/app/admin/users" },
       {
         label: "Business intake",
