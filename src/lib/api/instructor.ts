@@ -91,6 +91,7 @@ export function gradeSubmission(
 }
 
 export interface PublishAssignmentInput {
+  idempotencyKey?: string;
   courseSlug: string;
   title: string;
   description?: string;
@@ -109,10 +110,43 @@ export interface PublishAssignmentResult {
   course: string;
 }
 
-/** Publish an assignment to every student enrolled in a course. */
+/** Instructors publish to their confirmed roster; admins publish course-wide. */
 export function publishAssignment(input: PublishAssignmentInput): Promise<PublishAssignmentResult> {
   return apiFetch<PublishAssignmentResult>("/v1/instructor/assignments", {
     method: "POST",
     body: input,
   });
+}
+
+export function fetchAssignmentPublication(
+  key: string,
+): Promise<{ publication: PublishAssignmentResult | null }> {
+  return apiFetch(`/v1/instructor/assignment-publications/${encodeURIComponent(key)}`);
+}
+
+export interface AssignmentRosterCourse {
+  slug: string;
+  title: string;
+  recipients: number;
+}
+export function fetchAssignmentRosterCourses(): Promise<{
+  items: AssignmentRosterCourse[];
+  truncated: boolean;
+}> {
+  return apiFetch("/v1/instructor/assignment-roster/courses");
+}
+export interface AssignmentRosterKey {
+  instructorId: string;
+  studentId: string;
+  courseSlug: string;
+}
+export function fetchAssignmentRosterGrant(
+  input: AssignmentRosterKey,
+): Promise<{ grant: { active: boolean; expiresAt: string; changedAt: string } | null }> {
+  return apiFetch("/v1/instructor/assignment-roster", { query: { ...input } });
+}
+export function setAssignmentRosterGrant(
+  input: AssignmentRosterKey & { active: boolean; expiresAt?: string },
+): Promise<{ ok: boolean }> {
+  return apiFetch("/v1/instructor/assignment-roster", { method: "PUT", body: input });
 }

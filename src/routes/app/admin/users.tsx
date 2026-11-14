@@ -4,6 +4,9 @@ import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
 import { ArrowLeft, ShieldCheck, UserCheck, UserPlus, Users } from "lucide-react";
 import { useState } from "react";
+import { MentoringReview } from "@/components/admin/mentoring-review";
+import { CertificateReview } from "@/components/admin/certificate-review";
+import { TeachingRoster } from "@/components/admin/teaching-roster";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -20,6 +23,7 @@ import { AppShell } from "@/components/app/app-shell";
 import {
   useAdminUsers,
   useAdminUserItems,
+  useAdminAccounts,
   useProvisionUser,
   useUpdateUser,
 } from "@/lib/query/admin";
@@ -27,7 +31,7 @@ import { useCreateInvitation } from "@/lib/query/invitations";
 import type { AdminUser } from "@/lib/api/admin";
 import { cn } from "@/lib/utils";
 
-const ROLES = ["student", "instructor", "hr", "finance", "mentor", "admin", "employer"];
+const ROLES = ["student", "parent", "instructor", "hr", "finance", "mentor", "admin", "employer"];
 const STATUSES = ["active", "suspended"];
 
 export const Route = createFileRoute("/app/admin/users")({
@@ -51,6 +55,7 @@ function AdminUsers() {
   const rows = useAdminUserItems();
   const provision = useProvisionUser();
   const createInvite = useCreateInvitation();
+  const accounts = useAdminAccounts();
   const [provisionOpen, setProvisionOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -61,6 +66,24 @@ function AdminUsers() {
   const update = useUpdateUser(manageUser?.id ?? "");
   const [inviteOpen, setInviteOpen] = useState(false);
   const [inviteStudentId, setInviteStudentId] = useState("");
+  const [inviteGuardianId, setInviteGuardianId] = useState("");
+  const [inviteUrl, setInviteUrl] = useState("");
+  const accountItems = accounts.data?.pages.flatMap((page) => page.items) ?? [];
+  const activeStudents = accountItems.filter(
+    (account) => account.roleKey === "student" && account.status === "active",
+  );
+  const activeParents = accountItems.filter(
+    (account) => account.roleKey === "parent" && account.status === "active",
+  );
+  const closeInvite = (open: boolean) => {
+    setInviteOpen(open);
+    if (!open) {
+      setInviteUrl("");
+      setInviteStudentId("");
+      setInviteGuardianId("");
+      createInvite.reset();
+    }
+  };
 
   const submitProvision = (event: React.FormEvent) => {
     event.preventDefault();
@@ -172,6 +195,9 @@ function AdminUsers() {
         ))}
       </div>
 
+      <TeachingRoster />
+      <CertificateReview />
+      <MentoringReview />
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader>
           <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
@@ -240,39 +266,115 @@ function AdminUsers() {
         onSubmit={submitManage}
         isPending={update.isPending}
       />
-      <Dialog open={inviteOpen} onOpenChange={setInviteOpen}>
+      <Dialog open={inviteOpen} onOpenChange={closeInvite}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Invite a guardian</DialogTitle>
           </DialogHeader>
-          <div className="space-y-3">
-            <Input
-              value={inviteStudentId}
-              onChange={(e) => setInviteStudentId(e.target.value)}
-              placeholder="Student ID (e.g. 00000000-0000-4000-8000-000000000001)"
-            />
-          </div>
-          <DialogFooter className="gap-2">
-            <Button variant="outline" onClick={() => setInviteOpen(false)} type="button">
-              Cancel
-            </Button>
-            <Button
-              disabled={createInvite.isPending || !inviteStudentId.trim()}
-              onClick={() => {
-                createInvite.mutate(
-                  { studentId: inviteStudentId.trim(), guardianName: "Guardian" },
-                  {
-                    onSuccess: () => {
-                      setInviteStudentId("");
-                      setInviteOpen(false);
-                    },
-                  },
-                );
-              }}
-            >
-              Send invite
-            </Button>
-          </DialogFooter>
+          {inviteUrl ? (
+            <div className="space-y-3">
+              <p className="text-sm">
+                The link has been created, not sent. Share it privately with the intended parent
+                after confirming the family relationship.
+              </p>
+              <label htmlFor="guardian-invite-link" className="text-sm font-semibold">
+                Invitation link
+              </label>
+              <Input
+                id="guardian-invite-link"
+                value={inviteUrl}
+                readOnly
+                onFocus={(event) => event.currentTarget.select()}
+              />
+              <DialogFooter>
+                <Button type="button" onClick={() => closeInvite(false)}>
+                  Done
+                </Button>
+              </DialogFooter>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              <p className="text-muted-foreground text-sm">
+                Confirm the relationship independently. Only the selected parent account with a
+                verified email can accept; student roles will not be changed.
+              </p>
+              <div className="space-y-1">
+                <label htmlFor="invite-student" className="text-sm font-semibold">
+                  Student account
+                </label>
+                <select
+                  id="invite-student"
+                  value={inviteStudentId}
+                  onChange={(event) => setInviteStudentId(event.target.value)}
+                  className="border-input bg-background w-full rounded-md border px-3 py-2 text-sm"
+                >
+                  <option value="">Select a student</option>
+                  {activeStudents.map((account) => (
+                    <option key={account.id} value={account.id}>
+                      {account.name} · {account.email}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="space-y-1">
+                <label htmlFor="invite-guardian" className="text-sm font-semibold">
+                  Parent account
+                </label>
+                <select
+                  id="invite-guardian"
+                  value={inviteGuardianId}
+                  onChange={(event) => setInviteGuardianId(event.target.value)}
+                  className="border-input bg-background w-full rounded-md border px-3 py-2 text-sm"
+                >
+                  <option value="">Select a parent</option>
+                  {activeParents.map((account) => (
+                    <option key={account.id} value={account.id}>
+                      {account.name} · {account.email}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              {accounts.isError && (
+                <p role="alert" className="text-destructive text-sm">
+                  Could not load sign-in accounts.
+                </p>
+              )}
+              {accounts.hasNextPage && (
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => void accounts.fetchNextPage()}
+                  disabled={accounts.isFetchingNextPage}
+                >
+                  {accounts.isFetchingNextPage ? "Loading…" : "Load more accounts"}
+                </Button>
+              )}
+              {createInvite.isError && (
+                <p role="alert" className="text-destructive text-sm">
+                  {createInvite.error instanceof Error
+                    ? createInvite.error.message
+                    : "Could not create the invitation."}
+                </p>
+              )}
+              <DialogFooter className="gap-2">
+                <Button variant="outline" onClick={() => closeInvite(false)} type="button">
+                  Cancel
+                </Button>
+                <Button
+                  type="button"
+                  disabled={createInvite.isPending || !inviteStudentId || !inviteGuardianId}
+                  onClick={() =>
+                    createInvite.mutate(
+                      { studentId: inviteStudentId, guardianUserId: inviteGuardianId },
+                      { onSuccess: (result) => setInviteUrl(result.url) },
+                    )
+                  }
+                >
+                  {createInvite.isPending ? "Creating…" : "Create link"}
+                </Button>
+              </DialogFooter>
+            </div>
+          )}
         </DialogContent>
       </Dialog>
     </AppShell>

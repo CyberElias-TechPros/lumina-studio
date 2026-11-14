@@ -10,7 +10,7 @@ interface StudentSummary {
   course: string;
   courseDetail: string;
   pct: number;
-  gpa: string;
+  gpa: null;
   due: number;
   dueCount: number;
 }
@@ -31,28 +31,11 @@ interface EnrollmentRow {
   cohort: string;
 }
 
-/** 4.0-scale GPA derived from the student's gradebook percentages. */
-function gpaFromPcts(pcts: number[]): string {
-  if (pcts.length === 0) return "0.0";
-  const scale = (pct: number): number => {
-    if (pct >= 90) return 4.0;
-    if (pct >= 85) return 3.7;
-    if (pct >= 80) return 3.3;
-    if (pct >= 75) return 3.0;
-    if (pct >= 70) return 2.7;
-    if (pct >= 65) return 2.3;
-    if (pct >= 60) return 2.0;
-    if (pct >= 55) return 1.7;
-    if (pct >= 50) return 1.3;
-    return 1.0;
-  };
-  const avg = pcts.reduce((sum, p) => sum + scale(p), 0) / pcts.length;
-  return avg.toFixed(1);
-}
-
 async function loadStudentIds(db: AppEnv["DB"], parentId: string): Promise<string[]> {
   const rows = await db
-    .prepare(`SELECT student_id FROM parent_students WHERE parent_id = ? ORDER BY student_id ASC`)
+    .prepare(
+      `SELECT student_id FROM verified_parent_students WHERE parent_id = ? ORDER BY student_id ASC`,
+    )
     .bind(parentId)
     .all<{ student_id: string }>();
   return rows.results.map((r) => r.student_id);
@@ -91,7 +74,7 @@ async function loadOutstanding(
   const row = await db
     .prepare(
       `SELECT COALESCE(SUM(amount), 0) AS total, COUNT(*) AS n FROM invoices
-        WHERE user_id = ? AND status NOT IN ('paid', 'refunded', 'void')`,
+        WHERE user_id = ? AND lower(status) NOT IN ('paid', 'refunded', 'void')`,
     )
     .bind(userId)
     .first<{ total: number; n: number }>();
@@ -112,8 +95,7 @@ parent.get("/students", async (c) => {
       .bind(studentId)
       .first<{ name: string; email: string }>();
     if (!student) continue;
-    const [gradebook, enrollments, outstanding] = await Promise.all([
-      loadGradebook(c.env.DB, studentId),
+    const [enrollments, outstanding] = await Promise.all([
       loadEnrollments(c.env.DB, studentId),
       loadOutstanding(c.env.DB, studentId),
     ]);
@@ -125,7 +107,7 @@ parent.get("/students", async (c) => {
       course: primary?.title ?? "",
       courseDetail: primary ? `${primary.title} · Cohort ${primary.cohort}` : "",
       pct: primary?.pct ?? 0,
-      gpa: gpaFromPcts(gradebook.map((g) => g.pct)),
+      gpa: null,
       due: outstanding.total,
       dueCount: outstanding.count,
     });
@@ -138,7 +120,7 @@ parent.get("/students/:id", async (c) => {
   const authUser = c.get("authUser");
   const studentId = c.req.param("id");
   const owned = await c.env.DB.prepare(
-    `SELECT 1 FROM parent_students WHERE parent_id = ? AND student_id = ?`,
+    `SELECT 1 FROM verified_parent_students WHERE parent_id = ? AND student_id = ?`,
   )
     .bind(authUser.id, studentId)
     .first<{ 1: number }>();
@@ -161,7 +143,7 @@ parent.get("/students/:id", async (c) => {
     studentId,
     name: student.name,
     email: student.email,
-    gpa: gpaFromPcts(gradebook.map((g) => g.pct)),
+    gpa: null,
     due: outstanding.total,
     dueCount: outstanding.count,
     courses: enrollments.map((e) => ({
@@ -194,7 +176,7 @@ parent.get("/students/:id/finance", async (c) => {
   const authUser = c.get("authUser");
   const studentId = c.req.param("id");
   const owned = await c.env.DB.prepare(
-    `SELECT 1 FROM parent_students WHERE parent_id = ? AND student_id = ?`,
+    `SELECT 1 FROM verified_parent_students WHERE parent_id = ? AND student_id = ?`,
   )
     .bind(authUser.id, studentId)
     .first<{ 1: number }>();
@@ -215,7 +197,7 @@ parent.get("/students/:id/finance", async (c) => {
   const items = rows.results.map((r) => {
     if (r.status.toLowerCase() === "paid") {
       paidTotal += r.amount;
-    } else {
+    } else if (!["refunded", "void"].includes(r.status.toLowerCase())) {
       outstandingTotal += r.amount;
       outstandingCount += 1;
     }
@@ -241,7 +223,7 @@ parent.get("/students/:id/attendance", async (c) => {
   const authUser = c.get("authUser");
   const studentId = c.req.param("id");
   const owned = await c.env.DB.prepare(
-    `SELECT 1 FROM parent_students WHERE parent_id = ? AND student_id = ?`,
+    `SELECT 1 FROM verified_parent_students WHERE parent_id = ? AND student_id = ?`,
   )
     .bind(authUser.id, studentId)
     .first<{ 1: number }>();

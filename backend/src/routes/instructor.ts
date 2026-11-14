@@ -2,7 +2,7 @@ import { Hono, type Context } from "hono";
 import type { AppEnv } from "../types";
 import { z } from "zod";
 import { ApiError } from "../lib/errors";
-import { base64UrlDecode, base64UrlEncode, isoNow } from "../lib/crypto";
+import { base64UrlDecode, base64UrlEncode, isoNow, sha256Hex } from "../lib/crypto";
 import { paginate, parsePagination, type Paginated } from "../lib/pagination";
 import { requireAuth, requireAnyRole } from "../lib/auth";
 import { parseBody } from "../lib/validate";
@@ -288,7 +288,7 @@ const gradeSchema = z.object({
 
 /**
  * Grade a submission (instructor/admin). The grader must own the submission
- * or teach a course the submitting student is enrolled in.
+ * as recorded by the submission handoff; course titles are not authorization.
  */
 async function gradeSubmissionHandler(c: Context<{ Bindings: AppEnv }>) {
   const grader = c.get("authUser");
@@ -320,18 +320,8 @@ async function gradeSubmissionHandler(c: Context<{ Bindings: AppEnv }>) {
     );
   }
 
-  const teaches = sub.student_user_id
-    ? await c.env.DB.prepare(
-        `SELECT 1 FROM enrollments e
-           JOIN courses c ON c.slug = e.course_slug
-           JOIN instructor_courses ic ON ic.user_id = ? AND ic.title = c.title
-          WHERE e.user_id = ? AND c.title = ? LIMIT 1`,
-      )
-        .bind(grader.id, sub.student_user_id, sub.assignment_course)
-        .first<{ "1": number }>()
-    : null;
-  if (sub.user_id !== grader.id && !teaches) {
-    throw ApiError.forbidden("You don't teach this student's course.");
+  if (sub.user_id !== grader.id) {
+    throw ApiError.forbidden("This submission is not assigned to you.");
   }
 
   if (sub.assignment_max !== null && score > sub.assignment_max) {
@@ -384,9 +374,117 @@ instructor.post(
   gradeSubmissionHandler,
 );
 
+/* Explicit, administrator-confirmed roster grants. These do not infer cohort
+ * membership from course names or existing instructor_courses records. */
+const rosterInput = z.object({
+  instructorId: z.string().trim().min(1).max(200),
+  studentId: z.string().trim().min(1).max(200),
+  courseSlug: z.string().trim().min(1).max(200),
+  active: z.boolean(),
+  expiresAt: z.string().optional(),
+});
+instructor.get("/assignment-roster", requireAnyRole(["admin"]), async (c) => {
+  const query = z
+    .object({
+      instructorId: z.string().min(1).max(200),
+      studentId: z.string().min(1).max(200),
+      courseSlug: z.string().min(1).max(200),
+    })
+    .safeParse(c.req.query());
+  if (!query.success) throw ApiError.validation({});
+  const row = await c.env.DB.prepare(
+    `SELECT active, expires_at, changed_at FROM assignment_roster_grants
+    WHERE instructor_id = ? AND student_id = ? AND course_slug = ?`,
+  )
+    .bind(query.data.instructorId, query.data.studentId, query.data.courseSlug)
+    .first<{ active: number; expires_at: string; changed_at: string }>();
+  return c.json({
+    grant: row
+      ? {
+          active: row.active === 1 && row.expires_at > isoNow(),
+          expiresAt: row.expires_at,
+          changedAt: row.changed_at,
+        }
+      : null,
+  });
+});
+instructor.put("/assignment-roster", requireAnyRole(["admin"]), async (c) => {
+  const input = await parseBody(c, rosterInput);
+  const actor = c.get("authUser").id;
+  const now = isoNow();
+  const operationId = crypto.randomUUID();
+  const expiresAt = input.expiresAt ? new Date(input.expiresAt) : null;
+  if (
+    input.active &&
+    (!expiresAt ||
+      Number.isNaN(expiresAt.getTime()) ||
+      expiresAt.getTime() <= Date.now() ||
+      expiresAt.getTime() > Date.now() + 366 * 86400000)
+  ) {
+    throw ApiError.validation({ expiresAt: ["Choose an expiration within the next year."] });
+  }
+  const expiry = input.active ? expiresAt!.toISOString() : "";
+  const results = await c.env.DB.batch([
+    c.env.DB.prepare(
+      `INSERT INTO assignment_roster_grants
+      (instructor_id, student_id, course_slug, active, expires_at, changed_by, changed_at, operation_id)
+      SELECT ?, ?, ?, ?, ?, ?, ?, ?
+      WHERE (? = 0 AND EXISTS (SELECT 1 FROM assignment_roster_grants
+                WHERE instructor_id = ? AND student_id = ? AND course_slug = ?))
+         OR (? = 1 AND EXISTS (SELECT 1 FROM users t WHERE t.id = ? AND t.role_key = 'instructor' AND t.status = 'active')
+             AND EXISTS (SELECT 1 FROM users s JOIN enrollments e ON e.user_id = s.id
+                          WHERE s.id = ? AND s.role_key = 'student' AND s.status = 'active' AND e.course_slug = ?))
+      ON CONFLICT(instructor_id, student_id, course_slug) DO UPDATE SET
+        active = excluded.active, expires_at = excluded.expires_at, changed_by = excluded.changed_by,
+        changed_at = excluded.changed_at, operation_id = excluded.operation_id`,
+    ).bind(
+      input.instructorId,
+      input.studentId,
+      input.courseSlug,
+      input.active ? 1 : 0,
+      expiry,
+      actor,
+      now,
+      operationId,
+      input.active ? 1 : 0,
+      input.instructorId,
+      input.studentId,
+      input.courseSlug,
+      input.active ? 1 : 0,
+      input.instructorId,
+      input.studentId,
+      input.courseSlug,
+    ),
+    c.env.DB.prepare(
+      `INSERT INTO assignment_roster_events
+      (id, instructor_id, student_id, course_slug, active, expires_at, actor_id, occurred_at)
+      SELECT operation_id, instructor_id, student_id, course_slug, active, expires_at, changed_by, changed_at
+      FROM assignment_roster_grants WHERE operation_id = ?`,
+    ).bind(operationId),
+  ]);
+  if (!results[0]?.meta.changes)
+    throw ApiError.conflict("Roster entry not found or accounts and enrollment are not eligible.");
+  return c.json({ ok: true });
+});
+
+instructor.get("/assignment-roster/courses", async (c) => {
+  const rows = await c.env.DB.prepare(
+    `SELECT c.slug, c.title, COUNT(*) AS recipients
+    FROM assignment_roster_grants r JOIN courses c ON c.slug = r.course_slug
+    JOIN users s ON s.id = r.student_id AND s.role_key = 'student' AND s.status = 'active'
+    JOIN enrollments e ON e.user_id = s.id AND e.course_slug = c.slug
+    WHERE r.instructor_id = ? AND r.active = 1 AND r.expires_at > ?
+    GROUP BY c.slug, c.title ORDER BY c.title, c.slug LIMIT 201`,
+  )
+    .bind(c.get("authUser").id, isoNow())
+    .all<{ slug: string; title: string; recipients: number }>();
+  return c.json({ items: rows.results.slice(0, 200), truncated: rows.results.length > 200 });
+});
+
 /* ---------------- Publish assignments (schedulable deadlines) ---------------- */
 
 const publishAssignmentSchema = z.object({
+  idempotencyKey: z.string().uuid().optional(),
   courseSlug: z.string().trim().min(1, "Choose a course."),
   title: z.string().trim().min(3, "Title must be at least 3 characters.").max(200),
   description: z.string().trim().max(10_000).optional().default(""),
@@ -400,14 +498,56 @@ const publishAssignmentSchema = z.object({
 });
 
 /**
- * Publish one assignment to every student enrolled in a course. Each student
- * gets their own row (the student LMS reads per-user rows) sharing a group_id,
+ * Publish to an instructor's confirmed roster or an admin's eligible course enrollments.
+ * Each student gets their own row (the student LMS reads per-user rows) sharing a group_id,
  * with a machine-readable `due_at` that drives reminders and lateness.
  */
 instructor.post("/assignments", requireAuth, requireInstructorOrAdmin, async (c) => {
   const author = c.get("authUser");
   const input = await parseBody(c, publishAssignmentSchema);
   const dueAt = new Date(input.dueAt).toISOString();
+  const requestKey = input.idempotencyKey ?? crypto.randomUUID();
+  const requestHash = await sha256Hex(
+    JSON.stringify({
+      courseSlug: input.courseSlug,
+      title: input.title,
+      description: input.description,
+      dueAt,
+      max: input.max,
+      weight: input.weight,
+      notify: input.notify,
+    }),
+  );
+  type Publication = {
+    request_hash: string;
+    group_id: string;
+    recipients: number;
+    due: string;
+    due_at: string;
+    course_title: string;
+  };
+  const existing = await c.env.DB.prepare(
+    `SELECT request_hash,group_id,recipients,due,due_at,course_title FROM assignment_publications WHERE author_id=? AND request_key=?`,
+  )
+    .bind(author.id, requestKey)
+    .first<Publication>();
+  const responseFor = (row: Publication) => {
+    if (row.request_hash !== requestHash)
+      throw ApiError.conflict(
+        "This publication reference was already used for different details. Reconcile the original before starting a new assignment.",
+      );
+    return c.json(
+      {
+        groupId: row.group_id,
+        recipients: row.recipients,
+        due: row.due,
+        dueAt: row.due_at,
+        course: row.course_title,
+      },
+      201,
+    );
+  };
+  if (existing) return responseFor(existing);
   if (dueAt <= isoNow()) {
     throw ApiError.validation({ dueAt: ["The due date must be in the future."] });
   }
@@ -416,76 +556,105 @@ instructor.post("/assignments", requireAuth, requireInstructorOrAdmin, async (c)
     .first<{ slug: string; title: string }>();
   if (!course) throw ApiError.validation({ courseSlug: ["That course does not exist."] });
 
-  if (author.roleKey !== "admin") {
-    const teaches = await c.env.DB.prepare(
-      `SELECT 1 AS x FROM instructor_courses WHERE user_id = ? AND title = ? LIMIT 1`,
-    )
-      .bind(author.id, course.title)
-      .first<{ x: number }>();
-    if (!teaches) throw ApiError.forbidden("You don't teach this course.");
-  }
-
-  const students = await c.env.DB.prepare(
-    `SELECT e.user_id FROM enrollments e JOIN users u ON u.id = e.user_id
-      WHERE e.course_slug = ? AND u.status = 'active'`,
-  )
-    .bind(course.slug)
-    .all<{ user_id: string }>();
-  const recipients = students.results ?? [];
-  const groupId = `asg-${crypto.randomUUID().slice(0, 12)}`;
+  // Each publication is a single D1 transaction, including inbox notifications.
+  // Do not infer current cohort membership or teaching relationships from titles.
+  const groupId = `asg-${crypto.randomUUID()}`;
   const due = formatDueWat(dueAt);
   const now = isoNow();
-
-  const statements = recipients.flatMap((s, i) => {
-    const id = `${groupId}-${i + 1}`;
-    const stmts = [
+  const statements = [
+    c.env.DB.prepare(
+      `INSERT INTO assignment_publications (author_id,request_key,request_hash,group_id,course_title,due,due_at,created_at)
+      VALUES (?,?,?,?,?,?,?,?) ON CONFLICT(author_id,request_key) DO NOTHING`,
+    ).bind(author.id, requestKey, requestHash, groupId, course.title, due, dueAt, now),
+    c.env.DB.prepare(
+      `INSERT INTO assignments
+         (id, user_id, title, course, description, due, due_at, group_id, created_by, status, max, weight)
+       SELECT ? || '-' || e.user_id, e.user_id, ?, ?, ?, ?, ?, ?, ?, 'pending', ?, ?
+         FROM enrollments e JOIN users u ON u.id = e.user_id
+        WHERE e.course_slug = ? AND u.status = 'active' AND u.role_key = 'student'
+          AND EXISTS (SELECT 1 FROM assignment_publications WHERE group_id = ?)
+          AND (? = 1 OR EXISTS (SELECT 1 FROM assignment_roster_grants r
+            WHERE r.instructor_id = ? AND r.student_id = e.user_id AND r.course_slug = e.course_slug AND r.active = 1 AND r.expires_at > ?))
+          AND (SELECT COUNT(*) FROM enrollments en JOIN users un ON un.id = en.user_id
+                WHERE en.course_slug = ? AND un.status = 'active' AND un.role_key = 'student'
+                  AND (? = 1 OR EXISTS (SELECT 1 FROM assignment_roster_grants rn
+                    WHERE rn.instructor_id = ? AND rn.student_id = en.user_id AND rn.course_slug = en.course_slug AND rn.active = 1 AND rn.expires_at > ?))) <= 500`,
+    ).bind(
+      groupId,
+      input.title,
+      course.title,
+      input.description,
+      due,
+      dueAt,
+      groupId,
+      author.id,
+      input.max,
+      input.weight,
+      course.slug,
+      groupId,
+      author.roleKey === "admin" ? 1 : 0,
+      author.id,
+      now,
+      course.slug,
+      author.roleKey === "admin" ? 1 : 0,
+      author.id,
+      now,
+    ),
+  ];
+  if (input.notify) {
+    statements.push(
       c.env.DB.prepare(
-        `INSERT INTO assignments
-           (id, user_id, title, course, description, due, due_at, group_id, created_by, status, max, weight)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?, ?)`,
-      ).bind(
-        id,
-        s.user_id,
-        input.title,
-        course.title,
-        input.description,
-        due,
-        dueAt,
-        groupId,
-        author.id,
-        input.max,
-        input.weight,
-      ),
-    ];
-    if (input.notify) {
-      stmts.push(
-        c.env.DB.prepare(
-          `INSERT INTO notifications (id, user_id, title, body, time, engine) VALUES (?, ?, ?, ?, ?, 'learning')`,
-        ).bind(
-          `ntf-${crypto.randomUUID().slice(0, 12)}`,
-          s.user_id,
-          `New assignment: ${input.title}`,
-          `${course.title} · due ${due} WAT`,
-          now,
-        ),
-      );
-    }
-    return stmts;
-  });
-  for (let i = 0; i < statements.length; i += 50) {
-    await c.env.DB.batch(statements.slice(i, i + 50));
+        `INSERT INTO notifications (id, user_id, title, body, time, engine)
+       SELECT 'ntf-' || lower(hex(randomblob(16))), user_id, ?, ?, ?, 'learning'
+         FROM assignments WHERE group_id = ?`,
+      ).bind(`New assignment: ${input.title}`, `${course.title} · due ${due} WAT`, now, groupId),
+    );
+  }
+  statements.push(
+    c.env.DB.prepare(
+      `UPDATE assignment_publications SET recipients=(SELECT COUNT(*) FROM assignments WHERE group_id=?) WHERE group_id=?`,
+    ).bind(groupId, groupId),
+    c.env.DB.prepare(`DELETE FROM assignment_publications WHERE group_id=? AND recipients=0`).bind(
+      groupId,
+    ),
+  );
+  const results = await c.env.DB.batch(statements);
+  const recipientCount = results[1]?.meta.changes ?? 0;
+  if (recipientCount === 0) {
+    const prior = await c.env.DB.prepare(
+      `SELECT request_hash,group_id,recipients,due,due_at,course_title FROM assignment_publications WHERE author_id=? AND request_key=?`,
+    )
+      .bind(author.id, requestKey)
+      .first<Publication>();
+    if (prior) return responseFor(prior);
+    throw ApiError.conflict(
+      "No eligible learners, or this course exceeds the 500-recipient limit. Review enrollments before publishing.",
+    );
   }
 
-  if (input.notify && recipients.length > 0) {
-    const task = Promise.all(
-      recipients.map((s) =>
-        sendUserSms(
-          c.env,
-          s.user_id,
-          `CEA: New assignment "${input.title.slice(0, 60)}" (${course.title}) due ${due} WAT.`,
-        ),
-      ),
-    ).catch(() => undefined);
+  if (input.notify) {
+    // Only send generic SMS hints and limit concurrency. Provider acceptance is
+    // not delivery; SMS is outside the database transaction and may fail.
+    const task = (async () => {
+      const recipients = await c.env.DB.prepare(
+        "SELECT user_id FROM assignments WHERE group_id = ?",
+      )
+        .bind(groupId)
+        .all<{ user_id: string }>();
+      for (let i = 0; i < recipients.results.length; i += 10) {
+        await Promise.allSettled(
+          recipients.results
+            .slice(i, i + 10)
+            .map((recipient) =>
+              sendUserSms(
+                c.env,
+                recipient.user_id,
+                "CEA: You have a new assignment. Sign in to view details.",
+              ),
+            ),
+        );
+      }
+    })().catch(() => undefined);
     try {
       c.executionCtx.waitUntil(task);
     } catch {
@@ -493,8 +662,41 @@ instructor.post("/assignments", requireAuth, requireInstructorOrAdmin, async (c)
     }
   }
 
-  return c.json({ groupId, recipients: recipients.length, due, dueAt, course: course.title }, 201);
+  return c.json({ groupId, recipients: recipientCount, due, dueAt, course: course.title }, 201);
 });
+
+/** A signed-in author can recover a committed publication after losing a response. */
+instructor.get(
+  "/assignment-publications/:key",
+  requireAuth,
+  requireInstructorOrAdmin,
+  async (c) => {
+    const parsed = z.string().uuid().safeParse(c.req.param("key"));
+    if (!parsed.success) throw ApiError.validation({ key: ["Invalid publication reference."] });
+    const row = await c.env.DB.prepare(
+      `SELECT group_id,recipients,due,due_at,course_title FROM assignment_publications WHERE author_id=? AND request_key=?`,
+    )
+      .bind(c.get("authUser").id, parsed.data)
+      .first<{
+        group_id: string;
+        recipients: number;
+        due: string;
+        due_at: string;
+        course_title: string;
+      }>();
+    return c.json({
+      publication: row
+        ? {
+            groupId: row.group_id,
+            recipients: row.recipients,
+            due: row.due,
+            dueAt: row.due_at,
+            course: row.course_title,
+          }
+        : null,
+    });
+  },
+);
 
 /** Move a published assignment's deadline (all recipients). Resets reminders. */
 instructor.patch(
@@ -511,25 +713,29 @@ instructor.patch(
     );
     const dueAt = new Date(raw).toISOString();
     const groupId = c.req.param("groupId");
-    const owner = await c.env.DB.prepare(
-      `SELECT created_by FROM assignments WHERE group_id = ? LIMIT 1`,
-    )
+    const exists = await c.env.DB.prepare(`SELECT 1 FROM assignments WHERE group_id = ? LIMIT 1`)
       .bind(groupId)
-      .first<{ created_by: string | null }>();
-    if (!owner) throw ApiError.notFound("Assignment not found.");
-    if (author.roleKey !== "admin" && owner.created_by !== author.id) {
-      throw ApiError.forbidden("Only the author can change this deadline.");
-    }
-    await c.env.DB.batch([
-      c.env.DB.prepare(`UPDATE assignments SET due_at = ?, due = ? WHERE group_id = ?`).bind(
-        dueAt,
-        formatDueWat(dueAt),
-        groupId,
-      ),
+      .first();
+    if (!exists) throw ApiError.notFound("Assignment not found.");
+    // Check the entire group inside both statements' transaction. A single
+    // foreign or unowned legacy row makes an instructor edit fail closed.
+    const isAdmin = author.roleKey === "admin" ? 1 : 0;
+    const guard = `(? = 1 OR NOT EXISTS (
+      SELECT 1 FROM assignments a WHERE a.group_id = ? AND a.created_by IS NOT ?
+    ))`;
+    const results = await c.env.DB.batch([
       c.env.DB.prepare(
-        `DELETE FROM assignment_reminders WHERE assignment_id IN (SELECT id FROM assignments WHERE group_id = ?)`,
-      ).bind(groupId),
+        `UPDATE assignments SET due_at = ?, due = ? WHERE group_id = ? AND ${guard}`,
+      ).bind(dueAt, formatDueWat(dueAt), groupId, isAdmin, groupId, author.id),
+      c.env.DB.prepare(
+        `DELETE FROM assignment_reminders WHERE assignment_id IN (SELECT id FROM assignments WHERE group_id = ?) AND ${guard}`,
+      ).bind(groupId, isAdmin, groupId, author.id),
     ]);
+    if (!results[0]?.meta.changes) {
+      throw ApiError.forbidden(
+        "Only the author of every assignment in this group can change its deadline.",
+      );
+    }
     return c.json({ groupId, dueAt, due: formatDueWat(dueAt) });
   },
 );

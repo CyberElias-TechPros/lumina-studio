@@ -2,7 +2,7 @@
 
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
-import { ArrowLeft, CalendarDays, Clock, UserCheck, Users, XCircle } from "lucide-react";
+import { ArrowLeft, CalendarDays, Clock, UserCheck, XCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -26,7 +26,7 @@ const statusMeta: Record<string, { label: string; tone: string }> = {
   present: { label: "Present", tone: "bg-success/10 text-success" },
   late: { label: "Late", tone: "bg-warning/10 text-warning" },
   excused: { label: "Excused", tone: "bg-primary/10 text-primary" },
-  absent: { label: "Unexcused", tone: "bg-destructive/10 text-destructive" },
+  absent: { label: "Absent", tone: "bg-destructive/10 text-destructive" },
 };
 
 function formatDate(value: string): string {
@@ -46,16 +46,15 @@ function ParentStudentAttendance() {
     <AppShell
       roleKey="parent"
       title={name ? `${name} · Attendance` : "Attendance report"}
-      subtitle={data ? `Term to date · ${data.pct}% overall` : "Loading…"}
+      subtitle={data ? `${data.total} sessions on record` : "Loading…"}
       actions={
         <>
-          <Badge
-            className={cn(
-              "border-0 font-semibold",
-              (data?.pct ?? 0) >= 90 ? "bg-success/10 text-success" : "bg-warning/10 text-warning",
-            )}
-          >
-            {data ? `${data.pct}% · above 90% policy` : "Loading…"}
+          <Badge className={cn("border-0 font-semibold", "bg-primary/10 text-primary")}>
+            {data
+              ? data.total
+                ? `${data.pct}% recorded attendance`
+                : "No attendance records"
+              : "Loading…"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/parent/students/$studentId" params={{ studentId }}>
@@ -85,21 +84,21 @@ function ParentStudentAttendance() {
             {
               label: "Late arrivals",
               value: String(current.counts.late),
-              delta: "logged this term",
+              delta: "on record",
               icon: Clock,
               tone: "bg-warning/10 text-warning",
             },
             {
               label: "Excused",
               value: String(current.counts.excused),
-              delta: "pre-approved absences",
+              delta: "on record",
               icon: CalendarDays,
               tone: "bg-primary/10 text-primary",
             },
             {
-              label: "Unexcused",
+              label: "Absent",
               value: String(current.counts.absent),
-              delta: "no strikes policy",
+              delta: "on record",
               icon: XCircle,
               tone: "bg-destructive/10 text-destructive",
             },
@@ -163,40 +162,14 @@ function ParentStudentAttendance() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-card shadow-soft border">
+                <Card className="bg-card shadow-soft border self-start">
                   <CardHeader>
-                    <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                      <Users className="text-primary size-4" /> Attendance policy
+                    <CardTitle className="font-display text-base font-bold">
+                      Attendance information
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-3">
-                    {[
-                      { t: "Minimum per term", v: "90%", tone: "bg-primary/10 text-primary" },
-                      {
-                        t: "Current standing",
-                        v: `${current.pct}%`,
-                        tone:
-                          current.pct >= 90
-                            ? "bg-success/10 text-success"
-                            : "bg-warning/10 text-warning",
-                      },
-                      {
-                        t: "Sessions on record",
-                        v: String(current.total),
-                        tone: "bg-learning/10 text-learning",
-                      },
-                    ].map((x) => (
-                      <div
-                        key={x.t}
-                        className="flex items-center justify-between rounded-xl border p-3"
-                      >
-                        <span className="text-sm font-semibold">{x.t}</span>
-                        <Badge className={cn("border-0 font-semibold", x.tone)}>{x.v}</Badge>
-                      </div>
-                    ))}
-                    <p className="text-muted-foreground pt-1 text-xs">
-                      Absences notify parents automatically within 30 minutes of class start.
-                    </p>
+                  <CardContent className="text-muted-foreground text-sm">
+                    Contact the academy for current attendance policy and notification arrangements.
                   </CardContent>
                 </Card>
               </div>

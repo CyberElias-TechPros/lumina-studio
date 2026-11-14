@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import {
   ArrowRight,
   Check,
@@ -233,7 +233,14 @@ function Choice({
   );
 }
 
+const subscribeHydration = () => () => {};
+
 export function CourseFinder({ id = "course-finder" }: { id?: string }) {
+  const hydrated = useSyncExternalStore(
+    subscribeHydration,
+    () => true,
+    () => false,
+  );
   const [interest, setInterest] = useState<Interest | "">("");
   const [goal, setGoal] = useState("");
   const [answers, setAnswers] = useState<
@@ -276,13 +283,15 @@ export function CourseFinder({ id = "course-finder" }: { id?: string }) {
               decision—it's fine to be unsure.
             </p>
 
-            <p className="text-muted-foreground mt-4 text-sm">
-              This interactive guide needs JavaScript. You can also{" "}
-              <Link className="text-primary underline" to="/classes">
-                browse all courses
-              </Link>{" "}
-              and compare their fees and requirements.
-            </p>
+            {!hydrated && (
+              <p className="text-muted-foreground mt-4 text-sm">
+                This interactive guide needs JavaScript. You can also{" "}
+                <Link className="text-primary underline" to="/classes">
+                  browse all courses
+                </Link>{" "}
+                and compare their fees and requirements.
+              </p>
+            )}
             <div className="mt-8 overflow-hidden rounded-2xl bg-[#101f34] p-5 text-white sm:p-6">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>

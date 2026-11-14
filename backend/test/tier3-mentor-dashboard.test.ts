@@ -1,3 +1,4 @@
+import { env } from "cloudflare:workers";
 import { beforeAll, describe, expect, it } from "vitest";
 import { api, cookieHeaders, createTestSession, setupDb } from "./helpers";
 
@@ -7,6 +8,7 @@ let student: TestSession;
 let admin: TestSession;
 let instructor: TestSession;
 let mentor: TestSession;
+let otherMentor: TestSession;
 
 beforeAll(async () => {
   await setupDb();
@@ -14,6 +16,24 @@ beforeAll(async () => {
   admin = await createTestSession("admin@cea.ng");
   instructor = await createTestSession("instructor@cea.ng");
   mentor = await createTestSession("mentor@cea.ng");
+  // Attach the legacy fixtures only inside the isolated test database.
+  for (const table of [
+    "mnt_mentees",
+    "mnt_sessions",
+    "mnt_goals",
+    "mnt_requests",
+    "mnt_availability",
+    "mnt_resources",
+    "mnt_conversations",
+  ]) {
+    await env.DB.prepare(`UPDATE ${table} SET mentor_id = ? WHERE mentor_id = 'mentor-1'`)
+      .bind(mentor.session.user.id)
+      .run();
+  }
+  await env.DB.prepare("INSERT INTO users (id, name, email, role_key) VALUES (?, ?, ?, ?)")
+    .bind("other-mentor", "Other mentor", "other-mentor@example.test", "mentor")
+    .run();
+  otherMentor = await createTestSession("other-mentor@example.test");
 });
 
 describe("GET /v1/mentor-dashboard (Mentor dashboard suite)", () => {
@@ -153,6 +173,35 @@ describe("GET /v1/mentor-dashboard (Mentor dashboard suite)", () => {
     expect(body.thread[0]?.fromLabel).toBeTruthy();
   });
 
+  it.each([
+    "mentees",
+    "sessions",
+    "goals",
+    "requests",
+    "availability",
+    "conversations",
+    "resources",
+  ])("does not list another mentor's %s", async (collection) => {
+    const res = await api(`/v1/mentor-dashboard/${collection}`, {
+      headers: cookieHeaders(otherMentor.cookie),
+    });
+    expect(res.status).toBe(200);
+    expect(await res.json()).toMatchObject({ items: [], total: 0 });
+  });
+
+  it.each([
+    "mentees/mn-ada",
+    "mentees/mn-ada/portfolio",
+    "mentees/mn-ada/skills",
+    "mentees/mn-ada/career",
+    "sessions/ms-01",
+    "conversations/mc-01",
+  ])("does not expose another mentor's %s", async (path) => {
+    const res = await api(`/v1/mentor-dashboard/${path}`, {
+      headers: cookieHeaders(otherMentor.cookie),
+    });
+    expect(res.status).toBe(404);
+  });
   it("404s unknown mentee", async () => {
     const res = await api("/v1/mentor-dashboard/mentees/unknown", {
       headers: cookieHeaders(mentor.cookie),

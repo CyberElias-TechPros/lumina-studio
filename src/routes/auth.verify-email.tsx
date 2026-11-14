@@ -33,6 +33,7 @@ function VerifyEmailPage() {
   const [info, setInfo] = useState<string | null>(null);
   const [cooldown, setCooldown] = useState(0);
   const [devCode, setDevCode] = useState<string | null>(null);
+  const [pendingInvite, setPendingInvite] = useState<string | null>(null);
   const { data: session, isPending: sessionLoading } = useSession();
   const signedIn = Boolean(session?.user) || isMockMode;
   const account = useAccount(signedIn);
@@ -41,6 +42,7 @@ function VerifyEmailPage() {
   const done = account.data?.emailVerified === true;
 
   useEffect(() => {
+    setPendingInvite(sessionStorage.getItem("cea_pending_invite"));
     const stored = sessionStorage.getItem("cea_dev_verify_code");
     if (stored) {
       setDevCode(stored);
@@ -131,9 +133,15 @@ function VerifyEmailPage() {
                   <h1 className="font-display mt-4 text-xl font-extrabold">Email verified</h1>
                   <p className="text-muted-foreground mt-2 text-sm">Your account is active.</p>
                   <Button asChild className="mt-6">
-                    <Link to="/app">
-                      Go to my dashboard <ArrowRight className="ml-1.5 size-4" />
-                    </Link>
+                    {pendingInvite ? (
+                      <Link to="/app/parent/invitation/accept" search={{ token: pendingInvite }}>
+                        Return to invitation <ArrowRight className="ml-1.5 size-4" />
+                      </Link>
+                    ) : (
+                      <Link to="/app">
+                        Go to my dashboard <ArrowRight className="ml-1.5 size-4" />
+                      </Link>
+                    )}
                   </Button>
                 </div>
               ) : (
@@ -145,11 +153,11 @@ function VerifyEmailPage() {
                     Verify your email
                   </h1>
                   <p className="text-muted-foreground mt-2 text-center text-sm">
-                    We sent a 6-digit code to{" "}
+                    Enter the 6-digit verification code for{" "}
                     <strong className="text-foreground">
                       {account.data?.email ?? "your email"}
                     </strong>
-                    . It expires in 10 minutes.
+                    . If you need a code, request one below. Codes expire in 10 minutes.
                   </p>
                   {devCode && (
                     <p className="bg-muted mt-3 rounded-md px-3 py-2 text-center text-xs">
@@ -201,7 +209,7 @@ function VerifyEmailPage() {
                     <RotateCcw className="size-3.5" />
                     {cooldown > 0
                       ? `Resend code (0:${String(cooldown).padStart(2, "0")})`
-                      : "Resend code"}
+                      : "Send or resend code"}
                   </button>
                   <Link
                     to="/app"

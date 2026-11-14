@@ -20,6 +20,14 @@ import {
 const AI_RATE_LIMIT = { limit: 20, windowSeconds: 600 };
 const MAX_PROMPT_CHARS = 2_000;
 
+function isDemoEnvironment(env: AppEnv): boolean {
+  return env.APP_ENV === "test" || env.APP_ENV === "development";
+}
+
+function unavailable(message: string): never {
+  throw new ApiError(503, "AI_UNAVAILABLE", message);
+}
+
 /** Consume one unit of the per-user AI budget. Throws 429 (RateLimitExceeded) when over. */
 async function limitAiUsage(env: AppEnv, userId: string): Promise<void> {
   const identifier = await hashIdentifier(`user:${userId}`);
@@ -125,6 +133,8 @@ function mockRecommendations(): ApiRecommendation[] {
 }
 
 ai.post("/grade", requireInstructorOrAdmin, async (c) => {
+  if (!isDemoEnvironment(c.env))
+    unavailable("AI grading is unavailable until it can evaluate the actual submitted work.");
   await limitAiUsage(c.env, c.get("authUser").id);
   const input = (await c.req.json().catch(() => ({}))) as {
     rubric?: { criterion?: string; max?: number }[];
@@ -171,6 +181,8 @@ ai.post("/grade", requireInstructorOrAdmin, async (c) => {
 });
 
 ai.get("/recommendations", async (c) => {
+  if (!isDemoEnvironment(c.env))
+    unavailable("Personalised recommendations are unavailable until learner data is connected.");
   const user = c.get("authUser");
   await limitAiUsage(c.env, user.id);
   const url = new URL(c.req.url);
@@ -242,6 +254,8 @@ ai.post("/ask", async (c) => {
     answer = res.text;
     mock = false;
   }
+  if (mock && !isDemoEnvironment(c.env))
+    unavailable("The assistant is temporarily unavailable. Please try again later.");
   return c.json({ answer, model, mock } satisfies ApiAssistantReply & { model: string });
 });
 
@@ -319,6 +333,8 @@ ai.post("/generate", async (c) => {
       // fall through to mock
     }
   }
+  if (mock && !isDemoEnvironment(c.env))
+    unavailable("Content generation is temporarily unavailable. Please try again later.");
   return c.json(
     { kind, topic, content, model, mock } satisfies ApiGeneratedContent & { model: string },
     201,

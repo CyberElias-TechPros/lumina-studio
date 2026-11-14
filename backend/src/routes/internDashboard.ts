@@ -51,6 +51,15 @@ const COLS: Record<string, { table: string; columns: string }> = {
 for (const [key, { table, columns }] of Object.entries(COLS)) {
   internDashboard.get(`/${key}`, async (c) => {
     const { cursor, limit } = parsePagination(c);
+    if (c.get("authUser").roleKey !== "admin") {
+      // intern_id has no documented relationship to users.id; legacy seeds
+      // use a separate identifier. Do not guess an ownership mapping.
+      throw new ApiError(
+        503,
+        "INTERN_DATA_UNAVAILABLE",
+        "Intern records are unavailable until verified ownership is connected.",
+      );
+    }
     const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM ${table}`).first<{
       n: number;
     }>();
@@ -81,6 +90,13 @@ interface ThreadRow {
 }
 
 internDashboard.get("/conversations/:id", async (c) => {
+  if (c.get("authUser").roleKey !== "admin") {
+    throw new ApiError(
+      503,
+      "INTERN_DATA_UNAVAILABLE",
+      "Intern records are unavailable until verified ownership is connected.",
+    );
+  }
   const convo = await c.env.DB.prepare(
     `SELECT id, name, preview, time_label AS timeLabel, unread FROM int_conversations WHERE id = ?`,
   )

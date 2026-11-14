@@ -45,7 +45,6 @@ import {
 } from "@/data/dashboard";
 import type { StudentDashboard } from "@/lib/api/dashboard";
 import type { AdminApplication } from "@/lib/api/applications";
-import type { MentorProfile } from "@/lib/api/mentor";
 import { libraryItems } from "@/data/library";
 import { externalLinkItems } from "@/data/external-links";
 
@@ -126,53 +125,6 @@ const mockAdmissions: AdminApplication[] = [
     note: "",
     createdAt: "2026-07-28T12:10:00.000Z",
     updatedAt: "2026-07-28T12:10:00.000Z",
-  },
-];
-
-const mockMentors: MentorProfile[] = [
-  {
-    id: "m-1",
-    name: "Kemi Adeyemi",
-    focus: "Backend & APIs",
-    bio: "Backend engineer at Flutterwave. Helps learners reason about APIs, auth and production readiness.",
-    skills: ["TypeScript", "Node.js", "PostgreSQL", "REST APIs"],
-    areas: ["Backend", "System design", "Interview prep"],
-    availability: "Wednesdays · 2 slots",
-    rating: 4.9,
-    sessionsCount: 24,
-  },
-  {
-    id: "m-2",
-    name: "Tunde Balogun",
-    focus: "DevOps",
-    bio: "Platform lead at Paystack. CI/CD, containers and cloud architecture for stressed demo-day teams.",
-    skills: ["Kubernetes", "Terraform", "CI/CD", "AWS"],
-    areas: ["DevOps", "Cloud", "Career switching"],
-    availability: "Fridays · 1 slot",
-    rating: 4.8,
-    sessionsCount: 18,
-  },
-  {
-    id: "m-3",
-    name: "Zainab Yusuf",
-    focus: "Product & UI/UX",
-    bio: "Product designer at Andela. Accessibility and design systems are her strengths.",
-    skills: ["Figma", "Design systems", "Accessibility", "UX research"],
-    areas: ["Product design", "Portfolio review"],
-    availability: "Weekends",
-    rating: 4.7,
-    sessionsCount: 15,
-  },
-  {
-    id: "m-4",
-    name: "Emeka Osei",
-    focus: "Interview prep",
-    bio: "Ex-Google engineer running a structured mock-interview track for final cohorts.",
-    skills: ["DS&A", "System design", "Behavioural"],
-    areas: ["Interview prep", "Career switching"],
-    availability: "Tue & Thu",
-    rating: 4.9,
-    sessionsCount: 31,
   },
 ];
 
@@ -411,46 +363,29 @@ export function registerAllMocks(): void {
     return parentChildDetail(id);
   });
 
-  /* Mentor matching (profiles + keyword match) */
-  registerMock("GET", "/v1/mentor/profiles", async () => {
-    await delay();
-    return { items: mockMentors, total: mockMentors.length };
-  });
-  registerMock("POST", "/v1/mentor/requests", async (init: ApiRequestInit) => {
-    await delay(300);
-    const input = (init.body ?? {}) as { mentorId?: string; goal?: string; program?: string };
-    const mentor = mockMentors.find((item) => item.id === input.mentorId);
-    if (!mentor || !input.goal?.trim()) {
-      throw new ApiError(400, "VALIDATION_ERROR", "A mentor and goal are required.");
-    }
-    return {
-      ok: true,
-      alreadyRequested: false,
-      id: crypto.randomUUID(),
-      mentor: mentor.name,
-    };
-  });
-  registerMock("POST", "/v1/mentor/match", async (init: ApiRequestInit) => {
-    await delay();
-    const { program = "", goal = "" } = (init.body ?? {}) as {
-      program?: string;
-      goal?: string;
-    };
-    const keywords = `${program} ${goal}`
-      .toLowerCase()
-      .split(/\s+/)
-      .filter((w) => w.length > 2);
-    const scored = mockMentors
-      .map((m) => {
-        const haystack = [m.focus, ...m.areas, ...m.skills].join(" ").toLowerCase();
-        const hits = keywords.length > 0 ? keywords.filter((w) => haystack.includes(w)).length : 1;
-        const raw = keywords.length > 0 ? Math.round((hits / keywords.length) * 100) : 100;
-        const match = Math.min(99, Math.max(40, Math.round(raw * 0.8 + m.rating * 10)));
-        return { ...m, match };
-      })
-      .sort((a, b) => b.match - a.match);
-    return { program, goal, matches: scored.slice(0, 3) };
-  });
+  /* Demo mentorship starts empty. No seeded people, ratings or simulated writes. */
+  registerMock("GET", "/v1/mentor/profiles", async () => ({ items: [], truncated: false }));
+  registerMock("POST", "/v1/mentor/match", async () => ({
+    program: "",
+    goal: "",
+    matches: [],
+    truncated: false,
+  }));
+  registerMock("GET", "/v1/mentor/profile", async () => ({ profile: null }));
+  registerMock("GET", "/v1/mentor/requests", async () => ({ items: [], truncated: false }));
+  registerMock("GET", "/v1/mentor/admin/profile", async () => ({ profile: null }));
+  registerMock("GET", "/v1/mentor/admin/eligibility", async () => ({ eligibility: null }));
+  for (const [method, path] of [
+    ["POST", "/v1/mentor/requests"],
+    ["PUT", "/v1/mentor/profile"],
+    ["DELETE", "/v1/mentor/profile"],
+    ["PUT", "/v1/mentor/admin/eligibility"],
+    ["POST", "/v1/mentor/admin/profile/approve"],
+  ] as const) {
+    registerMock(method, path, async () => {
+      throw new ApiError(503, "DEMO_READ_ONLY", "Mentoring changes are not saved in demo mode.");
+    });
+  }
 
   /* Certificates (public verify) */
   registerMock("GET", "/v1/certificates/verify", async (init: ApiRequestInit) => {
@@ -5652,9 +5587,6 @@ export function registerAllMocks(): void {
     await delay();
     return {
       status: "pending",
-      studentName: "Ada Okafor",
-      guardianName: "Chiamaka Okafor",
-      note: "Primary guardian · admission 2026",
       expiresAt: "2026-08-30T23:59:59Z",
     };
   });
@@ -5664,7 +5596,7 @@ export function registerAllMocks(): void {
       ok: true,
       studentId: "stu-ada",
       studentName: "Ada Okafor",
-      roleUpdated: true,
+      roleUpdated: false,
       linked: true,
     };
   });

@@ -35,17 +35,18 @@ function meetingTone(status: string) {
 }
 
 function ParentStudentCommunication() {
+  const { studentId } = Route.useParams();
   const contactsQuery = useParContacts();
   const meetingsQuery = useParMeetings();
   return (
     <AppShell
       roleKey="parent"
       title="Communication"
-      subtitle="Ada Okafor · teachers, mentor and office"
+      subtitle="Contact and meeting records"
       actions={
         <>
           <Button asChild variant="outline" size="sm" className="font-semibold">
-            <Link to="/app/parent/students/$studentId" params={{ studentId: "ada-okafor" }}>
+            <Link to="/app/parent/students/$studentId" params={{ studentId }}>
               <ArrowLeft className="size-4" /> Overview
             </Link>
           </Button>
@@ -101,8 +102,7 @@ function ParentStudentCommunication() {
               }
             </QueryState>
             <p className="text-muted-foreground pt-3 text-xs">
-              Staff reply within 1 working day. Urgent matters: call the front desk,{" "}
-              <strong className="text-foreground">+234 700 232 232</strong>.
+              Contact and meeting information is unavailable until it can be scoped to your account.
             </p>
           </CardContent>
         </Card>
@@ -140,17 +140,6 @@ function ParentStudentCommunication() {
                   ))
                 }
               </QueryState>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-gradient-ink text-ink-foreground shadow-elevated border-0">
-            <CardContent className="p-6">
-              <Video className="text-warning size-5" />
-              <p className="font-display mt-3 text-base font-extrabold">Meet online</p>
-              <p className="text-ink-foreground/70 mt-1 text-sm">
-                All meetings can run over video call — with interpreters for Yoruba, Igbo and Hausa
-                on request.
-              </p>
             </CardContent>
           </Card>
         </div>

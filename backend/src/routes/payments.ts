@@ -118,6 +118,14 @@ payments.post("/checkout", requireAuth, async (c) => {
   }
   if (Object.keys(fieldErrors).length > 0) throw ApiError.validation(fieldErrors);
 
+  const secret = c.env.PAYSTACK_SECRET_KEY;
+  if (!secret && c.env.APP_ENV !== "test" && c.env.APP_ENV !== "development") {
+    throw new ApiError(
+      503,
+      "PAYMENT_PROVIDER_UNAVAILABLE",
+      "Online payment is unavailable. Please contact the Academy before paying.",
+    );
+  }
   const user = c.get("authUser");
   const reference = `cea_${randomToken(8)}`;
   await c.env.DB.prepare(
@@ -128,7 +136,6 @@ payments.post("/checkout", requireAuth, async (c) => {
     .bind(`pay-${reference}`, user.id, reference, user.email, amount as number, description)
     .run();
 
-  const secret = c.env.PAYSTACK_SECRET_KEY;
   if (!secret) {
     return c.json(
       {

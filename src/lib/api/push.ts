@@ -1,7 +1,7 @@
 import { apiFetch } from "@/lib/api/client";
 
 export interface SendPushInput {
-  /** Omit to send to yourself; admins/instructors may target any user. */
+  /** Omit to send to yourself; administrators may target another user. */
   userId?: string;
   title: string;
   body: string;
@@ -11,6 +11,8 @@ export interface SendPushInput {
 export interface PushSendResult {
   sent: number;
   removed: number;
+  skipped?: number;
+  failed?: number;
 }
 
 /** Web-push fan-out. Requires VAPID keys server-side (503 otherwise). */

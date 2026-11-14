@@ -6,7 +6,6 @@ import {
   ArrowLeft,
   ArrowRight,
   BookOpen,
-  CalendarDays,
   FileText,
   MessageSquare,
   Receipt,
@@ -37,7 +36,7 @@ const sections = [
   {
     to: "/app/parent/students/$studentId/grades",
     label: "Grades & gradebook",
-    desc: "Scores, GPA and teacher comments",
+    desc: "Gradebook summary",
     icon: BookOpen,
     tone: "text-primary bg-primary/10",
   },
@@ -51,31 +50,24 @@ const sections = [
   {
     to: "/app/parent/students/$studentId/finance",
     label: "Finance & billing",
-    desc: "Invoices, receipts, pay online",
+    desc: "Invoice records",
     icon: Receipt,
     tone: "text-success bg-success/10",
   },
   {
     to: "/app/parent/students/$studentId/communication",
     label: "Communication",
-    desc: "Message teachers and request meetings",
+    desc: "View communication availability",
     icon: MessageSquare,
     tone: "text-warning bg-warning/10",
   },
   {
     to: "/app/parent/students/$studentId/reports",
     label: "Reports",
-    desc: "Term reports and progress summaries",
+    desc: "Available progress summaries",
     icon: FileText,
     tone: "text-erp bg-erp/10",
   },
-];
-
-const timetable = [
-  { d: "Mon", s: "09:00 — Full-Stack Dev", t: "Mr. Adeyemi" },
-  { d: "Tue", s: "10:00 — Cloud & DevOps", t: "Ms. Chidera" },
-  { d: "Wed", s: "09:00 — Product Design", t: "Mr. Bello" },
-  { d: "Thu", s: "11:00 — Career Readiness", t: "Career office" },
 ];
 
 function ParentStudentOverview() {
@@ -98,7 +90,7 @@ function ParentStudentOverview() {
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
             {data
-              ? `GPA ${data.gpa} · ${data.dueCount} ${data.dueCount === 1 ? "bill" : "bills"} due`
+              ? `GPA ${data.gpa ?? "unavailable"} · ${data.dueCount} ${data.dueCount === 1 ? "bill" : "bills"} due`
               : "Loading…"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
@@ -135,7 +127,7 @@ function ParentStudentOverview() {
             {
               label: "Courses",
               value: String(currentCourses.length),
-              delta: "enrolled this term",
+              delta: "enrollment records",
               icon: UserCheck,
               tone: "bg-learning/10 text-learning",
             },
@@ -150,7 +142,7 @@ function ParentStudentOverview() {
               tone: "bg-warning/10 text-warning",
             },
             {
-              label: "Term average",
+              label: "Gradebook average",
               value: rows.length ? `${avg}%` : "—",
               delta: rows.length ? `${rows.length} gradebook rows` : "no grades yet",
               icon: MessageSquare,
@@ -202,47 +194,21 @@ function ParentStudentOverview() {
                       ))
                     )}
                     <p className="text-muted-foreground pt-1 text-xs">
-                      Latest term report and teacher comments live in Reports.
+                      Open Reports to view available summary records.
                     </p>
                   </CardContent>
                 </Card>
 
-                <div className="space-y-5">
-                  <Card className="bg-card shadow-soft border">
-                    <CardHeader>
-                      <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                        <CalendarDays className="text-primary size-4" /> This week's timetable
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-2">
-                      {timetable.map((s) => (
-                        <div
-                          key={s.d}
-                          className="flex items-center justify-between rounded-xl border p-3"
-                        >
-                          <div>
-                            <p className="text-sm font-semibold">{s.s}</p>
-                            <p className="text-muted-foreground text-xs">{s.t}</p>
-                          </div>
-                          <Badge variant="secondary" className="font-semibold">
-                            {s.d}
-                          </Badge>
-                        </div>
-                      ))}
-                    </CardContent>
-                  </Card>
-
-                  <Card className="bg-gradient-ink text-ink-foreground shadow-elevated border-0">
-                    <CardContent className="p-6">
-                      <MessageSquare className="text-warning size-5" />
-                      <p className="font-display mt-3 text-base font-extrabold">Mentor note</p>
-                      <p className="text-ink-foreground/70 mt-1 text-sm">
-                        Encourage consistent submissions — steady progress keeps the GPA at its
-                        current level.
-                      </p>
-                    </CardContent>
-                  </Card>
-                </div>
+                <Card className="bg-card shadow-soft border self-start">
+                  <CardHeader>
+                    <CardTitle className="font-display text-base font-bold">
+                      Timetable and mentor notes
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-muted-foreground text-sm">
+                    These records are not available here yet.
+                  </CardContent>
+                </Card>
               </div>
 
               <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-5">

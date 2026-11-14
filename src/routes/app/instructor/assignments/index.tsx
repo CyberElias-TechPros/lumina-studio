@@ -1,5 +1,14 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import {
+  fetchAssignmentPublication,
+  fetchAssignmentRosterCourses,
+  publishAssignment,
+} from "@/lib/api/instructor";
+import { useSessionUser } from "@/components/app/session-provider";
+import { Input } from "@/components/ui/input";
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
 import {
@@ -17,7 +26,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { PublishAssignmentDialog } from "@/components/app/publish-assignment-dialog";
 import { useInstructorAssignments } from "@/lib/query/instructor";
 import type { InstructorSubmission } from "@/data/learning";
 import { cn } from "@/lib/utils";
@@ -46,7 +54,6 @@ function AssignmentCenter() {
       subtitle="Publish work, track submissions and grade across your courses"
       actions={
         <>
-          <PublishAssignmentDialog />
           <Badge className="bg-warning/10 text-warning border-0 font-semibold">
             {pending.length} to grade
           </Badge>
@@ -56,6 +63,7 @@ function AssignmentCenter() {
         </>
       }
     >
+      <PublishAssignmentForm />
       <QueryState<InstructorSubmission[]>
         query={submissionsQuery}
         error={{ title: "Submissions unavailable" }}
@@ -216,5 +224,285 @@ function AssignmentCenter() {
         </Button>
       )}
     </AppShell>
+  );
+}
+
+function PublishAssignmentForm() {
+  const courses = useQuery({
+    queryKey: ["instructor", "assignment-roster-courses"],
+    queryFn: fetchAssignmentRosterCourses,
+  });
+  const [courseSlug, setCourseSlug] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [deadline, setDeadline] = useState("");
+  const user = useSessionUser();
+  const storageKey = user ? `cea:assignment-publication:${user.id}` : null;
+  const [pendingReference, setPendingReference] = useState<{ key: string; hash: string } | null>(
+    null,
+  );
+  const [storageReady, setStorageReady] = useState(false);
+  const [formError, setFormError] = useState("");
+  const [preparing, setPreparing] = useState(false);
+  const [recovered, setRecovered] = useState<Awaited<ReturnType<typeof publishAssignment>> | null>(
+    null,
+  );
+  const publish = useMutation({ mutationFn: publishAssignment, retry: false });
+  const lookup = useMutation({ mutationFn: fetchAssignmentPublication, retry: false });
+  useEffect(() => {
+    setStorageReady(false);
+    setPendingReference(null);
+    if (!storageKey) return;
+    try {
+      const raw = sessionStorage.getItem(storageKey);
+      if (raw) {
+        const item = JSON.parse(raw) as { key?: unknown; hash?: unknown };
+        if (typeof item.key !== "string" || typeof item.hash !== "string")
+          throw new Error("invalid reference");
+        setPendingReference({ key: item.key, hash: item.hash });
+      }
+      setStorageReady(true);
+    } catch {
+      setFormError(
+        "Cannot access the saved publication reference. Contact an administrator before publishing to avoid duplicates.",
+      );
+    }
+  }, [storageKey]);
+  const clearReference = () => {
+    if (!storageKey) return;
+    try {
+      sessionStorage.removeItem(storageKey);
+      setPendingReference(null);
+      lookup.reset();
+    } catch {
+      setFormError("Could not clear the saved reference. Contact an administrator.");
+    }
+  };
+  const selected = courses.data?.items.find((course) => course.slug === courseSlug);
+  return (
+    <Card className="mb-5 border bg-card shadow-soft">
+      <CardContent className="space-y-4 p-5">
+        <div>
+          <h2 className="font-display text-lg font-bold">Publish an assignment</h2>
+          <p className="text-muted-foreground text-sm">
+            Assignments go only to your administrator-confirmed learners. Ask an administrator to
+            update your teaching roster if someone is missing.
+          </p>
+        </div>
+        {courses.data?.truncated && (
+          <p className="text-sm text-muted-foreground">
+            Only the first 200 roster courses are shown. Contact an administrator about additional
+            courses.
+          </p>
+        )}
+        {courses.isError && (
+          <p role="alert" className="text-destructive text-sm">
+            Could not load your teaching roster.
+          </p>
+        )}
+        {courses.isSuccess && courses.data.items.length === 0 && (
+          <p className="text-muted-foreground text-sm">
+            No active teaching roster yet. Contact an administrator to confirm your learners.
+          </p>
+        )}
+        {pendingReference && (
+          <div className="space-y-2 rounded-md border p-3 text-sm">
+            <p>
+              A publication needs confirmation. The retry reference is stored in this browser tab,
+              not the assignment content. Re-enter the exact details to retry safely, or check its
+              status.
+            </p>
+            <Button
+              type="button"
+              variant="outline"
+              disabled={lookup.isPending || publish.isPending}
+              onClick={() =>
+                lookup.mutate(pendingReference.key, {
+                  onSuccess: (result) => {
+                    if (result.publication) {
+                      setRecovered(result.publication);
+                      clearReference();
+                    }
+                  },
+                })
+              }
+            >
+              Check publication status
+            </Button>{" "}
+            <Button
+              type="button"
+              variant="outline"
+              disabled={lookup.isPending || publish.isPending}
+              onClick={() => {
+                if (
+                  window.confirm(
+                    "Only clear this reference after confirming with an administrator that the original attempt is resolved. Clearing it can permit a duplicate. Continue?",
+                  )
+                )
+                  clearReference();
+              }}
+            >
+              Clear reference after reconciliation
+            </Button>
+            {lookup.isSuccess && !lookup.data.publication && (
+              <p>
+                Not found yet. The original request may still be processing; keep this reference and
+                check again or contact an administrator.
+              </p>
+            )}
+            {lookup.isError && (
+              <p role="alert">Could not check the publication. Keep the reference and try again.</p>
+            )}
+          </div>
+        )}
+        {formError && (
+          <p role="alert" className="text-destructive text-sm">
+            {formError}
+          </p>
+        )}
+        {recovered && (
+          <p role="status" className="text-sm">
+            Publication confirmed for {recovered.recipients}{" "}
+            {recovered.recipients === 1 ? "learner" : "learners"}. Reference: {recovered.groupId}
+          </p>
+        )}
+        {courses.data && courses.data.items.length > 0 && (
+          <form
+            className="space-y-3"
+            onSubmit={async (event) => {
+              event.preventDefault();
+              const date = new Date(deadline);
+              if (
+                !selected ||
+                !title.trim() ||
+                Number.isNaN(date.getTime()) ||
+                !storageReady ||
+                !storageKey ||
+                preparing
+              )
+                return;
+              setPreparing(true);
+              setFormError("");
+              setRecovered(null);
+              try {
+                const payload = {
+                  courseSlug,
+                  title: title.trim(),
+                  description: description.trim(),
+                  dueAt: date.toISOString(),
+                };
+                const digest = await crypto.subtle.digest(
+                  "SHA-256",
+                  new TextEncoder().encode(JSON.stringify(payload)),
+                );
+                const hash = Array.from(new Uint8Array(digest), (byte) =>
+                  byte.toString(16).padStart(2, "0"),
+                ).join("");
+                if (pendingReference && pendingReference.hash !== hash) {
+                  setFormError(
+                    "The saved attempt used different details. Check its status or reconcile it with an administrator before starting another assignment.",
+                  );
+                  return;
+                }
+                const ref = pendingReference ?? { key: crypto.randomUUID(), hash };
+                sessionStorage.setItem(storageKey, JSON.stringify(ref));
+                setPendingReference(ref);
+                publish.mutate(
+                  { ...payload, idempotencyKey: ref.key },
+                  {
+                    onSuccess: () => {
+                      clearReference();
+                      setTitle("");
+                      setDescription("");
+                      setDeadline("");
+                    },
+                  },
+                );
+              } catch {
+                setFormError(
+                  "Could not securely save a retry reference. No request was sent; check browser storage and try again.",
+                );
+              } finally {
+                setPreparing(false);
+              }
+            }}
+          >
+            <label className="block text-sm font-semibold" htmlFor="publish-course">
+              Course
+            </label>
+            <select
+              id="publish-course"
+              required
+              value={courseSlug}
+              onChange={(e) => setCourseSlug(e.target.value)}
+              className="border-input bg-background w-full rounded-md border px-3 py-2 text-sm"
+            >
+              <option value="">Select course</option>
+              {courses.data.items.map((course) => (
+                <option key={course.slug} value={course.slug}>
+                  {course.title} · {course.recipients} confirmed learners
+                </option>
+              ))}
+            </select>
+            <label className="block text-sm font-semibold" htmlFor="publish-title">
+              Title
+            </label>
+            <Input
+              id="publish-title"
+              required
+              minLength={3}
+              maxLength={200}
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <label className="block text-sm font-semibold" htmlFor="publish-description">
+              Instructions
+            </label>
+            <textarea
+              id="publish-description"
+              maxLength={10000}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="border-input bg-background min-h-24 w-full rounded-md border px-3 py-2 text-sm"
+            />
+            <label className="block text-sm font-semibold" htmlFor="publish-deadline">
+              Deadline (your local time)
+            </label>
+            <Input
+              id="publish-deadline"
+              type="datetime-local"
+              required
+              value={deadline}
+              onChange={(e) => setDeadline(e.target.value)}
+            />
+            <p className="text-muted-foreground text-xs">
+              Recipient counts may change as rosters are updated. In-app notifications are created;
+              SMS delivery is not guaranteed.
+            </p>
+            {publish.isError && (
+              <p role="alert" className="text-destructive text-sm">
+                {publish.error instanceof Error
+                  ? publish.error.message
+                  : "Could not confirm publication."}{" "}
+                Keep the saved reference and retry the exact same details or check its status.
+              </p>
+            )}
+            {publish.isSuccess && (
+              <p role="status" className="text-sm">
+                Published to {publish.data.recipients}{" "}
+                {publish.data.recipients === 1 ? "learner" : "learners"}. Reference:{" "}
+                {publish.data.groupId}
+              </p>
+            )}
+            <Button
+              type="submit"
+              disabled={publish.isPending || preparing || !selected || !storageReady}
+            >
+              {publish.isPending || preparing ? "Publishing…" : "Publish assignment"}
+            </Button>
+          </form>
+        )}
+      </CardContent>
+    </Card>
   );
 }

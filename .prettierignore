@@ -8,3 +8,7 @@ bun.lock
 routeTree.gen.ts
 src/app/(generated)
 src/lib/next-compat/routes.gen.ts
+
+# Preserve the pinned third-party skill snapshot byte-for-byte.
+.agents/skills/
+.agents/references/

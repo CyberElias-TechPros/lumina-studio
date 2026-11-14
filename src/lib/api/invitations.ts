@@ -2,9 +2,6 @@ import { apiFetch } from "./client";
 
 export interface InvitationInfo {
   status: "pending" | "accepted" | "revoked" | "expired";
-  studentName: string;
-  guardianName: string;
-  note: string;
   expiresAt: string;
 }
 
@@ -18,7 +15,7 @@ export interface AcceptInvitationResult {
 
 export interface CreateInvitationInput {
   studentId: string;
-  guardianName: string;
+  guardianUserId: string;
   note?: string;
   expiresInDays?: number;
 }
@@ -42,7 +39,7 @@ export function acceptInvitation(token: string): Promise<AcceptInvitationResult>
   });
 }
 
-/** Staff — create an invitation for a student. */
+/** Admin — create an invitation for an identified parent account. */
 export function createInvitation(input: CreateInvitationInput): Promise<CreateInvitationResult> {
   return apiFetch<CreateInvitationResult>("/v1/invitations", { method: "POST", body: input });
 }

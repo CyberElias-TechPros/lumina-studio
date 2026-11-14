@@ -14,6 +14,33 @@ import { ApiError } from "./errors";
 const encoder = new TextEncoder();
 const RECORD_SIZE = 4096;
 
+/** Browser push endpoints are capability URLs. Only approved push-service
+ * hosts may be contacted, both at registration and again at delivery. */
+export function isTrustedPushEndpoint(value: unknown): value is string {
+  if (typeof value !== "string" || value.length > 4096) return false;
+  try {
+    const url = new URL(value);
+    if (
+      url.protocol !== "https:" ||
+      url.username ||
+      url.password ||
+      url.port ||
+      url.hash ||
+      url.href !== value
+    )
+      return false;
+    const host = url.hostname;
+    return (
+      host === "fcm.googleapis.com" ||
+      host === "updates.push.services.mozilla.com" ||
+      host.endsWith(".push.apple.com") ||
+      host.endsWith(".notify.windows.com")
+    );
+  } catch {
+    return false;
+  }
+}
+
 export interface PushKeys {
   p256dh: string;
   auth: string;
@@ -267,7 +294,11 @@ export async function sendPushMessage(
   message: PushMessage,
   vapid: VapidConfig,
   sender: typeof fetch = fetch,
-): Promise<{ delivered: boolean; removed: boolean; status: number }> {
+  stillEligible?: () => Promise<boolean>,
+): Promise<{ delivered: boolean; removed: boolean; status: number; skipped?: boolean }> {
+  if (!isTrustedPushEndpoint(endpoint)) {
+    throw new ApiError(400, "INVALID_PUSH_ENDPOINT", "Push endpoint is not an approved service.");
+  }
   const payload = encryptPushPayload(
     encoder.encode(JSON.stringify(message)),
     base64UrlToBytes(keys.p256dh),
@@ -280,13 +311,19 @@ export async function sendPushMessage(
     vapid.publicKey,
     vapid.privateKey,
   );
+  // Recheck after encryption/signing, immediately before network handoff.
+  if (stillEligible && !(await stillEligible())) {
+    return { delivered: false, removed: false, status: 0, skipped: true };
+  }
   const res = await sender(endpoint, {
     method: "POST",
+    redirect: "manual",
     headers: {
       Authorization: authorization,
       "Content-Encoding": "aes128gcm",
       "Content-Type": "application/octet-stream",
-      TTL: "86400",
+      // Avoid retaining personal notifications for later delivery on a shared device.
+      TTL: "0",
     },
     body,
   });

@@ -2,15 +2,7 @@
 
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
-import {
-  ArrowLeft,
-  CalendarDays,
-  CheckCircle2,
-  Clock,
-  FileText,
-  MessageSquare,
-  Video,
-} from "lucide-react";
+import { ArrowLeft, CalendarDays, Clock, Video } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -58,7 +50,7 @@ function MentorSessions() {
         </>
       }
     >
-      <div className="grid gap-5 xl:grid-cols-[1.5fr_1fr]">
+      <div className="grid gap-5 xl:grid-cols-1">
         <Card className="bg-card shadow-soft border">
           <CardHeader>
             <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
@@ -120,63 +112,6 @@ function MentorSessions() {
             </QueryState>
           </CardContent>
         </Card>
-
-        <div className="space-y-5">
-          <Card className="bg-card shadow-soft border">
-            <CardHeader>
-              <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                <FileText className="text-primary size-4" /> This week's focus
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {[
-                { t: "Ada", v: "Goal review + demo prep", tone: "bg-learning/10 text-learning" },
-                { t: "Tobi", v: "Exam pattern walkthrough", tone: "bg-primary/10 text-primary" },
-                { t: "Zainab", v: "Portfolio critique", tone: "bg-warning/10 text-warning" },
-              ].map((x) => (
-                <div key={x.t} className="flex items-center justify-between rounded-xl border p-3">
-                  <span className="text-sm font-semibold">{x.t}</span>
-                  <Badge className={cn("border-0 font-semibold", x.tone)}>{x.v}</Badge>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
-
-          <Card className="bg-card shadow-soft border">
-            <CardHeader>
-              <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                <CheckCircle2 className="text-primary size-4" /> Session templates
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              {[
-                "Goal review · 45 min",
-                "Mock interview · 60 min",
-                "Portfolio critique · 30 min",
-              ].map((t) => (
-                <Button
-                  key={t}
-                  variant="outline"
-                  size="sm"
-                  className="w-full justify-start font-semibold"
-                >
-                  {t}
-                </Button>
-              ))}
-            </CardContent>
-          </Card>
-
-          <Card className="bg-gradient-ink text-ink-foreground shadow-elevated border-0">
-            <CardContent className="p-6">
-              <MessageSquare className="text-warning size-5" />
-              <p className="font-display mt-3 text-base font-extrabold">Notes stay private</p>
-              <p className="text-ink-foreground/70 mt-1 text-sm">
-                Session notes sync to the mentee's file and inform the term-end progress report —
-                visible only to you and the academic team.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
       </div>
     </AppShell>
   );

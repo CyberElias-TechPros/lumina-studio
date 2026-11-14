@@ -38,11 +38,11 @@ function ParentStudentGrades() {
     <AppShell
       roleKey="parent"
       title="Academic progress"
-      subtitle={data ? `${data.name} · mid-term` : "Loading…"}
+      subtitle={data ? `${data.name} · gradebook records` : "Loading…"}
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
-            {data ? `GPA ${data.gpa} / 4.0` : "GPA …"}
+            {data ? `GPA ${data.gpa ?? "unavailable"}` : "GPA …"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/parent/students/$studentId" params={{ studentId }}>
@@ -70,8 +70,8 @@ function ParentStudentGrades() {
           const kpis = [
             {
               label: "Cumulative GPA",
-              value: current.gpa,
-              delta: "4.0 scale",
+              value: current.gpa ?? "—",
+              delta: "Unavailable until the grading policy is verified",
               icon: TrendingUp,
               tone: "bg-primary/10 text-primary",
             },
@@ -85,14 +85,14 @@ function ParentStudentGrades() {
             {
               label: "A grades",
               value: rows.length ? `${aGrades} of ${rows.length}` : "—",
-              delta: "this term",
+              delta: "in gradebook",
               icon: BookOpen,
               tone: "bg-success/10 text-success",
             },
             {
               label: "Credit units",
               value: String(units),
-              delta: "earned so far",
+              delta: "on gradebook records",
               icon: BookOpen,
               tone: "bg-warning/10 text-warning",
             },

@@ -68,6 +68,13 @@ import businessIntakeSql from "../migrations/0066_business_intake.sql?raw";
 import protectedTuitionSql from "../migrations/0067_protected_tuition.sql?raw";
 import nativePushSql from "../migrations/0068_native_push_devices.sql?raw";
 import submissionTextSql from "../migrations/0069_submission_text.sql?raw";
+import webPushSessionBindingSql from "../migrations/0070_web_push_session_binding.sql?raw";
+import invitationRecipientSql from "../migrations/0071_parent_invitation_recipient.sql?raw";
+import verifiedParentLinksSql from "../migrations/0072_verified_parent_links.sql?raw";
+import assignmentRostersSql from "../migrations/0073_assignment_rosters.sql?raw";
+import certificateReviewSql from "../migrations/0074_certificate_review.sql?raw";
+import mentoringWorkflowSql from "../migrations/0075_mentoring_workflow.sql?raw";
+import assignmentPublicationSql from "../migrations/0076_assignment_publication_idempotency.sql?raw";
 import { seedContentSql } from "../seeds/content";
 import { seedLmsSql } from "../seeds/lms";
 import { seedDomainSql } from "../seeds/domain";
@@ -187,6 +194,13 @@ export async function setupDb(): Promise<void> {
     protectedTuitionSql,
     nativePushSql,
     submissionTextSql,
+    webPushSessionBindingSql,
+    invitationRecipientSql,
+    verifiedParentLinksSql,
+    assignmentRostersSql,
+    certificateReviewSql,
+    mentoringWorkflowSql,
+    assignmentPublicationSql,
   ]) {
     const statements = sql
       .split("\n")

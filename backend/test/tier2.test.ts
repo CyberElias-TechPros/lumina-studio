@@ -17,6 +17,23 @@ beforeAll(async () => {
   finance = await createTestSession("finance@cea.ng");
   admin = await createTestSession("admin@cea.ng");
   parent = await createTestSession("parent@cea.ng");
+  await env.DB.prepare("UPDATE users SET email_verified_at = ? WHERE id = ?")
+    .bind("2026-01-01T00:00:00.000Z", parent.session.user.id)
+    .run();
+  const invite = await api("/v1/invitations", {
+    method: "POST",
+    headers: { ...cookieHeaders(admin.cookie), "Content-Type": "application/json" },
+    body: JSON.stringify({ studentId: SEEDED_STUDENT_ID, guardianUserId: parent.session.user.id }),
+  });
+  if (invite.status !== 201)
+    throw new Error(`Unable to issue isolated parent fixture: ${invite.status}`);
+  const { token } = (await invite.json()) as { token: string };
+  const accepted = await api(`/v1/invitations/${token}/accept`, {
+    method: "POST",
+    headers: cookieHeaders(parent.cookie),
+  });
+  if (accepted.status !== 200)
+    throw new Error(`Unable to verify isolated parent fixture: ${accepted.status}`);
 });
 
 describe("GET /v1/applications/admin (admissions review)", () => {
@@ -131,14 +148,14 @@ describe("GET /v1/parent/students (parent-scoped grade reads)", () => {
     const res = await api("/v1/parent/students", { headers: cookieHeaders(parent.cookie) });
     expect(res.status).toBe(200);
     const body = (await res.json()) as {
-      items: Array<{ studentId: string; name: string; gpa: string; course: string }>;
+      items: Array<{ studentId: string; name: string; gpa: string | null; course: string }>;
       total: number;
     };
     expect(body.total).toBe(1);
     const child = body.items[0]!;
     expect(child.studentId).toBe(SEEDED_STUDENT_ID);
     expect(child.name).toBe("Chiamaka Obi");
-    expect(Number(child.gpa)).toBeGreaterThan(0);
+    expect(child.gpa).toBeNull();
     expect(child.course).toBe("Full-Stack Software Development");
   });
 
@@ -201,6 +218,28 @@ describe("GET /v1/parent/students/:id/finance (billing ledger)", () => {
   });
 });
 
+describe("parent billing record consistency", () => {
+  it("excludes void and refunded records from outstanding totals", async () => {
+    await env.DB.prepare(
+      "INSERT INTO invoices (id, user_id, party, amount, due, status) VALUES (?, ?, 'Test', 500, '', ?)",
+    )
+      .bind("parent-void-test", SEEDED_STUDENT_ID, "void")
+      .run();
+    const overview = await api("/v1/parent/students", { headers: cookieHeaders(parent.cookie) });
+    const child = (
+      (await overview.json()) as { items: { studentId: string; due: number; dueCount: number }[] }
+    ).items.find((item) => item.studentId === SEEDED_STUDENT_ID)!;
+    const financeRes = await api(`/v1/parent/students/${SEEDED_STUDENT_ID}/finance`, {
+      headers: cookieHeaders(parent.cookie),
+    });
+    const financeBody = (await financeRes.json()) as {
+      totals: { outstanding: number; count: number };
+    };
+    expect(financeBody.totals.outstanding).toBe(child.due);
+    expect(financeBody.totals.count).toBe(child.dueCount);
+  });
+});
+
 describe("GET /v1/parent/students/:id/attendance (records)", () => {
   it("blocks reading a student that is not linked", async () => {
     const other = await env.DB.prepare(
@@ -240,33 +279,16 @@ describe("POST /v1/mentor/match (rule-based matchmaking)", () => {
     expect(res.status).toBe(403);
   });
 
-  it("returns scored mentor matches for a student", async () => {
-    const res = await api("/v1/mentor/match", {
+  it("does not expose unreviewed mentor profiles or scores to a learner", async () => {
+    const browse = await api("/v1/mentor/profiles", { headers: cookieHeaders(student.cookie) });
+    expect(browse.status).toBe(200);
+    expect(await browse.json()).toMatchObject({ items: [] });
+    const match = await api("/v1/mentor/match", {
       method: "POST",
       headers: { "Content-Type": "application/json", ...cookieHeaders(student.cookie) },
-      body: JSON.stringify({
-        program: "Backend & APIs",
-        goal: "Prepare for backend engineering interviews",
-      }),
+      body: JSON.stringify({ goal: "backend" }),
     });
-    expect(res.status).toBe(200);
-    const body = (await res.json()) as {
-      matches: Array<{ id: string; name: string; match: number }>;
-    };
-    expect(body.matches.length).toBeGreaterThan(0);
-    expect(body.matches[0]!.match).toBeGreaterThanOrEqual(40);
-    const ranked = body.matches.every((m, i) => i === 0 || body.matches[i - 1]!.match >= m.match);
-    expect(ranked).toBe(true);
-  });
-
-  it("lists mentor profiles", async () => {
-    const res = await api("/v1/mentor/profiles", { headers: cookieHeaders(student.cookie) });
-    expect(res.status).toBe(200);
-    const body = (await res.json()) as {
-      items: Array<{ name: string; focus: string }>;
-      total: number;
-    };
-    expect(body.total).toBeGreaterThanOrEqual(3);
-    expect(body.items[0]!.focus).toBeTruthy();
+    expect(match.status).toBe(200);
+    expect(await match.json()).toMatchObject({ matches: [] });
   });
 });

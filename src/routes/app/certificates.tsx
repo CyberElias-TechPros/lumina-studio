@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
 import {
@@ -9,36 +8,18 @@ import {
   Download,
   ExternalLink,
   LockKeyhole,
-  Plus,
   QrCode,
-  ScrollText,
   Share2,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
 import { useSessionRole } from "@/lib/auth/session";
-import { useCourses } from "@/lib/query/courses";
-import {
-  useCertificateCandidates,
-  useIssueCertificate,
-  useMyCertificates,
-} from "@/lib/query/certificates";
+import { useMyCertificates } from "@/lib/query/certificates";
 import type { CertificateItem } from "@/lib/api/certificates";
 import { cn } from "@/lib/utils";
-import { ApiError } from "@/lib/errors";
 
 export const Route = createFileRoute("/app/certificates")({
   head: () => ({
@@ -58,26 +39,21 @@ function formatDate(iso: string): string {
   });
 }
 
-function errorMessage(err: unknown): string | null {
-  if (err instanceof ApiError) return err.message;
-  return err instanceof Error ? err.message : null;
-}
-
 function StudentCertificates() {
   const role = useSessionRole();
   const mine = useMyCertificates();
   const items = mine.data?.items ?? [];
-  const canIssue = role === "instructor" || role === "admin";
+  const canIssue = role === "admin";
 
   return (
     <AppShell
       roleKey="student"
       title="Certificates"
-      subtitle="Verified credentials — shareable, checkable, unforgeable"
+      subtitle="Your certificate records and code lookup"
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
-            {mine.data ? `${items.length} issued` : "Checking…"}
+            {mine.data ? `${items.length} records` : "Checking…"}
           </Badge>
           <Button variant="outline" size="sm" className="font-semibold" asChild>
             <Link to="/certificates/verify">
@@ -90,7 +66,7 @@ function StudentCertificates() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
           {
-            label: "Issued",
+            label: "Records",
             value: mine.data ? String(items.length) : "—",
             delta: "viewable now",
             icon: Award,
@@ -98,22 +74,22 @@ function StudentCertificates() {
           },
           {
             label: "Verifiable",
-            value: items.filter((c) => c.code).length.toString(),
+            value: items.filter((c) => c.code && c.status !== "revoked").length.toString(),
             delta: "via public code check",
             icon: QrCode,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Registry",
-            value: "Live",
-            delta: "backend-issued codes",
+            value: "Code lookup",
+            delta: "record match only",
             icon: BadgeCheck,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Sharing",
             value: "PDF · Link",
-            delta: "LinkedIn ready",
+            delta: "print or share a code",
             icon: Share2,
             tone: "bg-warning/10 text-warning",
           },
@@ -143,6 +119,11 @@ function StudentCertificates() {
             </CardTitle>
           </CardHeader>
           <CardContent className="divide-y">
+            {mine.data?.truncated && (
+              <p className="text-muted-foreground py-3 text-sm">
+                Showing the latest 100 records. Contact the academy for older records.
+              </p>
+            )}
             <QueryState<CertificateItem[]>
               query={{ ...mine, data: items }}
               error={{ title: "Certificates unavailable" }}
@@ -170,14 +151,28 @@ function StudentCertificates() {
                           {c.code}
                         </p>
                       </div>
-                      <Badge className="bg-success/10 text-success border-0 font-semibold">
-                        Issued
+                      <Badge
+                        className={cn(
+                          "border-0 font-semibold",
+                          c.status === "revoked"
+                            ? "bg-destructive/10 text-destructive"
+                            : c.status === "legacy"
+                              ? "bg-muted text-muted-foreground"
+                              : "bg-success/10 text-success",
+                        )}
+                      >
+                        {c.status === "revoked"
+                          ? "Revoked"
+                          : c.status === "legacy"
+                            ? "Legacy record"
+                            : "Issued"}
                       </Badge>
                       <div className="flex shrink-0 gap-1">
                         <Button
                           variant="outline"
                           size="sm"
                           className="font-semibold"
+                          disabled={c.status === "revoked"}
                           onClick={() => window.print()}
                           title="Open the browser print dialog, then choose Save as PDF"
                         >
@@ -215,7 +210,8 @@ function StudentCertificates() {
                 <Link to="/certificates/verify" className="text-primary font-semibold underline">
                   /certificates/verify
                 </Link>{" "}
-                using its QR code or unique code — no account needed.
+                using its code — no account needed. A match shows a registry entry, not proof of
+                eligibility.
               </p>
               {[
                 {
@@ -233,134 +229,21 @@ function StudentCertificates() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-ink text-ink-foreground shadow-elevated border-0">
-            <CardContent className="p-6">
-              <BadgeCheck className="text-success size-5" />
-              <p className="font-display mt-3 text-base font-extrabold">Degree + skills</p>
-              <p className="text-ink-foreground/70 mt-1 text-sm">
-                Certificates carry your OSKM skills record, so employers see what you can do — not
-                just what you studied.
-              </p>
-            </CardContent>
-          </Card>
-
-          {canIssue && <IssueCertificateCard />}
+          {canIssue && (
+            <Card className="bg-card shadow-soft border">
+              <CardContent className="p-6">
+                <p className="font-semibold">Review and issue certificates</p>
+                <p className="text-muted-foreground mt-1 text-sm">
+                  Review eligibility independently before issuing or revoking a record.
+                </p>
+                <Button asChild variant="outline" className="mt-3">
+                  <Link to="/app/admin/users">Open user management</Link>
+                </Button>
+              </CardContent>
+            </Card>
+          )}
         </div>
       </div>
     </AppShell>
-  );
-}
-
-function IssueCertificateCard() {
-  const candidates = useCertificateCandidates();
-  const courses = useCourses();
-  const issue = useIssueCertificate();
-  const [userId, setUserId] = useState("");
-  const [courseSlug, setCourseSlug] = useState("");
-  const [title, setTitle] = useState("");
-
-  const courseItems = courses.data?.pages.flatMap((p) => p.items) ?? [];
-
-  const pickCourse = (slug: string) => {
-    setCourseSlug(slug);
-    const course = courseItems.find((c) => c.slug === slug);
-    setTitle(course?.title ?? title);
-  };
-
-  const submit = () => {
-    if (!userId || !courseSlug || !title.trim()) return;
-    issue.mutate(
-      { userId, courseSlug, title: title.trim() },
-      {
-        onSuccess: () => {
-          setUserId("");
-          setCourseSlug("");
-          setTitle("");
-        },
-      },
-    );
-  };
-
-  return (
-    <Card className="bg-card shadow-soft border">
-      <CardHeader>
-        <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-          <ScrollText className="text-primary size-4" /> Issue a certificate
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <p className="text-muted-foreground text-xs leading-relaxed">
-          Issue to any active user. The registry creates a unique code that passes the public
-          verification check.
-        </p>
-
-        <div className="space-y-1.5">
-          <Label htmlFor="cert-user" className="text-xs font-semibold">
-            Recipient
-          </Label>
-          <Select value={userId} onValueChange={setUserId}>
-            <SelectTrigger id="cert-user">
-              <SelectValue placeholder="Select a user…" />
-            </SelectTrigger>
-            <SelectContent>
-              {candidates.data?.items.map((u) => (
-                <SelectItem key={u.id} value={u.id}>
-                  {u.name} · {u.email}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-
-        <div className="space-y-1.5">
-          <Label htmlFor="cert-course" className="text-xs font-semibold">
-            Course
-          </Label>
-          <Select value={courseSlug} onValueChange={pickCourse}>
-            <SelectTrigger id="cert-course">
-              <SelectValue placeholder="Select a course…" />
-            </SelectTrigger>
-            <SelectContent>
-              {courseItems.map((c) => (
-                <SelectItem key={c.slug} value={c.slug}>
-                  {c.title}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-
-        <div className="space-y-1.5">
-          <Label htmlFor="cert-title" className="text-xs font-semibold">
-            Title
-          </Label>
-          <Input
-            id="cert-title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Certificate title"
-          />
-        </div>
-
-        {issue.isError && (
-          <p className="text-destructive text-xs font-semibold">
-            {errorMessage(issue.error) ?? "Could not issue certificate."}
-          </p>
-        )}
-        {issue.isSuccess && (
-          <p className="bg-success/10 text-success rounded-lg px-3 py-2 text-xs font-semibold">
-            Issued — code {issue.data.code}. It passes verification immediately.
-          </p>
-        )}
-
-        <Button
-          className="w-full font-semibold"
-          onClick={submit}
-          disabled={issue.isPending || !userId || !courseSlug || !title.trim()}
-        >
-          <Plus className="size-4" /> {issue.isPending ? "Issuing…" : "Issue certificate"}
-        </Button>
-      </CardContent>
-    </Card>
   );
 }

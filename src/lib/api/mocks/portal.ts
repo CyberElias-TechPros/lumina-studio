@@ -1,7 +1,7 @@
 import { registerMock } from "@/lib/api/client";
 import type { ApiRequestInit } from "@/lib/api/client";
+import { ApiError } from "@/lib/errors";
 import type { PortalSummary } from "@/lib/api/portal";
-import type { PublishAssignmentInput } from "@/lib/api/instructor";
 
 export function registerPortalMocks(): void {
   registerMock("GET", "/v1/portal/summary", async (init: ApiRequestInit) => {
@@ -30,14 +30,15 @@ export function registerPortalMocks(): void {
     };
     return summary;
   });
-  registerMock("POST", "/v1/instructor/assignments", async (init: ApiRequestInit) => {
-    const body = init.body as PublishAssignmentInput;
-    return {
-      groupId: "grp-mock",
-      recipients: 24,
-      due: new Date(body.dueAt).toLocaleString("en-GB", { timeZone: "Africa/Lagos" }),
-      dueAt: body.dueAt,
-      course: body.courseSlug,
-    };
+  registerMock("GET", "/v1/instructor/assignment-roster/courses", async () => ({
+    items: [],
+    truncated: false,
+  }));
+  registerMock("GET", "/v1/instructor/assignment-roster", async () => ({ grant: null }));
+  registerMock("PUT", "/v1/instructor/assignment-roster", async () => {
+    throw new ApiError(503, "DEMO_READ_ONLY", "Roster changes are not saved in demo mode.");
+  });
+  registerMock("POST", "/v1/instructor/assignments", async () => {
+    throw new ApiError(503, "DEMO_READ_ONLY", "Assignment publication is not saved in demo mode.");
   });
 }

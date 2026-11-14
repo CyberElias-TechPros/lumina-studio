@@ -5,6 +5,7 @@ import { base64UrlDecode, base64UrlEncode } from "../lib/crypto";
 import { paginate, parsePagination } from "../lib/pagination";
 import { requireAuth, requireAnyRole } from "../lib/auth";
 import { parseBody } from "../lib/validate";
+import { ApiError } from "../lib/errors";
 
 const STU_SELF_COLS: Record<string, { table: string; columns: string }> = {
   attendance: {
@@ -72,41 +73,86 @@ function registerLists(router: Hono<{ Bindings: AppEnv }>, collections: typeof S
   for (const [key, { table, columns }] of Object.entries(collections)) {
     router.get(`/${key}`, async (c) => {
       const { cursor, limit } = parsePagination(c);
-      const userId = c.get("authUser").id;
+      const user = c.get("authUser");
+      const userId = user.id;
+      const isAdmin = user.roleKey === "admin";
       const isProjectCollection = key === "projects";
-      if (key === "records") {
-        const liveRows = await c.env.DB.prepare(
+
+      if (!isAdmin && key === "records") {
+        // The legacy stu_records table is shared demo data. Return only this
+        // learner's real check-ins, including an empty result when none exist.
+        let cursorDate: string | undefined;
+        let cursorId: string | undefined;
+        if (cursor) {
+          try {
+            const decoded = base64UrlDecode(cursor);
+            const parsed: unknown = decoded ? JSON.parse(decoded) : null;
+            if (
+              !Array.isArray(parsed) ||
+              parsed.length !== 2 ||
+              typeof parsed[0] !== "string" ||
+              !/^\d{4}-\d{2}-\d{2}$/.test(parsed[0]) ||
+              typeof parsed[1] !== "string" ||
+              !parsed[1] ||
+              parsed[1].length > 200
+            ) {
+              throw new Error("invalid cursor");
+            }
+            [cursorDate, cursorId] = parsed;
+          } catch {
+            throw ApiError.validation({ cursor: ["Invalid attendance cursor."] });
+          }
+        }
+        const total = await c.env.DB.prepare(
+          `SELECT COUNT(*) AS n FROM attendance WHERE user_id = ? AND note LIKE 'QR check-in · %'`,
+        )
+          .bind(userId)
+          .first<{ n: number }>();
+        const rows = await c.env.DB.prepare(
           `SELECT id, date, status, note FROM attendance
              WHERE user_id = ? AND note LIKE 'QR check-in · %'
+             ${cursorDate ? "AND (date < ? OR (date = ? AND id < ?))" : ""}
             ORDER BY date DESC, id DESC LIMIT ?`,
         )
-          .bind(userId, limit)
+          .bind(userId, ...(cursorDate ? [cursorDate, cursorDate, cursorId] : []), limit + 1)
           .all<{ id: string; date: string; status: string; note: string }>();
-        if (liveRows.results.length > 0) {
-          const liveItems = liveRows.results.map((row) => ({
-            id: row.id,
-            dateLabel: row.date,
-            course: row.note.replace(/^QR check-in · /, ""),
-            status: row.status.charAt(0).toUpperCase() + row.status.slice(1),
-          }));
-          return c.json(
-            paginate(liveItems, liveRows.results.length, (last) =>
-              base64UrlEncode(String(last.id)),
-            ),
-          );
-        }
+        const hasMore = rows.results.length > limit;
+        const page = rows.results.slice(0, limit);
+        const last = page.at(-1);
+        const items = page.map((row) => ({
+          id: row.id,
+          dateLabel: row.date,
+          course: row.note.replace(/^QR check-in · /, ""),
+          status: row.status.charAt(0).toUpperCase() + row.status.slice(1),
+        }));
+        return c.json({
+          items,
+          total: total?.n ?? 0,
+          ...(hasMore && last
+            ? { nextCursor: base64UrlEncode(JSON.stringify([last.date, last.id])) }
+            : {}),
+        });
       }
-      const ownershipWhere = isProjectCollection ? " WHERE (user_id = ? OR user_id IS NULL)" : "";
-      const cursorWhere = cursor ? `${isProjectCollection ? " AND" : " WHERE"} id > ?` : "";
+      if (!isAdmin && !isProjectCollection) {
+        // The remaining legacy tables contain no learner ownership field.
+        throw new ApiError(
+          503,
+          "STUDENT_DATA_UNAVAILABLE",
+          "This information is unavailable until learner-specific records are connected.",
+        );
+      }
+      const scopedProjects = isProjectCollection && !isAdmin;
+      const ownershipWhere = scopedProjects ? " WHERE user_id = ?" : "";
+      const cursorWhere = cursor ? `${scopedProjects ? " AND" : " WHERE"} id > ?` : "";
       const count = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM ${table}${ownershipWhere}`)
-        .bind(...(isProjectCollection ? [userId] : []))
+        .bind(...(scopedProjects ? [userId] : []))
         .first<{ n: number }>();
       const rows = await c.env.DB.prepare(
         `SELECT ${columns} FROM ${table}${ownershipWhere}${cursorWhere}
-         ORDER BY sort_order ASC, id ASC LIMIT ?`,
+         ORDER BY ${isProjectCollection ? "id" : "sort_order ASC, id"} ASC LIMIT ?`,
       )
         .bind(
-          ...(isProjectCollection ? [userId] : []),
+          ...(scopedProjects ? [userId] : []),
           ...(cursor ? [base64UrlDecode(cursor) ?? ""] : []),
           limit,
         )

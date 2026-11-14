@@ -27,7 +27,7 @@ const links = [
   {
     to: "/app/parent/students/$studentId/grades" as const,
     label: "Grades & gradebook",
-    desc: "Scores, GPA and teacher comments",
+    desc: "Gradebook summary",
     icon: BookOpen,
     tone: "text-primary bg-primary/10",
   },
@@ -87,13 +87,10 @@ function ParentStudentReports() {
             {
               t: "GPA",
               v: current.gpa || "—",
-              tone:
-                Number(current.gpa) >= 3.5
-                  ? "bg-success/10 text-success"
-                  : "bg-warning/10 text-warning",
+              tone: "bg-muted text-muted-foreground",
             },
             {
-              t: "Term average",
+              t: "Gradebook average",
               v: rows.length ? `${avg}%` : "—",
               tone: "bg-primary/10 text-primary",
             },
@@ -104,7 +101,7 @@ function ParentStudentReports() {
             },
             {
               t: "Attendance",
-              v: attendance.data ? `${attendance.data.pct}%` : "—",
+              v: attendance.data?.total ? `${attendance.data.pct}%` : "—",
               tone:
                 (attendance.data?.pct ?? 0) >= 90
                   ? "bg-success/10 text-success"
@@ -136,7 +133,7 @@ function ParentStudentReports() {
                       </div>
                     ))}
                     <p className="text-muted-foreground pt-1 text-xs">
-                      Built from the live gradebook, attendance and billing records — no stale PDFs.
+                      Built from available gradebook, attendance and billing records.
                     </p>
                   </CardContent>
                 </Card>

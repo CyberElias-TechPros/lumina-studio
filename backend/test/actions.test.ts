@@ -343,8 +343,8 @@ describe("notifications", () => {
 });
 
 describe("certificates", () => {
-  it("instructor issues, owner sees it, and public verify checks the code", async () => {
-    const issued = await api("/v1/certificates", {
+  it("rejects instructor issuance while preserving owner access and registry lookup for existing records", async () => {
+    const response = await api("/v1/certificates", {
       method: "POST",
       headers: { "Content-Type": "application/json", ...cookieHeaders(instructor.cookie) },
       body: JSON.stringify({
@@ -353,28 +353,31 @@ describe("certificates", () => {
         title: "Web Fundamentals",
       }),
     });
-    expect(issued.status).toBe(201);
-    const { code } = (await issued.json()) as { code: string };
+    expect(response.status).toBe(403);
 
+    // A preexisting test fixture proves that the read paths remain available;
+    // it does not assert that any live credential is legitimate.
+    const code = "CEA-TEST0001-TEST0002";
+    await env.DB.prepare(
+      `INSERT INTO certificates (id, user_id, course_slug, title, code, issued_at)
+      VALUES (?, ?, ?, ?, ?, ?)`,
+    )
+      .bind(
+        "actions-existing-certificate",
+        student.session.user.id,
+        "web-fundamentals",
+        "Web Fundamentals",
+        code,
+        "2026-01-01T00:00:00.000Z",
+      )
+      .run();
     const mine = await api("/v1/certificates/mine", { headers: cookieHeaders(student.cookie) });
     expect(mine.status).toBe(200);
     const mineBody = (await mine.json()) as { items: { code: string }[] };
-    expect(mineBody.items.some((i) => i.code === code)).toBe(true);
-
+    expect(mineBody.items.some((item) => item.code === code)).toBe(true);
     const publicVerify = await api(`/v1/certificates/verify?code=${encodeURIComponent(code)}`);
     expect(publicVerify.status).toBe(200);
     expect(((await publicVerify.json()) as { valid: boolean }).valid).toBe(true);
-
-    const dup = await api("/v1/certificates", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", ...cookieHeaders(instructor.cookie) },
-      body: JSON.stringify({
-        userId: student.session.user.id,
-        courseSlug: "web-fundamentals",
-        title: "Web Fundamentals",
-      }),
-    });
-    expect(dup.status).toBe(409);
   });
 });
 

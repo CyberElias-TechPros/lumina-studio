@@ -81,7 +81,7 @@ function OperationsPage() {
                   }
                 >
                   {r.ready
-                    ? "Required integrations configured"
+                    ? "Required server values present"
                     : `Missing: ${r.missingRequired.join(", ")}`}
                 </Badge>
               </CardHeader>
@@ -104,9 +104,11 @@ function OperationsPage() {
                   </div>
                 ))}
                 <p className="text-muted-foreground text-xs sm:col-span-2">
-                  Integration checks are not launch approval. Test payments, email and the first
-                  cohort in staging before opening offers. Environment: {r.appEnv} · email provider:{" "}
-                  {r.emailProvider}. Secret values are never shown here.
+                  These checks indicate server-side values or bindings are present, not that keys
+                  are valid, frontend settings match, providers deliver, or the app is ready for
+                  launch. Test payments, email and the first cohort in staging before opening
+                  offers. Environment: {r.appEnv} · email provider: {r.emailProvider}. Secret values
+                  are never shown here.
                 </p>
               </CardContent>
             </Card>

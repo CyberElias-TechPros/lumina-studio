@@ -92,12 +92,9 @@ function StudentAttendance() {
     <AppShell
       roleKey="student"
       title="Attendance"
-      subtitle="Cohort 15 · Term 2 · 94% overall"
+      subtitle="Attendance records and check-in"
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">
-            94% — Good standing
-          </Badge>
           <Button size="sm" onClick={() => setCheckInOpen(true)}>
             <QrCode className="size-4" /> Check in
           </Button>

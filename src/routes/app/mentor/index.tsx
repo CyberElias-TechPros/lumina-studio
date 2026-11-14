@@ -94,13 +94,10 @@ function MentorDashboard() {
       subtitle={
         mentees.length > 0
           ? `${mentees.length} mentees · ${upcoming} sessions this week`
-          : "Loading your caseload…"
+          : "Your mentoring workspace"
       }
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">
-            Mentor of the month
-          </Badge>
           <Button asChild size="sm">
             <Link to="/app/mentor/requests">View requests</Link>
           </Button>
@@ -245,16 +242,9 @@ function MentorDashboard() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              {[
-                { t: "Applications reviewed", v: "6", tone: "bg-primary/10 text-primary" },
-                { t: "Mock interviews run", v: "4", tone: "bg-learning/10 text-learning" },
-                { t: "Referrals made", v: "2", tone: "bg-success/10 text-success" },
-              ].map((x) => (
-                <div key={x.t} className="flex items-center justify-between rounded-xl border p-3">
-                  <span className="text-sm font-semibold">{x.t}</span>
-                  <Badge className={cn("border-0 font-semibold", x.tone)}>{x.v}</Badge>
-                </div>
-              ))}
+              <p className="text-muted-foreground text-sm">
+                Open a mentee's career tracker for available records.
+              </p>
               {mentees[0] && (
                 <Button asChild variant="outline" size="sm" className="w-full font-semibold">
                   <Link

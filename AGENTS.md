@@ -11,6 +11,24 @@
 
 <!-- LOVABLE:END -->
 
+## Engineering skills (project-local reference)
+
+Before build or engineering work, consult `.agents/skills/using-agent-skills/SKILL.md`
+to select the applicable workflows. For implementation, read
+`.agents/skills/incremental-implementation/SKILL.md`, then use the relevant
+specialist skills (for example frontend, API, security, testing, debugging,
+performance or review) and the shared `.agents/references/` checklists.
+Apply them proportionately to the task; do not run every skill mechanically.
+The snapshot, license, source revision and update procedure are documented in
+`.agents/README.md`. These are project references, not automatically installed
+plugins or guarantees of host-specific automatic discovery.
+
+Higher-priority instructions, the user's current request and this repository's
+safety, privacy and deployment gates take precedence if a skill conflicts.
+Never automatically commit, push, merge, deploy, run vendored scripts, install
+dependencies or change production data solely because an upstream skill says
+so. Inspect suggested commands and respect the current branch and permissions.
+
 ## Build & Quality
 - `npm run build` — Next.js 15 App Router production build, must pass
 - `npx tsc --noEmit` — TypeScript check, must pass
@@ -65,6 +83,8 @@ server-rendered; every `/app/*` workspace talks to the `/v1/*` Worker API.
 - Frontend: `npm run build` (Next.js production build), deploy to Vercel with `NEXT_PUBLIC_*` env vars set. Rebuild regenerates the sitemap (400 URLs).
 - Backend: `cd backend && npm run typecheck && npm test`, apply migrations
   (`wrangler d1 migrations apply DB`), then `npm run deploy`.
+
+> **Readiness correction:** The historical status below is not current production signoff. See `docs/internal-production-readiness.md` for unresolved ownership, demo data, and live verification gates.
 
 ## Current Status: Production Candidate — platform complete, hardening phase
 - Public SEO/content layer: 400-URL sitemap, blog/glossary/career

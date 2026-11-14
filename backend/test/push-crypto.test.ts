@@ -77,7 +77,7 @@ describe("sendPushMessage (RFC 8291 + VAPID)", () => {
     );
 
     const outcome = await sendPushMessage(
-      "https://push.example.test/send?token=abc",
+      "https://fcm.googleapis.com/fcm/send/test-token",
       { p256dh: recipient.publicKey, auth: recipient.auth },
       { title: "Hello", body: "World", url: "https://lumina.app/app" },
       { publicKey: vapid.publicKey, privateKey: vapid.privateKey, subject: "mailto:admin@cea.ng" },
@@ -87,11 +87,12 @@ describe("sendPushMessage (RFC 8291 + VAPID)", () => {
     expect(sender).toHaveBeenCalledTimes(1);
 
     const [endpoint, init] = sender.mock.calls[0]!;
-    expect(endpoint).toBe("https://push.example.test/send?token=abc");
+    expect(endpoint).toBe("https://fcm.googleapis.com/fcm/send/test-token");
+    expect(init.redirect).toBe("manual");
     const headers = new Headers(init.headers);
     expect(headers.get("Authorization")?.startsWith("vapid t=")).toBe(true);
     expect(headers.get("Content-Encoding")).toBe("aes128gcm");
-    expect(headers.get("TTL")).toBe("86400");
+    expect(headers.get("TTL")).toBe("0");
 
     const body = init.body as Uint8Array;
     const plaintext = await decryptPushPayload(
@@ -107,6 +108,26 @@ describe("sendPushMessage (RFC 8291 + VAPID)", () => {
     });
   });
 
+  it("rejects an unsafe destination at the delivery boundary before fetching", async () => {
+    const recipient = await makeRecipient();
+    const vapid = await makeVapidKeys();
+    const sender = vi.fn(async (_endpoint: string, _init: RequestInit) => new Response("ok"));
+    await expect(
+      sendPushMessage(
+        "https://127.0.0.1/private",
+        { p256dh: recipient.publicKey, auth: recipient.auth },
+        { title: "Test", body: "Test" },
+        {
+          publicKey: vapid.publicKey,
+          privateKey: vapid.privateKey,
+          subject: "mailto:admin@example.test",
+        },
+        sender as typeof fetch,
+      ),
+    ).rejects.toMatchObject({ code: "INVALID_PUSH_ENDPOINT" });
+    expect(sender).not.toHaveBeenCalled();
+  });
+
   it("flags 404/410 responses as removed subscriptions", async () => {
     const recipient = await makeRecipient();
     const vapid = await makeVapidKeys();
@@ -114,7 +135,7 @@ describe("sendPushMessage (RFC 8291 + VAPID)", () => {
       async (_endpoint: string, _init: RequestInit) => new Response("", { status: 410 }),
     );
     const outcome = await sendPushMessage(
-      "https://push.example.test/send?token=abc",
+      "https://fcm.googleapis.com/fcm/send/test-token",
       { p256dh: recipient.publicKey, auth: recipient.auth },
       { title: "Gone", body: "Bye" },
       { publicKey: vapid.publicKey, privateKey: vapid.privateKey, subject: "mailto:admin@cea.ng" },

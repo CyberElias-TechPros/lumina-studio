@@ -1,5 +1,7 @@
 # Functionality Gaps & Mock Data Audit
 
+> Historical audit: its blanket remediation claims below are superseded. Example records remain in UI and seed data, and a database-backed endpoint is not proof that its records are real or correctly scoped. See `docs/internal-production-readiness.md`.
+
 Audit date: 2026-08-16
 Scope: every file in `src/` (601 files), `backend/src` (Cloudflare Worker), `backend/seeds`, and project root docs.
 
