@@ -54,8 +54,7 @@ function ShopPage() {
           <div>
             <h2 className="font-display text-xl font-semibold">Looking for gadgets?</h2>
             <p className="text-muted-foreground mt-1 text-sm">
-              Browse Afkit laptops, phones and accessories. Ask us to confirm price and
-              availability.
+              Browse laptops, phones and accessories and add your favourites to a basket.
             </p>
           </div>
           <Button asChild>

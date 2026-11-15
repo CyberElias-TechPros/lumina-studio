@@ -7,6 +7,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import data from "@/data/supplier/afkit-observations.json";
 import { env } from "@/lib/env";
+import {
+  BASKET_KEY,
+  BASKET_LIMIT,
+  QUANTITY_LIMIT,
+  readBasket,
+  type BasketEntry,
+} from "@/lib/gadget-basket";
 
 type Gadget = {
   image: string;
@@ -20,6 +27,25 @@ type Catalog = { observedAt: string | null; fresh: boolean; items: Gadget[] };
 export function GadgetsCatalog() {
   const [search, setSearch] = useState("");
   const [catalog, setCatalog] = useState<Catalog | null>(null);
+  const [basket, setBasket] = useState<BasketEntry[]>([]);
+  const [basketReady, setBasketReady] = useState(false);
+  const [basketNotice, setBasketNotice] = useState("");
+  useEffect(() => {
+    try {
+      setBasket(readBasket(window.localStorage.getItem(BASKET_KEY)));
+    } catch {
+      /* storage unavailable */
+    }
+    setBasketReady(true);
+  }, []);
+  useEffect(() => {
+    if (!basketReady) return;
+    try {
+      window.localStorage.setItem(BASKET_KEY, JSON.stringify(basket));
+    } catch {
+      /* still usable this session */
+    }
+  }, [basket, basketReady]);
   useEffect(() => {
     if (!env.apiUrl) return;
     let disposed = false;
@@ -80,11 +106,148 @@ export function GadgetsCatalog() {
     const query = search.trim().toLocaleLowerCase();
     return items.filter((item) => item.title.toLocaleLowerCase().includes(query));
   }, [search, items]);
+  const basketItems = basket.map((entry) => ({
+    ...entry,
+    item: items.find((item) => item.image === entry.image),
+  }));
+  const canQuote =
+    catalog?.fresh &&
+    basketItems.length > 0 &&
+    basketItems.every(
+      ({ item }) =>
+        item &&
+        Number.isSafeInteger(item.priceKobo) &&
+        item.priceKobo! > 0 &&
+        item.observedQuantity !== 0,
+    );
+  const subtotalValue = canQuote
+    ? basketItems.reduce((sum, { item, quantity }) => sum + item!.priceKobo! * quantity, 0)
+    : null;
+  const subtotal =
+    subtotalValue !== null && Number.isSafeInteger(subtotalValue) ? subtotalValue : null;
+  const money = (kobo: number) =>
+    `₦${(kobo / 100).toLocaleString("en-NG", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  const unavailable = basketItems.some(
+    ({ item }) => !item || (catalog?.fresh && item.observedQuantity === 0),
+  );
+  const basketMessage = `Hello Cyber Elias Academy! I'd like to order these gadgets:\n${basketItems.map(({ item, quantity }) => `\n${quantity} × ${item?.title}\nPhoto reference: ${item?.image}`).join("\n")}`;
+  const basketHref = `https://wa.me/2349058628386?text=${encodeURIComponent(basketMessage)}`;
+  function addToBasket(item: Gadget) {
+    if (!basketReady) return;
+    const current = basket.find((entry) => entry.image === item.image);
+    if (current && current.quantity >= QUANTITY_LIMIT) {
+      setBasketNotice(`Maximum ${QUANTITY_LIMIT} per item.`);
+      return;
+    }
+    if (!current && basket.length >= BASKET_LIMIT) {
+      setBasketNotice(`Maximum ${BASKET_LIMIT} different items per basket.`);
+      return;
+    }
+    setBasket((prev) =>
+      current
+        ? prev.map((entry) =>
+            entry.image === item.image ? { ...entry, quantity: entry.quantity + 1 } : entry,
+          )
+        : [...prev, { image: item.image, quantity: 1 }],
+    );
+    setBasketNotice("Added to your basket.");
+  }
   return (
     <>
       <p className="text-muted-foreground mt-6 text-sm">
-        Guide prices are shown where available. Delivery is quoted separately.
+        Prices and availability may change before your order is confirmed. Delivery is quoted
+        separately.
       </p>
+      <section
+        id="gadget-basket"
+        aria-labelledby="basket-heading"
+        className="bg-muted/40 mt-6 rounded-xl border p-5"
+      >
+        <h2 id="basket-heading" className="font-display text-lg font-semibold">
+          Your basket ({basket.reduce((sum, item) => sum + item.quantity, 0)})
+        </h2>
+        <p className="text-muted-foreground mt-2 text-sm" role="status">
+          {basketNotice}
+        </p>
+        {basket.length === 0 ? (
+          <p className="text-muted-foreground mt-2 text-sm">Add gadgets to build your order.</p>
+        ) : (
+          <>
+            <ul className="mt-4 space-y-4">
+              {basketItems.map(({ image, quantity, item }) => (
+                <li
+                  key={image}
+                  className="flex flex-wrap items-center justify-between gap-3 border-b pb-4"
+                >
+                  <div className="min-w-0 flex-1">
+                    <p className="font-semibold">{item?.title ?? "Item no longer in catalogue"}</p>
+                    <p className="text-muted-foreground text-sm">
+                      {!item || (catalog?.fresh && item.observedQuantity === 0)
+                        ? "Currently unavailable"
+                        : catalog?.fresh && item.priceKobo != null
+                          ? `${money(item.priceKobo)} each`
+                          : "Price on request"}
+                    </p>
+                  </div>
+                  <label className="text-sm">
+                    Quantity{" "}
+                    <select
+                      aria-label={`Quantity for ${item?.title ?? "unavailable item"}`}
+                      className="bg-background ml-2 rounded-md border p-2"
+                      value={quantity}
+                      onChange={(event) =>
+                        setBasket((prev) =>
+                          prev.map((entry) =>
+                            entry.image === image
+                              ? { ...entry, quantity: Number(event.target.value) }
+                              : entry,
+                          ),
+                        )
+                      }
+                    >
+                      {Array.from({ length: QUANTITY_LIMIT }, (_, i) => (
+                        <option key={i + 1} value={i + 1}>
+                          {i + 1}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() =>
+                      setBasket((prev) => prev.filter((entry) => entry.image !== image))
+                    }
+                    aria-label={`Remove ${item?.title ?? "unavailable item"}`}
+                  >
+                    Remove
+                  </Button>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 font-semibold">
+              {subtotal === null
+                ? "Subtotal available when all item prices are known."
+                : `Subtotal: ${money(subtotal)}`}
+            </p>
+            {unavailable ? (
+              <p className="text-muted-foreground mt-2 text-sm">
+                Remove unavailable items to continue.
+              </p>
+            ) : basketHref.length > 8000 ? (
+              <p className="text-muted-foreground mt-2 text-sm">
+                Please split this basket into smaller orders.
+              </p>
+            ) : (
+              <Button asChild className="mt-4">
+                <a href={basketHref} rel="nofollow noopener noreferrer">
+                  Send basket on WhatsApp
+                </a>
+              </Button>
+            )}
+          </>
+        )}
+      </section>
       <div className="mt-8 max-w-lg">
         <label className="mb-2 block text-sm font-semibold" htmlFor="gadget-search">
           Search gadgets
@@ -132,7 +295,7 @@ export function GadgetsCatalog() {
                   </h2>
                   {catalog?.fresh && item.priceKobo != null ? (
                     <p className="mt-3 text-lg font-semibold">
-                      Estimated price: ₦
+                      Price: ₦
                       {(item.priceKobo / 100).toLocaleString("en-NG", {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2,
@@ -142,11 +305,33 @@ export function GadgetsCatalog() {
                     <p className="text-muted-foreground mt-3 text-sm">Price on request</p>
                   )}
                   <div className="mt-auto pt-5">
-                    <Button asChild className="w-full">
-                      <a href={`https://wa.me/2349058628386?text=${encodeURIComponent(message)}`}>
-                        Order on WhatsApp
-                      </a>
+                    <Button
+                      className="w-full"
+                      disabled={!basketReady || (catalog?.fresh && item.observedQuantity === 0)}
+                      onClick={() => addToBasket(item)}
+                    >
+                      {catalog?.fresh && item.observedQuantity === 0
+                        ? "Currently unavailable"
+                        : "Add to basket"}
                     </Button>
+                    {basket.length > 0 && (
+                      <a
+                        href="#gadget-basket"
+                        className="text-primary mt-2 block text-center text-sm underline"
+                      >
+                        View basket ({basket.reduce((sum, entry) => sum + entry.quantity, 0)})
+                      </a>
+                    )}
+                    {!(catalog?.fresh && item.observedQuantity === 0) && (
+                      <Button variant="outline" asChild className="mt-2 w-full">
+                        <a
+                          href={`https://wa.me/2349058628386?text=${encodeURIComponent(message)}`}
+                          rel="nofollow noopener noreferrer"
+                        >
+                          Order on WhatsApp
+                        </a>
+                      </Button>
+                    )}
                   </div>
                 </CardContent>
               </Card>
