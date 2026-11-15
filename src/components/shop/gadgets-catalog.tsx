@@ -82,21 +82,9 @@ export function GadgetsCatalog() {
   }, [search, items]);
   return (
     <>
-      <div className="mt-6 rounded-lg border p-4 text-sm" role="note">
-        {catalog?.fresh && catalog.observedAt ? (
-          <p>
-            Supplier observations checked{" "}
-            {new Date(catalog.observedAt).toLocaleString("en-NG", { timeZone: "Africa/Lagos" })}{" "}
-            (Nigeria time). Estimated prices and stock may change; confirm with us before ordering.
-            Delivery is quoted separately.
-          </p>
-        ) : (
-          <p>
-            Recent supplier data is unavailable. Prices and stock are not shown; ask us to confirm
-            the item before ordering.
-          </p>
-        )}
-      </div>
+      <p className="text-muted-foreground mt-6 text-sm">
+        Guide prices are shown where available. Delivery is quoted separately.
+      </p>
       <div className="mt-8 max-w-lg">
         <label className="mb-2 block text-sm font-semibold" htmlFor="gadget-search">
           Search gadgets
@@ -116,7 +104,7 @@ export function GadgetsCatalog() {
       ) : (
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((item) => {
-            const message = `Hello Cyber Elias Academy! Please confirm the current price, condition, availability and delivery for this Afkit item:\n${item.title}\nPhoto reference: ${item.image}`;
+            const message = `Hello Cyber Elias Academy! I'd like to order this gadget:\n${item.title}\nPhoto reference: ${item.image}`;
             return (
               <Card
                 key={item.image}
@@ -132,15 +120,13 @@ export function GadgetsCatalog() {
                   />
                 </div>
                 <CardContent className="flex flex-1 flex-col p-5">
-                  <div>
-                    <Badge variant="outline">
-                      {item.condition === "used"
-                        ? "UK used (supplier listing)"
-                        : item.condition === "new"
-                          ? "New (supplier listing)"
-                          : "Condition to confirm"}
-                    </Badge>
-                  </div>
+                  {(item.condition === "used" || item.condition === "new") && (
+                    <div>
+                      <Badge variant="outline">
+                        {item.condition === "used" ? "UK used" : "New"}
+                      </Badge>
+                    </div>
+                  )}
                   <h2 className="font-display mt-4 text-base font-semibold leading-snug">
                     {item.title}
                   </h2>
@@ -153,19 +139,12 @@ export function GadgetsCatalog() {
                       })}
                     </p>
                   ) : (
-                    <p className="text-muted-foreground mt-3 text-sm">
-                      Price and availability to be confirmed.
-                    </p>
-                  )}
-                  {catalog?.fresh && item.observedQuantity != null && (
-                    <p className="text-muted-foreground mt-1 text-sm">
-                      Supplier last reported {item.observedQuantity}; confirm availability.
-                    </p>
+                    <p className="text-muted-foreground mt-3 text-sm">Price on request</p>
                   )}
                   <div className="mt-auto pt-5">
                     <Button asChild className="w-full">
                       <a href={`https://wa.me/2349058628386?text=${encodeURIComponent(message)}`}>
-                        Ask about this item
+                        Order on WhatsApp
                       </a>
                     </Button>
                   </div>

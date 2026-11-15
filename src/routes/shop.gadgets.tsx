@@ -9,7 +9,7 @@ export const Route = createFileRoute("/shop/gadgets")({
     getPageHead({
       title: "Gadgets — laptops, phones and accessories",
       description:
-        "Browse Afkit gadgets with Cyber Elias Academy. Ask us to confirm the current price, condition, stock and delivery before ordering.",
+        "Browse laptops, phones, monitors and accessories with Cyber Elias Academy. Order your preferred gadget on WhatsApp.",
       path: "/shop/gadgets",
     }),
   component: GadgetsPage,
@@ -21,17 +21,14 @@ function GadgetsPage() {
       <PageHero
         eyebrow="Shop · Gadgets"
         title="Find your next gadget"
-        description="Browse laptops, phones, monitors and accessories from Afkit. Send us the item you like and we'll check its current price and availability."
-        meta={["New and UK-used items", "Price and stock confirmed before ordering"]}
+        description="Explore laptops, phones, monitors and accessories. Find a gadget you love and order with us on WhatsApp."
+        meta={["New and UK-used items", "Order on WhatsApp"]}
       />
       <section className="container-page py-12 md:py-16">
         <div className="bg-muted/40 rounded-xl border p-5 text-sm leading-relaxed">
-          <p className="font-semibold">Please check with us before ordering</p>
+          <p className="font-semibold">Find your next gadget with CEA</p>
           <p className="text-muted-foreground mt-1">
-            These product observations and photos come from an Afkit catalogue snapshot, not a live
-            stock reservation. Items, specifications, prices and condition may have changed or sold
-            out since the last check. We will confirm the current price, condition, delivery and
-            availability with you. No payment is collected on this page.
+            Choose an item and message us on WhatsApp to place your order.
           </p>
           <p className="text-muted-foreground mt-2">
             Browse our{" "}
