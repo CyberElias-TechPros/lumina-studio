@@ -8,12 +8,9 @@ import { SITE_URL } from "@/lib/site-url";
 
 const THEME_SCRIPT = `(function(){try{
   var workspace = /^\\/(app|portal|auth)(\\/|$)/.test(location.pathname);
-  var marketing = localStorage.getItem("cea-marketing-theme");
-  var dark = workspace
-    ? localStorage.getItem("cea-theme") === "dark"
-    : marketing === "dark";
-  if (dark) document.documentElement.classList.add("dark");
-} catch (e) {}})();`;
+  var key = workspace ? "cea-theme" : "cea-marketing-theme";
+  if (localStorage.getItem(key) !== "light") document.documentElement.classList.add("dark");
+} catch (e) { document.documentElement.classList.add("dark"); }})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

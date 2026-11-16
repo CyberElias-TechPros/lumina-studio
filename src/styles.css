@@ -310,12 +310,12 @@
  * Plum-ink ground, ember brand, gold highlights, hairline structure.
  * ------------------------------------------------------------------ */
 .dark {
-  --background: oklch(0.165 0.024 276);
-  --foreground: oklch(0.965 0.008 90);
-  --card: oklch(0.205 0.028 276);
-  --card-foreground: oklch(0.965 0.008 90);
-  --popover: oklch(0.195 0.028 276);
-  --popover-foreground: oklch(0.965 0.008 90);
+  --background: oklch(0.148 0.024 277);
+  --foreground: oklch(0.97 0.008 95);
+  --card: oklch(0.196 0.028 277);
+  --card-foreground: oklch(0.97 0.008 95);
+  --popover: oklch(0.186 0.028 277);
+  --popover-foreground: oklch(0.97 0.008 95);
 
   --primary: oklch(0.7 0.175 12);
   --primary-foreground: oklch(0.17 0.04 20);
@@ -347,11 +347,11 @@
   --ember-foreground: oklch(0.17 0.04 20);
   --gold: oklch(0.85 0.13 86);
 
-  --surface: oklch(0.225 0.03 276);
-  --surface-foreground: oklch(0.965 0.008 90);
+  --surface: oklch(0.225 0.03 277);
+  --surface-foreground: oklch(0.97 0.008 95);
 
-  --ink: oklch(0.205 0.028 276);
-  --ink-foreground: oklch(0.965 0.008 90);
+  --ink: oklch(0.198 0.027 277);
+  --ink-foreground: oklch(0.97 0.008 95);
 
   --learning: oklch(0.76 0.13 232);
   --learning-soft: oklch(0.29 0.06 232);
@@ -1048,7 +1048,7 @@ html.cursor-off * {
 
 /* CEA creative direction — editorial typography, luminous depth, restrained motion. */
 .cea-home-hero {
-  background: radial-gradient(ellipse at 72% 34%, #142b52 0%, transparent 45%), #080f1d;
+  background: radial-gradient(ellipse at 72% 34%, #142b52 0%, transparent 45%), #050b1c;
 }
 .cea-hero-kicker {
   display: inline-flex;
@@ -1190,7 +1190,10 @@ html.cursor-off * {
 
 /* Course discovery and account entry share the homepage's editorial palette. */
 .cea-courses-hero {
-  background: radial-gradient(ellipse at 76% 20%, #1d3e70 0%, transparent 44%), #080f1d;
+  background:
+    radial-gradient(ellipse 70% 60% at 76% 20%, rgb(47 107 255 / 0.3) 0%, transparent 45%),
+    radial-gradient(ellipse 55% 55% at 12% 85%, rgb(139 92 246 / 0.22) 0%, transparent 55%),
+    #050b1c;
 }
 .cea-courses-feature {
   background: linear-gradient(145deg, rgb(55 100 168 / 0.26), rgb(9 20 40 / 0.7));
@@ -1220,7 +1223,7 @@ html.cursor-off * {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, #080f1d 4%, rgb(8 15 29 / 0.14) 72%, rgb(8 15 29 / 0.65));
+  background: linear-gradient(0deg, #050b1c 6%, rgb(5 11 28 / 0.12) 65%, rgb(5 11 28 / 0.6));
 }
 .cea-auth-main {
   background:
@@ -1237,4 +1240,299 @@ html.cursor-off * {
 }
 .cea-auth-card {
   box-shadow: 0 20px 70px -38px rgb(12 29 56 / 0.3);
+}
+
+/* ================================================================== *
+ * LUMINA v2 — the sitewide redesign layer
+ *
+ * "Midnight aurora": deeper ground, luminous accents, hairline
+ * engineering and one confident elevation language across marketing,
+ * portal and auth. Everything below is additive — components pick it
+ * up through utilities, never through hardcoded values.
+ * ================================================================== */
+
+:root {
+  --shadow-halo:
+    0 0 0 1px color-mix(in oklab, var(--primary-glow) 26%, transparent),
+    0 24px 80px -24px color-mix(in oklab, var(--primary-glow) 55%, transparent);
+  --shadow-panel:
+    0 1px 0 0 color-mix(in oklab, white 8%, transparent) inset,
+    0 24px 60px -32px oklch(0 0 0 / 0.55);
+  --gradient-cool: linear-gradient(118deg, #f2f6ff 0%, #a9caff 38%, #5b9dff 78%, #2f6bff 100%);
+  --gradient-hairline-cool: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, #7fb5ff 60%, transparent) 28%,
+    color-mix(in oklab, #cfe6ff 75%, transparent) 50%,
+    color-mix(in oklab, #7fb5ff 60%, transparent) 72%,
+    transparent
+  );
+  --aurora-image:
+    radial-gradient(ellipse 60% 55% at 78% -8%, rgb(59 130 246 / 0.32), transparent 58%),
+    radial-gradient(ellipse 55% 50% at 12% 18%, rgb(139 92 246 / 0.2), transparent 55%),
+    radial-gradient(ellipse 45% 42% at 62% 78%, rgb(34 211 238 / 0.12), transparent 60%),
+    radial-gradient(ellipse 38% 40% at 18% 88%, rgb(47 107 255 / 0.1), transparent 55%);
+}
+
+/* Layered aurora atmosphere — paint on a positioned section. All gradients,
+   no pseudo-elements, so it composes with grid fades and noise freely. */
+@utility bg-aurora {
+  background-color: #050b1c;
+  background-image: var(--aurora-image);
+}
+@utility bg-aurora-soft {
+  background-image: var(--aurora-image);
+}
+@utility bg-aurora-floor {
+  background-image:
+    radial-gradient(ellipse 70% 60% at 50% 115%, rgb(47 107 255 / 0.22), transparent 60%),
+    radial-gradient(ellipse 50% 45% at 85% -10%, rgb(139 92 246 / 0.18), transparent 55%);
+}
+
+/* Registration grid fading radially — architectural backdrop for heroes. */
+@utility grid-fade {
+  background-image:
+    linear-gradient(to right, rgb(148 190 255 / 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(148 190 255 / 0.07) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 105% 88% at 50% 0%, black 22%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 105% 88% at 50% 0%, black 22%, transparent 78%);
+}
+
+/* Cool brand text — the highlight voice used on dark hero art. */
+@utility text-gradient-cool {
+  background-image: var(--gradient-cool);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Hairline cool divider — sits under hero/CTA finale panels. */
+@utility hairline-cool {
+  background-image: var(--gradient-hairline-cool);
+}
+
+/* Frosted floating panel — the signature surface of v2 chrome. */
+@utility glass-panel {
+  background-color: color-mix(in oklab, var(--card) 72%, transparent);
+  backdrop-filter: blur(22px) saturate(170%);
+  -webkit-backdrop-filter: blur(22px) saturate(170%);
+  border: 1px solid color-mix(in oklab, var(--foreground) 13%, transparent);
+  box-shadow: var(--shadow-panel);
+}
+
+/* Interactive card physics — one hover language for course/notes/product cards. */
+@utility card-lift {
+  transition:
+    transform 340ms var(--ease-out-expo),
+    border-color 340ms var(--ease-out-expo),
+    box-shadow 340ms var(--ease-out-expo);
+  &:hover {
+    transform: translateY(-5px);
+    border-color: color-mix(in oklab, var(--primary-glow) 45%, transparent);
+    box-shadow:
+      0 1px 0 0 color-mix(in oklab, white 10%, transparent) inset,
+      0 30px 70px -34px oklch(0 0 0 / 0.6),
+      0 0 0 1px color-mix(in oklab, var(--primary-glow) 22%, transparent),
+      0 0 56px -18px color-mix(in oklab, var(--primary-glow) 40%, transparent);
+  }
+}
+
+/* Top rim light — a 1px inner highlight for dark panels and figures. */
+@utility edge-light {
+  box-shadow:
+    0 1px 0 0 color-mix(in oklab, white 12%, transparent) inset,
+    0 0 0 1px color-mix(in oklab, white 4%, transparent) inset;
+}
+
+@utility shadow-halo {
+  box-shadow: var(--shadow-halo);
+}
+@utility shadow-panel {
+  box-shadow: var(--shadow-panel);
+}
+
+/* ---------- Header capsule (floating glass nav) ---------- */
+.cea-header-capsule {
+  background-color: color-mix(in oklab, #0a1120 78%, transparent);
+  backdrop-filter: blur(22px) saturate(170%);
+  -webkit-backdrop-filter: blur(22px) saturate(170%);
+  border: 1px solid rgb(158 199 255 / 0.16);
+  box-shadow:
+    0 1px 0 0 rgb(255 255 255 / 0.06) inset,
+    0 18px 50px -18px rgb(0 0 0 / 0.65);
+}
+.light .cea-header-capsule,
+:root:not(.dark) .cea-header-capsule {
+  background-color: color-mix(in oklab, #ffffff 82%, transparent);
+  border-color: rgb(16 26 43 / 0.1);
+  box-shadow:
+    0 1px 0 0 rgb(255 255 255 / 0.9) inset,
+    0 18px 44px -22px rgb(12 29 56 / 0.35);
+}
+.cea-header-progress {
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  background-image: var(--gradient-cool);
+}
+
+/* Nav link with a drawn underline — hover draws from the left, active stays drawn. */
+.cea-nav-link {
+  position: relative;
+  padding-bottom: 2px;
+}
+.cea-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 1.5px;
+  width: 100%;
+  border-radius: 999px;
+  transform: scaleX(0);
+  transform-origin: right center;
+  background-image: var(--gradient-cool);
+  transition: transform 380ms var(--ease-out-expo);
+}
+.cea-nav-link:hover::after,
+.cea-nav-link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+.cea-nav-link[data-active="true"]::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* Mobile overlay menu — full-screen deep space panel. */
+.cea-menu-panel {
+  background:
+    radial-gradient(ellipse 80% 60% at 80% -10%, rgb(47 107 255 / 0.28), transparent 55%),
+    radial-gradient(ellipse 70% 55% at 10% 110%, rgb(139 92 246 / 0.22), transparent 55%),
+    #050b1c;
+}
+.cea-menu-link {
+  opacity: 0;
+  animation: cea-menu-in 0.6s var(--ease-out-expo) forwards;
+}
+@keyframes cea-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ---------- Footer — cinematic ink finale ---------- */
+.cea-footer {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 65% 55% at 82% -10%, rgb(47 107 255 / 0.24), transparent 55%),
+    radial-gradient(ellipse 60% 50% at 8% 118%, rgb(139 92 246 / 0.2), transparent 55%),
+    #050b1c;
+  color: #eef2fb;
+}
+.cea-footer-wordmark {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 90, "wdth" 100;
+  font-weight: 640;
+  font-size: clamp(3.6rem, 13.5vw, 12.5rem);
+  line-height: 0.84;
+  letter-spacing: -0.055em;
+  white-space: nowrap;
+  user-select: none;
+  background-image: linear-gradient(180deg, rgb(226 238 255 / 0.34) 0%, rgb(226 238 255 / 0.05) 82%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.cea-footer-link {
+  color: rgb(214 226 245 / 0.62);
+  transition: color 180ms ease, transform 180ms var(--ease-out-expo);
+  display: inline-block;
+}
+.cea-footer-link:hover {
+  color: #ffffff;
+  transform: translateX(3px);
+}
+.cea-footer-heading {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgb(150 186 235 / 0.75);
+}
+
+/* ---------- Signature CTA finale ---------- */
+.cea-cta-finale {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 75% 80% at 50% 128%, rgb(47 107 255 / 0.4), transparent 62%),
+    radial-gradient(ellipse 55% 60% at 88% -20%, rgb(139 92 246 / 0.3), transparent 55%),
+    radial-gradient(ellipse 45% 55% at 8% -15%, rgb(34 211 238 / 0.16), transparent 55%),
+    #050b1c;
+}
+.cea-cta-orbit {
+  position: absolute;
+  border-radius: 9999px;
+  border: 1px solid rgb(148 190 255 / 0.22);
+  pointer-events: none;
+}
+
+/* ---------- Page hero v2 ---------- */
+.cea-hero-v2 {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background:
+    radial-gradient(ellipse 70% 65% at 88% -12%, color-mix(in srgb, var(--primary) 16%, transparent), transparent 55%),
+    radial-gradient(ellipse 55% 55% at 4% 8%, color-mix(in oklab, #8b5cf6 9%, transparent), transparent 55%),
+    var(--background);
+}
+
+/* ---------- Portal workspace — deep-space chrome ---------- */
+.cea-workspace {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(ellipse 60% 50% at 100% -5%, color-mix(in oklab, var(--primary) 10%, transparent), transparent 50%),
+    radial-gradient(ellipse 50% 45% at -10% 110%, color-mix(in oklab, #8b5cf6 8%, transparent), transparent 55%);
+}
+.cea-workspace-sidebar {
+  background: linear-gradient(180deg, var(--sidebar) 0%, color-mix(in oklab, var(--sidebar) 88%, black) 100%);
+  border-right: 1px solid var(--sidebar-border);
+}
+.cea-workspace-header {
+  background: color-mix(in oklab, var(--card) 66%, transparent);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ---------- Auth — aurora salon ---------- */
+.cea-auth-art {
+  background:
+    radial-gradient(ellipse 65% 60% at 78% 22%, rgb(47 107 255 / 0.38), transparent 55%),
+    radial-gradient(ellipse 60% 55% at 12% 78%, rgb(139 92 246 / 0.32), transparent 55%),
+    radial-gradient(ellipse 40% 35% at 45% 45%, rgb(34 211 238 / 0.1), transparent 60%),
+    #050b1c !important;
+}
+.cea-auth-main {
+  background:
+    radial-gradient(ellipse 70% 55% at 85% -5%, color-mix(in srgb, var(--primary) 13%, transparent), transparent 52%),
+    radial-gradient(ellipse 55% 45% at -15% 108%, color-mix(in oklab, #8b5cf6 8%, transparent), transparent 55%),
+    var(--background) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cea-menu-link {
+    animation: none;
+    opacity: 1;
+  }
 }

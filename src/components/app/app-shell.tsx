@@ -1178,11 +1178,14 @@ export function AppShell({
               data-tour={i === 0 ? "nav-home" : i === 1 ? "nav-secondary" : undefined}
               data-tour-label={i < 2 ? item.label : undefined}
               onClick={() => setSidebarOpen(false)}
-              activeProps={{ className: "bg-primary/10 text-primary after:scale-y-100" }}
+              activeProps={{
+                className:
+                  "border-primary-glow/30 bg-primary/12 text-foreground shadow-[0_0_28px_-14px_color-mix(in_oklab,var(--primary-glow)_65%,transparent)] after:scale-y-100",
+              }}
               activeOptions={{ exact: item.to === "/app" }}
               className={cn(
-                "relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-semibold transition-all duration-200",
-                "text-muted-foreground hover:bg-muted/70 hover:text-foreground hover:translate-x-0.5",
+                "relative flex items-center gap-3 rounded-xl border border-transparent px-3 py-2 text-sm font-semibold transition-all duration-200",
+                "text-muted-foreground hover:bg-foreground/[0.05] hover:text-foreground hover:translate-x-0.5",
                 // Gradient rail: a 3px brand bar that grows in on the active item —
                 // the chapter-index motif, miniature. Pure CSS via activeProps.
                 "after:absolute after:top-1/2 after:left-0 after:h-5 after:w-[3px] after:-translate-y-1/2",
@@ -1290,7 +1293,7 @@ export function AppShell({
                     aria-label="Search workspace"
                     placeholder="Search… (⌘K)"
                     onFocus={() => setPaletteOpen(true)}
-                    className="h-9 w-56 border pl-9 text-sm shadow-none"
+                    className="h-10 w-56 rounded-full border-foreground/12 bg-foreground/[0.04] pl-10 text-sm shadow-none transition-all focus-visible:w-72 focus-visible:bg-transparent"
                   />
                 </div>
                 <Button

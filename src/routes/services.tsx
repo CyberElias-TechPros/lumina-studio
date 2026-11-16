@@ -53,36 +53,42 @@ const services = [
 function ServicesPage() {
   return (
     <PageShell>
-      <section className="bg-[#101923] text-[#f6f5f0]">
-        <div className="container-page grid gap-10 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:py-24">
+      <section className="relative overflow-hidden bg-[#050b1c] text-[#f2f6ff]">
+        <div aria-hidden="true" className="bg-aurora-soft pointer-events-none absolute inset-0" />
+        <div
+          aria-hidden="true"
+          className="grid-fade pointer-events-none absolute inset-0 opacity-60"
+        />
+        <div className="container-page relative grid gap-10 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:py-24">
           <div>
-            <p className="text-xs font-semibold tracking-[0.16em] text-[#96dce8] uppercase">
+            <p className="font-mono text-[10px] font-semibold tracking-[0.3em] text-[#7fb5ff] uppercase">
               CEA / Digital projects
             </p>
-            <h1 className="font-display mt-5 max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
+            <h1 className="font-display mt-5 max-w-3xl text-4xl font-semibold tracking-[-0.04em] sm:text-6xl">
               A clearer path from idea to useful software.
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#d3dbe4] sm:text-lg">
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#b9c8e2] sm:text-lg">
               Tell us what your organisation needs to do. We will review the goals, constraints and
               budget before recommending a sensible next step.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/request-project"
-                className="inline-flex min-h-11 items-center gap-2 rounded-md bg-[#f6f5f0] px-5 py-3 text-sm font-semibold text-[#101923] hover:bg-white"
+                className="group inline-flex min-h-12 items-center gap-2 rounded-full bg-[#f2f6ff] px-6 py-3 text-sm font-semibold text-[#0a1120] shadow-[0_16px_44px_-12px_rgb(168_200_255/0.4)] transition-all hover:-translate-y-0.5"
               >
-                Start a project brief <ArrowRight className="size-4" />
+                Start a project brief{" "}
+                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex min-h-11 items-center rounded-md border border-white/40 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10"
+                className="inline-flex min-h-12 items-center rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-white/50 hover:bg-white/5"
               >
                 Ask a general question
               </Link>
             </div>
           </div>
           <div className="border-t border-white/25 pt-5 lg:border-t-0 lg:border-l lg:pl-8">
-            <p className="text-xs font-semibold tracking-[0.16em] text-[#96dce8] uppercase">
+            <p className="font-mono text-[10px] font-semibold tracking-[0.3em] text-[#7fb5ff] uppercase">
               From idea to implementation
             </p>
             <p className="font-display mt-4 text-2xl leading-snug">
