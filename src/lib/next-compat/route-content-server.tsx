@@ -82,7 +82,12 @@ export default async function RouteContentServer({
   }
 
   const Component = options.component;
-  const content: ReactNode = Component ? <Component /> : null;
+  // Server-rendered routes receive params and loader data as props (client
+  // routes read them from context instead). Routes that take no props ignore
+  // them, so this is additive.
+  const content: ReactNode = Component ? (
+    <Component params={params} search={search} loaderData={loaderData} />
+  ) : null;
   return (
     <>
       <StructuredData head={head} />

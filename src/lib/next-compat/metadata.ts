@@ -3,6 +3,7 @@ import { blogPosts } from "@/data/blog";
 import { findCourse, findSession, formatFee } from "@/data/academy";
 import { getDigitalProduct } from "@/data/digital-products";
 import { SITE_URL } from "@/lib/site-url";
+import { AI_LESSON_INDEX } from "@/data/ai-lessons-index.generated";
 import { routeManifest, normalizeRoutePath, type RouteManifestEntry } from "./routes.gen";
 
 const SITE_NAME = "Cyber Elias Academy";
@@ -71,6 +72,21 @@ function routeSeo(
       } else {
         seo.noIndex = true;
       }
+    }
+  }
+
+  if (pathname.startsWith("/ai-engineering/") && params.phase && params.lesson) {
+    const lesson = AI_LESSON_INDEX.find(
+      (candidate) => candidate.phase === params.phase && candidate.lesson === params.lesson,
+    );
+    if (lesson) {
+      seo.title = `${lesson.title} — AI Engineering from Scratch`;
+      seo.description = `Free, MIT-licensed lesson from AI Engineering from Scratch: ${lesson.title}.${
+        lesson.minutes ? ` ~${lesson.minutes} minutes,` : ""
+      } hands-on, hosted in full by CEA.`;
+      seo.type = "article";
+    } else {
+      seo.noIndex = true;
     }
   }
 

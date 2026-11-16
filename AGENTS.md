@@ -96,6 +96,15 @@ server-rendered; every `/app/*` workspace talks to the `/v1/*` Worker API.
 - Remaining known work is tracked in `docs/` and `plans/` (cross-cutting
   automations, growth of test coverage on new endpoints, monitoring polish).
 
+## Open curriculum & AI Engineering mirror
+- `/open-curriculum` is the catalogue of 57 verified open-source courses (27 adaptable in-app, 30 link-only). Data: `src/data/open-curriculum.ts` — licence badges are legal decisions, not decoration; never widen an adapter beyond the licence-honesty rules in the file header. Verification evidence: `docs/open-curriculum-verification.md` (re-check before adapting anything new; keep `CURRICULUM_REVIEWED` in sync with that doc).
+- `/ai-engineering` is the gateway; `/ai-engineering/lessons` is the index of all 542 lessons; `/ai-engineering/<phase>/<lesson>` serves each lesson, server-rendered and statically generated (`generateStaticParams`, ~542 pages).
+- Vendored MIT content lives in `src/content/ai-lessons/**` (upstream: rohitg00/ai-engineering-from-scratch, `NOTICE.md` + `LICENSE` required). **Never hand-edit vendored Markdown**; refresh by re-copying from upstream, then `npm run generate:ai-lessons`. The script emits `src/data/ai-lessons.generated*.ts` (git-ignored) — data as `JSON.parse` strings so SWC stays fast; lesson modules lazy-load per phase via `loadPhaseLessons()`.
+- Link rewriting, HTML-escaping of prose `<`, Mermaid/figure callouts and KaTeX pre-render all happen in `scripts/generate-ai-lessons.mjs`. Add new lesson-asset types there, not in the route.
+- Quizzes (`*.quiz.json`, 392 lessons) render via `LessonQuiz` (`src/components/ai/lesson-quiz.tsx`); quiz shapes vary upstream — the generator normalises them.
+- Server-rendered routes receive `params`/`search`/`loaderData` as props from `route-content-server.tsx` (client routes get them via `useRouteState`). Keep route files free of `"use client"` and hooks or they flip to the client runtime and bloat the bundle.
+- Sitemap includes all lesson URLs (960 URLs total as of 2026-11-16); regenerate with `node scripts/generate-sitemap.mjs`.
+
 ## Routing invariant
 `src/routes/` remains the source of route definitions, but Next.js owns URL
 matching. `scripts/generate-next-routes.mjs` normalizes each `createFileRoute`

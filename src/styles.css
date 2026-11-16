@@ -1536,3 +1536,153 @@ html.cursor-off * {
     opacity: 1;
   }
 }
+
+/* ── AI Engineering from Scratch — rendered lesson prose (vendored MIT content) ───────────────── */
+.ai-lesson {
+  max-width: 46rem;
+  line-height: 1.75;
+  color: var(--foreground);
+}
+.ai-lesson > * + * {
+  margin-top: 1.25rem;
+}
+.ai-lesson h1 {
+  display: none; /* title rendered by the page shell */
+}
+.ai-lesson h2 {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-top: 2.25rem;
+  text-wrap: balance;
+}
+.ai-lesson h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-top: 1.75rem;
+}
+.ai-lesson h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+}
+.ai-lesson p,
+.ai-lesson li {
+  color: color-mix(in srgb, var(--foreground) 88%, transparent);
+}
+.ai-lesson ul,
+.ai-lesson ol {
+  padding-left: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.ai-lesson ul {
+  list-style: disc;
+}
+.ai-lesson ol {
+  list-style: decimal;
+}
+.ai-lesson a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, var(--primary) 30%, transparent);
+}
+.ai-lesson a:hover {
+  text-decoration-color: var(--primary);
+}
+.ai-lesson strong {
+  color: var(--foreground);
+}
+.ai-lesson img {
+  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+  max-width: 100%;
+}
+.ai-lesson code:not(pre code) {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.85em;
+  background: color-mix(in srgb, var(--foreground) 7%, transparent);
+  border-radius: 0.35rem;
+  padding: 0.1em 0.35em;
+}
+.ai-lesson pre {
+  overflow-x: auto;
+  border-radius: 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+  background: #0b1220;
+  color: #dbe4f5;
+  padding: 1rem 1.1rem;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+.ai-lesson pre code {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  white-space: pre;
+}
+.ai-lesson table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  display: block;
+  overflow-x: auto;
+}
+.ai-lesson th,
+.ai-lesson td {
+  border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+.ai-lesson th {
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  font-weight: 600;
+}
+.ai-lesson blockquote {
+  border-left: 3px solid var(--primary);
+  padding-left: 1rem;
+  color: var(--muted-foreground);
+  font-style: italic;
+}
+.ai-math {
+  overflow-x: auto;
+  padding: 0.4rem 0;
+}
+.ai-math .katex {
+  font-size: 1.05em;
+}
+.ai-math-inline .katex {
+  font-size: 1em;
+}
+.ai-figure-callout {
+  border: 1px dashed color-mix(in srgb, var(--primary) 45%, transparent);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--primary) 7%, transparent);
+  padding: 0.9rem 1.1rem;
+  font-size: 0.9rem;
+}
+.ai-figure-callout figcaption {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--primary);
+  margin-bottom: 0.35rem;
+}
+.ai-figure-callout details {
+  margin-top: 0.6rem;
+}
+.ai-figure-callout summary {
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+}
+.ai-figure-callout details pre {
+  margin-top: 0.5rem;
+  font-size: 0.72rem;
+}

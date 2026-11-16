@@ -23,6 +23,8 @@ export default tseslint.config(
       "backend/worker-configuration.d.ts",
       "src/data/library.ts",
       "src/data/external-links.ts",
+      "src/data/ai-lessons-index.generated.ts",
+      "public/vendor/**",
     ],
   },
   {

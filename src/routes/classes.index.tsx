@@ -536,6 +536,35 @@ function Classes() {
         courses={resolvedRotatingCourses}
       />
 
+      <section className="border-border border-b" aria-labelledby="open-curriculum-banner">
+        <div className="container-page py-10">
+          <Link
+            to="/open-curriculum"
+            className="group border-foreground/12 bg-muted/35 hover:border-primary/50 flex flex-col gap-3 rounded-2xl border p-6 transition-colors sm:flex-row sm:items-center sm:justify-between sm:p-7"
+          >
+            <span>
+              <span className="text-primary text-[10px] font-semibold tracking-[0.18em] uppercase">
+                Beyond the timetable
+              </span>
+              <span
+                id="open-curriculum-banner"
+                className="font-display mt-1.5 block text-xl font-semibold tracking-tight text-balance sm:text-2xl"
+              >
+                The open curriculum: 57 verified open-source courses across nine departments.
+              </span>
+              <span className="text-muted-foreground mt-1.5 block max-w-2xl text-sm leading-relaxed">
+                Every source, licence and CEA delivery plan in the open — from AI engineering to
+                cybersecurity, cloud and design. Free to study; structured when you study with us.
+              </span>
+            </span>
+            <ArrowUpRight
+              className="text-muted-foreground group-hover:text-primary hidden size-8 shrink-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:block"
+              aria-hidden="true"
+            />
+          </Link>
+        </div>
+      </section>
+
       <HubFaqs />
       <CTASection
         title="Pick a course"

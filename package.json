@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0",
-    "predev": "node scripts/generate-lesson-editorial.mjs && node scripts/generate-next-routes.mjs",
-    "prebuild": "node scripts/check-production-env.mjs && node scripts/generate-lesson-editorial.mjs && node scripts/generate-library-data.mjs && node scripts/generate-merchant-feeds.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-next-routes.mjs",
+    "predev": "node scripts/generate-lesson-editorial.mjs && node scripts/generate-ai-lessons.mjs && node scripts/generate-next-routes.mjs",
+    "prebuild": "node scripts/check-production-env.mjs && node scripts/generate-lesson-editorial.mjs && node scripts/generate-ai-lessons.mjs && node scripts/generate-library-data.mjs && node scripts/generate-merchant-feeds.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-next-routes.mjs",
     "build": "next build",
     "build:dev": "next build",
     "start": "next start --hostname 0.0.0.0",
@@ -34,7 +34,8 @@
     "check:ads": "node scripts/check-ad-slots.mjs && node scripts/test-ad-placement.mjs && node --test scripts/test/practice-content.test.mjs",
     "audit:structure": "node scripts/audit-site-structure.mjs",
     "audit:courses": "node scripts/audit-course-pages.mjs",
-    "check:editorial": "npm run generate:editorial && npm run validate:lessons -- --strict && npm run check:ads && npm run audit:structure -- --strict"
+    "check:editorial": "npm run generate:editorial && npm run validate:lessons -- --strict && npm run check:ads && npm run audit:structure -- --strict",
+    "generate:ai-lessons": "node scripts/generate-ai-lessons.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -88,7 +89,8 @@
     "tailwindcss": "^4.2.1",
     "tw-animate-css": "^1.3.4",
     "vaul": "^1.1.2",
-    "zod": "^4.6.7"
+    "zod": "^4.6.7",
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
@@ -107,9 +109,17 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^15.15.0",
+    "katex": "^0.19.1",
     "prettier": "^3.7.3",
+    "rehype-stringify": "^10.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.56.1"
+    "typescript-eslint": "^8.56.1",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.2.0"
   },
   "overrides": {
     "postcss": "8.5.25"

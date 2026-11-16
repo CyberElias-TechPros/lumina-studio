@@ -30,6 +30,7 @@ const columns = [
     links: [
       { label: "Notes", to: "/blog" },
       { label: "AI Engineering from Scratch", to: "/ai-engineering" },
+      { label: "Open curriculum (50+ verified courses)", to: "/open-curriculum" },
       { label: "Free tools", to: "/tools" },
       { label: "Learning trail", to: "/learning-trail" },
       { label: "Editorial standards", to: "/editorial" },

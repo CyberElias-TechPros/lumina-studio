@@ -67,3 +67,8 @@ playwright-report/
 
 # Private, local supplier catalogue observations
 /supplier-reviews.local/
+
+# Generated AI Engineering from Scratch data (built by scripts/generate-ai-lessons.mjs).
+# The vendored source (src/content/ai-lessons/) IS committed; derived output is not.
+src/data/ai-lessons-index.generated.ts
+src/content/ai-lessons-rendered/
