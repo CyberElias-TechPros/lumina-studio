@@ -573,7 +573,7 @@ function Home() {
                 All notes
               </Link>
               <Link to="/practice/computer-basics" className="text-primary hover:underline">
-                Computer Basics Lab
+                Try the Computer Basics Lab
               </Link>
               <Link to="/learning-trail" className="text-primary hover:underline">
                 Your learning trail

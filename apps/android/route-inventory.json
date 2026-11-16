@@ -18,6 +18,18 @@
       "source": "src/routes/admissions.tsx"
     },
     {
+      "route": "/ai-engineering",
+      "source": "src/routes/ai-engineering.tsx"
+    },
+    {
+      "route": "/ai-engineering/$phase/$lesson",
+      "source": "src/routes/ai-engineering.$phase.$lesson.tsx"
+    },
+    {
+      "route": "/ai-engineering/lessons",
+      "source": "src/routes/ai-engineering.lessons.tsx"
+    },
+    {
       "route": "/alumni",
       "source": "src/routes/alumni.tsx"
     },
@@ -1418,6 +1430,10 @@
       "source": "src/routes/merchant.tsx"
     },
     {
+      "route": "/open-curriculum",
+      "source": "src/routes/open-curriculum.tsx"
+    },
+    {
       "route": "/opportunities",
       "source": "src/routes/opportunities.tsx"
     },
@@ -1696,6 +1712,26 @@
     {
       "route": "/terms",
       "source": "src/routes/terms.tsx"
+    },
+    {
+      "route": "/tools/",
+      "source": "src/routes/tools.index.tsx"
+    },
+    {
+      "route": "/tools/color-contrast",
+      "source": "src/routes/tools.color-contrast.tsx"
+    },
+    {
+      "route": "/tools/password-strength",
+      "source": "src/routes/tools.password-strength.tsx"
+    },
+    {
+      "route": "/tools/typing-test",
+      "source": "src/routes/tools.typing-test.tsx"
+    },
+    {
+      "route": "/tools/word-counter",
+      "source": "src/routes/tools.word-counter.tsx"
     },
     {
       "route": "/virtual-tour",
