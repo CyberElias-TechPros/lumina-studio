@@ -66,6 +66,20 @@ interface OpRow {
 export const live = new Hono<{ Bindings: AppEnv }>();
 
 live.use("*", requireAuth);
+// Class ownership and enrollment are not yet established. Do not expose
+// metadata, content, mutations or upgrades until those checks exist.
+live.use("*", async (c) => {
+  c.header("Cache-Control", "no-store");
+  return c.json(
+    {
+      error: {
+        code: "LIVE_UNAVAILABLE",
+        message: "Live classes are temporarily unavailable while access controls are improved.",
+      },
+    },
+    503,
+  );
+});
 const requireInstructorOrAdmin = requireAnyRole(["instructor", "admin"]);
 
 function isoNow(): string {
@@ -408,6 +422,8 @@ live.get("/classes/:id/ws", async (c) => {
       connection: "Upgrade",
       "x-cea-user-id": user.id,
       "x-cea-user-name": user.name,
+      "x-cea-session-id": c.get("authSession").id,
+      "x-cea-role-key": user.roleKey,
     },
   });
   return stub.fetch(upgrade);

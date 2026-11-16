@@ -3,6 +3,8 @@ import { z } from "zod";
 import type { AppEnv } from "../types";
 import { ApiError } from "../lib/errors";
 import { sha256Hex, timingSafeEqualHex } from "../lib/crypto";
+import { hashIdentifier, rateLimit } from "../lib/rate-limit";
+import { clientIpOf } from "../lib/turnstile";
 
 const FRESH_MS = 18 * 60 * 60 * 1000;
 const MAX_BODY = 300_000;
@@ -94,9 +96,9 @@ export function quotedPriceKobo(cost: number, p: Pricing): number {
   if (sale > BigInt(Number.MAX_SAFE_INTEGER)) throw new Error("Gadget price too large");
   return Number(sale);
 }
-async function readBounded(request: Request): Promise<string> {
+async function readBounded(request: Request, maxBody = MAX_BODY): Promise<string> {
   const size = request.headers.get("content-length");
-  if (size && (!/^\d+$/.test(size) || Number(size) > MAX_BODY))
+  if (size && (!/^\d+$/.test(size) || Number(size) > maxBody))
     throw new ApiError(413, "TOO_LARGE", "Snapshot too large.");
   if (!request.body) throw ApiError.validation({});
   const reader = request.body.getReader();
@@ -108,7 +110,7 @@ async function readBounded(request: Request): Promise<string> {
       const { done, value } = await reader.read();
       if (done) break;
       bytes += value.byteLength;
-      if (bytes > MAX_BODY) {
+      if (bytes > maxBody) {
         await reader.cancel();
         throw new ApiError(413, "TOO_LARGE", "Snapshot too large.");
       }
@@ -159,12 +161,11 @@ gadgets.post("/snapshot", async (c) => {
     observedAt: timestamp,
   });
 });
-gadgets.get("/catalog", async (c) => {
-  c.header("Cache-Control", "no-store");
-  const row = await c.env.DB.prepare(
+async function getCatalog(env: AppEnv) {
+  const row = await env.DB.prepare(
     "SELECT observed_at, reported_total, payload FROM afkit_catalog_snapshot WHERE id = 1",
   ).first<{ observed_at: string; reported_total: number; payload: string }>();
-  if (!row) return c.json({ observedAt: null, reportedTotal: 0, fresh: false, items: [] });
+  if (!row) return { observedAt: null, reportedTotal: 0, fresh: false, items: [] };
   let cards: Snapshot["cards"];
   try {
     const parsed = snapshotSchema.safeParse({
@@ -175,13 +176,13 @@ gadgets.get("/catalog", async (c) => {
     if (!parsed.success) throw new Error("Invalid stored data");
     cards = parsed.data.cards;
   } catch {
-    return c.json({ observedAt: null, reportedTotal: 0, fresh: false, items: [] });
+    return { observedAt: null, reportedTotal: 0, fresh: false, items: [] };
   }
   const age = Date.now() - Date.parse(row.observed_at);
   const fresh = age >= -60_000 && age <= FRESH_MS;
   let p: Pricing | null = null;
   try {
-    p = pricingConfig(c.env);
+    p = pricingConfig(env);
   } catch {
     /* hide prices on invalid configuration */
   }
@@ -196,5 +197,60 @@ gadgets.get("/catalog", async (c) => {
         ? quotedPriceKobo(card.pricesKobo[0]!, p)
         : null,
   }));
-  return c.json({ observedAt: row.observed_at, reportedTotal: row.reported_total, fresh, items });
+  return { observedAt: row.observed_at, reportedTotal: row.reported_total, fresh, items };
+}
+gadgets.get("/catalog", async (c) => {
+  c.header("Cache-Control", "no-store");
+  return c.json(await getCatalog(c.env));
+});
+
+const priceCheckSchema = z
+  .object({
+    items: z
+      .array(z.object({ image, quantity: z.number().int().min(1).max(10) }).strict())
+      .min(1)
+      .max(10),
+  })
+  .strict()
+  .superRefine(({ items }, ctx) => {
+    if (new Set(items.map((item) => item.image)).size !== items.length)
+      ctx.addIssue({ code: "custom", message: "Duplicate basket items" });
+  });
+
+// A price check is not a reservation, order, payment, or final shipping quote.
+// Prices and product details are reconstructed from the server snapshot only.
+gadgets.post("/price-check", async (c) => {
+  c.header("Cache-Control", "no-store");
+  await rateLimit(c.env.RATE_LIMIT, "gadget-price-check", await hashIdentifier(clientIpOf(c)), {
+    limit: 30,
+    windowSeconds: 60,
+  });
+  let raw: unknown;
+  try {
+    raw = JSON.parse(await readBounded(c.req.raw, 12_000));
+  } catch (error) {
+    if (error instanceof ApiError) throw error;
+    throw ApiError.validation({});
+  }
+  const parsed = priceCheckSchema.safeParse(raw);
+  if (!parsed.success) throw ApiError.validation({ items: ["Invalid basket."] });
+  const catalog = await getCatalog(c.env);
+  if (!catalog.fresh || !catalog.observedAt)
+    throw ApiError.conflict("Current prices are unavailable. Please try again later.");
+  const items = parsed.data.items.map(({ image, quantity }) => {
+    const item = catalog.items.find((candidate) => candidate.image === image);
+    if (
+      !item ||
+      item.priceKobo === null ||
+      item.observedQuantity === 0 ||
+      (item.observedQuantity !== null && quantity > item.observedQuantity)
+    )
+      throw ApiError.conflict(
+        "One or more basket items cannot be priced in the requested quantity.",
+      );
+    return { image: item.image, title: item.title, quantity, priceKobo: item.priceKobo };
+  });
+  const subtotalKobo = items.reduce((total, item) => total + item.priceKobo * item.quantity, 0);
+  if (!Number.isSafeInteger(subtotalKobo)) throw ApiError.conflict("Basket total is too large.");
+  return c.json({ observedAt: catalog.observedAt, items, subtotalKobo, currency: "NGN" });
 });

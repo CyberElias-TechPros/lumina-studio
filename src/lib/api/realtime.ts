@@ -19,8 +19,10 @@ export interface RealtimeMessage {
   createdAt: string;
 }
 
-export function fetchChatRooms(): Promise<Paginated<RealtimeRoom>> {
-  return apiFetch<Paginated<RealtimeRoom>>("/v1/realtime/chat/rooms");
+export function fetchChatRooms(cursor?: string): Promise<Paginated<RealtimeRoom>> {
+  return apiFetch<Paginated<RealtimeRoom>>("/v1/realtime/chat/rooms", {
+    query: cursor ? { cursor } : undefined,
+  });
 }
 
 export function fetchChatMessages(

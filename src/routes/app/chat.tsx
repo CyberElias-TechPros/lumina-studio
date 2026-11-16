@@ -20,6 +20,7 @@ import {
 import { useWebSocket } from "@/lib/api/use-websocket";
 import type { RealtimeRoom } from "@/lib/api/realtime";
 import { cn } from "@/lib/utils";
+import { flattenPages } from "@/lib/query/hooks";
 
 export const Route = createFileRoute("/app/chat")({
   head: () => ({
@@ -39,8 +40,13 @@ function Chat() {
   const wsPath = activeRoom ? `/v1/realtime/chat/rooms/${activeRoom.id}/ws` : undefined;
   const ws = useWebSocket(wsPath, Boolean(activeRoom));
   const wsMessages = ws.messages
-    .filter((m) => m.type === "message" && m.body)
-    .map((m) => ({ body: m.body ?? "", userName: m.user?.name ?? "Anonymous", at: m.at ?? "" }));
+    .filter((m) => m.type === "message" && m.body && m.id)
+    .map((m) => ({
+      id: m.id!,
+      body: m.body ?? "",
+      userName: m.user?.name ?? "Anonymous",
+      at: m.at ?? "",
+    }));
 
   return (
     <AppShell
@@ -60,6 +66,11 @@ function Chat() {
         ) : undefined
       }
     >
+      <p className="bg-muted/40 mb-5 rounded-xl border p-4 text-sm" role="note">
+        Rooms are available to their assigned members. Contact an administrator to manage access.
+        Please avoid sharing sensitive information; moderation and delivery safeguards are still
+        being improved.
+      </p>
       <div className="grid gap-5 lg:grid-cols-[320px_1fr]">
         <Card className="bg-card shadow-soft flex max-h-[calc(100vh-14rem)] min-h-0 flex-col border">
           <CardHeader className="flex-row items-center justify-between gap-2">
@@ -107,6 +118,15 @@ function Chat() {
                       </span>
                     </button>
                   ))}
+                  {roomsQuery.hasNextPage && (
+                    <Button
+                      variant="outline"
+                      onClick={() => void roomsQuery.fetchNextPage()}
+                      disabled={roomsQuery.isFetchingNextPage}
+                    >
+                      Load more rooms
+                    </Button>
+                  )}
                 </div>
               )}
             </QueryState>
@@ -121,7 +141,12 @@ function Chat() {
             </CardTitle>
           </CardHeader>
           {activeRoom ? (
-            <Thread room={activeRoom} wsMessages={wsMessages} wsSend={ws.send} />
+            <Thread
+              key={activeRoom.id}
+              room={activeRoom}
+              wsMessages={wsMessages}
+              wsSend={ws.send}
+            />
           ) : (
             <CardContent>
               <p className="text-muted-foreground py-10 text-center text-xs font-semibold">
@@ -186,19 +211,18 @@ function Thread({
   wsSend,
 }: {
   room: RealtimeRoom;
-  wsMessages: Array<{ body: string; userName: string; at: string }>;
-  wsSend: (body: string) => void;
+  wsMessages: Array<{ id: string; body: string; userName: string; at: string }>;
+  wsSend: (body: string, messageId?: string) => void;
 }) {
   const { session: authSession } = useSessionContext();
   const currentUserId = authSession?.user.id ?? "";
   const [draft, setDraft] = useState("");
   const messagesQuery = useChatMessages(room.id);
-  const restMessages = messagesQuery.data ?? [];
+  const restMessages = flattenPages(messagesQuery.data?.pages);
   const sendMessage = useSendChatMessage(room.id);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Merge REST history with live WS messages (dedupe by body+time).
-  const liveByKey = new Map(wsMessages.map((m) => [`${m.at}:${m.body}`, m]));
+  // Deduplicate persisted messages using their server-issued IDs.
   const merged = [
     ...restMessages.map((m) => ({
       id: m.id,
@@ -208,9 +232,9 @@ function Thread({
       mine: m.userId === currentUserId,
     })),
     ...wsMessages
-      .filter((m) => !restMessages.some((r) => r.body === m.body))
+      .filter((m) => !restMessages.some((r) => r.id === m.id))
       .map((m) => ({
-        id: `live-${m.at}`,
+        id: m.id,
         userName: m.userName,
         body: m.body,
         at: m.at,
@@ -226,15 +250,19 @@ function Thread({
     event.preventDefault();
     const body = draft.trim();
     if (body.length === 0 || sendMessage.isPending) return;
-    wsSend(body);
-    sendMessage.mutate(body, { onSuccess: () => setDraft("") });
+    sendMessage.mutate(body, {
+      onSuccess: (saved) => {
+        wsSend(body, saved.id);
+        setDraft("");
+      },
+    });
   };
 
   return (
     <CardContent className="flex h-[calc(100vh-19rem)] min-h-80 flex-col">
       <div ref={scrollRef} className="flex-1 space-y-3 overflow-y-auto">
         <QueryState
-          query={messagesQuery}
+          query={{ ...messagesQuery, data: messagesQuery.data ? merged : undefined }}
           isEmpty={(data) => (Array.isArray(data) ? data.length === 0 : false)}
           empty={{
             title: "No messages yet",
@@ -272,14 +300,35 @@ function Thread({
           }
         </QueryState>
       </div>
+      {messagesQuery.hasNextPage && (
+        <Button
+          variant="outline"
+          onClick={() => void messagesQuery.fetchNextPage()}
+          disabled={messagesQuery.isFetchingNextPage}
+        >
+          Load more messages
+        </Button>
+      )}
+      {sendMessage.isError && (
+        <p role="alert" className="text-destructive mt-2 text-sm">
+          Message could not be saved. Please try again.
+        </p>
+      )}
       <form className="mt-3 flex gap-2" onSubmit={submit}>
         <input
           value={draft}
           onChange={(event) => setDraft(event.target.value)}
           className="bg-muted placeholder:text-muted-foreground h-10 flex-1 rounded-lg border-0 px-3 text-xs font-medium outline-none"
           placeholder="Message the room…"
+          aria-label="Message the room"
+          maxLength={5000}
         />
-        <Button size="sm" className="shrink-0" disabled={sendMessage.isPending}>
+        <Button
+          size="sm"
+          className="shrink-0"
+          aria-label="Send room message"
+          disabled={sendMessage.isPending}
+        >
           <Send className="size-4" />
         </Button>
       </form>

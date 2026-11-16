@@ -38,11 +38,17 @@ function LiveClasses() {
       title="Live classes"
       subtitle="Weekly sessions with instructors — video, chat, polls and whiteboard"
       actions={
-        <Badge className="bg-success/10 text-success border-0 font-semibold">
-          <Radio className="size-3.5" /> {items.filter((s) => s.status === "live").length} live now
-        </Badge>
+        query.isSuccess ? (
+          <Badge className="bg-success/10 text-success border-0 font-semibold">
+            <Radio className="size-3.5" /> {items.filter((s) => s.status === "live").length} live
+            now
+          </Badge>
+        ) : undefined
       }
     >
+      <p className="bg-muted/40 mb-5 rounded-xl border p-4 text-sm" role="note">
+        Live classes are temporarily unavailable while access controls are improved.
+      </p>
       <QueryState
         query={query}
         isEmpty={(data) => (Array.isArray(data) ? data.length === 0 : false)}
