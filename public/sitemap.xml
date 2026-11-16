@@ -4,6 +4,9 @@
     <loc>https://www.cea.ng/</loc>
   </url>
   <url>
+    <loc>https://www.cea.ng/ai-engineering</loc>
+  </url>
+  <url>
     <loc>https://www.cea.ng/about</loc>
   </url>
   <url>
@@ -86,6 +89,21 @@
   </url>
   <url>
     <loc>https://www.cea.ng/terms</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/tools</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/tools/typing-test</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/tools/word-counter</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/tools/password-strength</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/tools/color-contrast</loc>
   </url>
   <url>
     <loc>https://www.cea.ng/visit</loc>

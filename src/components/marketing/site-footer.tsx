@@ -29,6 +29,8 @@ const columns = [
     title: "Explore",
     links: [
       { label: "Notes", to: "/blog" },
+      { label: "AI Engineering from Scratch", to: "/ai-engineering" },
+      { label: "Free tools", to: "/tools" },
       { label: "Learning trail", to: "/learning-trail" },
       { label: "Editorial standards", to: "/editorial" },
       { label: "Change log", to: "/editorial/changelog" },

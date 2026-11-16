@@ -22,6 +22,8 @@ const nav = [
 
 /** Secondary links, grouped under "More" on desktop and listed after the primary links on mobile. */
 const moreNav = [
+  { label: "AI Engineering", to: "/ai-engineering" },
+  { label: "Free tools", to: "/tools" },
   { label: "Shop", to: "/shop" },
   { label: "Schools & partners", to: "/schools" },
   { label: "Contact", to: "/contact" },
