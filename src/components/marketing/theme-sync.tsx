@@ -2,25 +2,23 @@
 
 import { useEffect } from "react";
 
+/** Dark-first marketing shell. Mirrors the inline THEME_SCRIPT in the root
+ * layout: marketing visitors get dark unless they explicitly chose light
+ * (stored in `cea-marketing-theme`), and the workspace default is restored
+ * (`cea-theme`) on unmount. */
 export function ThemeSync() {
   useEffect(() => {
-    let pref: string | null = null;
-    try {
-      pref = localStorage.getItem("cea-marketing-theme");
-    } catch {
-      /* ignore */
-    }
-    const root = document.documentElement;
-    if (pref === "dark") root.classList.add("dark");
-    else root.classList.remove("dark");
-    return () => {
-      let appPref: string | null = null;
+    const read = (key: string) => {
       try {
-        appPref = localStorage.getItem("cea-theme");
+        return localStorage.getItem(key);
       } catch {
-        /* ignore */
+        return null;
       }
-      root.classList.toggle("dark", appPref === "dark");
+    };
+    const root = document.documentElement;
+    root.classList.toggle("dark", read("cea-marketing-theme") !== "light");
+    return () => {
+      root.classList.toggle("dark", read("cea-theme") !== "light");
     };
   }, []);
 

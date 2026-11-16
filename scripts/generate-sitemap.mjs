@@ -10,6 +10,7 @@ const SITE_URL = "https://www.cea.ng";
 // and should not be advertised as live destinations.
 const staticRoutes = [
   "/",
+  "/ai-engineering",
   "/about",
   "/accessibility",
   "/admissions",
@@ -38,6 +39,11 @@ const staticRoutes = [
   "/shop/gadgets",
   "/team",
   "/terms",
+  "/tools",
+  "/tools/typing-test",
+  "/tools/word-counter",
+  "/tools/password-strength",
+  "/tools/color-contrast",
   "/visit",
   "/visit/info",
   "/visit/brochure",

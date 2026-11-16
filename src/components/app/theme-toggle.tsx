@@ -9,9 +9,8 @@ const STORAGE_KEY = "cea-theme";
 function getInitialTheme(): boolean {
   if (typeof window === "undefined") return false;
   const stored = window.localStorage.getItem(STORAGE_KEY);
-  if (stored === "dark") return true;
-  if (stored === "light") return false;
-  return window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false;
+  // Dark-first workspace: only an explicit "light" opts out.
+  return stored !== "light";
 }
 
 export function ThemeToggle() {
