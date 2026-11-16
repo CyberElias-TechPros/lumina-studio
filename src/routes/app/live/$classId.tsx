@@ -2,18 +2,7 @@
 
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { useState } from "react";
-import {
-  BarChart3,
-  CheckCircle2,
-  Hand,
-  MessageSquare,
-  Mic2,
-  MonitorUp,
-  PenLine,
-  Send,
-  Users,
-  Video,
-} from "lucide-react";
+import { BarChart3, CheckCircle2, MessageSquare, PenLine, Send, Users, Video } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -141,6 +130,9 @@ function LiveClass() {
         ) : null
       }
     >
+      <p className="bg-muted/40 mb-5 rounded-xl border p-4 text-sm" role="note">
+        Live classes are temporarily unavailable while access controls are improved.
+      </p>
       <QueryState
         query={sessionQuery}
         error={{ title: "Class unavailable" }}
@@ -178,6 +170,10 @@ function ClassContent({ classId, status }: { classId: string; status: string }) 
   return (
     <div className="grid gap-5 xl:grid-cols-[1.6fr_1fr]">
       <div className="space-y-5">
+        <p className="bg-muted/40 rounded-xl border p-4 text-sm" role="note">
+          Class content, chat and polls are accessible to signed-in users; do not share sensitive
+          information here.
+        </p>
         <div className="bg-gradient-ink relative overflow-hidden rounded-2xl border">
           <div className="aspect-video grid place-items-center">
             <div className="text-center">
@@ -185,43 +181,13 @@ function ClassContent({ classId, status }: { classId: string; status: string }) 
                 <Video className="text-ink-foreground size-8" />
               </span>
               <p className="font-display text-ink-foreground mt-4 text-lg font-extrabold">
-                {isLive ? "Live session in progress" : "Class will start soon"}
+                Video is not available in this page
               </p>
               <p className="text-ink-foreground/60 mt-1 text-xs">
-                Video embeds here when streaming is configured
+                Contact your instructor for the meeting details.
               </p>
             </div>
           </div>
-          {isLive && (
-            <div className="absolute inset-x-4 bottom-4 flex items-center justify-between">
-              <Badge className="bg-destructive/90 text-destructive-foreground border-0 font-bold">
-                REC
-              </Badge>
-              <div className="flex gap-2">
-                <Button
-                  size="sm"
-                  variant="secondary"
-                  className="bg-ink-foreground/15 text-ink-foreground font-semibold hover:bg-ink-foreground/25"
-                >
-                  <Mic2 className="size-4" /> Mute
-                </Button>
-                <Button
-                  size="sm"
-                  variant="secondary"
-                  className="bg-ink-foreground/15 text-ink-foreground font-semibold hover:bg-ink-foreground/25"
-                >
-                  <MonitorUp className="size-4" /> Share
-                </Button>
-                <Button
-                  size="sm"
-                  variant="secondary"
-                  className="bg-warning/90 text-warning-foreground font-semibold hover:bg-warning/80"
-                >
-                  <Hand className="size-4" /> Raise hand
-                </Button>
-              </div>
-            </div>
-          )}
         </div>
 
         <WhiteboardPanel classId={classId} />
@@ -300,7 +266,7 @@ function ClassContent({ classId, status }: { classId: string; status: string }) 
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground text-xs font-semibold">
-              Presence and attendee avatars appear here during the session.
+              Attendee presence is not available here.
             </p>
           </CardContent>
         </Card>

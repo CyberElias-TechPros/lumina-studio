@@ -2,7 +2,7 @@ import { createMiddleware } from "hono/factory";
 import type { AppEnv } from "../types";
 import { ApiError } from "./errors";
 import { loadSession } from "./auth";
-import { isTrustedOrigin } from "./origin";
+import { configuredOrigins, isTrustedOrigin } from "./origin";
 
 /**
  * Declarative route → access rules. Every /v1 endpoint must be listed here so
@@ -89,6 +89,7 @@ export const RBAC_RULES: RbacRule[] = [
 
   /* Supplier sync POST authenticates its dedicated bearer token in the handler. */
   { methods: ["GET"], path: "/v1/gadgets/catalog", public: true },
+  { methods: ["POST"], path: "/v1/gadgets/price-check", public: true },
   { methods: ["POST"], path: "/v1/gadgets/snapshot", public: true },
 
   /* Public digital shop — Merchant Center requires guest checkout */
@@ -415,7 +416,7 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["*"], path: "/v1/design/*" },
   { methods: ["*"], path: "/v1/localization/*" },
 
-  /* Realtime chat + live classes — any authenticated user */
+  /* Realtime: authentication here; room membership and admin checks in routes. Live is safety-stopped. */
   { methods: ["*"], path: "/v1/realtime/*" },
   { methods: ["*"], path: "/v1/live/*" },
   { methods: ["*"], path: "/v1/uploads/*" },
@@ -479,6 +480,15 @@ export const rbacGuard = createMiddleware<{ Bindings: AppEnv }>(async (c, next) 
     !isTrustedOrigin(origin, c.env)
   ) {
     throw ApiError.forbidden("This request origin is not allowed.");
+  }
+
+  // Browsers send cookies on WebSocket upgrades, which are GET requests and
+  // are not protected by CORS. Never accept absent or unconfigured origins.
+  if (
+    c.req.header("upgrade")?.toLowerCase() === "websocket" &&
+    (!origin || !configuredOrigins(c.env).includes(origin))
+  ) {
+    throw ApiError.forbidden("This WebSocket origin is not allowed.");
   }
 
   const rule = matchRbacRule(method, pathname);

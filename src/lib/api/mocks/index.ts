@@ -751,10 +751,12 @@ export function registerAllMocks(): void {
       await delay();
       return thread;
     });
-    registerMock("POST", `/v1/messages/threads/${thread.id}/messages`, async (init) => {
-      await delay(150);
-      const body = (init.body ?? {}) as { body?: string };
-      return { text: body.body ?? "", time: "Just now", mine: true };
+    registerMock("POST", `/v1/messages/threads/${thread.id}/messages`, async () => {
+      throw new ApiError(
+        503,
+        "MESSAGING_UNAVAILABLE",
+        "Sending messages is currently unavailable. Please contact the academy for support.",
+      );
     });
   }
 

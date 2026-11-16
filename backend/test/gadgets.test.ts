@@ -147,3 +147,72 @@ describe("supplier snapshot safeguards", () => {
     }
   });
 });
+
+describe("server-side basket price check", () => {
+  const check = (body: unknown, extra: Partial<AppEnv> = {}) =>
+    app.request(
+      "/price-check",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      },
+      { ...bindings, ...extra },
+    );
+  const selected = (quantity = 1) => ({ image: card.imageUrl, quantity });
+  it("derives each line and subtotal on the server without accepting client-supplied prices", async () => {
+    const second = {
+      ...card,
+      imageUrl: "https://images.afkit.ng/other.jpg",
+      quantity: 5,
+      pricesKobo: [10000000],
+    };
+    expect((await upload(snapshot([{ ...card, quantity: 3 }, second]))).status).toBe(200);
+    const response = await check({ items: [selected(2), { image: second.imageUrl, quantity: 3 }] });
+    expect(response.status).toBe(200);
+    expect(response.headers.get("cache-control")).toBe("no-store");
+    const result = (await response.json()) as {
+      items: { priceKobo: number; quantity: number }[];
+      subtotalKobo: number;
+    };
+    expect(result.items[0]!.priceKobo).toBe(23240000);
+    expect(result.subtotalKobo).toBe(
+      result.items.reduce((sum, line) => sum + line.priceKobo * line.quantity, 0),
+    );
+    expect((await check({ items: [{ ...selected(), priceKobo: 1 }] })).status).toBe(400);
+    expect((await check({ items: [selected()], subtotalKobo: 1 })).status).toBe(400);
+    expect((await check({ items: [selected(), selected()] })).status).toBe(400);
+    expect((await check({ items: [selected(11)] })).status).toBe(400);
+    expect((await check({ items: [{ image: "https://evil.test/a", quantity: 1 }] })).status).toBe(
+      400,
+    );
+  });
+  it("fails closed for missing, stale, unpriced, out of stock or insufficient observations", async () => {
+    expect((await check({ items: [selected()] })).status).toBe(409);
+    expect((await upload(snapshot())).status).toBe(200);
+    expect((await check({ items: [selected(2)] })).status).toBe(409);
+    expect(
+      (await check({ items: [{ image: "https://images.afkit.ng/missing.jpg", quantity: 1 }] }))
+        .status,
+    ).toBe(409);
+    expect((await check({ items: [selected()] }, { AFKIT_MARGIN_BPS: "9999" })).status).toBe(409);
+    await env.DB.prepare("UPDATE afkit_catalog_snapshot SET observed_at = ? WHERE id=1")
+      .bind(new Date(Date.now() - 19 * 60 * 60 * 1000).toISOString())
+      .run();
+    expect((await check({ items: [selected()] })).status).toBe(409);
+    await env.DB.prepare("DELETE FROM afkit_catalog_snapshot").run();
+    expect((await upload(snapshot([{ ...card, quantity: 0 }]))).status).toBe(200);
+    expect((await check({ items: [selected()] })).status).toBe(409);
+    await env.DB.prepare("DELETE FROM afkit_catalog_snapshot").run();
+    expect((await upload(snapshot([{ ...card, pricesKobo: [100, 200] }]))).status).toBe(200);
+    expect((await check({ items: [selected()] })).status).toBe(409);
+  });
+  it("rejects oversized request bodies", async () => {
+    const response = await app.request(
+      "/price-check",
+      { method: "POST", headers: { "content-length": "12001" }, body: "{}" },
+      bindings,
+    );
+    expect(response.status).toBe(413);
+  });
+});

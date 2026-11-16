@@ -36,7 +36,7 @@ test("gadget catalogue searches and directs inquiries to CEA without taking paym
   await expect(page.getByText("Price on request")).toBeVisible();
   await expect(page.getByText(/Price and availability to be confirmed/)).toHaveCount(0);
   await page.getByLabel("Search gadgets").fill("no such gadget 123456");
-  await expect(page.getByText("No matches. Try a different search.")).toBeVisible();
+  await expect(page.getByText("No matches. Try a different search or filter.")).toBeVisible();
 });
 
 test("fresh supplier observations show price; stale ones do not", async ({ page }) => {
@@ -78,7 +78,9 @@ test("fresh supplier observations show price; stale ones do not", async ({ page 
   await page.goto("/shop/gadgets");
   await expect(page.getByRole("heading", { name: "Fresh test laptop" })).toBeVisible();
   await expect(page.getByText("Price: ₦205,900.00")).toBeVisible();
-  await expect(page.getByText("UK used", { exact: true })).toBeVisible();
+  await expect(
+    page.getByLabel("Gadgets", { exact: true }).getByText("UK used", { exact: true }),
+  ).toBeVisible();
   await expect(page.getByRole("heading", { name: "Laptop with screen scratch" })).toBeVisible();
   await expect(page.getByText("Price on request")).toBeVisible();
   await expect(page.getByText(/Supplier last reported|Condition to confirm/)).toHaveCount(0);
@@ -257,4 +259,130 @@ test("multi-item basket persists selections but uses current prices and does not
   await expect(page.getByRole("link", { name: "Send basket on WhatsApp" })).toHaveCount(0);
   await page.getByRole("button", { name: "Remove Laptop A" }).click();
   await expect(page.getByText("Subtotal: ₦25,000.00")).toBeVisible();
+});
+
+test("main shop combines catalogues and filters them without adding digital products to gadgets", async ({
+  page,
+}) => {
+  await page.route("**/*", (route) => {
+    const url = new URL(route.request().url());
+    if (!["localhost", "127.0.0.1", "mock-api.example.test"].includes(url.hostname))
+      return route.abort();
+    if (url.pathname.endsWith("/v1/gadgets/catalog"))
+      return route.fulfill({
+        json: {
+          observedAt: new Date().toISOString(),
+          fresh: true,
+          items: [
+            {
+              image: "https://images.afkit.ng/phone.jpg",
+              title: "iPhone 15",
+              condition: "used",
+              observedQuantity: 2,
+              priceKobo: 20000000,
+            },
+            {
+              image: "https://images.afkit.ng/laptop.jpg",
+              title: "Test laptop",
+              condition: "new",
+              observedQuantity: 1,
+              priceKobo: 10000000,
+            },
+            {
+              image: "https://images.afkit.ng/unknown.jpg",
+              title: "Mystery gadget",
+              condition: "unknown",
+              observedQuantity: null,
+              priceKobo: null,
+            },
+          ],
+        },
+        headers: {
+          "Access-Control-Allow-Origin": new URL(
+            process.env.E2E_BASE_URL ?? "http://127.0.0.1:3000",
+          ).origin,
+        },
+      });
+    return route.continue();
+  });
+  await page.goto("/shop");
+  await expect(page.getByRole("heading", { name: "Digital products", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "iPhone 15", exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "View & buy" }).first()).toBeVisible();
+  await page.getByLabel("Category").selectOption("phones");
+  await expect(page.getByRole("heading", { name: "iPhone 15", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Test laptop", exact: true })).toHaveCount(0);
+  await expect(page.getByRole("link", { name: "View & buy" })).toHaveCount(0);
+  await page.getByLabel("Condition").selectOption("new");
+  await expect(page.getByText("0 items shown")).toBeVisible();
+  await page.getByLabel("Condition").selectOption("all");
+  await page.getByLabel("Category").selectOption("all");
+  await page.getByLabel("Maximum price (₦)").fill("150000");
+  await expect(page.getByRole("heading", { name: "Test laptop", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "iPhone 15", exact: true })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Mystery gadget", exact: true })).toHaveCount(0);
+  await page.getByLabel("Minimum price (₦)").fill("200000");
+  await expect(page.getByText("Enter a valid price range.")).toBeVisible();
+  await page.goto("/shop/gadgets");
+  await expect(page.getByRole("heading", { name: "iPhone 15", exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "View & buy" })).toHaveCount(0);
+  await expect(page.getByLabel("Category").locator('option[value="digital"]')).toHaveCount(0);
+});
+
+test("basket price check uses the server and disappears when the basket changes", async ({
+  page,
+}) => {
+  let submitted: unknown;
+  await page.route("**/*", (route) => {
+    const url = new URL(route.request().url());
+    if (!["localhost", "127.0.0.1", "mock-api.example.test"].includes(url.hostname))
+      return route.abort();
+    const headers = {
+      "Access-Control-Allow-Origin": new URL(process.env.E2E_BASE_URL ?? "http://127.0.0.1:3000")
+        .origin,
+      "Access-Control-Allow-Headers": "content-type",
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    };
+    if (url.pathname.endsWith("/v1/gadgets/price-check")) {
+      if (route.request().method() === "OPTIONS") return route.fulfill({ status: 204, headers });
+      submitted = route.request().postDataJSON();
+      return route.fulfill({
+        headers,
+        json: {
+          observedAt: new Date().toISOString(),
+          subtotalKobo: 23400000,
+          currency: "NGN",
+          items: [],
+        },
+      });
+    }
+    if (url.pathname.endsWith("/v1/gadgets/catalog"))
+      return route.fulfill({
+        headers,
+        json: {
+          observedAt: new Date().toISOString(),
+          fresh: true,
+          items: [
+            {
+              image: "https://images.afkit.ng/test.jpg",
+              title: "Test laptop",
+              condition: "used",
+              observedQuantity: 3,
+              priceKobo: 23000000,
+            },
+          ],
+        },
+      });
+    return route.continue();
+  });
+  await page.goto("/shop/gadgets");
+  await expect(page.getByRole("heading", { name: "Test laptop" })).toBeVisible();
+  await page.getByRole("button", { name: "Add to basket" }).click();
+  await page.getByRole("button", { name: "Check latest basket prices" }).click();
+  await expect(page.getByText(/Latest item subtotal: ₦234,000.00/)).toBeVisible();
+  expect(submitted).toEqual({
+    items: [{ image: "https://images.afkit.ng/test.jpg", quantity: 1 }],
+  });
+  await page.getByLabel("Quantity for Test laptop").selectOption("2");
+  await expect(page.getByText(/Latest item subtotal:/)).toHaveCount(0);
 });

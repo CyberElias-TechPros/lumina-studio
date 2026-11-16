@@ -1,11 +1,9 @@
 import { Hono } from "hono";
 import type { AppEnv } from "../types";
-import { z } from "zod";
 import { ApiError } from "../lib/errors";
-import { base64UrlDecode, base64UrlEncode, isoNow } from "../lib/crypto";
+import { base64UrlDecode, base64UrlEncode } from "../lib/crypto";
 import { paginate, parsePagination, type Paginated } from "../lib/pagination";
 import { requireAuth } from "../lib/auth";
-import { parseBody } from "../lib/validate";
 
 export interface ApiMessage {
   text: string;
@@ -82,29 +80,13 @@ messages.get("/threads/:id", async (c) => {
   return c.json(mapRow(row));
 });
 
-const sendMessageSchema = z.object({
-  body: z.string().trim().min(1, "Message is required.").max(5_000, "Message is too long."),
-});
-
-/** Send a message in your own thread — appends to the thread's message log. */
-messages.post("/threads/:id/messages", async (c) => {
-  const user = c.get("authUser");
-  const { body } = await parseBody(c, sendMessageSchema);
-  const threadId = c.req.param("id");
-  const row = await c.env.DB.prepare(`${SELECT} WHERE user_id = ? AND id = ?`)
-    .bind(user.id, threadId)
-    .first<ThreadRow>();
-  if (!row) throw ApiError.notFound("Thread not found.");
-
-  const now = isoNow();
-  const messages = JSON.parse(row.messages) as ApiMessage[];
-  messages.push({ text: body, time: now, mine: true });
-
-  await c.env.DB.prepare(
-    `UPDATE message_threads SET messages = ?, last_text = ?, last_time = ?, last_mine = 1, unread = 0
-      WHERE id = ?`,
-  )
-    .bind(JSON.stringify(messages), body, now, threadId)
-    .run();
-  return c.json({ text: body, time: now, mine: true }, 201);
+// The legacy schema stores an isolated copy belonging to the sender; it has no
+// verified recipient or delivery path. Never acknowledge a send as delivered.
+// Keep old clients safe too until a participant-authorized messaging system exists.
+messages.post("/threads/:id/messages", () => {
+  throw new ApiError(
+    503,
+    "MESSAGING_UNAVAILABLE",
+    "Sending messages is currently unavailable. Please contact the academy for support.",
+  );
 });

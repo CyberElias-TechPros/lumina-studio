@@ -95,32 +95,30 @@ describe("application pipeline", () => {
   });
 });
 
-describe("live classes", () => {
-  it("instructor schedules and starts a class; a student cannot", async () => {
-    const created = await api("/v1/live/classes", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", ...cookieHeaders(instructor.cookie) },
-      body: JSON.stringify({ title: "React Hooks deep dive", startsAt: "2026-08-05T10:00:00Z" }),
-    });
-    expect(created.status).toBe(201);
-    const { id } = (await created.json()) as { id: string };
-
-    const studentAttempt = await api(`/v1/live/classes/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json", ...cookieHeaders(student.cookie) },
-      body: JSON.stringify({ status: "live" }),
-    });
-    expect(studentAttempt.status).toBe(403);
-
-    const started = await api(`/v1/live/classes/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json", ...cookieHeaders(instructor.cookie) },
-      body: JSON.stringify({ status: "live" }),
-    });
-    expect(started.status).toBe(200);
-    expect((await started.json()) as { status: string }).toEqual(
-      expect.objectContaining({ status: "live" }),
-    );
+describe("live classes safety stop", () => {
+  it("prevents scheduling or starting classes for both instructors and students", async () => {
+    const before = await env.DB.prepare("SELECT COUNT(*) AS n FROM live_sessions").first();
+    const status = await env.DB.prepare(
+      "SELECT status FROM live_sessions WHERE id = 'live-1'",
+    ).first();
+    for (const who of [student, instructor]) {
+      const created = await api("/v1/live/classes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", ...cookieHeaders(who.cookie) },
+        body: JSON.stringify({ title: "React Hooks deep dive", startsAt: "2026-08-05T10:00:00Z" }),
+      });
+      expect(created.status).toBe(503);
+      const updated = await api("/v1/live/classes/live-1", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json", ...cookieHeaders(who.cookie) },
+        body: JSON.stringify({ status: "live" }),
+      });
+      expect(updated.status).toBe(503);
+    }
+    expect(await env.DB.prepare("SELECT COUNT(*) AS n FROM live_sessions").first()).toEqual(before);
+    expect(
+      await env.DB.prepare("SELECT status FROM live_sessions WHERE id = 'live-1'").first(),
+    ).toEqual(status);
   });
 });
 

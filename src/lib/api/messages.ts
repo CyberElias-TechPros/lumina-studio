@@ -8,8 +8,8 @@ export interface Message {
   mine: boolean;
 }
 
-export function fetchMessageThreads(): Promise<Paginated<MessageThread>> {
-  return apiFetch<Paginated<MessageThread>>("/v1/messages/threads");
+export function fetchMessageThreads(cursor?: string): Promise<Paginated<MessageThread>> {
+  return apiFetch<Paginated<MessageThread>>("/v1/messages/threads", { query: { cursor } });
 }
 
 export function fetchMessageThread(id: string): Promise<MessageThread> {

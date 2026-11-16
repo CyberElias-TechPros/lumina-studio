@@ -5,62 +5,47 @@ beforeAll(async () => {
   await setupDb();
 });
 
-describe("POST /v1/messages/threads/:id/messages", () => {
-  it("returns 401 without a session", async () => {
-    const res = await api("/v1/messages/threads/t1/messages", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ body: "Hello" }),
-    });
-    expect(res.status).toBe(401);
+describe("legacy message send fails closed until real recipient delivery exists", () => {
+  it("requires a session", async () => {
+    expect(
+      (
+        await api("/v1/messages/threads/t1/messages", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ body: "Hello" }),
+        })
+      ).status,
+    ).toBe(401);
   });
-
-  it("lets a user send a message in their own thread and returns 201", async () => {
+  it("does not write to the sender's thread or claim delivery", async () => {
     const { cookie } = await createTestSession("student@cea.ng");
-    const res = await api("/v1/messages/threads/t1/messages", {
+    const headers = { "Content-Type": "application/json", ...cookieHeaders(cookie) };
+    const before = await (await api("/v1/messages/threads/t1", { headers })).json();
+    const result = await api("/v1/messages/threads/t1/messages", {
       method: "POST",
-      headers: { "Content-Type": "application/json", ...cookieHeaders(cookie) },
-      body: JSON.stringify({ body: "Quick question about the assignment deadline." }),
+      headers,
+      body: JSON.stringify({ body: "Important message" }),
     });
-    expect(res.status).toBe(201);
-    const body = (await res.json()) as { text: string; time: string; mine: boolean };
-    expect(body.text).toBe("Quick question about the assignment deadline.");
-    expect(body.mine).toBe(true);
-    expect(body.time).toBeTruthy();
+    expect(result.status).toBe(503);
+    expect(await result.json()).toMatchObject({ error: { code: "MESSAGING_UNAVAILABLE" } });
+    expect(await (await api("/v1/messages/threads/t1", { headers })).json()).toEqual(before);
   });
-
-  it("rejects an empty body with 400", async () => {
-    const { cookie } = await createTestSession("student@cea.ng");
-    const res = await api("/v1/messages/threads/t1/messages", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", ...cookieHeaders(cookie) },
-      body: JSON.stringify({ body: "   " }),
-    });
-    expect(res.status).toBe(400);
-  });
-
-  it("returns 404 for an unknown thread", async () => {
-    const { cookie } = await createTestSession("student@cea.ng");
-    const res = await api("/v1/messages/threads/nope/messages", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", ...cookieHeaders(cookie) },
-      body: JSON.stringify({ body: "Hello" }),
-    });
-    expect(res.status).toBe(404);
-  });
-});
-
-describe("GET /v1/messages/threads/:id", () => {
-  it("returns the thread detail with its messages", async () => {
-    const { cookie } = await createTestSession("student@cea.ng");
-    const res = await api("/v1/messages/threads/t1", { headers: cookieHeaders(cookie) });
-    expect(res.status).toBe(200);
-    const body = (await res.json()) as {
-      id: string;
-      name: string;
-      messages: Array<{ text: string; mine: boolean }>;
-    };
-    expect(body.id).toBe("t1");
-    expect(body.messages.length).toBeGreaterThan(0);
+  it("does not leak whether another thread exists", async () => {
+    const { cookie } = await createTestSession("fresh.student@cea.ng");
+    const headers = { "Content-Type": "application/json", ...cookieHeaders(cookie) };
+    expect(
+      (await api("/v1/messages/threads/t1/messages", { method: "POST", headers, body: "{}" }))
+        .status,
+    ).toBe(503);
+    expect(
+      (
+        await api("/v1/messages/threads/not-a-thread/messages", {
+          method: "POST",
+          headers,
+          body: "{}",
+        })
+      ).status,
+    ).toBe(503);
+    expect((await api("/v1/messages/threads/t1", { headers })).status).toBe(404);
   });
 });

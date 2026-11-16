@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { usePaginatedQuery, flattenPages, useApiQuery } from "@/lib/query/hooks";
+import { usePaginatedQuery, flattenPages } from "@/lib/query/hooks";
 import {
   createChatRoom,
   fetchChatMessages,
@@ -23,12 +23,9 @@ export function useChatRoomsItems(): RealtimeRoom[] {
 }
 
 export function useChatMessages(roomId: string) {
-  return useApiQuery<RealtimeMessage[]>(
+  return usePaginatedQuery<RealtimeMessage>(
     realtimeKeys.messages(roomId),
-    async () => {
-      const page = await fetchChatMessages(roomId);
-      return flattenPages([page]);
-    },
+    (cursor) => fetchChatMessages(roomId, cursor),
     { enabled: roomId.length > 0 },
   );
 }

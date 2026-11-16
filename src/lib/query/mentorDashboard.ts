@@ -136,5 +136,6 @@ export function useConversationDetail(id: string) {
   return useQuery({
     queryKey: mntKeys.conversation(id),
     queryFn: () => fetchConversationDetail(id),
+    enabled: id.length > 0,
   });
 }

@@ -7,6 +7,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import data from "@/data/supplier/afkit-observations.json";
 import { env } from "@/lib/env";
+import { Link } from "@/lib/next-compat/router";
+import {
+  digitalProducts,
+  formatNaira,
+  productPath,
+  deliveryWindowLabel,
+} from "@/data/digital-products";
+import { gadgetCategory, compareShopItems, type SortOrder } from "@/lib/shop-filters";
 import {
   BASKET_KEY,
   BASKET_LIMIT,
@@ -24,12 +32,68 @@ type Gadget = {
 };
 type Catalog = { observedAt: string | null; fresh: boolean; items: Gadget[] };
 
-export function GadgetsCatalog() {
+export function GadgetsCatalog({ includeDigital = false }: { includeDigital?: boolean }) {
   const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("all");
+  const [condition, setCondition] = useState("all");
+  const [sort, setSort] = useState<SortOrder>("featured");
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
   const [catalog, setCatalog] = useState<Catalog | null>(null);
   const [basket, setBasket] = useState<BasketEntry[]>([]);
   const [basketReady, setBasketReady] = useState(false);
   const [basketNotice, setBasketNotice] = useState("");
+  const [checking, setChecking] = useState(false);
+  const [priceCheck, setPriceCheck] = useState<{
+    key: string;
+    subtotalKobo?: number;
+    error?: string;
+    expiresAt: number;
+  } | null>(null);
+  const basketKey = JSON.stringify(basket);
+  useEffect(() => {
+    if (!priceCheck) return;
+    const timeout = window.setTimeout(
+      () => setPriceCheck(null),
+      Math.max(0, priceCheck.expiresAt - Date.now()),
+    );
+    return () => window.clearTimeout(timeout);
+  }, [priceCheck]);
+  async function checkPrices() {
+    if (!env.apiUrl || !basket.length || checking) return;
+    const key = basketKey;
+    setChecking(true);
+    setPriceCheck(null);
+    try {
+      const response = await fetch(`${env.apiUrl}/v1/gadgets/price-check`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: basket }),
+      });
+      if (!response.ok) throw new Error("Price check failed");
+      const result = (await response.json()) as { observedAt: string; subtotalKobo: number };
+      const expiry = Math.min(
+        Date.now() + 5 * 60_000,
+        Date.parse(result.observedAt) + 18 * 60 * 60_000,
+      );
+      if (
+        !Number.isFinite(expiry) ||
+        expiry <= Date.now() ||
+        !Number.isSafeInteger(result.subtotalKobo) ||
+        result.subtotalKobo <= 0
+      )
+        throw new Error("Invalid price check");
+      setPriceCheck({ key, subtotalKobo: result.subtotalKobo, expiresAt: expiry });
+    } catch {
+      setPriceCheck({
+        key,
+        error: "Could not check these prices. Review your basket or try again later.",
+        expiresAt: Date.now() + 5 * 60_000,
+      });
+    } finally {
+      setChecking(false);
+    }
+  }
   useEffect(() => {
     try {
       setBasket(readBasket(window.localStorage.getItem(BASKET_KEY)));
@@ -102,10 +166,61 @@ export function GadgetsCatalog() {
     };
   }, [catalog?.fresh, catalog?.observedAt]);
   const items: Gadget[] = catalog?.items ?? data.observations;
+  const min = minPrice === "" ? null : Number(minPrice);
+  const max = maxPrice === "" ? null : Number(maxPrice);
+  const priceInvalid =
+    (min !== null && (!Number.isFinite(min) || min < 0)) ||
+    (max !== null && (!Number.isFinite(max) || max < 0)) ||
+    (min !== null && max !== null && min > max);
+  function priceMatches(kobo: number | null | undefined) {
+    if (priceInvalid) return false;
+    if (min === null && max === null) return true;
+    return (
+      kobo != null && (min === null || kobo >= min * 100) && (max === null || kobo <= max * 100)
+    );
+  }
   const filtered = useMemo(() => {
     const query = search.trim().toLocaleLowerCase();
-    return items.filter((item) => item.title.toLocaleLowerCase().includes(query));
-  }, [search, items]);
+    return items
+      .filter(
+        (item) =>
+          item.title.toLocaleLowerCase().includes(query) &&
+          category !== "digital" &&
+          (category === "all" || gadgetCategory(item.title) === category) &&
+          (condition === "all" || item.condition === condition) &&
+          priceMatches(catalog?.fresh ? item.priceKobo : null),
+      )
+      .sort((a, b) =>
+        compareShopItems(
+          a,
+          b,
+          sort,
+          (v) => v.title,
+          (v) => (catalog?.fresh ? (v.priceKobo ?? null) : null),
+        ),
+      );
+    // priceMatches is derived only from these primitive filter values.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search, items, category, condition, sort, minPrice, maxPrice, catalog?.fresh]);
+  const digital =
+    includeDigital && (category === "all" || category === "digital") && condition === "all"
+      ? digitalProducts
+          .filter(
+            (item) =>
+              `${item.title} ${item.shortDescription} ${item.tags.join(" ")}`
+                .toLocaleLowerCase()
+                .includes(search.trim().toLocaleLowerCase()) && priceMatches(item.price * 100),
+          )
+          .sort((a, b) =>
+            compareShopItems(
+              a,
+              b,
+              sort,
+              (v) => v.title,
+              (v) => v.price * 100,
+            ),
+          )
+      : [];
   const basketItems = basket.map((entry) => ({
     ...entry,
     item: items.find((item) => item.image === entry.image),
@@ -155,8 +270,8 @@ export function GadgetsCatalog() {
   return (
     <>
       <p className="text-muted-foreground mt-6 text-sm">
-        Prices and availability may change before your order is confirmed. Delivery is quoted
-        separately.
+        Gadget prices and availability may change before your order is confirmed. Delivery is quoted
+        separately for gadgets.
       </p>
       <section
         id="gadget-basket"
@@ -164,7 +279,7 @@ export function GadgetsCatalog() {
         className="bg-muted/40 mt-6 rounded-xl border p-5"
       >
         <h2 id="basket-heading" className="font-display text-lg font-semibold">
-          Your basket ({basket.reduce((sum, item) => sum + item.quantity, 0)})
+          Gadget basket ({basket.reduce((sum, item) => sum + item.quantity, 0)})
         </h2>
         <p className="text-muted-foreground mt-2 text-sm" role="status">
           {basketNotice}
@@ -230,6 +345,17 @@ export function GadgetsCatalog() {
                 ? "Subtotal available when all item prices are known."
                 : `Subtotal: ${money(subtotal)}`}
             </p>
+            <div className="mt-4">
+              <Button variant="outline" onClick={checkPrices} disabled={!env.apiUrl || checking}>
+                {checking ? "Checking prices…" : "Check latest basket prices"}
+              </Button>
+              {priceCheck?.key === basketKey && (
+                <p role="status" className="text-muted-foreground mt-2 text-sm">
+                  {priceCheck.error ??
+                    `Latest item subtotal: ${money(priceCheck.subtotalKobo!)}. Delivery is separate; this is not an order or a stock reservation.`}
+                </p>
+              )}
+            </div>
             {unavailable ? (
               <p className="text-muted-foreground mt-2 text-sm">
                 Remove unavailable items to continue.
@@ -248,97 +374,224 @@ export function GadgetsCatalog() {
           </>
         )}
       </section>
-      <div className="mt-8 max-w-lg">
-        <label className="mb-2 block text-sm font-semibold" htmlFor="gadget-search">
-          Search gadgets
+      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <label className="text-sm font-semibold" htmlFor="gadget-search">
+          {includeDigital ? "Search products" : "Search gadgets"}
+          <Input
+            id="gadget-search"
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+            placeholder="Search by name..."
+            className="mt-2"
+          />
         </label>
-        <Input
-          id="gadget-search"
-          value={search}
-          onChange={(event) => setSearch(event.target.value)}
-          placeholder="Try iPhone, Dell, laptop stand..."
-        />
+        <label className="text-sm font-semibold">
+          Category
+          <select
+            value={category}
+            onChange={(event) => setCategory(event.target.value)}
+            className="bg-background mt-2 block w-full rounded-md border p-2"
+          >
+            <option value="all">All {includeDigital ? "products" : "gadgets"}</option>
+            {includeDigital && <option value="digital">Digital products</option>}
+            <option value="laptops">Laptops</option>
+            <option value="phones">Phones &amp; tablets</option>
+            <option value="monitors">Monitors</option>
+            <option value="accessories">Accessories</option>
+            <option value="other">Other gadgets</option>
+          </select>
+        </label>
+        <label className="text-sm font-semibold">
+          Condition
+          <select
+            value={condition}
+            onChange={(event) => setCondition(event.target.value)}
+            className="bg-background mt-2 block w-full rounded-md border p-2"
+          >
+            <option value="all">All conditions</option>
+            <option value="new">New</option>
+            <option value="used">UK used</option>
+          </select>
+        </label>
+        <label className="text-sm font-semibold">
+          Sort within each section
+          <select
+            value={sort}
+            onChange={(event) => setSort(event.target.value as SortOrder)}
+            className="bg-background mt-2 block w-full rounded-md border p-2"
+          >
+            <option value="featured">Featured</option>
+            <option value="name">Name A–Z</option>
+            <option value="price-low">Price: low to high</option>
+            <option value="price-high">Price: high to low</option>
+          </select>
+        </label>
+        <label className="text-sm font-semibold">
+          Minimum price (₦)
+          <Input
+            className="mt-2"
+            type="number"
+            min="0"
+            value={minPrice}
+            onChange={(e) => setMinPrice(e.target.value)}
+          />
+        </label>
+        <label className="text-sm font-semibold">
+          Maximum price (₦)
+          <Input
+            className="mt-2"
+            type="number"
+            min="0"
+            value={maxPrice}
+            onChange={(e) => setMaxPrice(e.target.value)}
+          />
+        </label>
+      </div>
+      {priceInvalid && (
+        <p className="text-destructive mt-3 text-sm" role="alert">
+          Enter a valid price range.
+        </p>
+      )}
+      {(min !== null || max !== null) && (
+        <p className="text-muted-foreground mt-2 text-sm">
+          Items without a current price are excluded from price filters.
+        </p>
+      )}
+      {includeDigital && (
+        <section className="mt-8" aria-labelledby="digital-heading">
+          <h2 id="digital-heading" className="font-display text-xl font-semibold">
+            Digital products
+          </h2>
+          <p className="text-muted-foreground mt-1 text-sm">
+            Pay online; our team emails your file within one business day.
+          </p>
+          {digital.length === 0 ? (
+            <p className="text-muted-foreground mt-4">No digital products match these filters.</p>
+          ) : (
+            <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {digital.map((product) => (
+                <Card key={product.id} className="flex flex-col overflow-hidden">
+                  <div className="bg-muted aspect-[4/3]">
+                    <img
+                      src={product.image}
+                      alt={product.imageAlt}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <CardContent className="flex flex-1 flex-col p-5">
+                    <Badge variant="outline" className="w-fit">
+                      Digital · {product.category}
+                    </Badge>
+                    <h3 className="font-display mt-4 font-semibold">
+                      <Link to={productPath(product.slug)} className="hover:underline">
+                        {product.title}
+                      </Link>
+                    </h3>
+                    <p className="text-muted-foreground mt-2 text-sm">{product.shortDescription}</p>
+                    <p className="text-muted-foreground mt-2 text-xs">
+                      Email delivery {deliveryWindowLabel(product.deliveryHours)}
+                    </p>
+                    <p className="mt-3 text-lg font-semibold">{formatNaira(product.price)}</p>
+                    <Button asChild className="mt-auto w-full">
+                      <Link to={productPath(product.slug)}>View &amp; buy</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
+        </section>
+      )}
+      <section className="mt-8" aria-label="Gadgets">
+        {includeDigital && (
+          <h2 id="gadgets-heading" className="font-display text-xl font-semibold">
+            Gadgets
+          </h2>
+        )}
         <p className="text-muted-foreground mt-2 text-sm" role="status">
           {filtered.length} {filtered.length === 1 ? "item" : "items"} shown
         </p>
-      </div>
-      {filtered.length === 0 ? (
-        <p className="text-muted-foreground mt-8">No matches. Try a different search.</p>
-      ) : (
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((item) => {
-            const message = `Hello Cyber Elias Academy! I'd like to order this gadget:\n${item.title}\nPhoto reference: ${item.image}`;
-            return (
-              <Card
-                key={item.image}
-                className="border-card flex h-full flex-col overflow-hidden shadow-soft"
-              >
-                <div className="bg-muted aspect-[4/3] overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    loading="lazy"
-                    referrerPolicy="no-referrer"
-                    className="h-full w-full object-contain"
-                  />
-                </div>
-                <CardContent className="flex flex-1 flex-col p-5">
-                  {(item.condition === "used" || item.condition === "new") && (
-                    <div>
-                      <Badge variant="outline">
-                        {item.condition === "used" ? "UK used" : "New"}
-                      </Badge>
-                    </div>
-                  )}
-                  <h2 className="font-display mt-4 text-base font-semibold leading-snug">
-                    {item.title}
-                  </h2>
-                  {catalog?.fresh && item.priceKobo != null ? (
-                    <p className="mt-3 text-lg font-semibold">
-                      Price: ₦
-                      {(item.priceKobo / 100).toLocaleString("en-NG", {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2,
-                      })}
-                    </p>
-                  ) : (
-                    <p className="text-muted-foreground mt-3 text-sm">Price on request</p>
-                  )}
-                  <div className="mt-auto pt-5">
-                    <Button
-                      className="w-full"
-                      disabled={!basketReady || (catalog?.fresh && item.observedQuantity === 0)}
-                      onClick={() => addToBasket(item)}
-                    >
-                      {catalog?.fresh && item.observedQuantity === 0
-                        ? "Currently unavailable"
-                        : "Add to basket"}
-                    </Button>
-                    {basket.length > 0 && (
-                      <a
-                        href="#gadget-basket"
-                        className="text-primary mt-2 block text-center text-sm underline"
-                      >
-                        View basket ({basket.reduce((sum, entry) => sum + entry.quantity, 0)})
-                      </a>
-                    )}
-                    {!(catalog?.fresh && item.observedQuantity === 0) && (
-                      <Button variant="outline" asChild className="mt-2 w-full">
-                        <a
-                          href={`https://wa.me/2349058628386?text=${encodeURIComponent(message)}`}
-                          rel="nofollow noopener noreferrer"
-                        >
-                          Order on WhatsApp
-                        </a>
-                      </Button>
-                    )}
+        {filtered.length === 0 ? (
+          <p className="text-muted-foreground mt-8">
+            No matches. Try a different search or filter.
+          </p>
+        ) : (
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {filtered.map((item) => {
+              const message = `Hello Cyber Elias Academy! I'd like to order this gadget:\n${item.title}\nPhoto reference: ${item.image}`;
+              return (
+                <Card
+                  key={item.image}
+                  className="border-card flex h-full flex-col overflow-hidden shadow-soft"
+                >
+                  <div className="bg-muted aspect-[4/3] overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                      className="h-full w-full object-contain"
+                    />
                   </div>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-      )}
+                  <CardContent className="flex flex-1 flex-col p-5">
+                    {(item.condition === "used" || item.condition === "new") && (
+                      <div>
+                        <Badge variant="outline">
+                          {item.condition === "used" ? "UK used" : "New"}
+                        </Badge>
+                      </div>
+                    )}
+                    <h2 className="font-display mt-4 text-base font-semibold leading-snug">
+                      {item.title}
+                    </h2>
+                    {catalog?.fresh && item.priceKobo != null ? (
+                      <p className="mt-3 text-lg font-semibold">
+                        Price: ₦
+                        {(item.priceKobo / 100).toLocaleString("en-NG", {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })}
+                      </p>
+                    ) : (
+                      <p className="text-muted-foreground mt-3 text-sm">Price on request</p>
+                    )}
+                    <div className="mt-auto pt-5">
+                      <Button
+                        className="w-full"
+                        disabled={!basketReady || (catalog?.fresh && item.observedQuantity === 0)}
+                        onClick={() => addToBasket(item)}
+                      >
+                        {catalog?.fresh && item.observedQuantity === 0
+                          ? "Currently unavailable"
+                          : "Add to basket"}
+                      </Button>
+                      {basket.length > 0 && (
+                        <a
+                          href="#gadget-basket"
+                          className="text-primary mt-2 block text-center text-sm underline"
+                        >
+                          View basket ({basket.reduce((sum, entry) => sum + entry.quantity, 0)})
+                        </a>
+                      )}
+                      {!(catalog?.fresh && item.observedQuantity === 0) && (
+                        <Button variant="outline" asChild className="mt-2 w-full">
+                          <a
+                            href={`https://wa.me/2349058628386?text=${encodeURIComponent(message)}`}
+                            rel="nofollow noopener noreferrer"
+                          >
+                            Order on WhatsApp
+                          </a>
+                        </Button>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        )}
+      </section>
     </>
   );
 }

@@ -1,26 +1,20 @@
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
-import { Check, Clock3, Download, FileText, Sparkles } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Download, FileText, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
-import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
-import {
-  deliveryWindowLabel,
-  digitalProducts,
-  formatNaira,
-  productPath,
-} from "@/data/digital-products";
+import { CTASection, PageHero, PageShell } from "@/components/marketing/shell";
+import { GadgetsCatalog } from "@/components/shop/gadgets-catalog";
+import { Reveal } from "@/components/motion";
+import { deliveryWindowLabel, digitalProducts, productPath } from "@/data/digital-products";
 import { getPageHead } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site-url";
 
 export const Route = createFileRoute("/shop/")({
   head: () =>
     getPageHead({
-      title: "Shop — templates and planners for small businesses",
+      title: "Shop — gadgets and digital products",
       description:
-        "One-time digital products from Cyber Elias Academy: website starter, invoice and stock sheet, weekly social content planner. Pay once; the file is emailed within one business day.",
+        "Shop laptops, phones, accessories and digital products from Cyber Elias Academy.",
       path: "/shop",
       structuredData: [
         {
@@ -44,9 +38,9 @@ function ShopPage() {
     <PageShell>
       <PageHero
         eyebrow="Shop"
-        title="One-time digital products for small businesses"
-        description="Editable templates and planners built around how Nigerian shops, traders and freelancers work. Pay once; our team emails your file within one business day. No subscription."
-        meta={["Nigeria only", "Paystack checkout", "Email delivery within one business day"]}
+        title="Shop gadgets and digital products"
+        description="Discover laptops, phones and accessories alongside practical digital products for your business."
+        meta={["Gadgets and accessories", "Digital products", "Shop in Nigeria"]}
       />
 
       <section className="container-page pt-10">
@@ -63,73 +57,8 @@ function ShopPage() {
         </div>
       </section>
 
-      <section className="container-page py-16 md:py-20">
-        <SectionHeading
-          eyebrow="In stock now"
-          title="Three products, all in stock"
-          description="Each one is a single downloadable file. No platform fees, no monthly plans. The price you see is what you pay."
-        />
-        <StaggerGroup className="mt-10 grid gap-6 md:grid-cols-3">
-          {digitalProducts.map((p) => (
-            <StaggerItem key={p.id}>
-              <Card className="border-card flex h-full flex-col overflow-hidden shadow-soft">
-                <div className="bg-muted aspect-[4/3] overflow-hidden">
-                  <img
-                    src={p.image}
-                    alt={p.imageAlt}
-                    loading="lazy"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <CardContent className="flex flex-1 flex-col p-6">
-                  <div className="flex items-center justify-between gap-3">
-                    <Badge variant="outline" className="text-[11px] font-medium">
-                      {p.category}
-                    </Badge>
-                    <span className="text-success inline-flex items-center gap-1 text-xs font-medium">
-                      <Check className="size-3.5" /> In stock
-                    </span>
-                  </div>
-                  <h3 className="font-display mt-4 text-lg font-semibold leading-snug">
-                    <Link to={productPath(p.slug)} className="hover:underline">
-                      {p.title}
-                    </Link>
-                  </h3>
-                  <p className="text-muted-foreground mt-2 line-clamp-3 text-sm leading-relaxed">
-                    {p.shortDescription}
-                  </p>
-                  <ul className="text-muted-foreground mt-4 space-y-1.5 text-xs">
-                    <li className="flex items-start gap-2">
-                      <FileText className="mt-0.5 size-3.5 shrink-0" />
-                      {p.fileFormat}
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Clock3 className="mt-0.5 size-3.5 shrink-0" />
-                      Email delivery {deliveryWindowLabel(p.deliveryHours)}
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Download className="mt-0.5 size-3.5 shrink-0" />
-                      The return page confirms payment; it is not an instant download
-                    </li>
-                  </ul>
-                  <div className="mt-6 flex items-end justify-between gap-4">
-                    <div>
-                      <p className="text-muted-foreground text-[11px] uppercase tracking-wide">
-                        One-time price
-                      </p>
-                      <p className="font-display text-2xl font-semibold tabular-nums">
-                        {formatNaira(p.price)}
-                      </p>
-                    </div>
-                    <Button asChild>
-                      <Link to={productPath(p.slug)}>View &amp; buy</Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
+      <section className="container-page py-12 md:py-16" aria-label="Shop products">
+        <GadgetsCatalog includeDigital />
       </section>
 
       <section className="border-border bg-muted/30 border-y">
@@ -139,7 +68,7 @@ function ShopPage() {
               <Sparkles className="text-primary size-4" /> What you get
             </h2>
             <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-              Every product is a single editable file plus a short written guide. No locked
+              Each digital product is a single editable file plus a short written guide. No locked
               platform, no monthly fee, no per-seat pricing. You own the file once you buy it.
             </p>
           </div>
@@ -148,7 +77,8 @@ function ShopPage() {
               <Download className="text-primary size-4" /> Delivery
             </h2>
             <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-              After Paystack confirms payment, our team prepares the file and emails it to you{" "}
+              For digital products, after Paystack confirms payment, our team prepares the file and
+              emails it to you{" "}
               {deliveryWindowLabel(Math.min(...digitalProducts.map((p) => p.deliveryHours)))}. The
               return page confirms payment status; it does not provide an instant download. Digital
               files are not shipped.
@@ -159,8 +89,8 @@ function ShopPage() {
               <FileText className="text-primary size-4" /> Refunds
             </h2>
             <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-              14 days, including a change of mind. No return parcel needed. Refund to the original
-              payment method within 30 days. See the{" "}
+              For digital products: 14 days, including a change of mind. No return parcel needed.
+              Refund to the original payment method within 30 days. See the{" "}
               <Link to="/refunds" className="text-primary underline">
                 refunds policy
               </Link>{" "}
