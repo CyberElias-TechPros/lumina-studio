@@ -18,6 +18,7 @@ import { CampusImg, CourseCover } from "@/components/marketing/photos";
 import { FounderPhoto } from "@/components/marketing/founder-photo";
 import { CourseFinder } from "@/components/marketing/course-finder";
 import { HeroMotion } from "@/components/marketing/hero-motion";
+import { ShinyText } from "@/components/react-bits/shiny-text";
 import { faqs } from "@/data/site";
 import { blogPosts } from "@/data/blog";
 import { flyerCourses, formatFee, teachingLoop } from "@/data/academy";
@@ -121,6 +122,7 @@ function Home() {
         <HeroMotion />
         <div className="container-page relative grid items-center gap-12 pt-10 pb-14 lg:grid-cols-[1.04fr_0.96fr] lg:gap-10 lg:pt-14 lg:pb-20">
           <div className="relative z-10">
+            <ShinyText text="LEARN / PRACTISE / CREATE" className="mb-5" />
             <div
               data-hero-copy
               className="inline-flex items-center gap-2.5 rounded-full border border-[#7fb5ff]/25 bg-[#0d1830]/70 py-2 pr-4 pl-3 backdrop-blur-md"
