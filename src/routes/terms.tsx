@@ -2,6 +2,7 @@ import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
 import { getPageHead } from "@/lib/seo";
 import { PageShell, PageHero } from "@/components/marketing/shell";
+import { UtilitySectionHeading } from "@/components/marketing/utility";
 import { TUITION_POLICY } from "@/data/academy/tuition-policy";
 import { Reveal } from "@/components/motion";
 
@@ -30,7 +31,7 @@ function TermsPage() {
       <section className="container-page py-16 md:py-24">
         <div className="max-w-3xl space-y-14">
           <Reveal>
-            <h2 className="font-display text-2xl font-bold">1. Agreement</h2>
+            <UtilitySectionHeading index="01">Agreement</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               By using cea.ng or enrolling in a course you agree to these terms and our{" "}
               <Link to="/privacy" className="text-primary underline">
@@ -41,7 +42,7 @@ function TermsPage() {
           </Reveal>
 
           <Reveal delay={0.05}>
-            <h2 className="font-display text-2xl font-bold">2. Who may use the site</h2>
+            <UtilitySectionHeading index="02">Who may use the site</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               You must be 16 or older to create an account. Under 18, a parent or guardian must
               consent to enrolment. Give true contact details so we can reach you.
@@ -49,7 +50,7 @@ function TermsPage() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <h2 className="font-display text-2xl font-bold">3. Courses</h2>
+            <UtilitySectionHeading index="03">Courses</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               {TUITION_POLICY.application} {TUITION_POLICY.payment} Before payment, your offer
               confirms the timetable, equipment and practice access, all compulsory costs and
@@ -66,9 +67,9 @@ function TermsPage() {
           </Reveal>
 
           <Reveal delay={0.15}>
-            <h2 id="tuition" className="font-display scroll-mt-24 text-2xl font-bold">
-              4. Tuition refunds, attendance and support
-            </h2>
+            <UtilitySectionHeading index="04" id="tuition">
+              Tuition refunds, attendance and support
+            </UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 text-sm">
               Policy version: {TUITION_POLICY.version}. This is the tuition policy, not the separate
               shop returns policy.
@@ -88,7 +89,7 @@ function TermsPage() {
           </Reveal>
 
           <Reveal delay={0.2}>
-            <h2 className="font-display text-2xl font-bold">5. Your account</h2>
+            <UtilitySectionHeading index="05">Your account</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Keep your login to yourself. Tell us at help@cea.ng if you think someone else used it.
               We may suspend an account used for abuse or fraud.
@@ -96,7 +97,7 @@ function TermsPage() {
           </Reveal>
 
           <Reveal delay={0.25}>
-            <h2 className="font-display text-2xl font-bold">6. Notes and class materials</h2>
+            <UtilitySectionHeading index="06">Notes and class materials</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               The Notes series and class pages are for learning. Do not copy them as if they were
               your own course. You keep copyright in work you produce; you allow us to keep a copy
@@ -105,7 +106,7 @@ function TermsPage() {
           </Reveal>
 
           <Reveal delay={0.3}>
-            <h2 className="font-display text-2xl font-bold">7. Acceptable use</h2>
+            <UtilitySectionHeading index="07">Acceptable use</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Do not share logins, harass anyone here, upload malware, or break the law using this
               site. We may suspend access for serious breaches. Any refund calculation remains
@@ -114,7 +115,7 @@ function TermsPage() {
           </Reveal>
 
           <Reveal delay={0.35}>
-            <h2 className="font-display text-2xl font-bold">8. No job promise</h2>
+            <UtilitySectionHeading index="08">No job promise</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               We do not guarantee a job, internship, visa, or income after a course. The certificate
               records work produced at this academy.
@@ -122,7 +123,7 @@ function TermsPage() {
           </Reveal>
 
           <Reveal delay={0.4}>
-            <h2 className="font-display text-2xl font-bold">9. Liability</h2>
+            <UtilitySectionHeading index="09">Liability</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               The site is provided as it is. To the extent Nigerian law allows, our total liability
               for a claim about these terms or the site is limited to the fees you paid us in the 12
@@ -131,7 +132,7 @@ function TermsPage() {
           </Reveal>
 
           <Reveal delay={0.45}>
-            <h2 className="font-display text-2xl font-bold">10. Ending the agreement</h2>
+            <UtilitySectionHeading index="10">Ending the agreement</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               You may close an account by emailing help@cea.ng. Fees already paid follow §4. We may
               suspend access for breach or non-payment.
@@ -139,7 +140,7 @@ function TermsPage() {
           </Reveal>
 
           <Reveal delay={0.5}>
-            <h2 className="font-display text-2xl font-bold">11. Law</h2>
+            <UtilitySectionHeading index="11">Law</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               These terms are governed by the laws of the Federal Republic of Nigeria. Disputes
               should first be discussed in good faith. Nigerian courts in Port Harcourt have
@@ -148,7 +149,7 @@ function TermsPage() {
           </Reveal>
 
           <Reveal delay={0.55}>
-            <h2 className="font-display text-2xl font-bold">12. Contact</h2>
+            <UtilitySectionHeading index="12">Contact</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Cyber Elias Academy Ltd
               <br />

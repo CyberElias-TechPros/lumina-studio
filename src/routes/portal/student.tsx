@@ -7,6 +7,9 @@ const config: PortalConfig = {
   title: "Student portal",
   subtitle:
     "Your student workspace: learning hub, assignments, grades, finance, portfolio, marketplace and more.",
+  spotlight: "Your desk is set — sessions, grades and goals in one orbit.",
+  tagline:
+    "Pick up where you left off: today’s session, outstanding tasks, and proof of progress toward your certificate.",
 };
 
 export const Route = createFileRoute("/portal/student")({

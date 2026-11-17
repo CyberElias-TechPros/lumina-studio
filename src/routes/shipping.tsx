@@ -3,6 +3,7 @@ import { Link } from "@/lib/next-compat/router";
 import { CheckCircle2, Clock3, Download, MapPin } from "lucide-react";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
 import { Reveal } from "@/components/motion";
+import { UtilitySectionHeading } from "@/components/marketing/utility";
 import { deliveryWindowLabel, digitalProducts } from "@/data/digital-products";
 import { getPageHead } from "@/lib/seo";
 
@@ -65,7 +66,7 @@ function ShippingPage() {
       <section className="border-border bg-muted/30 border-y">
         <div className="container-page grid gap-10 py-16 md:grid-cols-2 md:py-20">
           <div>
-            <h2 className="font-display text-2xl font-semibold tracking-tight">Where we deliver</h2>
+            <UtilitySectionHeading index="01">Where we deliver</UtilitySectionHeading>
             <p className="text-muted-foreground mt-3 text-base leading-relaxed">
               Nigeria only, for now. Because the product is a file, you can use it from any country
               once you have it — but we only take payment and run customer support for buyers inside
@@ -82,9 +83,7 @@ function ShippingPage() {
             </p>
           </div>
           <div>
-            <h2 className="font-display text-2xl font-semibold tracking-tight">
-              When you get the file
-            </h2>
+            <UtilitySectionHeading index="02">When you get the file</UtilitySectionHeading>
             <p className="text-muted-foreground mt-3 text-base leading-relaxed">
               Our team emails the file to the address you entered at checkout{" "}
               {deliveryWindowLabel(Math.min(...digitalProducts.map((p) => p.deliveryHours)))} after

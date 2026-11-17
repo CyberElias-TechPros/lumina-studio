@@ -1278,6 +1278,7 @@ export function AppShell({
                 </Button>
               </SheetTrigger>
               <div>
+                <p className="cea-kicker hidden sm:block">{role.label} workspace</p>
                 <h1 className="font-display text-h3 leading-tight font-extrabold">{title}</h1>
                 {subtitle && (
                   <p className="text-muted-foreground hidden text-xs sm:block">{subtitle}</p>

@@ -7,6 +7,9 @@ const config: PortalConfig = {
   title: "Instructor portal",
   subtitle:
     "Your teaching workspace: course builder, assignment review, gradebook, attendance and analytics.",
+  spotlight: "The classroom, at your fingertips.",
+  tagline:
+    "Attendance, assessments and honest feedback — everything you need to run a cohort that actually finishes.",
 };
 
 export const Route = createFileRoute("/portal/instructor")({
