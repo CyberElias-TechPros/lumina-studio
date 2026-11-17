@@ -35,7 +35,8 @@
     "audit:structure": "node scripts/audit-site-structure.mjs",
     "audit:courses": "node scripts/audit-course-pages.mjs",
     "check:editorial": "npm run generate:editorial && npm run validate:lessons -- --strict && npm run check:ads && npm run audit:structure -- --strict",
-    "generate:ai-lessons": "node scripts/generate-ai-lessons.mjs"
+    "generate:ai-lessons": "node scripts/generate-ai-lessons.mjs",
+    "academic:print": "node scripts/generate-academic-print.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

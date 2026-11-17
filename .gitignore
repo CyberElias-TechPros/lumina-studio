@@ -72,3 +72,6 @@ playwright-report/
 # The vendored source (src/content/ai-lessons/) IS committed; derived output is not.
 src/data/ai-lessons-index.generated.ts
 src/content/ai-lessons-rendered/
+
+# Generated academic print exports (regenerate with npm run academic:print).
+/academic/print/
