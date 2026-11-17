@@ -1,10 +1,10 @@
 # CEA Practical Workbook — CEA-CRE-001 Content Creation
 
-| Field       | Value                 |
-| ----------- | --------------------- |
-| Document ID | CEA-ACA-WB-CRE-001    |
-| Version     | 1.0                   |
-| Status      | Draft — pending pilot |
+| Field       | Value                         |
+| ----------- | ----------------------------- |
+| Document ID | CEA-ACA-WB-CRE-001            |
+| Version     | 1.0                           |
+| Status      | Approved v1.0 — pending pilot |
 
 ## Section 1 — Ideas & Scripts
 

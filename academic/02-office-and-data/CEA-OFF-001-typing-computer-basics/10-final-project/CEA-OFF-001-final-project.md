@@ -5,7 +5,7 @@
 | Institution    | Cyber Elias Academy                                           |
 | Document ID    | CEA-ACA-FP-OFF-001                                            |
 | Version        | 1.0                                                           |
-| Status         | Draft — pending pilot                                         |
+| Status         | Approved v1.0 — pending pilot                                 |
 | Course         | CEA-OFF-001 · Session 4                                       |
 | Weight         | 40% of course assessment (plus 10% show-and-tell explanation) |
 | Effective date | 2026-11-16 · Review date 2027-02-16                           |

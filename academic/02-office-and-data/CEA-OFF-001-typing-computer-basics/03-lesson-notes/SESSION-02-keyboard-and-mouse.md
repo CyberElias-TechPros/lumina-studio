@@ -5,7 +5,7 @@
 | Institution    | Cyber Elias Academy                                       |
 | Document ID    | CEA-ACA-NOTE-OFF-001-S2                                   |
 | Version        | 1.0                                                       |
-| Status         | Draft — pending pilot                                     |
+| Status         | Approved v1.0 — pending pilot                             |
 | Course         | CEA-OFF-001 Typing & Computer Basics · Week 1 · Session 2 |
 | Duration       | 105 minutes                                               |
 | Effective date | 2026-11-16 · Review date 2027-02-16                       |

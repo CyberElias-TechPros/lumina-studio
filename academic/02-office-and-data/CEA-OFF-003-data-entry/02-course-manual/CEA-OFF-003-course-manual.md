@@ -1,11 +1,11 @@
 # CEA Course Manual — CEA-OFF-003 Data Entry
 
-| Field       | Value                 |
-| ----------- | --------------------- |
-| Document ID | CEA-ACA-MAN-OFF-003   |
-| Version     | 1.0                   |
-| Status      | Draft — pending pilot |
-| Effective   | 2026-11-16            |
+| Field       | Value                         |
+| ----------- | ----------------------------- |
+| Document ID | CEA-ACA-MAN-OFF-003           |
+| Version     | 1.0                           |
+| Status      | Approved v1.0 — pending pilot |
+| Effective   | 2026-11-16                    |
 
 ## What you will walk out with
 

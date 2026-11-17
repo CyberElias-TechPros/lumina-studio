@@ -4,7 +4,7 @@
 | ----------- | ----------------------------- |
 | Document ID | CEA-ACA-NOTE-OFF-005-S6       |
 | Version     | 1.0 · Session 6 of 8 · Week 3 |
-| Status      | Draft — pending pilot         |
+| Status      | Approved v1.0 — pending pilot |
 
 ## 0–10 · Review & warm-up
 

@@ -5,7 +5,7 @@
 | Institution    | Cyber Elias Academy                    |
 | Document ID    | CEA-ACA-QA-OFF-001                     |
 | Version        | 1.0 · **Instructor use** (answer keys) |
-| Status         | Draft — pending pilot                  |
+| Status         | Approved v1.0 — pending pilot          |
 | Effective date | 2026-11-16 · Review date 2027-02-16    |
 
 All four knowledge checks: five questions, in session, self-marked, 2.5% each. Marking: full

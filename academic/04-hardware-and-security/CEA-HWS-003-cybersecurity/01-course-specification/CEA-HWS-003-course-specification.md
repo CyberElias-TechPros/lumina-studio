@@ -1,14 +1,14 @@
 # CEA Course Specification — CEA-HWS-003 Cybersecurity
 
-| Field          | Value                                     |
-| -------------- | ----------------------------------------- |
-| Institution    | Cyber Elias Academy                       |
-| Document ID    | CEA-ACA-SPEC-HWS-003 · Course CEA-HWS-003 |
-| Version        | 1.0                                       |
-| Status         | Draft — pending pilot                     |
-| Prepared by    | CEA academic development                  |
-| Reviewed by    | _(pending)_ · Approved by _(pending)_     |
-| Effective date | 2026-11-16 · Review date 2027-02-16       |
+| Field          | Value                                                                         |
+| -------------- | ----------------------------------------------------------------------------- |
+| Institution    | Cyber Elias Academy                                                           |
+| Document ID    | CEA-ACA-SPEC-HWS-003 · Course CEA-HWS-003                                     |
+| Version        | 1.0                                                                           |
+| Status         | Approved v1.0 — pending pilot                                                 |
+| Prepared by    | CEA academic development                                                      |
+| Reviewed by    | Cyber Elias (Owner), 2026-11-16 · Approved by Cyber Elias (Owner), 2026-11-16 |
+| Effective date | 2026-11-16 · Review date 2027-02-16                                           |
 
 ## 1. Identity
 

@@ -1,10 +1,10 @@
 # CEA Practical Workbook — CEA-OFF-006 Digital Productivity
 
-| Field       | Value                 |
-| ----------- | --------------------- |
-| Document ID | CEA-ACA-WB-OFF-006    |
-| Version     | 1.0                   |
-| Status      | Draft — pending pilot |
+| Field       | Value                         |
+| ----------- | ----------------------------- |
+| Document ID | CEA-ACA-WB-OFF-006            |
+| Version     | 1.0                           |
+| Status      | Approved v1.0 — pending pilot |
 
 ## Section 1 — Workspace Essentials
 

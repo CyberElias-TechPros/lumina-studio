@@ -1,10 +1,10 @@
 # CEA Instructor Guide — CEA-OFF-002 Microsoft Office
 
-| Field       | Value                    |
-| ----------- | ------------------------ |
-| Document ID | CEA-ACA-GUI-OFF-002      |
-| Version     | 1.0 · **Instructor use** |
-| Status      | Draft — pending pilot    |
+| Field       | Value                         |
+| ----------- | ----------------------------- |
+| Document ID | CEA-ACA-GUI-OFF-002           |
+| Version     | 1.0 · **Instructor use**      |
+| Status      | Approved v1.0 — pending pilot |
 
 **Do not distribute.** Answer keys in Section 9.
 

@@ -1,15 +1,15 @@
 # CEA Instructor Guide — CEA-OFF-001 Typing & Computer Basics
 
-| Field          | Value                                      |
-| -------------- | ------------------------------------------ |
-| Institution    | Cyber Elias Academy                        |
-| Document ID    | CEA-ACA-GUI-OFF-001                        |
-| Version        | 1.0                                        |
-| Status         | Draft — pending pilot · **Instructor use** |
-| Prepared by    | CEA academic development                   |
-| Reviewed by    | _(pending)_                                |
-| Approved by    | _(pending)_                                |
-| Effective date | 2026-11-16 · Review date 2027-02-16        |
+| Field          | Value                                              |
+| -------------- | -------------------------------------------------- |
+| Institution    | Cyber Elias Academy                                |
+| Document ID    | CEA-ACA-GUI-OFF-001                                |
+| Version        | 1.0                                                |
+| Status         | Approved v1.0 — pending pilot · **Instructor use** |
+| Prepared by    | CEA academic development                           |
+| Reviewed by    | Cyber Elias (Owner), 2026-11-16                    |
+| Approved by    | Cyber Elias (Owner), 2026-11-16                    |
+| Effective date | 2026-11-16 · Review date 2027-02-16                |
 
 **Do not distribute to students.** This guide contains expected answers, judgement guidance and
 safety notes. Knowledge check answers below (Section 9) are intentionally concise — use them to

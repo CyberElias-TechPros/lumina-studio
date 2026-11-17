@@ -1,10 +1,10 @@
 # CEA Instructor Guide — CEA-HWS-001 Computer Networking
 
-| Field       | Value                    |
-| ----------- | ------------------------ |
-| Document ID | CEA-ACA-GUI-HWS-001      |
-| Version     | 1.0 · **Instructor use** |
-| Status      | Draft — pending pilot    |
+| Field       | Value                         |
+| ----------- | ----------------------------- |
+| Document ID | CEA-ACA-GUI-HWS-001           |
+| Version     | 1.0 · **Instructor use**      |
+| Status      | Approved v1.0 — pending pilot |
 
 **Do not distribute.** Keys in Section 7.
 

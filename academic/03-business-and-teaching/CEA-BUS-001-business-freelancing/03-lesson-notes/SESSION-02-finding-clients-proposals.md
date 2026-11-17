@@ -4,7 +4,7 @@
 | ----------- | ----------------------------- |
 | Document ID | CEA-ACA-NOTE-BUS-001-S2       |
 | Version     | 1.0 · Session 2 of 6 · Week 1 |
-| Status      | Draft — pending pilot         |
+| Status      | Approved v1.0 — pending pilot |
 
 ## 0–10 · Review & warm-up
 

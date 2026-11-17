@@ -7,10 +7,10 @@
 | Course code    | CEA-OFF-001                                     |
 | Document ID    | CEA-ACA-SPEC-OFF-001                            |
 | Version        | 1.0                                             |
-| Status         | Draft — pending pilot                           |
+| Status         | Approved v1.0 — pending pilot                   |
 | Prepared by    | CEA academic development                        |
-| Reviewed by    | _(pending)_                                     |
-| Approved by    | _(pending)_                                     |
+| Reviewed by    | Cyber Elias (Owner), 2026-11-16                 |
+| Approved by    | Cyber Elias (Owner), 2026-11-16                 |
 | Effective date | 2026-11-16                                      |
 | Review date    | 2027-02-16                                      |
 

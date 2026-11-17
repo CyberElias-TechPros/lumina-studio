@@ -1,11 +1,11 @@
 # CEA OFF-002 Course Manual — Microsoft Office
 
-| Field       | Value                                                                  |
-| ----------- | ---------------------------------------------------------------------- |
-| Institution | Cyber Elias Academy                                                    |
-| Document ID | CEA-ACA-MAN-OFF-002                                                    |
-| Version     | 1.0                                                                    |
-| Status      | Draft — pending pilot · © Cyber Elias Academy. Enrolled students only. |
+| Field       | Value                                                                          |
+| ----------- | ------------------------------------------------------------------------------ |
+| Institution | Cyber Elias Academy                                                            |
+| Document ID | CEA-ACA-MAN-OFF-002                                                            |
+| Version     | 1.0                                                                            |
+| Status      | Approved v1.0 — pending pilot · © Cyber Elias Academy. Enrolled students only. |
 
 ## How to use this manual
 

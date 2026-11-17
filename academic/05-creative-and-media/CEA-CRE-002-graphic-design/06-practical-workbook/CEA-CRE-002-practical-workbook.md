@@ -1,10 +1,10 @@
 # CEA Practical Workbook — CEA-CRE-002 Graphic Design
 
-| Field       | Value                 |
-| ----------- | --------------------- |
-| Document ID | CEA-ACA-WB-CRE-002    |
-| Version     | 1.0                   |
-| Status      | Draft — pending pilot |
+| Field       | Value                         |
+| ----------- | ----------------------------- |
+| Document ID | CEA-ACA-WB-CRE-002            |
+| Version     | 1.0                           |
+| Status      | Approved v1.0 — pending pilot |
 
 ## Section 1–2 — Foundations
 

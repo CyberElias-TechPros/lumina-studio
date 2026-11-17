@@ -78,6 +78,12 @@ Reviewed by · Approved by · Effective date · Review date · Change history`
   `CEA-ACA-NOTE-OFF-001-S3`.
 - **Versioning:** `MAJOR.MINOR`. Drafts of a new course are `1.0 — Draft` until pilot; corrections
   after pilot bump MINOR; structural re-writes bump MAJOR.
+- **Owner approval (2026-11-16):** every package in this tree was reviewed and approved by owner
+  directive — Cyber Elias (Owner), 2026-11-16 — stamped in each document control block and in each
+  package's `version-history.md`. Statuses read **Approved v1.0 — pending pilot**: approval covers
+  the content as drafted; a first pilot cohort is still required before teaching at scale, and pilot
+  feedback will drive the 1.1 corrections. This approval is internal to the academy and is **not** an
+  accreditation, licence or external endorsement of any kind.
 - **Publication statuses** (used on the site and in the LMS):
   - **Outline** — topics and objectives only. Not a complete note.
   - **Lesson note** — full explanations, examples and practical instructions (Section 5.1 of the

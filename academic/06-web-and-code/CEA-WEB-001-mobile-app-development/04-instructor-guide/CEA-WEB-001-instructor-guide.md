@@ -1,10 +1,10 @@
 # CEA Instructor Guide — CEA-WEB-001 Mobile App Development
 
-| Field       | Value                    |
-| ----------- | ------------------------ |
-| Document ID | CEA-ACA-GUI-WEB-001      |
-| Version     | 1.0 · **Instructor use** |
-| Status      | Draft — pending pilot    |
+| Field       | Value                         |
+| ----------- | ----------------------------- |
+| Document ID | CEA-ACA-GUI-WEB-001           |
+| Version     | 1.0 · **Instructor use**      |
+| Status      | Approved v1.0 — pending pilot |
 
 **Do not distribute.** Keys in Section 7.
 

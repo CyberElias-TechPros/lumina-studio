@@ -5,7 +5,7 @@
 | Institution    | Cyber Elias Academy                 |
 | Document ID    | CEA-ACA-RUB-OFF-001                 |
 | Version        | 1.0 · **Instructor use**            |
-| Status         | Draft — pending pilot               |
+| Status         | Approved v1.0 — pending pilot       |
 | Effective date | 2026-11-16 · Review date 2027-02-16 |
 
 ## 1. Final project rubric (P1–P9)

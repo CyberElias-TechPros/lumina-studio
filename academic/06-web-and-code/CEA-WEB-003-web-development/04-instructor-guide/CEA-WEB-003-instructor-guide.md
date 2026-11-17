@@ -1,10 +1,10 @@
 # CEA Instructor Guide — CEA-WEB-003 Web Development
 
-| Field       | Value                    |
-| ----------- | ------------------------ |
-| Document ID | CEA-ACA-GUI-WEB-003      |
-| Version     | 1.0 · **Instructor use** |
-| Status      | Draft — pending pilot    |
+| Field       | Value                         |
+| ----------- | ----------------------------- |
+| Document ID | CEA-ACA-GUI-WEB-003           |
+| Version     | 1.0 · **Instructor use**      |
+| Status      | Approved v1.0 — pending pilot |
 
 **Do not distribute.** Keys in Section 7.
 

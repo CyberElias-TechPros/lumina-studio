@@ -5,7 +5,7 @@
 | Document ID | CEA-ACA-NOTE-OFF-003-S1       |
 | Version     | 1.0                           |
 | Session     | 1 of 4 · 105 minutes · Week 1 |
-| Status      | Draft — pending pilot         |
+| Status      | Approved v1.0 — pending pilot |
 
 ## 0–10 · Review & warm-up
 

@@ -1,13 +1,13 @@
 # CEA publication statuses and pre-publication checklist
 
-| Field          | Value                 |
-| -------------- | --------------------- |
-| Institution    | Cyber Elias Academy   |
-| Document ID    | CEA-ACA-QA-000        |
-| Version        | 1.0                   |
-| Status         | Draft — pending pilot |
-| Effective date | 2026-11-16            |
-| Review date    | 2027-02-16            |
+| Field          | Value                         |
+| -------------- | ----------------------------- |
+| Institution    | Cyber Elias Academy           |
+| Document ID    | CEA-ACA-QA-000                |
+| Version        | 1.0                           |
+| Status         | Approved v1.0 — pending pilot |
+| Effective date | 2026-11-16                    |
+| Review date    | 2027-02-16                    |
 
 ## Publication statuses
 

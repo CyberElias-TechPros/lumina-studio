@@ -6,9 +6,9 @@
 | Document ID | CEA-ACA-VH-OFF-001  |
 | Version     | 1.0                 |
 
-| Version | Document | Change                                                                                                                                                                                                            | Date       |
-| ------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| 1.0     | All      | Initial complete draft package (specification, manual, 4 lesson notes, instructor guide, workbook, assessments, final project, rubrics, glossary, LMS structure) — pending academic review and first pilot cohort | 2026-11-16 |
+| Version | Document | Change                                                                                                                                                                                                                                                             | Date       |
+| ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- |
+| 1.0     | All      | Initial complete draft package (specification, manual, 4 lesson notes, instructor guide, workbook, assessments, final project, rubrics, glossary, LMS structure) — approved by owner directive (Cyber Elias, 2026-11-16) — reviewed and approved as ready to pilot | 2026-11-16 |
 
 ## Review cadence
 

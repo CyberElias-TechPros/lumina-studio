@@ -5,7 +5,7 @@
 | Institution    | Cyber Elias Academy                 |
 | Document ID    | CEA-ACA-WB-OFF-001                  |
 | Version        | 1.0                                 |
-| Status         | Draft — pending pilot               |
+| Status         | Approved v1.0 — pending pilot       |
 | Effective date | 2026-11-16 · Review date 2027-02-16 |
 
 Your practice book. Do the exercises in order; your instructor signs each completion box.

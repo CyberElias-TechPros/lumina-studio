@@ -4,7 +4,7 @@
 | ----------- | ------------------------------ |
 | Document ID | CEA-ACA-NOTE-WEB-003-S1        |
 | Version     | 1.0 · Session 1 of 12 · Week 1 |
-| Status      | Draft — pending pilot          |
+| Status      | Approved v1.0 — pending pilot  |
 
 ## 0–10 · Review & warm-up
 

@@ -1,10 +1,10 @@
 # CEA Practical Workbook — CEA-OFF-002 Microsoft Office
 
-| Field       | Value                 |
-| ----------- | --------------------- |
-| Document ID | CEA-ACA-WB-OFF-002    |
-| Version     | 1.0                   |
-| Status      | Draft — pending pilot |
+| Field       | Value                         |
+| ----------- | ----------------------------- |
+| Document ID | CEA-ACA-WB-OFF-002            |
+| Version     | 1.0                           |
+| Status      | Approved v1.0 — pending pilot |
 
 Fictional data only. Instructor signs each box.
 

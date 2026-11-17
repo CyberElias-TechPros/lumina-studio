@@ -3,7 +3,7 @@
 | Field       | Value                             |
 | ----------- | --------------------------------- |
 | Document ID | CEA-ACA-MAN-WEB-001 · Version 1.0 |
-| Status      | Draft — pending pilot             |
+| Status      | Approved v1.0 — pending pilot     |
 | Effective   | 2026-11-16                        |
 
 ## What you will walk out with

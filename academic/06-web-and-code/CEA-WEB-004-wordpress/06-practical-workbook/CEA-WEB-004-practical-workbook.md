@@ -1,10 +1,10 @@
 # CEA Practical Workbook — CEA-WEB-004 WordPress
 
-| Field       | Value                 |
-| ----------- | --------------------- |
-| Document ID | CEA-ACA-WB-WEB-004    |
-| Version     | 1.0                   |
-| Status      | Draft — pending pilot |
+| Field       | Value                         |
+| ----------- | ----------------------------- |
+| Document ID | CEA-ACA-WB-WEB-004            |
+| Version     | 1.0                           |
+| Status      | Approved v1.0 — pending pilot |
 
 ## Section 1–2 — Foundation & Identity
 

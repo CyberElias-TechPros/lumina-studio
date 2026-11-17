@@ -7,10 +7,10 @@
 | Course code    | — (institution-wide)                                   |
 | Document ID    | CEA-ACA-TPL-000                                        |
 | Version        | 1.0                                                    |
-| Status         | Draft — pending first pilot cohort                     |
+| Status         | Approved v1.0 — pending pilot                          |
 | Prepared by    | CEA academic development                               |
-| Reviewed by    | _(pending academy review)_                             |
-| Approved by    | _(pending academy approval)_                           |
+| Reviewed by    | Cyber Elias (Owner), 2026-11-16                        |
+| Approved by    | Cyber Elias (Owner), 2026-11-16                        |
 | Effective date | 2026-11-16                                             |
 | Review date    | 2027-02-16 (or after first pilot, whichever is sooner) |
 
