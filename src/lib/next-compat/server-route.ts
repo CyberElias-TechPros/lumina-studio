@@ -3,6 +3,9 @@ import { blogPosts } from "@/data/blog";
 import { getDigitalProduct } from "@/data/digital-products";
 import { findSession } from "@/data/academy";
 import { resolveBlogSlugRedirect } from "@/lib/legacy-redirects";
+import { AI_LESSON_INDEX } from "@/data/ai-lessons-index.generated";
+
+const aiLessonKeys = new Set(AI_LESSON_INDEX.map((entry) => entry.key));
 
 /** Handle route guards that must run before rendering the page on the server. */
 export function checkServerRoute(pathname: string, params: Record<string, string>): void {
@@ -20,5 +23,9 @@ export function checkServerRoute(pathname: string, params: Record<string, string
 
   if (pathname.startsWith("/shop/") && params.slug && !getDigitalProduct(params.slug)) {
     notFound();
+  }
+
+  if (pathname.startsWith("/ai-engineering/") && params.phase && params.lesson) {
+    if (!aiLessonKeys.has(`${params.phase}/${params.lesson}`)) notFound();
   }
 }

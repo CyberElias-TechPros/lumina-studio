@@ -2,6 +2,7 @@ import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
 import { getPageHead } from "@/lib/seo";
 import { PageShell, PageHero } from "@/components/marketing/shell";
+import { UtilitySectionHeading } from "@/components/marketing/utility";
 import { Reveal } from "@/components/motion";
 
 export const Route = createFileRoute("/privacy")({
@@ -29,7 +30,7 @@ function PrivacyPage() {
       <section className="container-page py-16 md:py-24">
         <div className="max-w-3xl space-y-14">
           <Reveal>
-            <h2 className="font-display text-2xl font-bold">1. Who we are</h2>
+            <UtilitySectionHeading index="01">Who we are</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Cyber Elias Academy Ltd (“CEA”, “we”) is a digital-skills training centre at 24 Ebony
               Road, Off Rumuola Road, Port Harcourt, Rivers State, Nigeria (RC 8413776). Contact:{" "}
@@ -41,7 +42,7 @@ function PrivacyPage() {
           </Reveal>
 
           <Reveal delay={0.05}>
-            <h2 className="font-display text-2xl font-bold">2. Information we collect</h2>
+            <UtilitySectionHeading index="02">Information we collect</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               We collect what you type into our forms, and a small amount of technical data so the
               site can run.
@@ -108,7 +109,7 @@ function PrivacyPage() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <h2 className="font-display text-2xl font-bold">3. How we use it</h2>
+            <UtilitySectionHeading index="03">How we use it</UtilitySectionHeading>
             <ul className="text-muted-foreground mt-4 list-inside list-disc space-y-2">
               <li>
                 Reply to you, confirm course dates and fees, and run the class you enrolled in
@@ -128,7 +129,7 @@ function PrivacyPage() {
           </Reveal>
 
           <Reveal delay={0.15}>
-            <h2 className="font-display text-2xl font-bold">4. Who else sees it</h2>
+            <UtilitySectionHeading index="04">Who else sees it</UtilitySectionHeading>
             <ul className="text-muted-foreground mt-4 list-inside list-disc space-y-2">
               <li>
                 Hosting and security services for this website (currently Vercel / Cloudflare)
@@ -147,7 +148,7 @@ function PrivacyPage() {
           </Reveal>
 
           <Reveal delay={0.2}>
-            <h2 className="font-display text-2xl font-bold">5. Cookies</h2>
+            <UtilitySectionHeading index="05">Cookies</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Essential cookies make the site work. The banner lets you accept or decline optional
               analytics cookies. You can also block cookies in your browser. Blocking essential
@@ -156,7 +157,7 @@ function PrivacyPage() {
           </Reveal>
 
           <Reveal delay={0.25}>
-            <h2 className="font-display text-2xl font-bold">6. Advertising</h2>
+            <UtilitySectionHeading index="06">Advertising</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               This site can show advertising from two networks: <strong>Google AdSense</strong>{" "}
               (publisher <code>ca-pub-9117572925263537</code>) and <strong>ngadverts</strong> (zone
@@ -205,7 +206,7 @@ function PrivacyPage() {
           </Reveal>
 
           <Reveal delay={0.3}>
-            <h2 className="font-display text-2xl font-bold">7. Your rights</h2>
+            <UtilitySectionHeading index="07">Your rights</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Under the Nigeria Data Protection Act 2023 you can ask to see, correct, or delete
               personal data we hold, or complain to the Nigeria Data Protection Commission. Email{" "}
@@ -217,7 +218,7 @@ function PrivacyPage() {
           </Reveal>
 
           <Reveal delay={0.35}>
-            <h2 className="font-display text-2xl font-bold">8. How long we keep it</h2>
+            <UtilitySectionHeading index="08">How long we keep it</UtilitySectionHeading>
             <ul className="text-muted-foreground mt-4 list-inside list-disc space-y-2">
               <li>Contact messages: until we have dealt with them, then up to two years</li>
               <li>
@@ -237,7 +238,7 @@ function PrivacyPage() {
           </Reveal>
 
           <Reveal delay={0.4}>
-            <h2 className="font-display text-2xl font-bold">9. Children</h2>
+            <UtilitySectionHeading index="09">Children</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Some classes include younger learners brought by a parent or guardian. Website forms
               are meant for an adult applying, or a parent applying for a child. We do not knowingly
@@ -247,14 +248,14 @@ function PrivacyPage() {
           </Reveal>
 
           <Reveal delay={0.45}>
-            <h2 className="font-display text-2xl font-bold">10. Changes</h2>
+            <UtilitySectionHeading index="10">Changes</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               If this policy changes in a material way we will update the date on this page.
             </p>
           </Reveal>
 
           <Reveal delay={0.5}>
-            <h2 className="font-display text-2xl font-bold">11. Contact</h2>
+            <UtilitySectionHeading index="11">Contact</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Cyber Elias Academy Ltd
               <br />

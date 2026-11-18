@@ -12,6 +12,11 @@ const nextConfig = {
   // The existing repo-wide lint rules include legacy formatting warnings in
   // generated curriculum data. Keep lint available as a separate command.
   eslint: { ignoreDuringBuilds: true },
+  // The /ai-engineering/[phase]/[lesson] route reads the pre-rendered lesson
+  // bundles from disk at request time (they are too heavy to compile in).
+  outputFileTracingIncludes: {
+    "/ai-engineering/[phase]/[lesson]": ["./src/content/ai-lessons-rendered/**"],
+  },
   allowedDevOrigins: ["localhost", "127.0.0.1", "*.e2b.app"],
   async redirects() {
     return [

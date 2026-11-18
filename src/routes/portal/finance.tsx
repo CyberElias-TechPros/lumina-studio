@@ -6,6 +6,9 @@ const config: PortalConfig = {
   roleKey: "finance",
   title: "Finance office",
   subtitle: "Invoices, instalments, scholarships and treasury for the finance office.",
+  spotlight: "Every naira accounted for.",
+  tagline:
+    "Invoices, instalments, scholarships and treasury — the numbers that keep the academy open.",
 };
 
 export const Route = createFileRoute("/portal/finance")({

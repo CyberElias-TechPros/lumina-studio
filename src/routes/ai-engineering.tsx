@@ -61,19 +61,17 @@ function AiEngineeringPage() {
             <span className="font-serif text-primary font-normal italic">from scratch.</span>
           </>
         }
-        description="The world's open AI curriculum — 542 lessons, 20 phases, five programming languages — is free for anyone. CEA curates the way in for our learners: starting points, a live gradient-descent lab, prompt engineering patterns, and the career routes that map to real AI work."
+        description="The world's open AI curriculum — 542 lessons, 20 phases, five programming languages — is free for anyone, and every lesson is hosted right here. CEA adds the way in: starting points, a live gradient-descent lab, prompt engineering patterns, and the career routes that map to real AI work."
         meta={["542 lessons", "20 phases", "MIT licensed", "Free forever"]}
       >
         <div className="mt-8 flex flex-wrap gap-3">
-          <a
-            href={AI_SOURCE.site}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/ai-engineering/lessons"
             className="group bg-primary text-primary-foreground inline-flex h-12 items-center gap-2 rounded-full px-6 text-sm font-semibold shadow-[var(--shadow-halo)] transition-all hover:-translate-y-0.5"
           >
-            Start learning — it's free
+            Browse all {AI_SOURCE.totalLessons} lessons — free
             <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+          </Link>
           <Button asChild variant="outline" size="lg" className="rounded-full">
             <Link to="/classes">See CEA courses first</Link>
           </Button>
@@ -201,11 +199,9 @@ function AiEngineeringPage() {
           </h2>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {aiEntryRoutes.map((route, index) => (
-              <a
+              <Link
                 key={route.id}
-                href={route.startingHref}
-                target="_blank"
-                rel="noopener noreferrer"
+                to={route.startingHref}
                 className="card-lift border-foreground/10 bg-card group flex flex-col rounded-2xl border p-6"
               >
                 <p className="text-muted-foreground/70 font-mono text-[10px] tracking-[0.24em] uppercase">
@@ -225,7 +221,7 @@ function AiEngineeringPage() {
                   <span className="text-muted-foreground">Start with: </span>
                   <span className="font-semibold">{route.startingPoint}</span>
                 </p>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -246,10 +242,8 @@ function AiEngineeringPage() {
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {aiFeaturedLessons.map((lesson) => (
               <li key={lesson.title}>
-                <a
-                  href={lesson.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to={lesson.href}
                   className="card-lift border-foreground/10 bg-card group flex h-full flex-col rounded-2xl border p-5"
                 >
                   <div className="flex items-center justify-between gap-3">
@@ -271,10 +265,31 @@ function AiEngineeringPage() {
                       {lesson.tag}
                     </span>
                   </div>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* ── The mirror: every lesson is hosted here ─────────────────────── */}
+      <section className="border-border border-t" aria-labelledby="ai-mirror">
+        <div className="container-page flex flex-col gap-4 py-8 md:flex-row md:items-center md:justify-between md:gap-10">
+          <p id="ai-mirror" className="leading-relaxed">
+            <span className="font-mono text-[10px] tracking-[0.22em] text-primary uppercase">
+              Hosted here
+            </span>
+            <span className="mt-1 block font-semibold text-balance">
+              All 542 lessons — text, code and quizzes — are on this site now. No external tab, no
+              sign-up, no paywall.
+            </span>
+          </p>
+          <Button asChild className="rounded-full shrink-0">
+            <Link to="/ai-engineering/lessons">
+              Open the lesson library
+              <ArrowUpRight className="size-4" aria-hidden="true" />
+            </Link>
+          </Button>
         </div>
       </section>
 
@@ -293,10 +308,8 @@ function AiEngineeringPage() {
           <ol className="border-foreground/10 mt-10 divide-y divide-foreground/8 overflow-hidden rounded-2xl border">
             {aiPhases.map((phase) => (
               <li key={phase.id}>
-                <a
-                  href={phase.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to="/ai-engineering/lessons"
                   className="hover:bg-foreground/[0.03] group flex flex-col gap-1.5 px-5 py-4 transition-colors sm:flex-row sm:items-baseline sm:gap-6 sm:px-6"
                 >
                   <span className="text-muted-foreground/70 w-14 shrink-0 font-mono text-[10px] tracking-[0.2em] tabular-nums">
@@ -310,7 +323,7 @@ function AiEngineeringPage() {
                     {phase.lessons} lessons
                     <ArrowUpRight className="ml-2 inline size-3.5 opacity-0 transition-opacity group-hover:opacity-100" />
                   </span>
-                </a>
+                </Link>
               </li>
             ))}
           </ol>
@@ -452,10 +465,10 @@ function AiEngineeringPage() {
               >
                 MIT License
               </a>{" "}
-              — Copyright (c) 2026 Rohit Ghumare. CEA reproduces the curriculum map, lesson times
-              and career routes with attribution, and adapts concepts for teaching. The gradient
-              descent lab on this page is our own implementation inspired by the source. Corrections
-              and improvements to the source are welcome at{" "}
+              — Copyright (c) 2026 Rohit Ghumare. Every lesson is reproduced here in full — text,
+              code, exercises and quizzes — with attribution and canonical links to the source. The
+              gradient descent lab on this page is our own implementation inspired by it.
+              Corrections and improvements to the source are welcome at{" "}
               <a
                 href={AI_SOURCE.repo}
                 target="_blank"
@@ -468,7 +481,11 @@ function AiEngineeringPage() {
               <a href="mailto:help@cea.ng" className="text-primary font-semibold hover:underline">
                 help@cea.ng
               </a>
-              .
+              . This is one of{" "}
+              <Link to="/open-curriculum" className="text-primary font-semibold hover:underline">
+                57 licence-verified open courses
+              </Link>{" "}
+              in the CEA open curriculum — every source, licence and delivery plan in the open.
             </p>
           </div>
         </div>

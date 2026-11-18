@@ -6,6 +6,7 @@ import { CheckCircle2, Mail, MessageCircle, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
 import { Reveal } from "@/components/motion";
+import { UtilitySectionHeading } from "@/components/marketing/utility";
 import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/refunds")({
@@ -67,7 +68,7 @@ function RefundsPage() {
         <div className="container-page py-16 md:py-20">
           <div className="mx-auto max-w-3xl space-y-8 text-sm leading-relaxed">
             <div>
-              <h2 className="font-display text-2xl font-semibold tracking-tight">Eligibility</h2>
+              <UtilitySectionHeading index="01">Eligibility</UtilitySectionHeading>
               <p className="text-muted-foreground mt-3">
                 You can request a refund within 14 days of the purchase date for any digital product
                 in the shop. You do not need to give a reason. If the file is defective or does not
@@ -77,7 +78,7 @@ function RefundsPage() {
             </div>
 
             <div>
-              <h2 className="font-display text-2xl font-semibold tracking-tight">How to ask</h2>
+              <UtilitySectionHeading index="02">How to ask</UtilitySectionHeading>
               <p className="text-muted-foreground mt-3">
                 Reply to the order confirmation email or write to{" "}
                 <a href="mailto:help@cea.ng" className="text-primary underline">
@@ -90,9 +91,7 @@ function RefundsPage() {
             </div>
 
             <div>
-              <h2 className="font-display text-2xl font-semibold tracking-tight">
-                What is refunded
-              </h2>
+              <UtilitySectionHeading index="03">What is refunded</UtilitySectionHeading>
               <p className="text-muted-foreground mt-3">
                 The full purchase price in naira. Paystack charges are not refunded to us, so you
                 receive the full amount you paid. There is no restocking fee because nothing
@@ -101,9 +100,7 @@ function RefundsPage() {
             </div>
 
             <div>
-              <h2 className="font-display text-2xl font-semibold tracking-tight">
-                Delivery method
-              </h2>
+              <UtilitySectionHeading index="04">Delivery method</UtilitySectionHeading>
               <p className="text-muted-foreground mt-3">
                 Refunds are issued to the original payment method — the same card, bank account or
                 USSD channel used at checkout. We do not refund to a different account for
@@ -112,9 +109,7 @@ function RefundsPage() {
             </div>
 
             <div>
-              <h2 className="font-display text-2xl font-semibold tracking-tight">
-                After the 14-day window
-              </h2>
+              <UtilitySectionHeading index="05">After the 14-day window</UtilitySectionHeading>
               <p className="text-muted-foreground mt-3">
                 If more than 14 days have passed, we still want to hear from you. We will review
                 defective files and obvious errors case-by-case. The 14-day rule is a floor, not a

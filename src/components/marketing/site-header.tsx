@@ -23,6 +23,7 @@ const nav = [
 /** Secondary links, grouped under "More" on desktop and listed after the primary links on mobile. */
 const moreNav = [
   { label: "AI Engineering", to: "/ai-engineering" },
+  { label: "Open curriculum", to: "/open-curriculum" },
   { label: "Free tools", to: "/tools" },
   { label: "Shop", to: "/shop" },
   { label: "Schools & partners", to: "/schools" },
@@ -226,7 +227,7 @@ export function SiteHeader() {
             </Link>
             <button
               type="button"
-              className="border-foreground/12 bg-foreground/[0.04] hover:bg-foreground/[0.09] grid size-9 cursor-pointer place-items-center rounded-full border transition-colors lg:hidden"
+              className="border-foreground/12 bg-foreground/[0.04] hover:bg-foreground/[0.09] relative z-[70] grid size-9 cursor-pointer place-items-center rounded-full border transition-colors lg:hidden"
               aria-label={open ? "Close menu" : "Menu"}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}

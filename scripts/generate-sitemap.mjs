@@ -11,6 +11,8 @@ const SITE_URL = "https://www.cea.ng";
 const staticRoutes = [
   "/",
   "/ai-engineering",
+  "/ai-engineering/lessons",
+  "/open-curriculum",
   "/about",
   "/accessibility",
   "/admissions",
@@ -149,8 +151,22 @@ if (publishedSessionUrlCount !== publishedLectureKeys.size) {
   );
 }
 
+// The 542-lesson AI Engineering from Scratch mirror. Keys come from the
+// generated index (scripts/generate-ai-lessons.mjs runs before this in prebuild).
+const aiLessonUrls = (() => {
+  try {
+    const indexModule = readFileSync(join(root, "src/data/ai-lessons-index.generated.ts"), "utf8");
+    return [...indexModule.matchAll(/\{"key":"([^"]+)"/g)].map((match) => ({
+      loc: `${SITE_URL}/ai-engineering/${match[1]}`,
+    }));
+  } catch {
+    return [];
+  }
+})();
+
 const urls = [
   ...staticRoutes.map((path) => ({ loc: `${SITE_URL}${path}` })),
+  ...aiLessonUrls,
   ...shopProductPaths.map((path) => ({ loc: `${SITE_URL}${path}` })),
   ...blogSlugs.map((slug) => ({ loc: `${SITE_URL}/blog/${slug}` })),
   ...classUrls
@@ -176,5 +192,5 @@ ${urls.map((url) => `  <url>\n    <loc>${url.loc}</loc>\n  </url>`).join("\n")}
 
 writeFileSync(join(root, "public", "sitemap.xml"), xml);
 console.log(
-  `sitemap.xml written: ${urls.length} URLs (${staticRoutes.length} static, ${blogSlugs.length} notes, ${classUrls.filter((url) => url.type === "course").length} courses, ${classUrls.filter((url) => url.type === "session").length} full class lectures; ${totalSessionCount - classUrls.filter((url) => url.type === "session").length} outline-only sessions excluded)`,
+  `sitemap.xml written: ${urls.length} URLs (${aiLessonUrls.length} AI lessons, ${staticRoutes.length} static, ${blogSlugs.length} notes, ${classUrls.filter((url) => url.type === "course").length} courses, ${classUrls.filter((url) => url.type === "session").length} full class lectures; ${totalSessionCount - classUrls.filter((url) => url.type === "session").length} outline-only sessions excluded)`,
 );
