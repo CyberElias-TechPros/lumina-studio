@@ -5,6 +5,7 @@ import AppProviders from "./providers";
 import { PublicAnalytics } from "@/components/public-analytics";
 import { LOCAL_BUSINESS_LD, ORGANIZATION_LD, WEBSITE_LD } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site-url";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const THEME_SCRIPT = `(function(){try{
   var workspace = /^\\/(app|portal|auth)(\\/|$)/.test(location.pathname);
@@ -94,6 +95,7 @@ main [style*="translateY"],main [style*="translateX"]{transform:none !important}
         <StructuredData data={[ORGANIZATION_LD, LOCAL_BUSINESS_LD, WEBSITE_LD]} />
         <AppProviders>{children}</AppProviders>
         <PublicAnalytics />
+        <SpeedInsights />
       </body>
     </html>
   );
