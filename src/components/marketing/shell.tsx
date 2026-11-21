@@ -182,15 +182,15 @@ export function CTASection({
   secondary?: { label: string; to: string };
 }) {
   return (
-    <section className="border-t border-white/10 bg-[#0b172a] text-white">
+    <section className="border-t border-[#2c333c] bg-[#161a1f] text-[#f4f1e9]">
       <div className="container-page relative py-16 text-center md:py-20">
-        <p className="text-xs font-semibold tracking-[0.18em] text-[#93c0ff] uppercase">
+        <p className="font-mono text-xs font-semibold tracking-[0.18em] text-[#d6fe52] uppercase">
           Next step
         </p>
-        <h2 className="font-display mx-auto mt-4 max-w-3xl text-3xl leading-[1.04] font-semibold tracking-[-0.035em] text-balance text-white sm:text-5xl">
+        <h2 className="font-display mx-auto mt-4 max-w-3xl text-3xl leading-[1.04] font-semibold tracking-[-0.035em] text-balance text-[#f4f1e9] sm:text-5xl">
           {title}
         </h2>
-        <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-[#cddcf2] sm:text-lg">
+        <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-[#c6cdd6] sm:text-lg">
           {description}
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3.5">
@@ -199,7 +199,7 @@ export function CTASection({
               href={primary.to}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex min-h-[48px] items-center gap-2 rounded-full bg-[#245ce0] px-7 text-sm font-semibold text-white transition-colors hover:bg-[#1b4cc2]"
+              className="group inline-flex min-h-[48px] items-center gap-2 rounded-full bg-[#d6fe52] px-7 text-sm font-bold text-[#101214] transition-opacity hover:opacity-90"
             >
               {primary.label}
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -207,7 +207,7 @@ export function CTASection({
           ) : (
             <Link
               to={primary.to}
-              className="group inline-flex min-h-[48px] items-center gap-2 rounded-full bg-[#245ce0] px-7 text-sm font-semibold text-white transition-colors hover:bg-[#1b4cc2]"
+              className="group inline-flex min-h-[48px] items-center gap-2 rounded-full bg-[#d6fe52] px-7 text-sm font-bold text-[#101214] transition-opacity hover:opacity-90"
             >
               {primary.label}
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -218,7 +218,7 @@ export function CTASection({
               href={secondary.to}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex min-h-[48px] items-center gap-2 rounded-full border border-white/25 px-7 text-sm font-semibold text-white transition-colors hover:border-white/50 hover:bg-white/10"
+              className="group inline-flex min-h-[48px] items-center gap-2 rounded-full border border-[#3a424d] px-7 text-sm font-semibold text-[#f4f1e9] transition-colors hover:border-[#f4f1e9]/50 hover:bg-white/5"
             >
               {secondary.label}
               <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -226,14 +226,14 @@ export function CTASection({
           ) : (
             <Link
               to={secondary.to}
-              className="group inline-flex min-h-[48px] items-center gap-2 rounded-full border border-white/25 px-7 text-sm font-semibold text-white transition-colors hover:border-white/50 hover:bg-white/10"
+              className="group inline-flex min-h-[48px] items-center gap-2 rounded-full border border-[#3a424d] px-7 text-sm font-semibold text-[#f4f1e9] transition-colors hover:border-[#f4f1e9]/50 hover:bg-white/5"
             >
               {secondary.label}
               <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
           )}
         </div>
-        <p className="mt-8 text-xs font-medium tracking-[0.14em] text-[#b4cae8] uppercase">
+        <p className="mt-8 font-mono text-xs font-medium tracking-[0.14em] text-[#9ea7b4] uppercase">
           Admissions open · Two sessions a week · 24 Ebony Road, Port Harcourt
         </p>
       </div>

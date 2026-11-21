@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
 import { ArrowRight, ArrowUpRight, Check, Clock, GraduationCap, Wallet } from "lucide-react";
@@ -430,70 +433,209 @@ function HubFaqs() {
 }
 
 function Classes() {
+  const [mode, setMode] = useState<"discover" | "compare">("discover");
+
   return (
     <PageShell>
       <section
         id="cea-courses-hero"
-        className="cea-courses-hero relative overflow-hidden text-white"
+        className="cea-frontier-grid relative overflow-hidden border-b border-[#2c333c] bg-[#101214] text-[#f4f1e9]"
       >
         <HeroMotion scope="#cea-courses-hero" />
         <div className="container-page grid gap-12 py-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-16 lg:py-24">
           <div>
-            <p data-hero-copy className="cea-hero-kicker">
-              <span className="cea-live-dot" /> THE ACADEMY / LEARNING PATHS
+            <p
+              data-hero-copy
+              className="inline-flex items-center gap-2 font-mono text-xs font-semibold tracking-[0.16em] text-[#d6fe52] uppercase"
+            >
+              <span className="size-1.5 rounded-full bg-[#d6fe52]" aria-hidden="true" />
+              CEA Catalogue · Discover &amp; Compare
             </p>
             <h1
               data-hero-copy
-              className="font-display mt-7 max-w-4xl text-[clamp(3rem,5vw,5.5rem)] leading-[1] font-semibold tracking-[-0.055em]"
+              className="font-display mt-6 max-w-4xl text-[clamp(2.6rem,5vw,4.75rem)] leading-[0.98] font-semibold tracking-[-0.045em]"
             >
               Find a practical course for the{" "}
-              <span className="font-serif font-normal italic text-[#a9caff]">
+              <span className="font-serif font-normal text-[#d6fe52] italic">
                 work you want to do.
               </span>
             </h1>
             <p
               data-hero-copy
-              className="mt-7 max-w-2xl text-base leading-relaxed text-[#c5d0df] sm:text-lg"
+              className="mt-6 max-w-2xl text-base leading-relaxed text-[#c6cdd6] sm:text-lg"
             >
-              Start where you are. Compare fees, requirements and projects before you apply, and
-              read the class notes for free.
+              Switch between visual discovery and side-by-side comparison. Inspect fees, weeks,
+              requirements, and finished projects before you apply.
             </p>
-            <div data-hero-copy className="mt-9 flex flex-wrap gap-3">
-              <a href="#browse-areas" className="cea-hero-button cea-hero-button-primary">
-                Explore courses <ArrowRight className="size-4" />
-              </a>
-              <Link to="/contact" className="cea-hero-button cea-hero-button-secondary">
-                Ask a question <ArrowRight className="size-4" />
+            <div data-hero-copy className="mt-8 flex flex-wrap items-center gap-3">
+              <div
+                role="tablist"
+                aria-label="Course browser mode"
+                className="inline-flex rounded-full border border-[#3a424d] bg-[#181c20] p-1"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={mode === "discover"}
+                  onClick={() => setMode("discover")}
+                  className={cn(
+                    "min-h-[40px] rounded-full px-5 text-xs font-bold tracking-wider uppercase transition-colors",
+                    mode === "discover"
+                      ? "bg-[#d6fe52] text-[#101214]"
+                      : "text-[#c6cdd6] hover:text-white",
+                  )}
+                >
+                  Discover mode
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={mode === "compare"}
+                  onClick={() => setMode("compare")}
+                  className={cn(
+                    "min-h-[40px] rounded-full px-5 text-xs font-bold tracking-wider uppercase transition-colors",
+                    mode === "compare"
+                      ? "bg-[#d6fe52] text-[#101214]"
+                      : "text-[#c6cdd6] hover:text-white",
+                  )}
+                >
+                  Compare table
+                </button>
+              </div>
+              <Link
+                to="/contact"
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[#3a424d] px-5 text-xs font-semibold text-[#f4f1e9] hover:border-[#f4f1e9]/50"
+              >
+                Ask admissions <ArrowRight className="size-3.5" />
               </Link>
             </div>
           </div>
           <div
             data-hero-art
-            className="cea-courses-feature rounded-3xl border border-white/15 p-7 sm:p-9"
+            className="rounded-3xl border border-[#2c333c] bg-[#181c20] p-7 sm:p-9"
           >
             <div className="flex items-center justify-between gap-4">
-              <span className="font-mono text-[10px] tracking-[0.18em] text-[#aac8f2] uppercase">
+              <span className="font-mono text-xs font-semibold tracking-[0.14em] text-[#d6fe52] uppercase">
                 Made for real work
               </span>
-              <span className="cea-courses-mark" aria-hidden="true">
+              <span className="font-mono text-lg text-[#d6fe52]" aria-hidden="true">
                 ↗
               </span>
             </div>
-            <p className="font-display mt-12 text-[clamp(4.5rem,8vw,7rem)] leading-none font-semibold tracking-[-0.07em]">
+            <p className="font-display mt-10 text-[clamp(4rem,7vw,6.2rem)] leading-none font-semibold tracking-[-0.06em] text-[#f4f1e9]">
               {resolvedFlyerCourses.length}
-              <span className="font-serif ml-2 text-4xl font-normal italic tracking-normal text-[#a9caff]">
+              <span className="font-serif ml-2 text-3xl font-normal text-[#d6fe52] italic">
                 paths
               </span>
             </p>
-            <p className="mt-4 max-w-sm text-lg leading-snug font-medium">
-              Core courses. A practical project in every one.
+            <p className="mt-4 max-w-sm text-lg leading-snug font-medium text-[#f4f1e9]">
+              Core courses. A printed fee receipt and a finished deliverable in every one.
             </p>
-            <p className="mt-5 max-w-sm border-t border-white/15 pt-5 text-sm leading-relaxed text-[#bdcce0]">
+            <p className="mt-5 max-w-sm border-t border-[#2c333c] pt-5 text-sm leading-relaxed text-[#b4bac4]">
               Dates and equipment arrangements are confirmed by admissions before payment.
             </p>
           </div>
         </div>
       </section>
+
+      {mode === "compare" && (
+        <section className="border-border bg-muted/30 border-b py-12 md:py-16">
+          <div className="container-page">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <p className="font-mono text-xs font-semibold tracking-wider uppercase">
+                  Compare Mode · All {resolvedCourses.length} courses
+                </p>
+                <h2 className="font-display mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">
+                  Side-by-side fees, duration and requirements
+                </h2>
+              </div>
+              <button
+                type="button"
+                onClick={() => setMode("discover")}
+                className="border-border bg-background hover:border-foreground rounded-full border px-4 py-2 text-xs font-semibold"
+              >
+                Switch back to Discover cards
+              </button>
+            </div>
+            <div className="border-border bg-card mt-7 overflow-x-auto rounded-2xl border">
+              <table className="w-full min-w-[44rem] border-collapse text-left text-sm">
+                <thead className="border-border bg-muted/50 border-b">
+                  <tr>
+                    <th className="px-4 py-3.5 font-mono text-xs font-semibold uppercase">
+                      Course
+                    </th>
+                    <th className="px-4 py-3.5 font-mono text-xs font-semibold uppercase">
+                      Territory
+                    </th>
+                    <th className="px-4 py-3.5 font-mono text-xs font-semibold uppercase">
+                      Duration
+                    </th>
+                    <th className="px-4 py-3.5 font-mono text-xs font-semibold uppercase">Level</th>
+                    <th className="px-4 py-3.5 font-mono text-xs font-semibold uppercase">Fee</th>
+                    <th className="px-4 py-3.5 font-mono text-xs font-semibold uppercase">
+                      Requirements
+                    </th>
+                    <th className="px-4 py-3.5 text-right font-mono text-xs font-semibold uppercase">
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-border divide-y">
+                  {resolvedCourses.map((c) => {
+                    const family = courseFamilyTheme(c.category, c.slug);
+                    return (
+                      <tr key={c.slug} className="hover:bg-muted/25">
+                        <td className="px-4 py-3.5 font-semibold">
+                          <Link
+                            to="/classes/$courseSlug"
+                            params={{ courseSlug: c.slug }}
+                            className="hover:underline"
+                          >
+                            {c.title}
+                          </Link>
+                          <span className="text-muted-foreground block text-xs font-normal">
+                            {c.deliverable.title}
+                          </span>
+                        </td>
+                        <td className="px-4 py-3.5">
+                          <span
+                            className={cn(
+                              "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold",
+                              family.pill,
+                            )}
+                          >
+                            {family.label}
+                          </span>
+                        </td>
+                        <td className="px-4 py-3.5 font-mono text-xs tabular-nums">
+                          {c.weeks} weeks · {c.sessions.length} sessions
+                        </td>
+                        <td className="px-4 py-3.5 text-xs">{c.level}</td>
+                        <td className="px-4 py-3.5 font-mono text-sm font-bold tabular-nums">
+                          {formatFee(c.fee)}
+                        </td>
+                        <td className="text-muted-foreground px-4 py-3.5 text-xs">
+                          {c.requirements.join(" · ")}
+                        </td>
+                        <td className="px-4 py-3.5 text-right">
+                          <Link
+                            to="/classes/$courseSlug"
+                            params={{ courseSlug: c.slug }}
+                            className="inline-flex rounded-full bg-[#101214] px-3.5 py-1.5 text-xs font-semibold text-[#f4f1e9] hover:opacity-90"
+                          >
+                            View
+                          </Link>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      )}
 
       <CourseFinder id="course-finder" />
 

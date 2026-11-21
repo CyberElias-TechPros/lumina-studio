@@ -139,16 +139,16 @@ function Blog() {
 
           <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
             <div className="max-w-3xl">
-              <p className="text-primary text-xs font-semibold tracking-[0.12em] uppercase">
-                Free learning / Notes
+              <p className="font-mono text-xs font-semibold tracking-[0.14em] uppercase">
+                CEA Knowledge Library · 210 Free Lessons
               </p>
               <h1 className="font-display mt-4 text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
-                Computer skills, one lesson at a time
+                A better place to begin.
               </h1>
               <p className="text-muted-foreground mt-5 text-base leading-relaxed text-pretty sm:text-[17px]">
-                {blogPosts.length} practical lessons in {noteChapters.length} chapters, written by
-                Ellis Dennis Graham at Cyber Elias Academy in Port Harcourt. Search for the task you
-                need today, or start at the beginning and work through in order.
+                {blogPosts.length} practical explanations, guides and step-by-step lessons in{" "}
+                {noteChapters.length} chapters, written by Ellis Dennis Graham at Cyber Elias
+                Academy. Search a task, skill or question, or start at Lesson 1.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">

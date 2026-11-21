@@ -16,7 +16,7 @@ import {
   Sparkles,
   Table,
 } from "lucide-react";
-import { PageHero, PageShell, CTASection, Eyebrow } from "@/components/marketing/shell";
+import { CTASection, PageShell } from "@/components/marketing/shell";
 import { CEA_BUILT_IN_LABS, type BuiltInLabEntry } from "@/data/cea-lab-registry";
 import { toolTrackTheme } from "@/lib/course-families";
 import { cn } from "@/lib/utils";
@@ -25,14 +25,14 @@ import { getPageHead } from "@/lib/seo";
 export const Route = createFileRoute("/tools/")({
   head: () =>
     getPageHead({
-      title: "CEA Lab & Free Student Tools — Code Studio, SQL, Excel & More",
+      title: "CEA Practice Lab — Code Studio, SQL, Excel & Interactive Tools",
       description:
-        "Free browser-based labs from Cyber Elias Academy, Port Harcourt: HTML/CSS/JS Code Studio, Flexbox & Grid Lab, SQL & CSV DataLab, Excel Formula Lab, Skill Assessment Studio, Typing Test, Word Counter, Password Strength and Colour Contrast.",
+        "Practise real digital skills in your browser: HTML/CSS/JS Code Studio, Flexbox & Grid Lab, SQL & CSV DataLab, Excel Formula Lab, Skill Assessment Studio, Typing Test and more — zero sign-up.",
       path: "/tools",
       structuredData: {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
-        name: "CEA Lab and free tools from Cyber Elias Academy",
+        name: "CEA Practice Lab and free tools from Cyber Elias Academy",
       },
     }),
   component: ToolsPage,
@@ -87,150 +87,173 @@ const TRACK_LABELS: { id: BuiltInLabEntry["track"]; title: string; subtitle: str
   },
 ];
 
+const LAB_LOOP = [
+  ["01", "Learn", "Understand the concept before practising."],
+  ["02", "Try", "Explore the live sandbox freely with zero setup."],
+  ["03", "Practice", "Complete structured real-world exercises."],
+  ["04", "Challenge", "Test your speed or accuracy against a task."],
+  ["05", "Progress", "Carry your capability into class projects."],
+] as const;
+
 function ToolsPage() {
   return (
     <PageShell>
-      <PageHero
-        eyebrow="CEA Lab · Free tools · No sign-up"
-        title={
-          <>
-            Sharp labs for{" "}
-            <span className="font-serif text-primary font-normal italic">practical skills.</span>
-          </>
-        }
-        description="Ten interactive browser tools and coding labs built for Nigerian learners: practise HTML/CSS/JS, Flexbox & Grid, SQL queries, Excel formulas, typing speed, design contrast and skill diagnostics — zero sign-up, zero tracking, 100% client-side."
-        meta={[
-          `${CEA_BUILT_IN_LABS.length} interactive labs`,
-          "100% client-side",
-          "Free for everyone",
-        ]}
-      >
-        <div className="mt-7 flex flex-wrap gap-2">
-          {QUICK_JUMP.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              className="border-foreground/12 bg-background/80 hover:border-primary/40 hover:text-primary rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors"
-            >
-              {item.label}
-            </Link>
-          ))}
+      {/* Obsidian Digital Frontier Practice Lab Header */}
+      <section className="cea-frontier-grid border-b border-[#2c333c] bg-[#101214] text-[#f4f1e9]">
+        <div className="container-page py-14 md:py-20">
+          <p className="inline-flex items-center gap-2 font-mono text-xs font-semibold tracking-[0.16em] text-[#d6fe52] uppercase">
+            <span className="size-1.5 rounded-full bg-[#d6fe52]" aria-hidden="true" />
+            CEA LAB / EXPERIMENT 001 · 100% CLIENT-SIDE
+          </p>
+          <h1 className="font-display mt-5 max-w-4xl text-[clamp(2.6rem,5.4vw,4.5rem)] leading-[0.98] font-semibold tracking-[-0.045em]">
+            Learn by <span className="font-serif font-normal text-[#d6fe52] italic">doing.</span>
+          </h1>
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#c6cdd6] sm:text-lg">
+            Practice real digital skills through interactive coding, SQL, spreadsheet, typing, and
+            design environments directly inside your browser — zero sign-up, zero ads, zero
+            tracking.
+          </p>
+
+          <div className="mt-7 flex flex-wrap gap-2">
+            {QUICK_JUMP.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className="rounded-full border border-[#2c333c] bg-[#181c20] px-3.5 py-1.5 text-xs font-medium text-[#f4f1e9] transition-colors hover:border-[#d6fe52] hover:text-[#d6fe52]"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* 5-stage Practice Lab method */}
+          <ol className="mt-10 grid gap-3 border-t border-[#242a31] pt-8 sm:grid-cols-5">
+            {LAB_LOOP.map(([num, label, desc]) => (
+              <li key={label} className="rounded-2xl border border-[#242a31] bg-[#181c20] p-4">
+                <span className="font-mono text-xs font-bold text-[#d6fe52]">{num}</span>
+                <p className="font-display mt-1.5 text-base font-semibold text-[#f4f1e9]">
+                  {label}
+                </p>
+                <p className="mt-1 text-xs leading-relaxed text-[#9ea7b4]">{desc}</p>
+              </li>
+            ))}
+          </ol>
         </div>
-      </PageHero>
+      </section>
 
-      <section className="container-page space-y-14 py-14 md:py-20">
-        {TRACK_LABELS.map((group) => {
-          const items = CEA_BUILT_IN_LABS.filter((t) => t.track === group.id);
-          return (
-            <div key={group.id}>
-              <div className="mb-6 flex flex-col gap-1">
-                <Eyebrow>{group.title}</Eyebrow>
-                <p className="text-muted-foreground text-sm">{group.subtitle}</p>
-              </div>
-              <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {items.map((tool) => {
-                  const Icon = ICON_BY_PATH[tool.to] ?? Code2;
-                  const trackTheme = toolTrackTheme(tool.track);
-                  return (
-                    <li key={tool.to}>
-                      <Link
-                        to={tool.to}
-                        className={cn(
-                          "card-lift border-border bg-card group flex h-full flex-col rounded-2xl border p-6 shadow-sm transition-all hover:border-primary/40",
-                          trackTheme.accentBar,
-                        )}
-                      >
-                        <div className="flex items-start justify-between gap-4">
-                          <span className="grid size-12 place-items-center rounded-2xl bg-primary/10 text-primary">
-                            <Icon className="size-6" aria-hidden="true" />
-                          </span>
-                          <div className="flex items-center gap-2">
-                            {tool.isNew && (
-                              <span
-                                className={cn(
-                                  "rounded-full border px-2.5 py-0.5 text-xs font-semibold",
-                                  trackTheme.pill,
-                                )}
-                              >
-                                New Lab
-                              </span>
-                            )}
-                            <ArrowUpRight
-                              className="text-muted-foreground size-5 shrink-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary"
-                              aria-hidden="true"
-                            />
+      {/* Graphite Workbench Tool Grid */}
+      <section className="bg-[#181c20] py-14 text-[#f4f1e9] md:py-20">
+        <div className="container-page space-y-14">
+          {TRACK_LABELS.map((group) => {
+            const items = CEA_BUILT_IN_LABS.filter((t) => t.track === group.id);
+            return (
+              <div key={group.id}>
+                <div className="mb-6 flex flex-col gap-1 border-b border-[#2c333c] pb-4">
+                  <p className="font-mono text-xs font-semibold tracking-[0.14em] text-[#d6fe52] uppercase">
+                    {group.title}
+                  </p>
+                  <p className="text-sm text-[#b4bac4]">{group.subtitle}</p>
+                </div>
+                <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                  {items.map((tool) => {
+                    const Icon = ICON_BY_PATH[tool.to] ?? Code2;
+                    const trackTheme = toolTrackTheme(tool.track);
+                    return (
+                      <li key={tool.to}>
+                        <Link
+                          to={tool.to}
+                          className={cn(
+                            "group flex h-full flex-col rounded-2xl border border-[#2c333c] bg-[#101214] p-6 transition-all hover:border-[#d6fe52]/70",
+                            trackTheme.accentBar,
+                          )}
+                        >
+                          <div className="flex items-start justify-between gap-4">
+                            <span className="grid size-12 place-items-center rounded-2xl bg-[#242a31] text-[#d6fe52]">
+                              <Icon className="size-6" aria-hidden="true" />
+                            </span>
+                            <div className="flex items-center gap-2">
+                              {tool.isNew && (
+                                <span className="rounded-full bg-[#d6fe52] px-2.5 py-0.5 font-mono text-xs font-bold text-[#101214]">
+                                  New Lab
+                                </span>
+                              )}
+                              <ArrowUpRight
+                                className="size-5 shrink-0 text-[#9ea7b4] transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#d6fe52]"
+                                aria-hidden="true"
+                              />
+                            </div>
                           </div>
-                        </div>
-                        <p className="text-primary mt-5 font-mono text-xs font-semibold tracking-wider uppercase">
-                          {tool.badge}
-                        </p>
-                        <h2 className="font-display mt-2 text-2xl leading-snug font-semibold tracking-tight">
-                          {tool.headline}
-                        </h2>
-                        <p className="text-muted-foreground mt-3 flex-1 text-sm leading-relaxed">
-                          {tool.blurb}
-                        </p>
-                        <p className="border-border text-muted-foreground mt-5 border-t pt-4 font-mono text-xs">
-                          {tool.meta}
-                        </p>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          );
-        })}
+                          <p className="mt-5 font-mono text-xs font-semibold tracking-wider text-[#7774ff] uppercase">
+                            {tool.badge}
+                          </p>
+                          <h2 className="font-display mt-2 text-2xl leading-snug font-semibold tracking-tight text-[#f4f1e9] group-hover:text-[#d6fe52]">
+                            {tool.headline}
+                          </h2>
+                          <p className="mt-3 flex-1 text-sm leading-relaxed text-[#b4bac4]">
+                            {tool.blurb}
+                          </p>
+                          <p className="mt-5 border-t border-[#242a31] pt-4 font-mono text-xs text-[#9ea7b4]">
+                            {tool.meta}
+                          </p>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            );
+          })}
 
-        {/* Beginner lab + AI Engineering cross-links */}
-        <div className="grid gap-5 lg:grid-cols-2">
-          <Link
-            to="/practice/computer-basics"
-            className="card-lift border-foreground/12 bg-card flex items-center justify-between gap-4 rounded-2xl border p-6"
-          >
-            <div className="flex items-start gap-4">
-              <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary">
-                <Monitor className="size-6" aria-hidden="true" />
-              </span>
-              <span>
-                <span className="text-primary font-mono text-xs font-semibold tracking-wider uppercase">
-                  Absolute Beginners
+          {/* Beginner lab + AI Engineering cross-links */}
+          <div className="grid gap-5 lg:grid-cols-2">
+            <Link
+              to="/practice/computer-basics"
+              className="flex items-center justify-between gap-4 rounded-2xl border border-[#2c333c] bg-[#101214] p-6 transition-colors hover:border-[#f17c52]"
+            >
+              <div className="flex items-start gap-4">
+                <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-[#242a31] text-[#f17c52]">
+                  <Monitor className="size-6" aria-hidden="true" />
                 </span>
-                <span className="font-display mt-1 block text-xl font-semibold tracking-tight">
-                  Computer Basics Practice Lab
+                <span>
+                  <span className="font-mono text-xs font-semibold tracking-wider text-[#f17c52] uppercase">
+                    Absolute Beginners
+                  </span>
+                  <span className="font-display mt-1 block text-xl font-semibold tracking-tight text-[#f4f1e9]">
+                    Computer Basics Practice Lab
+                  </span>
+                  <span className="mt-1 block text-sm text-[#b4bac4]">
+                    Inspect the Four Things blueprint and practise pointing, typing and naming files
+                    safely in your browser.
+                  </span>
                 </span>
-                <span className="text-muted-foreground mt-1 block text-sm">
-                  Pointing, typing and naming files safely in your browser before stepping into
-                  class.
-                </span>
-              </span>
-            </div>
-            <ArrowRight className="text-primary size-5 shrink-0" aria-hidden="true" />
-          </Link>
+              </div>
+              <ArrowRight className="size-5 shrink-0 text-[#f17c52]" aria-hidden="true" />
+            </Link>
 
-          <Link
-            to="/ai-engineering"
-            className="card-lift flex items-center justify-between gap-4 rounded-2xl border border-[#2f6bff]/30 bg-[#0b172a] p-6 text-[#eef2fb]"
-          >
-            <div className="flex items-start gap-4">
-              <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-[#2f6bff]/20 text-[#93c0ff]">
-                <Sparkles className="size-6" aria-hidden="true" />
-              </span>
-              <span>
-                <span className="font-mono text-xs font-semibold tracking-wider text-[#93c0ff] uppercase">
-                  Graduate from tools to AI
+            <Link
+              to="/ai-engineering"
+              className="flex items-center justify-between gap-4 rounded-2xl border border-[#7774ff]/45 bg-[#101214] p-6 transition-colors hover:border-[#7774ff]"
+            >
+              <div className="flex items-start gap-4">
+                <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-[#7774ff]/20 text-[#b7b5ff]">
+                  <Sparkles className="size-6" aria-hidden="true" />
                 </span>
-                <span className="font-display mt-1 block text-xl font-semibold tracking-tight text-white">
-                  AI Engineering from Scratch — 542 lessons
+                <span>
+                  <span className="font-mono text-xs font-semibold tracking-wider text-[#b7b5ff] uppercase">
+                    Graduate from tools to AI
+                  </span>
+                  <span className="font-display mt-1 block text-xl font-semibold tracking-tight text-[#f4f1e9]">
+                    AI Engineering from Scratch — 542 lessons
+                  </span>
+                  <span className="mt-1 block text-sm text-[#b4bac4]">
+                    MIT-licensed open curriculum curated for CEA learners — with an interactive
+                    Prompt Lab and structured quizzes.
+                  </span>
                 </span>
-                <span className="mt-1 block text-sm text-[#a9bcd6]">
-                  MIT-licensed open curriculum curated for CEA learners — with an interactive Prompt
-                  Lab and structured quizzes.
-                </span>
-              </span>
-            </div>
-            <ArrowRight className="size-5 shrink-0 text-[#8ec4ff]" aria-hidden="true" />
-          </Link>
+              </div>
+              <ArrowRight className="size-5 shrink-0 text-[#b7b5ff]" aria-hidden="true" />
+            </Link>
+          </div>
         </div>
       </section>
 

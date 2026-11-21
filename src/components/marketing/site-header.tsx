@@ -9,14 +9,15 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { GlobalSearchTrigger } from "@/components/marketing/global-search";
 import { cn } from "@/lib/utils";
 
 /** Primary navigation: what most visitors come for. */
 const nav = [
   { label: "Courses", to: "/classes" },
-  { label: "Free labs", to: "/tools" },
+  { label: "Practice Lab", to: "/tools" },
   { label: "Notes", to: "/blog" },
-  { label: "IT Services", to: "/services" },
+  { label: "Solutions", to: "/services" },
   { label: "Admissions", to: "/admissions" },
 ] as const;
 
@@ -25,6 +26,7 @@ const moreNav = [
   { label: "About CEA", to: "/about" },
   { label: "AI Engineering", to: "/ai-engineering" },
   { label: "Open curriculum", to: "/open-curriculum" },
+  { label: "Visit campus", to: "/visit" },
   { label: "Shop", to: "/shop" },
   { label: "Schools & partners", to: "/schools" },
   { label: "Contact", to: "/contact" },
@@ -44,15 +46,14 @@ function FeaturedLink({ className, onClick }: { className?: string; onClick?: ()
       to={featured.to}
       onClick={onClick}
       className={cn(
-        "border-primary/25 bg-primary/8 text-primary hover:bg-primary/14 items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-semibold whitespace-nowrap transition-colors",
-        // display is set by the caller (desktop pill vs. mobile row)
+        "border-border bg-muted/80 text-foreground hover:border-foreground/35 items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold whitespace-nowrap transition-colors",
         className,
       )}
     >
-      <span className="bg-primary inline-flex size-1.5 rounded-full" aria-hidden="true" />
+      <span className="size-1.5 rounded-full bg-[#f17c52]" aria-hidden="true" />
       <span className="xl:hidden">iDICE</span>
       <span className="hidden xl:inline">{featured.label}</span>
-      <span className="bg-primary text-primary-foreground rounded-full px-1.5 py-px text-[11px] font-bold tracking-wider uppercase">
+      <span className="rounded-full bg-[#d6fe52] px-1.5 py-px text-[11px] font-bold tracking-wider text-[#101214] uppercase">
         {featured.tag}
       </span>
     </Link>
@@ -66,8 +67,12 @@ export function BrandMark({ className }: { className?: string }) {
       className={cn("group flex items-center gap-3", className)}
       aria-label="Cyber Elias Academy — home"
     >
-      <span className="relative grid size-9 shrink-0 place-items-center overflow-hidden rounded-xl border border-white/15 bg-[linear-gradient(145deg,#1d4ed8_0%,#0f2742_100%)] shadow-sm">
-        <span className="font-display relative text-xs font-extrabold tracking-wider text-white">
+      <span className="relative grid size-9 shrink-0 place-items-center overflow-hidden rounded-xl border border-[#2c333c] bg-[#101214] shadow-sm">
+        <span
+          aria-hidden="true"
+          className="absolute top-1 right-1 size-1.5 rounded-full bg-[#d6fe52]"
+        />
+        <span className="font-display relative text-xs font-extrabold tracking-wider text-[#f4f1e9]">
           CEA
         </span>
       </span>
@@ -75,7 +80,7 @@ export function BrandMark({ className }: { className?: string }) {
         <span className="font-display block text-[15px] font-bold tracking-tight whitespace-nowrap">
           Cyber Elias Academy
         </span>
-        <span className="text-muted-foreground block text-[11px] font-medium tracking-wider uppercase">
+        <span className="text-muted-foreground block font-mono text-[11px] font-medium tracking-wider uppercase">
           Port Harcourt · NG
         </span>
       </span>
@@ -203,17 +208,18 @@ export function SiteHeader() {
           </nav>
           <div className="flex items-center gap-2">
             <FeaturedLink className="hidden xl:inline-flex" />
+            <GlobalSearchTrigger />
             <ThemeToggle />
             <Link
               to="/auth/sign-in"
               rel="nofollow"
-              className="text-muted-foreground hover:text-foreground border-foreground/12 hover:border-foreground/25 hidden h-9 items-center rounded-full border border-transparent px-3.5 text-sm whitespace-nowrap transition-colors sm:inline-flex"
+              className="text-muted-foreground hover:text-foreground border-border hover:border-foreground/25 hidden h-9 items-center rounded-full border border-transparent px-3 text-sm whitespace-nowrap transition-colors sm:inline-flex"
             >
               Portal
             </Link>
             <Link
               to="/apply"
-              className="group bg-[linear-gradient(180deg,#3f7dff_0%,#1d5ae0_100%)] hidden h-9 items-center gap-1.5 rounded-full px-4 text-sm font-semibold text-white shadow-[0_10px_30px_-10px_rgb(47_107_255/0.8),0_1px_0_0_rgb(255_255_255/0.35)_inset] transition-all hover:-translate-y-0.5 hover:shadow-[0_16px_40px_-12px_rgb(47_107_255/0.9),0_1px_0_0_rgb(255_255_255/0.4)_inset] sm:inline-flex"
+              className="group hidden h-9 items-center gap-1.5 rounded-full bg-[#d6fe52] px-4 text-sm font-bold text-[#101214] shadow-sm transition-all hover:opacity-90 sm:inline-flex"
             >
               Apply
               <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
