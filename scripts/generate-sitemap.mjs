@@ -46,10 +46,15 @@ const staticRoutes = [
   "/tools/word-counter",
   "/tools/password-strength",
   "/tools/color-contrast",
+  "/tools/code-studio",
+  "/tools/css-layout-lab",
+  "/tools/sql-datalab",
+  "/tools/excel-formula-lab",
+  "/tools/assess",
+  "/tools/open-labs",
   "/visit",
   "/visit/info",
   "/visit/brochure",
-  "/visit/feedback",
 ];
 
 // Shop product pages and feed files. Generated from digital-products.json so
@@ -151,18 +156,11 @@ if (publishedSessionUrlCount !== publishedLectureKeys.size) {
   );
 }
 
-// The 542-lesson AI Engineering from Scratch mirror. Keys come from the
-// generated index (scripts/generate-ai-lessons.mjs runs before this in prebuild).
-const aiLessonUrls = (() => {
-  try {
-    const indexModule = readFileSync(join(root, "src/data/ai-lessons-index.generated.ts"), "utf8");
-    return [...indexModule.matchAll(/\{"key":"([^"]+)"/g)].map((match) => ({
-      loc: `${SITE_URL}/ai-engineering/${match[1]}`,
-    }));
-  } catch {
-    return [];
-  }
-})();
+// Individual /ai-engineering/<phase>/<lesson> pages mirror upstream MIT prose
+// and are marked noIndex: true on the route so Google indexes CEA's original
+// hubs (/ai-engineering, /ai-engineering/lessons, /open-curriculum) rather
+// than 542 third-party lessons.
+const aiLessonUrls = [];
 
 const urls = [
   ...staticRoutes.map((path) => ({ loc: `${SITE_URL}${path}` })),

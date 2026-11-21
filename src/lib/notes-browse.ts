@@ -1,4 +1,10 @@
 import { blogPosts, type BlogPost } from "@/data/blog";
+import { lessonEditorial } from "@/data/editorial";
+import {
+  CEA_CATEGORIES,
+  resolveLessonStandard,
+  type CeaCategoryId,
+} from "@/data/editorial/publication-standard";
 import { chapterForOrder, noteChapters } from "@/data/note-chapters";
 import { bodyText, readingMinutes } from "@/lib/blog-reading-time";
 
@@ -15,17 +21,28 @@ export const NOTES_PAGE_SIZE = 12;
 /** Lessons in learning order. Computed once; the list is static content. */
 export const notesInLearningOrder: BlogPost[] = [...blogPosts].sort((a, b) => a.order - b.order);
 
-type Indexed = { post: BlogPost; minutes: number; haystack: string };
+type Indexed = {
+  post: BlogPost;
+  minutes: number;
+  categoryId: CeaCategoryId;
+  haystack: string;
+};
 
 const indexed: Indexed[] = notesInLearningOrder.map((post) => {
   const chapter = chapterForOrder(post.order);
+  const standard = resolveLessonStandard(post, lessonEditorial(post.slug));
   return {
     post,
     minutes: readingMinutes(post.body),
+    categoryId: standard.category.id,
     haystack: [
       post.title,
+      post.seoTitle ?? "",
       post.excerpt,
+      post.seoDescription ?? "",
       post.series,
+      standard.category.label,
+      standard.articleType.label,
       chapter?.title ?? "",
       chapter?.courseLabel ?? "",
       bodyText(post.body),
@@ -39,22 +56,33 @@ export function isNoteChapter(slug: string): boolean {
   return noteChapters.some((c) => c.slug === slug);
 }
 
+export function isCeaCategory(id: string): id is CeaCategoryId {
+  return CEA_CATEGORIES.some((c) => c.id === id);
+}
+
+export function countNotesInCategory(categoryId: CeaCategoryId): number {
+  return indexed.filter((entry) => entry.categoryId === categoryId).length;
+}
+
 /**
- * Filter by chapter and search text (matches title, summary, chapter, course
- * and the lesson body), then sort. Returns posts only, not the index entries.
+ * Filter by chapter, CEA-LPS category, and search text (matches title,
+ * summary, category, chapter, course and the lesson body), then sort.
  */
 export function browseNotes({
   query,
   chapter,
+  category = "all",
   sort,
 }: {
   query: string;
   chapter: string;
+  category?: string;
   sort: NotesSort;
 }): BlogPost[] {
   const terms = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
   const chapterRange =
     chapter === "all" ? null : (noteChapters.find((c) => c.slug === chapter) ?? null);
+  const activeCategory = category !== "all" && isCeaCategory(category) ? category : null;
 
   const matched = indexed.filter((entry) => {
     if (
@@ -62,6 +90,7 @@ export function browseNotes({
       (entry.post.order < chapterRange.from || entry.post.order > chapterRange.to)
     )
       return false;
+    if (activeCategory && entry.categoryId !== activeCategory) return false;
     return terms.every((term) => entry.haystack.includes(term));
   });
 

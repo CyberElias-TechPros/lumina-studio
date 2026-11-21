@@ -4,6 +4,11 @@ import { ArrowRight, BookOpenCheck, Mail, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageHero, PageShell } from "@/components/marketing/shell";
 import { NOTES_AUTHOR } from "@/data/blog";
+import {
+  CEA_ARTICLE_TYPES,
+  CEA_CATEGORIES,
+  CEA_DIFFICULTY_LEVELS,
+} from "@/data/editorial/publication-standard";
 import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/editorial")({
@@ -139,6 +144,52 @@ function EditorialStandards() {
               <Link to="/editorial/corrections" className="text-primary hover:underline">
                 Corrections and review record
               </Link>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="font-display text-2xl font-semibold tracking-tight">
+              CEA Learning Publication Standard (CEA-LPS)
+            </h2>
+            <p className="text-muted-foreground mt-4 text-base leading-relaxed">
+              Every lesson, tutorial, reference sheet, and career guide in our Notes library is
+              classified by subject category, difficulty level, and content type — combining
+              editorial accuracy, instructional design, technical verification, search clarity,
+              accessibility, and lifecycle governance into one standard.
+            </p>
+            <div className="mt-6 grid gap-6 sm:grid-cols-2">
+              <div className="border-border bg-card rounded-xl border p-5">
+                <p className="text-primary text-xs font-semibold tracking-wider uppercase">
+                  {CEA_CATEGORIES.length} Subject Categories
+                </p>
+                <ul className="text-muted-foreground mt-3 space-y-1.5 text-sm">
+                  {CEA_CATEGORIES.map((cat) => (
+                    <li key={cat.id}>
+                      <strong className="text-foreground">{cat.label}:</strong> {cat.summary}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="border-border bg-card rounded-xl border p-5">
+                <p className="text-primary text-xs font-semibold tracking-wider uppercase">
+                  {CEA_ARTICLE_TYPES.length} Supported Formats & Difficulty
+                </p>
+                <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+                  Supported formats: {CEA_ARTICLE_TYPES.map((t) => t.label).join(" · ")}.
+                </p>
+                <ul className="text-muted-foreground mt-4 space-y-1.5 text-sm">
+                  {CEA_DIFFICULTY_LEVELS.map((d) => (
+                    <li key={d.level}>
+                      <strong className="text-foreground">{d.level}:</strong> {d.meaning}
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-muted-foreground mt-4 text-xs leading-relaxed">
+                  Internal editorial workflows track Draft, In Review, Revision Required, Approved,
+                  Published, Under Update, Needs Review, and Archived; public lesson pages display
+                  only clear reader-facing statuses and verified review dates.
+                </p>
+              </div>
             </div>
           </section>
 

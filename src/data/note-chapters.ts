@@ -1,4 +1,4 @@
-import { blogPosts, type BlogPost } from "@/data/blog";
+import { blogPosts, type BlogPost } from "./blog";
 
 export type NoteChapter = {
   slug: string;

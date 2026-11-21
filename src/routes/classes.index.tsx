@@ -30,9 +30,9 @@ export const Route = createFileRoute("/classes/")({
       url: `${SITE_URL}/classes/${course.slug}`,
     }));
     return getPageHead({
-      title: "Practical Digital Skills Classes — Courses, Fees & Class Notes",
+      title: "IT Courses List & Fees in Nigeria (₦20,000–₦50,000) — Digital Skills",
       description:
-        "Cyber Elias Academy's practical digital skills classes in Port Harcourt: Microsoft Office, computer basics, design, web, data entry, repairs, cybersecurity and more. Compare course fees, requirements and published lesson counts before you apply.",
+        "Full IT courses list and fees at Cyber Elias Academy Port Harcourt: Computer Basics, Excel, Web Development, Cybersecurity, Graphics, Data Analytics & Repairs from ₦20,000.",
       path: "/classes",
       structuredData: [
         {

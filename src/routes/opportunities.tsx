@@ -83,6 +83,39 @@ function OpportunitiesPage() {
           not collect applications on anyone’s behalf, and we do not charge to apply. Applying is
           free: never pay anyone to apply or to be selected.
         </p>
+
+        <div className="border-border bg-muted/20 mt-10 grid gap-6 rounded-xl border p-6 md:grid-cols-3">
+          <div>
+            <h3 className="font-display text-base font-semibold">1. How we verify calls</h3>
+            <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+              Every listing here links directly to the official government, development-partner or
+              sponsor portal. We do not list WhatsApp-only forwards or unverified third-party
+              collectors.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-display text-base font-semibold">2. Documents to prepare</h3>
+            <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+              Most South-South digital-skills grants require your NIN, an active personal email
+              address (not a friend&apos;s), a working phone number and a brief statement of the
+              skill you want to learn.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-display text-base font-semibold">3. Practise before applying</h3>
+            <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+              Use our free{" "}
+              <Link to="/tools/assess" className="text-primary font-medium underline">
+                Skill Diagnostic
+              </Link>{" "}
+              or{" "}
+              <Link to="/blog" className="text-primary font-medium underline">
+                Computer Skills Notes
+              </Link>{" "}
+              to build baseline fluency before screening tests open.
+            </p>
+          </div>
+        </div>
       </section>
 
       <CTASection

@@ -8,9 +8,9 @@ import { getPageHead } from "@/lib/seo";
 export const Route = createFileRoute("/tools/color-contrast")({
   head: () =>
     getPageHead({
-      title: "Colour Contrast Checker & Palette Generator — WCAG",
+      title: "Free Color Palette Generator & WCAG Contrast Checker",
       description:
-        "Free WCAG contrast checker with live preview and designer presets, plus a harmony palette generator (complement, analogous, split-complement, tints and shades) with one-click copy.",
+        "Check WCAG AA & AAA text contrast ratios live, test foreground/background hex codes, and generate harmonious colour palettes with one-click copy. No sign-up required.",
       path: "/tools/color-contrast",
       structuredData: {
         "@context": "https://schema.org",
@@ -74,6 +74,30 @@ function ColorContrastPage() {
               Nigeria&apos;s accessibility-aware clients.
             </li>
           </ul>
+          <div className="border-foreground/10 bg-card mt-8 grid gap-6 rounded-2xl border p-6 sm:grid-cols-2">
+            <div>
+              <h3 className="font-display text-lg font-semibold">
+                AA vs AAA: what numbers to aim for
+              </h3>
+              <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+                WCAG AA requires a contrast ratio of at least <strong>4.5:1</strong> for normal body
+                text and <strong>3:1</strong> for large headings (18pt+ or 14pt+ bold). WCAG AAA
+                raises that bar to <strong>7:1</strong> — useful for outdoor banners, receipts and
+                elderly readers squinting in bright sunlight on budget Android screens.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-display text-lg font-semibold">
+                Why bright neon on white fails print and mobile
+              </h3>
+              <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+                Cyan, lime green and yellow text look punchy inside Photoshop on a calibrated Mac,
+                then turn unreadable on a glossy flyer or low-brightness phone outdoors in Port
+                Harcourt. Test your foreground/background pair here before exporting final print
+                PDFs.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

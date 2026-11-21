@@ -21,6 +21,7 @@ export const Route = createFileRoute("/visit/feedback")({
       title: "Visit feedback — Cyber Elias Academy",
       description: "Tell us how your visit to Cyber Elias Academy went.",
       path: "/visit/feedback",
+      noIndex: true,
     }),
   component: VisitFeedbackPage,
 });

@@ -45,8 +45,8 @@ function routeSeo(
   if (pathname.startsWith("/blog/") && params.slug) {
     const post = blogPosts.find((candidate) => candidate.slug === params.slug);
     if (post) {
-      seo.title = `${post.title} — ${SITE_NAME}`;
-      seo.description = post.excerpt;
+      seo.title = `${post.seoTitle ?? post.title} — ${SITE_NAME}`;
+      seo.description = post.seoDescription ?? post.excerpt;
       seo.image = post.cover;
       seo.type = "article";
     }
@@ -85,9 +85,8 @@ function routeSeo(
         lesson.minutes ? ` ~${lesson.minutes} minutes,` : ""
       } hands-on, hosted in full by CEA.`;
       seo.type = "article";
-    } else {
-      seo.noIndex = true;
     }
+    seo.noIndex = true;
   }
 
   if (pathname.startsWith("/shop/") && params.slug) {
@@ -123,6 +122,7 @@ function isPrivatePath(pathname: string): boolean {
     pathname.startsWith("/portal/") ||
     pathname === "/apply/status" ||
     pathname.startsWith("/apply/status/") ||
+    pathname === "/visit/feedback" ||
     /^\/shop\/[^/]+\/(checkout|return)$/.test(pathname)
   );
 }

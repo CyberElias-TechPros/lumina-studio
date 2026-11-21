@@ -217,6 +217,38 @@ function Contact() {
         </div>
       </section>
 
+      <section className="border-border bg-muted/20 border-t py-12">
+        <div className="container-page grid gap-8 md:grid-cols-3">
+          <div>
+            <h2 className="font-display text-base font-semibold">Before you message</h2>
+            <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+              For course fees, durations and module outlines, check the{" "}
+              <Link to="/classes" className="text-primary font-medium underline">
+                full course directory
+              </Link>{" "}
+              first — every core track publishes its Naira fee and weekly schedule openly so you do
+              not have to wait for a quote.
+            </p>
+          </div>
+          <div>
+            <h2 className="font-display text-base font-semibold">Response times &amp; hours</h2>
+            <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+              Our Port Harcourt office at 24 Ebony Road, Off Rumuola Road answers phone calls,
+              WhatsApp messages (+234 905 862 8386) and email (help@cea.ng) Monday to Saturday, 8:00
+              to 20:00 WAT. Messages sent outside working hours are answered the next morning.
+            </p>
+          </div>
+          <div>
+            <h2 className="font-display text-base font-semibold">Schools &amp; organisations</h2>
+            <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+              Principals, NGO coordinators and employers planning group training should mention
+              approximate cohort size, age group and preferred schedule so admissions can prepare an
+              accurate timetable and equipment check.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="border-border bg-primary/5 border-t">
         <div className="container-page flex flex-col gap-4 py-8 md:flex-row md:items-center md:justify-between">
           <div>

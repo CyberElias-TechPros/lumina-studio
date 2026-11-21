@@ -71,6 +71,30 @@ function PasswordStrengthPage() {
               banking, Paystack/Stripe dashboards and the school portal.
             </li>
           </ol>
+          <div className="border-foreground/10 bg-card mt-8 grid gap-6 rounded-2xl border p-6 sm:grid-cols-2">
+            <div>
+              <h3 className="font-display text-lg font-semibold">
+                Why four random words beat one &ldquo;clever&rdquo; substitution
+              </h3>
+              <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+                Replacing <code>a</code> with <code>@</code> and <code>i</code> with <code>1</code>{" "}
+                in a single dictionary word (like <code>P@ssw0rd1!</code>) is the very first pattern
+                automated cracking tools test. Four unrelated everyday words joined together — such
+                as <code>mango-kettle-bridge-49</code> — are far easier to type on a phone and
+                orders of magnitude harder to guess.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-display text-lg font-semibold">
+                Protecting your primary email first
+              </h3>
+              <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+                Your Gmail or Outlook inbox is the master key to bank alerts, NIN portals, cloud
+                backups and social accounts. Give your primary email a unique 16+ character
+                passphrase and authenticator-app 2FA before securing anything else.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
