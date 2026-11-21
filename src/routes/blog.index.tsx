@@ -10,9 +10,12 @@ import { CTASection, PageShell } from "@/components/marketing/shell";
 import { NoteCard } from "@/components/marketing/note-card";
 import { BlogIndexAd } from "@/components/marketing/ad-slots";
 import { blogPosts } from "@/data/blog";
+import { CEA_CATEGORIES } from "@/data/editorial/publication-standard";
 import { noteChapters, notesInChapter } from "@/data/note-chapters";
 import {
   browseNotes,
+  countNotesInCategory,
+  isCeaCategory,
   isNoteChapter,
   NOTES_PAGE_SIZE,
   NOTES_SORT_OPTIONS,
@@ -38,17 +41,20 @@ const ALL = "all";
 function Blog() {
   const [query, setQuery] = useState("");
   const [chapter, setChapter] = useState<string>(ALL);
+  const [category, setCategory] = useState<string>(ALL);
   const [sort, setSort] = useState<NotesSort>("lesson");
   const [page, setPage] = useState(1);
   const [restored, setRestored] = useState(false);
   const resultsRef = useRef<HTMLDivElement>(null);
 
-  // Read a shared view (?chapter=&q=&sort=&page=) once on the client, then keep
+  // Read a shared view (?chapter=&category=&q=&sort=&page=) once on the client, then keep
   // the URL in step so readers can bookmark or share the view they are on.
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const ch = params.get("chapter");
     if (ch && (ch === ALL || isNoteChapter(ch))) setChapter(ch);
+    const cat = params.get("category");
+    if (cat && (cat === ALL || isCeaCategory(cat))) setCategory(cat);
     const q = params.get("q");
     if (q) setQuery(q);
     const s = params.get("sort");
@@ -62,15 +68,19 @@ function Blog() {
     if (!restored) return;
     const params = new URLSearchParams();
     if (chapter !== ALL) params.set("chapter", chapter);
+    if (category !== ALL) params.set("category", category);
     if (query.trim()) params.set("q", query.trim());
     if (sort !== "lesson") params.set("sort", sort);
     if (page > 1) params.set("page", String(page));
     const qs = params.toString();
     const url = `${window.location.pathname}${qs ? `?${qs}` : ""}`;
     window.history.replaceState(window.history.state, "", url);
-  }, [restored, chapter, query, sort, page]);
+  }, [restored, chapter, category, query, sort, page]);
 
-  const results = useMemo(() => browseNotes({ query, chapter, sort }), [query, chapter, sort]);
+  const results = useMemo(
+    () => browseNotes({ query, chapter, category, sort }),
+    [query, chapter, category, sort],
+  );
   const totalPages = Math.max(1, Math.ceil(results.length / NOTES_PAGE_SIZE));
   const current = Math.min(page, totalPages);
   const pageStart = (current - 1) * NOTES_PAGE_SIZE;
@@ -78,11 +88,17 @@ function Blog() {
 
   const activeChapter =
     chapter === ALL ? null : (noteChapters.find((c) => c.slug === chapter) ?? null);
+  const activeCategory =
+    category === ALL ? null : (CEA_CATEGORIES.find((c) => c.id === category) ?? null);
   const searching = query.trim().length > 0;
-  const filtered = Boolean(activeChapter) || searching;
+  const filtered = Boolean(activeChapter) || Boolean(activeCategory) || searching;
 
   const chooseChapter = (slug: string) => {
     setChapter(slug);
+    setPage(1);
+  };
+  const chooseCategory = (id: string) => {
+    setCategory(id);
     setPage(1);
   };
   const changeQuery = (value: string) => {
@@ -92,6 +108,7 @@ function Blog() {
   const clearAll = () => {
     setQuery("");
     setChapter(ALL);
+    setCategory(ALL);
     setPage(1);
   };
   const goToPage = (next: number) => {
@@ -250,7 +267,11 @@ function Blog() {
           <div className="border-border flex flex-wrap items-center justify-between gap-4 border-b pb-5">
             <div>
               <p className="font-display text-xl font-semibold tracking-tight" aria-live="polite">
-                {activeChapter ? activeChapter.title : "All lessons"}
+                {activeChapter
+                  ? activeChapter.title
+                  : activeCategory
+                    ? activeCategory.label
+                    : "All lessons"}
               </p>
               <p className="text-muted-foreground mt-1 text-sm">
                 {results.length === 0
@@ -286,11 +307,50 @@ function Blog() {
             </div>
           </div>
 
+          <div
+            className="mt-4 flex flex-wrap items-center gap-1.5"
+            role="group"
+            aria-label="Subject categories"
+          >
+            <button
+              type="button"
+              onClick={() => chooseCategory(ALL)}
+              aria-pressed={category === ALL}
+              className={cn(
+                "rounded-full border px-3 py-1 text-xs transition-colors",
+                category === ALL
+                  ? "border-primary bg-primary/10 text-primary font-semibold"
+                  : "border-border bg-card text-muted-foreground hover:text-foreground",
+              )}
+            >
+              All subjects
+            </button>
+            {CEA_CATEGORIES.filter((cat) => countNotesInCategory(cat.id) > 0).map((cat) => (
+              <button
+                key={cat.id}
+                type="button"
+                onClick={() => chooseCategory(category === cat.id ? ALL : cat.id)}
+                aria-pressed={category === cat.id}
+                className={cn(
+                  "rounded-full border px-3 py-1 text-xs transition-colors",
+                  category === cat.id
+                    ? "border-primary bg-primary/10 text-primary font-semibold"
+                    : "border-border bg-card text-muted-foreground hover:text-foreground",
+                )}
+              >
+                {cat.label} ({countNotesInCategory(cat.id)})
+              </button>
+            ))}
+          </div>
+
           {filtered && (
             <div className="mt-4 flex flex-wrap items-center gap-2">
               <span className="text-muted-foreground mr-1 text-sm">Filters:</span>
               {activeChapter && (
                 <FilterChip label={activeChapter.title} onRemove={() => chooseChapter(ALL)} />
+              )}
+              {activeCategory && (
+                <FilterChip label={activeCategory.label} onRemove={() => chooseCategory(ALL)} />
               )}
               {searching && (
                 <FilterChip label={`“${query.trim()}”`} onRemove={() => changeQuery("")} />

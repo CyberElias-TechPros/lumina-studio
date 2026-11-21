@@ -1,13 +1,28 @@
+import type {
+  CeaArticleTypeId,
+  CeaCategoryId,
+  CeaDifficulty,
+} from "@/data/editorial/publication-standard";
+
 export type BlogBlock =
   | { type: "p"; text: string }
   | { type: "h2"; text: string }
   | { type: "ul"; items: string[] }
+  | { type: "table"; caption?: string; headers: string[]; rows: string[][] }
   | { type: "figure"; src: string; alt: string; caption: string };
 
 export type BlogPost = {
   slug: string;
   title: string;
   excerpt: string;
+  /** Optional search-intent optimised title/description used in <title> and meta tags without altering the editorial H1. */
+  seoTitle?: string;
+  seoDescription?: string;
+  /** Optional explicit CEA-LPS overrides; defaults are derived via resolveLessonStandard(). */
+  category?: CeaCategoryId;
+  articleType?: CeaArticleTypeId;
+  difficulty?: CeaDifficulty;
+  learningObjectives?: string[];
   series: string;
   order: number;
   author: string;
@@ -19,6 +34,12 @@ export type BlogPost = {
 const p = (text: string): BlogBlock => ({ type: "p", text });
 const h2 = (text: string): BlogBlock => ({ type: "h2", text });
 const ul = (items: string[]): BlogBlock => ({ type: "ul", items });
+const table = (headers: string[], rows: string[][], caption?: string): BlogBlock => ({
+  type: "table",
+  headers,
+  rows,
+  ...(caption ? { caption } : {}),
+});
 const fig = (src: string, alt: string, caption: string): BlogBlock => ({
   type: "figure",
   src,
@@ -2352,8 +2373,16 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "naira-and-accents",
     title: "Typing naira, accents, and another language",
+    seoTitle: "How to Type the Naira Sign (₦) on a Laptop, Windows, Mac & Phone",
+    seoDescription:
+      "Learn how to type the naira sign (₦) on Windows 10/11, Microsoft Word (20A6 + Alt+X), Mac, and Android/iPhone keyboards — plus the quick copy-and-paste method.",
+    learningObjectives: [
+      "Type the naira symbol (₦) on Windows, Microsoft Word, Mac, and mobile keyboards.",
+      "Insert accented letters and Nigerian names cleanly without breaking printed layouts.",
+      "Know when to pair NGN with ₦ for bank, invoice, and cross-device clarity.",
+    ],
     excerpt:
-      "How to type the naira sign, accented letters, and names that matter, on Windows, a Mac, and a phone. Includes the copy-and-paste trick that always works.",
+      "How to type the naira sign (₦), accented letters, and names that matter, on Windows, a Mac, and a phone. Includes the copy-and-paste trick that always works.",
     series: SERIES,
     order: 23,
     author: AUTHOR,
@@ -2361,7 +2390,38 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A document on a laptop showing the naira symbol and accented letters.",
     body: [
       p(
-        "This lesson teaches you to type the naira sign, accented letters, and characters from another language. You will use the method that works on your device, and a simple fallback that never fails.",
+        "This lesson teaches you to type the naira sign (₦), accented letters, and characters from another language. You will use the shortcut that works on your laptop or phone, plus a simple fallback that never fails.",
+      ),
+      table(
+        ["Device / App", "Exact Shortcut or Action", "Best For"],
+        [
+          [
+            "Microsoft Word (Windows)",
+            "Type 20A6 then press Alt + X",
+            "Fastest on any Windows laptop",
+          ],
+          [
+            "Windows 11 / 10 (any app)",
+            "Press Win + . (full stop) → Symbols → Currency",
+            "Emails, browsers, WhatsApp Web",
+          ],
+          [
+            "Windows full keypad",
+            "Hold Alt and type 8358 on the number pad",
+            "Desktop keyboards with NumPad",
+          ],
+          [
+            "Android / iPhone",
+            "Long-press the ₦ or $ key on Gboard / iOS keyboard",
+            "Quick messages and mobile forms",
+          ],
+          [
+            "Any device fallback",
+            "Copy ₦ once and pin it in clipboard (Win + V)",
+            "Works everywhere without shortcuts",
+          ],
+        ],
+        "Quick reference: how to type the naira symbol (₦) across devices.",
       ),
       p(
         "If you have ever written N1,500 because you could not find the sign, this lesson is for you. It takes one minute to fix for good.",
@@ -4542,6 +4602,14 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "cookies-and-accept-all",
     title: "Cookies and “Accept all”",
+    seoTitle: "What Does “Accept All Cookies” Mean? Should You Click It or Reject?",
+    seoDescription:
+      "Plain-English guide to website cookies: what 'Accept all' really agrees to, the difference between essential and advertising cookies, and when to reject or clear them.",
+    learningObjectives: [
+      "Distinguish strictly necessary, preference, analytics, and advertising cookies.",
+      "Choose Manage Options / Reject Non-Essential instead of blindly clicking Accept All.",
+      "Clear a stuck site's cookies safely without erasing saved browser passwords.",
+    ],
     excerpt:
       "What a cookie actually stores, what Accept all really agrees to, how to choose the useful ones, and why clearing them fixes so many strange website problems.",
     series: SERIES,
@@ -5044,6 +5112,14 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "the-cloud-in-ordinary-words",
     title: "What the cloud is, in ordinary words",
+    seoTitle: "What Is the Cloud & How Do You Use Cloud Storage Safely?",
+    seoDescription:
+      "Understand what cloud storage actually is, how to access and upload files to Google Drive, OneDrive, or iCloud, what it costs in Nigeria, and when it is not a backup.",
+    learningObjectives: [
+      "Explain what the cloud is and how files move between your device and a remote server.",
+      "Upload a folder to cloud storage and verify the sync tick before closing your laptop.",
+      "Tell the difference between cloud sync and an offline backup copy.",
+    ],
     excerpt:
       "What cloud storage actually is, what it costs, how to use it without losing access to your own files, and when it is not a backup.",
     series: SERIES,
@@ -6781,6 +6857,14 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "undo-and-redo",
     title: "Undo, and the thing you did not mean",
+    seoTitle: "How to Undo What You Just Did (Ctrl+Z & Redo Ctrl+Y Guide)",
+    seoDescription:
+      "Deleted a paragraph or formatted the wrong text? Learn how Ctrl+Z (Undo) and Ctrl+Y (Redo) work on Windows and Mac, how far back Undo reaches, and when to use Recycle Bin.",
+    learningObjectives: [
+      "Reverse accidental edits immediately using Ctrl+Z (or Cmd+Z on Mac).",
+      "Restore an undone change using Redo (Ctrl+Y or Cmd+Shift+Z).",
+      "Know when Undo stops working and where deleted files go instead.",
+    ],
     excerpt:
       "What Ctrl and Z can bring back, what it cannot, how far back it reaches, and the moment when you should stop working and reach for the Recycle Bin instead.",
     series: SERIES,
@@ -7184,6 +7268,14 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "an-email-signature",
     title: "A signature at the bottom of a mail",
+    seoTitle: "What Is the Signature at the Bottom of an Email Called? (Setup Guide)",
+    seoDescription:
+      "Learn what an email signature is, what 4 lines belong at the bottom of a professional email, and how to set it up automatically in Gmail or Outlook.",
+    learningObjectives: [
+      "Write a crisp 4-line email signature with your name, role, and direct contact.",
+      "Set up an automatic email signature in Gmail or Outlook.",
+      "Avoid bulky images or quotes that break replies on mobile screens.",
+    ],
     excerpt:
       "What belongs in an email signature, what never does, how to set it once so every mail ends properly, and why four lines beat a paragraph.",
     series: SERIES,
@@ -7378,8 +7470,16 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "kilobytes-and-megabytes",
     title: "What KB, MB and GB actually mean",
+    seoTitle: "KB vs MB vs GB: Which Is Bigger? File & Phone Data Size Chart",
+    seoDescription:
+      "Which is bigger — KB, MB, or GB? See the exact size order (1 GB ≈ 1,000 MB ≈ 1,000,000 KB), phone data examples, and why a 16 GB flash drive shows 14 GB.",
+    learningObjectives: [
+      "Rank KB, MB, GB, and TB from smallest to largest without guessing.",
+      "Estimate how many photos, documents, or videos fit on a phone or flash drive.",
+      "Explain why a 16 GB drive displays roughly 14.9 GB inside Windows.",
+    ],
     excerpt:
-      "How to read KB, MB and GB, estimate what will fit on a phone or a flash drive, and know why a 16 GB drive holds 14.",
+      "Which is bigger between KB, MB and GB, how much fits on a phone or flash drive, and why a 16 GB drive holds 14.",
     series: SERIES,
     order: 72,
     author: AUTHOR,
@@ -7387,7 +7487,32 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A folder window showing a Size column for a few files.",
     body: [
       p(
-        "In this lesson you will learn to read file sizes and storage space. You will learn what KB, MB, and GB mean, how to estimate whether a file will fit, and why a flash drive sold as 16 GB holds less. It is arithmetic you can do in your head.",
+        "A gigabyte (GB) is bigger than a megabyte (MB), and a megabyte is bigger than a kilobyte (KB). Each step multiplies by roughly a thousand: 1 MB is about 1,000 KB, and 1 GB is about 1,000 MB (1,024 in binary).",
+      ),
+      table(
+        ["Unit", "Full Name", "Size Comparison", "Everyday Example"],
+        [
+          [
+            "KB",
+            "Kilobyte",
+            "Smallest common file unit (1,024 bytes)",
+            "A short Word letter or plain text email (20–150 KB)",
+          ],
+          [
+            "MB",
+            "Megabyte",
+            "1 MB ≈ 1,000 KB (bigger than KB)",
+            "1 phone photo (2–5 MB) or 1 MP3 song (4 MB)",
+          ],
+          [
+            "GB",
+            "Gigabyte",
+            "1 GB ≈ 1,000 MB (1,000,000× KB)",
+            "Mobile data bundle, ~300 photos, or a 1-hour HD video",
+          ],
+          ["TB", "Terabyte", "1 TB ≈ 1,000 GB", "Laptop hard drive or external backup disk"],
+        ],
+        "Size order from smallest (KB) to largest (TB) for phones, files, and mobile data.",
       ),
       p(
         "A kilobyte, a megabyte, and a gigabyte are steps of about a thousand. A megabyte is roughly a thousand kilobytes, and a gigabyte is roughly a thousand megabytes. Your phone storage is counted in gigabytes, and your data bundle is often counted in megabytes.",
@@ -12438,8 +12563,16 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "the-cybersecurity-analyst-at-work",
     title: "The cybersecurity analyst, at work",
+    seoTitle: "What Does a Cybersecurity Analyst Do? + 5 Careers in Cybersecurity",
+    seoDescription:
+      "Explore 5 entry-to-mid careers in cybersecurity (SOC Analyst, Vulnerability Analyst, Incident Responder, GRC & AppSec) and what a real SOC analyst shift looks like.",
+    learningObjectives: [
+      "Understand the shift workflow of a cybersecurity analyst from handover to escalation.",
+      "Compare 5 common cybersecurity career paths and their everyday responsibilities.",
+      "See how IT support and troubleshooting skills translate into junior security roles.",
+    ],
     excerpt:
-      "What a security analyst actually does in a shift, the three questions behind every alert, and the path in for somebody starting from a non-technical job.",
+      "What a security analyst actually does in a shift, 5 real careers in cybersecurity, and the path in for somebody starting from IT support.",
     series: SERIES,
     order: 121,
     author: AUTHOR,
@@ -12447,7 +12580,38 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A young analyst at a desk with two screens showing lists of security alerts.",
     body: [
       p(
-        "This lesson describes the work of a cybersecurity analyst: what fills the shift, what the alerts mean, and how somebody without a computer degree gets in. You will see the job as it is, rather than as a film about hackers.",
+        "Five common careers in cybersecurity are: (1) Security Operations Centre (SOC) Analyst, (2) Vulnerability Assessment Analyst, (3) Incident Responder, (4) Governance, Risk & Compliance (GRC) Specialist, and (5) Penetration Tester / Ethical Hacker. Most beginners start in tier-1 SOC monitoring or IT security support.",
+      ),
+      table(
+        ["Cybersecurity Career", "Core Day-to-Day Work", "Common Starting Path"],
+        [
+          [
+            "SOC Analyst (Tier 1 / 2)",
+            "Monitor alerts, triage false alarms, escalate real incidents",
+            "IT Support / Helpdesk + networking basics",
+          ],
+          [
+            "Vulnerability Analyst",
+            "Scan systems, verify CVSS scores, coordinate patches",
+            "System administration + Linux/Windows patching",
+          ],
+          [
+            "Incident Responder",
+            "Contain active breaches, preserve logs, run recovery",
+            "SOC Analyst experience + forensics",
+          ],
+          [
+            "GRC / Compliance Analyst",
+            "Audit policies, NITDA/NDPA data controls, vendor risk",
+            "Business/audit background + security fundamentals",
+          ],
+          [
+            "Penetration Tester",
+            "Authorised testing of web apps, networks, and APIs",
+            "Web development / networking + OWASP testing",
+          ],
+        ],
+        "Five practical cybersecurity careers and how beginners move into them.",
       ),
       p(
         "An analyst watches a company's systems for signs of trouble, decides what matters, and writes down what happened. Most of the work is reading, judging, and writing, with the tools doing the watching.",
@@ -12555,8 +12719,15 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "the-soc-room",
     title: "The room that never sleeps: the SOC",
+    seoTitle: "What Is a SOC Room? Security Operations Centre Tiers & Shift Guide",
+    seoDescription:
+      "Learn what a Security Operations Centre (SOC room) is, how Tier 1, Tier 2, and Tier 3 analysts divide alerts, and how 24/7 shift handovers work without dropping incidents.",
+    learningObjectives: [
+      "Explain what a SOC room monitors and why shift handovers matter.",
+      "Distinguish Tier 1 triage, Tier 2 investigation, and Tier 3 threat hunting.",
+    ],
     excerpt:
-      "What a security operations centre looks like, how the tiers divide the work, and how a night shift hands over to a morning team without losing a detail.",
+      "What a security operations centre (SOC room) looks like, how Tier 1–3 analysts divide the work, and how a night shift hands over to a morning team.",
     series: SERIES,
     order: 122,
     author: AUTHOR,
@@ -12666,8 +12837,15 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "siem-in-ordinary-words",
     title: "SIEM, in ordinary words",
+    seoTitle: "SIEM Meaning in Cybersecurity: How Log Collection & Alerts Work",
+    seoDescription:
+      "SIEM stands for Security Information and Event Management. Learn in plain words how a SIEM collects server and firewall logs, fires alert rules, and reduces false noise.",
+    learningObjectives: [
+      "Define SIEM (Security Information and Event Management) in plain terms.",
+      "Trace how logs move from collection and storage to correlation rules and alerts.",
+    ],
     excerpt:
-      "What a SIEM collects, how a rule turns log lines into an alert, why the same alert fires all day, and how tuning cuts the noise.",
+      "SIEM meaning in cybersecurity: what logs it collects, how a rule turns log lines into an alert, why false alarms repeat, and how tuning cuts noise.",
     series: SERIES,
     order: 123,
     author: AUTHOR,
@@ -12782,8 +12960,16 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "zero-trust-gate",
     title: "Zero trust: the gate that trusts nobody",
+    seoTitle: "What Is Zero Trust Security? Principles, 3 Checks & Examples",
+    seoDescription:
+      "What is Zero Trust security? Learn how 'never trust, always verify' works with identity, device health, and least-privilege checks — replacing the outdated office-perimeter model.",
+    learningObjectives: [
+      "Define Zero Trust security ('never trust, always verify') in plain language.",
+      "Describe the 3 verification checks applied at every access request.",
+      "Explain why office Wi-Fi or a VPN alone can no longer be treated as trusted.",
+    ],
     excerpt:
-      "What never trust, always verify means in practice, the three checks at every door, and why an office network is no longer treated as safe.",
+      "What Zero Trust security ('never trust, always verify') means in practice, the 3 checks at every door, and why an office network is never trusted automatically.",
     series: SERIES,
     order: 124,
     author: AUTHOR,
@@ -12883,8 +13069,16 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "vulnerability-assessment-fence",
     title: "The vulnerability assessment: checking the fence",
+    seoTitle: "What Is a Vulnerability Assessment? Steps, Severity Scores & Report",
+    seoDescription:
+      "Learn what a vulnerability assessment is, the 6-step scanning workflow, how severity scores (CVSS) prioritise fixes, and how it differs from penetration testing.",
+    learningObjectives: [
+      "Explain what a vulnerability assessment checks (missing patches, open ports, misconfigurations).",
+      "Follow a lawful, permission-first assessment workflow from scoping to remediation tracking.",
+      "Prioritise findings by real exposure rather than chasing raw CVSS numbers blindly.",
+    ],
     excerpt:
-      "How a vulnerability assessment finds weak points, what a severity score means in practice, and the report that gets a problem fixed.",
+      "What a vulnerability assessment is, how to scope and run checks safely, what a CVSS severity score means, and how to write a report that gets fixes shipped.",
     series: SERIES,
     order: 125,
     author: AUTHOR,
@@ -13092,8 +13286,15 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "digital-signature-meaning",
     title: "What a digital signature really signs",
+    seoTitle: "What Is a Digital Signature? How It Works vs a Scanned Signature",
+    seoDescription:
+      "What is a digital signature and how does it verify identity and document integrity? Learn how cryptographic certificates, browser padlocks, and signed PDFs work.",
+    learningObjectives: [
+      "Distinguish a cryptographic digital signature from an electronic/scanned pen image.",
+      "Inspect a website's TLS certificate padlock to verify the domain and issuer.",
+    ],
     excerpt:
-      "What a digital signature actually proves, how the padlock in a browser works, and why a signed PDF is not the same as a scanned signature.",
+      "What a digital signature proves mathematically, how the padlock in a browser works, and why a signed PDF is not the same as a pasted signature image.",
     series: SERIES,
     order: 127,
     author: AUTHOR,
@@ -13388,8 +13589,15 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "agile-and-devops",
     title: "Agile and DevOps: how the teams build",
+    seoTitle: "Agile Methodology & DevOps Practices Explained in Plain English",
+    seoDescription:
+      "Learn how Agile methodology (sprints, backlogs, daily stand-ups) and DevOps practices (automated builds, testing, CI/CD releases) work together in real software teams.",
+    learningObjectives: [
+      "Explain how Agile sprints, backlogs, and stand-ups keep software plans realistic.",
+      "Describe how DevOps automated testing and deployment pipelines prevent release-day failures.",
+    ],
     excerpt:
-      "How agile teams plan in short cycles, what a stand-up is for, and how DevOps gets a change safely into use without a weekend of panic.",
+      "How Agile methodology plans work in short sprints, what a daily stand-up is for, and how DevOps practices ship updates safely without panic.",
     series: SERIES,
     order: 130,
     author: AUTHOR,
@@ -17350,8 +17558,15 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "booking-a-flight-online",
     title: "Booking a flight, online, by yourself",
+    seoTitle: "How to Book a Flight Online Yourself: Fare Rules, Bags & Check-In",
+    seoDescription:
+      "Step-by-step guide to booking a flight online safely: comparing total price with luggage, matching passport names exactly, avoiding fake booking links, and checking in early.",
+    learningObjectives: [
+      "Compare base fares vs checked-baggage totals on the airline's official site.",
+      "Verify passenger name spelling, dates, and change/cancellation rules before paying.",
+    ],
     excerpt:
-      "Booking a flight directly: reading the fare rules, the luggage that is not included, the names that must match, and the check-in that saves a queue.",
+      "Booking a flight online directly: comparing total fares with luggage, matching ID names, paying safely, and checking in before the airport queue.",
     series: SERIES,
     order: 167,
     author: AUTHOR,
@@ -19194,8 +19409,15 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "what-a-megabyte-is",
     title: "What a megabyte is, and where your data goes",
+    seoTitle: "What Is a Megabyte (MB) of Data? Bits vs Bytes & Bundle Calculator",
+    seoDescription:
+      "What does a megabyte of data actually buy? Learn the difference between Mbps speed and MB data bundles, how much video/audio uses, and how to make Nigerian data plans last.",
+    learningObjectives: [
+      "Convert between megabits per second (Mbps) speed and megabytes (MB) of downloaded data.",
+      "Estimate how quickly video, music, and updates consume a 1.5 GB or 5 GB bundle.",
+    ],
     excerpt:
-      "Bits, bytes, and the difference that doubles your bill: how much data a video, a song, and a page actually use.",
+      "What a megabyte of data is, bits vs bytes (Mbps vs MB), and how much mobile data a video, song, or webpage actually uses.",
     series: SERIES,
     order: 184,
     author: AUTHOR,

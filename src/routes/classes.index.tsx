@@ -8,6 +8,8 @@ import { CampusImg, CourseCover, CourseIcon } from "@/components/marketing/photo
 import { Reveal } from "@/components/motion";
 import { CourseFinder } from "@/components/marketing/course-finder";
 import { HeroMotion } from "@/components/marketing/hero-motion";
+import { courseFamilyTheme } from "@/lib/course-families";
+import { cn } from "@/lib/utils";
 import {
   achievementLevels,
   courseCategories,
@@ -30,9 +32,9 @@ export const Route = createFileRoute("/classes/")({
       url: `${SITE_URL}/classes/${course.slug}`,
     }));
     return getPageHead({
-      title: "Practical Digital Skills Classes — Courses, Fees & Class Notes",
+      title: "IT Courses List & Fees in Nigeria (₦20,000–₦50,000) — Digital Skills",
       description:
-        "Cyber Elias Academy's practical digital skills classes in Port Harcourt: Microsoft Office, computer basics, design, web, data entry, repairs, cybersecurity and more. Compare course fees, requirements and published lesson counts before you apply.",
+        "Full IT courses list and fees at Cyber Elias Academy Port Harcourt: Computer Basics, Excel, Web Development, Cybersecurity, Graphics, Data Analytics & Repairs from ₦20,000.",
       path: "/classes",
       structuredData: [
         {
@@ -93,27 +95,40 @@ const HUB_FAQS = [
 ];
 
 function CourseCard({ course, index }: { course: ResolvedCourse; index: number }) {
+  const family = courseFamilyTheme(course.category, course.slug);
   return (
     <div className="h-full">
       <Link
         to="/classes/$courseSlug"
         params={{ courseSlug: course.slug }}
-        className="cea-course-card group border-foreground/12 bg-card flex h-full flex-col overflow-hidden rounded-2xl border"
+        className={cn(
+          "cea-course-card group border-foreground/12 bg-card flex h-full flex-col overflow-hidden rounded-2xl border shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md",
+          family.accentBar,
+        )}
       >
-        <div className="bg-muted aspect-[16/9] overflow-hidden">
+        <div className="bg-muted relative aspect-[16/9] overflow-hidden">
           <CourseCover slug={course.slug} />
+          <span
+            className={cn(
+              "absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold shadow-sm backdrop-blur-sm",
+              family.pill,
+            )}
+          >
+            <span className={cn("size-1.5 rounded-full", family.dot)} aria-hidden="true" />
+            {family.label}
+          </span>
         </div>
         <div className="flex flex-1 flex-col p-6">
           <div className="flex items-start justify-between gap-4">
-            <span className="font-label text-foreground/45 inline-flex items-center gap-2 text-[10px] tabular-nums">
-              <CourseIcon slug={course.slug} className="text-primary size-3.5" />
+            <span className="font-mono text-muted-foreground inline-flex items-center gap-2 text-xs tabular-nums">
+              <CourseIcon slug={course.slug} className="text-primary size-4" />
               {String(index + 1).padStart(2, "0")}
             </span>
             <div className="flex flex-wrap items-center justify-end gap-2">
               <Badge variant="outline" className="border-foreground/15 font-normal">
                 {course.level}
               </Badge>
-              <span className="text-primary font-display text-sm font-semibold">
+              <span className="text-foreground font-mono text-sm font-bold tabular-nums">
                 {formatFee(course.fee)}
               </span>
             </div>
@@ -133,7 +148,7 @@ function CourseCard({ course, index }: { course: ResolvedCourse; index: number }
             {course.requirements.join(" · ")}
           </p>
 
-          <div className="text-foreground/60 mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px]">
+          <div className="text-foreground/70 mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs">
             <span className="flex items-center gap-1.5">
               <Clock className="size-3.5" /> {course.weeks} weeks
             </span>
@@ -146,7 +161,7 @@ function CourseCard({ course, index }: { course: ResolvedCourse; index: number }
           </div>
 
           <div className="border-foreground/10 mt-5 flex items-center justify-between border-t pt-4">
-            <span className="text-foreground/60 text-[11px]">
+            <span className="text-foreground/70 text-xs">
               {course.publishedCount > 0
                 ? `${course.publishedCount} of ${course.sessions.length} class notes published`
                 : `${course.sessions.length} sessions · full outline`}
@@ -191,7 +206,7 @@ function CourseGroup({
             className="mt-12 scroll-mt-24"
           >
             <div className="border-foreground/10 flex items-center gap-4 border-b pb-3">
-              <span className="font-label text-primary text-[10px] tracking-[0.16em] uppercase">
+              <span className="font-mono text-primary text-xs font-semibold tracking-wider uppercase">
                 {category}
               </span>
               <span className="bg-foreground/10 h-px flex-1" />
@@ -217,8 +232,8 @@ function HowWeTeach() {
         <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <Reveal>
-              <span className="font-label text-primary inline-flex items-center gap-2.5 text-[10px] tracking-[0.16em]">
-                <span aria-hidden="true" className="bg-gradient-brand inline-block h-px w-6" />
+              <span className="font-mono text-primary inline-flex items-center gap-2.5 text-xs font-semibold tracking-wider uppercase">
+                <span aria-hidden="true" className="bg-primary inline-block h-px w-6" />
                 How every class runs
               </span>
             </Reveal>

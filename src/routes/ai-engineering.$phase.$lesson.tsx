@@ -46,6 +46,7 @@ export const Route = createFileRoute("/ai-engineering/$phase/$lesson")({
       description,
       path,
       type: "article",
+      noIndex: true,
       structuredData: [
         {
           "@context": "https://schema.org",

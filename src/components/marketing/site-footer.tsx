@@ -80,33 +80,33 @@ export function SiteFooter() {
       <div aria-hidden="true" className="hairline-cool absolute inset-x-0 top-0 h-px opacity-80" />
 
       {/* Finale CTA row */}
-      <div className="container-page relative border-b border-white/8 py-12 md:py-16">
+      <div className="container-page relative border-b border-white/10 py-12 md:py-14">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
-            <p className="cea-footer-heading flex items-center gap-2">
-              <span className="relative flex size-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-                <span className="relative inline-flex size-1.5 rounded-full bg-emerald-400" />
-              </span>
+            <p className="cea-footer-heading flex items-center gap-2 text-xs">
+              <span
+                className="inline-flex size-1.5 rounded-full bg-emerald-400"
+                aria-hidden="true"
+              />
               Admissions open · Two sessions a week
             </p>
-            <h2 className="font-display mt-4 text-4xl leading-[0.95] font-semibold tracking-[-0.04em] text-balance text-white sm:text-6xl">
+            <h2 className="font-display mt-3 text-3xl leading-[1.04] font-semibold tracking-[-0.035em] text-balance text-white sm:text-5xl">
               One room. One keyboard.
               <br />
-              <span className="text-gradient-cool">A new trajectory.</span>
+              <span className="text-[#93c0ff]">Practical skills you can show.</span>
             </h2>
           </div>
           <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center lg:flex-col lg:items-end">
             <Link
               to="/apply"
-              className="group inline-flex h-13 items-center gap-2.5 rounded-full bg-[linear-gradient(180deg,#3f7dff_0%,#1d5ae0_100%)] px-7 text-base font-semibold text-white shadow-[0_16px_48px_-14px_rgb(47_107_255/0.85),0_1px_0_0_rgb(255_255_255/0.35)_inset] transition-all hover:-translate-y-0.5"
+              className="group inline-flex min-h-[48px] items-center gap-2.5 rounded-full bg-[#245ce0] px-7 text-sm font-semibold text-white transition-colors hover:bg-[#1b4cc2]"
             >
               Apply for admission
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
             <Link
               to="/visit"
-              className="group inline-flex items-center gap-1.5 text-sm font-medium text-[#a9c4e8] hover:text-white"
+              className="group inline-flex items-center gap-1.5 text-sm font-medium text-[#b8cff0] hover:text-white"
             >
               Visit the centre first
               <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -199,8 +199,8 @@ export function SiteFooter() {
       </div>
 
       {/* Meta bar */}
-      <div className="relative border-t border-white/8 bg-black/25">
-        <div className="container-page flex flex-col gap-2 py-5 text-[11px] text-[#7d94b5] sm:flex-row sm:items-center sm:justify-between">
+      <div className="relative border-t border-white/10 bg-black/25">
+        <div className="container-page flex flex-col gap-2 py-5 text-xs text-[#b6c9e4] sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Cyber Elias Academy Ltd · RC 8413776</p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
             <span>Mon–Sat, 8:00–20:00 WAT</span>

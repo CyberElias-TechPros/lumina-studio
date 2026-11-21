@@ -36,16 +36,27 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const strict = process.argv.includes("--strict");
 
 const { blogPosts } = await import(join(root, "src/data/blog.ts"));
+const { scoreLessonQuality } = await import(
+  join(root, "src/data/editorial/publication-standard.ts")
+);
 const editorial = JSON.parse(
   readFileSync(join(root, "src/data/editorial/lesson-dates.generated.json"), "utf8"),
 );
 
 const errors = [];
 const warnings = [];
+const qualityScores = [];
 
 function text(block) {
   if (block.type === "p" || block.type === "h2") return block.text;
   if (block.type === "ul") return block.items.join(" ");
+  if (block.type === "table") {
+    return [
+      block.caption ?? "",
+      block.headers.join(" "),
+      ...block.rows.map((r) => r.join(" ")),
+    ].join(" ");
+  }
   return `${block.alt ?? ""} ${block.caption ?? ""}`;
 }
 
@@ -113,6 +124,9 @@ for (const post of blogPosts) {
     warnings.push(
       `${where}: review due ${record.reviewDueAt ?? "unknown"} — no review recorded yet`,
     );
+
+  const score = scoreLessonQuality(post, record);
+  qualityScores.push({ slug: post.slug, ...score });
 }
 
 for (const slug of Object.keys(editorial.lessons)) {
@@ -125,9 +139,17 @@ for (const [src, count] of imageUse) {
 }
 
 /* ---------- report ---------- */
+const avgScore =
+  qualityScores.reduce((sum, s) => sum + s.total, 0) / Math.max(1, qualityScores.length);
+const highBand = qualityScores.filter((s) => s.total >= 85).length;
+const midBand = qualityScores.filter((s) => s.total >= 75 && s.total < 85).length;
+
 console.log(`Lesson contract — ${blogPosts.length} lessons`);
 console.log(`  errors:   ${errors.length}`);
 console.log(`  warnings: ${warnings.length}`);
+console.log(
+  `  CEA-LPS rubric: mean ${avgScore.toFixed(1)}/100 · ≥85 (${highBand}) · 75–84 (${midBand}) · <75 (${qualityScores.length - highBand - midBand})`,
+);
 
 if (warnings.length) {
   console.log("\nWarnings");

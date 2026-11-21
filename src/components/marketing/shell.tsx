@@ -48,11 +48,11 @@ export function Eyebrow({
   return (
     <span
       className={cn(
-        "border-foreground/12 bg-foreground/[0.045] text-muted-foreground inline-flex items-center gap-2 rounded-full border px-3 py-1.5 font-mono text-[9px] font-semibold tracking-[0.24em] uppercase backdrop-blur-sm sm:text-[10px]",
+        "border-border bg-muted/65 text-foreground/80 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold tracking-wider uppercase",
         className,
       )}
     >
-      <span className="bg-primary-glow size-1 rounded-full shadow-[0_0_8px_2px_color-mix(in_oklab,var(--primary-glow)_70%,transparent)]" />
+      <span className="bg-primary size-1.5 rounded-full" aria-hidden="true" />
       {children}
     </span>
   );
@@ -141,23 +141,17 @@ export function PageHero({
   meta?: string[];
 }) {
   return (
-    <section className="cea-hero-v2">
-      {/* architectural backdrop: fading grid + top glare */}
-      <div aria-hidden="true" className="grid-fade pointer-events-none absolute inset-0" />
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px">
-        <span className="hairline block h-px w-full" />
-      </div>
-      <CornerMarks className="opacity-70" />
-      <div className="container-page relative py-16 md:py-24">
+    <section className="border-border bg-muted/25 relative border-b">
+      <div className="container-page relative py-14 md:py-20">
         <Eyebrow>{eyebrow}</Eyebrow>
-        <h1 className="font-display mt-6 max-w-4xl text-[clamp(2.6rem,1.6rem+4.4vw,4.5rem)] leading-[0.98] font-semibold tracking-[-0.045em] text-balance">
+        <h1 className="font-display mt-5 max-w-4xl text-[clamp(2.25rem,1.4rem+3.8vw,4rem)] leading-[1.02] font-semibold tracking-[-0.04em] text-balance">
           {title}
         </h1>
-        <p className="text-muted-foreground mt-6 max-w-2xl text-lg leading-relaxed text-pretty">
+        <p className="text-muted-foreground mt-5 max-w-2xl text-lg leading-relaxed text-pretty">
           {description}
         </p>
         {meta && meta.length > 0 && (
-          <ul className="text-muted-foreground mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[10px] tracking-[0.18em] uppercase">
+          <ul className="text-muted-foreground mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium tracking-wider uppercase">
             {meta.map((item, i) => (
               <li key={item} className="flex items-center gap-4">
                 {i > 0 && <span aria-hidden="true" className="bg-primary/50 size-1 rounded-full" />}
@@ -188,31 +182,24 @@ export function CTASection({
   secondary?: { label: string; to: string };
 }) {
   return (
-    <section className="cea-cta-finale">
-      <span
-        aria-hidden="true"
-        className="cea-cta-orbit top-1/2 left-1/2 size-[42rem] -translate-x-1/2 -translate-y-1/2 sm:size-[52rem]"
-      />
-      <span
-        aria-hidden="true"
-        className="cea-cta-orbit top-1/2 left-1/2 size-[28rem] -translate-x-1/2 -translate-y-1/2 border-white/10 sm:size-[34rem]"
-      />
-      <div aria-hidden="true" className="hairline-cool absolute inset-x-0 top-0 h-px" />
-      <div className="container-page relative py-16 text-center md:py-24">
-        <p className="font-mono text-[10px] tracking-[0.3em] text-[#7fb5ff] uppercase">Next step</p>
-        <h2 className="font-display mx-auto mt-5 max-w-4xl text-4xl leading-[0.97] font-semibold tracking-[-0.045em] text-balance text-white sm:text-6xl lg:text-7xl">
+    <section className="border-t border-white/10 bg-[#0b172a] text-white">
+      <div className="container-page relative py-16 text-center md:py-20">
+        <p className="text-xs font-semibold tracking-[0.18em] text-[#93c0ff] uppercase">
+          Next step
+        </p>
+        <h2 className="font-display mx-auto mt-4 max-w-3xl text-3xl leading-[1.04] font-semibold tracking-[-0.035em] text-balance text-white sm:text-5xl">
           {title}
         </h2>
-        <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-[#b9c8e2] sm:text-lg">
+        <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-[#cddcf2] sm:text-lg">
           {description}
         </p>
-        <div className="mt-9 flex flex-wrap items-center justify-center gap-3.5">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3.5">
           {/^(https?:)?\/\//i.test(primary.to) ? (
             <a
               href={primary.to}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex h-13 items-center gap-2.5 rounded-full bg-[linear-gradient(180deg,#3f7dff,#1d5ae0)] px-8 text-base font-semibold text-white shadow-[0_18px_50px_-14px_rgb(47_107_255/0.9),0_1px_0_0_rgb(255_255_255/0.35)_inset] transition-all hover:-translate-y-0.5"
+              className="group inline-flex min-h-[48px] items-center gap-2 rounded-full bg-[#245ce0] px-7 text-sm font-semibold text-white transition-colors hover:bg-[#1b4cc2]"
             >
               {primary.label}
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -220,7 +207,7 @@ export function CTASection({
           ) : (
             <Link
               to={primary.to}
-              className="group inline-flex h-13 items-center gap-2.5 rounded-full bg-[linear-gradient(180deg,#3f7dff,#1d5ae0)] px-8 text-base font-semibold text-white shadow-[0_18px_50px_-14px_rgb(47_107_255/0.9),0_1px_0_0_rgb(255_255_255/0.35)_inset] transition-all hover:-translate-y-0.5"
+              className="group inline-flex min-h-[48px] items-center gap-2 rounded-full bg-[#245ce0] px-7 text-sm font-semibold text-white transition-colors hover:bg-[#1b4cc2]"
             >
               {primary.label}
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -231,7 +218,7 @@ export function CTASection({
               href={secondary.to}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex h-13 items-center gap-2 rounded-full border border-white/25 px-8 text-base font-semibold text-white backdrop-blur-sm transition-all hover:border-white/50 hover:bg-white/5"
+              className="group inline-flex min-h-[48px] items-center gap-2 rounded-full border border-white/25 px-7 text-sm font-semibold text-white transition-colors hover:border-white/50 hover:bg-white/10"
             >
               {secondary.label}
               <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -239,15 +226,15 @@ export function CTASection({
           ) : (
             <Link
               to={secondary.to}
-              className="group inline-flex h-13 items-center gap-2 rounded-full border border-white/25 px-8 text-base font-semibold text-white backdrop-blur-sm transition-all hover:border-white/50 hover:bg-white/5"
+              className="group inline-flex min-h-[48px] items-center gap-2 rounded-full border border-white/25 px-7 text-sm font-semibold text-white transition-colors hover:border-white/50 hover:bg-white/10"
             >
               {secondary.label}
               <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
           )}
         </div>
-        <p className="mt-10 font-mono text-[9px] tracking-[0.3em] text-[#61759a] uppercase">
-          Admissions open · Two sessions a week · Port Harcourt
+        <p className="mt-8 text-xs font-medium tracking-[0.14em] text-[#b4cae8] uppercase">
+          Admissions open · Two sessions a week · 24 Ebony Road, Port Harcourt
         </p>
       </div>
     </section>

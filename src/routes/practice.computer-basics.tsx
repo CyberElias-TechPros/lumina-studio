@@ -2,6 +2,7 @@ import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
 import { ArrowRight } from "lucide-react";
 import { PageShell } from "@/components/marketing/shell";
+import { FourThingsDiagram } from "@/components/marketing/four-things-diagram";
 import { ComputerBasicsLab } from "@/components/practice/computer-basics-lab";
 import { blogPosts } from "@/data/blog";
 import { beginnerLessonSlugs } from "@/data/practice/beginner-challenges";
@@ -45,7 +46,10 @@ function ComputerBasicsPage() {
           </p>
         </div>
       </header>
-      <div className="container-page grid max-w-6xl gap-10 py-12 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,0.8fr)] lg:items-start">
+      <div className="container-page max-w-6xl pt-10">
+        <FourThingsDiagram showPracticeLink={false} />
+      </div>
+      <div className="container-page grid max-w-6xl gap-10 py-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,0.8fr)] lg:items-start">
         <ComputerBasicsLab />
         <aside
           className="border-border bg-card rounded-2xl border p-6"

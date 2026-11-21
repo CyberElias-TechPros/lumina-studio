@@ -14,17 +14,17 @@ import { cn } from "@/lib/utils";
 /** Primary navigation: what most visitors come for. */
 const nav = [
   { label: "Courses", to: "/classes" },
+  { label: "Free labs", to: "/tools" },
+  { label: "Notes", to: "/blog" },
   { label: "IT Services", to: "/services" },
-  { label: "Free learning", to: "/blog" },
   { label: "Admissions", to: "/admissions" },
-  { label: "About", to: "/about" },
 ] as const;
 
 /** Secondary links, grouped under "More" on desktop and listed after the primary links on mobile. */
 const moreNav = [
+  { label: "About CEA", to: "/about" },
   { label: "AI Engineering", to: "/ai-engineering" },
   { label: "Open curriculum", to: "/open-curriculum" },
-  { label: "Free tools", to: "/tools" },
   { label: "Shop", to: "/shop" },
   { label: "Schools & partners", to: "/schools" },
   { label: "Contact", to: "/contact" },
@@ -44,18 +44,15 @@ function FeaturedLink({ className, onClick }: { className?: string; onClick?: ()
       to={featured.to}
       onClick={onClick}
       className={cn(
-        "border-primary-glow/30 bg-primary/10 text-primary hover:bg-primary/15 items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm font-medium whitespace-nowrap backdrop-blur-sm transition-colors",
+        "border-primary/25 bg-primary/8 text-primary hover:bg-primary/14 items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-semibold whitespace-nowrap transition-colors",
         // display is set by the caller (desktop pill vs. mobile row)
         className,
       )}
     >
-      <span className="relative flex size-1.5" aria-hidden="true">
-        <span className="border-primary/40 absolute inline-flex h-full w-full animate-ping rounded-full border opacity-75" />
-        <span className="bg-primary relative inline-flex size-1.5 rounded-full" />
-      </span>
+      <span className="bg-primary inline-flex size-1.5 rounded-full" aria-hidden="true" />
       <span className="xl:hidden">iDICE</span>
       <span className="hidden xl:inline">{featured.label}</span>
-      <span className="bg-primary text-primary-foreground rounded-full px-1.5 py-px text-[9px] font-bold tracking-[0.14em] uppercase">
+      <span className="bg-primary text-primary-foreground rounded-full px-1.5 py-px text-[11px] font-bold tracking-wider uppercase">
         {featured.tag}
       </span>
     </Link>
@@ -69,12 +66,8 @@ export function BrandMark({ className }: { className?: string }) {
       className={cn("group flex items-center gap-3", className)}
       aria-label="Cyber Elias Academy — home"
     >
-      <span className="relative grid size-9 shrink-0 place-items-center overflow-hidden rounded-xl border border-white/15 bg-[linear-gradient(145deg,#2455a4_0%,#0f2742_100%)] shadow-[0_8px_24px_-8px_rgb(47_107_255/0.55),0_1px_0_0_rgb(255_255_255/0.25)_inset]">
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-3 left-1/2 h-6 w-16 -translate-x-1/2 rounded-full bg-white/25 blur-md"
-        />
-        <span className="font-display relative text-[11px] font-extrabold tracking-[0.08em] text-white">
+      <span className="relative grid size-9 shrink-0 place-items-center overflow-hidden rounded-xl border border-white/15 bg-[linear-gradient(145deg,#1d4ed8_0%,#0f2742_100%)] shadow-sm">
+        <span className="font-display relative text-xs font-extrabold tracking-wider text-white">
           CEA
         </span>
       </span>
@@ -82,7 +75,7 @@ export function BrandMark({ className }: { className?: string }) {
         <span className="font-display block text-[15px] font-bold tracking-tight whitespace-nowrap">
           Cyber Elias Academy
         </span>
-        <span className="text-muted-foreground block font-mono text-[9px] tracking-[0.22em] uppercase">
+        <span className="text-muted-foreground block text-[11px] font-medium tracking-wider uppercase">
           Port Harcourt · NG
         </span>
       </span>

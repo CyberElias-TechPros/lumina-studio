@@ -1859,3 +1859,77 @@ html.cursor-off * {
   margin-top: 0.5rem;
   font-size: 0.72rem;
 }
+
+/* ------------------------------------------------------------------ *
+ * CEA SIGNATURE EDITORIAL SURFACES (Paper, Receipt, Blueprint, Print)
+ * ------------------------------------------------------------------ */
+
+.cea-blueprint-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in oklch, var(--foreground) 5.5%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--foreground) 5.5%, transparent) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.cea-receipt {
+  position: relative;
+  background: var(--card);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  box-shadow:
+    0 1px 2px oklch(0.2 0.03 265 / 0.04),
+    0 18px 40px -24px oklch(0.2 0.03 265 / 0.22);
+}
+
+.cea-receipt::before,
+.cea-receipt::after {
+  content: "";
+  display: block;
+  height: 10px;
+  width: 100%;
+  background-repeat: repeat-x;
+  background-size: 16px 10px;
+}
+
+.cea-receipt::before {
+  background-image: radial-gradient(circle at 8px 0, var(--background) 6px, var(--border) 6.5px, var(--card) 7px);
+  border-top: 1px solid var(--border);
+}
+
+.cea-receipt::after {
+  background-image: radial-gradient(circle at 8px 10px, var(--background) 6px, var(--border) 6.5px, var(--card) 7px);
+  border-bottom: 1px solid var(--border);
+}
+
+.cea-receipt-rule {
+  border-top: 1px dashed color-mix(in oklch, var(--foreground) 20%, transparent);
+}
+
+/* Clean 1-page A4 Course & Lesson Print Stylesheet */
+@media print {
+  header,
+  footer,
+  nav[aria-label="Breadcrumb"],
+  .cea-no-print,
+  [data-ad-slot] {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+    font-size: 11pt !important;
+  }
+
+  .cea-receipt {
+    box-shadow: none !important;
+    border: 1px solid #94a3b8 !important;
+    break-inside: avoid;
+  }
+
+  .cea-receipt::before,
+  .cea-receipt::after {
+    display: none !important;
+  }
+}
+

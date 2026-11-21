@@ -67,7 +67,13 @@ function postText(post) {
   for (const block of post.body) {
     if (block.type === "p" || block.type === "h2") parts.push(block.text);
     else if (block.type === "ul") parts.push(block.items.join(" "));
-    else if (block.type === "figure") parts.push(block.caption);
+    else if (block.type === "table") {
+      parts.push(
+        block.caption ?? "",
+        block.headers.join(" "),
+        ...block.rows.map((r) => r.join(" ")),
+      );
+    } else if (block.type === "figure") parts.push(block.caption);
   }
   return parts.join("\n");
 }

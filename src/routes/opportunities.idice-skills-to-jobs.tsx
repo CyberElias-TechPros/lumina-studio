@@ -4,12 +4,6 @@ import { useState } from "react";
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
 import { Check, Copy, ExternalLink, ShieldAlert } from "lucide-react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
 import { getPageHead } from "@/lib/seo";
@@ -585,18 +579,19 @@ function IdiceOpportunity() {
       <section className="border-border bg-muted/40 border-t">
         <div className="container-page py-14 md:py-16">
           <SectionHeading eyebrow="FAQ" title="Common questions" />
-          <Accordion type="single" collapsible className="mt-6 max-w-3xl">
-            {faqs.map((f, i) => (
-              <AccordionItem key={f.q} value={`faq-${i}`}>
-                <AccordionTrigger className="text-left text-base font-medium">
-                  {f.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed">
-                  {f.a}
-                </AccordionContent>
-              </AccordionItem>
+          <div className="mt-6 max-w-3xl divide-y divide-border border-y border-border">
+            {faqs.map((f) => (
+              <details key={f.q} className="group py-4">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-medium">
+                  <span>{f.q}</span>
+                  <span className="text-muted-foreground text-sm font-normal transition-transform group-open:rotate-45">
+                    +
+                  </span>
+                </summary>
+                <p className="text-muted-foreground mt-3 pr-6 text-sm leading-relaxed">{f.a}</p>
+              </details>
             ))}
-          </Accordion>
+          </div>
           <p className="text-muted-foreground mt-8 max-w-3xl text-xs leading-relaxed">
             This page summarises the official beneficiary application form as shared with partner
             organisations in October 2026. No closing date was stated in that information, so apply

@@ -4,6 +4,13 @@ function blockText(block: BlogBlock | string): string {
   if (typeof block === "string") return block;
   if (block.type === "p" || block.type === "h2") return block.text;
   if (block.type === "ul") return block.items.join(" ");
+  if (block.type === "table") {
+    return [
+      block.caption ?? "",
+      block.headers.join(" "),
+      ...block.rows.map((r) => r.join(" ")),
+    ].join(" ");
+  }
   return `${block.alt} ${block.caption}`;
 }
 

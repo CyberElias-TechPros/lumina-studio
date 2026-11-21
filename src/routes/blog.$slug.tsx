@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
 import { NoteCard } from "@/components/marketing/note-card";
+import { ReadingSpine } from "@/components/marketing/reading-spine";
 import { blogPosts, NOTES_AUTHOR, type BlogBlock } from "@/data/blog";
 import { FounderPhoto } from "@/components/marketing/founder-photo";
 import { LessonEndAd, LessonInArticleAd } from "@/components/marketing/ad-slots";
@@ -16,6 +17,7 @@ import { adjacentNotes, chapterForOrder, relatedNotes } from "@/data/note-chapte
 import { getPageHead } from "@/lib/seo";
 import { readingTimeLabel } from "@/lib/blog-reading-time";
 import { lessonEditorial, lessonEditorialIso, SERIES_RELEASE } from "@/data/editorial";
+import { resolveLessonStandard, slugifyHeading } from "@/data/editorial/publication-standard";
 import { resolveBlogSlugRedirect } from "@/lib/legacy-redirects";
 import { SITE_URL } from "@/lib/site-url";
 
@@ -30,13 +32,20 @@ export const Route = createFileRoute("/blog/$slug")({
   },
   head: ({ params }) => {
     const post = blogPosts.find((p) => p.slug === params.slug) ?? blogPosts[0];
+    const editorial = lessonEditorial(post.slug);
+    const standard = resolveLessonStandard(post, editorial);
     const dates = lessonEditorialIso(post.slug);
+    const title = post.seoTitle ?? post.title;
+    const description = post.seoDescription ?? post.excerpt;
     const articleSchema = {
       "@context": "https://schema.org",
       "@type": "Article",
-      headline: post.title,
-      description: post.excerpt,
+      headline: title,
+      description,
       image: `${SITE_URL}${post.cover}`,
+      articleSection: standard.category.label,
+      educationalLevel: standard.difficulty,
+      learningResourceType: standard.articleType.label,
       ...dates,
       ...(dates.reviewedBy ? { reviewedBy: { "@type": "Person", name: dates.reviewedBy } } : {}),
       author: {
@@ -58,8 +67,8 @@ export const Route = createFileRoute("/blog/$slug")({
       },
     };
     return getPageHead({
-      title: post.title,
-      description: post.excerpt,
+      title,
+      description,
       path: `/blog/${post.slug}`,
       type: "article",
       image: `${SITE_URL}${post.cover}`,
@@ -72,7 +81,12 @@ export const Route = createFileRoute("/blog/$slug")({
 function Block({ block }: { block: BlogBlock }) {
   if (block.type === "h2") {
     return (
-      <h2 className="font-display mt-10 text-2xl font-semibold tracking-tight">{block.text}</h2>
+      <h2
+        id={slugifyHeading(block.text)}
+        className="font-display mt-10 scroll-mt-24 text-2xl font-semibold tracking-tight"
+      >
+        {block.text}
+      </h2>
     );
   }
   if (block.type === "ul") {
@@ -82,6 +96,46 @@ function Block({ block }: { block: BlogBlock }) {
           <li key={item.slice(0, 48)}>{item}</li>
         ))}
       </ul>
+    );
+  }
+  if (block.type === "table") {
+    return (
+      <div className="border-border my-6 overflow-x-auto rounded-xl border">
+        <table className="w-full border-collapse text-left text-sm">
+          {block.caption && (
+            <caption className="text-muted-foreground bg-muted/30 border-border border-b px-4 py-2.5 text-left text-xs font-medium">
+              {block.caption}
+            </caption>
+          )}
+          <thead className="bg-muted/50 border-border border-b">
+            <tr>
+              {block.headers.map((header) => (
+                <th key={header} scope="col" className="text-foreground px-4 py-3 font-semibold">
+                  {header}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody className="divide-border divide-y">
+            {block.rows.map((row, rowIndex) => (
+              <tr key={rowIndex} className="bg-card">
+                {row.map((cell, cellIndex) => (
+                  <td
+                    key={cellIndex}
+                    className={
+                      cellIndex === 0
+                        ? "text-foreground px-4 py-3 font-medium"
+                        : "text-muted-foreground px-4 py-3 leading-relaxed"
+                    }
+                  >
+                    {cell}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     );
   }
   if (block.type === "figure") {
@@ -109,10 +163,19 @@ function Article() {
   const chapter = chapterForOrder(post.order);
   const related = relatedNotes(post, 3);
   const editorial = lessonEditorial(post.slug);
+  const standard = resolveLessonStandard(post, editorial);
   const challenge = beginnerChallenges[post.slug];
+  const tocHeadings = post.body
+    .filter((b): b is Extract<BlogBlock, { type: "h2" }> => b.type === "h2")
+    .map((b) => ({ text: b.text, id: slugifyHeading(b.text) }));
 
   return (
     <PageShell>
+      <ReadingSpine
+        lessonOrder={post.order}
+        totalLessons={blogPosts.length}
+        chapterTitle={chapter?.title}
+      />
       <header className="border-border bg-muted/30 border-b pt-10 pb-10 md:pt-14 md:pb-14">
         <div className="container-page max-w-3xl">
           <nav aria-label="Breadcrumb" className="text-muted-foreground text-sm">
@@ -144,6 +207,12 @@ function Article() {
           <div className="mt-6 flex flex-wrap items-center gap-2">
             <span className="bg-primary text-primary-foreground rounded-full px-3 py-1 text-xs font-semibold">
               Lesson {post.order} of {blogPosts.length}
+            </span>
+            <span className="border-border bg-background text-foreground rounded-full border px-3 py-1 text-xs font-medium">
+              {standard.category.label}
+            </span>
+            <span className="border-border bg-background text-muted-foreground rounded-full border px-3 py-1 text-xs">
+              {standard.difficulty} · {standard.articleType.label}
             </span>
             {chapter && (
               <span className="border-border bg-background text-muted-foreground rounded-full border px-3 py-1 text-xs">
@@ -180,20 +249,14 @@ function Article() {
             ) : (
               <span>Released in the {SERIES_RELEASE.window} notes series</span>
             )}
-            {editorial.reviewedAt && (
+            {editorial.reviewedAt ? (
               <span>
                 Reviewed by{" "}
                 <span className="text-foreground font-medium">{editorial.reviewer}</span> on{" "}
                 <time dateTime={editorial.reviewedAtIso ?? undefined}>{editorial.reviewedAt}</time>
               </span>
-            )}
-            {!editorial.reviewedAt && editorial.reviewDueAt && (
-              <span>
-                Review due{" "}
-                <time dateTime={editorial.reviewDueAtIso ?? undefined}>
-                  {editorial.reviewDueAt}
-                </time>
-              </span>
+            ) : (
+              <span>Status: {standard.publicStatusLabel}</span>
             )}
             {chapter && (
               <span className="hidden sm:inline">
@@ -208,6 +271,39 @@ function Article() {
         <figure className="border-border overflow-hidden rounded-xl border shadow-sm">
           <img src={post.cover} alt={post.coverAlt} className="aspect-[16/9] w-full object-cover" />
         </figure>
+
+        {(post.learningObjectives?.length || tocHeadings.length >= 3) && (
+          <div className="border-border bg-muted/30 mt-8 grid gap-6 rounded-xl border p-6 sm:grid-cols-2">
+            {post.learningObjectives && post.learningObjectives.length > 0 && (
+              <div>
+                <p className="text-primary text-xs font-semibold tracking-wider uppercase">
+                  What you will learn
+                </p>
+                <ul className="text-foreground/85 mt-3 list-disc space-y-1.5 pl-4 text-sm leading-relaxed">
+                  {post.learningObjectives.map((obj) => (
+                    <li key={obj}>{obj}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {tocHeadings.length >= 3 && (
+              <nav aria-label="In this lesson">
+                <p className="text-primary text-xs font-semibold tracking-wider uppercase">
+                  In this lesson
+                </p>
+                <ol className="text-muted-foreground mt-3 space-y-1.5 text-sm">
+                  {tocHeadings.map((item, idx) => (
+                    <li key={item.id}>
+                      <a href={`#${item.id}`} className="hover:text-foreground hover:underline">
+                        {idx + 1}. {item.text}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            )}
+          </div>
+        )}
 
         <div className="mt-10 space-y-6">
           {post.body.map((block, i) => (
@@ -225,6 +321,25 @@ function Article() {
           <LessonChallengeCard key={post.slug} slug={post.slug} challenge={challenge} />
         ) : (
           <LessonEndAd />
+        )}
+
+        {standard.practiceTool && (
+          <div className="border-border bg-card mt-8 flex flex-col gap-4 rounded-xl border p-6 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-primary text-xs font-semibold tracking-wider uppercase">
+                Free browser practice lab
+              </p>
+              <p className="font-display mt-1 text-lg font-semibold">
+                {standard.practiceTool.label}
+              </p>
+              <p className="text-muted-foreground mt-1 text-sm leading-relaxed">
+                {standard.practiceTool.description}
+              </p>
+            </div>
+            <Button asChild variant="outline" className="shrink-0">
+              <Link to={standard.practiceTool.to}>Open lab</Link>
+            </Button>
+          </div>
         )}
 
         <aside className="border-primary/30 bg-primary/5 mt-12 rounded-xl border p-6">

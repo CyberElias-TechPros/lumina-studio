@@ -68,6 +68,31 @@ function VisitInfoPage() {
             have a four-floor campus, a café, or an employer lounge. If a class is running when you
             arrive, you can sit at the back if you called ahead.
           </p>
+          <h3 className="font-display mt-6 text-base font-semibold">Tips before making the trip</h3>
+          <ul className="text-muted-foreground mt-2 space-y-2 text-sm leading-relaxed">
+            <li>
+              · <strong className="text-foreground">Bring a notebook or your laptop:</strong>{" "}
+              Computer Basics students practise on centre machines; coding, design and analytics
+              students can test their own laptops against our classroom Wi-Fi and power backup.
+            </li>
+            <li>
+              · <strong className="text-foreground">Landmarks from Aba Road:</strong> stop at
+              Rumuola Junction, walk or take a keke along Rumuola Road and ask for Ebony Road. Call
+              +234 905 862 8386 if you need live directions at the junction.
+            </li>
+            <li>
+              · <strong className="text-foreground">Check course availability first:</strong> browse
+              the{" "}
+              <Link to="/visit/brochure" className="text-primary font-medium underline">
+                printed course summary
+              </Link>{" "}
+              or{" "}
+              <Link to="/classes" className="text-primary font-medium underline">
+                full syllabus list
+              </Link>{" "}
+              so you know which cohort days match your work or school timetable.
+            </li>
+          </ul>
         </div>
       </section>
 

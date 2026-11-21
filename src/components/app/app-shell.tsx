@@ -1167,7 +1167,7 @@ export function AppShell({
       </div>
 
       <ScrollArea className="flex-1 px-3">
-        <p className="text-muted-foreground px-3 pt-2 pb-1 text-[10px] font-bold tracking-[0.16em] uppercase">
+        <p className="text-muted-foreground px-3 pt-2 pb-1 text-xs font-bold tracking-wider uppercase">
           {role.label} portal
         </p>
         <nav className="space-y-0.5">
@@ -1390,8 +1390,8 @@ export function AppShell({
             )}
             {accessDenied ? (
               <div className="mx-auto flex min-h-[420px] max-w-xl flex-col items-center justify-center text-center">
-                <span className="bg-error/10 text-error grid size-14 place-items-center rounded-2xl text-2xl">
-                  🔒
+                <span className="bg-error/10 text-error grid size-14 place-items-center rounded-2xl">
+                  <ShieldCheck className="size-7" aria-hidden="true" />
                 </span>
                 <h2 className="font-display mt-5 text-xl font-extrabold">
                   This workspace is restricted
