@@ -3,8 +3,14 @@ import { Link } from "@/lib/next-compat/router";
 import {
   ArrowRight,
   ArrowUpRight,
+  Box,
+  Clock,
+  FileText,
+  Image,
   Keyboard,
+  LayoutGrid,
   Palette,
+  QrCode,
   ScrollText,
   ShieldCheck,
   Sparkles,
@@ -15,9 +21,9 @@ import { getPageHead } from "@/lib/seo";
 export const Route = createFileRoute("/tools/")({
   head: () =>
     getPageHead({
-      title: "Free Student Tools — Typing Test, Word Counter & More",
+      title: "Free Practice Tools — Typing, Office Shortcuts, Design & More",
       description:
-        "Free tools from Cyber Elias Academy, Port Harcourt: a monkeytype-style typing speed test, word counter, password strength checker and WCAG contrast checker. No sign-up, no tracking of your content.",
+        "Free practice tools from Cyber Elias Academy, Port Harcourt: a monkeytype-style typing speed test, keyboard shortcuts for Microsoft Office, an image specs calculator, a CSS generator, a freelancer rate calculator and a QR code generator. No sign-up, no tracking of your content.",
       path: "/tools",
       structuredData: {
         "@context": "https://schema.org",
@@ -65,6 +71,52 @@ const tools = [
       "WCAG AA/AAA contrast for any pair, live preview, eight designer presets — and a harmony-palette generator with one-click copy.",
     meta: "WCAG AA/AAA · Palettes",
   },
+
+  {
+    to: "/tools/keyboard-shortcuts",
+    icon: Keyboard,
+    name: "Keyboard Shortcuts",
+    headline: "Know your keyboard. Work faster.",
+    blurb:
+      "Browse and practise the shortcuts for Microsoft Word, Excel, PowerPoint, your browser and Windows — all in one place. Search by shortcut or description, then test yourself with a practice mode that scores you as you go.",
+    meta: "Word · Excel · PowerPoint · Browser · Windows",
+  },
+  {
+    to: "/tools/image-specs",
+    icon: Image,
+    name: "Image Specs Calculator",
+    headline: "What size is that image, really?",
+    blurb:
+      "Plug in pixel dimensions and get the aspect ratio, print size at any DPI, a target resize that keeps the shape, and a crop or letterbox check. Useful for graphic design, photography and video export work.",
+    meta: "Aspect ratio · DPI · Print size · Resize · Crop",
+  },
+  {
+    to: "/tools/css-generator",
+    icon: Palette,
+    name: "CSS Generator",
+    headline: "Build CSS you can actually use.",
+    blurb:
+      "Tweak a gradient, a box-shadow or a border-radius with sliders and see the result live — then copy the CSS for your own project. Made for the Web Design and Web Development courses.",
+    meta: "Gradient · Box-shadow · Border-radius",
+  },
+  {
+    to: "/tools/freelancer-calculator",
+    icon: FileText,
+    name: "Freelancer Rate & Quote",
+    headline: "What should I charge? Set your rate.",
+    blurb:
+      "Find the hourly rate that hits your income target, and quote a project by the hours or by the margin you want. All figures in Naira. Made for the Business Freelancing and Content Creation courses.",
+    meta: "Hourly rate · Project quote · Margin · Naira",
+  },
+  {
+    to: "/tools/qr-code",
+    icon: QrCode,
+    name: "QR Code Generator",
+    headline: "Make a QR code in seconds.",
+    blurb:
+      "Links, text, contacts, Wi-Fi and more — custom colours, size and error correction, then download or share. Your input never leaves the page. Added to the CEA Lab tools directory.",
+    meta: "URLs · Text · Contacts · Wi-Fi · PNG",
+  },
 ] as const;
 
 function ToolsPage() {
@@ -78,8 +130,8 @@ function ToolsPage() {
             <span className="font-serif text-primary font-normal italic">sharp students.</span>
           </>
         }
-        description="The small software that makes practice stick: type faster, write tighter, stay safe online and design legibly. Free, fast, and nothing you type leaves your browser."
-        meta={["4 tools", "100% client-side", "Free for everyone"]}
+        description="The small software that makes practice stick: type faster, learn your keyboard shortcuts, size images for print and web, build CSS and figure your freelance rate. Free, fast, and nothing you type leaves your browser."
+        meta={["8 tools", "100% client-side", "Free for everyone"]}
       />
       <section className="container-page py-14 md:py-20">
         <Eyebrow>The toolbox</Eyebrow>

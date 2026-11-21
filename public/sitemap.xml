@@ -82,6 +82,9 @@
     <loc>https://www.cea.ng/request-project</loc>
   </url>
   <url>
+    <loc>https://www.cea.ng/search</loc>
+  </url>
+  <url>
     <loc>https://www.cea.ng/shipping</loc>
   </url>
   <url>
@@ -89,6 +92,15 @@
   </url>
   <url>
     <loc>https://www.cea.ng/shop/gadgets</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/shop/cart</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/shop/checkout</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/teach</loc>
   </url>
   <url>
     <loc>https://www.cea.ng/team</loc>
@@ -110,6 +122,21 @@
   </url>
   <url>
     <loc>https://www.cea.ng/tools/color-contrast</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/tools/keyboard-shortcuts</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/tools/image-specs</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/tools/css-generator</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/tools/freelancer-calculator</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/tools/qr-code</loc>
   </url>
   <url>
     <loc>https://www.cea.ng/visit</loc>
