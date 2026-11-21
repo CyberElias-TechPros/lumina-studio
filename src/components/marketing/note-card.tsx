@@ -30,7 +30,7 @@ export function NoteCard({ post, className }: { post: BlogPost; className?: stri
       </div>
       <div className="flex flex-1 flex-col p-5">
         {chapter && (
-          <p className="text-primary text-[11px] font-semibold tracking-[0.12em] uppercase">
+          <p className="text-primary text-xs font-semibold tracking-wider uppercase">
             {chapter.title}
           </p>
         )}

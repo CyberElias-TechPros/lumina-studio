@@ -12,7 +12,7 @@ export type RouteManifestEntry = {
 };
 
 export const routeManifest: RouteManifestEntry[] = [
-  { path: "/", file: "index.tsx", index: true, needsClient: false, usesSearch: false, title: "Cyber Elias Academy — Practical digital skills training in Port Harcourt", description: "Short computer and digital-skills courses in Port Harcourt: Microsoft Office, computer basics, graphic design, web design, data entry and more. Two sessions a week.", type: null, image: null },
+  { path: "/", file: "index.tsx", index: true, needsClient: false, usesSearch: false, title: "Cyber Elias Academy — Practical digital skills training in Port Harcourt", description: "Short computer and digital-skills courses in Port Harcourt from ₦20,000: Microsoft Office, computer basics, graphic design, web design, data entry, and 10 free browser labs.", type: null, image: null },
   { path: "/about", file: "about.tsx", index: false, needsClient: false, usesSearch: false, title: "About — Cyber Elias Academy", description: "Cyber Elias Academy is a digital-skills training centre in Port Harcourt, Rivers State. Short, practical computer courses in small groups.", type: null, image: null },
   { path: "/accessibility", file: "accessibility.tsx", index: false, needsClient: false, usesSearch: false, title: "Accessibility Statement", description: "How we try to make cea.ng usable, what still fails, and how to tell us.", type: "article", image: null },
   { path: "/admissions", file: "admissions.tsx", index: false, needsClient: false, usesSearch: false, title: "Admissions", description: "How to enrol at Cyber Elias Academy: choose a short course, apply online or in person, and we confirm dates, fees and what to bring.", type: null, image: null },
