@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
 import { NoteCard } from "@/components/marketing/note-card";
+import { ReadingSpine } from "@/components/marketing/reading-spine";
 import { blogPosts, NOTES_AUTHOR, type BlogBlock } from "@/data/blog";
 import { FounderPhoto } from "@/components/marketing/founder-photo";
 import { LessonEndAd, LessonInArticleAd } from "@/components/marketing/ad-slots";
@@ -170,6 +171,11 @@ function Article() {
 
   return (
     <PageShell>
+      <ReadingSpine
+        lessonOrder={post.order}
+        totalLessons={blogPosts.length}
+        chapterTitle={chapter?.title}
+      />
       <header className="border-border bg-muted/30 border-b pt-10 pb-10 md:pt-14 md:pb-14">
         <div className="container-page max-w-3xl">
           <nav aria-label="Breadcrumb" className="text-muted-foreground text-sm">

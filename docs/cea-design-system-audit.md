@@ -24,16 +24,15 @@
 
 ---
 
-## 2. Files Updated in This Design Pass
-- `src/routes/index.tsx` — Daylight editorial hero, 4-fact tabular proof strip, 4-card visitor quick paths, unobstructed classroom photography, clean navy ink teaching-loop section, tabular-nums course fee cards, SSR `<details>` FAQ block, and removal of the redundant bottom orbital CTA.
-- `src/components/marketing/shell.tsx` — Upgraded `Eyebrow` (`text-xs`, no neon glow shadow), simplified `PageHero`, and accessible high-contrast `CTASection` (no orbital rings or sub-12px `#61759a` text).
-- `src/components/marketing/site-header.tsx` — Promoted `"Free labs"` (`/tools`) into primary nav, raised subtitle & tag typography to readable `11px–12px`, and removed `animate-ping` noise.
-- `src/components/marketing/site-footer.tsx` — Improved contrast (`#b6c9e4`) and alignment with the non-duplicated CTA hierarchy.
-- `src/components/marketing/note-card.tsx` — Raised chapter badge to `text-xs`.
+## 2. App-Wide Signature Craft Implemented
 
----
-
-## 3. Recommended Next Visual Iteration (Wave 2)
-1. **Course-Family Subtle Wayfinding Accent:** Apply the 5 subtle course-family border/badge cues from `docs/masterpiece-design-spec.md` (`Office & Data`, `Creative & Media`, `Web & Code`, `Hardware & Security`, `Business & Freelance`) paired with icons (never colour alone).
-2. **Printable A4 Course Sheet (`@media print`):** Add a clean print stylesheet on `/classes/[courseSlug]` so prospective learners can print a 1-page Naira fee receipt + syllabus flyer at any Port Harcourt business centre.
-3. **Original Classroom & Device Line Diagrams:** Expand the custom risograph-style line illustrations for `/blog` beginner lessons so the remaining `unknown` image-provenance slots can be replaced cleanly.
+1. **5 Course-Family & Tool-Track Editorial Tokens (`src/lib/course-families.ts`):**
+   - Consistent colour-coded top accent stripes and WCAG-accessible pills (paired with family labels + icons, never colour alone) across `Office & Data` (Amber), `Creative & Media` (Rose), `Web & Code` (Teal), `Hardware & Security` (Slate), and `Business & Freelance` (Emerald) on **`/`**, **`/classes`**, **`/classes/[courseSlug]`**, and **`/tools`**.
+2. **"The Four Things" Interactive Hardware Blueprint (`src/components/marketing/four-things-diagram.tsx`):**
+   - Bespoke two-colour SVG line diagram (`Monitor · System Unit · Keyboard · Mouse`) on `.cea-blueprint-grid` drafting paper, with interactive tab/hover inspection and Port Harcourt classroom notes deployed on **`/`** and **`/practice/computer-basics`**.
+3. **The Printed Fee Receipt & A4 Print Stylesheet (`src/components/marketing/fee-receipt.tsx` + `src/styles.css`):**
+   - Thermal/stationery perforated paper receipt (`RC 8413776 · 24 Ebony Road, PH`, itemized tabular figures, dashed rule, `"NO HIDDEN FEES"` badge, and one-click **"Print 1-page guide"**) paired with `@media print` A4 flyer styles on **every `/classes/[courseSlug]` page** and showcased on **`/`**.
+4. **Lesson Reading Spine (`src/components/marketing/reading-spine.tsx`):**
+   - Viewport top progress hairline, sticky lesson progress counter (`Lesson XX / 210 · XX% read`), and one-click **"Print notes"** worksheet button across all **210 `/blog/[slug]` lessons**.
+5. **Authenticated Portal Polish (`src/components/app/app-shell.tsx`):**
+   - Replaced emoji UI icons (`🔒`) with crisp `lucide-react` vector icons and raised sidebar micro-labels to readable `12px`.

@@ -16,6 +16,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
 import { CourseCover, CourseIcon } from "@/components/marketing/photos";
+import { FeeReceipt } from "@/components/marketing/fee-receipt";
+import { courseFamilyTheme } from "@/lib/course-families";
+import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/motion";
 import {
   achievementLevels,
@@ -135,9 +138,21 @@ function CoursePage() {
             <div className="mt-8 grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
               <div>
                 <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="secondary" className="font-semibold">
+                  <span
+                    className={cn(
+                      "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold",
+                      courseFamilyTheme(course.category, course.slug).pill,
+                    )}
+                  >
+                    <span
+                      className={cn(
+                        "size-1.5 rounded-full",
+                        courseFamilyTheme(course.category, course.slug).dot,
+                      )}
+                      aria-hidden="true"
+                    />
                     {course.category}
-                  </Badge>
+                  </span>
                   <Badge variant="outline">{course.level}</Badge>
                   {course.rotating && <Badge variant="outline">Rotating short course</Badge>}
                 </div>
@@ -151,7 +166,7 @@ function CoursePage() {
                   <span className="text-muted-foreground">What you practise toward: </span>
                   <strong>{course.deliverable.title}</strong>
                 </p>
-                <div className="mt-8 flex flex-wrap gap-3">
+                <div className="cea-no-print mt-8 flex flex-wrap gap-3">
                   <Button asChild>
                     {course.rotating ? (
                       <a href={availabilityUrl} target="_blank" rel="noopener noreferrer">
@@ -168,47 +183,22 @@ function CoursePage() {
                   </Button>
                 </div>
               </div>
-              <aside
-                className="border-border bg-card rounded-xl border p-6 sm:p-8"
-                aria-label="Course facts"
-              >
-                <p className="text-primary text-xs font-semibold tracking-[0.16em] uppercase">
-                  Course at a glance
-                </p>
-                <dl className="mt-5 divide-y divide-border text-sm">
-                  {[
-                    { label: "Listed fee", value: formatFee(course.fee) },
-                    { label: "Duration", value: `${course.weeks} weeks` },
-                    {
-                      label: "Sessions",
-                      value: `${course.sessions.length} · ${course.sessionsPerWeek} per week`,
-                    },
-                    { label: "Level", value: course.level },
-                    {
-                      label: "Availability",
-                      value: course.rotating
-                        ? "Rotating · ask admissions"
-                        : "Dates confirmed by admissions",
-                    },
-                  ].map(({ label, value }) => (
-                    <div key={label} className="flex justify-between gap-4 py-3">
-                      <dt className="text-muted-foreground">{label}</dt>
-                      <dd className="text-right font-semibold">{value}</dd>
-                    </div>
-                  ))}
-                </dl>
-                <div className="border-border border-t pt-4">
-                  <h2 className="text-sm font-semibold">What you need</h2>
-                  <ul className="text-muted-foreground mt-2 space-y-1 text-sm leading-relaxed">
-                    {course.requirements.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <p className="text-muted-foreground mt-4 text-xs leading-relaxed">
-                  {TUITION_POLICY.payment}
-                </p>
-              </aside>
+              <FeeReceipt
+                title={course.title}
+                slug={course.slug}
+                category={course.category}
+                fee={course.fee}
+                weeks={course.weeks}
+                sessionsCount={course.sessions.length}
+                sessionsPerWeek={course.sessionsPerWeek}
+                level={course.level}
+                requirements={course.requirements}
+                deliverable={course.deliverable.title}
+                availability={
+                  course.rotating ? "Rotating · ask admissions" : "Dates confirmed by admissions"
+                }
+                paymentNote={TUITION_POLICY.payment}
+              />
             </div>
             <figure className="border-border mt-10 max-w-3xl overflow-hidden rounded-xl border">
               <div className="bg-muted aspect-[16/9]">

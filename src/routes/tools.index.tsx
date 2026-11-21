@@ -18,6 +18,8 @@ import {
 } from "lucide-react";
 import { PageHero, PageShell, CTASection, Eyebrow } from "@/components/marketing/shell";
 import { CEA_BUILT_IN_LABS, type BuiltInLabEntry } from "@/data/cea-lab-registry";
+import { toolTrackTheme } from "@/lib/course-families";
+import { cn } from "@/lib/utils";
 import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/tools/")({
@@ -128,11 +130,15 @@ function ToolsPage() {
               <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {items.map((tool) => {
                   const Icon = ICON_BY_PATH[tool.to] ?? Code2;
+                  const trackTheme = toolTrackTheme(tool.track);
                   return (
                     <li key={tool.to}>
                       <Link
                         to={tool.to}
-                        className="card-lift border-foreground/10 bg-card group flex h-full flex-col rounded-2xl border p-6"
+                        className={cn(
+                          "card-lift border-border bg-card group flex h-full flex-col rounded-2xl border p-6 shadow-sm transition-all hover:border-primary/40",
+                          trackTheme.accentBar,
+                        )}
                       >
                         <div className="flex items-start justify-between gap-4">
                           <span className="grid size-12 place-items-center rounded-2xl bg-primary/10 text-primary">
@@ -140,7 +146,12 @@ function ToolsPage() {
                           </span>
                           <div className="flex items-center gap-2">
                             {tool.isNew && (
-                              <span className="bg-primary/12 text-primary rounded-full px-2.5 py-0.5 font-mono text-[9px] font-bold tracking-[0.16em] uppercase">
+                              <span
+                                className={cn(
+                                  "rounded-full border px-2.5 py-0.5 text-xs font-semibold",
+                                  trackTheme.pill,
+                                )}
+                              >
                                 New Lab
                               </span>
                             )}
@@ -150,7 +161,7 @@ function ToolsPage() {
                             />
                           </div>
                         </div>
-                        <p className="text-primary mt-5 font-mono text-[9px] tracking-[0.24em] uppercase">
+                        <p className="text-primary mt-5 font-mono text-xs font-semibold tracking-wider uppercase">
                           {tool.badge}
                         </p>
                         <h2 className="font-display mt-2 text-2xl leading-snug font-semibold tracking-tight">
@@ -159,7 +170,7 @@ function ToolsPage() {
                         <p className="text-muted-foreground mt-3 flex-1 text-sm leading-relaxed">
                           {tool.blurb}
                         </p>
-                        <p className="border-foreground/10 text-muted-foreground mt-5 border-t pt-4 font-mono text-[9px] tracking-[0.2em] uppercase">
+                        <p className="border-border text-muted-foreground mt-5 border-t pt-4 font-mono text-xs">
                           {tool.meta}
                         </p>
                       </Link>
@@ -182,7 +193,7 @@ function ToolsPage() {
                 <Monitor className="size-6" aria-hidden="true" />
               </span>
               <span>
-                <span className="text-primary font-mono text-[9px] tracking-[0.24em] uppercase">
+                <span className="text-primary font-mono text-xs font-semibold tracking-wider uppercase">
                   Absolute Beginners
                 </span>
                 <span className="font-display mt-1 block text-xl font-semibold tracking-tight">
@@ -199,14 +210,14 @@ function ToolsPage() {
 
           <Link
             to="/ai-engineering"
-            className="card-lift flex items-center justify-between gap-4 rounded-2xl border border-[#2f6bff]/30 bg-[linear-gradient(135deg,#0a1326_0%,#0d1830_60%,#101a3a_100%)] p-6 text-[#eef2fb]"
+            className="card-lift flex items-center justify-between gap-4 rounded-2xl border border-[#2f6bff]/30 bg-[#0b172a] p-6 text-[#eef2fb]"
           >
             <div className="flex items-start gap-4">
-              <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-[#2f6bff]/20 text-[#8ec4ff]">
+              <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-[#2f6bff]/20 text-[#93c0ff]">
                 <Sparkles className="size-6" aria-hidden="true" />
               </span>
               <span>
-                <span className="font-mono text-[9px] tracking-[0.24em] text-[#7fb5ff] uppercase">
+                <span className="font-mono text-xs font-semibold tracking-wider text-[#93c0ff] uppercase">
                   Graduate from tools to AI
                 </span>
                 <span className="font-display mt-1 block text-xl font-semibold tracking-tight text-white">

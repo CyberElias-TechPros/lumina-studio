@@ -16,7 +16,11 @@ import { PageShell, Eyebrow } from "@/components/marketing/shell";
 import { CampusImg, CourseCover } from "@/components/marketing/photos";
 import { FounderPhoto } from "@/components/marketing/founder-photo";
 import { CourseFinder } from "@/components/marketing/course-finder";
+import { FourThingsDiagram } from "@/components/marketing/four-things-diagram";
+import { FeeReceipt } from "@/components/marketing/fee-receipt";
 import { HeroMotion } from "@/components/marketing/hero-motion";
+import { courseFamilyTheme } from "@/lib/course-families";
+import { cn } from "@/lib/utils";
 import { faqs } from "@/data/site";
 import { blogPosts } from "@/data/blog";
 import { flyerCourses, formatFee, teachingLoop } from "@/data/academy";
@@ -223,29 +227,23 @@ function Home() {
         </div>
       </section>
 
-      {/* ── The Academy ─────────────────────────────────────────────────── */}
+      {/* ── The Academy + Four Things Signature Blueprint ───────────────── */}
       <section className="border-border border-b" aria-labelledby="academy-intro">
-        <div className="container-page grid gap-8 py-14 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:gap-16 md:py-20">
+        <div className="container-page grid items-center gap-10 py-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14 md:py-20">
           <div>
             <Eyebrow>The Academy</Eyebrow>
-            <p className="text-muted-foreground mt-5 hidden max-w-[16rem] text-xs leading-relaxed tracking-wider uppercase md:block">
-              Port Harcourt, Rivers State
-              <br />
-              Practical digital training
-            </p>
-          </div>
-          <div>
             <h2
               id="academy-intro"
-              className="font-display max-w-3xl text-3xl leading-[1.06] font-semibold tracking-[-0.035em] text-balance sm:text-5xl"
+              className="font-display mt-5 max-w-2xl text-3xl leading-[1.06] font-semibold tracking-[-0.035em] text-balance sm:text-5xl"
             >
               A real classroom for a{" "}
               <span className="font-serif text-primary font-normal italic">digital world.</span>
             </h2>
-            <p className="text-muted-foreground mt-5 max-w-2xl text-base leading-relaxed text-pretty sm:text-lg">
+            <p className="text-muted-foreground mt-5 max-w-xl text-base leading-relaxed text-pretty sm:text-lg">
               Cyber Elias Academy is a neighbourhood training centre where beginners and working
-              adults build useful skills through supervised practice. We also build practical
-              websites and digital systems for local organisations.
+              adults build useful skills through supervised practice — starting from naming the four
+              parts of a computer on day one. We also build practical websites and digital systems
+              for local organisations.
             </p>
             <div className="mt-7 flex flex-wrap gap-x-8 gap-y-3">
               <Link
@@ -264,12 +262,13 @@ function Home() {
               </Link>
             </div>
           </div>
+          <FourThingsDiagram />
         </div>
       </section>
 
       <CourseFinder id="home-course-finder" />
 
-      {/* ── Courses preview ─────────────────────────────────────────────── */}
+      {/* ── Courses preview + Sample Printed Fee Receipt ────────────────── */}
       <section className="container-page py-14 md:py-20">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl">
@@ -278,8 +277,8 @@ function Home() {
               Find the skill you want to build.
             </h2>
             <p className="text-muted-foreground mt-3 max-w-xl leading-relaxed">
-              Compare the fee, duration, entry requirements, and the finished work you leave with
-              before you apply.
+              Every course prints a transparent receipt before you pay: fee, duration, what you
+              bring, and the finished work you leave with.
             </p>
           </div>
           <Link
@@ -290,45 +289,110 @@ function Home() {
             <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>
+
         <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {courses.map((course) => (
-            <li key={course.slug}>
-              <Link
-                to="/classes/$courseSlug"
-                params={{ courseSlug: course.slug }}
-                className="border-border bg-card hover:border-primary/40 group flex h-full flex-col overflow-hidden rounded-2xl border shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
-              >
-                <div className="bg-muted relative aspect-[16/10] overflow-hidden">
-                  <div className="size-full transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]">
-                    <CourseCover slug={course.slug} />
+          {courses.map((course) => {
+            const family = courseFamilyTheme(course.category, course.slug);
+            return (
+              <li key={course.slug}>
+                <Link
+                  to="/classes/$courseSlug"
+                  params={{ courseSlug: course.slug }}
+                  className={cn(
+                    "border-border bg-card hover:border-primary/40 group flex h-full flex-col overflow-hidden rounded-2xl border shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md",
+                    family.accentBar,
+                  )}
+                >
+                  <div className="bg-muted relative aspect-[16/10] overflow-hidden">
+                    <div className="size-full transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]">
+                      <CourseCover slug={course.slug} />
+                    </div>
+                    <span
+                      className={cn(
+                        "absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold shadow-sm backdrop-blur-sm",
+                        family.pill,
+                      )}
+                    >
+                      <span
+                        className={cn("size-1.5 rounded-full", family.dot)}
+                        aria-hidden="true"
+                      />
+                      {course.category}
+                    </span>
                   </div>
-                  <span className="bg-background/95 text-foreground border-border absolute bottom-3 left-3 rounded-md border px-2.5 py-1 text-xs font-semibold shadow-sm">
-                    {course.category}
-                  </span>
-                </div>
-                <div className="flex flex-1 flex-col p-5">
-                  <h3 className="font-display group-hover:text-primary text-lg leading-snug font-semibold tracking-tight transition-colors">
-                    {course.title}
-                  </h3>
-                  <p className="text-muted-foreground mt-2 flex-1 text-sm leading-relaxed">
-                    {course.deliverable.title}
-                  </p>
-                  <p className="text-muted-foreground mt-3 text-xs leading-relaxed">
-                    {course.requirements.join(" · ")}
-                  </p>
-                  <div className="border-border mt-4 flex items-baseline justify-between gap-3 border-t pt-4">
-                    <p className="text-foreground font-mono text-base font-semibold tracking-tight tabular-nums">
-                      {formatFee(course.fee)}
+                  <div className="flex flex-1 flex-col p-5">
+                    <h3 className="font-display group-hover:text-primary text-lg leading-snug font-semibold tracking-tight transition-colors">
+                      {course.title}
+                    </h3>
+                    <p className="text-muted-foreground mt-2 flex-1 text-sm leading-relaxed">
+                      {course.deliverable.title}
                     </p>
-                    <p className="text-muted-foreground text-xs whitespace-nowrap tabular-nums">
-                      {course.weeks} weeks · {course.level}
+                    <p className="text-muted-foreground mt-3 text-xs leading-relaxed">
+                      {course.requirements.join(" · ")}
                     </p>
+                    <div className="border-border mt-4 flex items-baseline justify-between gap-3 border-t pt-4">
+                      <p className="text-foreground font-mono text-base font-semibold tracking-tight tabular-nums">
+                        {formatFee(course.fee)}
+                      </p>
+                      <p className="text-muted-foreground text-xs whitespace-nowrap tabular-nums">
+                        {course.weeks} weeks · {course.level}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </li>
-          ))}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
+
+        {/* Signature Fee Receipt Showcase */}
+        {courses[0] && (
+          <div className="border-border bg-muted/25 mt-12 grid items-center gap-8 rounded-3xl border p-6 sm:p-8 lg:grid-cols-[1.05fr_0.95fr]">
+            <div>
+              <p className="text-primary font-mono text-xs font-semibold tracking-wider uppercase">
+                Transparent pricing promise
+              </p>
+              <h3 className="font-display mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">
+                Every course carries one honest fee receipt.
+              </h3>
+              <p className="text-muted-foreground mt-3 max-w-lg text-sm leading-relaxed sm:text-base">
+                No hidden registration add-ons, no surprises mid-course. Every syllabus page lets
+                you inspect the exact fee, sessions per week, required equipment, and print a 1-page
+                A4 sheet to keep or share at home.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  to="/classes/$courseSlug"
+                  params={{ courseSlug: courses[0].slug }}
+                  className="bg-primary text-primary-foreground inline-flex min-h-[44px] items-center gap-2 rounded-full px-6 text-sm font-semibold transition-opacity hover:opacity-95"
+                >
+                  Inspect {courses[0].title}
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </Link>
+                <Link
+                  to="/classes"
+                  className="border-border bg-background hover:border-primary/40 inline-flex min-h-[44px] items-center gap-2 rounded-full border px-5 text-sm font-semibold transition-colors"
+                >
+                  Compare all {flyerCourses.length} fees
+                </Link>
+              </div>
+            </div>
+            <FeeReceipt
+              title={courses[0].title}
+              slug={courses[0].slug}
+              category={courses[0].category}
+              fee={courses[0].fee}
+              weeks={courses[0].weeks}
+              sessionsCount={courses[0].sessions.length}
+              sessionsPerWeek={courses[0].sessionsPerWeek}
+              level={courses[0].level}
+              requirements={courses[0].requirements}
+              deliverable={courses[0].deliverable.title}
+              availability="Mon–Sat · Small cohorts"
+              showPrintButton={false}
+            />
+          </div>
+        )}
       </section>
 
       {/* ── Learning in action (navy ink contrast band) ─────────────────── */}
