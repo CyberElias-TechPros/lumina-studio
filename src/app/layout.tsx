@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
   other: {
     author: "Cyber Elias Academy",
-    "google-adsense-account": "ca-pub-9117572925263537",
+    "google-adsense-account": "ca-pub-9124992249317290",
     "mobile-web-app-capable": "yes",
     "apple-mobile-web-app-capable": "yes",
     "apple-mobile-web-app-status-bar-style": "default",

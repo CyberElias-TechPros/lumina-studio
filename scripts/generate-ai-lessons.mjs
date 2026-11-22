@@ -76,6 +76,12 @@ function renderLesson(md, phase, lesson) {
     .use(remarkMath)
     .use(() => (tree) => {
       visit(tree, (node) => {
+        // Escape any raw HTML authored directly in upstream Markdown so only
+        // the sanitized callouts and KaTeX blocks generated below render as HTML.
+        if (node.type === "html") {
+          node.type = "text";
+          return;
+        }
         if (node.type === "code") {
           const lang = (node.lang || "").toLowerCase();
           if (lang === "math") {
@@ -121,7 +127,7 @@ function renderLesson(md, phase, lesson) {
       });
     })
     .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeStringify);
+    .use(rehypeStringify, { allowDangerousHtml: true });
   return String(processor.processSync(md));
 }
 
@@ -155,6 +161,12 @@ for (const phase of phases) {
     }
     if (quizQuestions) totalQuizzes += 1;
     const html = renderLesson(md, phase, slug);
+    if (
+      /&#x3C;(figure|div class="ai-math|span class="ai-math-inline)/i.test(html) ||
+      /&lt;(figure|div class="ai-math|span class="ai-math-inline)/i.test(html)
+    ) {
+      throw new Error(`Escaped callout or math HTML detected in rendered lesson ${phase}/${slug}`);
+    }
     lessons.push({
       slug,
       title,

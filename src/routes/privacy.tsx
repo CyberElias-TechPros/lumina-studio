@@ -160,7 +160,7 @@ function PrivacyPage() {
             <UtilitySectionHeading index="06">Advertising</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               This site can show advertising from two networks: <strong>Google AdSense</strong>{" "}
-              (publisher <code>ca-pub-9117572925263537</code>) and <strong>ngadverts</strong> (zone
+              (publisher <code>ca-pub-9124992249317290</code>) and <strong>ngadverts</strong> (zone
               13225), a Nigerian ad network. Google uses cookies, including the DoubleClick cookie,
               to serve ads based on your visit here and on other sites. The ngadverts unit is not
               requested at all unless you accept optional cookies in the banner.

@@ -169,19 +169,50 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-/* Marketing surfaces use CEA's blue identity without changing portal tokens. */
+/* THE DIGITAL FRONTIER — Obsidian (#101214) × Warm Paper (#F4F1E9) × Electric Lime (#D6FE52) × Digital Iris (#7774FF) × Signal Orange (#F17C52) */
 .marketing-shell {
-  --primary: #194587;
-  --primary-foreground: #ffffff;
-  --primary-glow: #326ff5;
-  --ring: #194587;
+  --background: #f4f1e9;
+  --foreground: #101214;
+  --card: #faf8f3;
+  --card-foreground: #101214;
+  --popover: #faf8f3;
+  --popover-foreground: #101214;
+  --muted: #ebe6da;
+  --muted-foreground: #464c54;
+  --border: #ddd6c6;
+  --input: #ddd6c6;
+  --primary: #101214;
+  --primary-foreground: #f4f1e9;
+  --primary-glow: #7774ff;
+  --accent: #e5e1d4;
+  --accent-foreground: #101214;
+  --ring: #7774ff;
+
+  --frontier-obsidian: #101214;
+  --frontier-graphite: #242a31;
+  --frontier-paper: #f4f1e9;
+  --frontier-lime: #d6fe52;
+  --frontier-iris: #7774ff;
+  --frontier-orange: #f17c52;
 }
 
 .dark .marketing-shell {
-  --primary: #a9caff;
-  --primary-foreground: #101923;
-  --primary-glow: #74d7e7;
-  --ring: #a9caff;
+  --background: #101214;
+  --foreground: #f4f1e9;
+  --card: #181c20;
+  --card-foreground: #f4f1e9;
+  --popover: #181c20;
+  --popover-foreground: #f4f1e9;
+  --muted: #242a31;
+  --muted-foreground: #b4bac4;
+  --border: #2c333c;
+  --input: #2c333c;
+  --primary: #d6fe52;
+  --primary-foreground: #101214;
+  --primary-glow: #7774ff;
+  --accent: #242a31;
+  --accent-foreground: #f4f1e9;
+  --ring: #d6fe52;
 }
 
 :root {
@@ -1869,6 +1900,13 @@ html.cursor-off * {
     linear-gradient(to right, color-mix(in oklch, var(--foreground) 5.5%, transparent) 1px, transparent 1px),
     linear-gradient(to bottom, color-mix(in oklch, var(--foreground) 5.5%, transparent) 1px, transparent 1px);
   background-size: 28px 28px;
+}
+
+.cea-frontier-grid {
+  background-image:
+    linear-gradient(to right, rgb(244 241 233 / 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(244 241 233 / 0.055) 1px, transparent 1px);
+  background-size: 36px 36px;
 }
 
 .cea-receipt {
