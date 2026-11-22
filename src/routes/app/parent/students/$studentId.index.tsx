@@ -6,6 +6,7 @@ import {
   ArrowLeft,
   ArrowRight,
   BookOpen,
+  CalendarDays,
   FileText,
   MessageSquare,
   Receipt,
@@ -17,6 +18,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useCalendarItems } from "@/lib/query/calendar";
 import { useParentStudent } from "@/lib/query/parent";
 import { formatNaira } from "@/data/site";
 import type { ParentStudentDetail } from "@/lib/api/parent";
@@ -57,7 +59,7 @@ const sections = [
   {
     to: "/app/parent/students/$studentId/communication",
     label: "Communication",
-    desc: "View communication availability",
+    desc: "Instructors, schedule & messages",
     icon: MessageSquare,
     tone: "text-warning bg-warning/10",
   },
@@ -73,6 +75,7 @@ const sections = [
 function ParentStudentOverview() {
   const { studentId } = Route.useParams();
   const student = useParentStudent(studentId);
+  const calendarItems = useCalendarItems().slice(0, 3);
   const data = student.data;
 
   return (
@@ -90,7 +93,7 @@ function ParentStudentOverview() {
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
             {data
-              ? `GPA ${data.gpa ?? "unavailable"} · ${data.dueCount} ${data.dueCount === 1 ? "bill" : "bills"} due`
+              ? `GPA ${data.gpa ?? "pending"} · ${data.dueCount} ${data.dueCount === 1 ? "bill" : "bills"} due`
               : "Loading…"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
@@ -194,19 +197,40 @@ function ParentStudentOverview() {
                       ))
                     )}
                     <p className="text-muted-foreground pt-1 text-xs">
-                      Open Reports to view available summary records.
+                      Open Reports below to export or review available summary records.
                     </p>
                   </CardContent>
                 </Card>
 
                 <Card className="bg-card shadow-soft border self-start">
-                  <CardHeader>
-                    <CardTitle className="font-display text-base font-bold">
-                      Timetable and mentor notes
+                  <CardHeader className="flex-row items-center justify-between">
+                    <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+                      <CalendarDays className="text-primary size-4" /> Upcoming schedule
                     </CardTitle>
+                    <Button
+                      asChild
+                      variant="ghost"
+                      size="sm"
+                      className="text-primary font-semibold"
+                    >
+                      <Link to="/app/messages">Message</Link>
+                    </Button>
                   </CardHeader>
-                  <CardContent className="text-muted-foreground text-sm">
-                    These records are not available here yet.
+                  <CardContent className="space-y-3">
+                    {calendarItems.length === 0 ? (
+                      <p className="text-muted-foreground text-sm">
+                        No upcoming sessions posted yet. Message instructors via Communication.
+                      </p>
+                    ) : (
+                      calendarItems.map((ev) => (
+                        <div key={ev.id} className="rounded-xl border p-3">
+                          <p className="text-sm font-semibold">{ev.title}</p>
+                          <p className="text-muted-foreground mt-1 text-xs">
+                            {ev.day} {ev.date} · {ev.time} · {ev.location}
+                          </p>
+                        </div>
+                      ))
+                    )}
                   </CardContent>
                 </Card>
               </div>

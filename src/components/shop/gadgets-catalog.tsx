@@ -22,6 +22,8 @@ import {
   readBasket,
   type BasketEntry,
 } from "@/lib/gadget-basket";
+import { createGadgetOrder, lookupGadgetOrder, type GadgetOrderReceipt } from "@/lib/api/gadgets";
+import { getErrorMessage } from "@/lib/errors";
 
 type Gadget = {
   image: string;
@@ -50,7 +52,64 @@ export function GadgetsCatalog({ includeDigital = false }: { includeDigital?: bo
     error?: string;
     expiresAt: number;
   } | null>(null);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const [customerName, setCustomerName] = useState("");
+  const [customerEmail, setCustomerEmail] = useState("");
+  const [customerPhone, setCustomerPhone] = useState("");
+  const [deliveryAddress, setDeliveryAddress] = useState("");
+  const [orderNotes, setOrderNotes] = useState("");
+  const [submittingOrder, setSubmittingOrder] = useState(false);
+  const [orderError, setOrderError] = useState("");
+  const [orderReceipt, setOrderReceipt] = useState<GadgetOrderReceipt | null>(null);
+  const [trackOpen, setTrackOpen] = useState(false);
+  const [trackRef, setTrackRef] = useState("");
+  const [trackEmail, setTrackEmail] = useState("");
+  const [tracking, setTracking] = useState(false);
+  const [trackError, setTrackError] = useState("");
+  const [trackedOrder, setTrackedOrder] = useState<GadgetOrderReceipt | null>(null);
   const basketKey = JSON.stringify(basket);
+
+  async function submitOrder(event: React.FormEvent) {
+    event.preventDefault();
+    if (!basket.length || submittingOrder) return;
+    setSubmittingOrder(true);
+    setOrderError("");
+    try {
+      const receipt = await createGadgetOrder({
+        customerName: customerName.trim(),
+        customerEmail: customerEmail.trim(),
+        customerPhone: customerPhone.trim(),
+        deliveryAddress: deliveryAddress.trim() || undefined,
+        notes: orderNotes.trim() || undefined,
+        items: basket.map((entry) => ({ image: entry.image, quantity: entry.quantity })),
+      });
+      setOrderReceipt(receipt);
+      setBasket([]);
+      setCheckoutOpen(false);
+      setBasketNotice(`Order ${receipt.ref} submitted.`);
+    } catch (error) {
+      setOrderError(getErrorMessage(error));
+    } finally {
+      setSubmittingOrder(false);
+    }
+  }
+
+  async function handleTrackOrder(event: React.FormEvent) {
+    event.preventDefault();
+    const cleanRef = trackRef.trim();
+    if (!cleanRef || tracking) return;
+    setTracking(true);
+    setTrackError("");
+    setTrackedOrder(null);
+    try {
+      const found = await lookupGadgetOrder(cleanRef, trackEmail.trim() || undefined);
+      setTrackedOrder(found);
+    } catch (error) {
+      setTrackError(getErrorMessage(error));
+    } finally {
+      setTracking(false);
+    }
+  }
   useEffect(() => {
     if (!priceCheck) return;
     const timeout = window.setTimeout(
@@ -360,19 +419,164 @@ export function GadgetsCatalog({ includeDigital = false }: { includeDigital?: bo
               <p className="text-muted-foreground mt-2 text-sm">
                 Remove unavailable items to continue.
               </p>
-            ) : basketHref.length > 8000 ? (
-              <p className="text-muted-foreground mt-2 text-sm">
-                Please split this basket into smaller orders.
-              </p>
             ) : (
-              <Button asChild className="mt-4">
-                <a href={basketHref} rel="nofollow noopener noreferrer">
-                  Send basket on WhatsApp
-                </a>
-              </Button>
+              <div className="mt-4 flex flex-wrap gap-3">
+                <Button type="button" onClick={() => setCheckoutOpen((open) => !open)}>
+                  {checkoutOpen ? "Hide order form" : "Place order request"}
+                </Button>
+                {basketHref.length <= 8000 && (
+                  <Button variant="outline" asChild>
+                    <a href={basketHref} rel="nofollow noopener noreferrer">
+                      Send basket on WhatsApp
+                    </a>
+                  </Button>
+                )}
+              </div>
+            )}
+            {checkoutOpen && !unavailable && (
+              <form
+                onSubmit={submitOrder}
+                className="bg-background mt-4 grid gap-3 rounded-xl border p-4 sm:grid-cols-2"
+              >
+                <p className="text-muted-foreground text-xs sm:col-span-2">
+                  Prices are verified against the latest supplier catalogue on submit. Our team
+                  confirms stock and delivery before payment.
+                </p>
+                <label className="space-y-1 text-xs font-semibold">
+                  <span>Full name</span>
+                  <Input
+                    value={customerName}
+                    onChange={(e) => setCustomerName(e.target.value)}
+                    placeholder="Adaeze Okafor"
+                    required
+                  />
+                </label>
+                <label className="space-y-1 text-xs font-semibold">
+                  <span>Email address</span>
+                  <Input
+                    type="email"
+                    value={customerEmail}
+                    onChange={(e) => setCustomerEmail(e.target.value)}
+                    placeholder="you@example.com"
+                    required
+                  />
+                </label>
+                <label className="space-y-1 text-xs font-semibold">
+                  <span>Phone / WhatsApp number</span>
+                  <Input
+                    type="tel"
+                    value={customerPhone}
+                    onChange={(e) => setCustomerPhone(e.target.value)}
+                    placeholder="+2348012345678"
+                    required
+                  />
+                </label>
+                <label className="space-y-1 text-xs font-semibold">
+                  <span>Delivery address (optional)</span>
+                  <Input
+                    value={deliveryAddress}
+                    onChange={(e) => setDeliveryAddress(e.target.value)}
+                    placeholder="City, state, landmark"
+                  />
+                </label>
+                <label className="space-y-1 text-xs font-semibold sm:col-span-2">
+                  <span>Notes (optional)</span>
+                  <Input
+                    value={orderNotes}
+                    onChange={(e) => setOrderNotes(e.target.value)}
+                    placeholder="Specs check, pickup preference, etc."
+                  />
+                </label>
+                {orderError && (
+                  <p role="alert" className="text-destructive text-xs font-semibold sm:col-span-2">
+                    {orderError}
+                  </p>
+                )}
+                <div className="flex justify-end gap-2 sm:col-span-2">
+                  <Button type="button" variant="outline" onClick={() => setCheckoutOpen(false)}>
+                    Cancel
+                  </Button>
+                  <Button type="submit" disabled={submittingOrder}>
+                    {submittingOrder ? "Submitting order…" : "Confirm order request"}
+                  </Button>
+                </div>
+              </form>
             )}
           </>
         )}
+
+        {orderReceipt && (
+          <div className="bg-background mt-4 rounded-xl border p-4" role="status">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <p className="font-display text-base font-bold">
+                Order submitted: {orderReceipt.ref}
+              </p>
+              <Badge variant="secondary" className="capitalize">
+                {orderReceipt.status.replaceAll("_", " ")}
+              </Badge>
+            </div>
+            <p className="text-muted-foreground mt-1 text-xs">
+              Server-verified subtotal: {money(orderReceipt.subtotalKobo)}. Save your reference{" "}
+              <strong>{orderReceipt.ref}</strong> to track confirmation and fulfillment below.
+            </p>
+          </div>
+        )}
+
+        <div className="mt-4 border-t pt-4">
+          <button
+            type="button"
+            className="text-primary text-xs font-semibold underline"
+            onClick={() => setTrackOpen((v) => !v)}
+          >
+            {trackOpen ? "Hide order tracker" : "Track an existing gadget order"}
+          </button>
+          {trackOpen && (
+            <form onSubmit={handleTrackOrder} className="mt-3 flex flex-wrap items-end gap-2">
+              <label className="space-y-1 text-xs font-semibold">
+                <span>Order reference</span>
+                <Input
+                  value={trackRef}
+                  onChange={(e) => setTrackRef(e.target.value)}
+                  placeholder="CEA-GDG-2026-104218"
+                  className="h-9"
+                  required
+                />
+              </label>
+              <label className="space-y-1 text-xs font-semibold">
+                <span>Email used on order</span>
+                <Input
+                  type="email"
+                  value={trackEmail}
+                  onChange={(e) => setTrackEmail(e.target.value)}
+                  placeholder="you@example.com"
+                  className="h-9"
+                />
+              </label>
+              <Button type="submit" size="sm" disabled={tracking}>
+                {tracking ? "Checking…" : "Check status"}
+              </Button>
+            </form>
+          )}
+          {trackError && (
+            <p role="alert" className="text-destructive mt-2 text-xs font-semibold">
+              {trackError}
+            </p>
+          )}
+          {trackedOrder && (
+            <div className="bg-background mt-3 rounded-lg border p-3 text-xs">
+              <p className="font-semibold">
+                {trackedOrder.ref} ·{" "}
+                <span className="capitalize">{trackedOrder.status.replaceAll("_", " ")}</span>
+              </p>
+              <p className="text-muted-foreground mt-1">
+                Subtotal: {money(trackedOrder.subtotalKobo)} · {trackedOrder.items.length} item(s)
+              </p>
+              {trackedOrder.adminNote && (
+                <p className="mt-1">Note from Academy: {trackedOrder.adminNote}</p>
+              )}
+            </div>
+          )}
+        </div>
       </section>
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <label className="text-sm font-semibold" htmlFor="gadget-search">

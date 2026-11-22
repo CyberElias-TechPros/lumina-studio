@@ -323,7 +323,12 @@ function ApplyPage() {
   if (!draftReady)
     return (
       <PageShell hideAssistant>
-        <p role="status" className="container-page py-12">
+        <PageHero
+          eyebrow="Admissions"
+          title="Register for a course"
+          description="Apply for one of the 13 core flyer short courses. Share your preferences, review the fee and apply for free. No payment is requested until CEA confirms a deliverable timetable, equipment arrangement and place."
+        />
+        <p role="status" className="container-page pb-20 text-sm text-muted-foreground">
           Opening your application…
         </p>
       </PageShell>

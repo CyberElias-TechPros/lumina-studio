@@ -363,29 +363,95 @@ export function registerAllMocks(): void {
     return parentChildDetail(id);
   });
 
-  /* Demo mentorship starts empty. No seeded people, ratings or simulated writes. */
-  registerMock("GET", "/v1/mentor/profiles", async () => ({ items: [], truncated: false }));
-  registerMock("POST", "/v1/mentor/match", async () => ({
-    program: "",
-    goal: "",
-    matches: [],
+  /* Mentorship (in-memory demo workflow) */
+  let mockMentorProfile: {
+    userId: string;
+    name: string;
+    role: string;
+    specialty: string;
+    bio: string;
+    areas: string[];
+    slots: number;
+    status: "pending" | "approved" | "suspended";
+  } | null = null;
+  const mockMentorRequests: {
+    id: string;
+    mentorId: string;
+    mentorName: string;
+    studentId: string;
+    program: string;
+    goal: string;
+    status: string;
+    createdAt: string;
+  }[] = [];
+
+  registerMock("GET", "/v1/mentor/profiles", async () => ({
+    items: mockMentorProfile?.status === "approved" ? [mockMentorProfile] : [],
     truncated: false,
   }));
-  registerMock("GET", "/v1/mentor/profile", async () => ({ profile: null }));
-  registerMock("GET", "/v1/mentor/requests", async () => ({ items: [], truncated: false }));
-  registerMock("GET", "/v1/mentor/admin/profile", async () => ({ profile: null }));
-  registerMock("GET", "/v1/mentor/admin/eligibility", async () => ({ eligibility: null }));
-  for (const [method, path] of [
-    ["POST", "/v1/mentor/requests"],
-    ["PUT", "/v1/mentor/profile"],
-    ["DELETE", "/v1/mentor/profile"],
-    ["PUT", "/v1/mentor/admin/eligibility"],
-    ["POST", "/v1/mentor/admin/profile/approve"],
-  ] as const) {
-    registerMock(method, path, async () => {
-      throw new ApiError(503, "DEMO_READ_ONLY", "Mentoring changes are not saved in demo mode.");
-    });
-  }
+  registerMock("POST", "/v1/mentor/match", async (init: ApiRequestInit) => {
+    const body = (init.body ?? {}) as { program?: string; goal?: string };
+    return {
+      program: body.program ?? "",
+      goal: body.goal ?? "",
+      matches: mockMentorProfile?.status === "approved" ? [mockMentorProfile] : [],
+      truncated: false,
+    };
+  });
+  registerMock("GET", "/v1/mentor/profile", async () => ({ profile: mockMentorProfile }));
+  registerMock("PUT", "/v1/mentor/profile", async (init: ApiRequestInit) => {
+    const body = (init.body ?? {}) as {
+      specialty?: string;
+      bio?: string;
+      areas?: string[];
+      slots?: number;
+    };
+    mockMentorProfile = {
+      userId: "00000000-0000-4000-8000-000000000001",
+      name: "Adaeze Okafor",
+      role: "Mentor",
+      specialty: body.specialty ?? "Full-Stack Engineering",
+      bio: body.bio ?? "",
+      areas: body.areas ?? [],
+      slots: body.slots ?? 2,
+      status: "pending",
+    };
+    return { profile: mockMentorProfile };
+  });
+  registerMock("DELETE", "/v1/mentor/profile", async () => {
+    mockMentorProfile = null;
+    return { ok: true };
+  });
+  registerMock("GET", "/v1/mentor/requests", async () => ({
+    items: mockMentorRequests,
+    truncated: false,
+  }));
+  registerMock("POST", "/v1/mentor/requests", async (init: ApiRequestInit) => {
+    const body = (init.body ?? {}) as { mentorId?: string; program?: string; goal?: string };
+    const created = {
+      id: `mreq-${Date.now()}`,
+      mentorId: body.mentorId ?? "mentor-1",
+      mentorName: mockMentorProfile?.name ?? "Academy Mentor",
+      studentId: "00000000-0000-4000-8000-000000000001",
+      program: body.program ?? "Full-Stack",
+      goal: body.goal ?? "",
+      status: "pending",
+      createdAt: new Date().toISOString(),
+    };
+    mockMentorRequests.unshift(created);
+    return { request: created };
+  });
+  registerMock("GET", "/v1/mentor/admin/profile", async () => ({ profile: mockMentorProfile }));
+  registerMock("GET", "/v1/mentor/admin/eligibility", async () => ({
+    eligibility: { userId: "00000000-0000-4000-8000-000000000001", eligible: true },
+  }));
+  registerMock("PUT", "/v1/mentor/admin/eligibility", async () => ({
+    eligibility: { userId: "00000000-0000-4000-8000-000000000001", eligible: true },
+  }));
+  registerMock("POST", "/v1/mentor/admin/profile/approve", async () => {
+    if (mockMentorProfile) mockMentorProfile.status = "approved";
+    return { profile: mockMentorProfile };
+  });
 
   /* Certificates (public verify) */
   registerMock("GET", "/v1/certificates/verify", async (init: ApiRequestInit) => {
@@ -629,12 +695,59 @@ export function registerAllMocks(): void {
       return course;
     });
   }
+  registerMockPattern("POST", "/v1/courses/*/lessons/*/complete", async (init: ApiRequestInit) => {
+    await delay();
+    const parts = (init.path ?? "").split("/").filter(Boolean);
+    const slug = parts[2] ?? "";
+    const lessonId = parts[4] ?? "";
+    const course = learningCourses.find((c) => c.slug === slug);
+    if (!course) throw new ApiError(404, "NOT_FOUND", "Course not found.");
+    let found = false;
+    for (const mod of course.modules) {
+      for (const lesson of mod.lessons) {
+        if (lesson.id === lessonId) {
+          lesson.status = "done";
+          found = true;
+        }
+      }
+    }
+    if (!found) throw new ApiError(404, "NOT_FOUND", "Lesson not found.");
+    const allLessons = course.modules.flatMap((m) => m.lessons);
+    const doneLessons = allLessons.filter((l) => l.status === "done").length;
+    course.pct = allLessons.length
+      ? Math.min(100, Math.round((doneLessons / allLessons.length) * 100))
+      : 0;
+    return {
+      ok: true,
+      pct: course.pct,
+      doneLessons,
+      totalLessons: allLessons.length,
+      lessonsThisWeek: doneLessons,
+      streakDays: 9,
+    };
+  });
   registerMock("GET", "/v1/courses/gradebook", async () => {
     await delay();
     return { items: gradebook, total: gradebook.length };
   });
 
   /* Assignments */
+  const mockSubmissions = new Map<
+    string,
+    {
+      id: string;
+      status: string;
+      score: number | null;
+      feedback: string;
+      submitted: string;
+      submittedAt: string;
+      graded_at: string | null;
+      late: number;
+      body?: string;
+      file: string;
+      size: string;
+    }
+  >();
   registerMock("GET", "/v1/assignments", async () => {
     await delay();
     return { items: assignments, total: assignments.length };
@@ -646,30 +759,56 @@ export function registerAllMocks(): void {
     });
     registerMock("GET", `/v1/assignments/${assignment.id}/submission`, async () => {
       await delay();
-      return {
-        id: `sub-${assignment.id}`,
-        status: assignment.status === "graded" ? "graded" : "submitted",
-        score: assignment.score ?? null,
-        feedback: assignment.status === "graded" ? "Rubric feedback attached." : "",
-        submitted: "Jul 28, 9:14am",
-        graded_at: assignment.status === "graded" ? "Aug 1, 2:00pm" : null,
-        late: 0,
-        file: "starter-repo-link",
-        size: "GitHub",
-      };
+      return (
+        mockSubmissions.get(assignment.id) ?? {
+          id: `sub-${assignment.id}`,
+          status: assignment.status === "graded" ? "graded" : "submitted",
+          score: assignment.score ?? null,
+          feedback: assignment.status === "graded" ? "Rubric feedback attached." : "",
+          submitted: "Jul 28, 9:14am",
+          submittedAt: "Jul 28, 9:14am",
+          graded_at: assignment.status === "graded" ? "Aug 1, 2:00pm" : null,
+          late: 0,
+          file: "starter-repo-link",
+          size: "GitHub",
+        }
+      );
     });
-    registerMock("POST", `/v1/assignments/${assignment.id}/submit`, async () => {
-      await delay(300);
-      return {
-        id: `sub-${assignment.id}`,
-        assignmentId: assignment.id,
-        status: "submitted",
-        submittedAt: new Date().toISOString(),
-        late: false,
-        file: "starter-repo-link",
-        size: "GitHub",
-      };
-    });
+    registerMock(
+      "POST",
+      `/v1/assignments/${assignment.id}/submit`,
+      async (init: ApiRequestInit) => {
+        await delay(200);
+        const input = (init.body ?? {}) as { body?: string; file?: string; size?: string };
+        const nowIso = new Date().toISOString();
+        const record = {
+          id: `sub-${assignment.id}-${Date.now()}`,
+          assignmentId: assignment.id,
+          status: "submitted",
+          score: null,
+          feedback: "",
+          submitted: nowIso,
+          submittedAt: nowIso,
+          graded_at: null,
+          late: 0,
+          body: input.body ?? "",
+          file: input.file ?? "",
+          size: input.size ?? "",
+        };
+        mockSubmissions.set(assignment.id, record);
+        assignment.status = "submitted";
+        return {
+          id: record.id,
+          assignmentId: assignment.id,
+          status: "submitted",
+          submittedAt: nowIso,
+          late: false,
+          body: record.body,
+          file: record.file,
+          size: record.size,
+        };
+      },
+    );
   }
 
   /* Assessments */
@@ -741,24 +880,227 @@ export function registerAllMocks(): void {
     return { items: calendarEvents, total: calendarEvents.length };
   });
 
-  /* Messages */
+  /* Messages (participant-scoped direct threads + read-only legacy threads) */
+  const mockContacts = [
+    { id: "staff-admissions", name: "CEA Admissions Desk", roleKey: "admissions" },
+    { id: "instructor-chioma", name: "Chioma Eze (Lead Instructor)", roleKey: "instructor" },
+    { id: "staff-ops", name: "Academic Operations", roleKey: "ops" },
+  ];
+  const mockThreads: {
+    id: string;
+    name: string;
+    role: string;
+    unread: number;
+    legacy: boolean;
+    subject?: string;
+    last: { text: string; time: string; mine: boolean };
+    messages: { id?: string; text: string; time: string; mine: boolean; senderName?: string }[];
+  }[] = threads.map((t) => ({
+    ...t,
+    legacy: true,
+    messages: t.messages.map((m) => ({ ...m })),
+  }));
+
+  registerMock("GET", "/v1/messages/contacts", async () => {
+    await delay();
+    return { items: mockContacts };
+  });
+
   registerMock("GET", "/v1/messages/threads", async () => {
     await delay();
-    return { items: threads, total: threads.length };
+    return { items: mockThreads, total: mockThreads.length };
   });
-  for (const thread of threads) {
-    registerMock("GET", `/v1/messages/threads/${thread.id}`, async () => {
-      await delay();
-      return thread;
-    });
-    registerMock("POST", `/v1/messages/threads/${thread.id}/messages`, async () => {
+
+  registerMock("POST", "/v1/messages/threads", async (init: ApiRequestInit) => {
+    await delay();
+    const input = (init.body ?? {}) as {
+      subject?: string;
+      recipientId?: string;
+      body?: string;
+    };
+    const subject = (input.subject ?? "").trim();
+    const body = (input.body ?? "").trim();
+    if (!subject || !body) {
+      throw new ApiError(400, "VALIDATION_ERROR", "Subject and message body are required.");
+    }
+    const contact = mockContacts.find((c) => c.id === input.recipientId) ?? mockContacts[0];
+    const nowLabel = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    const created = {
+      id: `conv-${Math.random().toString(36).slice(2, 8)}`,
+      legacy: false,
+      name: `${subject} · ${contact?.name ?? "CEA Support"}`,
+      role: contact?.roleKey ?? "admissions",
+      subject,
+      unread: 0,
+      last: { text: body, time: nowLabel, mine: true },
+      messages: [{ id: `dm-${Date.now()}`, text: body, time: nowLabel, mine: true }],
+    };
+    mockThreads.unshift(created);
+    return created;
+  });
+
+  registerMockPattern("GET", "/v1/messages/threads/*", async (init: ApiRequestInit) => {
+    await delay();
+    const id = (init.path ?? "").split("/").filter(Boolean)[3] ?? "";
+    const found = mockThreads.find((t) => t.id === id);
+    if (!found) throw new ApiError(404, "NOT_FOUND", "Conversation not found.");
+    found.unread = 0;
+    return { ...found, messages: [...found.messages] };
+  });
+
+  registerMockPattern("POST", "/v1/messages/threads/*/messages", async (init: ApiRequestInit) => {
+    await delay();
+    const id = (init.path ?? "").split("/").filter(Boolean)[3] ?? "";
+    const found = mockThreads.find((t) => t.id === id);
+    if (!found) throw new ApiError(404, "NOT_FOUND", "Conversation not found.");
+    if (found.legacy) {
       throw new ApiError(
-        503,
-        "MESSAGING_UNAVAILABLE",
-        "Sending messages is currently unavailable. Please contact the academy for support.",
+        409,
+        "LEGACY_THREAD_READ_ONLY",
+        "Legacy threads are read-only. Start a new conversation to send a message.",
       );
-    });
-  }
+    }
+    const body = String(((init.body ?? {}) as { body?: string }).body ?? "").trim();
+    if (!body) {
+      throw new ApiError(400, "VALIDATION_ERROR", "Message body is required.");
+    }
+    const nowLabel = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    const message = { id: `dm-${Date.now()}`, text: body, time: nowLabel, mine: true };
+    found.messages.push(message);
+    found.last = { text: body, time: nowLabel, mine: true };
+    return message;
+  });
+
+  /* Gadget orders (mock fallback matching /v1/gadgets/orders* routes) */
+  const mockGadgetOrders: {
+    ref: string;
+    status: "pending_confirmation" | "confirmed" | "fulfilled" | "cancelled";
+    customerName: string;
+    customerEmail: string;
+    customerPhone: string;
+    deliveryAddress: string;
+    notes: string;
+    adminNote: string;
+    subtotalKobo: number;
+    currency: "NGN";
+    observedAt: string;
+    createdAt: string;
+    updatedAt: string;
+    items: {
+      image: string;
+      title: string;
+      condition: string | null;
+      quantity: number;
+      unitPriceKobo: number;
+      lineTotalKobo: number;
+    }[];
+  }[] = [
+    {
+      ref: "CEA-GDG-2026-104218",
+      status: "pending_confirmation",
+      customerName: "Chidi Nwosu",
+      customerEmail: "chidi@example.com",
+      customerPhone: "+2348090001122",
+      deliveryAddress: "Yaba Tech Hub, Lagos",
+      notes: "Need charger included",
+      adminNote: "",
+      subtotalKobo: 78_000_000,
+      currency: "NGN",
+      observedAt: new Date(Date.now() - 3600_000).toISOString(),
+      createdAt: new Date(Date.now() - 3600_000).toISOString(),
+      updatedAt: new Date(Date.now() - 3600_000).toISOString(),
+      items: [
+        {
+          image: "https://afkit.ng/mock-macbook.jpg",
+          title: "MacBook Pro 14 M1 Pro 16GB/512GB",
+          condition: "UK Used Grade A",
+          quantity: 1,
+          unitPriceKobo: 78_000_000,
+          lineTotalKobo: 78_000_000,
+        },
+      ],
+    },
+  ];
+
+  registerMock("POST", "/v1/gadgets/orders", async (init: ApiRequestInit) => {
+    await delay();
+    const input = (init.body ?? {}) as {
+      customerName?: string;
+      customerEmail?: string;
+      customerPhone?: string;
+      deliveryAddress?: string;
+      notes?: string;
+      items?: { image: string; quantity: number }[];
+    };
+    const items = (input.items ?? []).map((item) => ({
+      image: item.image,
+      title: "Afkit Verified Laptop",
+      condition: "Verified Stock",
+      quantity: Math.max(1, item.quantity || 1),
+      unitPriceKobo: 65_000_000,
+      lineTotalKobo: 65_000_000 * Math.max(1, item.quantity || 1),
+    }));
+    const subtotalKobo = items.reduce((s, i) => s + i.lineTotalKobo, 0);
+    const now = new Date().toISOString();
+    const created = {
+      ref: `CEA-GDG-2026-${Math.floor(100000 + Math.random() * 899999)}`,
+      status: "pending_confirmation" as const,
+      customerName: input.customerName ?? "Customer",
+      customerEmail: (input.customerEmail ?? "").toLowerCase(),
+      customerPhone: input.customerPhone ?? "",
+      deliveryAddress: input.deliveryAddress ?? "",
+      notes: input.notes ?? "",
+      adminNote: "",
+      subtotalKobo,
+      currency: "NGN" as const,
+      observedAt: now,
+      createdAt: now,
+      updatedAt: now,
+      items,
+    };
+    mockGadgetOrders.unshift(created);
+    return {
+      ref: created.ref,
+      status: created.status,
+      subtotalKobo: created.subtotalKobo,
+      currency: created.currency,
+      observedAt: created.observedAt,
+      items: created.items,
+      createdAt: created.createdAt,
+    };
+  });
+
+  registerMock("GET", "/v1/gadgets/admin/orders", async (init: ApiRequestInit) => {
+    await delay();
+    const url = new URL(`https://mock.local${init.path ?? "/"}`);
+    const status = url.searchParams.get("status");
+    const items = status ? mockGadgetOrders.filter((o) => o.status === status) : mockGadgetOrders;
+    return { items, total: items.length };
+  });
+
+  registerMockPattern("GET", "/v1/gadgets/orders/*", async (init: ApiRequestInit) => {
+    await delay();
+    const path = (init.path ?? "").split("?")[0] ?? "";
+    const ref = decodeURIComponent(path.split("/").filter(Boolean)[3] ?? "");
+    const found = mockGadgetOrders.find((o) => o.ref.toUpperCase() === ref.toUpperCase());
+    if (!found) throw new ApiError(404, "NOT_FOUND", "Gadget order not found.");
+    return found;
+  });
+
+  registerMockPattern("PATCH", "/v1/gadgets/admin/orders/*", async (init: ApiRequestInit) => {
+    await delay();
+    const ref = decodeURIComponent((init.path ?? "").split("/").filter(Boolean)[4] ?? "");
+    const found = mockGadgetOrders.find((o) => o.ref.toUpperCase() === ref.toUpperCase());
+    if (!found) throw new ApiError(404, "NOT_FOUND", "Gadget order not found.");
+    const input = (init.body ?? {}) as {
+      status?: "pending_confirmation" | "confirmed" | "fulfilled" | "cancelled";
+      adminNote?: string;
+    };
+    if (input.status) found.status = input.status;
+    if (input.adminNote !== undefined) found.adminNote = input.adminNote;
+    found.updatedAt = new Date().toISOString();
+    return { ok: true, ref: found.ref, status: found.status, adminNote: found.adminNote };
+  });
 
   /* Student dashboard — derived live from src/data so it stays honest */
   registerMock("GET", "/v1/dashboard/student", async (): Promise<StudentDashboard> => {

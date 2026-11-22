@@ -1,7 +1,7 @@
 import { registerMock, registerMockPattern } from "@/lib/api/client";
 import type { ApiRequestInit } from "@/lib/api/client";
 import { ApiError } from "@/lib/errors";
-import type { RealtimeMessage, RealtimeRoom } from "@/lib/api/realtime";
+import type { RealtimeMessage, RealtimeRoom, RoomMember } from "@/lib/api/realtime";
 
 function delay(milliseconds = 120): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
@@ -11,6 +11,21 @@ function delay(milliseconds = 120): Promise<void> {
 function segmentAt(path: string, index: number): string {
   return path.split("/").filter(Boolean)[index] ?? "";
 }
+
+const roomMembers = new Map<string, RoomMember[]>([
+  [
+    "room-cohort-15",
+    [
+      {
+        userId: "00000000-0000-4000-8000-000000000001",
+        active: 1,
+        expiresAt: new Date(Date.now() + 30 * 86_400_000).toISOString(),
+        changedAt: new Date(Date.now() - 2 * 86_400_000).toISOString(),
+        changedBy: "admin-1",
+      },
+    ],
+  ],
+]);
 
 const rooms: RealtimeRoom[] = [
   {
@@ -109,6 +124,52 @@ export function registerRealtimeMocks(): void {
       };
       messages.push(message);
       return message;
+    },
+  );
+
+  registerMockPattern("GET", "/v1/realtime/admin/rooms/*/members", async (init: ApiRequestInit) => {
+    await delay();
+    const roomId = segmentAt(init.path ?? "", 4);
+    const items = roomMembers.get(roomId) ?? [];
+    return { items, total: items.length };
+  });
+
+  registerMockPattern("PUT", "/v1/realtime/admin/rooms/*/members", async (init: ApiRequestInit) => {
+    await delay();
+    const roomId = segmentAt(init.path ?? "", 4);
+    const input = (init.body ?? {}) as { userId?: string; expiresAt?: string };
+    const userId = (input.userId ?? "").trim();
+    const expiresAt = (input.expiresAt ?? "").trim();
+    if (!userId || !expiresAt) {
+      throw new ApiError(400, "FIELD_VALIDATION", "userId and expiresAt are required.");
+    }
+    const existing = roomMembers.get(roomId) ?? [];
+    const next = existing.filter((m) => m.userId !== userId);
+    next.unshift({
+      userId,
+      active: 1,
+      expiresAt,
+      changedAt: new Date().toISOString(),
+      changedBy: "00000000-0000-4000-8000-000000000001",
+    });
+    roomMembers.set(roomId, next);
+    return { ok: true };
+  });
+
+  registerMockPattern(
+    "DELETE",
+    "/v1/realtime/admin/rooms/*/members/*",
+    async (init: ApiRequestInit) => {
+      await delay();
+      const path = init.path ?? "";
+      const roomId = segmentAt(path, 4);
+      const userId = segmentAt(path, 6);
+      const existing = roomMembers.get(roomId) ?? [];
+      roomMembers.set(
+        roomId,
+        existing.map((m) => (m.userId === userId ? { ...m, active: 0 } : m)),
+      );
+      return { ok: true };
     },
   );
 }

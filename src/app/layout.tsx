@@ -8,9 +8,12 @@ import { SITE_URL } from "@/lib/site-url";
 
 const THEME_SCRIPT = `(function(){try{
   var workspace = /^\\/(app|portal|auth)(\\/|$)/.test(location.pathname);
-  var key = workspace ? "cea-theme" : "cea-marketing-theme";
-  if (localStorage.getItem(key) !== "light") document.documentElement.classList.add("dark");
-} catch (e) { document.documentElement.classList.add("dark"); }})();`;
+  if (workspace) {
+    if (localStorage.getItem("cea-theme") !== "light") document.documentElement.classList.add("dark");
+  } else {
+    if (localStorage.getItem("cea-marketing-theme") === "dark") document.documentElement.classList.add("dark");
+  }
+} catch (e) { /* keep light default on marketing pages */ }})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -48,7 +51,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#7a2434",
+  themeColor: "#101214",
 };
 
 function StructuredData({ data }: { data: Record<string, unknown>[] }) {

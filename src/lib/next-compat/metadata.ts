@@ -120,8 +120,8 @@ function isPrivatePath(pathname: string): boolean {
     pathname.startsWith("/auth/") ||
     pathname === "/portal" ||
     pathname.startsWith("/portal/") ||
-    pathname === "/apply/status" ||
-    pathname.startsWith("/apply/status/") ||
+    pathname === "/apply" ||
+    pathname.startsWith("/apply/") ||
     pathname === "/visit/feedback" ||
     /^\/shop\/[^/]+\/(checkout|return)$/.test(pathname)
   );

@@ -2,7 +2,7 @@ import type {
   CeaArticleTypeId,
   CeaCategoryId,
   CeaDifficulty,
-} from "@/data/editorial/publication-standard";
+} from "./editorial/publication-standard";
 
 export type BlogBlock =
   | { type: "p"; text: string }
