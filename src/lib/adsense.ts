@@ -1,5 +1,5 @@
 /** Same publisher id as ads.txt and the google-adsense-account meta tag. */
-export const ADSENSE_CLIENT = "ca-pub-9117572925263537";
+export const ADSENSE_CLIENT = "ca-pub-9124992249317290";
 
 export const ADSENSE_SCRIPT_SRC = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`;
 
