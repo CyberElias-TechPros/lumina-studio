@@ -120,7 +120,7 @@ function LessonContent({
   const readable = ["preview", "in-progress", "done"].includes(lesson.status);
   const hasText = Boolean(lesson.body?.trim());
   const canComplete =
-    readable && lesson.status !== "done" && (user?.roleKey === "student" || isMockMode);
+    readable && hasText && lesson.status !== "done" && (user?.roleKey === "student" || isMockMode);
 
   return (
     <section
@@ -149,8 +149,7 @@ function LessonContent({
                   </div>
                 ) : (
                   <p className="text-muted-foreground text-sm">
-                    Study this session with your cohort materials and instructor walkthrough, then
-                    mark it complete once finished.
+                    No lesson text has been published yet.
                   </p>
                 )}
 
@@ -213,7 +212,7 @@ function LessonContent({
                 className="text-success flex items-center gap-2 text-sm font-semibold"
               >
                 <CheckCircle2 aria-hidden="true" className="size-4" />
-                Lesson completed.
+                Completion recorded by the Academy.
               </p>
             )}
 
@@ -249,7 +248,7 @@ function LessonContent({
             )}
             {completion.isSuccess && lesson.status !== "done" && (
               <p role="status" className="text-success text-sm">
-                Completion saved! Your course progress has updated.
+                Completion recorded by the Academy.
               </p>
             )}
 

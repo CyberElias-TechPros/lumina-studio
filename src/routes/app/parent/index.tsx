@@ -144,7 +144,7 @@ function ParentDashboard() {
                 empty={{
                   title: "No linked learners",
                   description:
-                    "Contact the academy via Messages to link your learner's enrollment to your parent account.",
+                    "Contact the academy to verify the relationship and issue a parent invitation. Previously linked learners may need to be verified again.",
                 }}
                 isEmpty={(d) => d.items.length === 0}
               >
@@ -165,7 +165,7 @@ function ParentDashboard() {
                           </div>
                           <div className="flex gap-2">
                             <Badge className="bg-white/15 text-white border-0 font-semibold">
-                              GPA {c.gpa ?? "pending"}
+                              GPA {c.gpa ?? "unavailable"}
                             </Badge>
                           </div>
                         </div>

@@ -93,7 +93,7 @@ function ParentStudentOverview() {
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
             {data
-              ? `GPA ${data.gpa ?? "pending"} · ${data.dueCount} ${data.dueCount === 1 ? "bill" : "bills"} due`
+              ? `GPA ${data.gpa ?? "unavailable"} · ${data.dueCount} ${data.dueCount === 1 ? "bill" : "bills"} due`
               : "Loading…"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
@@ -205,7 +205,7 @@ function ParentStudentOverview() {
                 <Card className="bg-card shadow-soft border self-start">
                   <CardHeader className="flex-row items-center justify-between">
                     <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                      <CalendarDays className="text-primary size-4" /> Upcoming schedule
+                      <CalendarDays className="text-primary size-4" /> Timetable and mentor notes
                     </CardTitle>
                     <Button
                       asChild
@@ -219,7 +219,7 @@ function ParentStudentOverview() {
                   <CardContent className="space-y-3">
                     {calendarItems.length === 0 ? (
                       <p className="text-muted-foreground text-sm">
-                        No upcoming sessions posted yet. Message instructors via Communication.
+                        These records are not available here yet.
                       </p>
                     ) : (
                       calendarItems.map((ev) => (

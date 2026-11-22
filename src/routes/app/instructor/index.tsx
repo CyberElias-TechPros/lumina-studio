@@ -136,6 +136,7 @@ function InstructorDashboard() {
   const submissions = flattenPages(assignmentsQuery.data?.pages);
   const pendingReviews = submissions.filter((s) => s.status !== "graded").length;
   const activeLive = liveClasses.filter((c) => c.status !== "ended").length;
+  const hasLiveData = courses.length > 0 || submissions.length > 0 || liveClasses.length > 0;
 
   return (
     <AppShell
@@ -143,67 +144,71 @@ function InstructorDashboard() {
       title="Instructor dashboard"
       subtitle="Courses, assignments and teaching tools"
       actions={
-        <>
-          <Badge className="bg-primary/10 text-primary border-0 font-semibold">
-            {pendingReviews} awaiting review
-          </Badge>
-          <Button asChild size="sm">
-            <Link to="/app/instructor/lessons/create">
-              <Plus className="size-4" /> New lesson
-            </Link>
-          </Button>
-        </>
+        hasLiveData ? (
+          <>
+            <Badge className="bg-primary/10 text-primary border-0 font-semibold">
+              {pendingReviews} awaiting review
+            </Badge>
+            <Button asChild size="sm">
+              <Link to="/app/instructor/lessons/create">
+                <Plus className="size-4" /> New lesson
+              </Link>
+            </Button>
+          </>
+        ) : undefined
       }
     >
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {[
-          {
-            label: "Assigned courses",
-            value: coursesQuery.isLoading ? "…" : String(courses.length),
-            delta: `${courses.filter((c) => c.status === "published").length} published`,
-            icon: BookOpen,
-            tone: "bg-primary/10 text-primary",
-          },
-          {
-            label: "Pending reviews",
-            value: assignmentsQuery.isLoading ? "…" : String(pendingReviews),
-            delta: `${submissions.length} total submissions`,
-            icon: ClipboardCheck,
-            tone: "bg-warning/10 text-warning",
-          },
-          {
-            label: "Upcoming classes",
-            value: String(activeLive),
-            delta: `${liveClasses.filter((c) => c.status === "live").length} live right now`,
-            icon: Radio,
-            tone: "bg-success/10 text-success",
-          },
-          {
-            label: "Graded work",
-            value: assignmentsQuery.isLoading
-              ? "…"
-              : String(submissions.filter((s) => s.status === "graded").length),
-            delta: "returned with feedback",
-            icon: GraduationCap,
-            tone: "bg-learning/10 text-learning",
-          },
-        ].map((k) => (
-          <Card key={k.label} className="bg-card shadow-soft border">
-            <CardContent className="p-5">
-              <div className="flex items-center justify-between">
-                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                  {k.label}
-                </p>
-                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
-                  <k.icon className="size-4" />
-                </span>
-              </div>
-              <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
-              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      {hasLiveData && (
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {[
+            {
+              label: "Assigned courses",
+              value: coursesQuery.isLoading ? "…" : String(courses.length),
+              delta: `${courses.filter((c) => c.status === "published").length} published`,
+              icon: BookOpen,
+              tone: "bg-primary/10 text-primary",
+            },
+            {
+              label: "Pending reviews",
+              value: assignmentsQuery.isLoading ? "…" : String(pendingReviews),
+              delta: `${submissions.length} total submissions`,
+              icon: ClipboardCheck,
+              tone: "bg-warning/10 text-warning",
+            },
+            {
+              label: "Upcoming classes",
+              value: String(activeLive),
+              delta: `${liveClasses.filter((c) => c.status === "live").length} live right now`,
+              icon: Radio,
+              tone: "bg-success/10 text-success",
+            },
+            {
+              label: "Graded work",
+              value: assignmentsQuery.isLoading
+                ? "…"
+                : String(submissions.filter((s) => s.status === "graded").length),
+              delta: "returned with feedback",
+              icon: GraduationCap,
+              tone: "bg-learning/10 text-learning",
+            },
+          ].map((k) => (
+            <Card key={k.label} className="bg-card shadow-soft border">
+              <CardContent className="p-5">
+                <div className="flex items-center justify-between">
+                  <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                    {k.label}
+                  </p>
+                  <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
+                    <k.icon className="size-4" />
+                  </span>
+                </div>
+                <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
+                <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      )}
 
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader>
@@ -230,6 +235,13 @@ function InstructorDashboard() {
           ))}
         </CardContent>
       </Card>
+
+      {!hasLiveData && (
+        <p className="text-muted-foreground mt-5 text-sm">
+          Open the calendar or assignment center for available records. Dashboard totals and sample
+          schedules are not shown until their data sources can be verified.
+        </p>
+      )}
     </AppShell>
   );
 }

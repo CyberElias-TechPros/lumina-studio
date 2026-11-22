@@ -225,7 +225,7 @@ function AssignmentWork({ assignment: a }: { assignment: StudentAssignment }) {
                   ? "Uploading attachment…"
                   : submit.isPending
                     ? "Submitting…"
-                    : "Submit assignment"}
+                    : "Submit written answer"}
               </Button>
               {submit.isError && (
                 <p role="alert" className="text-destructive text-sm">
@@ -235,7 +235,7 @@ function AssignmentWork({ assignment: a }: { assignment: StudentAssignment }) {
               )}
               {submit.isSuccess && (
                 <p role="status" className="text-success text-sm font-semibold">
-                  Your submission was recorded by the server.
+                  Your answer was recorded by the server.
                 </p>
               )}
             </form>

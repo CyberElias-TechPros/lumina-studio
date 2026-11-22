@@ -72,11 +72,11 @@ function Admissions() {
               Admissions · 5-Step Enrolment Flow
             </p>
             <h1 className="font-display mt-5 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-              Clear steps from first interest to your first day in class.
+              How to enrol — clear steps from first interest to day one.
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#F4F1E9]/75 sm:text-lg">
-              Applying to Cyber Elias Academy is free. We confirm your real seat, timetable, and
-              equipment setup before asking for a single Naira.
+              Applying is free. We confirm your real seat, timetable, and equipment setup before
+              asking for a single Naira.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button
@@ -85,7 +85,7 @@ function Admissions() {
                 className="rounded-full bg-[#D6FE52] text-[#101214] font-semibold hover:bg-[#c5ee42]"
               >
                 <Link to="/apply">
-                  Start free application <ArrowRight className="size-4" />
+                  Start an application <ArrowRight className="size-4" />
                 </Link>
               </Button>
               <Button
@@ -131,9 +131,10 @@ function Admissions() {
             <h2 className="font-display mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
               Built so nobody pays before the class is real.
             </h2>
-            <p className="text-muted-foreground mt-4 max-w-md leading-relaxed">
+            <p className="mt-4 max-w-md text-muted-foreground leading-relaxed">
               Every cohort has a verified timetable and clear equipment checklist. Unscheduled
-              tracks collect free interest only until seats open.
+              courses collect interest only until seats open. Do not pay until you have reviewed and
+              accepted your confirmed offer.
             </p>
             <figure className="border-border mt-8 overflow-hidden rounded-2xl border bg-card">
               <CampusImg id="lab-3" className="aspect-[16/10]" />
