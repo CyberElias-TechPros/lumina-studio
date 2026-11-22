@@ -75,8 +75,8 @@ function Admissions() {
               How to enrol — clear steps from first interest to day one.
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#F4F1E9]/75 sm:text-lg">
-              Applying is free. We confirm your real seat, timetable, and equipment setup before
-              asking for a single Naira.
+              Submit your course interest with zero upfront fees. We confirm your real seat,
+              timetable, and equipment setup before asking for a single Naira.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button
@@ -104,7 +104,7 @@ function Admissions() {
               Protection Promise
             </p>
             <p className="font-display mt-3 text-2xl font-semibold text-[#F4F1E9]">
-              Applying is free. No blind transfers.
+              Zero upfront fees. No blind transfers.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-[#F4F1E9]/70">
               {TUITION_POLICY.application}
@@ -133,8 +133,7 @@ function Admissions() {
             </h2>
             <p className="mt-4 max-w-md text-muted-foreground leading-relaxed">
               Every cohort has a verified timetable and clear equipment checklist. Unscheduled
-              courses collect interest only until seats open. Do not pay until you have reviewed and
-              accepted your confirmed offer.
+              courses collect interest only until seats open.
             </p>
             <figure className="border-border mt-8 overflow-hidden rounded-2xl border bg-card">
               <CampusImg id="lab-3" className="aspect-[16/10]" />
