@@ -207,7 +207,7 @@ describe("realtime WebSocket upgrade", () => {
       }
     },
   );
-  it("keeps live websocket unavailable even for a configured origin", async () => {
+  it("rejects live websocket when student is not enrolled in the class course", async () => {
     const res = await api("/v1/live/classes/live-1/ws", {
       headers: {
         upgrade: "websocket",
@@ -216,6 +216,6 @@ describe("realtime WebSocket upgrade", () => {
         ...cookieHeaders(student.cookie),
       },
     });
-    expect(res.status).toBe(503);
+    expect(res.status).toBe(403);
   });
 });

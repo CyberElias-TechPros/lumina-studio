@@ -2,13 +2,22 @@
 
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
-import { ArrowRight, BookOpen, MessageSquare, Receipt, Users, Wallet } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  CalendarDays,
+  MessageSquare,
+  Receipt,
+  Users,
+  Wallet,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useCalendarItems } from "@/lib/query/calendar";
 import { useParentStudents } from "@/lib/query/parent";
 import { formatNaira } from "@/data/site";
 import type { Paginated } from "@/lib/api/types";
@@ -27,6 +36,7 @@ export const Route = createFileRoute("/app/parent/")({
 
 function ParentDashboard() {
   const students = useParentStudents();
+  const calendarItems = useCalendarItems().slice(0, 4);
   const kids = students.data?.items ?? [];
   const loaded = students.data !== undefined;
   const totalDue = kids.reduce((s, c) => s + c.due, 0);
@@ -35,6 +45,10 @@ function ParentDashboard() {
   const avgPct = enrolledKids.length
     ? Math.round(enrolledKids.reduce((s, c) => s + c.pct, 0) / enrolledKids.length)
     : null;
+  const gpas = kids
+    .map((c) => (typeof c.gpa === "number" ? c.gpa : Number(c.gpa)))
+    .filter((n) => Number.isFinite(n) && n > 0);
+  const avgGpa = gpas.length ? (gpas.reduce((a, b) => a + b, 0) / gpas.length).toFixed(2) : null;
   const hasBills = kids.some((c) => c.dueCount > 0);
 
   return (
@@ -53,8 +67,8 @@ function ParentDashboard() {
               ? kids.length === 0
                 ? "No verified learners linked"
                 : hasBills
-                  ? "Outstanding records found"
-                  : "No outstanding records found"
+                  ? `${dueCount} ${dueCount === 1 ? "instalment" : "instalments"} due`
+                  : "All accounts current"
               : students.isError
                 ? "Learners unavailable"
                 : "Checking…"}
@@ -78,8 +92,8 @@ function ParentDashboard() {
           },
           {
             label: "Avg. GPA",
-            value: loaded ? "—" : "…",
-            delta: "Unavailable until the grading policy is verified",
+            value: loaded ? (avgGpa ?? "—") : "…",
+            delta: avgGpa ? `across ${gpas.length} learner(s)` : "posted after term exams",
             icon: BookOpen,
             tone: "bg-learning/10 text-learning",
           },
@@ -168,7 +182,7 @@ function ParentDashboard() {
                               ? `${formatNaira(c.due)} outstanding · ${c.dueCount} ${
                                   c.dueCount === 1 ? "instalment" : "instalments"
                                 }`
-                              : "No outstanding records found"}
+                              : "All tuition invoices settled"}
                           </p>
                           <Button
                             asChild
@@ -202,7 +216,7 @@ function ParentDashboard() {
                 <p className="text-muted-foreground py-3 text-xs">Loading bills…</p>
               ) : kids.length === 0 ? (
                 <p className="text-muted-foreground py-3 text-xs">
-                  No verified learners linked; billing is unavailable.
+                  Link a learner account to review tuition invoices and payment receipts.
                 </p>
               ) : (
                 kids.map((c) => (
@@ -214,7 +228,7 @@ function ParentDashboard() {
                     <span className="text-xs font-semibold">
                       {c.dueCount > 0
                         ? `${c.dueCount} ${c.dueCount === 1 ? "instalment" : "instalments"} due`
-                        : "No outstanding records"}
+                        : "Settled"}
                     </span>
                     <Badge
                       className={cn(
@@ -236,7 +250,7 @@ function ParentDashboard() {
                     className="text-primary font-semibold"
                   >
                     <Link
-                      to="/app/parent/students/$studentId"
+                      to="/app/parent/students/$studentId/finance"
                       params={{ studentId: kids[0]?.studentId ?? "" }}
                     >
                       View billing
@@ -249,12 +263,40 @@ function ParentDashboard() {
         </div>
 
         <Card className="bg-card shadow-soft border self-start">
-          <CardHeader>
-            <CardTitle className="font-display text-base font-bold">Parent information</CardTitle>
+          <CardHeader className="flex-row items-center justify-between">
+            <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+              <CalendarDays className="text-primary size-4" /> Academy schedule
+            </CardTitle>
+            <Button asChild variant="ghost" size="sm" className="text-primary font-semibold">
+              <Link to="/app/calendar">Calendar</Link>
+            </Button>
           </CardHeader>
-          <CardContent className="text-muted-foreground text-sm">
-            Notices and meeting information are not available here yet. Contact the academy for
-            current information.
+          <CardContent className="space-y-3">
+            {calendarItems.length === 0 ? (
+              <p className="text-muted-foreground text-sm">
+                No upcoming events posted yet. Message the academy team directly if you need a
+                conference slot.
+              </p>
+            ) : (
+              calendarItems.map((ev) => (
+                <div key={ev.id} className="rounded-xl border p-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="text-sm font-semibold">{ev.title}</p>
+                    <Badge variant="secondary" className="text-xs font-semibold capitalize">
+                      {ev.kind}
+                    </Badge>
+                  </div>
+                  <p className="text-muted-foreground mt-1 text-xs">
+                    {ev.day} {ev.date} · {ev.time} · {ev.location}
+                  </p>
+                </div>
+              ))
+            )}
+            <Button asChild variant="outline" size="sm" className="w-full font-semibold">
+              <Link to="/app/messages">
+                <MessageSquare className="size-3.5" /> Message instructors &amp; admissions
+              </Link>
+            </Button>
           </CardContent>
         </Card>
       </div>

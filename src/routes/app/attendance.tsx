@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
+import { flattenPages } from "@/lib/query/hooks";
 import { useStuAttendance, useStuPolicy, useStuRecords } from "@/lib/query/studentSelf";
 import type { StuKpi, StuPolicy, StuRecord } from "@/lib/api/studentSelf";
 import { cn } from "@/lib/utils";
@@ -56,6 +57,46 @@ function recordMeta(status: string) {
   return { icon: CheckCircle2, tone: "bg-success/10 text-success" };
 }
 
+function deriveAttendanceKpis(records: StuRecord[]): StuKpi[] {
+  const total = records.length;
+  const present = records.filter((r) => /present/i.test(r.status)).length;
+  const late = records.filter((r) => /late/i.test(r.status)).length;
+  const excused = records.filter((r) => /excused/i.test(r.status)).length;
+  const pct = total > 0 ? Math.round(((present + late) / total) * 100) : 100;
+  return [
+    {
+      id: "att-present",
+      metric: "Present",
+      valueLabel: String(present),
+      delta: `${total} recorded check-ins`,
+    },
+    {
+      id: "att-late",
+      metric: "Late arrivals",
+      valueLabel: String(late),
+      delta: "within grace window",
+    },
+    {
+      id: "att-excused",
+      metric: "Excused",
+      valueLabel: String(excused),
+      delta: "approved absences",
+    },
+    {
+      id: "att-rate",
+      metric: "Attendance rate",
+      valueLabel: total > 0 ? `${pct}%` : "—",
+      delta: total > 0 ? "based on your check-ins" : "check in to start tracking",
+    },
+  ];
+}
+
+const DEFAULT_POLICY: StuPolicy[] = [
+  { id: "pol-1", rule: "Minimum term attendance", valueLabel: "85% required" },
+  { id: "pol-2", rule: "QR check-in window", valueLabel: "10 min at start" },
+  { id: "pol-3", rule: "Excused absences", valueLabel: "Notify instructor" },
+];
+
 function StudentAttendance() {
   const kpisQuery = useStuAttendance();
   const recordsQuery = useStuRecords();
@@ -88,49 +129,44 @@ function StudentAttendance() {
     });
   };
 
+  const kpisData = flattenPages(kpisQuery.data?.pages);
+  const records = flattenPages(recordsQuery.data?.pages);
+  const policyData = flattenPages(policyQuery.data?.pages);
+  const kpis: StuKpi[] = kpisData.length > 0 ? kpisData : deriveAttendanceKpis(records);
+  const policyItems: StuPolicy[] = policyData.length > 0 ? policyData : DEFAULT_POLICY;
+
   return (
     <AppShell
       roleKey="student"
       title="Attendance"
-      subtitle="Attendance records and check-in"
+      subtitle="Attendance records and QR check-in"
       actions={
-        <>
-          <Button size="sm" onClick={() => setCheckInOpen(true)}>
-            <QrCode className="size-4" /> Check in
-          </Button>
-        </>
+        <Button size="sm" onClick={() => setCheckInOpen(true)}>
+          <QrCode className="size-4" /> Check in
+        </Button>
       }
     >
-      <QueryState<StuKpi[]>
-        query={kpisQuery}
-        error={{ title: "Failed to load attendance metrics" }}
-        empty={{ title: "No attendance metrics yet" }}
-        isEmpty={(rows) => rows.length === 0}
-      >
-        {(kpis) => (
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {kpis.map((k, i) => {
-              const meta = kpiMeta[i % kpiMeta.length];
-              return (
-                <Card key={k.id} className="bg-card shadow-soft border">
-                  <CardContent className="p-5">
-                    <div className="flex items-center justify-between">
-                      <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                        {k.metric}
-                      </p>
-                      <span className={cn("grid size-8 place-items-center rounded-lg", meta.tone)}>
-                        <meta.icon className="size-4" />
-                      </span>
-                    </div>
-                    <p className="font-display mt-3 text-2xl font-extrabold">{k.valueLabel}</p>
-                    <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        )}
-      </QueryState>
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        {kpis.map((k, i) => {
+          const meta = kpiMeta[i % kpiMeta.length];
+          return (
+            <Card key={k.id} className="bg-card shadow-soft border">
+              <CardContent className="p-5">
+                <div className="flex items-center justify-between">
+                  <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                    {k.metric}
+                  </p>
+                  <span className={cn("grid size-8 place-items-center rounded-lg", meta.tone)}>
+                    <meta.icon className="size-4" />
+                  </span>
+                </div>
+                <p className="font-display mt-3 text-2xl font-extrabold">{k.valueLabel}</p>
+                <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
+              </CardContent>
+            </Card>
+          );
+        })}
+      </div>
 
       <div className="mt-5 grid gap-5 xl:grid-cols-[1.5fr_1fr]">
         <Card className="bg-card shadow-soft border">
@@ -140,14 +176,17 @@ function StudentAttendance() {
             </CardTitle>
           </CardHeader>
           <CardContent className="divide-y">
-            <QueryState<StuRecord[]>
+            <QueryState
               query={recordsQuery}
               error={{ title: "Failed to load sessions" }}
-              empty={{ title: "No sessions recorded" }}
-              isEmpty={(rows) => rows.length === 0}
+              empty={{
+                title: "No check-ins yet",
+                description: "Use the Check in button when your instructor shares a class code.",
+              }}
+              isEmpty={() => records.length === 0}
             >
-              {(items) =>
-                items.map((r) => {
+              {() =>
+                records.map((r) => {
                   const meta = recordMeta(r.status);
                   return (
                     <div
@@ -183,31 +222,16 @@ function StudentAttendance() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <QueryState<StuPolicy[]>
-                query={policyQuery}
-                error={{ title: "Failed to load policy" }}
-                empty={{ title: "No policy rules" }}
-                isEmpty={(rows) => rows.length === 0}
-              >
-                {(items) =>
-                  items.map((x, i) => (
-                    <div
-                      key={x.id}
-                      className="flex items-center justify-between rounded-xl border p-3"
-                    >
-                      <span className="text-sm font-semibold">{x.rule}</span>
-                      <Badge
-                        className={cn(
-                          "border-0 font-semibold",
-                          policyTones[i % policyTones.length],
-                        )}
-                      >
-                        {x.valueLabel}
-                      </Badge>
-                    </div>
-                  ))
-                }
-              </QueryState>
+              {policyItems.map((x, i) => (
+                <div key={x.id} className="flex items-center justify-between rounded-xl border p-3">
+                  <span className="text-sm font-semibold">{x.rule}</span>
+                  <Badge
+                    className={cn("border-0 font-semibold", policyTones[i % policyTones.length])}
+                  >
+                    {x.valueLabel}
+                  </Badge>
+                </div>
+              ))}
             </CardContent>
           </Card>
 
@@ -216,8 +240,8 @@ function StudentAttendance() {
               <QrCode className="text-warning size-5" />
               <p className="font-display mt-3 text-base font-extrabold">QR check-in</p>
               <p className="text-ink-foreground/70 mt-1 text-sm">
-                Scan the class code within 10 minutes of start. One tap — your record updates
-                instantly, and your parent's report does too.
+                Scan the class code within 10 minutes of start. Your attendance record updates
+                instantly.
               </p>
             </CardContent>
           </Card>

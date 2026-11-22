@@ -1,9 +1,19 @@
 import { registerMock } from "@/lib/api/client";
 import type { ApiRequestInit } from "@/lib/api/client";
-import { ApiError } from "@/lib/errors";
 import type { PortalSummary } from "@/lib/api/portal";
 
 export function registerPortalMocks(): void {
+  const rosterGrants: Record<
+    string,
+    {
+      instructorId: string;
+      studentId: string;
+      courseSlug: string;
+      active: boolean;
+      expiresAt: string;
+    }
+  > = {};
+
   registerMock("GET", "/v1/portal/summary", async (init: ApiRequestInit) => {
     const portal = new URLSearchParams((init.path ?? "").split("?")[1] ?? "").get("portal") ?? "";
     const summary: PortalSummary = {
@@ -31,14 +41,52 @@ export function registerPortalMocks(): void {
     return summary;
   });
   registerMock("GET", "/v1/instructor/assignment-roster/courses", async () => ({
-    items: [],
+    items: [
+      {
+        slug: "full-stack-software-development",
+        title: "Full-Stack Software Development",
+        recipients: 12,
+      },
+      { slug: "cloud-devops", title: "Cloud Engineering & DevOps", recipients: 8 },
+    ],
     truncated: false,
   }));
-  registerMock("GET", "/v1/instructor/assignment-roster", async () => ({ grant: null }));
-  registerMock("PUT", "/v1/instructor/assignment-roster", async () => {
-    throw new ApiError(503, "DEMO_READ_ONLY", "Roster changes are not saved in demo mode.");
+  registerMock("GET", "/v1/instructor/assignment-roster", async (init: ApiRequestInit) => {
+    const query = new URLSearchParams((init.path ?? "").split("?")[1] ?? "");
+    const key = `${query.get("instructorId") ?? ""}:${query.get("studentId") ?? ""}:${query.get("courseSlug") ?? ""}`;
+    return { grant: rosterGrants[key] ?? null };
   });
-  registerMock("POST", "/v1/instructor/assignments", async () => {
-    throw new ApiError(503, "DEMO_READ_ONLY", "Assignment publication is not saved in demo mode.");
+  registerMock("PUT", "/v1/instructor/assignment-roster", async (init: ApiRequestInit) => {
+    const body = (init.body ?? {}) as {
+      instructorId?: string;
+      studentId?: string;
+      courseSlug?: string;
+      active?: boolean;
+      expiresAt?: string;
+    };
+    const key = `${body.instructorId ?? ""}:${body.studentId ?? ""}:${body.courseSlug ?? ""}`;
+    const grant = {
+      instructorId: body.instructorId ?? "",
+      studentId: body.studentId ?? "",
+      courseSlug: body.courseSlug ?? "",
+      active: body.active ?? true,
+      expiresAt: body.expiresAt ?? new Date(Date.now() + 90 * 86_400_000).toISOString(),
+    };
+    rosterGrants[key] = grant;
+    return { grant };
+  });
+  registerMock("POST", "/v1/instructor/assignments", async (init: ApiRequestInit) => {
+    const body = (init.body ?? {}) as {
+      courseSlug?: string;
+      dueAt?: string;
+    };
+    const dueAt = body.dueAt ?? new Date(Date.now() + 7 * 86_400_000).toISOString();
+    return {
+      groupId: `pub-${Date.now()}`,
+      recipients: 12,
+      due: new Date(dueAt).toLocaleDateString("en-GB", { month: "short", day: "numeric" }),
+      dueAt,
+      course: body.courseSlug ?? "full-stack-software-development",
+    };
   });
 }

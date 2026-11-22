@@ -2,7 +2,7 @@ import { registerMock, registerMockPattern } from "@/lib/api/client";
 import type { ApiRequestInit } from "@/lib/api/client";
 import { ApiError } from "@/lib/errors";
 import { liveSessions, type LiveSession } from "@/data/learning";
-import type { LivePoll } from "@/lib/api/live";
+import type { LiveClassSession, LivePoll } from "@/lib/api/live";
 import type { RealtimeMessage } from "@/lib/api/realtime";
 
 function delay(milliseconds = 120): Promise<void> {
@@ -15,7 +15,12 @@ function segmentAt(path: string, index: number): string {
 
 const MOCK_USER_ID = "00000000-0000-4000-8000-000000000001";
 
-const sessions: LiveSession[] = liveSessions.map((s) => ({ ...s }));
+const sessions: LiveClassSession[] = liveSessions.map((s: LiveSession, index) => ({
+  ...s,
+  status: s.status as LiveClassSession["status"],
+  courseSlug: index === 0 ? "full-stack-software-development" : "cloud-devops",
+  meetingUrl: index === 0 ? "https://meet.google.com/cea-live-demo" : undefined,
+}));
 
 const chatByClass = new Map<string, RealtimeMessage[]>([
   [
@@ -81,6 +86,56 @@ export function registerLiveMocks(): void {
   registerMock("GET", "/v1/live/classes", async () => {
     await delay();
     return { items: sessions, total: sessions.length };
+  });
+
+  registerMock("POST", "/v1/live/classes", async (init: ApiRequestInit) => {
+    await delay();
+    const input = (init.body ?? {}) as {
+      title?: string;
+      courseSlug?: string;
+      cohort?: string;
+      meetingUrl?: string;
+      startsAt?: string;
+      status?: "scheduled" | "live" | "ended";
+    };
+    const title = (input.title ?? "").trim();
+    const courseSlug = (input.courseSlug ?? "").trim();
+    if (!title || !courseSlug) {
+      throw new ApiError(400, "VALIDATION_ERROR", "Title and courseSlug are required.");
+    }
+    const created: LiveClassSession = {
+      id: `live-${Math.random().toString(36).slice(2, 8)}`,
+      title,
+      instructor: "Adaeze Okafor",
+      cohort: (input.cohort ?? "Cohort 15").trim() || "Cohort 15",
+      courseSlug,
+      meetingUrl: input.meetingUrl?.trim() || undefined,
+      status: input.status ?? "scheduled",
+      startsAt: input.startsAt ?? new Date().toISOString(),
+    };
+    sessions.unshift(created);
+    return created;
+  });
+
+  registerMockPattern("PATCH", "/v1/live/classes/*", async (init: ApiRequestInit) => {
+    await delay();
+    const classId = segmentAt(init.path ?? "", 3);
+    const session = sessions.find((s) => s.id === classId);
+    if (!session) throw new ApiError(404, "NOT_FOUND", "Class not found.");
+    const input = (init.body ?? {}) as {
+      status?: "scheduled" | "live" | "ended";
+      meetingUrl?: string;
+    };
+    if (input.status) session.status = input.status;
+    if (input.meetingUrl !== undefined) {
+      session.meetingUrl = input.meetingUrl.trim() || undefined;
+    }
+    return {
+      ok: true,
+      id: session.id,
+      status: session.status,
+      meetingUrl: session.meetingUrl,
+    };
   });
 
   registerMockPattern("POST", "/v1/live/classes/*/polls/*/vote", async (init: ApiRequestInit) => {

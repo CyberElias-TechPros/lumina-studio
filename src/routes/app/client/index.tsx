@@ -5,24 +5,24 @@ import { Link } from "@/lib/next-compat/router";
 import {
   ArrowLeft,
   ArrowRight,
-  Banknote,
-  FileText,
+  CalendarDays,
+  CheckCircle2,
+  CreditCard,
   LifeBuoy,
   MessageSquare,
-  PenTool,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
-import { useCliTickets, useCliTicketItems } from "@/lib/query/clientEngagement";
+import { useCliTicketItems } from "@/lib/query/clientEngagement";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/client/")({
   head: () => ({
     meta: [
       { title: "Client Portal — CEA-OS" },
-      { name: "description", content: "Proposals, contracts, invoices and support." },
+      { name: "description", content: "Support requests, billing, calendar and messages." },
     ],
   }),
   component: ClientHub,
@@ -30,32 +30,32 @@ export const Route = createFileRoute("/app/client/")({
 
 const screens = [
   {
-    icon: PenTool,
-    label: "Proposals",
-    desc: "Review, approve scope",
-    path: "/app/client/proposals",
+    icon: LifeBuoy,
+    label: "Support tickets",
+    desc: "Log issues and track SLA",
+    path: "/app/client/support",
     tone: "bg-primary/10 text-primary",
-  },
-  {
-    icon: FileText,
-    label: "Contracts",
-    desc: "Sign and track SOWs",
-    path: "/app/client/contracts",
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    icon: Banknote,
-    label: "Invoices",
-    desc: "Payments and history",
-    path: "/app/client/invoices",
-    tone: "bg-success/10 text-success",
   },
   {
     icon: MessageSquare,
     label: "Messages",
-    desc: "Threads with the team",
-    path: "/app/client/messages",
+    desc: "Direct threads with delivery leads",
+    path: "/app/messages",
     tone: "bg-warning/10 text-warning",
+  },
+  {
+    icon: CreditCard,
+    label: "Billing & invoices",
+    desc: "View payments and receipts",
+    path: "/app/billing",
+    tone: "bg-success/10 text-success",
+  },
+  {
+    icon: CalendarDays,
+    label: "Calendar",
+    desc: "Upcoming reviews and check-ins",
+    path: "/app/calendar",
+    tone: "bg-learning/10 text-learning",
   },
 ];
 
@@ -63,6 +63,8 @@ function ClientHub() {
   const tickets = useCliTicketItems();
 
   const open = tickets.filter((t) => t.status !== "solved").length;
+  const solved = tickets.filter((t) => t.status === "solved").length;
+  const inProgress = tickets.filter((t) => /progress|open/i.test(t.status)).length;
 
   return (
     <AppShell
@@ -72,7 +74,7 @@ function ClientHub() {
       actions={
         <>
           <Badge className="bg-primary/10 text-primary border-0 font-semibold">
-            {open} open support tickets
+            {open} open support {open === 1 ? "ticket" : "tickets"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/client">
@@ -86,30 +88,30 @@ function ClientHub() {
         {[
           {
             label: "Open tickets",
-            value: tickets.length > 0 ? String(open) : "—",
-            delta: "across all projects",
+            value: String(open),
+            delta: inProgress > 0 ? `${inProgress} in progress` : "active support queue",
             icon: LifeBuoy,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Invoices",
-            value: "₦12.4m",
-            delta: "1 awaiting payment",
-            icon: Banknote,
+            label: "Resolved tickets",
+            value: String(solved),
+            delta: "completed requests",
+            icon: CheckCircle2,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "Active contracts",
-            value: "3",
-            delta: "2 in delivery",
-            icon: FileText,
+            label: "Total requests",
+            value: String(tickets.length),
+            delta: "logged on your account",
+            icon: MessageSquare,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "Proposals",
-            value: "2",
-            delta: "1 awaiting approval",
-            icon: PenTool,
+            label: "Delivery SLA",
+            value: "< 24h",
+            delta: "studio response target",
+            icon: CalendarDays,
             tone: "bg-warning/10 text-warning",
           },
         ].map((k) => (

@@ -2,6 +2,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { usePaginatedQuery, flattenPages, useApiQuery } from "@/lib/query/hooks";
 import {
   castLivePollVote,
+  createLiveClass,
+  createLivePoll,
   fetchLiveClass,
   fetchLiveClassChat,
   fetchLiveClassPolls,
@@ -9,6 +11,7 @@ import {
   fetchWhiteboardOps,
   postWhiteboardOp,
   sendLiveClassChat,
+  updateLiveClass,
   type LiveClassSession,
   type LivePoll,
   type WhiteboardOp,
@@ -35,6 +38,35 @@ export function useLiveClassesItems(): LiveClassSession[] {
 export function useLiveClass(id: string) {
   return useApiQuery<LiveClassSession>(liveKeys.class(id), () => fetchLiveClass(id), {
     enabled: id.length > 0,
+  });
+}
+
+export function useCreateLiveClass() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: {
+      title: string;
+      courseSlug: string;
+      cohort?: string;
+      meetingUrl?: string;
+      startsAt: string;
+      status?: "scheduled" | "live" | "ended";
+    }) => createLiveClass(input),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: liveKeys.classes });
+    },
+  });
+}
+
+export function useUpdateLiveClass(id: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: { status?: "scheduled" | "live" | "ended"; meetingUrl?: string }) =>
+      updateLiveClass(id, input),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: liveKeys.class(id) });
+      void queryClient.invalidateQueries({ queryKey: liveKeys.classes });
+    },
   });
 }
 
@@ -68,6 +100,16 @@ export function useLiveClassPolls(classId: string) {
     },
     { enabled: classId.length > 0 },
   );
+}
+
+export function useCreateLivePoll(classId: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: { question: string; options: string[] }) => createLivePoll(classId, input),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: liveKeys.polls(classId) });
+    },
+  });
 }
 
 export function useCastLivePollVote(classId: string) {

@@ -1,11 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { AppShell } from "@/components/app/app-shell";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import {
+  fetchAdminGadgetOrders,
+  updateAdminGadgetOrder,
+  type AdminGadgetOrder,
+  type GadgetOrderStatus,
+} from "@/lib/api/gadgets";
+import { getErrorMessage } from "@/lib/errors";
 import {
   estimatePrice,
   estimateOfferLimits,
@@ -34,6 +42,52 @@ function percentage(input: string): number | null {
 }
 
 function DropshippingReview() {
+  const [orders, setOrders] = useState<AdminGadgetOrder[]>([]);
+  const [orderStatusFilter, setOrderStatusFilter] = useState<string>("");
+  const [ordersLoading, setOrdersLoading] = useState(true);
+  const [ordersError, setOrdersError] = useState("");
+  const [orderNotes, setOrderNotes] = useState<Record<string, string>>({});
+  const [updatingRef, setUpdatingRef] = useState("");
+
+  const loadOrders = useCallback(async (status: string) => {
+    setOrdersLoading(true);
+    setOrdersError("");
+    try {
+      const page = await fetchAdminGadgetOrders(status || undefined);
+      setOrders(page.items);
+      setOrderNotes((prev) => {
+        const next = { ...prev };
+        for (const item of page.items) {
+          if (next[item.ref] === undefined) next[item.ref] = item.adminNote ?? "";
+        }
+        return next;
+      });
+    } catch (err) {
+      setOrdersError(getErrorMessage(err));
+    } finally {
+      setOrdersLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    void loadOrders(orderStatusFilter);
+  }, [loadOrders, orderStatusFilter]);
+
+  async function handleOrderStatus(ref: string, status: GadgetOrderStatus) {
+    setUpdatingRef(ref);
+    try {
+      await updateAdminGadgetOrder(ref, {
+        status,
+        adminNote: orderNotes[ref] ?? "",
+      });
+      await loadOrders(orderStatusFilter);
+    } catch (err) {
+      setOrdersError(getErrorMessage(err));
+    } finally {
+      setUpdatingRef("");
+    }
+  }
+
   const [text, setText] = useState("");
   const [items, setItems] = useState<Observation[]>([]);
   const [costs, setCosts] = useState<string[]>([]);
@@ -107,10 +161,110 @@ function DropshippingReview() {
   return (
     <AppShell
       roleKey="admin"
-      title="Supplier review"
-      subtitle="Catalogue observations and pricing estimates"
+      title="Gadget orders & supplier review"
+      subtitle="Customer gadget fulfillment queue and Afkit pricing workspace"
     >
       <div className="space-y-5">
+        <Card className="border bg-card">
+          <CardContent className="space-y-4 p-5">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h2 className="font-display text-lg font-bold">Customer gadget orders</h2>
+                <p className="text-muted-foreground text-xs">
+                  Confirm stock, update delivery notes, and advance fulfillment status.
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <select
+                  aria-label="Filter gadget orders by status"
+                  value={orderStatusFilter}
+                  onChange={(e) => setOrderStatusFilter(e.target.value)}
+                  className="bg-background border-input h-9 rounded-md border px-3 text-xs font-semibold"
+                >
+                  <option value="">All statuses</option>
+                  <option value="pending_confirmation">Pending confirmation</option>
+                  <option value="confirmed">Confirmed</option>
+                  <option value="fulfilled">Fulfilled</option>
+                  <option value="cancelled">Cancelled</option>
+                </select>
+                <Button
+                  type="button"
+                  size="sm"
+                  variant="outline"
+                  onClick={() => void loadOrders(orderStatusFilter)}
+                >
+                  Refresh
+                </Button>
+              </div>
+            </div>
+            {ordersError && (
+              <p role="alert" className="text-destructive text-xs font-semibold">
+                {ordersError}
+              </p>
+            )}
+            {ordersLoading ? (
+              <p className="text-muted-foreground text-sm">Loading orders…</p>
+            ) : orders.length === 0 ? (
+              <p className="text-muted-foreground text-sm">No gadget orders found.</p>
+            ) : (
+              <div className="space-y-3">
+                {orders.map((order) => (
+                  <div key={order.ref} className="space-y-3 rounded-xl border p-4">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <div>
+                        <p className="font-display text-sm font-bold">
+                          {order.ref} · {order.customerName}
+                        </p>
+                        <p className="text-muted-foreground text-xs">
+                          {order.customerEmail} · {order.customerPhone}
+                          {order.deliveryAddress ? ` · ${order.deliveryAddress}` : ""}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Badge variant="secondary" className="capitalize">
+                          {order.status.replaceAll("_", " ")}
+                        </Badge>
+                        <span className="text-sm font-bold">{money(order.subtotalKobo)}</span>
+                      </div>
+                    </div>
+                    <ul className="text-muted-foreground space-y-1 text-xs">
+                      {order.items.map((item, idx) => (
+                        <li key={idx}>
+                          {item.quantity} × {item.title} ({money(item.lineTotalKobo)})
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <Input
+                        value={orderNotes[order.ref] ?? ""}
+                        onChange={(e) =>
+                          setOrderNotes((prev) => ({ ...prev, [order.ref]: e.target.value }))
+                        }
+                        placeholder="Delivery quote or stock confirmation note…"
+                        className="h-9 flex-1 text-xs"
+                      />
+                      {(
+                        ["pending_confirmation", "confirmed", "fulfilled", "cancelled"] as const
+                      ).map((statusOption) => (
+                        <Button
+                          key={statusOption}
+                          type="button"
+                          size="sm"
+                          variant={order.status === statusOption ? "default" : "outline"}
+                          disabled={updatingRef === order.ref}
+                          onClick={() => void handleOrderStatus(order.ref, statusOption)}
+                        >
+                          {statusOption.replaceAll("_", " ")}
+                        </Button>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
         <Card className="border bg-card">
           <CardContent className="space-y-3 p-5">
             <h2 className="font-display text-lg font-bold">Afkit review workspace</h2>

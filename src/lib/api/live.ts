@@ -7,6 +7,9 @@ export interface LiveClassSession {
   title: string;
   instructor: string;
   cohort: string;
+  courseSlug?: string;
+  cohortId?: string;
+  meetingUrl?: string;
   status: "live" | "scheduled" | "ended";
   startsAt: string;
 }
@@ -40,6 +43,33 @@ export function fetchLiveClass(id: string): Promise<LiveClassSession> {
   return apiFetch<LiveClassSession>(`/v1/live/classes/${id}`);
 }
 
+export function createLiveClass(input: {
+  title: string;
+  courseSlug: string;
+  cohort?: string;
+  meetingUrl?: string;
+  startsAt: string;
+  status?: "scheduled" | "live" | "ended";
+}): Promise<LiveClassSession> {
+  return apiFetch<LiveClassSession>("/v1/live/classes", {
+    method: "POST",
+    body: input,
+  });
+}
+
+export function updateLiveClass(
+  id: string,
+  input: { status?: "scheduled" | "live" | "ended"; meetingUrl?: string },
+): Promise<{ ok: boolean; id: string; status: string; meetingUrl?: string }> {
+  return apiFetch<{ ok: boolean; id: string; status: string; meetingUrl?: string }>(
+    `/v1/live/classes/${id}`,
+    {
+      method: "PATCH",
+      body: input,
+    },
+  );
+}
+
 export function fetchLiveClassChat(
   classId: string,
   cursor?: string,
@@ -58,6 +88,16 @@ export function sendLiveClassChat(classId: string, body: string): Promise<Realti
 
 export function fetchLiveClassPolls(classId: string): Promise<Paginated<LivePoll>> {
   return apiFetch<Paginated<LivePoll>>(`/v1/live/classes/${classId}/polls`);
+}
+
+export function createLivePoll(
+  classId: string,
+  input: { question: string; options: string[] },
+): Promise<LivePoll> {
+  return apiFetch<LivePoll>(`/v1/live/classes/${classId}/polls`, {
+    method: "POST",
+    body: input,
+  });
 }
 
 export function castLivePollVote(

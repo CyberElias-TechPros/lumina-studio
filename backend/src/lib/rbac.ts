@@ -91,6 +91,10 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["GET"], path: "/v1/gadgets/catalog", public: true },
   { methods: ["POST"], path: "/v1/gadgets/price-check", public: true },
   { methods: ["POST"], path: "/v1/gadgets/snapshot", public: true },
+  { methods: ["POST"], path: "/v1/gadgets/orders", public: true },
+  { methods: ["GET"], path: "/v1/gadgets/orders/:ref", public: true },
+  { methods: ["GET"], path: "/v1/gadgets/admin/orders", roles: ["admin", "ops"] },
+  { methods: ["PATCH"], path: "/v1/gadgets/admin/orders/:ref", roles: ["admin", "ops"] },
 
   /* Public digital shop — Merchant Center requires guest checkout */
   { methods: ["GET"], path: "/v1/shop/catalog", public: true },
@@ -191,7 +195,8 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["GET"], path: "/v1/assessments/:id/attempts", roles: ["student"] },
   { methods: ["POST"], path: "/v1/assessments/:id/submit", roles: ["student"] },
   { methods: ["GET"], path: "/v1/calendar/events" },
-  { methods: ["GET"], path: "/v1/messages/threads" },
+  { methods: ["GET"], path: "/v1/messages/contacts" },
+  { methods: ["GET", "POST"], path: "/v1/messages/threads" },
   { methods: ["GET"], path: "/v1/messages/threads/:id" },
   { methods: ["POST"], path: "/v1/messages/threads/:id/messages" },
   { methods: ["GET"], path: "/v1/notifications" },

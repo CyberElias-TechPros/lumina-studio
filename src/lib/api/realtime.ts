@@ -19,6 +19,14 @@ export interface RealtimeMessage {
   createdAt: string;
 }
 
+export interface RoomMember {
+  userId: string;
+  active: number;
+  expiresAt: string;
+  changedAt: string;
+  changedBy: string;
+}
+
 export function fetchChatRooms(cursor?: string): Promise<Paginated<RealtimeRoom>> {
   return apiFetch<Paginated<RealtimeRoom>>("/v1/realtime/chat/rooms", {
     query: cursor ? { cursor } : undefined,
@@ -42,6 +50,26 @@ export function sendChatMessage(roomId: string, body: string): Promise<RealtimeM
   return apiFetch<RealtimeMessage>(`/v1/realtime/chat/rooms/${roomId}/messages`, {
     method: "POST",
     body: { body },
+  });
+}
+
+export function fetchRoomMembers(roomId: string): Promise<Paginated<RoomMember>> {
+  return apiFetch<Paginated<RoomMember>>(`/v1/realtime/admin/rooms/${roomId}/members`);
+}
+
+export function grantRoomMember(
+  roomId: string,
+  input: { userId: string; expiresAt: string },
+): Promise<{ ok: boolean }> {
+  return apiFetch<{ ok: boolean }>(`/v1/realtime/admin/rooms/${roomId}/members`, {
+    method: "PUT",
+    body: input,
+  });
+}
+
+export function revokeRoomMember(roomId: string, userId: string): Promise<{ ok: boolean }> {
+  return apiFetch<{ ok: boolean }>(`/v1/realtime/admin/rooms/${roomId}/members/${userId}`, {
+    method: "DELETE",
   });
 }
 

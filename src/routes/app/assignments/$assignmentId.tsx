@@ -1,7 +1,9 @@
 "use client";
+
 import { useState } from "react";
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
+import { Paperclip, X } from "lucide-react";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
 import { Button } from "@/components/ui/button";
@@ -11,14 +13,21 @@ import {
   useAssignmentSubmission,
   useSubmitAssignment,
 } from "@/lib/query/assignments";
+import { uploadFile } from "@/lib/api/uploads";
 import type { StudentAssignment } from "@/data/learning";
 import { getErrorMessage } from "@/lib/errors";
-import { isMockMode } from "@/lib/env";
 
 export const Route = createFileRoute("/app/assignments/$assignmentId")({
   head: () => ({ meta: [{ title: "Assignment — CEA-OS" }] }),
   component: AssignmentPage,
 });
+
+function formatBytes(bytes: number): string {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
 function AssignmentPage() {
   const { assignmentId } = Route.useParams();
   const query = useAssignment(assignmentId);
@@ -30,11 +39,53 @@ function AssignmentPage() {
     </AppShell>
   );
 }
+
 function AssignmentWork({ assignment: a }: { assignment: StudentAssignment }) {
   const latest = useAssignmentSubmission(a.id);
   const submit = useSubmitAssignment(a.id);
   const [answer, setAnswer] = useState("");
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState("");
   const graded = a.status === "graded" || latest.data?.status === "graded";
+
+  async function handleSubmit(event: React.FormEvent) {
+    event.preventDefault();
+    const cleanBody = answer.trim();
+    if ((!cleanBody && !selectedFile) || submit.isPending || uploading || latest.isPending) return;
+
+    setUploadError("");
+    let uploadedKey: string | undefined;
+    let uploadedSize: string | undefined;
+
+    if (selectedFile) {
+      setUploading(true);
+      try {
+        const res = await uploadFile(selectedFile);
+        uploadedKey = res.key;
+        uploadedSize = formatBytes(res.size || selectedFile.size);
+      } catch (err) {
+        setUploadError(getErrorMessage(err));
+        setUploading(false);
+        return;
+      }
+      setUploading(false);
+    }
+
+    submit.mutate(
+      {
+        ...(cleanBody ? { body: cleanBody } : {}),
+        ...(uploadedKey ? { file: uploadedKey, size: uploadedSize } : {}),
+      },
+      {
+        onSuccess: () => {
+          setAnswer("");
+          setSelectedFile(null);
+        },
+      },
+    );
+  }
+
   return (
     <div className="space-y-5" data-testid="assignment-content">
       <Card>
@@ -75,7 +126,10 @@ function AssignmentWork({ assignment: a }: { assignment: StudentAssignment }) {
                 </details>
               )}
               {latest.data.file && (
-                <p className="break-words">File/reference: {latest.data.file}</p>
+                <p className="break-words">
+                  Attachment: {latest.data.file}
+                  {latest.data.size ? ` (${latest.data.size})` : ""}
+                </p>
               )}
               {latest.data.score != null && (
                 <p>
@@ -101,61 +155,94 @@ function AssignmentWork({ assignment: a }: { assignment: StudentAssignment }) {
       {!graded && (
         <Card>
           <CardContent className="space-y-4 p-6">
-            <form
-              className="space-y-4"
-              onSubmit={(event) => {
-                event.preventDefault();
-                if (
-                  answer.trim() &&
-                  !submit.isPending &&
-                  !isMockMode &&
-                  !latest.isError &&
-                  !latest.isPending
-                )
-                  submit.mutate({ body: answer.trim() }, { onSuccess: () => setAnswer("") });
-              }}
-            >
+            <form className="space-y-4" onSubmit={(e) => void handleSubmit(e)}>
               <label className="block font-semibold">
                 Written answer or repository link
                 <textarea
                   value={answer}
                   onChange={(e) => setAnswer(e.target.value)}
                   maxLength={20000}
-                  rows={10}
-                  required
-                  disabled={submit.isPending}
+                  rows={8}
+                  disabled={submit.isPending || uploading}
+                  placeholder="Write your solution summary or paste a repository URL…"
                   className="mt-2 block w-full rounded border p-3 font-normal"
                 />
               </label>
-              <p className="text-sm text-muted-foreground">
-                Your draft stays in this page only and is not autosaved. Submitting again creates a
-                new attempt for review. File upload is not available in this form.
+
+              <div className="space-y-2">
+                <label className="inline-flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-2 text-sm font-semibold hover:bg-muted/50">
+                  <Paperclip className="size-4" />
+                  <span>
+                    {selectedFile ? "Replace attachment" : "Attach file (PDF, ZIP, DOCX, image)"}
+                  </span>
+                  <input
+                    type="file"
+                    accept=".pdf,.zip,.txt,.doc,.docx,.png,.jpg,.jpeg,.webp,.svg"
+                    className="sr-only"
+                    disabled={submit.isPending || uploading}
+                    onChange={(e) => {
+                      setSelectedFile(e.target.files?.[0] ?? null);
+                      setUploadError("");
+                    }}
+                  />
+                </label>
+                {selectedFile && (
+                  <div className="bg-muted/40 flex items-center justify-between gap-2 rounded-lg border px-3 py-2 text-xs">
+                    <span className="truncate font-medium">
+                      {selectedFile.name} ({formatBytes(selectedFile.size)})
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedFile(null)}
+                      aria-label="Remove attachment"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      <X className="size-4" />
+                    </button>
+                  </div>
+                )}
+                {uploadError && (
+                  <p role="alert" className="text-destructive text-xs font-semibold">
+                    {uploadError}
+                  </p>
+                )}
+              </div>
+
+              <p className="text-muted-foreground text-sm">
+                Submitting again creates a new attempt for instructor review until the assignment is
+                graded.
               </p>
-              {isMockMode && <p>Demo data only. Submitting work is disabled.</p>}
               <Button
                 type="submit"
                 disabled={
-                  !answer.trim() ||
+                  (!answer.trim() && !selectedFile) ||
                   submit.isPending ||
-                  isMockMode ||
-                  latest.isError ||
+                  uploading ||
                   latest.isPending
                 }
               >
-                {submit.isPending ? "Submitting…" : "Submit written answer"}
+                {uploading
+                  ? "Uploading attachment…"
+                  : submit.isPending
+                    ? "Submitting…"
+                    : "Submit written answer"}
               </Button>
               {submit.isError && (
-                <p role="alert">
+                <p role="alert" className="text-destructive text-sm">
                   {getErrorMessage(submit.error)} Check submission status before retrying; the
                   request may have reached the server.
                 </p>
               )}
-              {submit.isSuccess && <p role="status">Your answer was recorded by the server.</p>}
+              {submit.isSuccess && (
+                <p role="status" className="text-success text-sm font-semibold">
+                  Your answer was recorded by the server.
+                </p>
+              )}
             </form>
           </CardContent>
         </Card>
       )}
-      <Link to="/app/assignments" className="text-primary">
+      <Link to="/app/assignments" className="text-primary inline-block font-semibold">
         Back to assignments
       </Link>
     </div>

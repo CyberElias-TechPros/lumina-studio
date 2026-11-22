@@ -311,11 +311,11 @@ const TYPE_OVERRIDES: Partial<Record<string, CeaArticleTypeId>> = {
 };
 
 function findCategory(id: CeaCategoryId): CeaCategory {
-  return CEA_CATEGORIES.find((c) => c.id === id) ?? CEA_CATEGORIES[0];
+  return CEA_CATEGORIES.find((c) => c.id === id) ?? CEA_CATEGORIES[0]!;
 }
 
 function findArticleType(id: CeaArticleTypeId): CeaArticleType {
-  return CEA_ARTICLE_TYPES.find((t) => t.id === id) ?? CEA_ARTICLE_TYPES[0];
+  return CEA_ARTICLE_TYPES.find((t) => t.id === id) ?? CEA_ARTICLE_TYPES[0]!;
 }
 
 function inferArticleType(post: BlogPost): CeaArticleTypeId {

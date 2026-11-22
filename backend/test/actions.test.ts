@@ -95,25 +95,32 @@ describe("application pipeline", () => {
   });
 });
 
-describe("live classes safety stop", () => {
-  it("prevents scheduling or starting classes for both instructors and students", async () => {
+describe("live classes ownership control", () => {
+  it("blocks scheduling or starting classes for students and unassigned instructors", async () => {
     const before = await env.DB.prepare("SELECT COUNT(*) AS n FROM live_sessions").first();
     const status = await env.DB.prepare(
       "SELECT status FROM live_sessions WHERE id = 'live-1'",
     ).first();
-    for (const who of [student, instructor]) {
+    for (const [who, courseSlug] of [
+      [student, "full-stack"],
+      [instructor, "cloud-devops"],
+    ] as const) {
       const created = await api("/v1/live/classes", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...cookieHeaders(who.cookie) },
-        body: JSON.stringify({ title: "React Hooks deep dive", startsAt: "2026-08-05T10:00:00Z" }),
+        body: JSON.stringify({
+          title: "React Hooks deep dive",
+          courseSlug,
+          startsAt: "2026-08-05T10:00:00Z",
+        }),
       });
-      expect(created.status).toBe(503);
+      expect(created.status).toBe(403);
       const updated = await api("/v1/live/classes/live-1", {
         method: "PATCH",
         headers: { "Content-Type": "application/json", ...cookieHeaders(who.cookie) },
         body: JSON.stringify({ status: "live" }),
       });
-      expect(updated.status).toBe(503);
+      expect(updated.status).toBe(403);
     }
     expect(await env.DB.prepare("SELECT COUNT(*) AS n FROM live_sessions").first()).toEqual(before);
     expect(

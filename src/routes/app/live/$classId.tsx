@@ -2,30 +2,43 @@
 
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { useState } from "react";
-import { BarChart3, CheckCircle2, MessageSquare, PenLine, Send, Users, Video } from "lucide-react";
+import {
+  CheckCircle2,
+  ExternalLink,
+  MessageSquare,
+  PenLine,
+  Plus,
+  Send,
+  Users,
+  Video,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
 import { useSessionContext } from "@/components/app/session-provider";
 import {
   useCastLivePollVote,
+  useCreateLivePoll,
   useLiveClass,
   useLiveClassChat,
   useLiveClassPolls,
   usePostWhiteboardOp,
   useSendLiveClassChat,
+  useUpdateLiveClass,
   useWhiteboardOps,
 } from "@/lib/query/live";
-import type { LivePoll, WhiteboardOp } from "@/lib/api/live";
+import type { LiveClassSession, LivePoll, WhiteboardOp } from "@/lib/api/live";
+import { getErrorMessage } from "@/lib/errors";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/live/$classId")({
   head: () => ({
     meta: [
       { title: "Live Class — CEA-OS" },
-      { name: "description", content: "Live class: video, chat, polls and whiteboard." },
+      { name: "description", content: "Live class: video room, chat, polls and whiteboard." },
     ],
   }),
   component: LiveClass,
@@ -51,7 +64,7 @@ function WhiteboardPanel({ classId }: { classId: string }) {
             <PenLine className="text-primary size-4" /> Whiteboard
           </p>
           <Badge variant="secondary" className="font-semibold">
-            Shared by instructor
+            Live class notes
           </Badge>
         </div>
         <div className="bg-muted/50 mt-4 max-h-48 space-y-1 overflow-y-auto rounded-xl border p-3">
@@ -130,9 +143,6 @@ function LiveClass() {
         ) : null
       }
     >
-      <p className="bg-muted/40 mb-5 rounded-xl border p-4 text-sm" role="note">
-        Live classes are temporarily unavailable while access controls are improved.
-      </p>
       <QueryState
         query={sessionQuery}
         error={{ title: "Class unavailable" }}
@@ -141,22 +151,29 @@ function LiveClass() {
         }
         empty={{ title: "Class not found", description: "This class may have been removed." }}
       >
-        {() => (session ? <ClassContent classId={classId} status={session.status} /> : null)}
+        {() => (session ? <ClassContent classId={classId} session={session} /> : null)}
       </QueryState>
     </AppShell>
   );
 }
 
-function ClassContent({ classId, status }: { classId: string; status: string }) {
+function ClassContent({ classId, session }: { classId: string; session: LiveClassSession }) {
   const [draft, setDraft] = useState("");
+  const [meetingDraft, setMeetingDraft] = useState(session.meetingUrl ?? "");
   const { session: authSession } = useSessionContext();
   const currentUserId = authSession?.user.id ?? "";
+  const canManage =
+    authSession?.user.roleKey === "instructor" ||
+    authSession?.user.roleKey === "admin" ||
+    authSession?.user.roleKey === "ops";
+
   const chatQuery = useLiveClassChat(classId);
   const sendChat = useSendLiveClassChat(classId);
   const pollsQuery = useLiveClassPolls(classId);
   const castVote = useCastLivePollVote(classId);
+  const updateClass = useUpdateLiveClass(classId);
 
-  const isLive = status === "live";
+  const chatOpen = session.status !== "ended";
 
   const submitChat = (event: React.FormEvent) => {
     event.preventDefault();
@@ -170,25 +187,101 @@ function ClassContent({ classId, status }: { classId: string; status: string }) 
   return (
     <div className="grid gap-5 xl:grid-cols-[1.6fr_1fr]">
       <div className="space-y-5">
-        <p className="bg-muted/40 rounded-xl border p-4 text-sm" role="note">
-          Class content, chat and polls are accessible to signed-in users; do not share sensitive
-          information here.
-        </p>
         <div className="bg-gradient-ink relative overflow-hidden rounded-2xl border">
-          <div className="aspect-video grid place-items-center">
-            <div className="text-center">
+          <div className="aspect-video grid place-items-center p-6">
+            <div className="max-w-md text-center">
               <span className="bg-ink-foreground/10 mx-auto grid size-16 place-items-center rounded-2xl">
                 <Video className="text-ink-foreground size-8" />
               </span>
-              <p className="font-display text-ink-foreground mt-4 text-lg font-extrabold">
-                Video is not available in this page
-              </p>
-              <p className="text-ink-foreground/60 mt-1 text-xs">
-                Contact your instructor for the meeting details.
-              </p>
+              {session.meetingUrl ? (
+                <>
+                  <p className="font-display text-ink-foreground mt-4 text-lg font-extrabold">
+                    {session.status === "live"
+                      ? "Live video room is open"
+                      : session.status === "scheduled"
+                        ? "Video room ready for start time"
+                        : "Session ended"}
+                  </p>
+                  <p className="text-ink-foreground/70 mt-1 text-xs">
+                    Join the instructor-hosted room while keeping class chat, polls, and whiteboard
+                    open here.
+                  </p>
+                  {session.status !== "ended" && (
+                    <Button asChild className="mt-4">
+                      <a href={session.meetingUrl} target="_blank" rel="noopener noreferrer">
+                        Join video room <ExternalLink className="size-4" />
+                      </a>
+                    </Button>
+                  )}
+                </>
+              ) : (
+                <>
+                  <p className="font-display text-ink-foreground mt-4 text-lg font-extrabold">
+                    Classroom workspace ready
+                  </p>
+                  <p className="text-ink-foreground/70 mt-1 text-xs">
+                    {canManage
+                      ? "Attach an HTTPS meeting link below when ready to open the video stream."
+                      : "Your instructor will post the meeting link here before the session begins."}
+                  </p>
+                </>
+              )}
             </div>
           </div>
         </div>
+
+        {canManage && (
+          <Card className="border bg-card">
+            <CardHeader>
+              <CardTitle className="font-display text-sm font-bold">
+                Instructor session controls
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="flex flex-wrap gap-2">
+                {(["scheduled", "live", "ended"] as const).map((nextStatus) => (
+                  <Button
+                    key={nextStatus}
+                    type="button"
+                    size="sm"
+                    variant={session.status === nextStatus ? "default" : "outline"}
+                    disabled={updateClass.isPending}
+                    onClick={() => updateClass.mutate({ status: nextStatus })}
+                  >
+                    {nextStatus === "live"
+                      ? "Go live"
+                      : nextStatus === "scheduled"
+                        ? "Mark scheduled"
+                        : "End class"}
+                  </Button>
+                ))}
+              </div>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  updateClass.mutate({ meetingUrl: meetingDraft.trim() });
+                }}
+                className="flex flex-wrap gap-2"
+              >
+                <Input
+                  type="url"
+                  value={meetingDraft}
+                  onChange={(e) => setMeetingDraft(e.target.value)}
+                  placeholder="https://meet.google.com/..."
+                  className="flex-1"
+                />
+                <Button type="submit" size="sm" disabled={updateClass.isPending}>
+                  Save meeting link
+                </Button>
+              </form>
+              {updateClass.isError && (
+                <p role="alert" className="text-destructive text-xs font-semibold">
+                  {getErrorMessage(updateClass.error)}
+                </p>
+              )}
+            </CardContent>
+          </Card>
+        )}
 
         <WhiteboardPanel classId={classId} />
       </div>
@@ -246,27 +339,32 @@ function ClassContent({ classId, status }: { classId: string; status: string }) 
                 value={draft}
                 onChange={(event) => setDraft(event.target.value)}
                 className="bg-muted placeholder:text-muted-foreground h-10 flex-1 rounded-lg border-0 px-3 text-xs font-medium outline-none"
-                placeholder={isLive ? "Message the class…" : "Chat opens when the class is live"}
-                disabled={!isLive || sendChat.isPending}
+                placeholder={chatOpen ? "Message the class…" : "Class has ended"}
+                disabled={!chatOpen || sendChat.isPending}
               />
-              <Button size="sm" className="shrink-0" disabled={!isLive || sendChat.isPending}>
+              <Button size="sm" className="shrink-0" disabled={!chatOpen || sendChat.isPending}>
                 <Send className="size-4" />
               </Button>
             </form>
           </CardContent>
         </Card>
 
-        <PollsPanel pollsQuery={pollsQuery} classId={classId} castVote={castVote} />
+        <PollsPanel
+          pollsQuery={pollsQuery}
+          classId={classId}
+          castVote={castVote}
+          canManage={Boolean(canManage)}
+        />
 
         <Card className="bg-card shadow-soft border">
           <CardHeader>
             <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-              <Users className="text-primary size-4" /> Attendees
+              <Users className="text-primary size-4" /> Cohort access
             </CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground text-xs font-semibold">
-              Attendee presence is not available here.
+              Verified for {session.cohort} ({session.courseSlug || "enrolled students"}).
             </p>
           </CardContent>
         </Card>
@@ -279,20 +377,78 @@ function PollsPanel({
   pollsQuery,
   classId,
   castVote,
+  canManage,
 }: {
   pollsQuery: ReturnType<typeof useLiveClassPolls>;
   classId: string;
   castVote: ReturnType<typeof useCastLivePollVote>;
+  canManage: boolean;
 }) {
+  const createPoll = useCreateLivePoll(classId);
+  const [creating, setCreating] = useState(false);
+  const [question, setQuestion] = useState("");
+  const [optionsText, setOptionsText] = useState("Option A\nOption B");
   const polls = pollsQuery.data ?? [];
+
+  function handleCreatePoll(event: React.FormEvent) {
+    event.preventDefault();
+    const options = optionsText
+      .split("\n")
+      .map((s) => s.trim())
+      .filter(Boolean);
+    if (!question.trim() || options.length < 2 || createPoll.isPending) return;
+    createPoll.mutate(
+      { question: question.trim(), options },
+      {
+        onSuccess: () => {
+          setQuestion("");
+          setOptionsText("Option A\nOption B");
+          setCreating(false);
+        },
+      },
+    );
+  }
+
   return (
     <Card className="bg-card shadow-soft border">
-      <CardHeader>
+      <CardHeader className="flex-row items-center justify-between gap-2">
         <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
           <CheckCircle2 className="text-primary size-4" /> Polls
         </CardTitle>
+        {canManage && (
+          <Button size="sm" variant="outline" onClick={() => setCreating((v) => !v)}>
+            <Plus className="size-3.5" /> {creating ? "Cancel" : "New poll"}
+          </Button>
+        )}
       </CardHeader>
       <CardContent className="space-y-4">
+        {canManage && creating && (
+          <form onSubmit={handleCreatePoll} className="bg-muted/40 space-y-2 rounded-xl border p-3">
+            <Input
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+              placeholder="Poll question…"
+              className="h-9 text-xs"
+              required
+            />
+            <textarea
+              value={optionsText}
+              onChange={(e) => setOptionsText(e.target.value)}
+              rows={3}
+              placeholder="One option per line"
+              className="bg-background border-input w-full rounded-md border p-2 text-xs"
+              required
+            />
+            {createPoll.isError && (
+              <p role="alert" className="text-destructive text-[11px] font-semibold">
+                {getErrorMessage(createPoll.error)}
+              </p>
+            )}
+            <Button type="submit" size="sm" className="w-full" disabled={createPoll.isPending}>
+              {createPoll.isPending ? "Launching…" : "Launch poll"}
+            </Button>
+          </form>
+        )}
         <QueryState
           query={pollsQuery}
           isEmpty={(data) => (Array.isArray(data) ? data.length === 0 : false)}
@@ -310,7 +466,7 @@ function PollsPanel({
           {() => (
             <>
               {polls.map((poll) => (
-                <Poll key={poll.id} poll={poll} classId={classId} castVote={castVote} />
+                <Poll key={poll.id} poll={poll} castVote={castVote} />
               ))}
             </>
           )}
@@ -322,11 +478,9 @@ function PollsPanel({
 
 function Poll({
   poll,
-  classId,
   castVote,
 }: {
   poll: LivePoll;
-  classId: string;
   castVote: ReturnType<typeof useCastLivePollVote>;
 }) {
   const voted = Boolean(poll.myVote);
