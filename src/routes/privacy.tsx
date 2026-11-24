@@ -164,7 +164,7 @@ function PrivacyPage() {
             <p className="text-muted-foreground mt-4 leading-relaxed">
               This site uses <strong>Ezoic</strong> (including Gatekeeper Consent management and
               Ezoic Analytics), <strong>Google AdSense</strong> (publisher{" "}
-              <code>ca-pub-9124992249317290</code>) and <strong>ngadverts</strong> (zone 13225), a
+              <code>ca-pub-1270179436380403</code>) and <strong>ngadverts</strong> (zone 13225), a
               Nigerian ad network, to manage consent, measure traffic and serve advertising. Google
               and Ezoic partners may use cookies, including the DoubleClick cookie, to serve ads
               based on your visit here and on other sites. The ngadverts unit is not requested at

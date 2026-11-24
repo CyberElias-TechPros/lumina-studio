@@ -121,12 +121,20 @@ test("prerendered HTML pages carry ordered Ezoic head scripts and unstyled, uniq
     const i3 = html.indexOf('src="//www.ezojs.com/ezoic/sa.min.js"');
     const i4 = html.indexOf("window.ezstandalone = window.ezstandalone || {}");
     const i5 = html.indexOf('src="//ezoicanalytics.com/analytics.js"');
+    const iAdsense = html.indexOf(
+      'src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1270179436380403"',
+    );
+    const iMeta = html.indexOf(
+      '<meta name="google-adsense-account" content="ca-pub-1270179436380403"/>',
+    );
 
     assert.ok(i1 > 0, `missing first Gatekeeper CMP script in ${file}`);
     assert.ok(i1 < i2, `privacy scripts out of order in ${file}`);
     assert.ok(i2 < i3, `sa.min.js rendered before Gatekeeper CMP scripts in ${file}`);
     assert.ok(i3 < i4, `ezstandalone init rendered before sa.min.js in ${file}`);
     assert.ok(i4 < i5, `ezoicanalytics rendered before ezstandalone init in ${file}`);
+    assert.ok(i2 < iAdsense, `AdSense script missing or rendered before CMP in ${file}`);
+    assert.ok(iMeta > 0, `missing google-adsense-account meta tag in ${file}`);
 
     const placeholders = [
       ...html.matchAll(/<div([^>]*)id="ezoic-pub-ad-placeholder-(\d+)"([^>]*)><\/div>/g),

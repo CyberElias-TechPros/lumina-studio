@@ -111,7 +111,8 @@ export async function expectNoErrorState(page: Page): Promise<void> {
   }
 }
 
-const EXTERNAL_AD_HOST = /(?:^|\.)(?:gatekeeperconsent\.com|ezojs\.com|ezoicanalytics\.com)$/i;
+const EXTERNAL_AD_HOST =
+  /(?:^|\.)(?:gatekeeperconsent\.com|ezojs\.com|ezoicanalytics\.com|googlesyndication\.com|doubleclick\.net)$/i;
 
 /** Convenience test wrapper with helpers attached. */
 export const test = base.extend<{
