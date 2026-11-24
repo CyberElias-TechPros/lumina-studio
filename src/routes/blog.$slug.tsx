@@ -11,6 +11,11 @@ import { ReadingSpine } from "@/components/marketing/reading-spine";
 import { blogPosts, NOTES_AUTHOR, type BlogBlock } from "@/data/blog";
 import { FounderPhoto } from "@/components/marketing/founder-photo";
 import { LessonEndAd, LessonInArticleAd } from "@/components/marketing/ad-slots";
+import {
+  EzoicMidContentAd,
+  EzoicUnderFirstParagraphAd,
+  EzoicUnderTitleAd,
+} from "@/components/ezoic/ezoic-ads";
 import { LessonChallengeCard } from "@/components/practice/lesson-challenge";
 import { beginnerChallenges } from "@/data/practice/beginner-challenges";
 import { adjacentNotes, chapterForOrder, relatedNotes } from "@/data/note-chapters";
@@ -267,6 +272,8 @@ function Article() {
         </div>
       </header>
 
+      <EzoicUnderTitleAd />
+
       <article className="container-page max-w-3xl py-12 md:py-16">
         <figure className="border-border overflow-hidden rounded-xl border shadow-sm">
           <img src={post.cover} alt={post.coverAlt} className="aspect-[16/9] w-full object-cover" />
@@ -309,13 +316,19 @@ function Article() {
           {post.body.map((block, i) => (
             <Fragment key={i}>
               <Block block={block} />
+              {i === 0 && <EzoicUnderFirstParagraphAd />}
               {/* After the second section: a natural pause, with the rest of the
                   lesson still below. Renders nothing unless the path registry
                   allows it and the reader has accepted optional cookies. */}
               {i === 1 && !challenge && <LessonInArticleAd />}
+              {post.body.length >= 3 && i === Math.max(2, Math.floor(post.body.length / 2)) && (
+                <EzoicMidContentAd />
+              )}
             </Fragment>
           ))}
         </div>
+
+        {post.body.length < 3 && <EzoicMidContentAd />}
 
         {challenge ? (
           <LessonChallengeCard key={post.slug} slug={post.slug} challenge={challenge} />

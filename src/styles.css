@@ -1943,13 +1943,35 @@ html.cursor-off * {
   border-top: 1px dashed color-mix(in oklch, var(--foreground) 20%, transparent);
 }
 
+/* Ezoic placement wrapper: keeps the inner placeholder div completely unstyled,
+   stays 0px while idle or unfilled, and reserves container height once filled
+   or inspected via ?ez_js_debugger=1 to limit layout shift and horizontal overflow. */
+.ezoic-slot-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  display: flex;
+  justify-content: center;
+}
+
+.ezoic-slot-wrapper:not([data-ezoic-state="unfilled"]):has(> div:not(:empty)) {
+  min-height: 90px;
+  margin-block: 1rem;
+}
+
+.ezoic-slot-wrapper[data-ezoic-format="in-content"]:not([data-ezoic-state="unfilled"]):has(> div:not(:empty)) {
+  min-height: 250px;
+  margin-block: 1.5rem;
+}
+
 /* Clean 1-page A4 Course & Lesson Print Stylesheet */
 @media print {
   header,
   footer,
   nav[aria-label="Breadcrumb"],
   .cea-no-print,
-  [data-ad-slot] {
+  [data-ad-slot],
+  [data-ezoic-slot] {
     display: none !important;
   }
 

@@ -17,6 +17,7 @@ import {
   Table,
 } from "lucide-react";
 import { CTASection, PageShell } from "@/components/marketing/shell";
+import { EzoicUnderTitleAd } from "@/components/ezoic/ezoic-ads";
 import { CEA_BUILT_IN_LABS, type BuiltInLabEntry } from "@/data/cea-lab-registry";
 import { toolTrackTheme } from "@/lib/course-families";
 import { cn } from "@/lib/utils";
@@ -110,8 +111,8 @@ function ToolsPage() {
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#c6cdd6] sm:text-lg">
             Practice real digital skills through interactive coding, SQL, spreadsheet, typing, and
-            design environments directly inside your browser — zero sign-up, zero ads, zero
-            tracking.
+            design environments directly inside your browser — zero sign-up, zero installs, 100%
+            browser-based.
           </p>
 
           <div className="mt-7 flex flex-wrap gap-2">
@@ -140,6 +141,8 @@ function ToolsPage() {
           </ol>
         </div>
       </section>
+
+      <EzoicUnderTitleAd />
 
       {/* Graphite Workbench Tool Grid */}
       <section className="bg-[#181c20] py-14 text-[#f4f1e9] md:py-20">

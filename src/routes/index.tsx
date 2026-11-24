@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageShell, Eyebrow } from "@/components/marketing/shell";
+import { EzoicMidContentAd, EzoicUnderTitleAd } from "@/components/ezoic/ezoic-ads";
 import { CampusImg, CourseCover } from "@/components/marketing/photos";
 import { FounderPhoto } from "@/components/marketing/founder-photo";
 import { CourseFinder } from "@/components/marketing/course-finder";
@@ -238,6 +239,8 @@ function Home() {
         </div>
       </section>
 
+      <EzoicUnderTitleAd />
+
       {/* ── 02 — THE DISCOVERY ENGINE (Warm Paper) ──────────────────────── */}
       <section className="border-border border-b">
         <div className="container-page pt-12 pb-4">
@@ -275,6 +278,8 @@ function Home() {
           </div>
         </div>
       </section>
+
+      <EzoicMidContentAd />
 
       {/* ── 04 — THE COURSE COLLECTION (Warm Paper + Printed Fee Receipt) ─ */}
       <section className="container-page py-14 md:py-20">
@@ -417,7 +422,7 @@ function Home() {
               </h2>
               <p className="mt-3 max-w-xl text-base leading-relaxed text-[#d6dce4]">
                 Practise coding, SQL queries, spreadsheet formulas, and keyboard typing right inside
-                your browser — zero sign-up, zero ads, 100% free.
+                your browser — zero sign-up, zero installs, 100% free.
               </p>
             </div>
             <Link

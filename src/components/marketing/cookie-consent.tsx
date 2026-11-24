@@ -17,7 +17,16 @@ export function CookieConsent() {
     if (!getConsent() && stored === "accepted") grantConsent();
     if (!getConsent() && stored === "dismissed") denyConsent();
     if (!stored) {
-      const timer = setTimeout(() => setVisible(true), 1500);
+      const timer = setTimeout(() => {
+        if (typeof window.__tcfapi === "function") {
+          window.__tcfapi("getTCData", 2, (tcData, success) => {
+            if (success && tcData?.gdprApplies) return;
+            setVisible(true);
+          });
+          return;
+        }
+        setVisible(true);
+      }, 1500);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -43,8 +52,8 @@ export function CookieConsent() {
         <div className="bg-card shadow-elevated rounded-2xl border p-5 sm:flex sm:items-center sm:justify-between sm:gap-4">
           <p className="text-foreground/75 text-sm leading-relaxed">
             We use essential cookies so the site works. If you accept, we also load advertising
-            (Google AdSense and the Nigerian network ngadverts) and analytics cookies; decline and
-            neither is loaded, and the site works the same. Read the{" "}
+            (Ezoic, Google AdSense and the Nigerian network ngadverts) and analytics cookies;
+            decline and optional scripts stay off while the site works the same. Read the{" "}
             <Link to="/privacy" className="text-primary underline">
               privacy policy
             </Link>
