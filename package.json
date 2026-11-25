@@ -37,7 +37,10 @@
     "check:editorial": "npm run generate:editorial && npm run validate:lessons -- --strict && npm run check:ads && npm run audit:structure -- --strict",
     "generate:ai-lessons": "node scripts/generate-ai-lessons.mjs",
     "academic:print": "node scripts/generate-academic-print.mjs",
-    "check:consent": "node scripts/check-tracking-consent.mjs && node --test scripts/test/consent-gating.test.mjs"
+    "check:consent": "node scripts/check-tracking-consent.mjs && node --test scripts/test/consent-gating.test.mjs",
+    "content:backlog": "node scripts/content-backlog.mjs",
+    "review:lesson": "node scripts/review-lesson.mjs",
+    "review:list": "node scripts/review-lesson.mjs --list"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
