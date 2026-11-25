@@ -670,8 +670,6 @@ export const companionPosts: BlogPost[] = [
       ),
     ],
   },
-<<<<<<< HEAD
-=======
 
   /* ============================================================
    * 8. The SOC, career-shaped — existing "what is the SOC" page owns the
@@ -1070,5 +1068,4 @@ export const companionPosts: BlogPost[] = [
       ),
     ],
   },
->>>>>>> cfa5a7a (Publish the remaining articles, fix the orphan bug, add security headers)
 ];

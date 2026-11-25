@@ -30,11 +30,6 @@ const { noteChapters } = await import("../../src/data/note-chapters.ts");
 const SITEMAP = readFileSync(join(root, "public/sitemap.xml"), "utf8");
 
 test("the lesson series is still exactly the 21 chapters of ten", () => {
-<<<<<<< HEAD
-  assert.equal(lessonSeries.length, 210, "note-chapters.ts maps orders 1-210");
-  const covered = noteChapters.reduce((sum, c) => sum + (c.to - c.from + 1), 0);
-  assert.equal(covered, 210, "chapters must cover orders 1-210 between them");
-=======
   assert.equal(lessonSeries.length, 210, "the series is 210 lessons");
   // The learning path is what must be 21 x 10. The chapter list also carries the
   // companion-article section (1000+), which is not part of the path, so counting
@@ -43,7 +38,6 @@ test("the lesson series is still exactly the 21 chapters of ten", () => {
   assert.equal(path.length, 21, "21 chapters belong to the learning path");
   const covered = path.reduce((sum, c) => sum + (c.to - c.from + 1), 0);
   assert.equal(covered, 210, "the learning path must cover orders 1-210 exactly");
->>>>>>> cfa5a7a (Publish the remaining articles, fix the orphan bug, add security headers)
 });
 
 test("companion articles stay out of the chapter ranges", () => {
@@ -104,8 +98,6 @@ test("the tools the articles send readers to actually exist", () => {
     assert.ok(SITEMAP.includes(`https://www.cea.ng${path}<`), `${path} is not in the sitemap`);
   }
 });
-<<<<<<< HEAD
-=======
 
 /* ------------------------------------------------------------------ *
  * Discoverability — the bug this suite did not catch
@@ -179,4 +171,3 @@ test("the companion section does not disturb the 210-lesson path", async () => {
   const lessonOrders = noteChapters.filter((c) => c.from <= 210).map((c) => c.to);
   assert.equal(Math.max(...lessonOrders), 210, "the learning path must end at order 210");
 });
->>>>>>> cfa5a7a (Publish the remaining articles, fix the orphan bug, add security headers)
