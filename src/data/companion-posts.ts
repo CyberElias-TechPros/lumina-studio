@@ -471,4 +471,203 @@ export const companionPosts: BlogPost[] = [
       ),
     ],
   },
+
+  /* ================================================================
+   * 6. Entry-level cybersecurity — SOC/VA demand, measured careers data
+   * ================================================================ */
+  {
+    slug: "how-to-get-into-cybersecurity-without-a-degree",
+    title: "How to get into cybersecurity without a degree",
+    seoTitle: "How to Get Into Cybersecurity With No Experience (2026)",
+    seoDescription:
+      "Cybersecurity has millions of unfilled roles and no single entry door. The three jobs that actually hire juniors, what each one asks for, and the order to learn the skills in.",
+    category: "cybersecurity",
+    articleType: "career-guide",
+    difficulty: "Beginner",
+    quickAnswer:
+      "The realistic entry point is not 'cybersecurity' — it is a specific job: SOC analyst (watching and triaging alerts), vulnerability assessment analyst (finding and ranking weaknesses), or IT support with a security remit. All three hire people without degrees. What they ask for instead is evidence that you can read a log, explain a finding in writing, and use the basic tools — which you can build in months, not years.",
+    excerpt:
+      "There is no single cybersecurity door. Three jobs actually hire juniors, and all of them want evidence rather than a degree. What each one asks for, and the order to learn it in.",
+    learningObjectives: [
+      "Name the three entry-level roles and what each actually does all day.",
+      "Explain why 'cybersecurity' is not a job title and why that matters when applying.",
+      "Build a portfolio that answers a hiring manager's real question.",
+      "Choose the learning order that matches the role you want first.",
+    ],
+    series: SERIES,
+    order: 1006,
+    author: AUTHOR,
+    cover: "/images/blog/analyst-monitor-grid.jpg",
+    coverAlt: "Several monitors showing security dashboards at an analyst's desk.",
+    body: [
+      p(
+        "The most common mistake beginners make is applying for 'cybersecurity'. There is no such job. There are specific roles, each with a different day, and each hiring for different evidence. Understanding which role you are actually aiming at is worth more than any certification you can buy this month.",
+      ),
+      h2("The demand is real, and it is measured"),
+      p(
+        "This is not a hopeful article about a growing field. The numbers behind these roles are published and specific: the US Bureau of Labor Statistics projects information security analyst employment growing about 29% between 2024 and 2034, roughly seven times the average across occupations. Industry workforce studies put the global shortfall in the millions of unfilled positions. Whether those exact figures hold, the direction is not in dispute.",
+      ),
+      p(
+        "The reason the gap persists is not a shortage of people who want the jobs. It is a shortage of people who can demonstrate the work. That distinction is the whole strategy below.",
+      ),
+      h2("The three jobs that actually hire juniors"),
+      table(
+        ["Role", "What you do all day", "What they want to see"],
+        [
+          [
+            "SOC analyst (Tier 1)",
+            "Watch an alert queue. Gather context on each alert. Decide false positive, known issue, or escalate. Write it up so the next person does not have to redo it.",
+            "That you can read a log line and decide what is normal. Writing that someone else can follow. Willingness to work shifts.",
+          ],
+          [
+            "Vulnerability assessment analyst",
+            "Run scans, review the results, separate the real from the noise, prioritise, and write reports the engineering team can act on.",
+            "Method. Attention to detail. A report that ranks findings instead of dumping them.",
+          ],
+          [
+            "IT support with a security remit",
+            "The ordinary work of keeping machines running, plus patching, account hygiene and access control. Most small organisations' security is this job.",
+            "Troubleshooting. Patience with people. Knowing why a change is safer than the alternative.",
+          ],
+        ],
+        "Three doors. Pick one before you start learning, or you will learn a little of all three and convince nobody.",
+      ),
+      fig(
+        "/images/blog/analyst-notes-desk.jpg",
+        "An analyst's desk with handwritten notes beside a laptop.",
+        "The job is largely writing. Every one of these roles produces documents another person has to act on.",
+      ),
+      h2("What replaces the degree"),
+      p(
+        "A degree is one kind of evidence. When it is absent, hiring managers look for others, and the ones that work are all variations of 'show me something you actually did'.",
+      ),
+      ul([
+        "**A written assessment of something real.** Not a lab you were told to do. Pick a system you are allowed to look at — your own laptop, a home router, a volunteer organisation's website — and write the same report the vulnerability analyst produces: what you found, how bad, what to fix first. The format matters more than the tool.",
+        "**A triage log.** Take a public sample of security logs or an open dataset, work through a day of it, and record your decisions and reasoning. This is exactly the Tier 1 job, done unpaid, on evidence.",
+        "**One clear explanation of a hard idea.** The ability to make Zero Trust or a digital signature make sense to a non-technical reader is a rare and directly useful skill in this field, because most of the job is convincing people to change something.",
+        "**A certificate, but as a fifth thing, not a first.** CompTIA Security+ is the usual starting point and does get past some filters. It is not a substitute for any of the four above, and people who lead with it and nothing else are easy to screen out.",
+      ]),
+      h2("The learning order that matches the work"),
+      p(
+        "Courses often teach tools first because tools are easy to demonstrate. The roles above reward a different order:",
+      ),
+      ul([
+        "**Networks and operating systems** — how addresses work, what a port is, where logs live, what a process is. Without this you cannot tell normal from abnormal, and every tool output is a wall.",
+        "**Identity and access** — accounts, permissions, why least privilege matters. Almost every entry-level finding you will write is about access.",
+        "**Reading and writing about evidence** — logs, findings, reports. This is most of the job and the part almost nobody practises.",
+        "**Tools, last** — Nessus, Wireshark, a SIEM. They are easier to learn once you know what you are looking at, and knowing the tool without the instinct does not survive an interview question.",
+      ]),
+      p(
+        "The free security assessment tool on this site is a reasonable first exercise because it forces the second and third items at once: look at a system, decide what is weak, rank it, and write it down.",
+      ),
+      h2("What this will not fix"),
+      p(
+        "Two honest warnings. First, entry-level security roles are competitive, and the shortest path for many people runs through IT support first — it is less glamorous and it hires far more easily. Second, the field rewards people who keep reading after the course ends, because the specific tools and threats change faster than any curriculum. If the ongoing reading is not appealing, the job will feel like homework forever.",
+      ),
+      p(
+        "If this went wrong: the usual failure is spending a year collecting certificates and then discovering you still cannot write a report. If that has happened, stop buying courses. Write one report this week on something you own, however small, and use it to apply for one role. The report is the thing that changes the outcome.",
+      ),
+    ],
+  },
+
+  /* ================================================================
+   * 7. Agile vs Scrum — measured: Scrum falls in India/US, Agile leads
+   * ================================================================ */
+  {
+    slug: "agile-vs-scrum-which-is-worth-learning",
+    title: "Agile or Scrum? They are not the same, and one is falling",
+    seoTitle: "Agile vs Scrum: The Difference (and Which to Learn in 2026)",
+    seoDescription:
+      "Agile is four values; Scrum is one framework for implementing them. What the difference means in practice, what the search data shows, and which one to put on a CV.",
+    category: "business-freelancing",
+    articleType: "comparison",
+    difficulty: "Beginner",
+    quickAnswer:
+      "Agile is the set of values and principles. Scrum is one specific framework — roles, ceremonies and artefacts — for practising them. So 'Agile or Scrum' is not really a choice between equals: Scrum is a subset of Agile. Learn the values first, because a team that knows the values can adapt any framework, and a team that only knows Scrum cannot tell when the framework is the problem.",
+    excerpt:
+      "Scrum is a subset of Agile, not an alternative to it. What the difference means day to day, what the search data shows about each, and which to learn first.",
+    learningObjectives: [
+      "State the relationship between Agile and Scrum without conflating them.",
+      "Name the three Scrum roles, three artefacts and five ceremonies.",
+      "Read the trend in what employers now ask for.",
+      "Decide which to learn first and what to put on a CV.",
+    ],
+    series: SERIES,
+    order: 1007,
+    author: AUTHOR,
+    cover: "/images/blog/interview-desk-setup.jpg",
+    coverAlt: "A desk laid out for planning, with notes and a schedule.",
+    body: [
+      p(
+        "People use 'Agile' and 'Scrum' as if the words were interchangeable. They are not, and the difference is the reason so many teams say they are Agile while shipping nothing — they adopted a framework and never learned the thing the framework was built to serve.",
+      ),
+      h2("The relationship, in one line"),
+      table(
+        ["", "Agile", "Scrum"],
+        [
+          ["What it is", "A set of values and principles", "A framework for implementing them"],
+          [
+            "Written",
+            "2001, by 17 practitioners",
+            "First formalised in 1995; the Scrum Guide is now maintained separately",
+          ],
+          [
+            "How big",
+            "Four values, twelve principles",
+            "Three roles, three artefacts, five events, in a fixed 'sprint' cycle",
+          ],
+          [
+            "If you follow it perfectly",
+            "You cannot be audited for it",
+            "You can be — Scrum has a concrete, checkable shape",
+          ],
+          [
+            "What it optimises for",
+            "Adapting to what you learn",
+            "Making adaptation routine and visible",
+          ],
+        ],
+        "Scrum is a subset of Agile in the sense that matters: you can practise Agile values without Scrum, but Scrum without the values is just the ceremonies.",
+      ),
+      fig(
+        "/images/blog/small-class-laptop.jpg",
+        "A small group of people working together around a laptop.",
+        "Every framework is a plan for how people talk to each other. When the talking stops, the framework is decoration.",
+      ),
+      h2("Scrum's actual pieces"),
+      p(
+        "Because Scrum is checkable, it is worth knowing the shape, if only because a job interview will assume you do:",
+      ),
+      ul([
+        "**Roles** — Product Owner (decides what and why), Scrum Master (keeps the process honest, not a project manager), Developers (the people who build).",
+        "**Artefacts** — the Product Backlog (everything wanted), the Sprint Backlog (what is being done in this cycle), the Increment (what actually works now).",
+        "**Events** — sprint planning, a daily stand-up, the sprint review, the retrospective, and the sprint itself as the containing cycle.",
+      ]),
+      h2("What the search data shows"),
+      p(
+        "If you want to know what to learn for the market rather than for the ideal, the trend data is unusually clear. Across a five-year worldwide comparison, 'Agile' leads 'Scrum' by roughly 59 to 35 on average relative search interest, with 'Kanban' far behind at about 13. Both Agile and Scrum peaked around 2022 and have settled lower since, and in the US and India — the two markets most relevant to outsourced and remote work — Scrum's decline is sharper than Agile's.",
+      ),
+      p(
+        "Read that carefully, because it is easy to over-read. Falling search interest does not mean the framework is dead; a great many organisations still run it and will pay for people who understand it. What it does mean is that the growth has stopped and the vocabulary has broadened. Employers increasingly ask for 'Agile experience' rather than 'Scrum Master', and roles that were purely process have been merged into engineering management.",
+      ),
+      h2("So which should you learn?"),
+      p("Both, in one order:"),
+      ul([
+        "**Learn the four values first.** They are four sentences and they explain why any of the rest exists. Without them you cannot tell whether a process is helping or just happening, which is the skill that actually gets valued.",
+        "**Then learn Scrum's shape.** Not to run Scrum, but to recognise it — because you will join teams that use it, and knowing the expected pieces lets you tell what is missing and say so precisely.",
+        "**Then learn one thing Scrum does not cover: how to say no to work.** Every framework in this family struggles with a stakeholder who wants everything now. The team that can decline well performs better than the team with the better retrospective template.",
+      ]),
+      p(
+        "If you are choosing a first certificate, the same logic applies: a general project or product certificate usually travels further than a Scrum-specific one, because it is not tied to one framework's vocabulary. If a specific employer advertises Scrum, get the Scrum one for that application and nothing more.",
+      ),
+      fig(
+        "/images/blog/cv-tailoring-desk.jpg",
+        "A CV being edited by hand beside a laptop.",
+        "Write the framework you have actually used. Claiming Scrum on a CV and then not recognising a sprint review is a short conversation.",
+      ),
+      p(
+        "If this went wrong: people learn Scrum, join a team that has the ceremonies scheduled and none of the values, and conclude that Agile is a lie. The framework is not the problem and neither are you. Name the value that is missing — usually 'responding to change' — and ask one concrete question about it. That question is the most useful thing you can bring into the team.",
+      ),
+    ],
+  },
 ];

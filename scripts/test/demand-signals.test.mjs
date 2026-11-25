@@ -223,3 +223,85 @@ test("deprioritised trends never become backlog items", () => {
     );
   }
 });
+
+/* ------------------------------------------------------------------ *
+ * Keyword value
+ * ------------------------------------------------------------------ */
+
+const {
+  KEYWORD_VALUE,
+  highValueKeywords,
+  decliningKeywords,
+  relatedTopicMap,
+  KEYWORD_VALUE_CAVEAT,
+} = await import("../../src/data/editorial/demand-signals.ts");
+
+test("every keyword record carries its date and its evidence", () => {
+  for (const keyword of KEYWORD_VALUE) {
+    assert.ok(keyword.query.trim().length > 3, `${keyword.id}: needs a real query`);
+    assert.match(
+      keyword.assessedOn,
+      /^\d{4}-\d{2}-\d{2}$/,
+      `${keyword.id}: a band without an assessment date goes stale silently`,
+    );
+    assert.ok(
+      keyword.rationale.length > 80,
+      `${keyword.id}: the band needs market evidence, not an assertion`,
+    );
+    assert.ok(keyword.relatedTopics.length > 0, `${keyword.id}: no related topics derived`);
+    assert.ok(keyword.verdict.length > 20, `${keyword.id}: needs a decision`);
+  }
+});
+
+test("the caveat that this is secondary sourcing still exists", () => {
+  // The whole table leans on research houses and press coverage. If someone strips
+  // the caveat, the bands start reading like measured volumes.
+  assert.match(KEYWORD_VALUE_CAVEAT, /secondary sources/i);
+  assert.match(KEYWORD_VALUE_CAVEAT, /not from the Google Trends API/i);
+  assert.match(KEYWORD_VALUE_CAVEAT, /direction of growth is the claim/i);
+});
+
+test("no keyword record claims a search volume", () => {
+  for (const keyword of KEYWORD_VALUE) {
+    assert.doesNotMatch(
+      `${keyword.rationale} ${keyword.verdict}`,
+      /\d[\d,]*\s*(searches|queries)\s*(per|\/)\s*month/i,
+      `${keyword.id}: claims a volume we cannot source`,
+    );
+  }
+});
+
+test("a declining keyword is never promoted to a pillar", () => {
+  // Agile is measured as falling. It is written once, honestly; it must not be
+  // handed a set of related topics to build a content pillar on.
+  const declining = decliningKeywords();
+  assert.ok(declining.length > 0, "the declining set should not be empty");
+  const map = relatedTopicMap();
+  for (const keyword of declining) {
+    assert.equal(
+      map[keyword.id],
+      undefined,
+      `${keyword.id} is declining but still has a topic backlog — do not build a pillar on it`,
+    );
+  }
+});
+
+test("the answered-but-worthless cluster is excluded from future work", () => {
+  const mb = KEYWORD_VALUE.find((k) => k.id === "mb-kb-gb");
+  assert.ok(mb, "the megabyte cluster must stay recorded");
+  assert.equal(mb.globalInterest, "low");
+  assert.match(mb.verdict, /Do not write more/);
+  assert.equal(
+    relatedTopicMap()["mb-kb-gb"],
+    undefined,
+    "the megabyte cluster must not generate a topic backlog",
+  );
+});
+
+test("high-value keywords are the security terms, not the storage terms", () => {
+  const high = highValueKeywords().map((k) => k.id);
+  assert.ok(high.includes("zero-trust"));
+  assert.ok(high.includes("vulnerability-assessment"));
+  assert.ok(high.includes("soc"));
+  assert.ok(!high.includes("mb-kb-gb"), "storage conversion is not a high-value keyword");
+});

@@ -300,6 +300,221 @@ export function contestedSignals(): DemandSignal[] {
   return DEMAND_SIGNALS.filter((s) => Boolean(s.conflict));
 }
 
+/* ------------------------------------------------------------------ *
+ * Keyword value: the corpus queries, measured internationally
+ * ------------------------------------------------------------------ */
+
+/**
+ * What each of the site's *own* ranking queries is worth beyond Nigeria.
+ *
+ * The distinction from `DEMAND_SIGNALS` above matters. Those are national trends
+ * about what Nigerians search. These are the specific queries the site already
+ * earns impressions for, and the question is whether they travel — because
+ * 63.7% of impressions come from outside Nigeria and produce 13% of clicks.
+ *
+ * ## What "Global interest" means here, precisely
+ *
+ * Google does not publish absolute volumes, and this data was gathered through
+ * secondary sources rather than the Trends API. So each row records a
+ * **qualitative band** with the evidence behind it, not a number pretending to be
+ * a volume:
+ *
+ *   - `high`     — the topic has a large, growing commercial market, published
+ *                  forecasts, or is named on employer skills lists.
+ *   - `moderate` — real, steady interest with no strong growth signal.
+ *   - `low`      — thin interest, usually because the query is local, informal,
+ *                  or answered by a search feature.
+ *   - `declining`— measurable fall from a past peak.
+ *
+ * ## The finding this table encodes
+ *
+ * **Three of the site's biggest ranking queries are worth almost nothing
+ * internationally, and the fourth is worth a lot.**
+ *
+ * The KB/MB/GB cluster is the largest theme in the export (82 queries) and scores
+ * `low` globally, because the query is answered above the results. The SOC and
+ * vulnerability-assessment queries sit in a market growing at double-digit CAGR
+ * with millions of unfilled roles — that is `high` — and the site already ranks
+ * in the top five for both. The money is in the security terms, not the storage
+ * terms, and the storage terms are where 40% of the effort has gone.
+ */
+export type GlobalInterest = "high" | "moderate" | "low" | "declining";
+
+export type KeywordValue = {
+  id: string;
+  /** The query as the site actually ranks for it (from the GSC export). */
+  query: string;
+  /** Impressions this query family earned on this site in six months. */
+  impressions: number;
+  /** Average position, where the export gives one. */
+  position?: number;
+  globalInterest: GlobalInterest;
+  /** ISO date the band was assessed. A band without a date goes stale silently. */
+  assessedOn: string;
+  /** Why this band — the market evidence, not vibes. */
+  rationale: string;
+  /** Related topics worth covering, derived from the same evidence. */
+  relatedTopics: string[];
+  /** What the site should do, if anything. */
+  verdict: string;
+};
+
+export const KEYWORD_VALUE: readonly KeywordValue[] = [
+  {
+    id: "zero-trust",
+    query: "what is zero trust security",
+    impressions: 189,
+    position: 4.13,
+    globalInterest: "high",
+    assessedOn: "2026-11-25",
+    rationale:
+      "Zero Trust is the strongest security-market term the site ranks for. Published forecasts put the global zero trust security market between roughly $44bn and $54bn in 2026, growing at CAGRs quoted from 13.6% to 21.4% depending on the house. Adoption surveys report 63–81% of organisations partway through implementation. Any figure here is contested between research firms, so the direction is the claim, not the number.",
+    relatedTopics: [
+      "zero trust network access (ZTNA) replacing VPN",
+      "micro-segmentation",
+      "continuous authentication",
+      "least privilege and identity",
+      "NIST SP 800-207",
+    ],
+    verdict:
+      "Already written and ranking at 4.13. Expand with the related topics rather than starting new pillars.",
+  },
+  {
+    id: "vulnerability-assessment",
+    query: "vulnerability assessment",
+    impressions: 172,
+    position: 2.04,
+    globalInterest: "high",
+    assessedOn: "2026-11-25",
+    rationale:
+      "The strongest position on the property and the clearest employer signal. Vulnerability assessment appears by name on published in-demand IT skills lists, in entry-level security job descriptions, and as a named line item in SOC-as-a-service contracts, where vulnerability assessment and threat detection is the largest growth segment. The US BLS projects information security analyst employment up about 29% to 2034.",
+    relatedTopics: [
+      "penetration testing vs assessment",
+      "CVSS scoring",
+      "vulnerability management lifecycle",
+      "scan tools: Nessus, OpenVAS, Qualys",
+      "report writing for engineers",
+    ],
+    verdict:
+      "Position 2.04 is the best ranking owned. The tool now serves it; the next step is the CVSS and reporting topics, which is what employers actually test.",
+  },
+  {
+    id: "soc",
+    query: "soc room",
+    impressions: 149,
+    globalInterest: "high",
+    assessedOn: "2026-11-25",
+    rationale:
+      "SOC analyst is consistently named the most common entry-level security role. The security operations centre market is forecast at roughly $7.7bn–$14.7bn in 2026 depending on the scope of the definition, growing 10–12% a year, and the talent shortage is the stated driver for the SOC-as-a-service segment. The query itself is ambiguous — it also catches people looking for a literal room — and the existing lesson already carries a question-shaped title. Do not create a second page.",
+    relatedTopics: [
+      "SIEM and what analysts actually watch",
+      "alert triage and false positives",
+      "SOC tiers and shift handover",
+      "SOC analyst career path and salary",
+    ],
+    verdict:
+      "Served already by /blog/the-soc-room. Grow the related topics, never a competing page.",
+  },
+  {
+    id: "digital-signature",
+    query: "what is a digital signature",
+    impressions: 35,
+    position: 3.91,
+    globalInterest: "moderate",
+    assessedOn: "2026-11-25",
+    rationale:
+      "Steady and commercially substantial, but slower than the security terms. The digital signature market is put around $9.4bn in 2026 by one house and forecast to grow at a high rate, with banking and insurance the largest buyers. Interest is stable rather than rising.",
+    relatedTopics: [
+      "digital signature vs electronic signature, which is a legal distinction",
+      "digital certificate vs digital signature",
+      "PDF signature validation",
+      "eIDAS and Nigerian e-signature law",
+    ],
+    verdict:
+      "Written and ranking at 3.91. The highest-value next page is the legal distinction, because that is what people get wrong and what businesses search for.",
+  },
+  {
+    id: "mb-kb-gb",
+    query: "megabyte / which is bigger mb or kb",
+    impressions: 276,
+    globalInterest: "low",
+    assessedOn: "2026-11-25",
+    rationale:
+      "The largest query cluster in the export — 82 distinct queries — and the lowest value. The question is answered in the search result itself by Google's own unit conversion, which is why the site earns 650 impressions on one page and zero clicks. Global interest in the topic is not in question; the click is.",
+    relatedTopics: [
+      "mobile data bundle calculation",
+      "why a 16 GB card shows 14.9 GB",
+      "data usage of common activities",
+    ],
+    verdict:
+      "Do not write more. The existing page and the converter tool are the correct ceiling for this cluster.",
+  },
+  {
+    id: "agile",
+    query: "agile methodology",
+    impressions: 30,
+    globalInterest: "declining",
+    assessedOn: "2026-11-25",
+    rationale:
+      "Measurably past its peak. A five-year worldwide comparison puts Agile at about 59 average relative search interest against Scrum at 35 and Kanban at 13; both Agile and Scrum peaked around 2022 and settled lower, with Scrum falling faster in the US and India. Scrum Master roles are being merged or removed from hiring plans. The framework is not dead — it is no longer growing, and process-only roles are the first to go.",
+    relatedTopics: [
+      "Agile vs Scrum, the relationship",
+      "Kanban and flow",
+      "how to say no to scope",
+      "product ownership without a framework",
+    ],
+    verdict:
+      "Written once, as a comparison, with the decline stated honestly. Do not build a content pillar on a declining term.",
+  },
+  {
+    id: "entry-level-cyber",
+    query: "entry level cyber security jobs",
+    impressions: 0,
+    globalInterest: "high",
+    assessedOn: "2026-11-25",
+    rationale:
+      "Zero impressions on this site because nothing targets it, and the highest commercial intent of anything in this table. An entry-level security job seeker is deciding what to study, which is exactly the person the Academy serves. Evidence: BLS 29% analyst growth to 2034, 33% growth quoted for the wider field, and hundreds of thousands of open US postings reported by workforce trackers, with SOC analyst and vulnerability assessment analyst named as the two realistic first roles.",
+    relatedTopics: [
+      "SOC analyst vs vulnerability analyst",
+      "CompTIA Security+ worth it or not",
+      "security portfolio without experience",
+      "first 90 days in a SOC",
+    ],
+    verdict:
+      "Written as the strongest unwritten keyword. This is the topic to expand into a series.",
+  },
+];
+
+/** Keywords whose global interest makes them worth sustaining. */
+export function highValueKeywords(): KeywordValue[] {
+  return KEYWORD_VALUE.filter((k) => k.globalInterest === "high");
+}
+
+/** Keywords measured as falling — recorded so nobody rebuilds them as pillars. */
+export function decliningKeywords(): KeywordValue[] {
+  return KEYWORD_VALUE.filter((k) => k.globalInterest === "declining");
+}
+
+/**
+ * Every related topic across the table, grouped by the keyword that motivates it.
+ * This is the raw material for "what to write next" once the existing queue clears.
+ */
+export function relatedTopicMap(): Record<string, string[]> {
+  const map: Record<string, string[]> = {};
+  for (const keyword of KEYWORD_VALUE) {
+    if (keyword.globalInterest === "low" || keyword.globalInterest === "declining") continue;
+    map[keyword.id] = [...keyword.relatedTopics];
+  }
+  return map;
+}
+
+export const KEYWORD_VALUE_CAVEAT =
+  "Global interest bands come from secondary sources — research-house forecasts, adoption " +
+  "surveys and published employer skills lists — not from the Google Trends API, which was not " +
+  "reachable when this was assembled. Market-size figures disagree between houses by up to a " +
+  "factor of two, so the direction of growth is the claim, never a specific dollar figure. " +
+  "Reassess before repeating any number in published copy.";
+
 export const DEMAND_SOURCE_NOTE =
   "Percentages are year-on-year changes in Nigerian search interest as published " +
   "by Google's trends releases and reported by Nigerian press. They are not " +
