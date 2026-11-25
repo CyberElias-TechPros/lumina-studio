@@ -68,7 +68,7 @@ for (const slot of slotBlocks) {
 
 /* ---------- 5: ad code confinement ---------- */
 const sanctioned = new Set([
-  "src/lib/adsense.ts",
+  "src/lib/tracking.ts",
   "src/lib/ads/slots.ts",
   "src/lib/ads/ngadverts.ts",
   "src/components/marketing/ad-slots.tsx",
@@ -113,11 +113,23 @@ for (const file of walk(join(root, "src")).concat([join(root, "public/sw.js")]))
     failures.push(`auto-ads / anchor / vignette configuration found in ${relative(root, file)}`);
 }
 
-/* ---------- 7: the loader stays gated ---------- */
-const loader = readFileSync(join(root, "src/lib/adsense.ts"), "utf8");
-if (!/NEXT_PUBLIC_ENABLE_PUBLIC_TRACKING/.test(loader))
-  failures.push("adsense loader no longer checks NEXT_PUBLIC_ENABLE_PUBLIC_TRACKING");
-if (!/NO_ADS/.test(loader)) failures.push("adsense loader lost its path exclusion list");
+/* ---------- 7: the loader stays gated on consent, not on an env flag ---------- *
+ * The previous check required `NEXT_PUBLIC_ENABLE_PUBLIC_TRACKING`, which made
+ * the ad tag dead in every default deployment. Consent is now the gate, and it
+ * must be read from the single consent module and re-checked for the ads
+ * category specifically — not analytics, not "any consent". */
+const loader = readFileSync(join(root, "src/lib/tracking.ts"), "utf8");
+if (!/from "@\/lib\/consent"/.test(loader))
+  failures.push("tracking loader no longer reads the unified consent module");
+// Accepts either polarity of the guard: `=== true` to proceed or `!== true` to
+// bail early. Both enforce explicit ads consent; only the shape differs.
+const adsGuard = /readConsent\(\)\?\.ads\s*(===|!==)\s*true/;
+if (!adsGuard.test(loader))
+  failures.push("adsense loader no longer requires explicit ads consent");
+if (!/PRIVATE_PREFIXES/.test(loader))
+  failures.push("tracking loader lost its private-route exclusion list");
+if (/ENABLE_PUBLIC_TRACKING/.test(loader))
+  failures.push("tracking loader reintroduced the env flag that made ads unreachable");
 
 /* ---------- 8: one primary slot per path family ---------- */
 // A path family is a prefix plus its match mode: `/blog` exact is the index,

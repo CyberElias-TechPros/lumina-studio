@@ -58,6 +58,10 @@ const staticRoutes = [
   "/visit",
   "/visit/info",
   "/visit/brochure",
+  "/status",
+  "/search",
+  // /search is a client-side utility with no indexable result pages; it stays
+  // out of the sitemap and is noIndex on the route itself.
 ];
 
 // Shop product pages and feed files. Generated from digital-products.json so

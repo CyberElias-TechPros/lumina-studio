@@ -4,6 +4,8 @@ import { getPageHead } from "@/lib/seo";
 import { PageShell, PageHero } from "@/components/marketing/shell";
 import { UtilitySectionHeading } from "@/components/marketing/utility";
 import { Reveal } from "@/components/motion";
+import { PROCESSORS } from "@/lib/tracking";
+import { CookieSettingsButton } from "@/components/marketing/cookie-settings-button";
 
 export const Route = createFileRoute("/privacy")({
   head: () =>
@@ -148,11 +150,71 @@ function PrivacyPage() {
           </Reveal>
 
           <Reveal delay={0.2}>
-            <UtilitySectionHeading index="05">Cookies</UtilitySectionHeading>
+            <UtilitySectionHeading index="05">Cookies and optional tools</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              Essential cookies make the site work. The banner lets you accept or decline optional
-              analytics cookies. You can also block cookies in your browser. Blocking essential
-              cookies may break sign-in and forms.
+              Essential cookies make the site work: keeping you signed in, remembering your
+              light or dark choice, and protecting forms. These cannot be switched off, because
+              the site cannot function without them.
+            </p>
+            <p className="text-muted-foreground mt-4 leading-relaxed">
+              Everything else is optional and is grouped into two separate choices in the banner:{" "}
+              <strong>analytics</strong> and <strong>advertising</strong>. You can allow one and
+              refuse the other. If you refuse both, or simply never answer,{" "}
+              <strong>none of the scripts below are downloaded at all</strong> — we do not load them
+              and then suppress them, we do not fetch them and discard the result. The site behaves
+              identically either way.
+            </p>
+            <p className="text-muted-foreground mt-4 leading-relaxed">
+              You can change your mind at any time using the{" "}
+              <CookieSettingsButton className="text-primary cursor-pointer underline" />{" "}
+              link in the footer. Withdrawing consent is deliberately as easy as giving it.
+            </p>
+            <div className="border-border mt-8 overflow-hidden rounded-xl border">
+              <table className="w-full text-left text-sm">
+                <caption className="sr-only">
+                  Third-party services, what they do, and which consent category controls them
+                </caption>
+                <thead className="bg-muted/40">
+                  <tr>
+                    <th scope="col" className="px-4 py-3 font-semibold">Service</th>
+                    <th scope="col" className="px-4 py-3 font-semibold">What it does</th>
+                    <th scope="col" className="px-4 py-3 font-semibold">Controlled by</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-border divide-y">
+                  {PROCESSORS.map((processor) => (
+                    <tr key={processor.name} className="align-top">
+                      <td className="px-4 py-3">
+                        <a
+                          href={processor.policyUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary font-medium underline"
+                        >
+                          {processor.name}
+                        </a>
+                        <p className="text-muted-foreground mt-1 text-xs">{processor.data}</p>
+                      </td>
+                      <td className="text-muted-foreground px-4 py-3 text-xs leading-relaxed">
+                        {processor.purpose}
+                      </td>
+                      <td className="px-4 py-3">
+                        <span className="bg-muted text-foreground rounded-full px-2 py-0.5 text-[11px] font-medium">
+                          {processor.category} consent
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-muted-foreground mt-4 text-xs leading-relaxed">
+              This table is generated from the same register the site loads these scripts from, so
+              it cannot list something we do not run or omit something we do. Where a tool could
+              record what you type — Microsoft Clarity is the only one that can — recordings are
+              configured to{" "}
+              <strong className="text-foreground">mask all page text by default</strong>, so
+              heatmaps show where people click and scroll, never what they read or enter.
             </p>
           </Reveal>
 
@@ -162,8 +224,9 @@ function PrivacyPage() {
               This site can show advertising from two networks: <strong>Google AdSense</strong>{" "}
               (publisher <code>ca-pub-9124992249317290</code>) and <strong>ngadverts</strong> (zone
               13225), a Nigerian ad network. Google uses cookies, including the DoubleClick cookie,
-              to serve ads based on your visit here and on other sites. The ngadverts unit is not
-              requested at all unless you accept optional cookies in the banner.
+              to serve ads based on your visit here and on other sites. Neither network is
+              contacted at all unless you give <strong>advertising</strong> consent in the banner;
+              allowing analytics consent does not enable advertising.
             </p>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Adverts appear only on pages whose job is reading: lessons, the lesson index, and the

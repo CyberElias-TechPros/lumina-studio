@@ -1,5 +1,6 @@
 import { ArrowRight, ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { Link } from "@/lib/next-compat/router";
+import { CookieSettingsButton } from "./cookie-settings-button";
 
 const columns = [
   {
@@ -42,6 +43,7 @@ const columns = [
       { label: "Your learning trail", to: "/learning-trail" },
       { label: "Editorial standards", to: "/editorial" },
       { label: "Privacy & terms", to: "/privacy" },
+      { label: "Service status", to: "/status" },
     ],
   },
 ] as const;
@@ -134,6 +136,14 @@ export function SiteFooter() {
                     </Link>
                   </li>
                 ))}
+                {col.title === "Resources" && (
+                  <li>
+                    {/* Required by GDPR Art. 7(3): withdrawing consent must be as
+                        easy as giving it. Without this the only way to change a
+                        decision is to clear site data by hand. */}
+                    <CookieSettingsButton className="cursor-pointer text-left text-[#c6cdd6] transition-colors hover:text-[#f4f1e9]" />
+                  </li>
+                )}
               </ul>
             </div>
           ))}

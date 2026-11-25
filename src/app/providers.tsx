@@ -9,8 +9,8 @@ import { CookieConsent } from "@/components/marketing/cookie-consent";
 import { WhatsAppFloat } from "@/components/marketing/whatsapp-float";
 import { MotionProvider } from "@/components/motion";
 import { useFlag } from "@/lib/flags";
-import { initAdSense } from "@/lib/adsense";
-import { initGA4 } from "@/lib/ga4";
+import { loadAdSense, loadClarity, loadGA4 } from "@/lib/tracking";
+import { onConsentChange, readConsent } from "@/lib/consent";
 import { registerServiceWorker, subscribeToPush } from "@/lib/pwa";
 import { createAppQueryClient } from "@/lib/query/client";
 
@@ -26,13 +26,22 @@ function GlobalEffects() {
     if (session?.user.id) void subscribeToPush(pushEnabled);
   }, [pushEnabled, session?.user.id]);
 
+  // Consent can arrive before this mounts (returning visitor) or after (the
+  // banner). Both paths funnel through the same three loaders, which each
+  // re-check consent themselves rather than trusting the caller.
   useEffect(() => {
-    const id = process.env.NEXT_PUBLIC_GA4_ID;
-    if (id) initGA4(id);
-  }, []);
-
-  useEffect(() => {
-    initAdSense();
+    const apply = () => {
+      const state = readConsent();
+      if (!state) return;
+      if (state.analytics) {
+        loadClarity();
+        const id = process.env.NEXT_PUBLIC_GA4_ID;
+        if (id) loadGA4(id);
+      }
+      if (state.ads) loadAdSense();
+    };
+    apply();
+    return onConsentChange(apply);
   }, []);
 
   return null;
@@ -50,7 +59,7 @@ export default function AppProviders({ children }: { children: ReactNode }) {
           <GlobalEffects />
         </SessionProvider>
         <Toaster position="top-right" richColors />
-        {process.env.NEXT_PUBLIC_ENABLE_PUBLIC_TRACKING === "true" && <CookieConsent />}
+        <CookieConsent />
         <WhatsAppFloat />
       </MotionProvider>
     </QueryClientProvider>

@@ -31,12 +31,13 @@
     "validate:lessons": "node scripts/validate-lessons.mjs",
     "audit:notes": "node scripts/audit-notes-voice.mjs",
     "audit:images": "node scripts/audit-image-provenance.mjs",
-    "check:ads": "node scripts/check-ad-slots.mjs && node scripts/test-ad-placement.mjs && node --test scripts/test/practice-content.test.mjs",
+    "check:ads": "node scripts/check-ad-slots.mjs && node scripts/test-ad-placement.mjs && npm run check:consent && node --test scripts/test/practice-content.test.mjs",
     "audit:structure": "node scripts/audit-site-structure.mjs",
     "audit:courses": "node scripts/audit-course-pages.mjs",
     "check:editorial": "npm run generate:editorial && npm run validate:lessons -- --strict && npm run check:ads && npm run audit:structure -- --strict",
     "generate:ai-lessons": "node scripts/generate-ai-lessons.mjs",
-    "academic:print": "node scripts/generate-academic-print.mjs"
+    "academic:print": "node scripts/generate-academic-print.mjs",
+    "check:consent": "node scripts/check-tracking-consent.mjs && node --test scripts/test/consent-gating.test.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
