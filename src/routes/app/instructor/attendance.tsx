@@ -66,7 +66,7 @@ function AttendanceMarker() {
           </Badge>
           <Badge variant="secondary" className="font-semibold">
             {session
-              ? `Closes ${new Date(session.closesAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`
+              ? `Closes <span suppressHydrationWarning>${new Date(session.closesAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</span>`
               : "Not started"}
           </Badge>
         </>

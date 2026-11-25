@@ -32,11 +32,11 @@ export const Route = createFileRoute("/app/certificates")({
 });
 
 function formatDate(iso: string): string {
-  return new Date(iso).toLocaleDateString(undefined, {
+  return <span suppressHydrationWarning>{new Date(iso).toLocaleDateString(undefined, {
     year: "numeric",
     month: "short",
     day: "numeric",
-  });
+  })}</span>;
 }
 
 function StudentCertificates() {

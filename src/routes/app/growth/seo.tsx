@@ -137,7 +137,7 @@ function SeoPlanner() {
                     <TableRow key={c.id}>
                       <TableCell className="font-semibold">{c.keyword}</TableCell>
                       <TableCell className="text-muted-foreground">
-                        {c.volume.toLocaleString()}/mo
+                        <span suppressHydrationWarning>{c.volume.toLocaleString()}</span>/mo
                       </TableCell>
                       <TableCell className="font-bold">#{c.rank}</TableCell>
                       <TableCell

@@ -123,7 +123,7 @@ function FunnelAnalysis() {
                       <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
                         <span className="text-sm font-bold">{s.name}</span>
                         <span className="text-muted-foreground">
-                          {s.users.toLocaleString()} learners
+                          <span suppressHydrationWarning>{s.users.toLocaleString()}</span> learners
                         </span>
                         <span className="text-muted-foreground ml-auto">{drop}</span>
                         <Badge className={cn("border-0 font-semibold", tones[i % tones.length])}>

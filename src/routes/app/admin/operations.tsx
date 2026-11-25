@@ -182,7 +182,7 @@ function OperationsPage() {
                       <span className="font-semibold">{r.job}</span>
                       <span className="text-muted-foreground flex-1 truncate">{r.detail}</span>
                       <span className="text-muted-foreground text-xs">
-                        {new Date(r.startedAt).toLocaleString()}
+                        <span suppressHydrationWarning>{new Date(r.startedAt).toLocaleString()}</span>
                       </span>
                     </div>
                   ))}

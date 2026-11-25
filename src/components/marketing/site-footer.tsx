@@ -153,7 +153,13 @@ export function SiteFooter() {
       {/* Meta bar */}
       <div className="border-t border-[#242a31] bg-[#0b0d0f]">
         <div className="container-page flex flex-col gap-2 py-5 text-xs text-[#b4bac4] sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Cyber Elias Academy Ltd · RC 8413776</p>
+          {/* The year is read from the clock at render time: the server (UTC)
+              and the browser (Africa/Lagos) can disagree around New Year, so
+              the text node is exempt from hydration comparison. */}
+          <p>
+            © <span suppressHydrationWarning>{new Date().getFullYear()}</span> Cyber Elias Academy
+            Ltd · RC 8413776
+          </p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
             <span>Mon–Sat, 8:00–20:00 WAT</span>
             <span aria-hidden="true" className="hidden sm:inline">

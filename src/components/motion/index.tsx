@@ -232,7 +232,7 @@ export function Counter({
   return (
     <span ref={ref} className={className}>
       {prefix}
-      {value.toLocaleString(undefined, {
+      {value.toLocaleString("en-NG", {
         minimumFractionDigits: decimals,
         maximumFractionDigits: decimals,
       })}

@@ -274,11 +274,11 @@ function ParentInvitationAccept() {
 
                       <p className="text-muted-foreground mt-4 text-center text-[11px]">
                         Invitation expires{" "}
-                        {new Date(invitation.data.expiresAt).toLocaleDateString(undefined, {
+                        <span suppressHydrationWarning>{new Date(invitation.data.expiresAt).toLocaleDateString(undefined, {
                           year: "numeric",
                           month: "short",
                           day: "numeric",
-                        })}
+                        })}</span>
                       </p>
                     </>
                   )}

@@ -150,7 +150,7 @@ export function TeachingRoster() {
         {ready && grant.isSuccess && (
           <p className="text-sm" role="status">
             {grant.data.grant?.active
-              ? `Active until ${new Date(grant.data.grant.expiresAt).toLocaleString()}.`
+              ? `Active until <span suppressHydrationWarning>${new Date(grant.data.grant.expiresAt).toLocaleString()}</span>.`
               : "No active grant for this selection."}
           </p>
         )}

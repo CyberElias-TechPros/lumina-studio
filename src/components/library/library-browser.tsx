@@ -265,9 +265,9 @@ export function LibraryBrowser({ items, sourceName, canAccessProtected }: Librar
         <div className="border-b px-4 py-3">
           <p className="text-sm font-bold">{sourceName}</p>
           <p className="text-muted-foreground text-xs">
-            {items.length.toLocaleString()} files & folders
+            <span suppressHydrationWarning>{items.length.toLocaleString()}</span> files & folders
             {!canAccessProtected &&
-              ` · ${items.filter((i) => i.isProtected).length.toLocaleString()} protected course materials`}
+              ` · <span suppressHydrationWarning>${items.filter((i) => i.isProtected).length.toLocaleString()}</span> protected course materials`}
           </p>
         </div>
         <div className="p-2">

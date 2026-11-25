@@ -154,7 +154,7 @@ function CalendarDayButton({
       ref={ref}
       variant="ghost"
       size="icon"
-      data-day={day.date.toLocaleDateString()}
+      data-day={<span suppressHydrationWarning>{day.date.toLocaleDateString()}</span>}
       data-selected-single={
         modifiers.selected &&
         !modifiers.range_start &&

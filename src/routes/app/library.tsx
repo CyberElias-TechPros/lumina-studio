@@ -40,7 +40,7 @@ function StudentLibrary() {
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
-            {items.length ? `${items.length.toLocaleString()} items` : "Loading…"}
+            {items.length ? <span suppressHydrationWarning>{items.length.toLocaleString()}</span> items : "Loading…"}
           </Badge>
         </>
       }
@@ -49,19 +49,19 @@ function StudentLibrary() {
         {[
           {
             label: "Files",
-            value: items.length ? files.length.toLocaleString() : "—",
+            value: items.length ? <span suppressHydrationWarning>{files.length.toLocaleString()}</span> : "—",
             icon: FileText,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Folders",
-            value: folders.length ? folders.length.toLocaleString() : "—",
+            value: folders.length ? <span suppressHydrationWarning>{folders.length.toLocaleString()}</span> : "—",
             icon: FolderTree,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Course materials",
-            value: protectedCount ? protectedCount.toLocaleString() : "—",
+            value: protectedCount ? <span suppressHydrationWarning>{protectedCount.toLocaleString()}</span> : "—",
             icon: BookOpen,
             tone: "bg-warning/10 text-warning",
           },

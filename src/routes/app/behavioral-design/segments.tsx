@@ -125,7 +125,7 @@ function SegmentExplorer() {
                       Size
                     </p>
                     <p className="mt-0.5 text-xs font-semibold">
-                      {s.size.toLocaleString()} learners
+                      <span suppressHydrationWarning>{s.size.toLocaleString()}</span> learners
                     </p>
                   </div>
                   <div className="rounded-xl border p-3">

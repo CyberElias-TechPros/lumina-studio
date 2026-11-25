@@ -276,7 +276,7 @@ function SecurityPage() {
                             </p>
                             <p className="text-muted-foreground flex items-center gap-1 text-xs">
                               <MapPin className="size-3" /> {d.ip || "unknown IP"} ·{" "}
-                              {new Date(d.createdAt).toLocaleString()}
+                              <span suppressHydrationWarning>{new Date(d.createdAt).toLocaleString()}</span>
                             </p>
                           </div>
                           {!d.current && d.active && (

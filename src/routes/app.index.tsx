@@ -2,7 +2,7 @@
 
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link, useNavigate } from "@/lib/next-compat/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   Award,
@@ -44,9 +44,26 @@ export const Route = createFileRoute("/app/")({
   component: Dashboard,
 });
 
+/**
+ * Time-of-day greeting. The server renders in UTC while the browser renders in
+ * the visitor's timezone (Africa/Lagos, UTC+1), so reading `new Date()` during
+ * render produces different text on each side and React throws a hydration
+ * mismatch (#418). Render a neutral placeholder for the first paint, then
+ * resolve the greeting from the browser clock after mount.
+ */
+function useGreeting(): string {
+  const [greeting, setGreeting] = useState("Hello");
+  useEffect(() => {
+    const hour = new Date().getHours();
+    setGreeting(hour < 12 ? "Good morning" : hour < 17 ? "Good afternoon" : "Good evening");
+  }, []);
+  return greeting;
+}
+
 function Dashboard() {
   const { data, isPending } = useSession();
   const navigate = useNavigate();
+  const greeting = useGreeting();
   const role = resolveRoleKey(data?.user.roleKey);
   const homePath = getRoleHomePath(role);
   const shouldOpenRoleWorkspace = !isPending && homePath !== "/app";
@@ -78,7 +95,7 @@ function Dashboard() {
 
   return (
     <AppShell
-      title={`Good ${new Date().getHours() < 12 ? "morning" : new Date().getHours() < 17 ? "afternoon" : "evening"}, ${name}`}
+      title={`${greeting}, ${name}`}
       subtitle="Welcome to your workspace"
     >
       <div className="relative mb-6 h-44 overflow-hidden rounded-2xl border sm:h-52">
