@@ -30,9 +30,20 @@ const { noteChapters } = await import("../../src/data/note-chapters.ts");
 const SITEMAP = readFileSync(join(root, "public/sitemap.xml"), "utf8");
 
 test("the lesson series is still exactly the 21 chapters of ten", () => {
+<<<<<<< HEAD
   assert.equal(lessonSeries.length, 210, "note-chapters.ts maps orders 1-210");
   const covered = noteChapters.reduce((sum, c) => sum + (c.to - c.from + 1), 0);
   assert.equal(covered, 210, "chapters must cover orders 1-210 between them");
+=======
+  assert.equal(lessonSeries.length, 210, "the series is 210 lessons");
+  // The learning path is what must be 21 x 10. The chapter list also carries the
+  // companion-article section (1000+), which is not part of the path, so counting
+  // every chapter range would assert something that was never true.
+  const path = noteChapters.filter((c) => c.from <= 210);
+  assert.equal(path.length, 21, "21 chapters belong to the learning path");
+  const covered = path.reduce((sum, c) => sum + (c.to - c.from + 1), 0);
+  assert.equal(covered, 210, "the learning path must cover orders 1-210 exactly");
+>>>>>>> cfa5a7a (Publish the remaining articles, fix the orphan bug, add security headers)
 });
 
 test("companion articles stay out of the chapter ranges", () => {
@@ -93,3 +104,79 @@ test("the tools the articles send readers to actually exist", () => {
     assert.ok(SITEMAP.includes(`https://www.cea.ng${path}<`), `${path} is not in the sitemap`);
   }
 });
+<<<<<<< HEAD
+=======
+
+/* ------------------------------------------------------------------ *
+ * Discoverability — the bug this suite did not catch
+ * ------------------------------------------------------------------ */
+
+test("every published post belongs to a browsable section", async () => {
+  // These articles shipped, prerendered, entered the sitemap — and were absent
+  // from /blog entirely. browseNotes indexed them, chapter filters dropped them,
+  // and the listing showed 12 of 220 posts with no error anywhere. A post that
+  // exists but cannot be found is worse than an unpublished draft, because it
+  // looks finished.
+  const { blogPosts } = await import("../../src/data/blog.ts");
+  const { chapterForOrder } = await import("../../src/data/note-chapters.ts");
+
+  const orphans = blogPosts.filter((post) => !chapterForOrder(post.order));
+  assert.deepEqual(
+    orphans.map((p) => `${p.slug} (order ${p.order})`),
+    [],
+    "posts with no section are invisible in /blog — add them to a chapter range",
+  );
+});
+
+test("the browse surface can reach every published post", () => {
+  // This reproduces what browseNotes does to decide membership, rather than
+  // importing it: src modules resolve the "@/" alias, which plain Node cannot.
+  // The failure this guards is a post that exists, prerenders, sits in the
+  // sitemap, and is filtered out of the only page that lists it.
+  const reachable = blogPosts.filter(
+    (post) =>
+      post.order <= 210 || noteChapters.some((c) => post.order >= c.from && post.order <= c.to),
+  );
+  const unreachable = blogPosts.filter((post) => !reachable.includes(post)).map((p) => p.slug);
+  assert.deepEqual(unreachable, [], "posts unreachable from /blog");
+  assert.equal(reachable.length, blogPosts.length);
+});
+
+test("companion articles carry the words a reader would search for", () => {
+  // browseNotes matches on the words in the post, so a title and body that name
+  // the subject is what makes it findable. This checks the content, which is the
+  // part a future edit can break, rather than the search plumbing.
+  const cases = [
+    ["cvss", "understanding-cvss-scores"],
+    ["micro-segmentation", "micro-segmentation-explained"],
+    ["soc", "first-90-days-in-a-soc"],
+  ];
+  for (const [term, slug] of cases) {
+    const post = blogPosts.find((p) => p.slug === slug);
+    assert.ok(post, `${slug} is missing`);
+    const haystack = [
+      post.title,
+      post.excerpt,
+      post.seoDescription ?? "",
+      ...post.body.map((b) => ("text" in b ? b.text : "")),
+    ]
+      .join(" ")
+      .toLowerCase();
+    assert.ok(haystack.includes(term), `${slug} never mentions "${term}"`);
+  }
+});
+
+test("the companion section does not disturb the 210-lesson path", async () => {
+  const { lessonSeries } = await import("../../src/data/blog.ts");
+  const { noteChapters, chapterForOrder } = await import("../../src/data/note-chapters.ts");
+
+  assert.equal(lessonSeries.length, 210, "the series must stay at 210");
+  for (const post of lessonSeries) {
+    const chapter = chapterForOrder(post.order);
+    assert.ok(chapter, `${post.slug} lost its chapter`);
+    assert.ok(chapter.from <= 210, `${post.slug} was pulled into the companion range`);
+  }
+  const lessonOrders = noteChapters.filter((c) => c.from <= 210).map((c) => c.to);
+  assert.equal(Math.max(...lessonOrders), 210, "the learning path must end at order 210");
+});
+>>>>>>> cfa5a7a (Publish the remaining articles, fix the orphan bug, add security headers)

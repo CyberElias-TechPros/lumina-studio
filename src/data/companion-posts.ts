@@ -670,4 +670,405 @@ export const companionPosts: BlogPost[] = [
       ),
     ],
   },
+<<<<<<< HEAD
+=======
+
+  /* ============================================================
+   * 8. The SOC, career-shaped — existing "what is the SOC" page owns the
+   *    definition; this owns the first ninety days.
+   * ================================================================ */
+  {
+    slug: "first-90-days-in-a-soc",
+    title: "Your first 90 days in a SOC, week by week",
+    seoTitle: "First 90 Days as a SOC Analyst: What to Expect",
+    seoDescription:
+      "A realistic week-by-week account of the first three months as a SOC analyst: what you will be taught, what you will get wrong, and how to become useful faster.",
+    category: "cybersecurity",
+    articleType: "career-guide",
+    difficulty: "Beginner",
+    quickAnswer:
+      "Expect ninety days of being supervised. Weeks one to four are usually shadowing and learning the queue; five to eight you start closing simple alerts with review; nine to twelve you are trusted with a shift and a handover. Nobody expects you to find an attacker in month one. They expect you to ask good questions, document what you did, and not hide a mistake.",
+    excerpt:
+      "What the first three months of a SOC job actually look like — and the small habits that decide whether you become useful or become a problem.",
+    learningObjectives: [
+      "Know what a SOC will and will not expect of you in the first month.",
+      "Recognise the three habits that separate analysts who progress from those who do not.",
+      "Prepare for the shift pattern and the handover before you start.",
+      "Handle your first serious mistake without making it worse.",
+    ],
+    series: SERIES,
+    order: 1008,
+    author: AUTHOR,
+    cover: "/images/blog/analyst-monitor-grid.jpg",
+    coverAlt: "An analyst's desk with several screens showing monitoring views.",
+    body: [
+      p(
+        "Posts about SOC work tend to describe the room — the screens, the wall, the shift. What a new analyst actually needs is different: what is going to happen to them in the first three months, and what will be judged.",
+      ),
+      p(
+        "This is written from how SOC onboarding works in practice, not from one employer's handbook. Teams differ, but the shape below is common enough to plan against.",
+      ),
+      h2("What you will not be doing"),
+      p(
+        "Nobody hands a new analyst the investigation in week one, whatever the job advert implied. The work in the first month is narrow on purpose:",
+      ),
+      ul([
+        "You will not be the person who decides whether an incident is real. Someone senior signs that off.",
+        "You will not be expected to remember what every alert means. You will be expected to look it up rather than guess.",
+        "You will not be judged on how fast you close tickets. You will be judged on whether they stay closed.",
+      ]),
+      h2("Weeks 1–4: the queue and the vocabulary"),
+      p(
+        "The first month is mostly learning what normal looks like on the systems you are guarding. Most teams will have you shadow, then work the queue with review.",
+      ),
+      ul([
+        "**Learn three alerts properly rather than fifty vaguely.** Ask which three generate the most volume and learn what a false positive looks like for each.",
+        "**Read old tickets.** The closed ones are a free textbook: what the previous analyst saw, how they reasoned, what they escalated. Reading twenty good tickets teaches more than a certification module.",
+        "**Write down the vocabulary you do not know.** Not to memorise it, but because asking a specific question in week three is normal and asking a vague one in month six is a problem.",
+      ]),
+      fig(
+        "/images/blog/analyst-notes-desk.jpg",
+        "A notepad beside a laptop, with questions written down.",
+        "Keep the list. The questions you cannot yet ask are a map of what you have not learned.",
+      ),
+      h2("Weeks 5–8: your first closed tickets"),
+      p(
+        "Somewhere around week five you will be trusted to close low-severity alerts, with someone reviewing. This is where the job actually starts, and where two habits matter more than skill.",
+      ),
+      ul([
+        "**Write the ticket for the next person, not for yourself.** If a ticket says 'checked, benign' and nothing else, the next analyst has to redo your work. Say what you checked, what you saw, and why you concluded it was benign.",
+        "**Escalate early rather than late.** A junior who escalates something that turns out to be nothing is doing the job. A junior who sits on something for four hours because they did not want to look unsure is creating risk.",
+        "**Never quietly close something you did not understand.** That is the one thing that gets an analyst removed from the queue.",
+      ]),
+      fig(
+        "/images/blog/analyst-spreadsheet.jpg",
+        "A screen showing a spreadsheet of records with several rows highlighted.",
+        "The queue is a spreadsheet with consequences. The discipline is reading rows carefully when nothing exciting is happening.",
+      ),
+      h2("Weeks 9–12: a shift and a handover"),
+      p(
+        "By the end of three months most new analysts are trusted with a shift and the handover that goes with it. The handover is the part nobody prepares people for.",
+      ),
+      p(
+        "A handover is a short written summary of what happened and what is still open. It is read by someone who was asleep. Bad ones say 'quiet night'. Good ones say exactly what was investigated, what is unresolved, and what the next person should look at first. The skill is the same one as the ticket: write for the person who does not have your context.",
+      ),
+      h2("The shift pattern, said plainly"),
+      p(
+        "SOC work is coverage work, which means nights, weekends and public holidays rotate. That is not a flaw in the job; it is the job. Before accepting a role, ask four specific things:",
+      ),
+      ul([
+        "What is the rotation, exactly, including how often it changes?",
+        "How much notice do you get for a change, and who covers a swap?",
+        "Is there a rest day after a night block, and is it respected?",
+        "What is the escalation path at 3am when you are the only one there?",
+      ]),
+      p(
+        "Ask them before you accept, not after. Teams with good answers to those four questions are usually teams that keep their people; teams that are vague about them usually are not.",
+      ),
+      h2("Your first serious mistake"),
+      p(
+        "You will eventually miss something, close something too early, or misread an alert. It will feel worse than it is. What matters is the next hour:",
+      ),
+      ul([
+        "**Say it immediately**, in the channel where the decision-makers are. Speed of disclosure is the thing that is measured.",
+        "**Say what you know and what you do not.** 'I closed X at 14:20 believing Y; I now believe Z; I have not yet checked W.' That is a good message.",
+        "**Write it up afterwards.** A short, blameless note about what the queue looked like makes the mistake a process finding rather than a person's failing — and it is how good teams get better.",
+      ]),
+      p(
+        "If this went wrong: the usual first-month failure is silence — not asking, not escalating, closing to keep the queue clean. If you recognise that pattern in yourself, tell whoever reviews your tickets. That conversation, held early, is what turns a struggling analyst into a competent one, because almost every SOC would rather coach than lose you to avoidable silence.",
+      ),
+    ],
+  },
+
+  /* ================================================================
+   * 9. CVSS — the highest-volume technical sub-question under the
+   *    site's best-ranking term (vulnerability assessment, position 2.04)
+   * ================================================================ */
+  {
+    slug: "understanding-cvss-scores",
+    title: "Severity scores, without the maths",
+    seoTitle: "CVSS Scores Explained: How to Read 7.5 (High)",
+    seoDescription:
+      "What a CVSS score actually measures, why a 7.5 can matter less than a 5.3, and how to use the score honestly when you write a finding.",
+    category: "cybersecurity",
+    articleType: "explainer",
+    difficulty: "Intermediate",
+    quickAnswer:
+      "A CVSS score rates the technical severity of a weakness in the abstract — how easy it is to exploit and how much damage it could do. It does not know what your system holds or who can reach it. So a 9.8 on a server nobody can reach is often less urgent than a 5.3 on your public payment page. Use the score to start the conversation, never to finish it.",
+    excerpt:
+      "A CVSS score is a measurement of the vulnerability, not of your risk. Why the difference matters, and how to write a finding that reflects it.",
+    learningObjectives: [
+      "Read a CVSS score and explain what the number does and does not include.",
+      "Name the metrics that most often change a score in practice.",
+      "Adjust a prioritisation honestly without misreporting the score.",
+      "Write the severity sentence that makes a finding usable.",
+    ],
+    series: SERIES,
+    order: 1009,
+    author: AUTHOR,
+    cover: "/images/blog/scan-report-paper.jpg",
+    coverAlt: "A printed report with severity labels beside listed items.",
+    body: [
+      p(
+        "CVSS is the most abused number in security work. It is useful, and it is routinely treated as though it were a verdict rather than a description. Getting this right is a real skill — it shows up in interviews and it decides which systems you fix first.",
+      ),
+      h2("What the score measures"),
+      p(
+        "CVSS rates the characteristics of a weakness: how it can be reached, what access you need to attempt it, how much interaction a victim has to provide, and what the impact would be on confidentiality, integrity and availability. The output is a number from 0 to 10 with a label band.",
+      ),
+      table(
+        ["Band", "Range", "What it means in practice"],
+        [
+          ["None", "0.0", "Not a weakness, or no meaningful impact."],
+          ["Low", "0.1–3.9", "Limited impact, or needs significant conditions."],
+          ["Medium", "4.0–6.9", "Real but constrained; often needs a foothold or local access."],
+          ["High", "7.0–8.9", "Serious; frequently remotely reachable, or severe impact."],
+          [
+            "Critical",
+            "9.0–10.0",
+            "Remotely reachable with little or no prerequisite and severe impact.",
+          ],
+        ],
+        "The bands are conventional, not official thresholds in every organisation. What matters is that everyone reading the report uses the same table.",
+      ),
+      h2("What the score cannot know"),
+      p(
+        "This is the part that separates a good analyst from someone who reads a scanner output aloud. The score has no idea:",
+      ),
+      ul([
+        "**Whether the system is reachable.** A critical weakness in a lab machine behind three firewalls is not your most urgent problem.",
+        "**What the system holds.** A weakness on a machine that processes payroll is a different conversation from the same weakness on a marketing site.",
+        "**Whether the weakness is real.** Scanning tools over-report. Some findings are false positives; some are duplicates of the same underlying missing patch.",
+        "**What compensating controls exist.** If the vulnerable service is behind a gateway that strips the attack path, the practical risk is lower than the score implies.",
+      ]),
+      fig(
+        "/images/blog/fence-check-flashlight.jpg",
+        "Someone checking a fence with a torch at dusk.",
+        "The score says the gap is wide. Only you know whether it is your fence, or one in a field nobody visits.",
+      ),
+      h2("The sentence you should write"),
+      p(
+        "A finding that changes behaviour has three parts: what the problem is, why it matters here, and what to do first. Something like:",
+      ),
+      p(
+        "\u201cThe payment server runs an outdated library with a known remote flaw (CVSS 9.8). It is internet-facing and holds card data, so this is our first fix. Patch to the current release, then we will verify.\u201d Compare that with \u201cCVSS 9.8 — critical,\u201d which is technically accurate and practically useless.",
+      ),
+      p(
+        "Notice what the good version does: it uses the score as evidence, adds context the score could not have, and ends with a specific action. That is a finding, not a data point.",
+      ),
+      h2("When you adjust priority, say that you adjusted it"),
+      p(
+        "You will sometimes prioritise a medium above a critical. That is often correct. Do not hide it by altering the score — keep the score as assessed, and state your reasoning separately:",
+      ),
+      ul([
+        "Keep the original CVSS value in the record, so the assessment stays auditable.",
+        "Add your own priority field, with a one-line reason: reachable, sensitive, exploitable, or not.",
+        "Where a risk is accepted rather than fixed, note who accepted it and when it will be reviewed.",
+      ]),
+      p(
+        "The rule is simple: the score is a measurement, the priority is a decision. Never let one impersonate the other.",
+      ),
+      p(
+        "If this went wrong: most teams that 'use CVSS' are really using it as a sort order, fixing the top of the list and never writing down why. If that is happening where you are, add one column — priority with reason — to the next report. It is a small change that turns a scan output into an actual decision document, and it is the difference between assessment as a ritual and assessment as work.",
+      ),
+    ],
+  },
+
+  /* ================================================================
+   * 10. digital vs electronic signature — legal distinction, high
+   *     commercial intent, nothing on the site covers it.
+   * ================================================================ */
+  {
+    slug: "digital-vs-electronic-signature",
+    title: "Digital or electronic? One is a legal category",
+    seoTitle: "Digital Signature vs Electronic Signature: The Difference",
+    seoDescription:
+      "An electronic signature is a legal concept. A digital signature is a cryptographic technology. Why the distinction decides what evidence you have if a document is challenged.",
+    category: "cybersecurity",
+    articleType: "explainer",
+    difficulty: "Beginner",
+    quickAnswer:
+      "An electronic signature is any electronic mark showing intent to agree — a typed name, a drawn scribble, a checkbox. A digital signature is a specific cryptographic technique that proves the document has not changed and that the signer held a particular key. All digital signatures are electronic signatures. Most electronic signatures are not digital signatures, and when a document is disputed that difference is what you have to show.",
+    excerpt:
+      "The difference is not pedantry: it decides what you can prove. Why the two terms are confused, and what evidence each one actually leaves behind.",
+    learningObjectives: [
+      "Define each term precisely and state the relationship between them.",
+      "Explain what evidence each type leaves behind when a signature is disputed.",
+      "Choose which to use for a given document.",
+      "Spot the claim that a simple e-signature is 'secure' and know why it is misleading.",
+    ],
+    series: SERIES,
+    order: 1010,
+    author: AUTHOR,
+    cover: "/images/blog/signing-document-seal.jpg",
+    coverAlt: "A document being signed, with a seal beside it.",
+    body: [
+      p(
+        "The two terms are used as synonyms constantly, including by companies selling the software. The confusion is expensive, because the two things leave completely different evidence behind.",
+      ),
+      h2("The two definitions, precisely"),
+      table(
+        ["", "Electronic signature", "Digital signature"],
+        [
+          [
+            "What it is",
+            "A legal category: any electronic indication of intent to agree",
+            "A technical mechanism: a cryptographic value bound to the document's content",
+          ],
+          [
+            "How it is made",
+            "Typed name, drawn mark, click, verification code",
+            "A hash of the document, encrypted with a private key",
+          ],
+          [
+            "What it proves",
+            "That somebody indicated agreement",
+            "That this exact document has not changed since signing, and that a specific key was used",
+          ],
+          ["Who holds the evidence", "The platform", "The signer, and anyone with the public key"],
+          [
+            "Can the document change afterwards?",
+            "Possibly — depends entirely on the platform",
+            "No, without the signature failing to verify",
+          ],
+        ],
+      ),
+      p(
+        "The relationship is a set: every digital signature is an electronic signature, because it is also an electronic indication of intent. The reverse is not true.",
+      ),
+      h2("Why the difference matters when something goes wrong"),
+      p(
+        "If a contract is disputed, the question is not 'did they click agree'. It is 'can you show that the document they agreed to is the document you hold'.",
+      ),
+      ul([
+        "An **electronic signature** gives you a platform record: a timestamp, an email address, an IP address. That is often sufficient and frequently accepted. But it is evidence held by a third party, and it says nothing about the document's content after the fact.",
+        "A **digital signature** gives you mathematics: the document's hash. If one character changes, verification fails. That is evidence anyone can check without trusting the platform.",
+      ]),
+      fig(
+        "/images/blog/signature-block.jpg",
+        "A signature block at the foot of a printed document.",
+        "Both are marks of assent. Only one of them breaks when the page underneath is altered.",
+      ),
+      h2("The claim to be suspicious of"),
+      p(
+        "Any product that calls its e-signature 'cryptographically secure' without explaining what is signed is worth a second question. There is a perfectly legitimate design where the platform applies a digital signature to the finished document — in that case the assurance is real. There is also a common design where 'secure' means 'we use TLS and log the IP'. That is not wrong, but it is a different claim, and it should not be used to imply tamper evidence you do not have.",
+      ),
+      p(
+        "Ask one question of any vendor: **what exactly is signed, and what fails if the document is altered afterwards?** A vendor who can answer clearly sells you something you can rely on. One who cannot has not understood their own architecture.",
+      ),
+      h2("Which should you use?"),
+      p(
+        "Use an electronic signature when the relationship is routine and the record of assent is enough: accepting terms, approving an internal form, acknowledging a policy. It is faster and usually cheaper.",
+      ),
+      p(
+        "Use a digital signature when the content itself is the thing in dispute: contracts with significant value, documents that will outlive the platform that carried them, anything where you would need to prove the document is unchanged years later. The cost is real — keys, certificates, and someone who understands them — which is exactly why the decision deserves to be deliberate.",
+      ),
+      p(
+        "There is a middle option worth knowing about, because it is where most organisations actually end up. A platform can apply a digital signature on your behalf to the finished document, which gives you tamper evidence without you managing keys yourself. The assurance is real, but it is rented rather than owned: your ability to prove anything depends on that provider still existing and still being able to verify. For a five-year contract that is usually fine. For a document with a thirty-year life, it is worth asking what happens to the proof when the subscription does not.",
+      ),
+      p(
+        "If this went wrong: the common failure is discovering the distinction during a dispute, when nothing can be changed. Before that happens, pick one high-value document type and ask your provider what evidence you would actually be able to produce. Writing that answer down once is enough; it tells you whether the rest of your signing is adequate.",
+      ),
+    ],
+  },
+
+  /* ================================================================
+   * 11. Micro-segmentation — the top uncovered Zero Trust branch
+   * ================================================================ */
+  {
+    slug: "micro-segmentation-explained",
+    title: "Micro-segmentation, explained with a building",
+    seoTitle: "Micro-Segmentation Explained Simply (With a Building Analogy)",
+    seoDescription:
+      "What micro-segmentation is, why 'trust the network' stopped working, and the first three rules most organisations write. Kept in plain language, with the analogy stated as one.",
+    category: "cybersecurity",
+    articleType: "explainer",
+    difficulty: "Intermediate",
+    quickAnswer:
+      "Micro-segmentation means that the network no longer decides who can talk to what. Instead, each workload has a policy of what it is allowed to reach, and everything else is denied by default. It exists because once an attacker has a foothold, an open internal network lets them move sideways to everything. Segmentation makes that sideways step fail.",
+    excerpt:
+      "The idea underneath Zero Trust, in plain language. Why internal networks became dangerous, what micro-segmentation changes, and the first rules to write.",
+    learningObjectives: [
+      "Explain lateral movement and why perimeter security does not stop it.",
+      "State what micro-segmentation changes in concrete terms.",
+      "Describe the first three rules a small organisation should write.",
+      "Name the two ways micro-segmentation projects fail.",
+    ],
+    series: SERIES,
+    order: 1011,
+    author: AUTHOR,
+    cover: "/images/blog/zero-trust-doors.jpg",
+    coverAlt: "A row of doors along a lit corridor.",
+    body: [
+      p(
+        "Micro-segmentation is the concept most people learning about Zero Trust hear first and understand last, because it is described with diagrams of boxes. The idea is much simpler than the diagrams suggest.",
+      ),
+      h2("The analogy, stated as an analogy"),
+      p(
+        "Older security was built like a fortress: a thick wall around the outside, and once you were past the gate you could walk anywhere inside the building. That worked while everything valuable was inside and nobody got past the gate.",
+      ),
+      p(
+        "The problem is that people now get past the gate routinely — through a phishing email, a stolen password, a contractor's laptop. And the moment they do, the absence of internal doors means they walk straight to the payroll office.",
+      ),
+      p(
+        "Micro-segmentation is the internal doors. Every room is locked by default and has a list of who is allowed in. It is an analogy, and the real thing is less tidy than a building — but the purpose is exactly that: a foothold should not become a corridor.",
+      ),
+      fig(
+        "/images/blog/zero-trust-doors.jpg",
+        "A row of closed doors off a long corridor.",
+        "The point of segmentation is not the wall on the outside. It is that opening one door does not open all of them.",
+      ),
+      h2("What actually changes"),
+      table(
+        ["", "Flat internal network", "Micro-segmented"],
+        [
+          [
+            "Default behaviour",
+            "Anything inside can reach anything else, unless blocked",
+            "Nothing reaches anything, unless allowed",
+          ],
+          [
+            "Who is the boundary",
+            "The firewall at the edge",
+            "The policy attached to each workload",
+          ],
+          [
+            "A compromised laptop can",
+            "Reach file shares, databases, admin systems",
+            "Reach only what its workload is allowed to reach",
+          ],
+          [
+            "Where the rules live",
+            "In one device's configuration",
+            "In a policy that can be reviewed and versioned",
+          ],
+        ],
+      ),
+      h2("The three rules to write first"),
+      p(
+        "Most organisations do not need a platform to start. They need three rules, applied by whatever they already run:",
+      ),
+      ul([
+        "**The database accepts connections only from the application, not from other people's machines.** No analyst workstation should need a direct database connection. If yours do, that is the finding.",
+        "**Administrative interfaces are reachable only from a designated management path.** Jump hosts, a VPN range, or a dedicated control network. Not the general office network.",
+        "**Development and production do not talk to each other.** This one rule prevents a large share of embarrassing incidents, including test code pointed at live data.",
+      ]),
+      p(
+        "Write down the rule, who wrote it, and what it will break. That last part matters more than the rule itself, because the fastest way to kill a segmentation project is for it to break a business process on a Tuesday and have nobody expecting it.",
+      ),
+      h2("How the projects fail"),
+      p("Two failure modes, both common."),
+      ul([
+        "**Rules nobody can explain.** Five hundred copied policy entries with no owner. When something breaks, nobody can safely remove one, so the policy grows and everyone starts allowing broadly to make things work again.",
+        "**Deny everything on day one.** The list of what legitimately talks to what is always larger than expected. Most successful programmes run in monitor mode first — record what happens, review it, then enforce — and they accept that this takes months.",
+      ]),
+      p(
+        "One more practical note on ordering: segment the systems that hold the most valuable data first, not the ones that are easiest to move. Teams often start with the test environment because nothing breaks — and then discover a year later that nothing valuable was protected. Money, personal data, administrative access and source code are the four that matter, and they are worth the disruption.",
+      ),
+      p(
+        "If this went wrong: a segmentation project has stalled if the rule set is growing and the incidents are not falling. The fix is not a new tool; it is to stop adding rules and instead find the three flows that account for most of the risk, write those rules precisely, and remove whatever was written to work around them.",
+      ),
+    ],
+  },
+>>>>>>> cfa5a7a (Publish the remaining articles, fix the orphan bug, add security headers)
 ];

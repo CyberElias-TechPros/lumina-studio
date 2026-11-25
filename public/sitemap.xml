@@ -814,6 +814,21 @@
     <loc>https://www.cea.ng/blog/agile-vs-scrum-which-is-worth-learning</loc>
   </url>
   <url>
+<<<<<<< HEAD
+=======
+    <loc>https://www.cea.ng/blog/first-90-days-in-a-soc</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/blog/understanding-cvss-scores</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/blog/digital-vs-electronic-signature</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/blog/micro-segmentation-explained</loc>
+  </url>
+  <url>
+>>>>>>> cfa5a7a (Publish the remaining articles, fix the orphan bug, add security headers)
     <loc>https://www.cea.ng/classes/microsoft-office</loc>
   </url>
   <url>
