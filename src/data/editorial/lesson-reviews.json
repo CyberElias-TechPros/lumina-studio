@@ -9,6 +9,32 @@
     "reviewedAt: add only after a person has actually read and checked the lesson."
   ],
   "seriesPublishedAt": null,
-  "lessons": {},
+  "lessons": {
+    "agile-without-the-ceremony": {
+      "publishedAt": "2026-11-25",
+      "precision": "exact",
+      "note": "Companion article published with the November 2026 content release. Written in response to the Search Console export; not reviewed against a live system yet."
+    },
+    "signed-or-just-a-picture": {
+      "publishedAt": "2026-11-25",
+      "precision": "exact",
+      "note": "Companion article published with the November 2026 content release. Written in response to the Search Console export; not reviewed against a live system yet."
+    },
+    "the-soc-room-and-what-happens-in-it": {
+      "publishedAt": "2026-11-25",
+      "precision": "exact",
+      "note": "Companion article published with the November 2026 content release. Written in response to the Search Console export; not reviewed against a live system yet."
+    },
+    "what-a-vulnerability-assessment-is": {
+      "publishedAt": "2026-11-25",
+      "precision": "exact",
+      "note": "Companion article published with the November 2026 content release. Written in response to the Search Console export; not reviewed against a live system yet."
+    },
+    "zero-trust-in-plain-words": {
+      "publishedAt": "2026-11-25",
+      "precision": "exact",
+      "note": "Companion article published with the November 2026 content release. Written in response to the Search Console export; not reviewed against a live system yet."
+    }
+  },
   "lessonRecordsNote": "See _readme."
 }

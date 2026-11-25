@@ -35,6 +35,34 @@ export interface BuiltInLabEntry {
 
 export const CEA_BUILT_IN_LABS: BuiltInLabEntry[] = [
   {
+    id: "security-assessment",
+    to: "/tools/security-assessment",
+    track: "assessment-ai",
+    badge: "Security Assessment",
+    name: "Vulnerability Checklist & Zero Trust Guide",
+    headline: "Find out what is weak, and what to fix first.",
+    blurb:
+      "A ten-point vulnerability assessment checklist scored in CVSS v3.1 bands, with every finding mapped to the Zero Trust principle that fixes it. Produces a copyable report. Runs entirely in the browser.",
+    meta: "10 checks · CVSS bands · Zero Trust · Copyable report",
+    linkedCourseSlug: "cybersecurity",
+    linkedCourseTitle: "Cybersecurity",
+    isNew: true,
+  },
+  {
+    id: "digital-signature",
+    to: "/tools/digital-signature",
+    track: "assessment-ai",
+    badge: "Digital Signatures",
+    name: "Signature Explainer & Fingerprint Reader",
+    headline: "Is it signed, or is it just a picture?",
+    blurb:
+      "Separates the three things people call a digital signature — a pasted image, a scan, and cryptographic proof — then reads a certificate fingerprint to tell you which algorithm you are holding and what it does not prove.",
+    meta: "Image vs scan vs crypto · SHA-256 vs SHA-1 · Fingerprint reader",
+    linkedCourseSlug: "cybersecurity",
+    linkedCourseTitle: "Cybersecurity",
+    isNew: true,
+  },
+  {
     id: "code-studio",
     to: "/tools/code-studio",
     track: "code-web",

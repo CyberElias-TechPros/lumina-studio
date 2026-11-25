@@ -1,3 +1,6 @@
+// Load `src/data/*.ts` the way Next resolves it (see scripts/lib/ts-resolve.mjs).
+import "../lib/ts-resolve.mjs";
+
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -5,7 +8,7 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "../..");
-const { blogPosts } = await import("../../src/data/blog.ts");
+const { blogPosts, lessonSeries } = await import("../../src/data/blog.ts");
 const { CEA_ARTICLE_TYPES, CEA_CATEGORIES, resolveLessonStandard, scoreLessonQuality } =
   await import("../../src/data/editorial/publication-standard.ts");
 
@@ -19,7 +22,13 @@ test("CEA-LPS defines all 12 categories and 12 article types", () => {
 });
 
 test("every published blog post resolves a valid category, type, difficulty, and safe public status", () => {
-  assert.equal(blogPosts.length, 210);
+  // The series is exactly 210 lessons in reading order; note-chapters.ts depends
+  // on that. Everything else published joins it in `blogPosts`.
+  assert.equal(lessonSeries.length, 210);
+  assert.ok(
+    blogPosts.length >= lessonSeries.length,
+    "blogPosts must contain at least the lesson series",
+  );
   for (const post of blogPosts) {
     const rec = generated.lessons[post.slug];
     const isReviewed = Boolean(rec?.reviewedAt);

@@ -55,6 +55,8 @@ const staticRoutes = [
   "/tools/data-size-converter",
   "/tools/naira-keyboard",
   "/tools/cloud-explainer",
+  "/tools/security-assessment",
+  "/tools/digital-signature",
   "/visit",
   "/visit/info",
   "/visit/brochure",
@@ -85,7 +87,17 @@ function extractSlugs(file) {
   return [...src.matchAll(/slug:\s*"([a-z0-9-]+)"/g)].map((m) => m[1]);
 }
 
-const blogSlugs = [...new Set(extractSlugs("src/data/blog.ts"))];
+/**
+ * Article slugs, from every file that publishes one.
+ *
+ * This used to read `blog.ts` alone. When the companion articles moved into
+ * `companion-posts.ts`, they silently vanished from the sitemap — 5 published
+ * pages that nothing advertised. Any new file holding `slug: "..."` entries has to
+ * be added here, and a test in scripts/test/ content coverage fails if the live
+ * route count and the sitemap count drift apart.
+ */
+const ARTICLE_SOURCES = ["src/data/blog.ts", "src/data/companion-posts.ts"];
+const blogSlugs = [...new Set(ARTICLE_SOURCES.flatMap((file) => extractSlugs(file)))];
 
 function extractPublishedLectureKeys() {
   const academyRoot = join(root, "src/data/academy");

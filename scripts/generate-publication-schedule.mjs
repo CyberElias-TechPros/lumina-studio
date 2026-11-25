@@ -31,6 +31,8 @@ import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import "./lib/ts-resolve.mjs";
+
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = join(root, "src/data/editorial/publication-schedule.json");
 const force = process.argv.includes("--force");

@@ -18,6 +18,7 @@ import {
   ShieldCheck,
   Sparkles,
   Table,
+  FileSignature,
 } from "lucide-react";
 import { CTASection, PageShell } from "@/components/marketing/shell";
 import { EzoicUnderTitleAd } from "@/components/ezoic/ezoic-ads";
@@ -56,6 +57,8 @@ const ICON_BY_PATH: Record<string, typeof Code2> = {
   "/tools/data-size-converter": HardDrive,
   "/tools/naira-keyboard": Banknote,
   "/tools/cloud-explainer": Cloud,
+  "/tools/security-assessment": ShieldCheck,
+  "/tools/digital-signature": FileSignature,
 };
 
 const QUICK_JUMP = [
@@ -72,6 +75,8 @@ const QUICK_JUMP = [
   { label: "KB vs MB vs GB", to: "/tools/data-size-converter" },
   { label: "Naira Sign ₦", to: "/tools/naira-keyboard" },
   { label: "What Is the Cloud?", to: "/tools/cloud-explainer" },
+  { label: "Security Assessment", to: "/tools/security-assessment" },
+  { label: "Digital Signatures", to: "/tools/digital-signature" },
 ] as const;
 
 const TRACK_LABELS: { id: BuiltInLabEntry["track"]; title: string; subtitle: string }[] = [

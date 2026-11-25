@@ -27,6 +27,8 @@
 
 import { writeFileSync } from "node:fs";
 
+import "./lib/ts-resolve.mjs";
+
 // Native TypeScript type-stripping is only unflagged from Node 22.18 / 23.6.
 // On Node 20 the import below throws ERR_UNKNOWN_FILE_EXTENSION, which reads like a
 // bug in this script rather than a runtime that is too old. Say which it is.

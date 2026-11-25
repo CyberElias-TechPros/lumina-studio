@@ -139,6 +139,12 @@
     <loc>https://www.cea.ng/tools/cloud-explainer</loc>
   </url>
   <url>
+    <loc>https://www.cea.ng/tools/security-assessment</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/tools/digital-signature</loc>
+  </url>
+  <url>
     <loc>https://www.cea.ng/visit</loc>
   </url>
   <url>
@@ -788,6 +794,21 @@
   </url>
   <url>
     <loc>https://www.cea.ng/blog/the-road-ahead</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/blog/zero-trust-in-plain-words</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/blog/what-a-vulnerability-assessment-is</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/blog/the-soc-room-and-what-happens-in-it</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/blog/signed-or-just-a-picture</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/blog/agile-without-the-ceremony</loc>
   </url>
   <url>
     <loc>https://www.cea.ng/classes/microsoft-office</loc>

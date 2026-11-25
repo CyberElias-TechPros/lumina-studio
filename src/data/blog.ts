@@ -4,6 +4,8 @@ import type {
   CeaDifficulty,
 } from "./editorial/publication-standard";
 
+import { companionPosts } from "./companion-posts";
+
 export type BlogBlock =
   | { type: "p"; text: string }
   | { type: "h2"; text: string }
@@ -70,7 +72,7 @@ export const NOTES_AUTHOR = {
   photo: "/images/team/ellis-dennis-graham.jpg",
 };
 
-export const blogPosts: BlogPost[] = [
+const NOTES_SERIES: BlogPost[] = [
   {
     slug: "sitting-down-at-a-computer",
     title: "Sitting down at a computer for the first time",
@@ -22269,3 +22271,19 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 ];
+
+/**
+ * The 210-lesson learning series in reading order.
+ *
+ * `note-chapters.ts` maps the 21 chapters onto `order` 1–210, so nothing outside
+ * that range may be added to this array. New writing goes in `companion-posts.ts`.
+ */
+export const lessonSeries: BlogPost[] = NOTES_SERIES;
+
+/**
+ * Everything published: the series plus the companion articles.
+ *
+ * Consumers that want the learning path specifically should use `lessonSeries`,
+ * because the companions carry orders above 1000 and will sort after chapter 21.
+ */
+export const blogPosts: BlogPost[] = [...NOTES_SERIES, ...companionPosts];
