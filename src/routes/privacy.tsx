@@ -20,7 +20,7 @@ export const Route = createFileRoute("/privacy")({
 });
 
 function PrivacyPage() {
-  const lastUpdated = "12 November 2026";
+  const lastUpdated = "24 November 2026";
 
   return (
     <PageShell>
@@ -106,7 +106,7 @@ function PrivacyPage() {
                 automated form abuse
               </li>
               <li>Optional analytics cookies, only if you press Accept on the cookie banner</li>
-              <li>Advertising cookies from Google, described in §6</li>
+              <li>Advertising and consent-management cookies, described in §6</li>
             </ul>
           </Reveal>
 
@@ -122,7 +122,7 @@ function PrivacyPage() {
               </li>
               <li>Issue and later check a certificate for work produced here</li>
               <li>Keep the site working and secure</li>
-              <li>Show advertisements (Google AdSense), as described below</li>
+              <li>Show advertisements and measure page performance, as described below</li>
             </ul>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               We do not sell your information. We do not run a public talent pool or share your
@@ -139,7 +139,10 @@ function PrivacyPage() {
               <li>
                 A transactional email provider to send enquiry receipts, replies and review notices
               </li>
-              <li>Google, if ads or (with your consent) Analytics run on a page</li>
+              <li>
+                Google, Ezoic and advertising partners, when advertising, consent management or
+                analytics run on a page
+              </li>
               <li>A parent or sponsor, if you named them on an application</li>
               <li>Authorities, if the law requires it</li>
             </ul>
@@ -227,19 +230,21 @@ function PrivacyPage() {
           <Reveal delay={0.25}>
             <UtilitySectionHeading index="06">Advertising</UtilitySectionHeading>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              This site can show advertising from two networks: <strong>Google AdSense</strong>{" "}
-              (publisher <code>ca-pub-9124992249317290</code>) and <strong>ngadverts</strong> (zone
-              13225), a Nigerian ad network. Google uses cookies, including the DoubleClick cookie,
-              to serve ads based on your visit here and on other sites. Neither network is contacted
-              at all unless you give <strong>advertising</strong> consent in the banner; allowing
-              analytics consent does not enable advertising.
+              This site uses <strong>Ezoic</strong> (including the Gatekeeper Consent management
+              platform and Ezoic Analytics), <strong>Google AdSense</strong> (publisher{" "}
+              <code>ca-pub-1270179436380403</code>) and <strong>ngadverts</strong> (zone 13225), a
+              Nigerian ad network. Where GDPR applies, <strong>Gatekeeper</strong> is the consent
+              platform that records your choices and passes them to each vendor through the IAB
+              Transparency and Consent Framework; Google and Ezoic&rsquo;s demand partners may then
+              use cookies, including the DoubleClick cookie, to serve ads based on your visit here
+              and on other sites. Outside those regions, the site&rsquo;s own banner records the
+              same two choices (advertising and analytics) and no network is contacted unless you
+              allow advertising.{" "}
             </p>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              Adverts appear only on pages whose job is reading: lessons, the lesson index, and the
-              bottom of a course page after the enrolment panel. They do not appear on application,
-              payment, checkout, contact, visit, legal, verification or signed-in pages, and they
-              are never placed inside a form or above the content you came for. If you decline
-              optional cookies, the site works exactly as it does otherwise, without those scripts.
+              Ad placements do not appear inside sign-in screens, private learner or staff
+              workspaces, or active registration and checkout forms. Where optional cookies are
+              declined, essential site features continue to work normally.
             </p>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Opt out of personalised ads at{" "}
@@ -266,11 +271,19 @@ function PrivacyPage() {
               >
                 policies.google.com/technologies/partner-sites
               </a>
+              . Ezoic’s privacy disclosures for this domain are available at{" "}
+              <a
+                href="https://g.ezoic.net/privacy/cea.ng"
+                className="text-primary underline"
+                rel="noopener noreferrer"
+              >
+                g.ezoic.net/privacy/cea.ng
+              </a>
               .
             </p>
+            <span id="ezoic-privacy-policy-embed" />
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              We do not click our own ads or ask visitors to click ads. Ads, when they appear, are
-              labelled as advertising.
+              We do not click our own ads or ask visitors to click ads.
             </p>
           </Reveal>
 

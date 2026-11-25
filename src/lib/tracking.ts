@@ -187,8 +187,18 @@ export function loadGA4(measurementId: string): void {
  * Google AdSense
  * ------------------------------------------------------------------ */
 
-/** Same publisher id as `ads.txt` and the `google-adsense-account` meta tag. */
-export const ADSENSE_CLIENT = "ca-pub-9124992249317290";
+/**
+ * Same publisher id as `ads.txt` and the `google-adsense-account` meta tag.
+ *
+ * Value replaced from `ca-pub-9124992249317290` when main merged the AdSense
+ * configuration in PR #54. Three places must agree or AdSense silently refuses
+ * to serve: this constant, `public/ads.txt`, and the meta tag emitted by
+ * `src/app/layout.tsx`.
+ */
+export const ADSENSE_CLIENT = "ca-pub-1270179436380403";
+
+/** The tag URL, shared by the TCF head block and the consent-gated loader. */
+export const ADSENSE_SCRIPT_SRC = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`;
 
 const ADSENSE_ATTR = "data-cea-adsense";
 
@@ -270,6 +280,24 @@ export const PROCESSORS: Processor[] = [
     loader: "lib/tracking.ts · loadAdSense",
   },
   {
+    name: "Ezoic",
+    purpose:
+      "Ad serving, ad mediation and traffic analytics, plus the Gatekeeper consent platform described below. Loaded from `<head>` so placements can be requested as pages render.",
+    category: "advertising",
+    data: "Ezoic Inc., United States. Cookies and the TCF consent string.",
+    policyUrl: "https://www.ezoic.com/privacy-policy/",
+    loader: "app/layout.tsx (head) · components/ezoic/ezoic-ads.tsx",
+  },
+  {
+    name: "Gatekeeper Consent (Ezoic CMP)",
+    purpose:
+      "The certified IAB TCF consent platform that asks the visitor, records their purposes, and passes the result to every vendor. It must load before consent is known — that is the point of a CMP.",
+    category: "advertising",
+    data: "Gatekeeper / Ezoic. Stores the TCF consent string, not site content.",
+    policyUrl: "https://www.ezoic.com/privacy-policy/",
+    loader: "app/layout.tsx (head) — deliberately NOT consent-gated",
+  },
+  {
     name: "ngadverts",
     purpose: "Serving Nigerian-market display advertising in lesson and course slots.",
     category: "advertising",
@@ -278,3 +306,17 @@ export const PROCESSORS: Processor[] = [
     loader: "components/marketing/ngadverts.tsx",
   },
 ];
+
+/**
+ * Third parties that must load unconditionally, because they are what asks the
+ * consent question in the first place.
+ *
+ * `check-tracking-consent.mjs` exempts these from the "every loader is gated"
+ * rule but requires them to be listed both here and in PROCESSORS. That is the
+ * distinction the previous AdSense loader got wrong: a CMP is allowed to load
+ * before a decision; an ad network is not.
+ */
+export const PRE_CONSENT_VENDORS = [
+  { name: "Gatekeeper Consent (Ezoic CMP)", src: "https://cmp.gatekeeperconsent.com/min.js" },
+  { name: "Gatekeeper Consent (Ezoic CMP)", src: "https://the.gatekeeperconsent.com/cmp.min.js" },
+] as const;

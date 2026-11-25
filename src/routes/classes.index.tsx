@@ -7,6 +7,7 @@ import { ArrowRight, ArrowUpRight, Check, Clock, GraduationCap, Wallet } from "l
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CTASection, PageShell } from "@/components/marketing/shell";
+import { EzoicMidContentAd, EzoicUnderTitleAd } from "@/components/ezoic/ezoic-ads";
 import { CampusImg, CourseCover, CourseIcon } from "@/components/marketing/photos";
 import { Reveal } from "@/components/motion";
 import { CourseFinder } from "@/components/marketing/course-finder";
@@ -538,6 +539,8 @@ function Classes() {
         </div>
       </section>
 
+      <EzoicUnderTitleAd />
+
       {mode === "compare" && (
         <section className="border-border bg-muted/30 border-b py-12 md:py-16">
           <div className="container-page">
@@ -684,6 +687,7 @@ function Classes() {
       />
 
       <HowWeTeach />
+      <EzoicMidContentAd />
       <DeliverablesTable />
 
       <CourseGroup

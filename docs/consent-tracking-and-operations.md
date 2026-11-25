@@ -1,5 +1,11 @@
 # Consent, tracking and operations — November 2026
 
+> **Updated after merging `main`.** PR #54 landed an Ezoic + Gatekeeper CMP
+> stack and a new AdSense publisher id while this branch was open. The
+> architecture described in §2 now sits *alongside* a certified TCF platform
+> rather than replacing it — see §2a. The single most important change: the
+> fallback banner defers to `__tcfapi` and never competes with the CMP.
+
 What changed after adding Microsoft Clarity and confirming the ngadverts placement,
 and an audit of what else was missing for the site to work properly for everybody.
 
@@ -63,6 +69,55 @@ also required the flag, so the outcome was the same.
 - Visitors can change their mind from **Cookie settings** in the footer and from
   the privacy policy — GDPR Art. 7(3) requires withdrawal to be as easy as consent.
 - `lib/ga4.ts` and `lib/adsense.ts` deleted; nothing else referenced them.
+
+---
+
+## 2a. How this reconciles with Ezoic and Gatekeeper (merged from `main`)
+
+`main` added three things this branch had to absorb:
+
+| Added on `main` | What it is | How this branch treats it |
+|---|---|---|
+| Gatekeeper (`cmp.gatekeeperconsent.com`) | A **certified IAB TCF** consent platform | Kept in `<head>`, loading unconditionally. A CMP must load before consent is known or it can never ask. |
+| Ezoic (`sa.min.js`, `ezoicanalytics.com`) | Ad mediation + analytics | Kept; it reads the TCF string Gatekeeper writes. |
+| AdSense publisher `ca-pub-1270179436380403` | Replaces `ca-pub-9124992249317290` | Adopted everywhere: `tracking.ts`, `ads.txt`, meta tag. |
+
+**Ezoic's CMP is now the primary consent UI.** Running a second independent
+banner asking the same question would be both a legal and a practical defect: a
+visitor could accept in one and refuse in the other, and the TCF string ad
+vendors actually read would disagree with the record our loaders read.
+
+So the banner is now a **fallback**, and only appears when the CMP is absent or
+reports that GDPR does not apply:
+
+| CMP state | Behaviour |
+|---|---|
+| present, `gdprApplies: true` | banner hidden — the CMP is asking |
+| present, `gdprApplies: false` | banner shown (rest-of-world notice) |
+| absent (blocked, failed, still loading after 1.5s) | banner shown |
+
+### The head block: order is the safety property
+
+An ad tag is *allowed* to be present from first paint under TCF. What must never
+happen is an ad request **before** the CMP in document order, because that
+request has no consent signal behind it. So the head order is:
+
+```
+Gatekeeper → Gatekeeper → Ezoic sa.min.js → ezstandalone init → Ezoic Analytics → AdSense
+```
+
+`check-tracking-consent.mjs` enforces this by position, and
+`scripts/test/ezoic-integration.test.mjs` asserts it across every prerendered
+page. Analytics with no consent string to read (GA4, Clarity) is banned from the
+static head entirely and must go through `lib/tracking.ts`.
+
+### What was still broken after the merge, and is fixed here
+
+`src/lib/adsense.ts` on `main` still returned early unless
+`NEXT_PUBLIC_ENABLE_PUBLIC_TRACKING === "true"`. That flag is unset in
+deployments, so **the consent-gated AdSense loader could never fire even after a
+visitor consented**. The module is deleted; `loadAdSense()` in `tracking.ts` is
+the only path and it reads consent, not an env flag.
 
 ---
 

@@ -3,6 +3,7 @@ import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
+import { EzoicUnderTitleAd } from "@/components/ezoic/ezoic-ads";
 import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/services")({
@@ -115,6 +116,8 @@ function ServicesPage() {
           </div>
         </div>
       </section>
+
+      <EzoicUnderTitleAd />
 
       {/* Four Distinct Service Territories */}
       <section className="container-page py-14 md:py-20">

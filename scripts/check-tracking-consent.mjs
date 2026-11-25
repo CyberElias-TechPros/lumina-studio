@@ -88,6 +88,22 @@ if (!registerBlock) {
       `PROCESSORS has ${entries.length} entries for ${loaders.length} loaders — every loaded tool must be disclosed`,
     );
   }
+
+  // Every vendor that receives data must be named. These are the ones actually
+  // live; adding a script without adding it here fails the build.
+  const REQUIRED_VENDORS = [
+    "Google Analytics 4",
+    "Microsoft Clarity",
+    "Google AdSense",
+    "ngadverts",
+    "Ezoic",
+    "Gatekeeper",
+  ];
+  for (const vendor of REQUIRED_VENDORS) {
+    if (!registerBlock[1].includes(vendor)) {
+      failures.push(`PROCESSORS is missing "${vendor}" — it is loaded but not disclosed`);
+    }
+  }
   for (const entry of entries) {
     const name = /name:\s*"([^"]+)"/.exec(entry)?.[1] ?? "(unnamed)";
     if (!/policyUrl:\s*"https:\/\//.test(entry)) {
@@ -153,7 +169,80 @@ function walk(dir, out = []) {
   return out;
 }
 
-const allowedInjectors = new Set(["src/lib/tracking.ts", "src/lib/ads/ngadverts.ts"]);
+/*
+ * Two kinds of file may reference a third-party script host:
+ *
+ *  - the sanctioned loaders (consent-gated), and
+ *  - layout.tsx, but ONLY for the pre-consent vendors declared in
+ *    PRE_CONSENT_VENDORS — the CMP, which has to load in order to ask.
+ *
+ * An ad tag in layout.tsx is the exact bug PR #54 shipped and this PR removes,
+ * so it is checked explicitly rather than trusted to review.
+ */
+const allowedInjectors = new Set([
+  "src/lib/tracking.ts",
+  "src/lib/ads/ngadverts.ts",
+  "src/app/layout.tsx",
+  "src/components/ezoic/ezoic-ads.tsx",
+]);
+
+/*
+ * The static head is a CMP chain, so **order** is the safety property, not
+ * presence.
+ *
+ * Under IAB TCF an ad tag may be present from first paint; what gates
+ * personalisation is the consent string the CMP writes before any ad request is
+ * made. What must never happen is an ad request appearing BEFORE the CMP in
+ * document order, because that request has no consent signal behind it.
+ *
+ * Analytics that is not part of the CMP chain (GA4, Clarity) is a different
+ * case: it has no consent string to read, so it is banned from the static head
+ * entirely and must load through lib/tracking.ts after an explicit decision.
+ */
+const layout = read("src/app/layout.tsx");
+/*
+ * Anchor on the real JSX head, not the first literal `<head>` in the file — the
+ * explanatory comment above it also contains the word, which silently produced
+ * an empty slice and made every ordering assertion pass vacuously.
+ */
+const headStart = layout.indexOf("      <head>");
+const headEnd = layout.indexOf("      </head>");
+const headBlock = headStart >= 0 && headEnd > headStart ? layout.slice(headStart, headEnd) : "";
+if (!headBlock) {
+  failures.push("could not locate <head> in layout.tsx");
+}
+
+const cmpIndex = headBlock.indexOf("gatekeeperconsent.com");
+if (cmpIndex < 0) {
+  failures.push(
+    "layout.tsx no longer loads the CMP — visitors outside the fallback banner are never asked",
+  );
+}
+
+// AdSense is rendered via the ADSENSE_SCRIPT_SRC constant, so match the JSX
+// expression as well as the literal host.
+for (const [needle, label] of [
+  ["ADSENSE_SCRIPT_SRC", "AdSense"],
+  ["pagead2.googlesyndication.com", "AdSense"],
+  ["ezojs.com/ezoic", "Ezoic sa.min.js"],
+  ["ezoicanalytics.com", "Ezoic Analytics"],
+]) {
+  const at = headBlock.indexOf(needle);
+  if (at >= 0 && cmpIndex >= 0 && at < cmpIndex) {
+    failures.push(
+      `${label} appears before the CMP in layout.tsx — an ad request with no consent signal`,
+    );
+  }
+}
+
+for (const banned of ["googletagmanager.com", "clarity.ms"]) {
+  if (headBlock.includes(banned)) {
+    failures.push(
+      `${banned} is in the static head — analytics outside the CMP chain must load via lib/tracking.ts after consent`,
+    );
+  }
+}
+
 for (const file of walk(join(root, "src"))) {
   const rel = relative(root, file).split("\\").join("/");
   if (allowedInjectors.has(rel)) continue;
@@ -185,6 +274,44 @@ for (const path of ["src/app/providers.tsx", "src/lib/tracking.ts", "src/lib/con
     failures.push(
       `${path} reads NEXT_PUBLIC_ENABLE_PUBLIC_TRACKING again — it made tracking unreachable`,
     );
+  }
+}
+
+/* ---------------- 12: the fallback banner defers to the CMP ---------------- */
+
+const banner = read("src/components/marketing/cookie-consent.tsx");
+if (!/__tcfapi/.test(banner)) {
+  failures.push(
+    "cookie-consent.tsx does not consult __tcfapi — it would compete with the CMP instead of deferring to it",
+  );
+}
+if (!/gdprApplies/.test(banner)) {
+  failures.push("cookie-consent.tsx does not check gdprApplies — it may double-prompt in the EEA");
+}
+
+/* ---------------- 13: the AdSense publisher id agrees everywhere ---------------- */
+
+const trackingSource = read("src/lib/tracking.ts");
+const publisherInCode = /export const ADSENSE_CLIENT = "([^"]+)"/.exec(trackingSource)?.[1];
+const adsTxt = read("public/ads.txt");
+const publisherInAdsTxt = /pub-(\d+)/.exec(adsTxt)?.[1];
+const publisherInMeta = /ca-pub-(\d+)/.exec(layout)?.[1];
+if (!publisherInCode) {
+  failures.push("ADSENSE_CLIENT is not declared in tracking.ts");
+} else {
+  const digits = publisherInCode.replace("ca-pub-", "");
+  if (publisherInAdsTxt && publisherInAdsTxt !== digits) {
+    failures.push(
+      `ads.txt authorises pub-${publisherInAdsTxt} but the code serves ${publisherInCode} — AdSense will refuse to fill`,
+    );
+  }
+  if (publisherInMeta && publisherInMeta !== digits) {
+    failures.push(
+      `layout.tsx meta tag says ca-pub-${publisherInMeta} but the loader uses ${publisherInCode}`,
+    );
+  }
+  if (!publisherInAdsTxt) {
+    failures.push("ads.txt contains no google.com publisher line");
   }
 }
 

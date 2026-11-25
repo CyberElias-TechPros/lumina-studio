@@ -58,11 +58,34 @@ export function CookieConsent() {
       setAnalytics(existing.analytics);
       return;
     }
-    // No decision on record. Show after a short beat so the banner does not
-    // fight the hero image for the first paint, but show it — an unrecorded
-    // visitor currently gets nothing optional, so the question must be asked.
-    const timer = window.setTimeout(() => setView("summary"), 1200);
-    return () => window.clearTimeout(timer);
+
+    let cancelled = false;
+
+    // Ask the CMP first. If it reports that GDPR applies, it is already showing
+    // the authoritative prompt and this banner must stay out of the way.
+    const askCmp = () => {
+      if (typeof window.__tcfapi !== "function") return false;
+      window.__tcfapi("getTCData", 2, (tcData, success) => {
+        if (cancelled) return;
+        if (success && tcData?.gdprApplies === true) return; // CMP owns it
+        setView("summary");
+      });
+      return true;
+    };
+
+    // The CMP script may not have executed when this effect runs, so give it one
+    // short window before falling back to our own banner. Without this the
+    // component races the CMP and flashes a second, competing prompt.
+    const timer = window.setTimeout(() => {
+      if (cancelled) return;
+      if (askCmp()) return;
+      setView("summary");
+    }, 1500);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timer);
+    };
   }, []);
 
   // The footer "Cookie settings" button re-opens the banner in details mode.
@@ -125,7 +148,7 @@ export function CookieConsent() {
                     <CategoryRow
                       icon={<Megaphone className="size-4" />}
                       title="Advertising"
-                      description="Google AdSense and ngadverts. Used to personalise ads; declining means you may still see non-personalised ads with no tracking cookies."
+                      description="Ezoic, Google AdSense and ngadverts, coordinated by the Gatekeeper consent platform where GDPR applies. Declining means you may still see non-personalised ads with no tracking cookies."
                       checked={ads}
                       onChange={setAds}
                     />

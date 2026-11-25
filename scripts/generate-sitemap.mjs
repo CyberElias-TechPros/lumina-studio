@@ -59,7 +59,10 @@ const staticRoutes = [
   "/visit/info",
   "/visit/brochure",
   "/status",
-  "/search",
+  // "/search" is deliberately absent: the route sets `noIndex` because results
+  // are client-side and the lessons it surfaces are already indexed one by one.
+  // Listing a noindex page in the sitemap is a contradictory signal and
+  // `audit:structure` fails on it.
   // /search is a client-side utility with no indexable result pages; it stays
   // out of the sitemap and is noIndex on the route itself.
 ];

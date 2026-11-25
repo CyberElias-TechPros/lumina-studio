@@ -111,8 +111,24 @@ export async function expectNoErrorState(page: Page): Promise<void> {
   }
 }
 
+const EXTERNAL_AD_HOST =
+  /(?:^|\.)(?:gatekeeperconsent\.com|ezojs\.com|ezoicanalytics\.com|googlesyndication\.com|doubleclick\.net)$/i;
+
 /** Convenience test wrapper with helpers attached. */
-export const test = base.extend<{ signIn: (role: Role) => Promise<void> }>({
+export const test = base.extend<{
+  isolateExternalAds: void;
+  signIn: (role: Role) => Promise<void>;
+}>({
+  isolateExternalAds: [
+    async ({ page }, use) => {
+      await page.route(
+        (url) => EXTERNAL_AD_HOST.test(url.hostname),
+        (route) => route.abort(),
+      );
+      await use();
+    },
+    { auto: true },
+  ],
   signIn: async ({ page }, use) => {
     // `use` is Playwright's fixture callback, not a React Hook.
     // eslint-disable-next-line react-hooks/rules-of-hooks

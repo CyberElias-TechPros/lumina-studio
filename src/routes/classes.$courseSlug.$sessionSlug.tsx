@@ -27,6 +27,11 @@ import { Reveal } from "@/components/motion";
 import { ContentFreshness } from "@/components/content-freshness";
 import { CourseEndAd } from "@/components/marketing/ad-slots";
 import {
+  EzoicMidContentAd,
+  EzoicUnderFirstParagraphAd,
+  EzoicUnderTitleAd,
+} from "@/components/ezoic/ezoic-ads";
+import {
   findCourse,
   findSession,
   formatFee,
@@ -195,6 +200,7 @@ function SessionPage() {
           <h1 className="font-display mt-8 text-3xl font-semibold tracking-tight md:text-4xl">
             Session {session?.number}: {session?.title}
           </h1>
+          <EzoicUnderTitleAd />
           <p className="text-muted-foreground mt-5 text-lg leading-relaxed">
             The full class lecture for this session is being written. The topic outline below is
             exactly what the session covers in the classroom, and the complete notes — objectives,
@@ -296,6 +302,8 @@ function SessionPage() {
           </p>
         </Reveal>
 
+        <EzoicUnderTitleAd />
+
         {/* Contents */}
         <Reveal>
           <nav
@@ -390,6 +398,8 @@ function SessionPage() {
             ))}
           </ul>
         </section>
+
+        <EzoicUnderFirstParagraphAd />
 
         {lecture.learningPath && (
           <section id="path" className="mt-14 scroll-mt-28">
@@ -506,6 +516,8 @@ function SessionPage() {
             ))}
           </div>
         </section>
+
+        <EzoicMidContentAd />
 
         {/* Demonstration */}
         <section id="demonstration" className="mt-14 scroll-mt-28">

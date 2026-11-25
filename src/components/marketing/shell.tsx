@@ -5,6 +5,11 @@ import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
 import { ThemeSync } from "./theme-sync";
 import { ScrollExperience } from "./scroll-experience";
+import {
+  EzoicBottomOfPageAd,
+  EzoicTopOfPageAd,
+  EzoicUnderTitleAd,
+} from "@/components/ezoic/ezoic-ads";
 import { ChatWidget } from "@/components/assistant/chat-widget";
 import { cn } from "@/lib/utils";
 
@@ -27,7 +32,9 @@ export function PageShell({
       </a>
       <SiteHeader />
       <main id="main-content" className="flex-1">
+        <EzoicTopOfPageAd />
         {children}
+        <EzoicBottomOfPageAd />
       </main>
       <SiteFooter />
       {/* Public assistant: answers fee/schedule/enrolment questions on every
@@ -141,28 +148,33 @@ export function PageHero({
   meta?: string[];
 }) {
   return (
-    <section className="border-border bg-muted/25 relative border-b">
-      <div className="container-page relative py-14 md:py-20">
-        <Eyebrow>{eyebrow}</Eyebrow>
-        <h1 className="font-display mt-5 max-w-4xl text-[clamp(2.25rem,1.4rem+3.8vw,4rem)] leading-[1.02] font-semibold tracking-[-0.04em] text-balance">
-          {title}
-        </h1>
-        <p className="text-muted-foreground mt-5 max-w-2xl text-lg leading-relaxed text-pretty">
-          {description}
-        </p>
-        {meta && meta.length > 0 && (
-          <ul className="text-muted-foreground mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium tracking-wider uppercase">
-            {meta.map((item, i) => (
-              <li key={item} className="flex items-center gap-4">
-                {i > 0 && <span aria-hidden="true" className="bg-primary/50 size-1 rounded-full" />}
-                {item}
-              </li>
-            ))}
-          </ul>
-        )}
-        {children}
-      </div>
-    </section>
+    <>
+      <section className="border-border bg-muted/25 relative border-b">
+        <div className="container-page relative py-14 md:py-20">
+          <Eyebrow>{eyebrow}</Eyebrow>
+          <h1 className="font-display mt-5 max-w-4xl text-[clamp(2.25rem,1.4rem+3.8vw,4rem)] leading-[1.02] font-semibold tracking-[-0.04em] text-balance">
+            {title}
+          </h1>
+          <p className="text-muted-foreground mt-5 max-w-2xl text-lg leading-relaxed text-pretty">
+            {description}
+          </p>
+          {meta && meta.length > 0 && (
+            <ul className="text-muted-foreground mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium tracking-wider uppercase">
+              {meta.map((item, i) => (
+                <li key={item} className="flex items-center gap-4">
+                  {i > 0 && (
+                    <span aria-hidden="true" className="bg-primary/50 size-1 rounded-full" />
+                  )}
+                  {item}
+                </li>
+              ))}
+            </ul>
+          )}
+          {children}
+        </div>
+      </section>
+      <EzoicUnderTitleAd />
+    </>
   );
 }
 

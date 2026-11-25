@@ -1,6 +1,7 @@
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
 import { PageShell } from "@/components/marketing/shell";
+import { EzoicUnderTitleAd } from "@/components/ezoic/ezoic-ads";
 import { LearningTrail } from "@/components/practice/learning-trail";
 import { beginnerLessonSlugs } from "@/data/practice/beginner-challenges";
 import { blogPosts } from "@/data/blog";
@@ -45,6 +46,7 @@ function LearningTrailPage() {
           </p>
         </div>
       </header>
+      <EzoicUnderTitleAd />
       <div className="container-page max-w-6xl py-12 md:py-16">
         <LearningTrail lessons={lessons} />
       </div>
