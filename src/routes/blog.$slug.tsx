@@ -36,7 +36,10 @@ export const Route = createFileRoute("/blog/$slug")({
     const standard = resolveLessonStandard(post, editorial);
     const dates = lessonEditorialIso(post.slug);
     const title = post.seoTitle ?? post.title;
-    const description = post.seoDescription ?? post.excerpt;
+    // Prefer the hand-written meta description; otherwise the quick answer is a
+    // better snippet than the excerpt because it states the answer instead of
+    // teasing the lesson. Google truncates around 155 characters.
+    const description = post.seoDescription ?? post.quickAnswer ?? post.excerpt;
     const articleSchema = {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -72,7 +75,24 @@ export const Route = createFileRoute("/blog/$slug")({
       path: `/blog/${post.slug}`,
       type: "article",
       image: `${SITE_URL}${post.cover}`,
-      structuredData: articleSchema,
+      structuredData: [
+        articleSchema,
+        ...(post.quickAnswer
+          ? [
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: [
+                  {
+                    "@type": "Question",
+                    name: post.title,
+                    acceptedAnswer: { "@type": "Answer", text: post.quickAnswer },
+                  },
+                ],
+              },
+            ]
+          : []),
+      ],
     });
   },
   component: Article,
@@ -271,6 +291,17 @@ function Article() {
         <figure className="border-border overflow-hidden rounded-xl border shadow-sm">
           <img src={post.cover} alt={post.coverAlt} className="aspect-[16/9] w-full object-cover" />
         </figure>
+
+        {post.quickAnswer && (
+          <div className="border-primary/25 bg-primary/5 mt-8 rounded-xl border p-5 sm:p-6">
+            <p className="text-primary text-xs font-semibold tracking-wider uppercase">
+              The short answer
+            </p>
+            <p className="text-foreground mt-2.5 text-base leading-relaxed font-medium">
+              {post.quickAnswer}
+            </p>
+          </div>
+        )}
 
         {(post.learningObjectives?.length || tocHeadings.length >= 3) && (
           <div className="border-border bg-muted/30 mt-8 grid gap-6 rounded-xl border p-6 sm:grid-cols-2">

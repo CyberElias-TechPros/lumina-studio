@@ -23,6 +23,20 @@ export type BlogPost = {
   articleType?: CeaArticleTypeId;
   difficulty?: CeaDifficulty;
   learningObjectives?: string[];
+  /**
+   * The answer, in one or two sentences, rendered in a lead box ABOVE the body.
+   *
+   * Why this exists: the 2026-11 Search Console export showed ~150 queries at
+   * 0 clicks with the top entry "soc room" at 50 impressions. The lessons were
+   * already ranking on page 1-2, but 98% of them opened with a catalogue line
+   * ("This lesson teaches you…") instead of answering the question the reader
+   * typed. Someone arriving from a phone snippet gets their answer in the first
+   * sentence or they bounce back to the results.
+   *
+   * Keep it to what a person would say out loud if asked the question directly.
+   * No "in this lesson", no promise of what comes later.
+   */
+  quickAnswer?: string;
   series: string;
   order: number;
   author: string;
@@ -62,6 +76,8 @@ export const blogPosts: BlogPost[] = [
     title: "Sitting down at a computer for the first time",
     excerpt:
       "What each part does, how to switch it on, and how to move the pointer without fear. A calm first hour for anyone who has never used a computer.",
+    quickAnswer:
+      "A computer is four things working together: a screen that shows, a keyboard and mouse that listen, a box that thinks, and power that feeds all of it. Press the button on the box once, wait for the light to stop blinking, and the screen will ask for a password or show a desktop.",
     series: SERIES,
     order: 1,
     author: AUTHOR,
@@ -174,6 +190,8 @@ export const blogPosts: BlogPost[] = [
     title: "Where your work lives: files and folders",
     excerpt:
       "A file is one document. A folder holds files. Learn where your work is kept, how to save it under a name you will still understand later, and how to find it again.",
+    quickAnswer:
+      "A file is one saved piece of work with a name and a type. A folder is a box that holds files. When you save, Windows puts the file wherever you point it, so choose the folder deliberately — Documents for work you keep, Desktop for things you will deal with today.",
     series: SERIES,
     order: 2,
     author: AUTHOR,
@@ -291,6 +309,8 @@ export const blogPosts: BlogPost[] = [
     title: "Your hands on the keyboard",
     excerpt:
       "Where to rest your fingers, which keys fix mistakes, and the shortcuts that save hours. Ten minutes of practice a day is enough to stop hunting for letters.",
+    quickAnswer:
+      "Rest your left fingers on A S D F and your right on J K L ;. Those eight keys are home. Your thumbs handle the space bar, and every other key is reached by stretching one finger from home and returning. Speed comes from never looking down.",
     series: SERIES,
     order: 3,
     author: AUTHOR,
@@ -405,6 +425,8 @@ export const blogPosts: BlogPost[] = [
     title: "The internet without getting lost",
     excerpt:
       "How to open a browser, tell the address bar from the search box, use tabs, read a web address, and save a page you will want again. Simple habits that prevent most mistakes.",
+    quickAnswer:
+      "The internet is a worldwide network of computers that pass messages to each other. A browser is the program on your computer that asks for a page and draws it. You do not need to understand the network to use it — you need to know the address bar, the back button and how to close a tab.",
     series: SERIES,
     order: 4,
     author: AUTHOR,
@@ -522,6 +544,8 @@ export const blogPosts: BlogPost[] = [
     title: "Your first email, sent properly",
     excerpt:
       "An address, a subject that tells the truth, a short body with one job, and the paperclip. How to write and send a first email that a school or office will answer.",
+    quickAnswer:
+      "An email address is two parts joined by @: your name, then the mail company. To send one, fill To (who receives it), Subject (what it is about) and the message box. Press Send and it leaves immediately and cannot be recalled, so read the To line twice before you click.",
     series: SERIES,
     order: 5,
     author: AUTHOR,
@@ -638,6 +662,8 @@ export const blogPosts: BlogPost[] = [
     title: "Passwords you can keep",
     excerpt:
       "How to make a password you can remember, store it safely, and add a second lock to the accounts that matter. Includes what to do when someone gets in.",
+    quickAnswer:
+      "A strong password is long, not complicated. Four unrelated words, or a sentence only you would write, beats a short scramble of symbols. Use a different password on your email than anywhere else, and turn on two-step verification so a stolen password alone is not enough.",
     series: SERIES,
     order: 6,
     author: AUTHOR,
@@ -761,6 +787,8 @@ export const blogPosts: BlogPost[] = [
     title: "The link you should not open",
     excerpt:
       "How to spot a dangerous link before you click it, how to reach a real website safely, and exactly what to do if you already tapped and typed your password.",
+    quickAnswer:
+      "A dangerous link is usually safe-looking text wrapped around a hidden address. Before you click, hover over it on a computer, or long-press it on a phone, and read where it really goes. Banks, schools and delivery companies never ask for a password or card number by link.",
     series: SERIES,
     order: 7,
     author: AUTHOR,
@@ -862,6 +890,8 @@ export const blogPosts: BlogPost[] = [
     title: "Printing without waste",
     excerpt:
       "How to print one page instead of five, choose the right settings, use a business centre without being overcharged, and fix the paper jam yourself.",
+    quickAnswer:
+      "Print the page you meant: choose the printer, then check Pages, Copies and Colour before pressing Print. Print in black and white unless colour carries meaning, and use Print Preview — it shows exactly what will come out of the machine, for free.",
     series: SERIES,
     order: 8,
     author: AUTHOR,
@@ -3129,6 +3159,8 @@ export const blogPosts: BlogPost[] = [
     title: "What a PDF is for",
     excerpt:
       "Why a PDF keeps its layout, how to make one from a document, how to fill and sign a form inside it, and when a PDF is the wrong file to send.",
+    quickAnswer:
+      "A PDF is a page whose layout is frozen. It looks the same on your phone, on a printer and on a ten-year-old laptop, which is exactly why schools, banks and employers ask for one. Make it from a finished Word or Google Docs file — never type into a PDF from scratch.",
     series: SERIES,
     order: 30,
     author: AUTHOR,
@@ -7480,6 +7512,8 @@ export const blogPosts: BlogPost[] = [
     ],
     excerpt:
       "Which is bigger between KB, MB and GB, how much fits on a phone or flash drive, and why a 16 GB drive holds 14.",
+    quickAnswer:
+      "From smallest to largest: KB, then MB, then GB, then TB. Each step is about a thousand of the one below it, so 1 GB ≈ 1,000 MB ≈ 1,000,000 KB. A megabyte is bigger than a kilobyte — about a thousand times bigger.",
     series: SERIES,
     order: 72,
     author: AUTHOR,
@@ -12728,6 +12762,8 @@ export const blogPosts: BlogPost[] = [
     ],
     excerpt:
       "What a security operations centre (SOC room) looks like, how Tier 1–3 analysts divide the work, and how a night shift hands over to a morning team.",
+    quickAnswer:
+      "A SOC room — security operations centre — is the room where an organisation watches its own network for attacks, all day and all night. Tier 1 analysts triage the incoming alerts, Tier 2 investigates the serious ones, and Tier 3 hunts for what the alerts missed.",
     series: SERIES,
     order: 122,
     author: AUTHOR,

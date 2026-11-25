@@ -170,6 +170,48 @@ export const CEA_BUILT_IN_LABS: BuiltInLabEntry[] = [
     linkedCourseSlug: "graphic-design",
     linkedCourseTitle: "Graphic Design",
   },
+  {
+    id: "data-size-converter",
+    to: "/tools/data-size-converter",
+    track: "data-office",
+    badge: "Everyday Computing",
+    name: "KB vs MB vs GB Converter",
+    headline: "Which is bigger — and what does it hold?",
+    blurb:
+      "Type any size (500 MB, 1.5 GB) and see it in KB, MB, GB and TB at once, how many photos or songs fit inside, and why a 16 GB phone reports 14 GB.",
+    meta: "KB · MB · GB · TB · What fits",
+    linkedCourseSlug: "computer-basics-typing",
+    linkedCourseTitle: "Computer Basics & Typing",
+    isNew: true,
+  },
+  {
+    id: "naira-keyboard",
+    to: "/tools/naira-keyboard",
+    track: "data-office",
+    badge: "Everyday Computing",
+    name: "Naira Sign & Amount in Words",
+    headline: "Type ₦ anywhere, and spell any amount.",
+    blurb:
+      "Every working method for ₦ — Word's 20A6 Alt+X, Windows Alt+8358, Win+., Android and iPhone long-press — one-tap copy for accents, and a cheque/invoice amount-in-words writer.",
+    meta: "₦ · Accents · Amount in words",
+    linkedCourseSlug: "computer-basics-typing",
+    linkedCourseTitle: "Computer Basics & Typing",
+    isNew: true,
+  },
+  {
+    id: "cloud-explainer",
+    to: "/tools/cloud-explainer",
+    track: "assessment-ai",
+    badge: "Everyday Computing",
+    name: "What Is the Cloud?",
+    headline: "Your files, and who is really holding them.",
+    blurb:
+      "A visual explainer of where your photos, WhatsApp backups, documents and email actually live — plus what happens when data runs out and what each online action costs in MB.",
+    meta: "Cloud storage · Data cost · Offline",
+    linkedCourseSlug: "digital-productivity",
+    linkedCourseTitle: "Digital Productivity",
+    isNew: true,
+  },
 ];
 
 export type FeasibilityVerdict =
