@@ -8,6 +8,13 @@ fiction.
 Read this alongside `docs/editorial-content-operations.md`, which governs *what*
 may be published. This document governs *when* and *why*.
 
+**The measurement this loop answers to** is
+[`gsc-search-console-audit-2026-11.md`](./gsc-search-console-audit-2026-11.md) —
+six months of real Search Console data. Read that before acting on anything here.
+It found that the site's largest problem is not missing content but 601 impressions
+landing on URLs that permanently redirect, and that one partner page earned 57.7%
+of every click the property received.
+
 ## The problem this loop solves
 
 Before this loop existed, the site had three defects that all had the same shape:
