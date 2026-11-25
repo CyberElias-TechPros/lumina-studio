@@ -2415,6 +2415,8 @@ const NOTES_SERIES: BlogPost[] = [
     ],
     excerpt:
       "How to type the naira sign (₦), accented letters, and names that matter, on Windows, a Mac, and a phone. Includes the copy-and-paste trick that always works.",
+    quickAnswer:
+      "The naira sign (₦) has no key of its own. On Windows hold Alt and type 8358 on the number pad, or press Windows + period for the symbol picker. On a phone, hold the ₦-style key in the symbols panel or long-press the currency key. Accented letters work by holding the letter key down and choosing from the list that appears.",
     series: SERIES,
     order: 23,
     author: AUTHOR,
@@ -3490,6 +3492,8 @@ const NOTES_SERIES: BlogPost[] = [
     title: "Searching the computer for a lost file",
     excerpt:
       "How to search for a file when you remember only half the name, where to search first, and what to do when the search box finds nothing at all.",
+    quickAnswer:
+      "Press Windows + S (or Command + Space on a Mac) and type part of the name — you rarely need the whole thing. If you cannot remember the name, search for a word you know is inside the document instead. If the search finds nothing, check whether you are searching the right folder: the file may be on a different drive, in the Recycle Bin, or in cloud storage that has not downloaded.",
     series: SERIES,
     order: 33,
     author: AUTHOR,
@@ -4220,6 +4224,8 @@ const NOTES_SERIES: BlogPost[] = [
     title: "When there is no sound",
     excerpt:
       "A step-by-step check for a silent computer, from the mute key to the sound driver, with what each result tells you before you call a technician.",
+    quickAnswer:
+      "Check the four things in this order: the volume is not muted and is turned up, the right output device is selected (speaker, headset or monitor), nothing is plugged into the headphone jack, and the app you are using has its own volume slider that is not at zero. Those four cover most silent computers. If all four are correct, the problem is the driver or the hardware, not the volume.",
     series: SERIES,
     order: 40,
     author: AUTHOR,
@@ -6901,6 +6907,8 @@ const NOTES_SERIES: BlogPost[] = [
     ],
     excerpt:
       "What Ctrl and Z can bring back, what it cannot, how far back it reaches, and the moment when you should stop working and reach for the Recycle Bin instead.",
+    quickAnswer:
+      "Undo is Ctrl+Z on Windows and Command+Z on a Mac. Redo is Ctrl+Y (or Ctrl+Shift+Z) and Command+Shift+Z. Undo reverses your last action and keeps stepping back as far as the program remembers — usually dozens of steps, not thousands. It cannot undo something you have already closed without saving, and it cannot undo a file deleted outside the editor.",
     series: SERIES,
     order: 66,
     author: AUTHOR,
@@ -7312,6 +7320,8 @@ const NOTES_SERIES: BlogPost[] = [
     ],
     excerpt:
       "What belongs in an email signature, what never does, how to set it once so every mail ends properly, and why four lines beat a paragraph.",
+    quickAnswer:
+      "An email signature is the four lines at the bottom of your message that say who you are: your name, what you do, one way to reach you, and nothing else. Set it once in your email settings and it appears on every new message automatically. Keep it to four lines — long signatures get read less, not more.",
     series: SERIES,
     order: 70,
     author: AUTHOR,
@@ -7722,6 +7732,8 @@ const NOTES_SERIES: BlogPost[] = [
     title: "Drag and drop without losing the file",
     excerpt:
       "How to move a file with the mouse without copying it by accident, what happens between drives, and how to undo a drag that went to the wrong place.",
+    quickAnswer:
+      "Dragging a file moves it if both folders are on the same drive, and copies it if they are on different drives. Hold Ctrl while dragging to force a copy, or Shift to force a move. Before you let go, watch the shape of the pointer — a small plus sign means copy. If a drag lands wrong, press Ctrl+Z immediately and it goes back.",
     series: SERIES,
     order: 74,
     author: AUTHOR,
