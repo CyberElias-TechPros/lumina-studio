@@ -117,6 +117,7 @@ const EXTERNAL_AD_HOST =
 /** Convenience test wrapper with helpers attached. */
 export const test = base.extend<{
   isolateExternalAds: void;
+  dismissConsent: void;
   signIn: (role: Role) => Promise<void>;
 }>({
   isolateExternalAds: [
@@ -125,6 +126,37 @@ export const test = base.extend<{
         (url) => EXTERNAL_AD_HOST.test(url.hostname),
         (route) => route.abort(),
       );
+      await use();
+    },
+    { auto: true },
+  ],
+
+  /**
+   * Record a refusal before any script runs.
+   *
+   * Aborting the ad hosts above also aborts Gatekeeper, the CMP. With no CMP
+   * reachable, the site's fallback consent banner correctly appears — and then
+   * covers the bottom of every page, intercepting clicks in every spec that
+   * never expected a modal.
+   *
+   * Rather than teaching 30 specs to dismiss a banner, this fixture does what a
+   * real visitor who declines does: writes `cea:consent:v2` with both categories
+   * false before first paint. The banner then never mounts, and — the point of
+   * the suite — no optional third party loads either.
+   */
+  dismissConsent: [
+    async ({ page }, use) => {
+      await page.addInitScript(() => {
+        window.localStorage.setItem(
+          "cea:consent:v2",
+          JSON.stringify({
+            ads: false,
+            analytics: false,
+            decidedAt: new Date(0).toISOString(),
+            version: 2,
+          }),
+        );
+      });
       await use();
     },
     { auto: true },

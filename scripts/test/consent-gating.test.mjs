@@ -451,6 +451,48 @@ test("GA4 sets ads signals to denied when it does load", () => {
 });
 
 /* ------------------------------------------------------------------ *
+ * E2E harness agreement
+ * ------------------------------------------------------------------ */
+
+test("the E2E harness records a refusal the consent module actually accepts", () => {
+  const dom = installDom();
+  const { consent } = freshModules();
+  const helpers = fs.readFileSync(new URL("../../e2e/helpers.ts", import.meta.url), "utf8");
+
+  // The key must match. If CONSENT_STORAGE_KEY is ever renamed, the harness
+  // silently stops suppressing the banner and ~30 specs start failing on an
+  // intercepting overlay — a confusing failure a long way from its cause.
+  assert.ok(
+    helpers.includes("cea:consent:v2"),
+    "e2e/helpers.ts must write the same storage key as CONSENT_STORAGE_KEY",
+  );
+  assert.equal(consent.CONSENT_STORAGE_KEY, "cea:consent:v2");
+
+  // The version must match, or readConsent() treats the record as stale and
+  // shows the banner anyway.
+  assert.ok(
+    new RegExp(`version:\\s*${consent.CONSENT_VERSION}\\b`).test(helpers),
+    `e2e/helpers.ts must write version ${consent.CONSENT_VERSION}`,
+  );
+
+  // And the module must actually honour what the harness writes.
+  localStorage.setItem(
+    consent.CONSENT_STORAGE_KEY,
+    JSON.stringify({
+      ads: false,
+      analytics: false,
+      decidedAt: new Date(0).toISOString(),
+      version: consent.CONSENT_VERSION,
+    }),
+  );
+  const stored = consent.readConsent();
+  assert.ok(stored, "a refusal written by the harness must be a recognised decision");
+  assert.equal(stored.ads, false);
+  assert.equal(stored.analytics, false);
+  dom.teardown();
+});
+
+/* ------------------------------------------------------------------ *
  * Disclosure
  * ------------------------------------------------------------------ */
 
