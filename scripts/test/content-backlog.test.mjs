@@ -119,6 +119,7 @@ test("removed signals stay removed", () => {
   // zero for them reappears, someone has resurrected a signal that cannot fire.
   const summary = backlogSummary(buildBacklog("2026-11-25"));
   assert.deepEqual(Object.keys(summary).sort(), [
+    "market-signal",
     "missing-quick-answer",
     "query-gap",
     "review-due",

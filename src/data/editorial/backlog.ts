@@ -22,6 +22,7 @@
  * | `review-due` | `lesson-dates.generated.json` | 34 lessons are past their 180-day review date **today**. A stale instruction is worse than none. |
  * | `query-gap` | hand-entered GSC exports | Real demand the corpus does not answer. Highest intent per unit of effort. |
  * | `thin-chapter` | `blog.ts` grouped by chapter | A 9-lesson chapter has a hole where the tenth was meant to be. |
+ * | `market-signal` | `demand-signals.ts` | A measured national trend the site does not answer. Direction only, never volume. |
  *
  * Two signals were designed and then removed: `tool-gap` and `stale-tool`. Both
  * depended on a practice-tool registry with a "last checked" field, and this
@@ -40,13 +41,15 @@
 
 import { blogPosts } from "../blog";
 import { noteChapters } from "../note-chapters";
+import { actionableSignals, type DemandSignal } from "./demand-signals";
 import { lessonEditorial } from "./index";
 
 /* ------------------------------------------------------------------ *
  * Types
  * ------------------------------------------------------------------ */
 
-export type BacklogSignal = "query-gap" | "review-due" | "missing-quick-answer" | "thin-chapter";
+export type BacklogSignal =
+  "query-gap" | "market-signal" | "review-due" | "missing-quick-answer" | "thin-chapter";
 
 export type BacklogKind = "article" | "lesson-revision" | "review" | "chapter-completion";
 
@@ -254,6 +257,34 @@ function thinChapters(): BacklogItem[] {
     .filter((item): item is BacklogItem => item !== null);
 }
 
+/**
+ * National demand from `demand-signals.ts`, restricted to what the site can
+ * honestly serve.
+ *
+ * Only `partial` coverage becomes work. `strong` coverage is already answered —
+ * it surfaces as `missing-quick-answer` instead, because the fix is the page's
+ * opening sentence, not a new page. `gap` and `declined` are deliberately kept
+ * out: a card for something we have decided not to build would turn the backlog
+ * into a wish list rather than a queue.
+ */
+function marketSignals(): BacklogItem[] {
+  return actionableSignals()
+    .filter((signal: DemandSignal) => signal.coverage === "partial")
+    .map((signal) => ({
+      id: `market:${signal.id}`,
+      kind: "article" as const,
+      signal: "market-signal" as const,
+      title: signal.query,
+      rationale: `+${signal.changePct}% year-on-year in Nigeria (confidence: ${signal.confidence}). ${signal.evidence}`,
+      effort: "M" as const,
+      // Measured national demand outranks an inferred gap of the same size,
+      // because the evidence for wanting it already exists.
+      impact: (signal.changePct >= 150 ? 3 : 2) as Impact,
+      related: [],
+      score: 300 + signal.changePct / 10,
+    }));
+}
+
 /** Query gaps, scored by the demand that justifies them. */
 function queryGaps(): BacklogItem[] {
   return QUERY_GAPS.map((gap) => ({
@@ -284,7 +315,13 @@ function queryGaps(): BacklogItem[] {
  * reproducible. Defaults to the real date only when called without one.
  */
 export function buildBacklog(today = new Date().toISOString().slice(0, 10)): BacklogItem[] {
-  const items = [...queryGaps(), ...reviewDue(today), ...quickAnswerGaps(), ...thinChapters()];
+  const items = [
+    ...queryGaps(),
+    ...marketSignals(),
+    ...reviewDue(today),
+    ...quickAnswerGaps(),
+    ...thinChapters(),
+  ];
 
   // Impact dominates, then the signal's own score, then effort as a tie-break so
   // quick wins surface ahead of long jobs of equal worth.
@@ -301,6 +338,7 @@ export function buildBacklog(today = new Date().toISOString().slice(0, 10)): Bac
 export function backlogSummary(items: BacklogItem[]): Record<BacklogSignal, number> {
   const summary: Record<BacklogSignal, number> = {
     "query-gap": 0,
+    "market-signal": 0,
     "review-due": 0,
     "missing-quick-answer": 0,
     "thin-chapter": 0,

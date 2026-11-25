@@ -8,6 +8,7 @@ the review queue. If a line here is wrong, the fix belongs in that source — or
 `QUERY_GAPS` inside it — not in this file.
 
 - **6** — Search demand with no page
+- **4** — National trend we only half-serve
 - **34** — Past its review date
 - **199** — No short answer
 
@@ -15,33 +16,45 @@ the review queue. If a line here is wrong, the fix belongs in that source — or
 
 | # | Item | Kind | Effort | Impact | Signal |
 |---|---|---|---|---|---|
-| 1 | Whisper fine-tuning, in plain English | article | M | 3 | query-gap |
-| 2 | Which is bigger, MB or KB? — the question-shaped page | article | S | 3 | query-gap |
-| 3 | How to build a speaking pipeline | article | M | 3 | query-gap |
-| 4 | Add a short answer to “Spreadsheets: the grid that counts” | lesson-revision | S | 3 | missing-quick-answer |
-| 5 | Add a short answer to “WhatsApp is not email” | lesson-revision | S | 3 | missing-quick-answer |
-| 6 | Add a short answer to “A letter that looks like one” | lesson-revision | S | 3 | missing-quick-answer |
-| 7 | Add a short answer to “Getting photographs off the phone” | lesson-revision | S | 3 | missing-quick-answer |
-| 8 | Add a short answer to “Updates without panic” | lesson-revision | S | 3 | missing-quick-answer |
-| 9 | Add a short answer to “Backup before the light goes” | lesson-revision | S | 3 | missing-quick-answer |
-| 10 | Add a short answer to “A Google account on purpose” | lesson-revision | S | 3 | missing-quick-answer |
-| 11 | Add a short answer to “Wi‑Fi at home without mystery” | lesson-revision | S | 3 | missing-quick-answer |
-| 12 | Add a short answer to “Shut down, sleep, and the power button” | lesson-revision | S | 3 | missing-quick-answer |
-| 13 | Add a short answer to “Filling a form on a website” | lesson-revision | S | 3 | missing-quick-answer |
-| 14 | Add a short answer to “A video call without panic” | lesson-revision | S | 3 | missing-quick-answer |
-| 15 | Add a short answer to “When the computer is slow” | lesson-revision | S | 3 | missing-quick-answer |
-| 16 | What a dataset actually is | article | S | 2 | query-gap |
-| 17 | Add a short answer to “Installing a program on purpose” | lesson-revision | S | 2 | missing-quick-answer |
-| 18 | Add a short answer to “Uninstalling what a shop added” | lesson-revision | S | 2 | missing-quick-answer |
-| 19 | Add a short answer to “Typing naira, accents, and another language” | lesson-revision | S | 2 | missing-quick-answer |
-| 20 | Add a short answer to “The Recycle Bin and “I deleted it”” | lesson-revision | S | 2 | missing-quick-answer |
-| 21 | Add a short answer to “Asking for help without handing over the password” | lesson-revision | S | 2 | missing-quick-answer |
-| 22 | Add a short answer to “Copy and paste between programs” | lesson-revision | S | 2 | missing-quick-answer |
-| 23 | Add a short answer to “Taking a screenshot” | lesson-revision | S | 2 | missing-quick-answer |
-| 24 | Add a short answer to “Zipping a folder to email” | lesson-revision | S | 2 | missing-quick-answer |
-| 25 | Add a short answer to “Sending a file to a phone with Bluetooth” | lesson-revision | S | 2 | missing-quick-answer |
+| 1 | how to learn photoshop | article | M | 3 | market-signal |
+| 2 | how to learn ai | article | M | 3 | market-signal |
+| 3 | Whisper fine-tuning, in plain English | article | M | 3 | query-gap |
+| 4 | Which is bigger, MB or KB? — the question-shaped page | article | S | 3 | query-gap |
+| 5 | How to build a speaking pipeline | article | M | 3 | query-gap |
+| 6 | Add a short answer to “Spreadsheets: the grid that counts” | lesson-revision | S | 3 | missing-quick-answer |
+| 7 | Add a short answer to “WhatsApp is not email” | lesson-revision | S | 3 | missing-quick-answer |
+| 8 | Add a short answer to “A letter that looks like one” | lesson-revision | S | 3 | missing-quick-answer |
+| 9 | Add a short answer to “Getting photographs off the phone” | lesson-revision | S | 3 | missing-quick-answer |
+| 10 | Add a short answer to “Updates without panic” | lesson-revision | S | 3 | missing-quick-answer |
+| 11 | Add a short answer to “Backup before the light goes” | lesson-revision | S | 3 | missing-quick-answer |
+| 12 | Add a short answer to “A Google account on purpose” | lesson-revision | S | 3 | missing-quick-answer |
+| 13 | Add a short answer to “Wi‑Fi at home without mystery” | lesson-revision | S | 3 | missing-quick-answer |
+| 14 | Add a short answer to “Shut down, sleep, and the power button” | lesson-revision | S | 3 | missing-quick-answer |
+| 15 | Add a short answer to “Filling a form on a website” | lesson-revision | S | 3 | missing-quick-answer |
+| 16 | Add a short answer to “A video call without panic” | lesson-revision | S | 3 | missing-quick-answer |
+| 17 | Add a short answer to “When the computer is slow” | lesson-revision | S | 3 | missing-quick-answer |
+| 18 | how to start a business from home / with no money | article | M | 2 | market-signal |
+| 19 | ai for school / homework / chemistry | article | M | 2 | market-signal |
+| 20 | What a dataset actually is | article | S | 2 | query-gap |
+| 21 | Add a short answer to “Installing a program on purpose” | lesson-revision | S | 2 | missing-quick-answer |
+| 22 | Add a short answer to “Uninstalling what a shop added” | lesson-revision | S | 2 | missing-quick-answer |
+| 23 | Add a short answer to “Typing naira, accents, and another language” | lesson-revision | S | 2 | missing-quick-answer |
+| 24 | Add a short answer to “The Recycle Bin and “I deleted it”” | lesson-revision | S | 2 | missing-quick-answer |
+| 25 | Add a short answer to “Asking for help without handing over the password” | lesson-revision | S | 2 | missing-quick-answer |
 
 ## Why each item is on the list
+
+### how to learn photoshop
+
+`market:learn-photoshop` — National trend we only half-serve
+
++180% year-on-year in Nigeria (confidence: high). /classes/graphic-design exists and teaches design, but the demand is for a specific proprietary tool. Teaching Photoshop properly means licensing, version drift and screenshots that rot quarterly — a maintenance cost the review cycle is not ready for.
+
+### how to learn ai
+
+`market:learn-ai-beginner` — National trend we only half-serve
+
++160% year-on-year in Nigeria (confidence: high). The site owns 542 AI lessons across 20 phases, but the entry point is phase 00 'setup-and-tooling', lesson 01 'Dev Environment' — Git, GPU setup, API keys, Jupyter. That assumes a laptop, a budget and developer intent. The person typing 'how to learn AI' in 2026 is most often a student or a small-business owner on a phone. There is no beginner article and no non-developer on-ramp, and the AI lesson pages are noIndex, so none of the 542 can rank regardless.
 
 ### Whisper fine-tuning, in plain English
 
@@ -169,6 +182,18 @@ This lesson still opens with a catalogue line. A reader arriving from a search r
 
 Existing pages: `/blog/when-the-computer-is-slow`
 
+### how to start a business from home / with no money
+
+`market:start-business-home` — National trend we only half-serve
+
++90% year-on-year in Nigeria (confidence: high). The site teaches the freelance and digital-product version of this, not the general version. The specific business ideas people searched (real estate, cocoa export, importation, clothing) are outside what CEA can teach credibly, and covering them would be exactly the thin, demand-chasing page the editorial standard forbids.
+
+### ai for school / homework / chemistry
+
+`market:ai-literacy` — National trend we only half-serve
+
++84% year-on-year in Nigeria (confidence: low). Confirmed direction: AI-literacy searches surged, AI tutors became a breakout term, and 'AI + chemistry' doubled. The site teaches AI productivity for work but nothing aimed at students using AI for study, which is where the demand is.
+
 ### What a dataset actually is
 
 `query:what-is-a-dataset` — Search demand with no page
@@ -219,38 +244,13 @@ This lesson still opens with a catalogue line. A reader arriving from a search r
 
 Existing pages: `/blog/asking-for-help-without-the-password`
 
-### Add a short answer to “Copy and paste between programs”
 
-`qa:copy-and-paste-between-programs` — No short answer
+## Growth we are deliberately not chasing
 
-This lesson still opens with a catalogue line. A reader arriving from a search result gets no answer in the first sentence, which is the measured defect behind the site's 0% click-through on 400+ impressions.
-
-Existing pages: `/blog/copy-and-paste-between-programs`
-
-### Add a short answer to “Taking a screenshot”
-
-`qa:taking-a-screenshot` — No short answer
-
-This lesson still opens with a catalogue line. A reader arriving from a search result gets no answer in the first sentence, which is the measured defect behind the site's 0% click-through on 400+ impressions.
-
-Existing pages: `/blog/taking-a-screenshot`
-
-### Add a short answer to “Zipping a folder to email”
-
-`qa:zipping-a-folder-to-email` — No short answer
-
-This lesson still opens with a catalogue line. A reader arriving from a search result gets no answer in the first sentence, which is the measured defect behind the site's 0% click-through on 400+ impressions.
-
-Existing pages: `/blog/zipping-a-folder-to-email`
-
-### Add a short answer to “Sending a file to a phone with Bluetooth”
-
-`qa:bluetooth-to-a-phone` — No short answer
-
-This lesson still opens with a catalogue line. A reader arriving from a search result gets no answer in the first sentence, which is the measured defect behind the site's 0% click-through on 400+ impressions.
-
-Existing pages: `/blog/bluetooth-to-a-phone`
-
+- **how to learn forex trade** (+300%, declined) — Deliberately declined. The defensible adjacent move is not a trading course but a consumer-protection piece — how to recognise a forex or investment scheme that is designed to take your money — which serves the same searcher honestly. That belongs with the existing scam-and-safety material, not with a 'learn forex' page.
+- **how to learn make up** (+270%, declined) — Deliberately declined. No article. Chasing it would be the clearest possible case of a page whose only purpose is a search phrase.
+- **learn italian / japanese / german** (+130%, gap) — Decline, and say so. The honest version of 'where else could we go' is that languages are a real market this site cannot serve today, and pretending otherwise produces the thin pages that AdSense already flagged.
+- **ai music tools / lyria / ai art** (+90%, gap) — None now. Recording it here prevents someone later presenting it as new insight. Revisit only if a music or audio course is actually built.
 
 ## How this list should be used
 

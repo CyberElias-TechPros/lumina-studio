@@ -149,3 +149,95 @@ SEO shortcut that is also a lie told in a format machines read.
   from our own data.
 - The review queue has no assignment. Whoever runs `review:list` picks up what
   they can. That is fine at 210 lessons and will not be fine at 1,000.
+
+---
+
+# Appendix: what the national demand data says
+
+Added after a review of Google's published Nigerian search trends. The structured
+form of this is `src/data/editorial/demand-signals.ts`; this appendix explains how
+to read it. **The data file is the source of truth.** If the two disagree, the file
+wins and this appendix is wrong.
+
+## Read this before quoting any number
+
+The figures are **year-on-year changes in Google search interest in Nigeria**, as
+published by Google and reported by the Nigerian press that covered the releases.
+They are **not search volumes**. Google does not publish the base a percentage is
+measured from, so +300% on a small base can be less traffic than +80% on a large
+one. A test enforces that no volume claim sneaks into the file.
+
+One metric is **contested**: AI-literacy growth in Nigeria appears as **+84%** in
+Google's March 2026 release and as **+840%** in a release reported in April 2026
+quoting a Google executive. One is wrong, or they measure different things and the
+distinction was lost in reporting. We do not know which. The file records both,
+marks confidence `low`, and a test fails if the caveat is removed. **Never quote
++840% on its own.** It is the more impressive number and it appeared in more
+outlets, which is precisely why it needs the caveat.
+
+## The finding that matters
+
+The fastest-growing demand is **not** for what this site's advanced material
+teaches.
+
+| Trend | Growth | Can we serve it? |
+|---|---|---|
+| how to learn AI | +160% | **Half** — 542 AI lessons, but they open at "Dev Environment" |
+| how to learn computer step by step | +160% | **Yes, well** |
+| how to learn Excel | +160% | **Yes, well** |
+| how to learn Photoshop | +180% | Half — we teach design, not the tool |
+| how to start freelancing with no experience | +90% | **Yes, well** |
+| how to learn forex trade | +300% | **No — declined** |
+| how to learn make up | +270% | **No — declined** |
+| learn Italian / Japanese | +130% | **No — gap** |
+
+Three things fall out of that table.
+
+**1. The AI gap is a doorway problem, not a content problem.** The site owns 542 AI
+lessons and they begin at phase 00, lesson 01 — *Dev Environment*: Git, GPU setup,
+API keys, Jupyter. That is a developer on-ramp. The person searching "how to learn
+AI" in Nigeria in 2026 is, on Google's own description, most often a student or a
+small-business owner on a phone. They will never reach the material. And because
+`/ai-engineering/$phase/$lesson` is `noIndex`, none of the 542 can rank either.
+
+Note the temptation and why it is wrong: flipping `noIndex` off would make 542
+pages indexable overnight and look like a huge SEO win. It would also put a
+duplicate of an upstream MIT-derived project into Google under our domain, which is
+the duplicate-content problem that AdSense already flagged. The honest fix is one
+original landing page that belongs to us and leads into the course.
+
+**2. Most of the growth is already served — and wasted.** "Learn computer step by
+step", "learn Excel" and "start freelancing" are answered by courses that are live
+and indexed. They still do not convert, because 199 lessons open with a catalogue
+line instead of an answer. The demand data does not argue for more content here; it
+argues for finishing the content that exists.
+
+**3. The biggest number is the one to leave alone.** Forex is +300%, the fastest
+"how to learn" query in the dataset and the highest intent per searcher. It is also
+a regulated activity where the plausible reader outcome is losing money to a
+scheme. CEA is not a licensed adviser. Writing a "learn forex" page would be the
+single most profitable-looking and least defensible thing this site could do. The
+adjacent honest move is a consumer-protection piece on recognising an investment
+scheme — which serves the same searcher without pretending to be a trading school.
+
+## What this changes
+
+Nothing is added to the backlog that was not already justified by the site's own
+data. Four half-served trends now appear as `market-signal` items with their
+evidence attached. Everything else is recorded so the decision can be re-examined
+instead of rediscovered.
+
+The honest summary: **the trend data does not say "write more". It says "finish
+what you started, and build one door for the audience you already have but cannot
+reach."**
+
+## Known limits of this analysis
+
+- Google's releases are national aggregates. They cannot tell us about Lagos
+  specifically, or about the age band this site actually serves.
+- The press coverage is reporting on a Google presentation; we have not seen the
+  underlying export. Treat the citations as secondary sources.
+- No competitor data was used. We know what people search for; we do not know who
+  currently answers it or how well.
+- Popularity is not the same as suitability. Four trends here are large and
+  deliberately unserved, and that is the analysis working, not failing.
