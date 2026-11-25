@@ -6,6 +6,7 @@ import { SessionProvider, useSessionContext } from "@/components/app/session-pro
 import { OnboardingTour } from "@/components/app/onboarding-tour";
 import { Toaster } from "@/components/ui/sonner";
 import { CookieConsent } from "@/components/marketing/cookie-consent";
+import { EzoicRouteManager } from "@/components/ezoic/ezoic-ads";
 import { WhatsAppFloat } from "@/components/marketing/whatsapp-float";
 import { MotionProvider } from "@/components/motion";
 import { useFlag } from "@/lib/flags";
@@ -45,6 +46,7 @@ export default function AppProviders({ children }: { children: ReactNode }) {
     <QueryClientProvider client={queryClient}>
       <MotionProvider>
         <SessionProvider>
+          <EzoicRouteManager />
           {children}
           <OnboardingTour />
           <GlobalEffects />

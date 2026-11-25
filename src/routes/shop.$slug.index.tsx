@@ -15,6 +15,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CTASection, PageShell, SectionHeading } from "@/components/marketing/shell";
+import { EzoicUnderTitleAd } from "@/components/ezoic/ezoic-ads";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import {
   checkoutPath,
@@ -153,6 +154,8 @@ function ProductPage() {
           </div>
         </div>
       </section>
+
+      <EzoicUnderTitleAd />
 
       <section className="container-page py-12 md:py-16">
         <div className="grid gap-10 md:grid-cols-2">

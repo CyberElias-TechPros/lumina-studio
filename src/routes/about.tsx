@@ -3,6 +3,7 @@ import { Link } from "@/lib/next-compat/router";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTASection, Eyebrow, PageShell } from "@/components/marketing/shell";
+import { EzoicMidContentAd, EzoicUnderTitleAd } from "@/components/ezoic/ezoic-ads";
 import { CampusImg } from "@/components/marketing/photos";
 import { flyerCourses, rotatingCourses, teachingLoop } from "@/data/academy";
 import { FounderPhoto } from "@/components/marketing/founder-photo";
@@ -60,6 +61,8 @@ function About() {
         </div>
       </section>
 
+      <EzoicUnderTitleAd />
+
       {/* Chapters 02 & 03 — The Problem & The Mission */}
       <section className="border-b border-[#2c333c] bg-[#101214] py-16 text-[#f4f1e9] md:py-20">
         <div className="container-page grid gap-10 md:grid-cols-2 md:gap-16">
@@ -91,6 +94,8 @@ function About() {
           </div>
         </div>
       </section>
+
+      <EzoicMidContentAd />
 
       {/* Chapter 04 — The Method */}
       <section className="border-border border-b py-16 md:py-20">

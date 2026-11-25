@@ -17,6 +17,7 @@ import {
   Users,
 } from "lucide-react";
 import { PageShell, Eyebrow } from "@/components/marketing/shell";
+import { EzoicUnderTitleAd } from "@/components/ezoic/ezoic-ads";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Reveal } from "@/components/motion";
@@ -173,6 +174,8 @@ function SchoolsPage() {
           </p>
         </div>
       </section>
+
+      <EzoicUnderTitleAd />
 
       <section className="container-page pb-12">
         <div className="mx-auto grid max-w-4xl grid-cols-2 gap-4 sm:grid-cols-4">

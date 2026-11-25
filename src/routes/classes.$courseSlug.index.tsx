@@ -32,6 +32,11 @@ import { getPageHead } from "@/lib/seo";
 import { TUITION_POLICY } from "@/data/academy/tuition-policy";
 import { CourseIntake } from "@/components/enrollment/course-intake";
 import { CourseEndAd } from "@/components/marketing/ad-slots";
+import {
+  EzoicMidContentAd,
+  EzoicUnderFirstParagraphAd,
+  EzoicUnderTitleAd,
+} from "@/components/ezoic/ezoic-ads";
 import { SITE_URL } from "@/lib/site-url";
 
 export const Route = createFileRoute("/classes/$courseSlug/")({
@@ -208,6 +213,8 @@ function CoursePage() {
           </div>
         </header>
 
+        <EzoicUnderTitleAd />
+
         {/* About + sidebar */}
         <section className="border-foreground/10 border-b">
           <div className="container-page grid gap-14 py-16 lg:grid-cols-[1.4fr_0.6fr] md:py-20">
@@ -357,6 +364,8 @@ function CoursePage() {
             </aside>
           </div>
         </section>
+
+        <EzoicUnderFirstParagraphAd />
 
         {/* Week outline + sessions */}
         <section className="border-foreground/10 bg-foreground/[0.02] border-b">
@@ -524,6 +533,8 @@ function CoursePage() {
           </div>
         </section>
       </article>
+
+      <EzoicMidContentAd />
 
       <CTASection
         title={course.rotating ? `Ask about ${course.title}` : `Apply for ${course.title}`}

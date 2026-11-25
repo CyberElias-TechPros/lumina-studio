@@ -14,6 +14,11 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { PageShell, Eyebrow } from "@/components/marketing/shell";
+import {
+  EzoicMidContentAd,
+  EzoicUnderFirstParagraphAd,
+  EzoicUnderTitleAd,
+} from "@/components/ezoic/ezoic-ads";
 import { LessonQuiz } from "@/components/ai/lesson-quiz";
 import {
   AI_LESSON_INDEX,
@@ -116,6 +121,7 @@ async function AiLessonPage({ params }: { params: LessonParams }) {
           <h1 className="font-display mt-8 text-3xl font-semibold tracking-tight">
             That lesson isn’t in the mirror yet.
           </h1>
+          <EzoicUnderTitleAd />
           <p className="text-muted-foreground mt-4 leading-relaxed">
             The catalogue is generated from the upstream repository. Regenerate it with{" "}
             <code>npm run generate:ai-lessons</code>, or browse the full index.
@@ -209,8 +215,12 @@ async function AiLessonPage({ params }: { params: LessonParams }) {
           </a>
         </div>
 
+        <EzoicUnderTitleAd />
+
         {/* Rendered lesson body (vendored MIT content, sanitised at vendor time) */}
         <div className="ai-lesson mt-10" dangerouslySetInnerHTML={{ __html: lesson.html }} />
+
+        <EzoicMidContentAd />
 
         {/* Attribution — the licence requires it; we make it a feature */}
         <aside
@@ -251,6 +261,8 @@ async function AiLessonPage({ params }: { params: LessonParams }) {
             .
           </p>
         </aside>
+
+        <EzoicUnderFirstParagraphAd />
 
         {/* Quiz */}
         {lesson.quiz?.length ? (

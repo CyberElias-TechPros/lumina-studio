@@ -3,8 +3,12 @@ import type { ReactNode } from "react";
 import "@/styles.css";
 import AppProviders from "./providers";
 import { PublicAnalytics } from "@/components/public-analytics";
+import { ADSENSE_CLIENT, ADSENSE_SCRIPT_SRC } from "@/lib/adsense";
 import { LOCAL_BUSINESS_LD, ORGANIZATION_LD, WEBSITE_LD } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site-url";
+
+const EZOIC_INIT_SCRIPT = `window.ezstandalone = window.ezstandalone || {};
+ezstandalone.cmd = ezstandalone.cmd || [];`;
 
 const THEME_SCRIPT = `(function(){try{
   var workspace = /^\\/(app|portal|auth)(\\/|$)/.test(location.pathname);
@@ -41,7 +45,7 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
   other: {
     author: "Cyber Elias Academy",
-    "google-adsense-account": "ca-pub-9124992249317290",
+    "google-adsense-account": ADSENSE_CLIENT,
     "mobile-web-app-capable": "yes",
     "apple-mobile-web-app-capable": "yes",
     "apple-mobile-web-app-status-bar-style": "default",
@@ -72,12 +76,19 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js" />
+        <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js" />
+        <script async src="//www.ezojs.com/ezoic/sa.min.js" itemProp="" />
+        <script dangerouslySetInnerHTML={{ __html: EZOIC_INIT_SCRIPT }} />
+        <script src="//ezoicanalytics.com/analytics.js" />
+        <script async src={ADSENSE_SCRIPT_SRC} crossOrigin="anonymous" itemProp="" />
         <link
           rel="preload"
           href="/fonts/bricolage-grotesque-var.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
+          itemProp=""
         />
         <link
           rel="preload"
@@ -85,6 +96,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
+          itemProp=""
         />
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
         <noscript>

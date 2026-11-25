@@ -3,6 +3,7 @@ import { Link } from "@/lib/next-compat/router";
 import { ArrowRight, CheckCircle2, CreditCard, MapPin, Search, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
+import { EzoicUnderTitleAd } from "@/components/ezoic/ezoic-ads";
 import { CampusImg } from "@/components/marketing/photos";
 import { TUITION_POLICY } from "@/data/academy/tuition-policy";
 import { getPageHead } from "@/lib/seo";
@@ -120,6 +121,8 @@ function Admissions() {
           </div>
         </div>
       </section>
+
+      <EzoicUnderTitleAd />
 
       {/* 2. WARM PAPER 5-STEP GUIDED ARCHITECTURE */}
       <section className="container-page py-16 md:py-24">

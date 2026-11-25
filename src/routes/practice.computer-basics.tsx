@@ -2,6 +2,7 @@ import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
 import { ArrowRight } from "lucide-react";
 import { PageShell } from "@/components/marketing/shell";
+import { EzoicUnderTitleAd } from "@/components/ezoic/ezoic-ads";
 import { FourThingsDiagram } from "@/components/marketing/four-things-diagram";
 import { ComputerBasicsLab } from "@/components/practice/computer-basics-lab";
 import { blogPosts } from "@/data/blog";
@@ -46,6 +47,7 @@ function ComputerBasicsPage() {
           </p>
         </div>
       </header>
+      <EzoicUnderTitleAd />
       <div className="container-page max-w-6xl pt-10">
         <FourThingsDiagram showPracticeLink={false} />
       </div>

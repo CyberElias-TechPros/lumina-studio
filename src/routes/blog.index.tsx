@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
 import { NoteCard } from "@/components/marketing/note-card";
 import { BlogIndexAd } from "@/components/marketing/ad-slots";
+import { EzoicMidContentAd, EzoicUnderTitleAd } from "@/components/ezoic/ezoic-ads";
 import { blogPosts } from "@/data/blog";
 import { CEA_CATEGORIES } from "@/data/editorial/publication-standard";
 import { noteChapters, notesInChapter } from "@/data/note-chapters";
@@ -200,6 +201,8 @@ function Blog() {
           </div>
         </div>
       </section>
+
+      <EzoicUnderTitleAd />
 
       {/* Mobile and tablet: horizontal chapter chips */}
       <div className="border-border bg-background sticky top-16 z-20 border-b lg:hidden">
@@ -393,6 +396,7 @@ function Blog() {
             <Pagination current={current} total={totalPages} onChange={goToPage} />
           )}
 
+          <EzoicMidContentAd />
           <BlogIndexAd />
         </div>
       </div>
