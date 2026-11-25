@@ -124,8 +124,7 @@ if (!/from "@\/lib\/consent"/.test(loader))
 // Accepts either polarity of the guard: `=== true` to proceed or `!== true` to
 // bail early. Both enforce explicit ads consent; only the shape differs.
 const adsGuard = /readConsent\(\)\?\.ads\s*(===|!==)\s*true/;
-if (!adsGuard.test(loader))
-  failures.push("adsense loader no longer requires explicit ads consent");
+if (!adsGuard.test(loader)) failures.push("adsense loader no longer requires explicit ads consent");
 if (!/PRIVATE_PREFIXES/.test(loader))
   failures.push("tracking loader lost its private-route exclusion list");
 if (/ENABLE_PUBLIC_TRACKING/.test(loader))

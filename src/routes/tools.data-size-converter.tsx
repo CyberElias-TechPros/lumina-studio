@@ -41,7 +41,7 @@ const FAQS = [
   },
   {
     q: "Why does my 16 GB memory card only show 14.9 GB?",
-    a: "The maker sells in decimal units (1 GB = 1,000,000,000 bytes). Windows reports the same bytes in binary units but still labels them \"GB\". The difference is about 7%, so 16 GB decimal shows as roughly 14.9 GiB in Windows. Nothing was removed.",
+    a: 'The maker sells in decimal units (1 GB = 1,000,000,000 bytes). Windows reports the same bytes in binary units but still labels them "GB". The difference is about 7%, so 16 GB decimal shows as roughly 14.9 GiB in Windows. Nothing was removed.',
   },
   {
     q: "How much data is a megabyte?",
@@ -94,9 +94,9 @@ function DataSizeConverterPage() {
             <p className="text-foreground text-lg leading-relaxed">
               <strong>TB &gt; GB &gt; MB &gt; KB.</strong> Each step is about a thousand of the one
               below it: 1 TB = 1,000 GB, 1 GB = 1,000 MB, 1 MB = 1,000 KB. So when someone asks
-              &ldquo;which is bigger, MB or KB?&rdquo;, the answer is always{" "}
-              <strong>MB</strong> — and 2 GB is a thousand times bigger than 2 MB even though the
-              digits look almost the same.
+              &ldquo;which is bigger, MB or KB?&rdquo;, the answer is always <strong>MB</strong> —
+              and 2 GB is a thousand times bigger than 2 MB even though the digits look almost the
+              same.
             </p>
           </div>
 
@@ -124,9 +124,9 @@ function DataSizeConverterPage() {
                 400 photos, or about 90 minutes of 480p video.
               </li>
               <li>
-                <strong className="text-foreground">Buying a memory card:</strong> a 64 GB card holds
-                about 18,000 phone photos. A 128 GB card doubles that. Cards are far cheaper per
-                gigabyte than mobile data, so copy photos off the phone rather than re-uploading
+                <strong className="text-foreground">Buying a memory card:</strong> a 64 GB card
+                holds about 18,000 phone photos. A 128 GB card doubles that. Cards are far cheaper
+                per gigabyte than mobile data, so copy photos off the phone rather than re-uploading
                 them.
               </li>
               <li>

@@ -229,16 +229,16 @@ export function DataSizeConverter() {
                 {stepUp?.nextFactor && (
                   <>
                     {" "}
-                    That is <strong className="text-foreground">
-                      1/{fmtNumber(stepUp.nextFactor)}
-                    </strong>{" "}
-                    of a {UNIT_NAMES[stepUp.next].singular}.
+                    That is{" "}
+                    <strong className="text-foreground">1/{fmtNumber(stepUp.nextFactor)}</strong> of
+                    a {UNIT_NAMES[stepUp.next].singular}.
                   </>
                 )}
                 {stepUp?.previousFactor && (
                   <>
                     {" "}
-                    It is <strong className="text-foreground">
+                    It is{" "}
+                    <strong className="text-foreground">
                       {fmtNumber(stepUp.previousFactor)}×
                     </strong>{" "}
                     bigger than one {UNIT_NAMES[stepUp.previous].singular}.
@@ -352,8 +352,9 @@ export function DataSizeConverter() {
           {sizes && (
             <p className="text-muted-foreground border-t border-foreground/10 px-5 py-3 text-[11px] leading-relaxed">
               Or {fitLabel(sizes.bytes / REFERENCE.wordDoc, "Word document", "Word documents")} of
-              typing, or {fitLabel(sizes.bytes / REFERENCE.pdfScan, "scanned page", "scanned pages")}
-              . Photos and video are what drain a bundle fastest; text is almost free.
+              typing, or{" "}
+              {fitLabel(sizes.bytes / REFERENCE.pdfScan, "scanned page", "scanned pages")}. Photos
+              and video are what drain a bundle fastest; text is almost free.
             </p>
           )}
         </section>
@@ -368,9 +369,9 @@ export function DataSizeConverter() {
             <p className="text-muted-foreground text-sm leading-relaxed">
               Phone makers and mobile networks sell in{" "}
               <strong className="text-foreground">decimal</strong> units: 1 GB = 1,000 MB. Windows
-              and some older software report in{" "}
-              <strong className="text-foreground">binary</strong> units: 1 GiB = 1,024 MiB but label
-              it &quot;GB&quot;. Nothing is missing — the same bytes are being counted by two rulers.
+              and some older software report in <strong className="text-foreground">binary</strong>{" "}
+              units: 1 GiB = 1,024 MiB but label it &quot;GB&quot;. Nothing is missing — the same
+              bytes are being counted by two rulers.
             </p>
             {sizes ? (
               <div className="mt-4 grid grid-cols-2 gap-3">

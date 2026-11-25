@@ -94,10 +94,7 @@ function Dashboard() {
   }
 
   return (
-    <AppShell
-      title={`${greeting}, ${name}`}
-      subtitle="Welcome to your workspace"
-    >
+    <AppShell title={`${greeting}, ${name}`} subtitle="Welcome to your workspace">
       <div className="relative mb-6 h-44 overflow-hidden rounded-2xl border sm:h-52">
         <SceneArt variant="code">
           <div className="flex h-full items-end p-5 sm:p-6">

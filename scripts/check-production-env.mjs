@@ -94,9 +94,7 @@ if (!process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY && isProduction) {
 }
 
 if (!process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY) {
-  warnings.push(
-    "NEXT_PUBLIC_VAPID_PUBLIC_KEY is unset — push notifications will not be offered.",
-  );
+  warnings.push("NEXT_PUBLIC_VAPID_PUBLIC_KEY is unset — push notifications will not be offered.");
 }
 
 if (process.env.NEXT_PUBLIC_ENABLE_PUBLIC_TRACKING !== undefined) {

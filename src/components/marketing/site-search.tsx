@@ -50,15 +50,16 @@ function buildIndex(): Document[] {
     description: post.quickAnswer ?? post.excerpt,
     href: `/blog/${post.slug}`,
     meta: `Lesson ${post.order}`,
-    haystack: `${post.title} ${post.seoTitle ?? ""} ${post.excerpt} ${post.quickAnswer ?? ""} ${post.body
-      .map((block) => {
-        if (block.type === "p") return block.text;
-        if (block.type === "h2") return block.text;
-        if (block.type === "ul") return block.items.join(" ");
-        if (block.type === "table") return block.rows.flat().join(" ");
-        return block.caption ?? "";
-      })
-      .join(" ")}`.toLowerCase(),
+    haystack:
+      `${post.title} ${post.seoTitle ?? ""} ${post.excerpt} ${post.quickAnswer ?? ""} ${post.body
+        .map((block) => {
+          if (block.type === "p") return block.text;
+          if (block.type === "h2") return block.text;
+          if (block.type === "ul") return block.items.join(" ");
+          if (block.type === "table") return block.rows.flat().join(" ");
+          return block.caption ?? "";
+        })
+        .join(" ")}`.toLowerCase(),
   }));
 
   const tools: Document[] = CEA_BUILT_IN_LABS.map((lab) => ({

@@ -216,7 +216,10 @@ function installDom({ pathname = "/blog/kilobytes-and-megabytes" } = {}) {
       listeners.set(type, [...(listeners.get(type) ?? []), handler]);
     },
     removeEventListener(type, handler) {
-      listeners.set(type, (listeners.get(type) ?? []).filter((h) => h !== handler));
+      listeners.set(
+        type,
+        (listeners.get(type) ?? []).filter((h) => h !== handler),
+      );
     },
   };
 
@@ -371,11 +374,7 @@ test("Clarity never loads on a payment or signed-in path, even with consent", ()
     const { consent, tracking } = freshModules();
     consent.saveConsent({ ads: true, analytics: true });
     tracking.loadClarity();
-    assert.equal(
-      scriptsMatching(/clarity\.ms/).length,
-      0,
-      `Clarity must not load on ${pathname}`,
-    );
+    assert.equal(scriptsMatching(/clarity\.ms/).length, 0, `Clarity must not load on ${pathname}`);
     dom.teardown();
   }
 });
@@ -419,11 +418,7 @@ test("AdSense never loads on a transactional path", () => {
     const { consent, tracking } = freshModules();
     consent.saveConsent({ ads: true, analytics: true });
     tracking.loadAdSense();
-    assert.equal(
-      scriptsMatching(/adsbygoogle/).length,
-      0,
-      `AdSense must not load on ${pathname}`,
-    );
+    assert.equal(scriptsMatching(/adsbygoogle/).length, 0, `AdSense must not load on ${pathname}`);
     dom.teardown();
   }
 });

@@ -42,7 +42,9 @@ if (!/from "@\/lib\/consent"/.test(tracking)) {
   failures.push("src/lib/tracking.ts does not import the consent module");
 }
 
-const loaders = [...tracking.matchAll(/export function (load\w+)\([^)]*\):\s*void\s*\{([\s\S]*?)\n\}/g)];
+const loaders = [
+  ...tracking.matchAll(/export function (load\w+)\([^)]*\):\s*void\s*\{([\s\S]*?)\n\}/g),
+];
 if (loaders.length < 3) {
   failures.push(`expected at least 3 loaders in tracking.ts, found ${loaders.length}`);
 }
@@ -139,7 +141,8 @@ if (!/<CookieConsent \/>/.test(providers)) {
 
 /* ---------------- 9: third-party injection is confined ---------------- */
 
-const SANCTIONED_SCRIPT_HOSTS = /src\s*=\s*[`"']https:\/\/(www\.clarity\.ms|www\.googletagmanager\.com|pagead2\.googlesyndication\.com)/;
+const SANCTIONED_SCRIPT_HOSTS =
+  /src\s*=\s*[`"']https:\/\/(www\.clarity\.ms|www\.googletagmanager\.com|pagead2\.googlesyndication\.com)/;
 
 function walk(dir, out = []) {
   for (const entry of readdirSync(dir)) {
@@ -179,7 +182,9 @@ for (const path of ["src/app/providers.tsx", "src/lib/tracking.ts", "src/lib/con
     .replace(/\/\*[\s\S]*?\*\//g, "")
     .replace(/^\s*\/\/.*$/gm, "");
   if (/NEXT_PUBLIC_ENABLE_PUBLIC_TRACKING/.test(code)) {
-    failures.push(`${path} reads NEXT_PUBLIC_ENABLE_PUBLIC_TRACKING again — it made tracking unreachable`);
+    failures.push(
+      `${path} reads NEXT_PUBLIC_ENABLE_PUBLIC_TRACKING again — it made tracking unreachable`,
+    );
   }
 }
 

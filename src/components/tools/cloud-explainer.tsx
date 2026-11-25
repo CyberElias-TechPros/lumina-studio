@@ -225,9 +225,15 @@ export function CloudExplainer() {
               </div>
               <span className="mt-1 shrink-0">
                 {store.offline ? (
-                  <CloudOff className="text-muted-foreground/50 size-4" aria-label="Needs a connection" />
+                  <CloudOff
+                    className="text-muted-foreground/50 size-4"
+                    aria-label="Needs a connection"
+                  />
                 ) : (
-                  <Cloud className="text-success/70 size-4" aria-label="Works without a connection" />
+                  <Cloud
+                    className="text-success/70 size-4"
+                    aria-label="Works without a connection"
+                  />
                 )}
               </span>
             </li>
@@ -332,10 +338,12 @@ export function CloudExplainer() {
           </ul>
 
           <p className="text-muted-foreground mt-4 border-t border-foreground/10 pt-4 text-[11px] leading-relaxed">
-            Rule of thumb on a Nigerian bundle: <strong className="text-foreground">text is
-            almost free, photos are cheap, video is expensive</strong>. A single 1080p YouTube
-            session can cost more data than a month of WhatsApp messages. Set video apps to 480p
-            and download music on Wi-Fi to make a 1 GB bundle last a week.
+            Rule of thumb on a Nigerian bundle:{" "}
+            <strong className="text-foreground">
+              text is almost free, photos are cheap, video is expensive
+            </strong>
+            . A single 1080p YouTube session can cost more data than a month of WhatsApp messages.
+            Set video apps to 480p and download music on Wi-Fi to make a 1 GB bundle last a week.
           </p>
         </div>
       </section>

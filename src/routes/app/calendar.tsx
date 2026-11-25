@@ -102,21 +102,21 @@ function downloadCalendar(events: CalendarEvent[], provider: string): void {
     const start = new Date(2026, 7, Number(event.date));
     const end = new Date(start);
     end.setDate(end.getDate() + 1);
-  const icsDate = (date: Date) =>
+    const icsDate = (date: Date) =>
       `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, "0")}${String(date.getDate()).padStart(2, "0")}`;
-  // The DTSTAMP is generated on the client at download time. The server renders
-  // the calendar view without it, so there is no hydration mismatch.
-  lines.push(
-    "BEGIN:VEVENT",
-    `UID:${event.id}@cea.ng`,
-    `DTSTAMP:${icsDate(new Date())}T000000Z`,
-    `DTSTART;VALUE=DATE:${icsDate(start)}`,
-    `DTEND;VALUE=DATE:${icsDate(end)}`,
-    `SUMMARY:${calendarText(event.title)}`,
-    `LOCATION:${calendarText(event.location)}`,
-    `DESCRIPTION:${calendarText(`${event.kind} · ${event.time}`)}`,
-    "END:VEVENT",
-  );
+    // The DTSTAMP is generated on the client at download time. The server renders
+    // the calendar view without it, so there is no hydration mismatch.
+    lines.push(
+      "BEGIN:VEVENT",
+      `UID:${event.id}@cea.ng`,
+      `DTSTAMP:${icsDate(new Date())}T000000Z`,
+      `DTSTART;VALUE=DATE:${icsDate(start)}`,
+      `DTEND;VALUE=DATE:${icsDate(end)}`,
+      `SUMMARY:${calendarText(event.title)}`,
+      `LOCATION:${calendarText(event.location)}`,
+      `DESCRIPTION:${calendarText(`${event.kind} · ${event.time}`)}`,
+      "END:VEVENT",
+    );
   }
   lines.push("END:VCALENDAR");
   const blob = new Blob([`${lines.join("\\r\\n")}\\r\\n`], { type: "text/calendar;charset=utf-8" });
@@ -209,8 +209,8 @@ function CalendarPage() {
                       size="sm"
                       className="font-semibold"
                       onClick={() => {
-                      const now = new Date();
-                      setMonth(new Date(now.getFullYear(), now.getMonth(), 1));
+                        const now = new Date();
+                        setMonth(new Date(now.getFullYear(), now.getMonth(), 1));
                       }}
                     >
                       Today
@@ -238,8 +238,8 @@ function CalendarPage() {
                             !inMonth && "text-muted-foreground/40",
                             inMonth && "hover:bg-muted/60",
                             inMonth &&
-                        day === new Date().getDate() &&
-                        month.getMonth() === new Date().getMonth()
+                              day === new Date().getDate() &&
+                              month.getMonth() === new Date().getMonth()
                               ? "bg-primary/10 text-primary"
                               : "",
                           )}

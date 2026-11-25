@@ -205,7 +205,8 @@ export function MentoringReview() {
             </p>
             <p className="text-muted-foreground whitespace-pre-wrap text-sm">{selected.bio}</p>
             <p className="text-muted-foreground text-xs">
-              Consent: {selected.consentVersion}, <span suppressHydrationWarning>{new Date(selected.consentAt).toLocaleString()}</span>.
+              Consent: {selected.consentVersion},{" "}
+              <span suppressHydrationWarning>{new Date(selected.consentAt).toLocaleString()}</span>.
               Approval requires current adult eligibility.
             </p>
             {selected.visible && !selected.approvedAt && (

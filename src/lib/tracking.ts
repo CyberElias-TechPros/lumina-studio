@@ -48,9 +48,7 @@ const PRIVATE_PREFIXES = [
 
 export function trackingAllowedOnPath(pathname: string): boolean {
   const path = pathname.replace(/\/+$/, "") || "/";
-  return !PRIVATE_PREFIXES.some(
-    (prefix) => path === prefix || path.startsWith(`${prefix}/`),
-  );
+  return !PRIVATE_PREFIXES.some((prefix) => path === prefix || path.startsWith(`${prefix}/`));
 }
 
 function currentPath(): string {

@@ -32,8 +32,8 @@ function SearchPage() {
         eyebrow="Search"
         title={
           <>
-            Find the{" "}
-            <span className="font-serif text-primary font-normal italic">one page</span> you need.
+            Find the <span className="font-serif text-primary font-normal italic">one page</span>{" "}
+            you need.
           </>
         }
         description={`Searches the full text of ${lessonCount} lessons and ${toolCount} practice tools — not just their titles — by the thing you are trying to do.`}

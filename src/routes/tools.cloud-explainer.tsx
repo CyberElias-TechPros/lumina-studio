@@ -67,7 +67,9 @@ function CloudExplainerPage() {
         title={
           <>
             What is{" "}
-            <span className="font-serif text-primary font-normal italic">&ldquo;the cloud&rdquo;</span>{" "}
+            <span className="font-serif text-primary font-normal italic">
+              &ldquo;the cloud&rdquo;
+            </span>{" "}
             — really?
           </>
         }
@@ -126,16 +128,16 @@ function CloudExplainerPage() {
               <li className="flex gap-2.5">
                 <span className="text-primary font-mono text-xs font-semibold">01</span>
                 <span>
-                  <strong className="text-foreground">Turn on two-step verification</strong> for your
-                  Google account. Everything in this page rests on that password holding.
+                  <strong className="text-foreground">Turn on two-step verification</strong> for
+                  your Google account. Everything in this page rests on that password holding.
                 </span>
               </li>
               <li className="flex gap-2.5">
                 <span className="text-primary font-mono text-xs font-semibold">02</span>
                 <span>
                   <strong className="text-foreground">Check your last WhatsApp backup date.</strong>{" "}
-                  Settings → Chats → Chat backup. If it says &ldquo;never&rdquo;, set it to daily and
-                  allow Wi-Fi.
+                  Settings → Chats → Chat backup. If it says &ldquo;never&rdquo;, set it to daily
+                  and allow Wi-Fi.
                 </span>
               </li>
               <li className="flex gap-2.5">

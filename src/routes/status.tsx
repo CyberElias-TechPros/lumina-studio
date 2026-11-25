@@ -129,7 +129,11 @@ function StatusPage() {
           </>
         }
         description="Every line below is measured from your own browser on this visit, or is stated as something we cannot verify from here. We would rather say “unknown” than show a green light we have not earned."
-        meta={[`Environment: ${environment}`, `Page built ${builtOn}`, "No advertising on this page"]}
+        meta={[
+          `Environment: ${environment}`,
+          `Page built ${builtOn}`,
+          "No advertising on this page",
+        ]}
       >
         <Link
           to="/"
@@ -150,10 +154,7 @@ function StatusPage() {
                   key={check.id}
                   className="border-foreground/10 bg-card flex items-start gap-3 rounded-xl border p-4"
                 >
-                  <Icon
-                    className={`mt-0.5 size-5 shrink-0 ${copy.className}`}
-                    aria-hidden="true"
-                  />
+                  <Icon className={`mt-0.5 size-5 shrink-0 ${copy.className}`} aria-hidden="true" />
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
                       <p className="text-foreground text-sm font-semibold">{check.label}</p>

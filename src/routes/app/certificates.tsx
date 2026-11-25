@@ -31,12 +31,24 @@ export const Route = createFileRoute("/app/certificates")({
   component: StudentCertificates,
 });
 
-function formatDate(iso: string): string {
-  return <span suppressHydrationWarning>{new Date(iso).toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  })}</span>;
+/**
+ * Certificates are shown with a locale-formatted date, which differs between the
+ * server's ICU data and the visitor's browser and therefore diverges on
+ * hydration. The output is wrapped so React is told to expect the mismatch.
+ *
+ * Returns an element, not a string — the caller embeds it in JSX, and typing it
+ * `: string` while returning JSX is what broke the build.
+ */
+function formatDate(iso: string) {
+  return (
+    <span suppressHydrationWarning>
+      {new Date(iso).toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      })}
+    </span>
+  );
 }
 
 function StudentCertificates() {

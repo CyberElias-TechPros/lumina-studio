@@ -360,7 +360,9 @@ export function NairaKeyboardHelper() {
                   {index + 1}
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="text-foreground block text-sm font-semibold">{method.label}</span>
+                  <span className="text-foreground block text-sm font-semibold">
+                    {method.label}
+                  </span>
                   <span className="text-muted-foreground mt-0.5 block text-[11px]">
                     {method.where}
                     {method.needsNumpad && (
@@ -488,9 +490,10 @@ export function NairaKeyboardHelper() {
           ) : null}
 
           <p className="text-muted-foreground mt-4 text-[11px] leading-relaxed">
-            British/Nigerian convention: <em>One million, two hundred and fifty thousand naira,
-            fifty kobo only.</em> The word <em>only</em> closes the amount so nothing can be added
-            after it. Never write kobo as a decimal on the words line.
+            British/Nigerian convention:{" "}
+            <em>One million, two hundred and fifty thousand naira, fifty kobo only.</em> The word{" "}
+            <em>only</em> closes the amount so nothing can be added after it. Never write kobo as a
+            decimal on the words line.
           </p>
         </div>
       </section>

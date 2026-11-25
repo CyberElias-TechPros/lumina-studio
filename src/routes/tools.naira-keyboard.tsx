@@ -49,7 +49,7 @@ const FAQS = [
   },
   {
     q: "How do I write ₦1,250,000.50 in words on a cheque?",
-    a: "One million, two hundred and fifty thousand naira, fifty kobo only. Capitalise the first letter, write the kobo as words not decimals, and draw a line through any space after the word \"only\" so nothing can be added.",
+    a: 'One million, two hundred and fifty thousand naira, fifty kobo only. Capitalise the first letter, write the kobo as words not decimals, and draw a line through any space after the word "only" so nothing can be added.',
   },
   {
     q: "Is it ₦ or NGN in an invoice?",
@@ -140,16 +140,15 @@ function NairaKeyboardPage() {
             <div className="flex items-start gap-3">
               <ShieldCheck className="text-primary mt-0.5 size-5 shrink-0" />
               <div>
-                <h3 className="font-display text-lg font-semibold">
-                  Why ₦ is harder than $ or £
-                </h3>
+                <h3 className="font-display text-lg font-semibold">Why ₦ is harder than $ or £</h3>
                 <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
                   The naira sign was added to Unicode in 1999 as{" "}
                   <span className="font-mono text-xs">U+20A6</span>, decades after the dollar and
                   pound signs that sit in the original ASCII set. Older keyboards and cheap imported
-                  laptops were never labelled for it, so the sign has to be typed through a code or a
-                  symbol panel rather than a dedicated key. Every method on this page is a workaround
-                  for that one historical accident — and none of them need a new keyboard.
+                  laptops were never labelled for it, so the sign has to be typed through a code or
+                  a symbol panel rather than a dedicated key. Every method on this page is a
+                  workaround for that one historical accident — and none of them need a new
+                  keyboard.
                 </p>
               </div>
             </div>
