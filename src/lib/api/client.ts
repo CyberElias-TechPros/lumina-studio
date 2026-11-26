@@ -76,6 +76,19 @@ export async function apiFetch<T>(path: string, init: ApiRequestInit = {}): Prom
   }
 
   if (!env.apiUrl) {
+    // Intercept network errors for public endpoints and return mock fallbacks
+    const publicPaths = [
+      "/v1/cohorts",
+      "/v1/cohorts/next",
+      "/v1/assistant/intro",
+      "/v1/assistant/chat",
+    ];
+    if (publicPaths.includes(path)) {
+      const handler = await getMock(init.method ?? "GET", path);
+      if (handler) {
+        return (await handler({ ...init, path })) as T;
+      }
+    }
     throw new ApiError(
       503,
       "API_NOT_CONFIGURED",
@@ -110,6 +123,21 @@ export async function apiFetch<T>(path: string, init: ApiRequestInit = {}): Prom
       });
     } catch (error) {
       if (requestInit.signal?.aborted) throw error;
+
+      // Intercept network errors for public endpoints and return mock fallbacks
+      const publicPaths = [
+        "/v1/cohorts",
+        "/v1/cohorts/next",
+        "/v1/assistant/intro",
+        "/v1/assistant/chat",
+      ];
+      if (publicPaths.includes(path)) {
+        const handler = await getMock(init.method ?? "GET", path);
+        if (handler) {
+          return (await handler({ ...init, path })) as T;
+        }
+      }
+
       if (retryableMethod && attempt < MAX_RETRIES) {
         await sleep(retryDelayMs(undefined, attempt));
         attempt += 1;

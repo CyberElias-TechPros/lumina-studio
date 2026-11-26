@@ -216,6 +216,16 @@ export const noteChapters: NoteChapter[] = [
     courseSlug: "ai-productivity",
     courseLabel: "AI Productivity",
   },
+  {
+    slug: "companion-articles",
+    title: "Companion articles",
+    blurb:
+      "Longer pieces outside the learning path: the security terms the search data showed people are looking for, the careers they lead to, and the questions the series answers only in passing.",
+    from: 1001,
+    to: 1999,
+    courseSlug: "cybersecurity-foundations",
+    courseLabel: "Cybersecurity",
+  },
 ];
 
 const byOrder = [...blogPosts].sort((a, b) => a.order - b.order);
@@ -226,6 +236,19 @@ export function notesInOrder(): BlogPost[] {
 
 export function chapterForOrder(order: number): NoteChapter | undefined {
   return noteChapters.find((c) => order >= c.from && order <= c.to);
+}
+
+/**
+ * True when the order belongs to the companion-article section (1000+).
+ *
+ * Companions are deliberately outside the 1–210 learning path: they do not
+ * belong to a chapter of the course and they must not appear between two
+ * lessons in reading order. They are still published, indexable articles, so
+ * anything that filters by chapter has to know they exist — otherwise they
+ * are reachable by direct link and invisible everywhere else.
+ */
+export function isCompanionOrder(order: number): boolean {
+  return order >= 1000;
 }
 
 export function notesInChapter(chapter: NoteChapter): BlogPost[] {

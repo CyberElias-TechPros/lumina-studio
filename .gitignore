@@ -75,3 +75,9 @@ src/content/ai-lessons-rendered/
 
 # Generated academic print exports (regenerate with npm run academic:print).
 /academic/print/
+
+# Raw Search Console exports. They contain per-page and per-query performance
+# for a single property and are re-exported every quarter; committed analysis
+# lives in docs/gsc-search-console-audit-2026-11.md and the typed aggregates in
+# src/data/editorial/search-performance.ts.
+/gsc-reports.local/

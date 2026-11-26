@@ -4,6 +4,8 @@ import type {
   CeaDifficulty,
 } from "./editorial/publication-standard";
 
+import { companionPosts } from "./companion-posts";
+
 export type BlogBlock =
   | { type: "p"; text: string }
   | { type: "h2"; text: string }
@@ -23,6 +25,20 @@ export type BlogPost = {
   articleType?: CeaArticleTypeId;
   difficulty?: CeaDifficulty;
   learningObjectives?: string[];
+  /**
+   * The answer, in one or two sentences, rendered in a lead box ABOVE the body.
+   *
+   * Why this exists: the 2026-11 Search Console export showed ~150 queries at
+   * 0 clicks with the top entry "soc room" at 50 impressions. The lessons were
+   * already ranking on page 1-2, but 98% of them opened with a catalogue line
+   * ("This lesson teaches you…") instead of answering the question the reader
+   * typed. Someone arriving from a phone snippet gets their answer in the first
+   * sentence or they bounce back to the results.
+   *
+   * Keep it to what a person would say out loud if asked the question directly.
+   * No "in this lesson", no promise of what comes later.
+   */
+  quickAnswer?: string;
   series: string;
   order: number;
   author: string;
@@ -56,12 +72,14 @@ export const NOTES_AUTHOR = {
   photo: "/images/team/ellis-dennis-graham.jpg",
 };
 
-export const blogPosts: BlogPost[] = [
+const NOTES_SERIES: BlogPost[] = [
   {
     slug: "sitting-down-at-a-computer",
     title: "Sitting down at a computer for the first time",
     excerpt:
       "What each part does, how to switch it on, and how to move the pointer without fear. A calm first hour for anyone who has never used a computer.",
+    quickAnswer:
+      "A computer is four things working together: a screen that shows, a keyboard and mouse that listen, a box that thinks, and power that feeds all of it. Press the button on the box once, wait for the light to stop blinking, and the screen will ask for a password or show a desktop.",
     series: SERIES,
     order: 1,
     author: AUTHOR,
@@ -174,6 +192,8 @@ export const blogPosts: BlogPost[] = [
     title: "Where your work lives: files and folders",
     excerpt:
       "A file is one document. A folder holds files. Learn where your work is kept, how to save it under a name you will still understand later, and how to find it again.",
+    quickAnswer:
+      "A file is one saved piece of work with a name and a type. A folder is a box that holds files. When you save, Windows puts the file wherever you point it, so choose the folder deliberately — Documents for work you keep, Desktop for things you will deal with today.",
     series: SERIES,
     order: 2,
     author: AUTHOR,
@@ -291,6 +311,8 @@ export const blogPosts: BlogPost[] = [
     title: "Your hands on the keyboard",
     excerpt:
       "Where to rest your fingers, which keys fix mistakes, and the shortcuts that save hours. Ten minutes of practice a day is enough to stop hunting for letters.",
+    quickAnswer:
+      "Rest your left fingers on A S D F and your right on J K L ;. Those eight keys are home. Your thumbs handle the space bar, and every other key is reached by stretching one finger from home and returning. Speed comes from never looking down.",
     series: SERIES,
     order: 3,
     author: AUTHOR,
@@ -405,6 +427,8 @@ export const blogPosts: BlogPost[] = [
     title: "The internet without getting lost",
     excerpt:
       "How to open a browser, tell the address bar from the search box, use tabs, read a web address, and save a page you will want again. Simple habits that prevent most mistakes.",
+    quickAnswer:
+      "The internet is a worldwide network of computers that pass messages to each other. A browser is the program on your computer that asks for a page and draws it. You do not need to understand the network to use it — you need to know the address bar, the back button and how to close a tab.",
     series: SERIES,
     order: 4,
     author: AUTHOR,
@@ -522,6 +546,8 @@ export const blogPosts: BlogPost[] = [
     title: "Your first email, sent properly",
     excerpt:
       "An address, a subject that tells the truth, a short body with one job, and the paperclip. How to write and send a first email that a school or office will answer.",
+    quickAnswer:
+      "An email address is two parts joined by @: your name, then the mail company. To send one, fill To (who receives it), Subject (what it is about) and the message box. Press Send and it leaves immediately and cannot be recalled, so read the To line twice before you click.",
     series: SERIES,
     order: 5,
     author: AUTHOR,
@@ -638,6 +664,8 @@ export const blogPosts: BlogPost[] = [
     title: "Passwords you can keep",
     excerpt:
       "How to make a password you can remember, store it safely, and add a second lock to the accounts that matter. Includes what to do when someone gets in.",
+    quickAnswer:
+      "A strong password is long, not complicated. Four unrelated words, or a sentence only you would write, beats a short scramble of symbols. Use a different password on your email than anywhere else, and turn on two-step verification so a stolen password alone is not enough.",
     series: SERIES,
     order: 6,
     author: AUTHOR,
@@ -761,6 +789,8 @@ export const blogPosts: BlogPost[] = [
     title: "The link you should not open",
     excerpt:
       "How to spot a dangerous link before you click it, how to reach a real website safely, and exactly what to do if you already tapped and typed your password.",
+    quickAnswer:
+      "A dangerous link is usually safe-looking text wrapped around a hidden address. Before you click, hover over it on a computer, or long-press it on a phone, and read where it really goes. Banks, schools and delivery companies never ask for a password or card number by link.",
     series: SERIES,
     order: 7,
     author: AUTHOR,
@@ -862,6 +892,8 @@ export const blogPosts: BlogPost[] = [
     title: "Printing without waste",
     excerpt:
       "How to print one page instead of five, choose the right settings, use a business centre without being overcharged, and fix the paper jam yourself.",
+    quickAnswer:
+      "Print the page you meant: choose the printer, then check Pages, Copies and Colour before pressing Print. Print in black and white unless colour carries meaning, and use Print Preview — it shows exactly what will come out of the machine, for free.",
     series: SERIES,
     order: 8,
     author: AUTHOR,
@@ -2383,6 +2415,8 @@ export const blogPosts: BlogPost[] = [
     ],
     excerpt:
       "How to type the naira sign (₦), accented letters, and names that matter, on Windows, a Mac, and a phone. Includes the copy-and-paste trick that always works.",
+    quickAnswer:
+      "The naira sign (₦) has no key of its own. On Windows hold Alt and type 8358 on the number pad, or press Windows + period for the symbol picker. On a phone, hold the ₦-style key in the symbols panel or long-press the currency key. Accented letters work by holding the letter key down and choosing from the list that appears.",
     series: SERIES,
     order: 23,
     author: AUTHOR,
@@ -3129,6 +3163,8 @@ export const blogPosts: BlogPost[] = [
     title: "What a PDF is for",
     excerpt:
       "Why a PDF keeps its layout, how to make one from a document, how to fill and sign a form inside it, and when a PDF is the wrong file to send.",
+    quickAnswer:
+      "A PDF is a page whose layout is frozen. It looks the same on your phone, on a printer and on a ten-year-old laptop, which is exactly why schools, banks and employers ask for one. Make it from a finished Word or Google Docs file — never type into a PDF from scratch.",
     series: SERIES,
     order: 30,
     author: AUTHOR,
@@ -3456,6 +3492,8 @@ export const blogPosts: BlogPost[] = [
     title: "Searching the computer for a lost file",
     excerpt:
       "How to search for a file when you remember only half the name, where to search first, and what to do when the search box finds nothing at all.",
+    quickAnswer:
+      "Press Windows + S (or Command + Space on a Mac) and type part of the name — you rarely need the whole thing. If you cannot remember the name, search for a word you know is inside the document instead. If the search finds nothing, check whether you are searching the right folder: the file may be on a different drive, in the Recycle Bin, or in cloud storage that has not downloaded.",
     series: SERIES,
     order: 33,
     author: AUTHOR,
@@ -4186,6 +4224,8 @@ export const blogPosts: BlogPost[] = [
     title: "When there is no sound",
     excerpt:
       "A step-by-step check for a silent computer, from the mute key to the sound driver, with what each result tells you before you call a technician.",
+    quickAnswer:
+      "Check the four things in this order: the volume is not muted and is turned up, the right output device is selected (speaker, headset or monitor), nothing is plugged into the headphone jack, and the app you are using has its own volume slider that is not at zero. Those four cover most silent computers. If all four are correct, the problem is the driver or the hardware, not the volume.",
     series: SERIES,
     order: 40,
     author: AUTHOR,
@@ -6867,6 +6907,8 @@ export const blogPosts: BlogPost[] = [
     ],
     excerpt:
       "What Ctrl and Z can bring back, what it cannot, how far back it reaches, and the moment when you should stop working and reach for the Recycle Bin instead.",
+    quickAnswer:
+      "Undo is Ctrl+Z on Windows and Command+Z on a Mac. Redo is Ctrl+Y (or Ctrl+Shift+Z) and Command+Shift+Z. Undo reverses your last action and keeps stepping back as far as the program remembers — usually dozens of steps, not thousands. It cannot undo something you have already closed without saving, and it cannot undo a file deleted outside the editor.",
     series: SERIES,
     order: 66,
     author: AUTHOR,
@@ -7278,6 +7320,8 @@ export const blogPosts: BlogPost[] = [
     ],
     excerpt:
       "What belongs in an email signature, what never does, how to set it once so every mail ends properly, and why four lines beat a paragraph.",
+    quickAnswer:
+      "An email signature is the four lines at the bottom of your message that say who you are: your name, what you do, one way to reach you, and nothing else. Set it once in your email settings and it appears on every new message automatically. Keep it to four lines — long signatures get read less, not more.",
     series: SERIES,
     order: 70,
     author: AUTHOR,
@@ -7480,6 +7524,8 @@ export const blogPosts: BlogPost[] = [
     ],
     excerpt:
       "Which is bigger between KB, MB and GB, how much fits on a phone or flash drive, and why a 16 GB drive holds 14.",
+    quickAnswer:
+      "From smallest to largest: KB, then MB, then GB, then TB. Each step is about a thousand of the one below it, so 1 GB ≈ 1,000 MB ≈ 1,000,000 KB. A megabyte is bigger than a kilobyte — about a thousand times bigger.",
     series: SERIES,
     order: 72,
     author: AUTHOR,
@@ -7686,6 +7732,8 @@ export const blogPosts: BlogPost[] = [
     title: "Drag and drop without losing the file",
     excerpt:
       "How to move a file with the mouse without copying it by accident, what happens between drives, and how to undo a drag that went to the wrong place.",
+    quickAnswer:
+      "Dragging a file moves it if both folders are on the same drive, and copies it if they are on different drives. Hold Ctrl while dragging to force a copy, or Shift to force a move. Before you let go, watch the shape of the pointer — a small plus sign means copy. If a drag lands wrong, press Ctrl+Z immediately and it goes back.",
     series: SERIES,
     order: 74,
     author: AUTHOR,
@@ -12728,6 +12776,8 @@ export const blogPosts: BlogPost[] = [
     ],
     excerpt:
       "What a security operations centre (SOC room) looks like, how Tier 1–3 analysts divide the work, and how a night shift hands over to a morning team.",
+    quickAnswer:
+      "A SOC room — security operations centre — is the room where an organisation watches its own network for attacks, all day and all night. Tier 1 analysts triage the incoming alerts, Tier 2 investigates the serious ones, and Tier 3 hunts for what the alerts missed.",
     series: SERIES,
     order: 122,
     author: AUTHOR,
@@ -22233,3 +22283,19 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 ];
+
+/**
+ * The 210-lesson learning series in reading order.
+ *
+ * `note-chapters.ts` maps the 21 chapters onto `order` 1–210, so nothing outside
+ * that range may be added to this array. New writing goes in `companion-posts.ts`.
+ */
+export const lessonSeries: BlogPost[] = NOTES_SERIES;
+
+/**
+ * Everything published: the series plus the companion articles.
+ *
+ * Consumers that want the learning path specifically should use `lessonSeries`,
+ * because the companions carry orders above 1000 and will sort after chapter 21.
+ */
+export const blogPosts: BlogPost[] = [...NOTES_SERIES, ...companionPosts];

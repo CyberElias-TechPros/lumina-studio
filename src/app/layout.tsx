@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import "@/styles.css";
 import AppProviders from "./providers";
 import { PublicAnalytics } from "@/components/public-analytics";
-import { ADSENSE_CLIENT, ADSENSE_SCRIPT_SRC } from "@/lib/adsense";
+import { ADSENSE_CLIENT, ADSENSE_SCRIPT_SRC } from "@/lib/tracking";
 import { LOCAL_BUSINESS_LD, ORGANIZATION_LD, WEBSITE_LD } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site-url";
 
@@ -76,6 +76,31 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/*
+          These five tags are deliberately NOT consent-gated, and that is the
+          correct behaviour rather than an oversight:
+
+          · Gatekeeper (first two) IS the consent platform. A CMP has to load
+            before consent is known, otherwise it can never ask — and a site with
+            no CMP cannot lawfully serve personalised ads in the EEA at all. It
+            withholds vendor consent until the visitor answers.
+          · Ezoic's standalone library, its bootstrap queue and Ezoic Analytics
+            read the TCF string Gatekeeper writes. They respect the visitor's
+            answer; they do not decide it.
+
+          · Google AdSense is deliberately LAST in this block. Under the IAB TCF
+            pattern the ad tag is allowed to be present from first paint — what
+            gates personalisation is the consent string Gatekeeper has written
+            before any ad request is made. Order is therefore the safety
+            property, not presence: `scripts/test/ezoic-integration.test.mjs`
+            asserts that the CMP appears before the ad tag in every prerendered
+            page, and `scripts/check-tracking-consent.mjs` fails the build if an
+            ad tag is hoisted above it.
+
+          Anything that is NOT part of this CMP chain — Microsoft Clarity, GA4,
+          ngadverts — stays out of <head> and goes through `src/lib/tracking.ts`,
+          which refuses to load without an explicit consent record.
+        */}
         <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js" />
         <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js" />
         <script async src="//www.ezojs.com/ezoic/sa.min.js" itemProp="" />

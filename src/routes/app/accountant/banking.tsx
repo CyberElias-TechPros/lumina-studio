@@ -190,7 +190,10 @@ function AccountantBanking() {
                       <div className="min-w-0 flex-1">
                         <p className="text-sm font-bold">{b.batch}</p>
                         <p className="text-muted-foreground text-xs">
-                          {b.count} recipients · {new Date(b.date).toLocaleDateString()}
+                          {b.count} recipients ·{" "}
+                          <span suppressHydrationWarning>
+                            {new Date(b.date).toLocaleDateString()}
+                          </span>
                         </p>
                       </div>
                       <p className="text-sm font-bold">{formatNaira(b.amount)}</p>

@@ -29,6 +29,8 @@
  */
 
 import { execFileSync } from "node:child_process";
+import "./lib/ts-resolve.mjs";
+
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";

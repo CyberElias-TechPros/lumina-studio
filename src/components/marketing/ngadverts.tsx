@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "@/lib/next-compat/router";
-import { CONSENT_EVENT, getConsent } from "@/lib/ga4";
+import { onConsentChange, readConsent } from "@/lib/consent";
 import { NGADVERTS, zoneContainerId, zoneScriptSrc } from "@/lib/ads/ngadverts";
 import { slotFor } from "@/lib/ads/slots";
 
@@ -41,12 +41,12 @@ export function AdUnit({ slotId, className }: { slotId: string; className?: stri
   // Consent can be granted after the page has rendered, so subscribe to it.
   useEffect(() => {
     if (!allowed) return;
-    const sync = () => setConsented(getConsent() === "granted");
+    const sync = () => setConsented(readConsent()?.ads === true);
     sync();
-    window.addEventListener(CONSENT_EVENT, sync);
+    const unsubscribe = onConsentChange(sync);
     window.addEventListener("storage", sync);
     return () => {
-      window.removeEventListener(CONSENT_EVENT, sync);
+      unsubscribe();
       window.removeEventListener("storage", sync);
     };
   }, [allowed]);

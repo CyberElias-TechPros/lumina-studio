@@ -104,6 +104,8 @@ function downloadCalendar(events: CalendarEvent[], provider: string): void {
     end.setDate(end.getDate() + 1);
     const icsDate = (date: Date) =>
       `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, "0")}${String(date.getDate()).padStart(2, "0")}`;
+    // The DTSTAMP is generated on the client at download time. The server renders
+    // the calendar view without it, so there is no hydration mismatch.
     lines.push(
       "BEGIN:VEVENT",
       `UID:${event.id}@cea.ng`,

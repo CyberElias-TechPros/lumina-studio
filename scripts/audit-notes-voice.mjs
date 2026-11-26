@@ -17,6 +17,8 @@
 import { join, dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import "./lib/ts-resolve.mjs";
+
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const argv = process.argv.slice(2);
 const flag = (name) => argv.includes(name);

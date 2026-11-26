@@ -125,7 +125,9 @@ function FunnelAnalyzer() {
                   <div key={s.id}>
                     <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
                       <span className="text-sm font-bold">{s.name}</span>
-                      <span className="text-muted-foreground">{s.visitors.toLocaleString()}</span>
+                      <span className="text-muted-foreground">
+                        <span suppressHydrationWarning>{s.visitors.toLocaleString()}</span>
+                      </span>
                       <span className="text-muted-foreground ml-auto">{s.delta}</span>
                       <Badge
                         className={cn(

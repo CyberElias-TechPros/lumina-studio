@@ -1,5 +1,6 @@
 import { ArrowRight, ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { Link } from "@/lib/next-compat/router";
+import { CookieSettingsButton } from "./cookie-settings-button";
 
 const columns = [
   {
@@ -42,6 +43,7 @@ const columns = [
       { label: "Your learning trail", to: "/learning-trail" },
       { label: "Editorial standards", to: "/editorial" },
       { label: "Privacy & terms", to: "/privacy" },
+      { label: "Service status", to: "/status" },
     ],
   },
 ] as const;
@@ -134,6 +136,14 @@ export function SiteFooter() {
                     </Link>
                   </li>
                 ))}
+                {col.title === "Resources" && (
+                  <li>
+                    {/* Required by GDPR Art. 7(3): withdrawing consent must be as
+                        easy as giving it. Without this the only way to change a
+                        decision is to clear site data by hand. */}
+                    <CookieSettingsButton className="cursor-pointer text-left text-[#c6cdd6] transition-colors hover:text-[#f4f1e9]" />
+                  </li>
+                )}
               </ul>
             </div>
           ))}
@@ -153,7 +163,13 @@ export function SiteFooter() {
       {/* Meta bar */}
       <div className="border-t border-[#242a31] bg-[#0b0d0f]">
         <div className="container-page flex flex-col gap-2 py-5 text-xs text-[#b4bac4] sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Cyber Elias Academy Ltd · RC 8413776</p>
+          {/* The year is read from the clock at render time: the server (UTC)
+              and the browser (Africa/Lagos) can disagree around New Year, so
+              the text node is exempt from hydration comparison. */}
+          <p>
+            © <span suppressHydrationWarning>{new Date().getFullYear()}</span> Cyber Elias Academy
+            Ltd · RC 8413776
+          </p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
             <span>Mon–Sat, 8:00–20:00 WAT</span>
             <span aria-hidden="true" className="hidden sm:inline">

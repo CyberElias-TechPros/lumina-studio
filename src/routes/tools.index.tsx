@@ -3,10 +3,13 @@ import { Link } from "@/lib/next-compat/router";
 import {
   ArrowRight,
   ArrowUpRight,
+  Banknote,
   Boxes,
   CheckCircle2,
+  Cloud,
   Code2,
   Database,
+  HardDrive,
   Keyboard,
   LayoutGrid,
   Monitor,
@@ -15,6 +18,7 @@ import {
   ShieldCheck,
   Sparkles,
   Table,
+  FileSignature,
 } from "lucide-react";
 import { CTASection, PageShell } from "@/components/marketing/shell";
 import { EzoicUnderTitleAd } from "@/components/ezoic/ezoic-ads";
@@ -50,6 +54,11 @@ const ICON_BY_PATH: Record<string, typeof Code2> = {
   "/tools/word-counter": ScrollText,
   "/tools/password-strength": ShieldCheck,
   "/tools/color-contrast": Palette,
+  "/tools/data-size-converter": HardDrive,
+  "/tools/naira-keyboard": Banknote,
+  "/tools/cloud-explainer": Cloud,
+  "/tools/security-assessment": ShieldCheck,
+  "/tools/digital-signature": FileSignature,
 };
 
 const QUICK_JUMP = [
@@ -63,6 +72,11 @@ const QUICK_JUMP = [
   { label: "Word Counter", to: "/tools/word-counter" },
   { label: "Password Strength", to: "/tools/password-strength" },
   { label: "Colour Contrast", to: "/tools/color-contrast" },
+  { label: "KB vs MB vs GB", to: "/tools/data-size-converter" },
+  { label: "Naira Sign ₦", to: "/tools/naira-keyboard" },
+  { label: "What Is the Cloud?", to: "/tools/cloud-explainer" },
+  { label: "Security Assessment", to: "/tools/security-assessment" },
+  { label: "Digital Signatures", to: "/tools/digital-signature" },
 ] as const;
 
 const TRACK_LABELS: { id: BuiltInLabEntry["track"]; title: string; subtitle: string }[] = [
@@ -74,12 +88,14 @@ const TRACK_LABELS: { id: BuiltInLabEntry["track"]; title: string; subtitle: str
   {
     id: "data-office",
     title: "Data, SQL & Spreadsheet Labs",
-    subtitle: "Query Nigerian business tables, inspect messy CSVs and drill real Excel formulas.",
+    subtitle:
+      "Query Nigerian business tables, drill real Excel formulas, convert KB/MB/GB and type the naira sign.",
   },
   {
     id: "assessment-ai",
-    title: "Diagnostics & Security",
-    subtitle: "Test readiness across academy tracks or audit password strength locally.",
+    title: "Diagnostics, Security & Everyday Computing",
+    subtitle:
+      "Test readiness across academy tracks, audit password strength locally, or learn where the cloud really is.",
   },
   {
     id: "design-writing",

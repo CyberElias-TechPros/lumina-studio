@@ -5,14 +5,47 @@
       "prefix": "/images/team/",
       "status": "owner-supplied",
       "holder": "Cyber Elias Academy",
-      "note": "Delivered by the founder through scripts/import-ebony-photos.sh from the Academy's own uploads. Rights confirmable: these are the Academy's own staff portraits."
+      "note": "Staff portraits delivered by the founder. VISUALLY VERIFIED 2026-11-25: ellis-dennis-graham.jpg is an authentic studio portrait, not AI-generated. The founder confirmed the homepage imagery is likewise his own."
     },
     {
       "prefix": "/images/campus/",
-      "status": "owner-supplied",
+      "status": "owned",
       "holder": "Cyber Elias Academy",
-      "note": "Classroom photographs delivered by the founder (same import script) and described in AGENTS.md/README as the Academy's own campus photographs."
+      "note": "Photographs of the classroom at 24 Ebony Road. VISUALLY VERIFIED 2026-11-25: lab-1.jpg shows real learners, real HP/Dell hardware, a genuine whiteboard with handwriting and a wall-mounted TV. These are the Academy's own photographs and are the strongest asset on the site — they are what separates this property from every AI-illustrated competitor.",
+      "include": [
+        "*.jpg"
+      ]
+    },
+    {
+      "prefix": "/images/courses/",
+      "status": "generated",
+      "holder": "Cyber Elias Academy",
+      "note": "AI-GENERATED, stated by the site owner on 2026-11-25. These appear on the homepage as course covers and in academy/media.ts. AdSense treats undisclosed synthetic imagery as a misrepresentation risk when it implies a real facility or outcome, so every use must be caption or alt-text honest: depict the subject, never imply it is CEA's campus, staff or learners. Not yet evidenced with a generation date — see docs/image-provenance-record.md."
+    },
+    {
+      "prefix": "/images/blog/",
+      "status": "generated",
+      "holder": "Cyber Elias Academy",
+      "note": "AI-GENERATED, stated by the site owner on 2026-11-25. Covers and figures throughout the 210 notes and the companion articles. Visual check confirms it: zero-trust-doors.jpg and other blog images show the clean, generic, unpeopled-of-place quality of generated scenes, where legal-2.jpg is an authentic paper photograph. The specific tool and date are not recorded — see docs/image-provenance-record.md for what is still owed."
+    },
+    {
+      "prefix": "/images/classes/",
+      "status": "generated",
+      "holder": "Cyber Elias Academy",
+      "note": "AI-GENERATED, stated by the site owner on 2026-11-25. Figures inside course lesson pages."
+    },
+    {
+      "prefix": "/images/products/",
+      "status": "generated",
+      "holder": "Cyber Elias Academy",
+      "note": "AI-GENERATED. Product imagery for digital goods. NOTE: if any product image is presented to a shopper as the item they will receive, a generated render must be labelled as one."
     }
   ],
-  "files": {}
+  "files": {
+    "/images/team/ellis-dennis-graham.jpg": {
+      "status": "owner-supplied",
+      "holder": "Cyber Elias Academy",
+      "note": "Founder portrait. Visually verified 2026-11-25 as authentic, not synthetic."
+    }
+  }
 }

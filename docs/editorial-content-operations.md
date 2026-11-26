@@ -2,6 +2,10 @@
 
 This document is the working checklist for public learning notes and course pages. It is intended to keep the website useful to learners and accurate about what Cyber Elias Academy can currently deliver.
 
+For *what to write next* and *when a page is due for review*, see
+[`content-currency.md`](./content-currency.md). That document describes the
+`content:backlog` and `review:lesson` commands. This one governs the writing itself.
+
 ## Before publishing a learning note
 
 - Name the specific learner task the page helps someone complete. Avoid publishing a page whose only purpose is to target a search phrase.

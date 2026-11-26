@@ -28,6 +28,8 @@
  * Usage: node scripts/validate-lessons.mjs [--strict]
  */
 
+import "./lib/ts-resolve.mjs";
+
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";

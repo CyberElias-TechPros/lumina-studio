@@ -35,6 +35,34 @@ export interface BuiltInLabEntry {
 
 export const CEA_BUILT_IN_LABS: BuiltInLabEntry[] = [
   {
+    id: "security-assessment",
+    to: "/tools/security-assessment",
+    track: "assessment-ai",
+    badge: "Security Assessment",
+    name: "Vulnerability Checklist & Zero Trust Guide",
+    headline: "Find out what is weak, and what to fix first.",
+    blurb:
+      "A ten-point vulnerability assessment checklist scored in CVSS v3.1 bands, with every finding mapped to the Zero Trust principle that fixes it. Produces a copyable report. Runs entirely in the browser.",
+    meta: "10 checks · CVSS bands · Zero Trust · Copyable report",
+    linkedCourseSlug: "cybersecurity",
+    linkedCourseTitle: "Cybersecurity",
+    isNew: true,
+  },
+  {
+    id: "digital-signature",
+    to: "/tools/digital-signature",
+    track: "assessment-ai",
+    badge: "Digital Signatures",
+    name: "Signature Explainer & Fingerprint Reader",
+    headline: "Is it signed, or is it just a picture?",
+    blurb:
+      "Separates the three things people call a digital signature — a pasted image, a scan, and cryptographic proof — then reads a certificate fingerprint to tell you which algorithm you are holding and what it does not prove.",
+    meta: "Image vs scan vs crypto · SHA-256 vs SHA-1 · Fingerprint reader",
+    linkedCourseSlug: "cybersecurity",
+    linkedCourseTitle: "Cybersecurity",
+    isNew: true,
+  },
+  {
     id: "code-studio",
     to: "/tools/code-studio",
     track: "code-web",
@@ -169,6 +197,48 @@ export const CEA_BUILT_IN_LABS: BuiltInLabEntry[] = [
     meta: "WCAG AA/AAA · Palettes",
     linkedCourseSlug: "graphic-design",
     linkedCourseTitle: "Graphic Design",
+  },
+  {
+    id: "data-size-converter",
+    to: "/tools/data-size-converter",
+    track: "data-office",
+    badge: "Everyday Computing",
+    name: "KB vs MB vs GB Converter",
+    headline: "Which is bigger — and what does it hold?",
+    blurb:
+      "Type any size (500 MB, 1.5 GB) and see it in KB, MB, GB and TB at once, how many photos or songs fit inside, and why a 16 GB phone reports 14 GB.",
+    meta: "KB · MB · GB · TB · What fits",
+    linkedCourseSlug: "computer-basics-typing",
+    linkedCourseTitle: "Computer Basics & Typing",
+    isNew: true,
+  },
+  {
+    id: "naira-keyboard",
+    to: "/tools/naira-keyboard",
+    track: "data-office",
+    badge: "Everyday Computing",
+    name: "Naira Sign & Amount in Words",
+    headline: "Type ₦ anywhere, and spell any amount.",
+    blurb:
+      "Every working method for ₦ — Word's 20A6 Alt+X, Windows Alt+8358, Win+., Android and iPhone long-press — one-tap copy for accents, and a cheque/invoice amount-in-words writer.",
+    meta: "₦ · Accents · Amount in words",
+    linkedCourseSlug: "computer-basics-typing",
+    linkedCourseTitle: "Computer Basics & Typing",
+    isNew: true,
+  },
+  {
+    id: "cloud-explainer",
+    to: "/tools/cloud-explainer",
+    track: "assessment-ai",
+    badge: "Everyday Computing",
+    name: "What Is the Cloud?",
+    headline: "Your files, and who is really holding them.",
+    blurb:
+      "A visual explainer of where your photos, WhatsApp backups, documents and email actually live — plus what happens when data runs out and what each online action costs in MB.",
+    meta: "Cloud storage · Data cost · Offline",
+    linkedCourseSlug: "digital-productivity",
+    linkedCourseTitle: "Digital Productivity",
+    isNew: true,
   },
 ];
 

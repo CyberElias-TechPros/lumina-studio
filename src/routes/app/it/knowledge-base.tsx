@@ -44,7 +44,7 @@ function ItKnowledgeBase() {
       title="Knowledge base"
       subtitle={
         articles.length > 0
-          ? `${articles.length} articles · ${views.toLocaleString()} views this month`
+          ? `${articles.length} articles · <span suppressHydrationWarning>${views.toLocaleString()}</span> views this month`
           : "Loading articles…"
       }
       actions={

@@ -124,7 +124,7 @@ export function MentoringReview() {
         {userId && eligibility.isSuccess && (
           <p className="text-sm">
             {eligibility.data.eligibility?.active
-              ? `Eligibility active until ${new Date(eligibility.data.eligibility.expiresAt).toLocaleString()}.`
+              ? `Eligibility active until <span suppressHydrationWarning>${new Date(eligibility.data.eligibility.expiresAt).toLocaleString()}</span>.`
               : "No current adult eligibility."}
           </p>
         )}
@@ -205,7 +205,8 @@ export function MentoringReview() {
             </p>
             <p className="text-muted-foreground whitespace-pre-wrap text-sm">{selected.bio}</p>
             <p className="text-muted-foreground text-xs">
-              Consent: {selected.consentVersion}, {new Date(selected.consentAt).toLocaleString()}.
+              Consent: {selected.consentVersion},{" "}
+              <span suppressHydrationWarning>{new Date(selected.consentAt).toLocaleString()}</span>.
               Approval requires current adult eligibility.
             </p>
             {selected.visible && !selected.approvedAt && (

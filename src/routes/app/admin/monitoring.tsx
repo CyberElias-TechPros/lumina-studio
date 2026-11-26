@@ -44,7 +44,7 @@ function AdminMonitoring() {
       title="System monitoring"
       subtitle={
         metrics.data?.generatedAt
-          ? `Live service health · refreshed ${new Date(metrics.data.generatedAt).toLocaleTimeString()}`
+          ? `Live service health · refreshed <span suppressHydrationWarning>${new Date(metrics.data.generatedAt).toLocaleTimeString()}</span>`
           : "Live service health"
       }
       actions={

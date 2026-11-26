@@ -235,11 +235,21 @@ function GlobalSearchModal({ onClose }: { onClose: () => void }) {
                 No direct match for &ldquo;{query}&rdquo;. Explore courses or browse all 210 free
                 lessons.
               </p>
+              {/* This modal matches titles, excerpts and slugs only. Full lesson
+                  body text lives on /search, so hand the query over rather than
+                  telling the reader there is nothing. */}
               <div className="mt-4 flex flex-wrap justify-center gap-2.5">
+                <Link
+                  to="/search"
+                  onClick={onClose}
+                  className="rounded-full bg-[#d6fe52] px-4 py-2 text-xs font-semibold text-[#101214]"
+                >
+                  Search all lesson text
+                </Link>
                 <Link
                   to="/classes"
                   onClick={onClose}
-                  className="rounded-full bg-[#d6fe52] px-4 py-2 text-xs font-semibold text-[#101214]"
+                  className="rounded-full border border-[#2c333c] px-4 py-2 text-xs font-semibold text-[#f4f1e9]"
                 >
                   Browse courses
                 </Link>

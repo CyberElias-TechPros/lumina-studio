@@ -107,7 +107,7 @@ function VerifyPage() {
                     </p>
                   )}
                   <p className="text-muted-foreground text-xs">
-                    Checked {new Date().toLocaleDateString()}
+                    Checked <span suppressHydrationWarning>{new Date().toLocaleDateString()}</span>
                   </p>
                 </div>
               </div>
@@ -123,10 +123,12 @@ function VerifyPage() {
                 <div>
                   <dt className="text-muted-foreground text-xs">Issued</dt>
                   <dd className="mt-0.5 text-sm">
-                    {new Date(result.certificate.issuedAt).toLocaleDateString(undefined, {
-                      year: "numeric",
-                      month: "long",
-                    })}
+                    <span suppressHydrationWarning>
+                      {new Date(result.certificate.issuedAt).toLocaleDateString(undefined, {
+                        year: "numeric",
+                        month: "long",
+                      })}
+                    </span>
                   </dd>
                 </div>
               </dl>

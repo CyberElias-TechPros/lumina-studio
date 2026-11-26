@@ -52,9 +52,21 @@ const staticRoutes = [
   "/tools/excel-formula-lab",
   "/tools/assess",
   "/tools/open-labs",
+  "/tools/data-size-converter",
+  "/tools/naira-keyboard",
+  "/tools/cloud-explainer",
+  "/tools/security-assessment",
+  "/tools/digital-signature",
   "/visit",
   "/visit/info",
   "/visit/brochure",
+  "/status",
+  // "/search" is deliberately absent: the route sets `noIndex` because results
+  // are client-side and the lessons it surfaces are already indexed one by one.
+  // Listing a noindex page in the sitemap is a contradictory signal and
+  // `audit:structure` fails on it.
+  // /search is a client-side utility with no indexable result pages; it stays
+  // out of the sitemap and is noIndex on the route itself.
 ];
 
 // Shop product pages and feed files. Generated from digital-products.json so
@@ -75,7 +87,17 @@ function extractSlugs(file) {
   return [...src.matchAll(/slug:\s*"([a-z0-9-]+)"/g)].map((m) => m[1]);
 }
 
-const blogSlugs = [...new Set(extractSlugs("src/data/blog.ts"))];
+/**
+ * Article slugs, from every file that publishes one.
+ *
+ * This used to read `blog.ts` alone. When the companion articles moved into
+ * `companion-posts.ts`, they silently vanished from the sitemap — 5 published
+ * pages that nothing advertised. Any new file holding `slug: "..."` entries has to
+ * be added here, and a test in scripts/test/ content coverage fails if the live
+ * route count and the sitemap count drift apart.
+ */
+const ARTICLE_SOURCES = ["src/data/blog.ts", "src/data/companion-posts.ts"];
+const blogSlugs = [...new Set(ARTICLE_SOURCES.flatMap((file) => extractSlugs(file)))];
 
 function extractPublishedLectureKeys() {
   const academyRoot = join(root, "src/data/academy");

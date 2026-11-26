@@ -130,6 +130,21 @@
     <loc>https://www.cea.ng/tools/open-labs</loc>
   </url>
   <url>
+    <loc>https://www.cea.ng/tools/data-size-converter</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/tools/naira-keyboard</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/tools/cloud-explainer</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/tools/security-assessment</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/tools/digital-signature</loc>
+  </url>
+  <url>
     <loc>https://www.cea.ng/visit</loc>
   </url>
   <url>
@@ -137,6 +152,9 @@
   </url>
   <url>
     <loc>https://www.cea.ng/visit/brochure</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/status</loc>
   </url>
   <url>
     <loc>https://www.cea.ng/shop/website-starter</loc>
@@ -776,6 +794,36 @@
   </url>
   <url>
     <loc>https://www.cea.ng/blog/the-road-ahead</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/blog/zero-trust-in-plain-words</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/blog/what-a-vulnerability-assessment-is</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/blog/signed-or-just-a-picture</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/blog/agile-without-the-ceremony</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/blog/how-to-get-into-cybersecurity-without-a-degree</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/blog/agile-vs-scrum-which-is-worth-learning</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/blog/first-90-days-in-a-soc</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/blog/understanding-cvss-scores</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/blog/digital-vs-electronic-signature</loc>
+  </url>
+  <url>
+    <loc>https://www.cea.ng/blog/micro-segmentation-explained</loc>
   </url>
   <url>
     <loc>https://www.cea.ng/classes/microsoft-office</loc>
