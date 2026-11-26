@@ -221,8 +221,14 @@ function BusinessIntakePage() {
           </button>
         </div>
         <div className="flex min-w-[12rem] flex-1 items-center gap-2 rounded-xl bg-muted px-3 py-2">
-          <Search className="text-muted-foreground size-4 shrink-0" />
+          <Search className="text-muted-foreground size-4 shrink-0" aria-hidden="true" />
+          {/* Placeholder text is not an accessible name — it vanishes as soon as
+              the field has content, leaving a screen reader with "edit text". */}
+          <label htmlFor="intake-search" className="sr-only">
+            Search applications and partners
+          </label>
           <Input
+            id="intake-search"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
             placeholder={

@@ -193,8 +193,12 @@ function AdmissionsRegistrations() {
           ))}
         </div>
         <div className="bg-card shadow-soft flex min-w-[220px] flex-1 items-center gap-2 rounded-2xl border px-3 py-2">
-          <Search className="text-muted-foreground size-4 shrink-0" />
+          <Search className="text-muted-foreground size-4 shrink-0" aria-hidden="true" />
+          <label htmlFor="registrations-search" className="sr-only">
+            Search registrations by name, email or program
+          </label>
           <input
+            id="registrations-search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="placeholder:text-muted-foreground w-full bg-transparent text-sm font-medium outline-none"

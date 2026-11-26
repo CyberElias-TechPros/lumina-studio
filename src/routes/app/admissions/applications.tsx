@@ -73,8 +73,12 @@ function AdmissionsApplications() {
     >
       <div className="bg-card shadow-soft flex flex-wrap items-center gap-2 rounded-2xl border p-3">
         <div className="bg-muted flex min-w-0 flex-1 items-center gap-2 rounded-xl px-3 py-2">
-          <Search className="text-muted-foreground size-4 shrink-0" />
+          <Search className="text-muted-foreground size-4 shrink-0" aria-hidden="true" />
+          <label htmlFor="applications-search" className="sr-only">
+            Search applications by name, email or program
+          </label>
           <input
+            id="applications-search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="placeholder:text-muted-foreground w-full bg-transparent text-sm font-medium outline-none"

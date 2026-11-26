@@ -21,6 +21,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useSignIn } from "@/lib/auth/session";
 import { getRoleHomePath } from "@/data/rbac";
+import {
+  consumeReturnPath,
+  resolvePostSignInPath,
+  type ReturnReason,
+} from "@/lib/auth/return-path";
 import { requestMagicLink } from "@/lib/api/auth";
 
 export const Route = createFileRoute("/auth/sign-in")({
@@ -37,6 +42,10 @@ export const Route = createFileRoute("/auth/sign-in")({
 });
 
 function SignInPage() {
+  // Read the reason once, before any mutation can consume the stored path.
+  const [returnReason] = useState<ReturnReason | null>(() =>
+    typeof window === "undefined" ? null : consumeReturnPath().reason,
+  );
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
   const [magic, setMagic] = useState(false);
@@ -94,7 +103,9 @@ function SignInPage() {
             if (pendingInvite) {
               navigate({ to: "/app/parent/invitation/accept", search: { token: pendingInvite } });
             } else {
-              navigate({ to: getRoleHomePath(result.user.roleKey) });
+              // Honour where they were before the session expired; fall back to
+              // the role home only when there is nothing to return to.
+              navigate({ to: resolvePostSignInPath(getRoleHomePath(result.user.roleKey)) });
             }
           } else {
             navigate({ to: "/auth/mfa", search: { email } });
@@ -146,6 +157,16 @@ function SignInPage() {
               separate Google or Firebase account.
             </p>
           </div>
+
+          {returnReason === "expired" ? (
+            <div
+              role="status"
+              className="border-warning/30 bg-warning/10 text-foreground mb-5 rounded-xl border px-4 py-3 text-sm"
+            >
+              <strong className="font-semibold">Your session ended.</strong> Sign in again and you
+              will go straight back to where you were, with your work as you left it.
+            </div>
+          ) : null}
 
           <div className="cea-auth-card border-border bg-card rounded-2xl border p-6 sm:p-8">
             {sent ? (

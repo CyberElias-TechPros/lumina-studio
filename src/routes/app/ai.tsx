@@ -138,18 +138,30 @@ function AskPanel() {
       </CardHeader>
       <CardContent>
         <form className="flex flex-wrap gap-2" onSubmit={submit}>
+          {/* The placeholder is not an accessible name: it disappears on input
+              and screen readers may announce it as a hint rather than a label. */}
+          <label htmlFor="tutor-question" className="sr-only">
+            Your question for the tutor
+          </label>
           <Input
+            id="tutor-question"
             value={question}
             onChange={(event) => setQuestion(event.target.value)}
             placeholder="e.g. How does a B-tree index speed up my queries?"
             className="min-w-56 flex-1 text-xs"
           />
           <ModelPicker value={model} onChange={setModel} />
-          <Button className="shrink-0" disabled={ask.isPending}>
+          {/* An icon-only button with no text has no accessible name at all, so a
+              screen reader announces "button" and nothing else. */}
+          <Button
+            className="shrink-0"
+            disabled={ask.isPending}
+            aria-label={ask.isPending ? "Sending your question" : "Send question"}
+          >
             {ask.isPending ? (
-              <Loader2 className="size-4 animate-spin" />
+              <Loader2 className="size-4 animate-spin" aria-hidden="true" />
             ) : (
-              <Send className="size-4" />
+              <Send className="size-4" aria-hidden="true" />
             )}
           </Button>
         </form>

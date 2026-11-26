@@ -89,9 +89,9 @@ function TypingTestPage() {
 
           <div className="border-foreground/10 bg-card mt-8 grid gap-6 rounded-2xl border p-6 sm:grid-cols-2">
             <div>
-              <h3 className="font-display text-lg font-semibold">
+              <h2 className="font-display text-lg font-semibold">
                 Why accuracy beats raw speed in Nigerian offices
-              </h3>
+              </h2>
               <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
                 A typist hitting 55 WPM with 86% accuracy spends half their afternoon fixing
                 misspelled invoice names, account numbers and email addresses. Aim for 95%+ accuracy
@@ -100,9 +100,9 @@ function TypingTestPage() {
               </p>
             </div>
             <div>
-              <h3 className="font-display text-lg font-semibold">
+              <h2 className="font-display text-lg font-semibold">
                 A 10-minute daily drill routine
-              </h3>
+              </h2>
               <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
                 Start with two 30-second home-row runs to wake up your left and right index fingers
                 on F and J, switch to a 60-second common-words sprint, and finish with one number

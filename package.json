@@ -31,6 +31,7 @@
     "validate:lessons": "node scripts/validate-lessons.mjs",
     "audit:notes": "node scripts/audit-notes-voice.mjs",
     "audit:images": "node scripts/audit-image-provenance.mjs",
+    "audit:a11y": "node scripts/audit-accessibility.mjs --strict",
     "check:ads": "node scripts/check-ad-slots.mjs && node scripts/test-ad-placement.mjs && npm run check:consent && node --test scripts/test/practice-content.test.mjs",
     "audit:structure": "node scripts/audit-site-structure.mjs",
     "audit:courses": "node scripts/audit-course-pages.mjs",

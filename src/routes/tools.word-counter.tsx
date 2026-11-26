@@ -71,9 +71,9 @@ function WordCounterPage() {
           </ul>
           <div className="border-foreground/10 bg-card mt-8 grid gap-6 rounded-2xl border p-6 sm:grid-cols-2">
             <div>
-              <h3 className="font-display text-lg font-semibold">
+              <h2 className="font-display text-lg font-semibold">
                 How to trim a bloated proposal or cover letter
-              </h3>
+              </h2>
               <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
                 Check the repeated-keywords panel after pasting your draft. If the same filler verb
                 or buzzword shows up eight times in 300 words, replace two-sentence windups with a
@@ -81,9 +81,9 @@ function WordCounterPage() {
               </p>
             </div>
             <div>
-              <h3 className="font-display text-lg font-semibold">
+              <h2 className="font-display text-lg font-semibold">
                 Matching speaking pace for presentations
-              </h3>
+              </h2>
               <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
                 Most clear classroom and pitch speakers read comfortably at 120–140 words per
                 minute. Before standing up at a client meeting or church announcement, paste your
