@@ -1068,4 +1068,848 @@ export const companionPosts: BlogPost[] = [
       ),
     ],
   },
+
+  /* ============================================================
+   * 12. The door into Phase 14.
+   *
+   * The site already holds 54 agent-engineering lessons and every one of
+   * them is noIndex. That is why the property shows 797 impressions and 3
+   * clicks against /ai-engineering: Google indexes the shelf and not the
+   * books. This is the indexable, plain-English explanation that can rank,
+   * and it exists to hand the reader to the lessons rather than replace them.
+   * ================================================================ */
+  {
+    slug: "what-is-an-ai-agent-in-plain-words",
+    title: "What an AI agent is, in plain words",
+    seoTitle: "What Is an AI Agent? A Plain-English Explanation",
+    seoDescription:
+      "An AI agent is a program that decides its own next step. What that means, how it differs from a chatbot and a script, and where agents already work today.",
+    category: "ai-productivity",
+    articleType: "explainer",
+    difficulty: "Beginner",
+    quickAnswer:
+      "An AI agent is a program that loops: it looks at the situation, decides the next step itself, takes that step, then checks what happened and decides again. The thing that makes it an agent is that nobody wrote the steps in advance. A chatbot answers one question and stops. A script follows a fixed order. An agent chooses what to do next, which is why it can handle a situation nobody planned for.",
+    excerpt:
+      "Chatbots answer. Agents act. The difference is who decides the next step — and it explains both what these programs can do and why they go wrong.",
+    learningObjectives: [
+      "State what makes something an agent rather than a chatbot or a script.",
+      "Describe the loop an agent runs, in four steps, without jargon.",
+      "Name the three things an agent needs before it is useful.",
+      "Recognise the failure modes well enough not to trust one blindly.",
+    ],
+    series: SERIES,
+    order: 1012,
+    author: AUTHOR,
+    cover: "/images/blog/ai-assistant-chat.jpg",
+    coverAlt: "A laptop screen showing a chat conversation with an AI assistant.",
+    body: [
+      p(
+        "A chatbot answers. An agent acts. That is the whole difference, and most of the confusion around the phrase disappears once you hold it in mind.",
+      ),
+      h2("The plain definition"),
+      p(
+        "An AI agent is a program that repeats the same small loop: look at where things stand, decide the next step, take that step, look at what happened, and decide again. It stops when the job is done, or when something tells it to stop.",
+      ),
+      p(
+        "The part that makes it an agent is that nobody wrote the steps in advance. It chooses them. A program that always does A then B then C is a script wearing the same clothes.",
+      ),
+      fig(
+        "/images/blog/chat-window-laptop-evening.jpg",
+        "A laptop showing a chat window in a dimly lit room.",
+        "A chatbot is built to answer and then wait. An agent is built to keep going until the job is finished.",
+      ),
+      h2("The loop, in four moves"),
+      p("Every agent, however expensive or simple, is running this shape underneath:"),
+      ul([
+        "**It is told the goal.** Something like \u201cfind out why the test is failing\u201d rather than \u201cwrite some code\u201d.",
+        "**It decides one step.** Read a file, search for a term, run a command. One move at a time, not a whole plan.",
+        "**It acts.** The step has a real effect: a file changes, a search returns, a message is sent.",
+        "**It looks at the result and decides again.** This is the move that matters. The result of the last step is what shapes the next one.",
+      ]),
+      p(
+        "An analogy, and it is only an analogy: finding a phone number in a large building with no directory. You look at the floor plan, decide to try the third floor, read the signs there, decide again. You are not following a route someone gave you. You are choosing each next move based on what you just saw. That is the loop.",
+      ),
+      h2("Chatbot, script, agent"),
+      table(
+        ["", "What it does", "When it breaks"],
+        [
+          [
+            "Chatbot",
+            "Answers the question it was asked, then stops. It will not go and do anything.",
+            "When the answer needs something done, not just said.",
+          ],
+          [
+            "Script",
+            "Follows the same fixed order every time. Fast and reliable because it never decides.",
+            "The moment anything is different from what the author imagined.",
+          ],
+          [
+            "Agent",
+            "Decides its own next step from what it sees, so it can handle a situation nobody wrote down.",
+            "When its tools are wrong, its goal is vague, or nobody watched what it did.",
+          ],
+        ],
+        "The test that settles it: does the program choose its next action, or is the next action already written?",
+      ),
+      h2("Where agents already work today"),
+      p("Not in the future. In tools people use now, and always the same loop:"),
+      ul([
+        "**A coding agent** reads a file, changes it, runs the tests, reads the failure, and changes it again. Nobody told it which lines to edit.",
+        "**A support agent** reads a ticket, searches the documentation, drafts an answer, and hands the difficult ones to a human. It decides which of those it is doing.",
+        "**A research agent** searches, reads what it found, notices something is missing, and searches again with better words.",
+      ]),
+      p(
+        "Notice that the impressive-sounding ones are the same loop with better tools attached. That is not a trick of explanation. It is how they are built.",
+      ),
+      h2("The three things an agent needs"),
+      p("An agent that disappoints is almost always missing one of these, not badly written:"),
+      ul([
+        "**Tools that actually work.** An agent that cannot take a step cannot solve anything, however well it reasons. If the tool fails, the loop spins.",
+        "**A goal that can be judged.** \u201cMake the site better\u201d has no finish line, so the loop never ends properly. \u201cMake this page load in under two seconds\u201d does.",
+        "**A guardrail someone chose.** Left alone, an agent will take an action nobody wanted, because it cannot tell what matters to you. The limit has to be deliberate.",
+      ]),
+      h2("What it costs, and what it cannot do"),
+      p(
+        "Every trip around the loop costs time and money, because something has to think each time. A task that takes forty steps costs roughly forty times what a single answer costs. That is the honest reason agents are used for some jobs and not others.",
+      ),
+      p(
+        "It also cannot know something nobody gave it access to. An agent with no access to your email will never find the receipt, however clever it is. The tool list is the ceiling on what it can do.",
+      ),
+      p(
+        "If this went wrong: the usual failure is an agent given a vague goal and no limits, which then does something plausible and unwanted. If you are setting one up, write the finish line first and the forbidden actions second, and let it work only where it can be undone. Watching the first few runs is not caution you grow out of; it is the job.",
+      ),
+    ],
+  },
+
+  /* ================================================================
+   * 13. The jobs page for the term the site already ranks for.
+   *
+   * "vulnerability assessment" sits at 2.04 with 172 impressions and no
+   * clicks, because the page answering it is a definition. This answers the
+   * question the person is actually holding: what is the job, and how would I
+   * get it. No salary figures are given — see the note in the body.
+   * ================================================================ */
+  {
+    slug: "cybersecurity-jobs-and-what-they-pay",
+    title: "The cybersecurity jobs, and what to learn for each",
+    seoTitle: "Cybersecurity Jobs and Salaries in Nigeria: What to Learn",
+    seoDescription:
+      "There is no job called cybersecurity. Four real roles, what each does in a day, what to learn first, and honest advice on certificates and pay.",
+    category: "cybersecurity",
+    articleType: "career-guide",
+    difficulty: "Beginner",
+    quickAnswer:
+      "Cybersecurity is not a job title. The four roles that actually hire are SOC analyst (watches alerts and decides what is real), vulnerability assessment analyst (finds and ranks weaknesses), penetration tester (attacks systems with permission), and GRC (policy, audit and risk). All four hire people without degrees, and every one of them wants evidence you can do the work rather than a certificate saying you studied it.",
+    excerpt:
+      "Four real roles, what each one does before lunch, and the order to learn things in if you want to be hired rather than certified.",
+    learningObjectives: [
+      "Name the four entry routes and what separates them.",
+      "Recognise which role matches how you actually like to work.",
+      "Put learning in the order employers test, not the order courses sell.",
+      "Judge a certification claim without being misled by it.",
+    ],
+    series: SERIES,
+    order: 1013,
+    author: AUTHOR,
+    cover: "/images/blog/analyst-monitor-grid.jpg",
+    coverAlt: "An analyst's desk with several monitors showing dashboards.",
+    body: [
+      p(
+        "If you search for cybersecurity jobs you will find an industry of advice that skips the first useful fact: cybersecurity is not a job title. It is a field with several distinct jobs inside it, and they are hiring for different things.",
+      ),
+      p(
+        "Knowing which one you are aiming at changes everything you study. Choose before you start, or you will learn a little of all four and convince nobody of any.",
+      ),
+      h2("The four roles"),
+      table(
+        ["Role", "What the day looks like", "What a hiring manager wants to see"],
+        [
+          [
+            "SOC analyst",
+            "An alert queue. Gather context, decide whether each alert is a false positive or real, escalate or close, and write it so the next person does not repeat the work.",
+            "That you can read a log line and judge what is normal. Writing someone else can follow. Willingness to work shifts.",
+          ],
+          [
+            "Vulnerability assessment analyst",
+            "Run scans, cut out the noise, confirm what is real, rank it, and write a report a busy engineer will act on.",
+            "Method and attention to detail. A report that ranks findings instead of dumping them.",
+          ],
+          [
+            "Penetration tester",
+            "Attack systems with written permission, then explain clearly how you got in and how to close it.",
+            "Patience, curiosity, and the discipline to stop at the agreed boundary.",
+          ],
+          [
+            "GRC analyst",
+            "Policy, audit, risk registers, and the paperwork that proves a company is doing what it says.",
+            "Clear writing and the ability to ask awkward questions politely.",
+          ],
+        ],
+        "None of these four is more senior than the others. They are different jobs, and they suit different people.",
+      ),
+      fig(
+        "/images/blog/analyst-notes-desk.jpg",
+        "A notepad with handwritten notes beside a laptop.",
+        "All four roles produce documents. The writing is not a side task; it is most of the work.",
+      ),
+      h2("Which one suits you"),
+      p("A short honest test, based on what you already enjoy rather than what sounds impressive:"),
+      ul([
+        "If you like **spotting patterns and staying calm under pressure**, the SOC is the natural fit.",
+        "If you like **tidiness and getting details right**, vulnerability assessment is closer to your temperament than penetration testing.",
+        "If you like **breaking things and working things out**, look at penetration testing — but understand most of it is reporting, not breaking.",
+        "If you like **writing and arguing a position**, GRC is a real career, not a consolation prize.",
+      ]),
+      h2("What to learn, in the order employers test"),
+      p(
+        "Courses tend to teach tools first because tools are easy to demonstrate. Interviews test something else:",
+      ),
+      ul([
+        "**Networks and operating systems.** How addresses work, what a port is, where logs live. Without this, every tool output is a wall of noise.",
+        "**Identity and access.** Accounts, permissions, least privilege. Most findings you will ever write are about access.",
+        "**Writing about evidence.** A ticket, a finding, a report. This is most of the job and almost nobody practises it.",
+        "**Tools last.** Once you know what you are looking at, a scanner takes a day to learn. Knowing the tool without the instinct does not survive one question.",
+      ]),
+      p(
+        "The free assessment tool on this site is a reasonable first exercise because it forces the third item: look at a system, decide what is weak, rank it, write it down.",
+      ),
+      h2("Certificates, without the sales pitch"),
+      p(
+        "CompTIA Security+ is the usual starting certificate and does get past some filters. It is not a substitute for any of the above, and leading with it and nothing else is easy to screen out, because a certificate proves attendance while a report proves judgement.",
+      ),
+      p(
+        "The honest rule: get one certificate for the filter, and spend the same money and time producing two pieces of work you can show. The work is what changes the conversation.",
+      ),
+      h2("About pay, and why this page gives no number"),
+      p(
+        "You can find confident salary figures for these roles all over the internet, and most are unsourced. A number invented for a page someone is basing a career decision on is worse than no number, so this page gives the shape instead.",
+      ),
+      ul([
+        "Entry into the SOC and vulnerability roles pays modestly and rises with evidence, not with years served.",
+        "Penetration testing and GRC pay more later, because both are bought for judgement.",
+        "Remote contract work for overseas clients is the largest single jump available, and it requires a portfolio, not a local connection.",
+      ]),
+      p(
+        "If you need a number before deciding, ask three people in the role in Nigeria what they were offered in their first year. You will learn more than any article can tell you, including whether the market in your city is the one described here.",
+      ),
+      h2("The part nobody puts in the brochure"),
+      p(
+        "Two things, said plainly. Entry-level security is competitive, and many people reach it through IT support first, which hires far more easily and teaches the same instinct. And the field rewards people who keep reading after the course ends, because the tools change faster than any curriculum.",
+      ),
+      p(
+        "If this went wrong: the common failure is collecting certificates for a year and then discovering you still cannot write a report. If that has happened, stop buying courses. Write one report this week on something you own, however small, and apply for one role with it attached. That document changes the outcome more than the next certificate will.",
+      ),
+    ],
+  },
+
+  /* ================================================================
+   * 14. "soc room" — 190 impressions at position 12.97, zero clicks.
+   *
+   * This is the largest single impression block in the export after the
+   * megabyte cluster. The two meanings are genuinely different questions:
+   *   "soc room"        -> the security operations centre (190 imp, pos 12.97)
+   *   "soc room design" -> an interior design brief (15 imp, position 1.0)
+   * The site's existing SOC article answers neither reliably, because it never
+   * says which question it is answering. This one answers the first and hands
+   * the second somewhere honest.
+   * ================================================================ */
+  {
+    slug: "what-a-soc-room-is",
+    title: "What a SOC room is, and what happens inside one",
+    seoTitle: "What Is a SOC Room? Security Operations Centre Explained",
+    seoDescription:
+      "A SOC room is where analysts watch for attacks around the clock. What the three tiers do, what the room actually looks like, and what it is not.",
+    category: "cybersecurity",
+    articleType: "explainer",
+    difficulty: "Beginner",
+    quickAnswer:
+      "A SOC room is the place, or the team, where a company watches its systems for attacks and responds when one is spotted. SOC stands for Security Operations Centre. The room holds screens showing alerts and logs, and the people in it work in shifts so somebody is watching at 3am. If you searched the phrase and expected a room-design article, that is a different question and this page says where to take it.",
+    excerpt:
+      "SOC stands for Security Operations Centre. What the room looks like, what the three tiers actually do, and what happens when an alert fires.",
+    learningObjectives: [
+      "Say what SOC stands for and what the room is for.",
+      "Describe what a Tier 1, Tier 2 and Tier 3 analyst each handle.",
+      "Recognise what a SOC is not, so you do not over-buy or over-fear it.",
+      "Trace one alert from detection to closure.",
+    ],
+    series: SERIES,
+    order: 1014,
+    author: AUTHOR,
+    cover: "/images/blog/analyst-monitor-grid.jpg",
+    coverAlt: "Analyst desks with several monitors showing dashboards.",
+    body: [
+      p(
+        "SOC stands for **Security Operations Centre**. It is the room — and, more usefully, the team — where a company watches its own systems for attacks and does something about them when one appears.",
+      ),
+      p(
+        "This page answers that question. If you came looking for interior design ideas for a gaming setup, that is a different search and it is not this page; the honest thing is to say so at the top rather than waste your scroll.",
+      ),
+      h2("What is actually in the room"),
+      p("Less dramatic than the photographs suggest. Three things:"),
+      ul([
+        "**Screens showing alerts**, usually one per analyst, ranked by severity rather than by time.",
+        "**A shared display** for the alert everyone is currently working, so the room does not solve the same thing twice.",
+        "**Logs and a way to search them.** Most of the work is reading history to decide whether what just happened is normal.",
+      ]),
+      p(
+        "The screens matter less than the process. A SOC with expensive displays and no agreed escalation rule is a room full of people guessing.",
+      ),
+      h2("The three tiers, and what each one really does"),
+      table(
+        ["Tier", "Handles", "Success looks like"],
+        [
+          [
+            "Tier 1",
+            "The alert queue. Decide whether each one is a false positive, gather context, escalate or close, and write it up.",
+            "Good alerts move forward fast, and noise gets closed with a reason.",
+          ],
+          [
+            "Tier 2",
+            "The escalated ones. Investigate properly, work out scope, decide on containment.",
+            "The analyst knows what happened, not just that something did.",
+          ],
+          [
+            "Tier 3",
+            "The hard ones, and the tooling itself. Hunting for what the alerts missed.",
+            "Fewer surprises, and detection that improves over time.",
+          ],
+        ],
+        "The tiers are levels of judgement, not levels of seniority in a normal career ladder.",
+      ),
+      fig(
+        "/images/blog/analyst-notes-desk.jpg",
+        "A notebook with handwritten notes beside a laptop.",
+        "Most of a SOC analyst's day is reading and writing, not watching screens light up.",
+      ),
+      h2("One alert, from start to finish"),
+      p(
+        "This is the part that makes the role make sense. A typical low-severity alert: a staff laptop in Lagos signs in from two countries within an hour.",
+      ),
+      ul([
+        "**Detection.** A rule notices the impossible travel and raises it.",
+        "**Tier 1 gathers context.** Which account, which device, is the user travelling, is the VPN involved.",
+        "**Judgement.** Frequently it is a VPN or a phone on mobile data. Sometimes it is not.",
+        "**Escalation or closure.** Either way it is written down, because the next analyst may see the same account tomorrow.",
+      ]),
+      p(
+        "Notice that the interesting part is the middle — the context — not the alarm. The tool raises; the person decides.",
+      ),
+      h2("What a SOC is not"),
+      ul([
+        "**Not a firewall.** It watches and responds; something else blocks.",
+        "**Not a guarantee.** A SOC reduces how long an attacker goes unnoticed. It does not stop attacks happening.",
+        "**Not necessarily a room.** Small companies buy the service; the analysts may be in another country entirely.",
+        "**Not only for banks.** Any organisation large enough to lose money to downtime needs someone watching.",
+      ]),
+      h2("Does a small Nigerian business need one"),
+      p(
+        "Rarely as a room, and often as a service. The judgement is about the cost of an incident against the cost of watching. A business holding customer payment details has a different answer from one that sells physical goods.",
+      ),
+      p(
+        "The cheapest useful first step is not a tool. It is deciding who gets called at 2am, and what they are expected to do. That decision costs nothing and most small organisations have never made it.",
+      ),
+      h2("If you want to work in one"),
+      p(
+        "The entry route is the alert queue, and the skill that gets you hired is being able to read a log line and say what is normal. That is learnable without a degree.",
+      ),
+      p(
+        "If this went wrong: the usual mistake is learning a SIEM tool's menus before learning what the log lines mean, then freezing in an interview when asked what an unusual sign-in looks like. Read the SOC article's shift-handover section, then read one real log from a system you own. That second step is the one people skip.",
+      ),
+    ],
+  },
+
+  /* ================================================================
+   * 15. "what is cloud computing" cluster — 94 impressions, zero clicks.
+   *
+   * The existing cloud article sits at position 21, which is why it earns
+   * nothing. But the queries in the export are not "what is the cloud" —
+   * they are "where is it", "how do I use it", "what does it do". Those are
+   * third-person questions from people who own files and do not know where
+   * they went. This answers that.
+   * ================================================================ */
+  {
+    slug: "where-your-files-actually-are",
+    title: "Where your files actually are when they are \u201cin the cloud\u201d",
+    seoTitle: "What Is the Cloud? Where Your Files Actually Are",
+    seoDescription:
+      "The cloud is someone else's computer, in a building you will never visit. What that means for your photos and documents, and what happens when it fails.",
+    category: "computer-basics",
+    articleType: "explainer",
+    difficulty: "Beginner",
+    quickAnswer:
+      "The cloud is a computer you do not own, in a building you will never visit, that you reach over the internet. When you save a photo to the cloud it is copied onto a machine in a data centre, which is why it still exists when your phone breaks. It is not in the air and it is not magic; it is somebody else's hard drive with a good backup policy.",
+    excerpt:
+      "The cloud is someone else's computer. Where your files really go, what happens when the internet dies, and the one setting that decides whether you keep them.",
+    learningObjectives: [
+      "Explain the cloud without using the word cloud.",
+      "Say where a file physically goes when you upload it.",
+      "Recognise the two ways people lose cloud files.",
+      "Decide what to keep local and what to keep in the cloud.",
+    ],
+    series: SERIES,
+    order: 1015,
+    author: AUTHOR,
+    cover: "/images/blog/cloud-devices.jpg",
+    coverAlt: "A laptop connected to an external drive set up for backup.",
+    body: [
+      p(
+        "The cloud is a computer you do not own, in a building you will probably never visit, that you reach over the internet. That is the whole idea. Everything else is billing.",
+      ),
+      h2("Where the file actually goes"),
+      p(
+        "You tap save. The file is copied off your phone or laptop, across your network, into a data centre — a building full of machines and cooling — and written to a disk there. What you see on your screen afterwards is a link to that copy, not the copy itself.",
+      ),
+      p(
+        "That building might be in Johannesburg, Dublin or Virginia. You are rarely told which, and for most purposes it does not matter, though it does matter for some kinds of personal data.",
+      ),
+      fig(
+        "/images/blog/external-drive-copying-laptop.jpg",
+        "An external drive copying files from a laptop.",
+        "A cloud copy and a drive copy are the same idea: the file exists in a second place.",
+      ),
+      h2("Why it exists at all"),
+      p(
+        "Because of one blunt fact: a single copy is a single point of failure. A phone can be stolen, a laptop can be dropped, a room can burn. A copy in another building survives all three.",
+      ),
+      p(
+        "The second reason is sharing. A file in the cloud can be given to five people at once without sending five copies.",
+      ),
+      h2("What it is not"),
+      ul([
+        "**Not a backup by itself.** If you delete the file, the deletion syncs too. This is the most common way people lose cloud files.",
+        "**Not always reachable.** No internet, no file, unless you kept a copy on the device.",
+        "**Not free.** Free tiers end, and the exit is usually a bill.",
+        "**Not invisible.** Someone else's employee can, in principle, be compelled to look.",
+      ]),
+      h2("The one setting that decides whether you keep your files"),
+      p("Ask this: if I delete this file by accident today, will I still have it next month?"),
+      p(
+        "If the answer is no, you have synchronisation, not backup. Synchronisation copies your mistakes faithfully. Backup keeps an older version you can go back to. Most phones have a recycle bin for thirty days, which is a small backup; most shared drives do not.",
+      ),
+      h2("What to keep where"),
+      table(
+        ["Kind of file", "Keep it", "Why"],
+        [
+          [
+            "Photos you would grieve",
+            "Cloud, plus a copy you control",
+            "Two places, different owners.",
+          ],
+          ["Documents you are editing now", "Cloud", "Sharing and version history are worth it."],
+          [
+            "Anything with ID numbers",
+            "Local, and encrypted",
+            "Fewer copies, fewer places to leak.",
+          ],
+          ["Work you cannot redo", "Two places, one offline", "A second copy that needs no login."],
+        ],
+        "The rule is not cloud or local. It is never exactly one copy.",
+      ),
+      h2("How to check what you actually have"),
+      p(
+        "Four questions, answered in about two minutes, tell you whether your setup survives a bad week. Most people answer no to at least two.",
+      ),
+      table(
+        ["Question", "What a yes means", "What a no costs you"],
+        [
+          [
+            "If my phone is stolen today, are my photos still there?",
+            "You have a second copy with a different owner.",
+            "Every photo taken before the theft.",
+          ],
+          [
+            "If I delete a file by mistake, can I get it back next week?",
+            "You have a version history, not just a sync.",
+            "The file, on every device at once.",
+          ],
+          [
+            "Can I open my most important file with no internet?",
+            "You have a local copy, which is the last line.",
+            "Access exactly when you need it most.",
+          ],
+          [
+            "Do I know which company holds my files and what it charges?",
+            "You are not going to be surprised by a bill or a closure.",
+            "Silent loss when a free tier ends.",
+          ],
+        ],
+        "Two yes answers is fragile. Four means you can lose a device without losing anything.",
+      ),
+      fig(
+        "/images/blog/cloud-folder.jpg",
+        "A folder of documents open on a laptop screen.",
+        "The folder is a view. The files live somewhere else, and knowing where changes what you back up.",
+      ),
+      h2("Why the location matters for some files"),
+      p(
+        "For a shopping list, the country a file sits in does not matter. For records containing ID numbers, medical details or customer payment data, it does, and not only for legal reasons: the physical location decides which laws protect it and who can be compelled to hand it over.",
+      ),
+      p(
+        "This is not a reason to avoid the cloud. It is a reason to know which of your files are ordinary and which are sensitive, because they should not be treated the same.",
+      ),
+      h2("If this went wrong"),
+      p(
+        "Two failures account for most lost cloud files. You deleted something and the deletion propagated to every device before you noticed. Or you stopped paying and lost access to a tier you assumed was permanent.",
+      ),
+      p(
+        "For the first, check today whether your provider has a recycle bin and how long it keeps files. For the second, export the things you cannot replace once a year onto a drive you own. Both take under ten minutes and are the difference between an inconvenience and a loss.",
+      ),
+    ],
+  },
+
+  /* ================================================================
+   * 16. "kb ka matlab kya hota hai" — 33 impressions across the Hindi
+   * transliterations, plus "kb ka matlab" and the Devanagari form.
+   *
+   * The megabytes page answers "which is bigger". It does not answer
+   * "what does KB mean", which is a different question asked in three
+   * languages by people who are not served by a page written in one.
+   * ================================================================ */
+  {
+    slug: "what-kb-mb-gb-stand-for",
+    title: "What KB, MB and GB stand for",
+    seoTitle: "What Do KB, MB and GB Stand For? Full Forms and Meaning",
+    seoDescription:
+      "KB means kilobyte, MB means megabyte, GB means gigabyte. The full forms, what the letters stand for, and why the numbers never match the box.",
+    category: "computer-basics",
+    articleType: "explainer",
+    difficulty: "Beginner",
+    quickAnswer:
+      "KB stands for kilobyte, MB for megabyte, GB for gigabyte, and TB for terabyte. The B is always byte, which is eight bits. The letters are borrowed from the metric system, which is why kilo means a thousand — but a computer often counts 1,024 to a step, which is why a drive you bought as 16 GB shows less.",
+    excerpt:
+      "The letters, the full forms, and the reason a 16 GB phone never has 16 GB inside it. No prior knowledge assumed.",
+    learningObjectives: [
+      "Expand KB, MB, GB and TB into their full forms.",
+      "Say what a byte is and how it relates to a bit.",
+      "Explain why a 16 GB drive shows roughly 14.9 GB.",
+      "Read a file size and estimate whether it fits.",
+    ],
+    series: SERIES,
+    order: 1016,
+    author: AUTHOR,
+    cover: "/images/blog/file-size-column.jpg",
+    coverAlt: "Files displayed on a computer desktop, each showing a size.",
+    body: [
+      p(
+        "These four abbreviations appear on every phone box, every download button and every storage warning. The full forms are not complicated, and once you know them the numbers stop looking random.",
+      ),
+      h2("The full forms"),
+      table(
+        ["Short", "Stands for", "Roughly"],
+        [
+          ["b (bit)", "a single one or zero", "not used for file sizes"],
+          ["B (byte)", "eight bits, treated as one character", "one letter of text"],
+          ["KB", "kilobyte", "a thousand bytes"],
+          ["MB", "megabyte", "a thousand kilobytes"],
+          ["GB", "gigabyte", "a thousand megabytes"],
+          ["TB", "terabyte", "a thousand gigabytes"],
+        ],
+        "Capital B means byte. Lowercase b means bit. This is the difference between 8 Mbps and 8 MB/s.",
+      ),
+      h2("KB ka matlab kya hota hai"),
+      p(
+        "If you came from a Hindi or Hinglish search asking *KB ka matlab kya hota hai* — what does KB mean — the answer is: KB means **kilobyte**, and a kilobyte is about a thousand bytes. One byte is roughly one character, so a kilobyte is about a thousand characters of text, or half a page.",
+      ),
+      p(
+        "The same question in Hinglish form, **kb mb gb ka matlab**, has the same answer expanded out: kilobyte, megabyte, gigabyte — going upward by roughly a thousand each time.",
+      ),
+      h2("Why the numbers never match"),
+      p(
+        "Two counting systems are both in use. Manufacturers count 1,000 bytes to a kilobyte because that is what the prefix has always meant. Many operating systems counted 1,024 for so long that the habit stuck.",
+      ),
+      p(
+        "The gap compounds: a drive sold as 16 GB contains about 14.9 GB by the operating system's count. Nothing is missing. The two sides are counting different things and both are telling the truth.",
+      ),
+      h2("Reading a size and knowing whether it fits"),
+      ul([
+        "**A text document** is a few KB. It will fit in an email.",
+        "**A photo** is 2–5 MB from a modern phone. This is what fills storage.",
+        "**A minute of video** is roughly 100 MB at phone quality, more at 4K.",
+        "**A music track** is about 3–10 MB, or one MB per minute as a rough guide.",
+      ]),
+      p(
+        "The practical version: a 64 GB phone holds roughly 12,000 photos, or about eight hours of video. Most storage warnings come from photos and videos, not documents.",
+      ),
+      h2("The one confusion worth clearing up"),
+      p(
+        "Internet speed is sold in **bits** per second. File size is measured in **bytes**. Eight bits make a byte, so a 100 Mbps connection downloads at roughly 12.5 MB per second — not 100. This is not a trick, but it is the one place where the two-letter difference costs people real money when choosing a plan.",
+      ),
+      h2("Common sizes, so you can picture them"),
+      p(
+        "Numbers on their own mean nothing. These are the sizes you will actually meet, in the order you meet them:",
+      ),
+      table(
+        ["What it is", "Typical size", "How many fit in 1 GB"],
+        [
+          ["A page of typed text", "about 2 KB", "roughly 500 pages"],
+          ["A photo from a phone", "2 to 5 MB", "200 to 500 photos"],
+          ["A song", "3 to 10 MB", "100 to 300 songs"],
+          ["One minute of phone video", "about 100 MB", "10 minutes"],
+          ["An app you download", "20 to 200 MB", "5 to 50 apps"],
+        ],
+        "Storage warnings come from photos and video, almost never from documents.",
+      ),
+      fig(
+        "/images/blog/file-size-column.jpg",
+        "A file browser showing the size column next to each file.",
+        "Most file managers show the size in a column. Sorting by it is the fastest way to find what is filling a drive.",
+      ),
+      h2("The spelling that trips people up"),
+      p(
+        "One more detail, because it appears on every download page and confuses almost everyone: **Mbps** and **MB/s** are not the same thing.",
+      ),
+      ul([
+        "**Mbps** with a lowercase b means megabits per second — how internet speed is sold.",
+        "**MB/s** with a capital B means megabytes per second — how fast a file actually arrives.",
+        "There are eight bits in a byte, so divide the first by eight to get the second.",
+      ]),
+      h2("If this went wrong"),
+      p(
+        "If you bought a plan expecting 100 megabytes a second and got 12, the page above is why, and the provider was not lying. If your new drive seemed to lose space, the two-counting-systems explanation is the whole answer — nothing was taken.",
+      ),
+      p(
+        "For anything else, read the table once more and remember the only rule that matters in daily use: capital B is a byte, lowercase b is a bit, and there are eight bits in a byte.",
+      ),
+    ],
+  },
+
+  /* ================================================================
+   * 17. "how to type naira sign" — 64 impressions across 14 queries, zero
+   * clicks, and the existing page sits at position 6.06 with the lowest CTR
+   * in the corpus (0.46%). Its title promises "Naira sign" but ranks for
+   * "how to type", and the answer is buried. This one is answer-first.
+   * ================================================================ */
+  {
+    slug: "how-to-type-the-naira-sign",
+    title: "How to type the naira sign (\u20a6) on any keyboard",
+    seoTitle: "How to Type the Naira Sign (\u20a6) on Windows, Mac, Android and iPhone",
+    seoDescription:
+      "Copy \u20a6 or type it: Windows Alt code, Word shortcut, Mac, Android and iPhone. The fastest method for each device, and what to do when it shows as a box.",
+    category: "microsoft-office",
+    articleType: "tutorial",
+    difficulty: "Beginner",
+    quickAnswer:
+      "The fastest method is to copy this: \u20a6. To type it instead: on Windows hold Alt and type 8358 on the number pad, or in Word press Ctrl+Alt+N. On a Mac press and hold the N key and pick \u20a6 from the menu. On Android and iPhone, press and hold the N key and choose \u20a6.",
+    excerpt:
+      "Copy it, or type it in one move on Windows, Word, Mac, Android or iPhone. The fastest method per device, and why it sometimes shows as a box.",
+    learningObjectives: [
+      "Type or paste \u20a6 on any device you own.",
+      "Use the Word shortcut without remembering a number.",
+      "Fix the case where \u20a6 appears as an empty box.",
+    ],
+    series: SERIES,
+    order: 1017,
+    author: AUTHOR,
+    cover: "/images/blog/keyboard-hands.jpg",
+    coverAlt: "A close-up of a laptop keyboard.",
+    body: [
+      p(
+        "Here it is, if you only want it once: **\u20a6**. Copy that and paste it where you need it.",
+      ),
+      p(
+        "If you need to type it repeatedly, the method depends on your device. Each one below is a single move, not a menu hunt.",
+      ),
+      h2("Windows"),
+      p(
+        "Hold **Alt** and type **8358** on the numeric keypad — the block of numbers on the right, not the row above the letters. Release Alt and \u20a6 appears.",
+      ),
+      p(
+        "If your laptop has no numeric keypad, this will not work. Use the Word shortcut below, or copy the character.",
+      ),
+      h2("Microsoft Word"),
+      p(
+        "Press **Ctrl + Alt + N**. That is the shortest path in the whole list if you are already writing a document, and it is the one most people never learn.",
+      ),
+      p(
+        "You can also type **20A6** and press **Alt + X**, which converts the code into \u20a6. This works for any Unicode character if you know its code.",
+      ),
+      h2("Mac"),
+      p(
+        "Press and hold **N** until a small menu appears, then pick **\u20a6** with the arrow keys or the mouse. This is the fastest method on a Mac and works in almost every app.",
+      ),
+      h2("Android and iPhone"),
+      p(
+        "Press and hold **N** on the keyboard until the accent menu appears, then slide to **\u20a6**. On most Android keyboards this is in the same menu; on some, hold the currency key instead.",
+      ),
+      p(
+        "If your keyboard does not offer it, add the Nigerian keyboard layout in settings, or use the copy-paste method — the character is the same either way.",
+      ),
+      h2("When it shows as an empty box"),
+      p(
+        "A box or a question mark means the **font**, not the typing, is the problem. The character was inserted correctly; the font you are viewing it in has no glyph for it.",
+      ),
+      ul([
+        "Change the font to one that is widely supported, such as Arial, Calibri, or Segoe UI.",
+        "If you see a box on a website but not in Word, the website chose a font without it. Nothing is wrong with your computer.",
+        "On older Android phones, some default fonts lack the glyph. The character is still correct and will display on the recipient's device if their font has it.",
+      ]),
+      h2("Older keyboard layouts"),
+      p(
+        "Some Nigerian keyboard layouts include \u20a6 as a direct key. If you type \u20a6 by pressing a single key you already have one, and the methods above are unnecessary.",
+      ),
+      h2("Where the sign is usually rejected"),
+      p(
+        "Some systems accept the character but refuse it at the point of entry. Knowing which ones saves an afternoon.",
+      ),
+      table(
+        ["Where", "What happens", "What to do"],
+        [
+          [
+            "Old banking portals",
+            "Field strips the character or shows a box",
+            "Use the currency selector, not the symbol.",
+          ],
+          [
+            "Spreadsheet formulas",
+            "The symbol breaks the calc",
+            "Format the cell as currency; do not type ₦ inside a formula.",
+          ],
+          [
+            "Older POS printers",
+            "Prints as a blank or a question mark",
+            "Print the word Naira, or update the printer font.",
+          ],
+          [
+            "PDF forms",
+            "Embeds fine, but the viewer's font may lack it",
+            "Use a standard font when exporting.",
+          ],
+        ],
+        "If a system rejects ₦, the problem is the system. Never fight it — use the word instead.",
+      ),
+      fig(
+        "/images/blog/keyboard-hands.jpg",
+        "Hands typing on a laptop keyboard.",
+        "Almost every method on this page is one shortcut or one long-press, not a menu.",
+      ),
+      h2("The method worth memorising"),
+      p(
+        "If you only learn one thing from this page, learn the Word shortcut: **Ctrl + Alt + N**. It works in every Word document, on every Windows or Mac machine, with no number pad and no menu.",
+      ),
+      p(
+        "For everything else, keeping the character itself — **₦** — in a note on your phone is faster than any shortcut. This is what most people who type it daily actually do.",
+      ),
+      h2("If this went wrong"),
+      p(
+        "If Alt+8358 produced nothing, you almost certainly used the number row rather than the numeric keypad. If it produced a different character, your keyboard layout is not set to a US or UK layout, and the Alt code refers to a different glyph.",
+      ),
+      p(
+        "In either case, the reliable fallback is the character itself: **\u20a6**. Copy it once, keep it somewhere you can reach, and paste. Nobody has ever been marked down for pasting a currency symbol.",
+      ),
+    ],
+  },
+
+  /* ================================================================
+   * 18. "agile methodology" — 30 impressions at position 10.6, zero clicks.
+   * The companion article exists but was not in this export window yet.
+   * What has never been answered is the plain question a beginner asks:
+   * strip the ceremony, what is it actually.
+   * ================================================================ */
+  {
+    slug: "what-agile-methodology-means",
+    title: "What \u201cagile methodology\u201d means, without the ceremony",
+    seoTitle: "What Is Agile Methodology? A Plain-English Definition",
+    seoDescription:
+      "Agile means working in short cycles and checking with the person who asked. What that changes, where it goes wrong, and why the meetings are not the method.",
+    category: "career-workplace",
+    articleType: "explainer",
+    difficulty: "Beginner",
+    quickAnswer:
+      "Agile methodology means building in short cycles and checking whether you built the right thing before building more. Instead of one long plan that is right or wrong at the end, you ship something small every few weeks and adjust. The daily stand-up and the sticky notes are optional; the short cycle and the willingness to change course are not.",
+    excerpt:
+      "Agile is a short feedback loop, not a set of meetings. What it actually changes, and how to tell real agile from the theatre version.",
+    learningObjectives: [
+      "Define agile in one sentence without using the word 'sprint'.",
+      "Recognise the difference between agile and ceremony.",
+      "Spot the two ways teams fake it.",
+    ],
+    series: SERIES,
+    order: 1018,
+    author: AUTHOR,
+    cover: "/images/blog/ml-engineer-whiteboard.jpg",
+    coverAlt: "A team standing at a whiteboard covered in notes.",
+    body: [
+      p(
+        "Agile is a way of working that assumes you will be wrong about something, and arranges the work so you find out cheaply.",
+      ),
+      p("That is the whole idea. The meetings, the boards and the job titles are packaging."),
+      h2("The difference it makes"),
+      p(
+        "The traditional shape: plan for six months, build for six months, discover at the end that the thing you built is not what people wanted. The cost of being wrong is six months.",
+      ),
+      p(
+        "The agile shape: build the smallest useful piece, put it in front of someone, and find out in three weeks. The cost of being wrong is three weeks. Being wrong is not prevented — it is made cheap.",
+      ),
+      h2("What is actually required"),
+      ul([
+        "**Short cycles.** Weeks, not quarters. Long enough to finish something, short enough to remember why.",
+        "**Something shippable at the end.** Not a status report. Something a person could use.",
+        "**Someone who can change the plan.** If the answer is always 'the plan stands', the cycle is theatre.",
+      ]),
+      p("Those three things are the method. Everything else is a way of sustaining them."),
+      h2("How to tell real agile from theatre"),
+      table(
+        ["Looks like agile", "Is actually agile"],
+        [
+          [
+            "Daily stand-up where each person reports to the manager",
+            "A short check whether the team is blocked",
+          ],
+          [
+            "Two-week sprints with a fixed scope decided a year ago",
+            "Two-week cycles that can change what is next",
+          ],
+          [
+            "A board where every ticket is 'in progress'",
+            "Few things in flight, finished regularly",
+          ],
+          ["Velocity charts presented upward", "Something shipped that someone used"],
+        ],
+        "The test: did anything change because of what the last cycle taught you?",
+      ),
+      h2("Where it goes wrong"),
+      p(
+        "Two failures, both common. The first is keeping the meetings and dropping the short cycle, so the team has all the cost of agile and none of the feedback. The second is no stable core: changing direction every week means nothing ever finishes.",
+      ),
+      p(
+        "The balance is a short list of things you will not change, and freedom about everything else. Teams that get this right look calm rather than busy.",
+      ),
+      h2("Does it matter if you want a job"),
+      p(
+        "Yes, in a specific way. Employers do not hire the vocabulary, because everyone has it. They hire people who can work in short cycles without needing to be managed through them — which is a behaviour, not a certificate.",
+      ),
+      p(
+        "If you are asked about agile in an interview, the answer that lands is a story about a time a small delivery changed the plan. Not a definition.",
+      ),
+      h2("Why it keeps coming up in job adverts"),
+      p(
+        "Because employers have been burned. A team that cannot work in short cycles needs managing constantly, and managers cost more than agile coaches. The word in an advert is usually shorthand for one question: can you finish something small without being chased?",
+      ),
+      p(
+        "That is also why the vocabulary fails in interviews. Anyone can define a sprint. Very few people can describe finishing something in two weeks and then changing the plan because of what they learned.",
+      ),
+      h2("A first week of doing it properly"),
+      p(
+        "You do not need permission or a framework to try this. Take the next thing you have to deliver, and split it so the smallest piece is usable on its own.",
+      ),
+      ul([
+        "Ship that smallest piece, even if it is ugly.",
+        "Show it to the person who asked for it within a week, not a quarter.",
+        "Write down the one thing they said that you did not expect.",
+        "Change the plan for the next piece based on that sentence.",
+      ]),
+      p(
+        "That cycle — small, shipped, shown, adjusted — is the entire method. The names and ceremonies exist to make it repeatable across a large team. One person can do it on Monday.",
+      ),
+      fig(
+        "/images/blog/ml-engineer-whiteboard.jpg",
+        "A person working at a whiteboard covered in diagrams.",
+        "The board is a tool for a short conversation, not the method itself.",
+      ),
+      h2("If this went wrong"),
+      p(
+        "If your team has every ceremony and still ships late, the problem is almost never the framework. Check whether the scope can actually change mid-cycle, and whether anything a user could touch is produced at the end. If both answers are no, the meetings are not the issue and switching frameworks will not help.",
+      ),
+    ],
+  },
 ];

@@ -40,6 +40,11 @@ function routeSeo(
     description: entry.description ?? DEFAULT_DESCRIPTION,
     type: entry.type ?? "website",
     image: entry.image ?? undefined,
+    // Start from what the route itself declared. Every branch below may narrow
+    // this further, but none may silently re-enable indexing: a route that says
+    // noindex in its own head() is making a deliberate statement, and the site's
+    // own diagnostics page is the case that proved it was being ignored.
+    noIndex: entry.noIndex === true ? true : undefined,
   };
 
   if (pathname.startsWith("/blog/") && params.slug) {
@@ -144,8 +149,12 @@ export function getNextRouteMetadata(
       ? seo.image
       : `${SITE_ORIGIN}${seo.image.startsWith("/") ? "" : "/"}${seo.image}`
     : `${SITE_ORIGIN}/og-default.png`;
+  // One-way: any source may force noindex, none may cancel another.
   const noIndex =
-    isPrivatePath(pathname) || Boolean(seo.noIndex) || isOutlineOnlySessionPath(pathname);
+    entry.noIndex === true ||
+    isPrivatePath(pathname) ||
+    Boolean(seo.noIndex) ||
+    isOutlineOnlySessionPath(pathname);
 
   return {
     title: { absolute: seo.title },

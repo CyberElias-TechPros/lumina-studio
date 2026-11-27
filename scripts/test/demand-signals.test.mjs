@@ -305,3 +305,64 @@ test("high-value keywords are the security terms, not the storage terms", () => 
   assert.ok(high.includes("soc"));
   assert.ok(!high.includes("mb-kb-gb"), "storage conversion is not a high-value keyword");
 });
+
+/* ------------------------------------------------------------------ *
+ * Trend lifecycle
+ * ------------------------------------------------------------------ */
+
+const { TREND_SIGNALS, risingTopics, steadyTopics, scheduledDemand, TREND_CAVEAT } =
+  await import("../../src/data/editorial/demand-signals.ts");
+
+test("every trend signal carries a dated, checkable source", () => {
+  for (const t of TREND_SIGNALS) {
+    assert.match(t.evidenceDate, /^\d{4}-\d{2}-\d{2}$/, `${t.id}: needs an evidence date`);
+    assert.ok(t.source.length > 25, `${t.id}: source must be specific enough to check`);
+    assert.ok(t.evidence.length > 30, `${t.id}: needs the measurement, not just a label`);
+    assert.ok(t.durability.length > 20, `${t.id}: must say whether it outlives the season`);
+  }
+});
+
+test("a low-confidence topic is never given a content action that writes it", () => {
+  // "vibe coding" was reported as rising on secondary commentary alone. Writing a
+  // page for it would be targeting a phrase with no corpus behind it.
+  const vibe = TREND_SIGNALS.find((t) => t.id === "vibe-coding");
+  assert.ok(vibe, "the rejected topic stays recorded so nobody re-adds it");
+  assert.equal(vibe.ngRelevance, 1);
+  assert.match(vibe.contentAction, /Deliberately not written/);
+  assert.ok(!risingTopics().some((t) => t.id === "vibe-coding"), "must not enter the rising queue");
+});
+
+test("cooling topics never become content pillars", () => {
+  const cooling = TREND_SIGNALS.filter((t) => t.lifecycle === "cooling");
+  assert.ok(cooling.length > 0);
+  for (const t of cooling) {
+    assert.match(t.contentAction, /piller|pillar|Do not build/i, `${t.id}: stated as not-a-pillar`);
+  }
+});
+
+test("scheduled demand is separated from speculative demand", () => {
+  // Exam seasons are calendar facts and are the only class safe to plan capacity
+  // against. Mixing them with trend spikes is how a training business ends up
+  // hiring for a peak that was never going to arrive.
+  const scheduled = scheduledDemand();
+  assert.ok(scheduled.length >= 2, "JAMB and WAEC seasons should both be present");
+  for (const t of scheduled) {
+    assert.match(
+      `${t.evidence} ${t.source}`,
+      /calendar|season|exam|term/i,
+      `${t.id}: "forecast" must rest on a published calendar`,
+    );
+  }
+});
+
+test("steady topics are the ones worth long-lived pages", () => {
+  const steady = steadyTopics().map((t) => t.id);
+  assert.ok(steady.includes("cyber-jobs"), "hiring demand is steady, not a spike");
+  assert.ok(!steady.includes("autonomous-agent"), "a volatile term is not steady");
+});
+
+test("the trend caveat still says where the data came from", () => {
+  assert.match(TREND_CAVEAT, /secondary reporting/i);
+  assert.match(TREND_CAVEAT, /not from the Google Trends interface/i);
+  assert.match(TREND_CAVEAT, /direction, not a volume/i);
+});

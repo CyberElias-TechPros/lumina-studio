@@ -170,9 +170,9 @@ export function DigitalSignatureExplainer() {
   return (
     <div className="space-y-8">
       <div>
-        <h3 className="font-display text-lg font-semibold">
+        <h2 className="font-display text-lg font-semibold">
           Three things called &ldquo;digital signature&rdquo;
-        </h3>
+        </h2>
         <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
           They are not the same, and only the last one is what a bank, a government portal or a
           software update is relying on when it uses the phrase.
@@ -186,9 +186,9 @@ export function DigitalSignatureExplainer() {
                 <div className="flex items-start gap-3">
                   <Icon className="mt-0.5 size-5 shrink-0" aria-hidden="true" />
                   <div className="min-w-0">
-                    <h4 className="text-sm font-semibold">
+                    <h3 className="text-sm font-semibold">
                       {index + 1}. {m.title}
-                    </h4>
+                    </h3>
                     <dl className="mt-2 space-y-1.5 text-sm leading-relaxed">
                       <div>
                         <dt className="text-foreground inline font-medium">Proves: </dt>

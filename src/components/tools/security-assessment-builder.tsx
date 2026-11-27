@@ -272,7 +272,7 @@ export function SecurityAssessmentBuilder() {
       </div>
 
       <div className="space-y-3">
-        <h3 className="font-display text-lg font-semibold">What to check</h3>
+        <h2 className="font-display text-lg font-semibold">What to check</h2>
         {findings.map((f) => (
           <label
             key={f.id}

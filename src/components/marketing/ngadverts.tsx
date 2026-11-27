@@ -27,7 +27,37 @@ import { slotFor } from "@/lib/ads/slots";
 
 const FILL_TIMEOUT_MS = 12_000;
 
-type UnitState = "waiting" | "loading" | "filled" | "empty";
+type UnitState = "waiting" | "loading" | "filled" | "empty" | "preview";
+
+/**
+ * Reviewer preview.
+ *
+ * ## The problem this solves
+ *
+ * While a site is under AdSense and Ezoic review, ads legitimately do not
+ * serve: the network has not approved the site yet. So the owner opens their
+ * own site, sees nothing, and cannot tell whether placements exist at all. The
+ * same thing happens after approval on a device with an ad blocker, or with
+ * "reject" stored in consent.
+ *
+ * ## What it does
+ *
+ * `?adpreview=1` bypasses the two gates — consent and network fill — and draws
+ * a labelled outline in the reserved space so the placement is visible and
+ * measurable. It never requests a third-party script, so it cannot place a
+ * cookie or violate consent; it only draws a box.
+ *
+ * It is opt-in per page load, never persisted, and it renders the network label
+ * verbatim so nobody mistakes a preview for a real payment.
+ */
+function previewRequested(): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    return new URLSearchParams(window.location.search).get("adpreview") === "1";
+  } catch {
+    return false;
+  }
+}
 
 export function AdUnit({ slotId, className }: { slotId: string; className?: string }) {
   const { pathname } = useLocation();
@@ -36,6 +66,7 @@ export function AdUnit({ slotId, className }: { slotId: string; className?: stri
 
   const [consented, setConsented] = useState(false);
   const [state, setState] = useState<UnitState>("waiting");
+  const [preview, setPreview] = useState(false);
   const hostRef = useRef<HTMLDivElement>(null);
 
   // Consent can be granted after the page has rendered, so subscribe to it.
@@ -52,6 +83,14 @@ export function AdUnit({ slotId, className }: { slotId: string; className?: stri
   }, [allowed]);
 
   useEffect(() => {
+    if (allowed) setPreview(previewRequested());
+  }, [allowed]);
+
+  useEffect(() => {
+    if (preview) {
+      setState("preview");
+      return;
+    }
     if (!allowed || !consented) return;
     const host = hostRef.current;
     if (!host) return;
@@ -91,9 +130,14 @@ export function AdUnit({ slotId, className }: { slotId: string; className?: stri
       window.clearTimeout(timer);
       script.remove();
     };
-  }, [allowed, consented]);
+  }, [allowed, consented, preview]);
 
-  if (!allowed || !consented || state === "empty") return null;
+  if (!allowed) return null;
+  if (preview)
+    return (
+      <PreviewUnit slotId={slotId} minHeight={slot?.minHeightPx ?? 250} format={slot?.format} />
+    );
+  if (!consented || state === "empty") return null;
 
   const minHeight = slot?.minHeightPx ?? 250;
 
@@ -116,6 +160,54 @@ export function AdUnit({ slotId, className }: { slotId: string; className?: stri
           style={{ minHeight, maxWidth: NGADVERTS.width }}
           className="w-full overflow-hidden"
         />
+      </div>
+    </aside>
+  );
+}
+
+/**
+ * The box a reviewer sees with `?adpreview=1`.
+ *
+ * Deliberately plain and unmistakable: dashed outline, the slot id, the size,
+ * and the network. If this were styled like a real creative, someone would
+ * eventually screenshot it and believe the site was earning.
+ */
+function PreviewUnit({
+  slotId,
+  minHeight,
+  format,
+}: {
+  slotId: string;
+  minHeight: number;
+  format?: string;
+}) {
+  return (
+    <aside
+      className="my-10"
+      aria-label="Advertisement placement preview"
+      data-ad-slot={slotId}
+      data-ad-preview="true"
+    >
+      <p className="text-muted-foreground mb-1.5 text-[11px] font-medium tracking-[0.12em] uppercase">
+        Advertisement
+      </p>
+      <div
+        className="border-muted-foreground/35 bg-muted/20 text-muted-foreground grid place-items-center rounded-lg border-2 border-dashed px-4 py-6 text-center"
+        style={{ minHeight, maxWidth: NGADVERTS.width }}
+      >
+        <div className="space-y-1">
+          <p className="text-xs font-semibold tracking-wide uppercase">
+            {NGADVERTS.network} · {NGADVERTS.width}×{NGADVERTS.height}
+          </p>
+          <p className="font-mono text-[11px]">
+            slot {slotId}
+            {format ? ` · ${format}` : ""}
+          </p>
+          <p className="max-w-[26ch] text-[11px] leading-snug">
+            Placement preview. No ad requested, no cookie set. Ads only serve after consent and
+            network approval.
+          </p>
+        </div>
       </div>
     </aside>
   );

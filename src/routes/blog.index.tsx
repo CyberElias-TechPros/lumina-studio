@@ -383,13 +383,20 @@ function Blog() {
               </Button>
             </div>
           ) : (
-            <ul className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-              {visible.map((post) => (
-                <li key={post.slug} className="flex">
-                  <NoteCard post={post} />
-                </li>
-              ))}
-            </ul>
+            <>
+              <h2 className="sr-only">
+                {chapter === ALL
+                  ? "All lessons"
+                  : noteChapters.find((c) => c.slug === chapter)?.title}
+              </h2>
+              <ul className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+                {visible.map((post) => (
+                  <li key={post.slug} className="flex">
+                    <NoteCard post={post} />
+                  </li>
+                ))}
+              </ul>
+            </>
           )}
 
           {totalPages > 1 && (

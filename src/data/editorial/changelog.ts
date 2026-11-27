@@ -29,6 +29,53 @@ export const CHANGELOG_STARTED = "2026-10-26";
 
 export const changelog: ChangeEntry[] = [
   {
+    date: "2026-11-27",
+    kind: "published",
+    title: "Four doors on the front page, and a hero that moves",
+    detail:
+      "The homepage now opens with a row of four plain intentions — a course and its fee, some advice, a tool to try now, or an answer to a specific question — placed before any scrolling content, because that is where a first-time visitor decides whether the site has what they came for. The hero gained a slow constellation field drawn in a 2D canvas, headings that rise into place word by word, and buttons that lean toward a fine pointer. None of it hides content before the script runs, all of it is disabled when a visitor asks for reduced motion, and the page is fully readable with JavaScript switched off. Separately, seven routes that declared themselves non-indexable were being served as indexable because the metadata layer ignored the declaration; that is fixed.",
+    affected: [
+      { label: "The centre", href: "/" },
+      { label: "Every course and fee", href: "/classes" },
+      { label: "Find a starting point", href: "/learning-trail" },
+      { label: "Practice labs", href: "/tools" },
+    ],
+  },
+  {
+    date: "2026-11-26",
+    kind: "correction",
+    title: "Ranked pages stopped redirecting readers away",
+    detail:
+      "Search Console showed 506 impressions and zero clicks across twenty-nine glossary URLs, including a page ranking second for its term and another ranking fourth. The cause was a redirect: every term went to a course list, whatever it was about. Each term now goes to the article that answers it. Five new articles cover the questions the export showed we were appearing for and not answering: what a SOC room is, where files go when they are in the cloud, what KB and GB stand for, how to type the naira sign, and what agile actually means. One page was retitled because its title did not contain the words the query uses.",
+    affected: [
+      { label: "What a SOC room is", href: "/blog/what-a-soc-room-is" },
+      { label: "Where your files actually are", href: "/blog/where-your-files-actually-are" },
+      { label: "What KB, MB and GB stand for", href: "/blog/what-kb-mb-gb-stand-for" },
+      { label: "How to type the naira sign", href: "/blog/how-to-type-the-naira-sign" },
+      { label: "What agile methodology means", href: "/blog/what-agile-methodology-means" },
+      { label: "Zero Trust, without the vendor slides", href: "/blog/zero-trust-in-plain-words" },
+    ],
+  },
+  {
+    date: "2026-11-25",
+    kind: "published",
+    title: "Two new explainers: what an AI agent is, and the cybersecurity jobs",
+    detail:
+      "Two companion articles, both written in the plain voice and both answering a question the site was already being found for without satisfying. The first explains what an AI agent is by describing the loop it runs and the test that separates it from a chatbot or a script, then hands the reader to the agent-engineering lessons. The second explains that cybersecurity is not a job title, describes the four roles that hire, and gives no salary figure — there is no source for one, and an invented number is worse than none. Thirty-two pages also had their headings corrected so a screen reader announces them in order, and twelve form fields on the practice screens gained labels.",
+    affected: [
+      {
+        label: "What an AI agent is, in plain words",
+        href: "/blog/what-is-an-ai-agent-in-plain-words",
+      },
+      {
+        label: "The cybersecurity jobs, and what to learn for each",
+        href: "/blog/cybersecurity-jobs-and-what-they-pay",
+      },
+      { label: "Agent engineering lessons", href: "/ai-engineering" },
+      { label: "Cybersecurity classes", href: "/classes/cybersecurity" },
+    ],
+  },
+  {
     date: "2026-10-29",
     kind: "revised",
     title: "Every lesson rewritten as direct teaching, in plain English",

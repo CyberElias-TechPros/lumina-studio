@@ -76,7 +76,14 @@ function Chat() {
               ws.status === "open" ? "bg-success/10 text-success" : "bg-warning/10 text-warning",
             )}
           >
-            <Users className="size-3" /> {ws.status === "open" ? `${ws.users} live` : "offline"}
+            <Users className="size-3" />{" "}
+            {ws.status === "open"
+              ? `${ws.users} live`
+              : ws.status === "reconnecting"
+                ? "reconnecting…"
+                : ws.status === "connecting"
+                  ? "connecting…"
+                  : "offline"}
           </Badge>
         ) : undefined
       }

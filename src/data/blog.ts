@@ -7513,8 +7513,12 @@ const NOTES_SERIES: BlogPost[] = [
   },
   {
     slug: "kilobytes-and-megabytes",
-    title: "What KB, MB and GB actually mean",
-    seoTitle: "KB vs MB vs GB: Which Is Bigger? File & Phone Data Size Chart",
+    title: "Which is bigger, KB, MB or GB? Sizes in order",
+    // The export shows 823 impressions at position 10.1 and zero clicks. The
+    // old serialised "What KB, MB and GB actually mean", which does not contain
+    // the words the query uses ("which is bigger"). Put the query's own words
+    // first, then the promise.
+    seoTitle: "Which Is Bigger, KB or MB or GB? Sizes in Order (Chart + Examples)",
     seoDescription:
       "Which is bigger — KB, MB, or GB? See the exact size order (1 GB ≈ 1,000 MB ≈ 1,000,000 KB), phone data examples, and why a 16 GB flash drive shows 14 GB.",
     learningObjectives: [

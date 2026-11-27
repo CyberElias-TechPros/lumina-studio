@@ -123,23 +123,68 @@ test("the redirects the audit complains about still exist", () => {
   }
 });
 
-test("the redirects still point at /classes", () => {
-  const glossary = (VERCEL.redirects ?? []).find((r) => r.source === "/glossary/:path*");
-  assert.equal(glossary?.destination, "/classes");
-  assert.equal(glossary?.permanent, true);
+test("the glossary catch-all still exists, but specific terms route first", () => {
+  // Vercel serves the first matching rule in order, so a term rule placed
+  // BEFORE the catch-all wins. That ordering is the whole fix; if a future edit
+  // appends term rules after the catch-all, production silently reverts to the
+  // old behaviour while every unit test still passes.
+  const redirects = VERCEL.redirects ?? [];
+  const catchAll = redirects.findIndex((r) => r.source === "/glossary/:path*");
+  assert.ok(catchAll >= 0, "the catch-all should remain for every unmapped term");
+  assert.equal(redirects[catchAll].destination, "/classes");
+  assert.equal(redirects[catchAll].permanent, true);
+
+  for (const slug of ["zero-trust", "vulnerability-assessment", "digital-signature"]) {
+    const i = redirects.findIndex((r) => r.source === `/glossary/${slug}`);
+    assert.ok(i >= 0, `${slug} needs a Vercel rule or the route fix never runs`);
+    assert.ok(
+      i < catchAll,
+      `${slug} is defined after the catch-all, so Vercel will serve /classes instead`,
+    );
+    assert.equal(redirects[i].permanent, true);
+  }
 });
 
-test("legacy routes are still client-side redirect shells", () => {
-  // The audit's claim that glossary pages cannot be entered depends on this.
-  // If real pages are restored, the click-through argument changes entirely.
-  for (const [file, dest] of [
-    ["src/routes/glossary.$slug.tsx", "/classes"],
-    ["src/routes/glossary.index.tsx", "/classes"],
-  ]) {
-    const source = readFileSync(join(root, file), "utf8");
-    assert.match(source, /redirectPublic/, `${file} should still redirect`);
-    assert.ok(source.includes(dest), `${file} should still redirect to ${dest}`);
+test("vercel.json matches the glossary destination table exactly", async () => {
+  // Two sources of truth for the same decision is how the route fix became a
+  // no-op in the first place. These must not drift.
+  const { GLOSSARY_DESTINATIONS } = await import("../../src/data/glossary-destinations.ts");
+  const redirects = VERCEL.redirects ?? [];
+  for (const [slug, entry] of Object.entries(GLOSSARY_DESTINATIONS)) {
+    const rule = redirects.find((r) => r.source === `/glossary/${slug}`);
+    assert.ok(rule, `${slug} is mapped in code but not in vercel.json`);
+    assert.equal(
+      rule.destination,
+      entry.to,
+      `${slug}: vercel.json sends readers to ${rule.destination} but the table says ${entry.to}`,
+    );
   }
+});
+
+test("glossary URLs still redirect, but no longer into a dead end", () => {
+  // This test used to assert that every glossary URL 301s to /classes, on the
+  // grounds that the audit's click-through argument depended on it. That was a
+  // description of the defect, not a requirement: 506 impressions and 0 clicks
+  // across 29 URLs, including two top-five rankings, is what it cost.
+  //
+  // The invariant that actually matters is narrower and is what is asserted now:
+  //   · the glossary index still redirects (it has no content of its own);
+  //   · term pages still redirect — they do not render (the removal was
+  //     deliberate quality control, and un-redirecting would restore the
+  //     thin-page problem the AdSense remediation fixed);
+  //   · but the destination now depends on the term, via the table.
+  const index = readFileSync(join(root, "src/routes/glossary.index.tsx"), "utf8");
+  assert.match(index, /redirectPublic/, "the glossary index should still redirect");
+  assert.ok(index.includes("/classes"), "the glossary index has no better destination");
+
+  const term = readFileSync(join(root, "src/routes/glossary.$slug.tsx"), "utf8");
+  assert.match(term, /redirect/, "term pages must still redirect");
+  assert.match(
+    term,
+    /glossaryDestination/,
+    "term pages must route by term, not blanket to /classes",
+  );
+  assert.ok(!/redirectPublic\(/.test(term), "a blanket redirectPublic is the defect this replaced");
 });
 
 /* ------------------------------------------------------------------ *

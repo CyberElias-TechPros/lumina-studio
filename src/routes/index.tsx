@@ -26,6 +26,8 @@ import { FourThingsDiagram } from "@/components/marketing/four-things-diagram";
 import { FeeReceipt } from "@/components/marketing/fee-receipt";
 import { HeroSkillCore, SkillUniverseExplorer } from "@/components/marketing/skill-universe";
 import { HeroMotion } from "@/components/marketing/hero-motion";
+import { HeroField } from "@/components/marketing/hero-field";
+import { LookingFor } from "@/components/marketing/looking-for";
 import { courseFamilyTheme } from "@/lib/course-families";
 import { cn } from "@/lib/utils";
 import { faqs } from "@/data/site";
@@ -157,6 +159,15 @@ function Home() {
         className="cea-frontier-grid relative overflow-hidden border-b border-[#2c333c] bg-[#101214] text-[#f4f1e9]"
       >
         <HeroMotion />
+        {/* The living field: a 2D canvas network, not a shader. It sits behind
+            everything, ignores the pointer for hit-testing, and renders nothing
+            at all when reduced motion is requested. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 opacity-70 [mask-image:radial-gradient(75%_70%_at_60%_40%,#000_35%,transparent_100%)]"
+        >
+          <HeroField />
+        </div>
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -top-24 right-0 h-96 w-96 rounded-full bg-[#7774ff]/15 blur-3xl"
@@ -175,6 +186,7 @@ function Home() {
 
             <h1
               data-hero-copy
+              data-split
               className="font-display mt-6 max-w-2xl text-[clamp(2.65rem,5.5vw,4.75rem)] leading-[0.98] font-semibold tracking-[-0.045em] text-balance text-[#f4f1e9]"
             >
               Your next skill{" "}
@@ -194,6 +206,7 @@ function Home() {
             <div data-hero-copy className="mt-8 flex flex-wrap items-center gap-3.5">
               <a
                 href="#home-course-finder"
+                data-magnetic
                 className="group inline-flex min-h-[48px] items-center gap-2 rounded-full bg-[#d6fe52] px-7 text-sm font-bold text-[#101214] transition-opacity hover:opacity-90"
               >
                 Explore your learning path
@@ -238,6 +251,13 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* Four doors, in the visitor's own words. Placed before any scrolling
+          content because that is exactly where a first-time visitor is deciding
+          whether this site has what they came for. */}
+      <div className="border-border border-b">
+        <LookingFor />
+      </div>
 
       <EzoicUnderTitleAd />
 

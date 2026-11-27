@@ -135,7 +135,11 @@ function GrowthSimulator() {
                   <Label className="text-muted-foreground text-xs font-semibold">{x.l}</Label>
                   <span className="font-display font-extrabold">{x.v}</span>
                 </div>
+                <label htmlFor={`growth-${x.l}`} className="sr-only">
+                  Adjust {x.l}
+                </label>
                 <Input
+                  id={`growth-${x.l}`}
                   type="range"
                   min={0}
                   max={100}

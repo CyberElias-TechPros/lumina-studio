@@ -131,7 +131,11 @@ function InternMessages() {
           </QueryState>
 
           <div className="mt-5 space-y-3">
+            <label htmlFor="intern-message" className="sr-only">
+              Message to your supervisor
+            </label>
             <textarea
+              id="intern-message"
               className="bg-muted placeholder:text-muted-foreground min-h-24 w-full resize-none rounded-xl border-0 p-3 text-sm font-medium outline-none"
               placeholder="Type your message…"
             />

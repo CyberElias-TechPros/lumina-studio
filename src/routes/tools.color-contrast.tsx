@@ -76,9 +76,9 @@ function ColorContrastPage() {
           </ul>
           <div className="border-foreground/10 bg-card mt-8 grid gap-6 rounded-2xl border p-6 sm:grid-cols-2">
             <div>
-              <h3 className="font-display text-lg font-semibold">
+              <h2 className="font-display text-lg font-semibold">
                 AA vs AAA: what numbers to aim for
-              </h3>
+              </h2>
               <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
                 WCAG AA requires a contrast ratio of at least <strong>4.5:1</strong> for normal body
                 text and <strong>3:1</strong> for large headings (18pt+ or 14pt+ bold). WCAG AAA
@@ -87,9 +87,9 @@ function ColorContrastPage() {
               </p>
             </div>
             <div>
-              <h3 className="font-display text-lg font-semibold">
+              <h2 className="font-display text-lg font-semibold">
                 Why bright neon on white fails print and mobile
-              </h3>
+              </h2>
               <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
                 Cyan, lime green and yellow text look punchy inside Photoshop on a calibrated Mac,
                 then turn unreadable on a glossy flyer or low-brightness phone outdoors in Port

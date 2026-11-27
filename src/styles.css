@@ -1993,3 +1993,182 @@ html.cursor-off * {
   }
 }
 
+/* ==========================================================================
+   MOTION SYSTEM — reveals, magnetic affordances, kinetic type
+   ==========================================================================
+
+   Everything here is additive: with JavaScript off, or with reduced motion
+   requested, every element is already in its final state and visible. The
+   enhancement is a class the script adds, never a class the markup depends on.
+   A reveal that hides content until JS runs is the single most common way a
+   "cinematic" site ends up with an invisible hero.
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* The hero accent, read by the canvas field so it cannot drift from theme. */
+  --cea-lime: #d6fe52;
+  --cea-ink: #101214;
+  --cea-paper: #f4f1e9;
+  --reveal-distance: 22px;
+  --reveal-duration: 780ms;
+}
+
+/* ---------- Scroll reveal ---------- */
+[data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Only once the script has confirmed it will animate do we hide anything. */
+html[data-motion="ready"] [data-reveal]:not([data-revealed]) {
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-distance), 0);
+}
+
+html[data-motion="ready"] [data-reveal] {
+  transition:
+    opacity var(--reveal-duration) var(--ease-out-expo),
+    transform var(--reveal-duration) var(--ease-out-expo);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+/* Once revealed, drop the compositor hint so long pages do not hold layers. */
+html[data-motion="ready"] [data-reveal][data-revealed] {
+  will-change: auto;
+}
+
+/* ---------- Magnetic buttons ---------- */
+/* The translation is written by the script into --mx/--my; CSS owns the easing
+   so the release springs back even if the pointer handler never fires again. */
+[data-magnetic] {
+  transform: translate3d(var(--mx, 0px), var(--my, 0px), 0);
+  transition: transform 420ms var(--ease-out-expo);
+}
+[data-magnetic][data-magnetic-active] {
+  transition: transform 90ms linear;
+}
+
+/* ---------- Kinetic display type ---------- */
+/* Each word is wrapped in a span by the script. The clip is on the inner line so
+   the mask edge sits exactly on the baseline, not on the padding box. */
+.cea-split {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.cea-split > span {
+  display: inline-block;
+  transform: translate3d(0, 110%, 0) rotate(2deg);
+  transition: transform 900ms var(--ease-out-expo);
+  transition-delay: var(--word-delay, 0ms);
+  will-change: transform;
+}
+html[data-hero="in"] .cea-split > span,
+.cea-split[data-in] > span {
+  transform: none;
+}
+
+/* ---------- Card lift ---------- */
+/* One shared hover language: a small lift, a border that warms, and a shadow
+   that appears rather than a scale that blurs text. */
+[data-lift] {
+  transition:
+    transform 420ms var(--ease-out-expo),
+    border-color 420ms var(--ease-out-expo),
+    box-shadow 420ms var(--ease-out-expo);
+}
+[data-lift]:hover,
+[data-lift]:focus-within {
+  transform: translate3d(0, -4px, 0);
+}
+[data-lift]:hover {
+  box-shadow: 0 18px 40px -22px oklch(0 0 0 / 0.45);
+}
+
+/* ---------- Marquee ---------- */
+@keyframes cea-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.cea-marquee {
+  display: flex;
+  width: max-content;
+  animation: cea-marquee var(--marquee-duration, 42s) linear infinite;
+}
+.cea-marquee-mask {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.cea-marquee:hover .cea-marquee,
+.cea-marquee:focus-within .cea-marquee {
+  animation-play-state: paused;
+}
+
+/* ---------- Guided picker (the "I am looking for" pattern) ---------- */
+.cea-picker-item {
+  position: relative;
+  isolation: isolate;
+  transition:
+    color 320ms var(--ease-out-expo),
+    border-color 320ms var(--ease-out-expo);
+}
+/* The fill grows from the bottom so the state change reads as the tile being
+   painted, which is the one place this site borrows literally from the brand
+   it is being compared to. */
+.cea-picker-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--cea-lime);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 420ms var(--ease-out-expo);
+}
+.cea-picker-item:hover::after,
+.cea-picker-item:focus-visible::after {
+  transform: scaleY(1);
+}
+.cea-picker-item:hover,
+.cea-picker-item:focus-visible {
+  color: var(--cea-ink);
+}
+
+/* ---------- Scroll progress hairline ---------- */
+.cea-progress {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 60;
+  height: 2px;
+  background: var(--cea-lime);
+  transform: scaleX(var(--progress, 0));
+  transform-origin: left;
+  pointer-events: none;
+}
+
+/* ---------- Reduced motion: nothing above runs ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html[data-motion="ready"] [data-reveal],
+  html[data-motion="ready"] [data-reveal]:not([data-revealed]) {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .cea-split > span {
+    transform: none !important;
+    transition: none !important;
+  }
+  [data-magnetic] {
+    transform: none !important;
+    transition: none !important;
+  }
+  .cea-marquee {
+    animation: none !important;
+  }
+}

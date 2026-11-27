@@ -76,6 +76,7 @@ import { useCommandPalette } from "@/components/app/use-command-palette";
 import { ThemeToggle } from "@/components/app/theme-toggle";
 import { useSignOut, useSession } from "@/lib/auth/session";
 import { useSessionUser } from "@/components/app/session-provider";
+import { rememberReturnPath } from "@/lib/auth/return-path";
 import { isMockMode } from "@/lib/env";
 import { track } from "@/lib/analytics";
 import { resolveRoleKey } from "@/data/rbac";
@@ -1071,10 +1072,13 @@ export function AppShell({
     Boolean(accountData && !accountData.emailVerified) &&
     !location.pathname.startsWith("/app/account");
   useEffect(() => {
-    if (signedOutInLiveMode) {
-      void navigate({ to: "/auth/sign-in" });
-    }
-  }, [signedOutInLiveMode, navigate]);
+    if (!signedOutInLiveMode) return;
+    // Remember where they were before sending them away. Without this a session
+    // expiry drops the learner on the dashboard after sign-in and they have to
+    // find their assessment again, with no hint that anything happened.
+    rememberReturnPath(location.pathname + location.search, "expired");
+    void navigate({ to: "/auth/sign-in" });
+  }, [signedOutInLiveMode, navigate, location.pathname, location.search]);
 
   const handleSignOut = () => {
     signOut.mutate(undefined, {

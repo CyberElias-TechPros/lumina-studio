@@ -328,7 +328,7 @@ export function OwnerWorklist() {
           </form>
         )}
         <div className="border-t pt-5">
-          <h3 className="font-display font-semibold">Transfers to verify</h3>
+          <h2 className="font-display font-semibold">Transfers to verify</h2>
           <p className="mt-1 text-xs text-muted-foreground">
             Check your actual bank statement, not a screenshot. Enter the bank credit reference and
             amount you independently verified before confirming.
