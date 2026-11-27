@@ -261,3 +261,121 @@ named tool still exists, whether the free-tier limits quoted here still hold, an
 whether Search Console shows any of these clusters earning impressions. The
 first two will change. The third is the only one that says whether this plan was
 right.
+
+---
+
+# Part two — the opportunity map, 160 topics
+
+The site owner supplied a second document: **"AI Content Opportunity Map — Late
+2026"**, 16 lanes of 10 topics each. It is transcribed as data in
+`src/data/editorial/ai-opportunity-map.ts`, not summarised, because its value is
+in the specificity of each brief.
+
+**It does not replace the ninety above. It overlaps about a third of them and adds
+one hundred new ones, and the overlap is the interesting part.**
+
+## Where the two documents agree
+
+Independent agreement is the only cheap evidence available without search volume,
+so it is worth naming:
+
+| Finding | 90-topic plan | Opportunity map |
+| --- | --- | --- |
+| Sora is dead | "Sora's consumer app was discontinued in April 2026" | Cluster 7, topic 10 is literally **"Migrate a Sora Prototype"** |
+| Free tiers are the product | "Free-tier limits are the product" | Cluster 5 and cluster 10, plus priority #2 "The 2026 Free AI Tier Stress Test" |
+| Cost per output, not per token | cost discipline in cluster 7 | "Cost per Finished 15-Second Clip", "cost-per-successful-output" |
+| Dated claims only | "no volume claims" | "Date-stamp every model, pricing, free-tier, quota, beta and regional-availability claim" |
+| No universal winners | "No tool ranking that expires" | "rather than universal winners or vendor claims" |
+
+Two documents written from different material reaching the same five conclusions
+is the strongest signal in either of them.
+
+## How the 16 lanes land against the 9 clusters
+
+Eleven lanes were requested; five the map's author added. They map like this:
+
+| Map lane | Existing cluster | Verdict |
+| --- | --- | --- |
+| 1 AI fundamentals | `ai-fundamentals` | **Overlaps** — merge, keeping the map's sharper briefs |
+| 2 AI models | `ai-models` | Overlaps |
+| 3 Practical AI skills | `ai-skills` | Overlaps |
+| 4 AI tools and stacks | `free-ai-tools` | Partly overlaps; adds paid-stack economics |
+| 5 Free AI tools and tiers | `free-ai-tools` | Strong overlap |
+| 6 Content-creation tools | `content-ai` | Overlaps |
+| 7 Code-to-video and AI video | `code-to-video` | Strong overlap |
+| 8 Automation setup | `ai-automation` | Overlaps |
+| 9 Workflows / operating systems | `ai-workflows` | Overlaps |
+| 10 Free automation for business | `ai-automation` | Splits the map finer than the plan did |
+| 11 AI adoption for small business | `emerging` | Partly overlaps; mostly **new** |
+| 12 AI agents and agentic systems | — | **New lane** |
+| 13 AI productivity and knowledge work | — | **New lane** |
+| 14 AI search, research, fact-checking | — | **New lane** |
+| 15 Multimodal AI | — | **New lane** (feeds `/ai-engineering` phase 12) |
+| 16 AI safety, privacy, scams | — | **New lane** (feeds the security courses) |
+
+**Reconciliation rule adopted: the 16 lanes become the backlog, the 9 clusters
+stay the publishing frame.** A cluster is a *place* (a hub page, an internal-link
+target, a course surface). A lane is a *queue*. Collapsing them would either
+create 16 thin hub pages or lose the map's finer-grained briefs — both were
+rejected.
+
+## The five new lanes, and why they are worth taking
+
+The map's author was right to add these, and the hiring data supports it:
+
+- **Agents (#12).** Agentic AI job postings grew **587%** year on year (Dice,
+  2026, ~7M US postings); AI agents +503%. This is the single fastest-moving
+  skill on the market and the site's `/ai-engineering` phases 14–16 already teach
+  it. The lane writes the public-facing on-ramp to that corpus.
+- **Productivity (#13).** `AI skills in 75% of tech postings (June 2026) vs 15%
+  (January 2024)`. Non-engineers need this and the site has no surface for it.
+- **Search and research (#14).** "The Citation Stress Test" is the best brief in
+  the document: citation *presence* is not citation *correctness*. It also
+  matches this site's own editorial rule about sourced claims.
+- **Multimodal (#15).** Feeds `/ai-engineering` phase 12 directly.
+- **Safety and privacy (#16).** The highest-trust lane, and the one with the
+  clearest commercial bridge to the cybersecurity courses. "The 15-Minute
+  ChatGPT Privacy Hardening" is a genuinely useful page that no competitor in
+  this market is writing.
+
+## Publishing order
+
+Waves are set on each lane in `ai-opportunity-map.ts` and guarded by a test that
+keeps them balanced:
+
+| Wave | Lanes | Why here |
+| --- | --- | --- |
+| **1** | Free tiers (5), fundamentals (1), free business automation (10), automation setup (8) | Highest intent, widest audience, feeds everything else |
+| **2** | Content creation (6), small-business adoption (11), practical skills (3), workflows (9) | Business outcome; converts to course enquiries |
+| **3** | Tools and stacks (4), productivity (13), search/research (14), agents (12) | Higher value per reader, slower to rank |
+| **4** | Models (2), code-to-video (7), multimodal (15), safety (16) | Narrow or technical; needs internal links first |
+
+**The map's own top-10 list is preserved verbatim** as `MAP_PRIORITY` and should
+be treated as the first ten to commission, in that order.
+
+## What changed in the rules, if anything
+
+Nothing was relaxed. Two things were **tightened** because the map asked:
+
+1. **`checksTools` on every topic.** 41 of the 160 briefs name a product whose
+   terms can change. Those are flagged in data, and a test refuses an unflagged
+   topic that names one.
+2. **Dates travel with claims.** The map's rule — "date-stamp every model,
+   pricing, free-tier, quota, beta and regional-availability claim" — is now a
+   precondition for writing a flagged topic, not a style note.
+
+The map's own caveat is worth repeating in full, because it is the correction
+most AI content needs:
+
+> YouTube videos and practitioner demonstrations show formats and directional
+> interest, not independently audited demand.
+
+The map arrived with YouTube-style framing — "Deep Research Face-Off", "One
+Reference Pack, Four Video Models". Those are good formats. They are not evidence
+of volume, and this plan still does not claim volume for any of them.
+
+## Next revision
+
+Unchanged: **February 2027**. Now with a fourth check — whether any of the
+**five new lanes** have a published first article, since those are the ones at
+risk of staying backlog forever.
