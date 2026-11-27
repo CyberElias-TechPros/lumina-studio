@@ -100,7 +100,11 @@ function DevApiPlayground() {
                 Authorization: Bearer sandbox_•••••••
               </p>
             </div>
+            <label htmlFor="api_playground_body" className="sr-only">
+              Request body
+            </label>
             <textarea
+              id="api_playground_body"
               className="bg-muted placeholder:text-muted-foreground min-h-28 w-full resize-none rounded-xl border-0 p-3 font-mono text-xs outline-none"
               defaultValue={'{\n  "status": 200,\n  "data": [ ... 64 students ]\n}'}
             />

@@ -29,6 +29,25 @@ export const CHANGELOG_STARTED = "2026-10-26";
 
 export const changelog: ChangeEntry[] = [
   {
+    date: "2026-11-25",
+    kind: "published",
+    title: "Two new explainers: what an AI agent is, and the cybersecurity jobs",
+    detail:
+      "Two companion articles, both written in the plain voice and both answering a question the site was already being found for without satisfying. The first explains what an AI agent is by describing the loop it runs and the test that separates it from a chatbot or a script, then hands the reader to the agent-engineering lessons. The second explains that cybersecurity is not a job title, describes the four roles that hire, and gives no salary figure — there is no source for one, and an invented number is worse than none. Thirty-two pages also had their headings corrected so a screen reader announces them in order, and twelve form fields on the practice screens gained labels.",
+    affected: [
+      {
+        label: "What an AI agent is, in plain words",
+        href: "/blog/what-is-an-ai-agent-in-plain-words",
+      },
+      {
+        label: "The cybersecurity jobs, and what to learn for each",
+        href: "/blog/cybersecurity-jobs-and-what-they-pay",
+      },
+      { label: "Agent engineering lessons", href: "/ai-engineering" },
+      { label: "Cybersecurity classes", href: "/classes/cybersecurity" },
+    ],
+  },
+  {
     date: "2026-10-29",
     kind: "revised",
     title: "Every lesson rewritten as direct teaching, in plain English",

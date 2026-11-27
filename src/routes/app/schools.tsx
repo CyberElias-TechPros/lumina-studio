@@ -363,13 +363,21 @@ function SchoolsWorkspace() {
                       .catch(() => setError("Could not add that school."));
                   }}
                 >
+                  <label htmlFor="school-name" className="sr-only">
+                    School name
+                  </label>
                   <input
+                    id="school-name"
                     name="schoolName"
                     required
                     placeholder="School name"
                     className={inputClass}
                   />
+                  <label htmlFor="school-student-count" className="sr-only">
+                    Number of students
+                  </label>
                   <input
+                    id="school-student-count"
                     name="studentCount"
                     type="number"
                     min={1}

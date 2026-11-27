@@ -64,7 +64,11 @@ function DirectorReports() {
       <div className="bg-card shadow-soft flex flex-wrap items-center gap-2 rounded-2xl border p-3">
         <div className="bg-muted flex min-w-0 flex-1 items-center gap-2 rounded-xl px-3 py-2">
           <Search className="text-muted-foreground size-4 shrink-0" />
+          <label htmlFor="director_report_search" className="sr-only">
+            Search reports
+          </label>
           <input
+            id="director_report_search"
             className="placeholder:text-muted-foreground w-full bg-transparent text-sm font-medium outline-none"
             placeholder="Finance, Cohort 15, ROAS, Abeokuta…"
           />

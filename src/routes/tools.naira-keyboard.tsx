@@ -140,7 +140,7 @@ function NairaKeyboardPage() {
             <div className="flex items-start gap-3">
               <ShieldCheck className="text-primary mt-0.5 size-5 shrink-0" />
               <div>
-                <h3 className="font-display text-lg font-semibold">Why ₦ is harder than $ or £</h3>
+                <h2 className="font-display text-lg font-semibold">Why ₦ is harder than $ or £</h2>
                 <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
                   The naira sign was added to Unicode in 1999 as{" "}
                   <span className="font-mono text-xs">U+20A6</span>, decades after the dollar and

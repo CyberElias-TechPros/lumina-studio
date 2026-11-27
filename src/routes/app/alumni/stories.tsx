@@ -161,7 +161,11 @@ function AlumniStories() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
+            <label htmlFor="alumni_story" className="sr-only">
+              Your alumni story
+            </label>
             <Textarea
+              id="alumni_story"
               placeholder="What changed for you after CEA? Where are you working now? Write it here — the careers team will review and publish with your permission."
               className="min-h-32 border font-medium"
             />

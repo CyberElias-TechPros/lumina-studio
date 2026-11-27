@@ -1068,4 +1068,237 @@ export const companionPosts: BlogPost[] = [
       ),
     ],
   },
+
+  /* ============================================================
+   * 12. The door into Phase 14.
+   *
+   * The site already holds 54 agent-engineering lessons and every one of
+   * them is noIndex. That is why the property shows 797 impressions and 3
+   * clicks against /ai-engineering: Google indexes the shelf and not the
+   * books. This is the indexable, plain-English explanation that can rank,
+   * and it exists to hand the reader to the lessons rather than replace them.
+   * ================================================================ */
+  {
+    slug: "what-is-an-ai-agent-in-plain-words",
+    title: "What an AI agent is, in plain words",
+    seoTitle: "What Is an AI Agent? A Plain-English Explanation",
+    seoDescription:
+      "An AI agent is a program that decides its own next step. What that means, how it differs from a chatbot and a script, and where agents already work today.",
+    category: "ai-productivity",
+    articleType: "explainer",
+    difficulty: "Beginner",
+    quickAnswer:
+      "An AI agent is a program that loops: it looks at the situation, decides the next step itself, takes that step, then checks what happened and decides again. The thing that makes it an agent is that nobody wrote the steps in advance. A chatbot answers one question and stops. A script follows a fixed order. An agent chooses what to do next, which is why it can handle a situation nobody planned for.",
+    excerpt:
+      "Chatbots answer. Agents act. The difference is who decides the next step — and it explains both what these programs can do and why they go wrong.",
+    learningObjectives: [
+      "State what makes something an agent rather than a chatbot or a script.",
+      "Describe the loop an agent runs, in four steps, without jargon.",
+      "Name the three things an agent needs before it is useful.",
+      "Recognise the failure modes well enough not to trust one blindly.",
+    ],
+    series: SERIES,
+    order: 1012,
+    author: AUTHOR,
+    cover: "/images/blog/ai-assistant-chat.jpg",
+    coverAlt: "A laptop screen showing a chat conversation with an AI assistant.",
+    body: [
+      p(
+        "A chatbot answers. An agent acts. That is the whole difference, and most of the confusion around the phrase disappears once you hold it in mind.",
+      ),
+      h2("The plain definition"),
+      p(
+        "An AI agent is a program that repeats the same small loop: look at where things stand, decide the next step, take that step, look at what happened, and decide again. It stops when the job is done, or when something tells it to stop.",
+      ),
+      p(
+        "The part that makes it an agent is that nobody wrote the steps in advance. It chooses them. A program that always does A then B then C is a script wearing the same clothes.",
+      ),
+      fig(
+        "/images/blog/chat-window-laptop-evening.jpg",
+        "A laptop showing a chat window in a dimly lit room.",
+        "A chatbot is built to answer and then wait. An agent is built to keep going until the job is finished.",
+      ),
+      h2("The loop, in four moves"),
+      p("Every agent, however expensive or simple, is running this shape underneath:"),
+      ul([
+        "**It is told the goal.** Something like \u201cfind out why the test is failing\u201d rather than \u201cwrite some code\u201d.",
+        "**It decides one step.** Read a file, search for a term, run a command. One move at a time, not a whole plan.",
+        "**It acts.** The step has a real effect: a file changes, a search returns, a message is sent.",
+        "**It looks at the result and decides again.** This is the move that matters. The result of the last step is what shapes the next one.",
+      ]),
+      p(
+        "An analogy, and it is only an analogy: finding a phone number in a large building with no directory. You look at the floor plan, decide to try the third floor, read the signs there, decide again. You are not following a route someone gave you. You are choosing each next move based on what you just saw. That is the loop.",
+      ),
+      h2("Chatbot, script, agent"),
+      table(
+        ["", "What it does", "When it breaks"],
+        [
+          [
+            "Chatbot",
+            "Answers the question it was asked, then stops. It will not go and do anything.",
+            "When the answer needs something done, not just said.",
+          ],
+          [
+            "Script",
+            "Follows the same fixed order every time. Fast and reliable because it never decides.",
+            "The moment anything is different from what the author imagined.",
+          ],
+          [
+            "Agent",
+            "Decides its own next step from what it sees, so it can handle a situation nobody wrote down.",
+            "When its tools are wrong, its goal is vague, or nobody watched what it did.",
+          ],
+        ],
+        "The test that settles it: does the program choose its next action, or is the next action already written?",
+      ),
+      h2("Where agents already work today"),
+      p("Not in the future. In tools people use now, and always the same loop:"),
+      ul([
+        "**A coding agent** reads a file, changes it, runs the tests, reads the failure, and changes it again. Nobody told it which lines to edit.",
+        "**A support agent** reads a ticket, searches the documentation, drafts an answer, and hands the difficult ones to a human. It decides which of those it is doing.",
+        "**A research agent** searches, reads what it found, notices something is missing, and searches again with better words.",
+      ]),
+      p(
+        "Notice that the impressive-sounding ones are the same loop with better tools attached. That is not a trick of explanation. It is how they are built.",
+      ),
+      h2("The three things an agent needs"),
+      p("An agent that disappoints is almost always missing one of these, not badly written:"),
+      ul([
+        "**Tools that actually work.** An agent that cannot take a step cannot solve anything, however well it reasons. If the tool fails, the loop spins.",
+        "**A goal that can be judged.** \u201cMake the site better\u201d has no finish line, so the loop never ends properly. \u201cMake this page load in under two seconds\u201d does.",
+        "**A guardrail someone chose.** Left alone, an agent will take an action nobody wanted, because it cannot tell what matters to you. The limit has to be deliberate.",
+      ]),
+      h2("What it costs, and what it cannot do"),
+      p(
+        "Every trip around the loop costs time and money, because something has to think each time. A task that takes forty steps costs roughly forty times what a single answer costs. That is the honest reason agents are used for some jobs and not others.",
+      ),
+      p(
+        "It also cannot know something nobody gave it access to. An agent with no access to your email will never find the receipt, however clever it is. The tool list is the ceiling on what it can do.",
+      ),
+      p(
+        "If this went wrong: the usual failure is an agent given a vague goal and no limits, which then does something plausible and unwanted. If you are setting one up, write the finish line first and the forbidden actions second, and let it work only where it can be undone. Watching the first few runs is not caution you grow out of; it is the job.",
+      ),
+    ],
+  },
+
+  /* ================================================================
+   * 13. The jobs page for the term the site already ranks for.
+   *
+   * "vulnerability assessment" sits at 2.04 with 172 impressions and no
+   * clicks, because the page answering it is a definition. This answers the
+   * question the person is actually holding: what is the job, and how would I
+   * get it. No salary figures are given — see the note in the body.
+   * ================================================================ */
+  {
+    slug: "cybersecurity-jobs-and-what-they-pay",
+    title: "The cybersecurity jobs, and what to learn for each",
+    seoTitle: "Cybersecurity Jobs and Salaries in Nigeria: What to Learn",
+    seoDescription:
+      "There is no job called cybersecurity. Four real roles, what each does in a day, what to learn first, and honest advice on certificates and pay.",
+    category: "cybersecurity",
+    articleType: "career-guide",
+    difficulty: "Beginner",
+    quickAnswer:
+      "Cybersecurity is not a job title. The four roles that actually hire are SOC analyst (watches alerts and decides what is real), vulnerability assessment analyst (finds and ranks weaknesses), penetration tester (attacks systems with permission), and GRC (policy, audit and risk). All four hire people without degrees, and every one of them wants evidence you can do the work rather than a certificate saying you studied it.",
+    excerpt:
+      "Four real roles, what each one does before lunch, and the order to learn things in if you want to be hired rather than certified.",
+    learningObjectives: [
+      "Name the four entry routes and what separates them.",
+      "Recognise which role matches how you actually like to work.",
+      "Put learning in the order employers test, not the order courses sell.",
+      "Judge a certification claim without being misled by it.",
+    ],
+    series: SERIES,
+    order: 1013,
+    author: AUTHOR,
+    cover: "/images/blog/analyst-monitor-grid.jpg",
+    coverAlt: "An analyst's desk with several monitors showing dashboards.",
+    body: [
+      p(
+        "If you search for cybersecurity jobs you will find an industry of advice that skips the first useful fact: cybersecurity is not a job title. It is a field with several distinct jobs inside it, and they are hiring for different things.",
+      ),
+      p(
+        "Knowing which one you are aiming at changes everything you study. Choose before you start, or you will learn a little of all four and convince nobody of any.",
+      ),
+      h2("The four roles"),
+      table(
+        ["Role", "What the day looks like", "What a hiring manager wants to see"],
+        [
+          [
+            "SOC analyst",
+            "An alert queue. Gather context, decide whether each alert is a false positive or real, escalate or close, and write it so the next person does not repeat the work.",
+            "That you can read a log line and judge what is normal. Writing someone else can follow. Willingness to work shifts.",
+          ],
+          [
+            "Vulnerability assessment analyst",
+            "Run scans, cut out the noise, confirm what is real, rank it, and write a report a busy engineer will act on.",
+            "Method and attention to detail. A report that ranks findings instead of dumping them.",
+          ],
+          [
+            "Penetration tester",
+            "Attack systems with written permission, then explain clearly how you got in and how to close it.",
+            "Patience, curiosity, and the discipline to stop at the agreed boundary.",
+          ],
+          [
+            "GRC analyst",
+            "Policy, audit, risk registers, and the paperwork that proves a company is doing what it says.",
+            "Clear writing and the ability to ask awkward questions politely.",
+          ],
+        ],
+        "None of these four is more senior than the others. They are different jobs, and they suit different people.",
+      ),
+      fig(
+        "/images/blog/analyst-notes-desk.jpg",
+        "A notepad with handwritten notes beside a laptop.",
+        "All four roles produce documents. The writing is not a side task; it is most of the work.",
+      ),
+      h2("Which one suits you"),
+      p("A short honest test, based on what you already enjoy rather than what sounds impressive:"),
+      ul([
+        "If you like **spotting patterns and staying calm under pressure**, the SOC is the natural fit.",
+        "If you like **tidiness and getting details right**, vulnerability assessment is closer to your temperament than penetration testing.",
+        "If you like **breaking things and working things out**, look at penetration testing — but understand most of it is reporting, not breaking.",
+        "If you like **writing and arguing a position**, GRC is a real career, not a consolation prize.",
+      ]),
+      h2("What to learn, in the order employers test"),
+      p(
+        "Courses tend to teach tools first because tools are easy to demonstrate. Interviews test something else:",
+      ),
+      ul([
+        "**Networks and operating systems.** How addresses work, what a port is, where logs live. Without this, every tool output is a wall of noise.",
+        "**Identity and access.** Accounts, permissions, least privilege. Most findings you will ever write are about access.",
+        "**Writing about evidence.** A ticket, a finding, a report. This is most of the job and almost nobody practises it.",
+        "**Tools last.** Once you know what you are looking at, a scanner takes a day to learn. Knowing the tool without the instinct does not survive one question.",
+      ]),
+      p(
+        "The free assessment tool on this site is a reasonable first exercise because it forces the third item: look at a system, decide what is weak, rank it, write it down.",
+      ),
+      h2("Certificates, without the sales pitch"),
+      p(
+        "CompTIA Security+ is the usual starting certificate and does get past some filters. It is not a substitute for any of the above, and leading with it and nothing else is easy to screen out, because a certificate proves attendance while a report proves judgement.",
+      ),
+      p(
+        "The honest rule: get one certificate for the filter, and spend the same money and time producing two pieces of work you can show. The work is what changes the conversation.",
+      ),
+      h2("About pay, and why this page gives no number"),
+      p(
+        "You can find confident salary figures for these roles all over the internet, and most are unsourced. A number invented for a page someone is basing a career decision on is worse than no number, so this page gives the shape instead.",
+      ),
+      ul([
+        "Entry into the SOC and vulnerability roles pays modestly and rises with evidence, not with years served.",
+        "Penetration testing and GRC pay more later, because both are bought for judgement.",
+        "Remote contract work for overseas clients is the largest single jump available, and it requires a portfolio, not a local connection.",
+      ]),
+      p(
+        "If you need a number before deciding, ask three people in the role in Nigeria what they were offered in their first year. You will learn more than any article can tell you, including whether the market in your city is the one described here.",
+      ),
+      h2("The part nobody puts in the brochure"),
+      p(
+        "Two things, said plainly. Entry-level security is competitive, and many people reach it through IT support first, which hires far more easily and teaches the same instinct. And the field rewards people who keep reading after the course ends, because the tools change faster than any curriculum.",
+      ),
+      p(
+        "If this went wrong: the common failure is collecting certificates for a year and then discovering you still cannot write a report. If that has happened, stop buying courses. Write one report this week on something you own, however small, and apply for one role with it attached. That document changes the outcome more than the next certificate will.",
+      ),
+    ],
+  },
 ];

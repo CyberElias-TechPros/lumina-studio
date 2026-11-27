@@ -136,13 +136,21 @@ function VolunteerHours() {
         </CardHeader>
         <CardContent className="space-y-3">
           <form onSubmit={submit} className="flex flex-wrap items-center gap-3">
+            <label htmlFor="volunteer-activity" className="sr-only">
+              Volunteer activity
+            </label>
             <Input
+              id="volunteer-activity"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Activity (e.g. Career fair booth)"
               className="h-9 flex-1"
             />
+            <label htmlFor="volunteer-hours" className="sr-only">
+              Hours volunteered
+            </label>
             <Input
+              id="volunteer-hours"
               value={hours}
               onChange={(e) => setHours(e.target.value)}
               placeholder="Hours"

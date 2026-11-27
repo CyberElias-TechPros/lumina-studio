@@ -508,6 +508,205 @@ export function relatedTopicMap(): Record<string, string[]> {
   return map;
 }
 
+/* ------------------------------------------------------------------ *
+ * Trend lifecycle: what is rising, what is steady, what is coming
+ * ------------------------------------------------------------------ */
+
+/**
+ * Every topic classed by where it sits in its life, not just how big it is.
+ *
+ * This exists because "what is trending" and "what is worth writing" are
+ * different questions. A breakout term can be a spike that vanishes in six
+ * weeks; a steady term is a page that earns for years. Both are worth knowing,
+ * and confusing them produces content that ages badly.
+ *
+ * ## Sourcing, stated plainly
+ *
+ * The Google Trends **interface was not reachable** while this was compiled —
+ * `trends.google.com` and its internal API both refused. These entries therefore
+ * come from dated secondary reporting of Google data (press releases carried by
+ * Nigerian tech press, April 2026) plus published market and hiring research.
+ * Where a figure comes from that reporting it is quoted with its date; where it
+ * is a market forecast it says so.
+ *
+ * The `forecast` class is different again, and deliberately conservative: it
+ * means "the demand is scheduled, not speculative". Exam seasons and school
+ * terms are calendar facts. Job forecasts are stated as forecasts.
+ */
+export type TrendLifecycle = "rising" | "steady" | "emerging" | "forecast" | "cooling";
+
+export type TrendSignal = {
+  id: string;
+  topic: string;
+  lifecycle: TrendLifecycle;
+  /** ISO date the evidence was published or gathered — never the date of reading. */
+  evidenceDate: string;
+  /** What was measured, in the source's own terms. */
+  evidence: string;
+  /** Where it came from, specific enough to check. */
+  source: string;
+  /** Nigeria relevance, 1–3. Not a volume, a judgement with a reason below. */
+  ngRelevance: 1 | 2 | 3;
+  /** The page this should become, if it should become one. */
+  contentAction: string;
+  /** Why it will or will not still matter in a year. */
+  durability: string;
+};
+
+export const TREND_SIGNALS: readonly TrendSignal[] = [
+  {
+    id: "autonomous-agent",
+    topic: "Autonomous agents",
+    lifecycle: "rising",
+    evidenceDate: "2026-04-25",
+    evidence:
+      "\u201cAutonomous Agent\u201d reported at +390% over 12 months in Google's Nigeria trend data. Same release reports AI literacy +840% and AI Tutor as a breakout term.",
+    source:
+      "Google Nigeria trend release, March 2026 data, reported by Nigerian tech press April 2026. NOTE: the same release is quoted elsewhere as \u201c84%\u201d for AI literacy \u2014 unusable until resolved, and no figure from it is used in published copy.",
+    ngRelevance: 3,
+    contentAction:
+      "Served by /blog/what-is-an-ai-agent-in-plain-words as the indexable door into the 54 noIndex agent lessons.",
+    durability:
+      "The term is volatile; the underlying skill is not. Write for the skill, not the phrase.",
+  },
+  {
+    id: "cyber-jobs",
+    topic: "Cybersecurity roles and hiring",
+    lifecycle: "steady",
+    evidenceDate: "2026-04-26",
+    evidence:
+      "Over 1,300 cybersecurity vacancies listed in Nigeria in May 2025, concentrated in Lagos and Abuja. Nigerian market forecast to grow at roughly 10.7% a year to 2029. 3MTT targets three million trained technical people by 2027 with cybersecurity as a priority discipline.",
+    source:
+      "Ecofin/TechTrends Africa reporting, April 2026, citing Nigerian job-board counts and market forecasts.",
+    ngRelevance: 3,
+    contentAction:
+      "Served by /blog/cybersecurity-jobs-and-what-they-pay. This is the page that answers the intent behind the site's position-2.04 ranking.",
+    durability: "High. Hiring demand moves slowly and the term does not depend on a trend spike.",
+  },
+  {
+    id: "ai-literacy",
+    topic: "Learning to use AI (not build it)",
+    lifecycle: "rising",
+    evidenceDate: "2026-04-25",
+    evidence:
+      "Searches combining AI with school, university, homework and chemistry all reported rising; \u201cAI Tutor\u201d a breakout term. The release also reports 84% of young Nigerians saying digital and AI skills are critical to their careers.",
+    source: "Google Nigeria trend release, March 2026 data, reported April 2026.",
+    ngRelevance: 3,
+    contentAction:
+      "Not yet written as a page. The site's AI Productivity course serves it; a plain-English entry page is the gap, and it should point at the course rather than duplicate it.",
+    durability: "Medium-high. The specific queries will churn; the need to learn AI will not.",
+  },
+  {
+    id: "vibe-coding",
+    topic: "Vibe coding",
+    lifecycle: "emerging",
+    evidenceDate: "2026-11-24",
+    evidence:
+      "Reported as rising while \u201cprompt engineering\u201d falls. No Nigerian source and no Google export obtained, so the only support is secondary commentary.",
+    source: "Third-party commentary surfaced in search, November 2026. Not a primary measurement.",
+    ngRelevance: 1,
+    contentAction:
+      "Deliberately not written. A page targeting a phrase with no corpus behind it is the pattern this site's editorial rules forbid.",
+    durability:
+      "Low confidence. Revisit only if a primary source appears, or if Search Console starts showing the query.",
+  },
+  {
+    id: "prompt-engineering",
+    topic: "Prompt engineering as a career",
+    lifecycle: "cooling",
+    evidenceDate: "2026-11-24",
+    evidence:
+      "Reported as declining share of AI-related search while task-specific agent queries rise. Consistent with the shift from \u201chow to ask\u201d to \u201cwhat should it do\u201d.",
+    source: "Secondary commentary, November 2026. Direction only — no volume obtained.",
+    ngRelevance: 1,
+    contentAction:
+      "Do not build a pillar on it. The skill survives inside other pages; the standalone career framing does not.",
+    durability: "The term is fading; the practice is being absorbed elsewhere.",
+  },
+  {
+    id: "jamb-season",
+    topic: "Exam season: JAMB preparation",
+    lifecycle: "forecast",
+    evidenceDate: "2026-11-08",
+    evidence:
+      "JAMB UTME registration opens January and the exam runs March\u2013April. 2027 UTME provisionally 15\u201325 March. Tutoring and prep enquiry peaks October through March — the season is already open.",
+    source:
+      "Published Nigerian exam calendars and school calendars, November 2026. Provisional dates flagged as provisional by the source.",
+    ngRelevance: 3,
+    contentAction:
+      "Relevant to the Academy's intake messaging, not to article topics. Use for course-scheduling and enquiry timing, never for a post.",
+    durability:
+      "Recurs every year. This is the one demand shape that can be planned against with certainty.",
+  },
+  {
+    id: "waec-season",
+    topic: "Exam season: WAEC / NECO",
+    lifecycle: "forecast",
+    evidenceDate: "2026-11-08",
+    evidence:
+      "WAEC WASSCE 2027 provisionally 11 May \u2013 18 June; school session resumes 11 January 2027. Registration for the May/June exam runs November\u2013January.",
+    source: "Published Nigerian exam and school calendars, November 2026.",
+    ngRelevance: 2,
+    contentAction: "Same as JAMB: intake and enquiry timing, not content topics.",
+    durability: "Recurs annually on the same calendar, so it outlives the season it serves.",
+  },
+  {
+    id: "new-year-skills",
+    topic: "January resolution and reskilling demand",
+    lifecycle: "forecast",
+    evidenceDate: "2026-11-08",
+    evidence:
+      "Second school term resumes 11 January 2027; the same window is the traditional reskilling and enrolment peak. Inferred from the calendar, not measured.",
+    source:
+      "School calendar reporting, November 2026. The demand inference is an assumption and is labelled as one.",
+    ngRelevance: 2,
+    contentAction:
+      "Have the course pages and the free practice tools ready before the first week of January, when the traffic arrives.",
+    durability: "Recurs annually, though the size of the peak is unmeasured.",
+  },
+];
+
+/**
+ * Rising signals — the ones worth new pages.
+ *
+ * Deliberately excludes `emerging`. An emerging term rests on thinner evidence
+ * by definition, and "vibe coding" is in that class precisely because nothing
+ * primary supports it. If emerging topics were queued here they would be written
+ * the same week they were noticed, which is how a site fills with pages about
+ * phrases that vanish. Emerging topics get watched, not written.
+ */
+export function risingTopics(): TrendSignal[] {
+  return TREND_SIGNALS.filter((t) => t.lifecycle === "rising");
+}
+
+/** Emerging signals: worth watching, not yet worth a page. */
+export function emergingTopics(): TrendSignal[] {
+  return TREND_SIGNALS.filter((t) => t.lifecycle === "emerging");
+}
+
+/** Durable topics: steady demand that does not depend on a spike. */
+export function steadyTopics(): TrendSignal[] {
+  return TREND_SIGNALS.filter((t) => t.lifecycle === "steady");
+}
+
+/** Calendar-driven demand that can be planned against. */
+export function scheduledDemand(): TrendSignal[] {
+  return TREND_SIGNALS.filter((t) => t.lifecycle === "forecast");
+}
+
+/**
+ * The rule that keeps this honest.
+ *
+ * Two of the five classes exist precisely so that a spike is never mistaken for
+ * durability. If someone adds a topic here without a dated source, this constant
+ * is the thing that says why that is not allowed.
+ */
+export const TREND_CAVEAT =
+  "Trend classes come from dated secondary reporting and published calendars, not from " +
+  "the Google Trends interface, which was unreachable when this was compiled. A " +
+  "\u201crising\u201d class is a direction, not a volume. \u201cForecast\u201d means the demand is " +
+  "scheduled by a calendar and is the only class safe to plan capacity against.";
+
 export const KEYWORD_VALUE_CAVEAT =
   "Global interest bands come from secondary sources — research-house forecasts, adoption " +
   "surveys and published employer skills lists — not from the Google Trends API, which was not " +

@@ -161,6 +161,7 @@ export function OpenLabsBrowser() {
       )}
 
       {/* Cards grid */}
+      <h2 className="sr-only">Tools assessed</h2>
       <ul className="grid gap-4 md:grid-cols-2">
         {filtered.map((item) => {
           const meta = VERDICT_META[item.verdict];

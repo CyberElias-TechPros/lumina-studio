@@ -123,7 +123,7 @@ function CloudExplainerPage() {
           </div>
 
           <div className="border-foreground/10 bg-card mt-8 rounded-xl border p-5">
-            <h3 className="font-display text-lg font-semibold">Three things worth doing today</h3>
+            <h2 className="font-display text-lg font-semibold">Three things worth doing today</h2>
             <ol className="text-muted-foreground mt-3 space-y-2.5 text-sm leading-relaxed">
               <li className="flex gap-2.5">
                 <span className="text-primary font-mono text-xs font-semibold">01</span>

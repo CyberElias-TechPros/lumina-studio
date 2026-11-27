@@ -263,7 +263,11 @@ function GeneratePanel() {
               </button>
             ))}
           </div>
+          <label htmlFor="ai_generate_topic" className="sr-only">
+            Topic for the generated content
+          </label>
           <Input
+            id="ai_generate_topic"
             value={topic}
             onChange={(event) => setTopic(event.target.value)}
             placeholder="Topic, e.g. SQL window functions"
