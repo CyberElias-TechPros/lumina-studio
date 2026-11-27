@@ -68,7 +68,7 @@ export function InfoPanel({ meta, plan, timeSlot, mode, scheduleDays }: InfoPane
 
   return (
     <aside className="border-card shadow-soft lg:sticky lg:top-24">
-      <div className="overflow-hidden rounded-2xl border">
+      <div className="overflow-hidden rounded-xl border">
         <div className="bg-primary/5 px-5 py-4">
           <p className="text-muted-foreground text-[11px] font-bold tracking-wide uppercase">
             Your enrollment at a glance

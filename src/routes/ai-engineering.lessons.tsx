@@ -90,7 +90,7 @@ function AiLessonsIndexPage() {
         </h2>
 
         {/* Filters */}
-        <div className="border-foreground/10 bg-card rounded-2xl border p-4 sm:p-5">
+        <div className="border-foreground/10 bg-card rounded-xl border p-4 sm:p-5">
           <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_16rem_auto]">
             <label className="relative block">
               <span className="sr-only">Search lessons</span>

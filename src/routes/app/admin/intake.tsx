@@ -183,7 +183,7 @@ function BusinessIntakePage() {
         </Card>
       </div>
 
-      <div className="mt-5 flex flex-wrap items-center gap-2 rounded-2xl border bg-card p-3">
+      <div className="mt-5 flex flex-wrap items-center gap-2 rounded-xl border bg-card p-3">
         <div className="flex rounded-xl bg-muted p-1" role="tablist" aria-label="Intake queues">
           <button
             type="button"

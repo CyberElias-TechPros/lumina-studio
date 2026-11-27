@@ -145,7 +145,7 @@ function TokenEditor() {
                           <TableCell className="font-mono text-xs font-bold">{c.t}</TableCell>
                           <TableCell>
                             <span
-                              className={cn("inline-block size-6 rounded-md border", swatchTone(c))}
+                              className={cn("inline-block size-6 rounded-lg border", swatchTone(c))}
                             />
                           </TableCell>
                           <TableCell className="font-mono text-xs">{c.v}</TableCell>

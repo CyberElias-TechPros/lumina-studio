@@ -88,7 +88,7 @@ function ReceptionistCheckIn() {
           </CardHeader>
           <CardContent>
             <div className="bg-muted/50 grid aspect-video place-items-center rounded-xl border">
-              <span className="bg-primary/10 text-primary grid size-16 place-items-center rounded-2xl">
+              <span className="bg-primary/10 text-primary grid size-16 place-items-center rounded-xl">
                 <Camera className="size-8" />
               </span>
               <p className="text-muted-foreground text-xs font-semibold">

@@ -146,7 +146,7 @@ function ToolsPage() {
           {/* 5-stage Practice Lab method */}
           <ol className="mt-10 grid gap-3 border-t border-[#242a31] pt-8 sm:grid-cols-5">
             {LAB_LOOP.map(([num, label, desc]) => (
-              <li key={label} className="rounded-2xl border border-[#242a31] bg-[#181c20] p-4">
+              <li key={label} className="rounded-xl border border-[#242a31] bg-[#181c20] p-4">
                 <span className="font-mono text-xs font-bold text-[#d6fe52]">{num}</span>
                 <p className="font-display mt-1.5 text-base font-semibold text-[#f4f1e9]">
                   {label}
@@ -182,12 +182,12 @@ function ToolsPage() {
                         <Link
                           to={tool.to}
                           className={cn(
-                            "group flex h-full flex-col rounded-2xl border border-[#2c333c] bg-[#101214] p-6 transition-all hover:border-[#d6fe52]/70",
+                            "group flex h-full flex-col rounded-xl border border-[#2c333c] bg-[#101214] p-6 transition-all hover:border-[#d6fe52]/70",
                             trackTheme.accentBar,
                           )}
                         >
                           <div className="flex items-start justify-between gap-4">
-                            <span className="grid size-12 place-items-center rounded-2xl bg-[#242a31] text-[#d6fe52]">
+                            <span className="grid size-12 place-items-center rounded-xl bg-[#242a31] text-[#d6fe52]">
                               <Icon className="size-6" aria-hidden="true" />
                             </span>
                             <div className="flex items-center gap-2">
@@ -227,10 +227,10 @@ function ToolsPage() {
           <div className="grid gap-5 lg:grid-cols-2">
             <Link
               to="/practice/computer-basics"
-              className="flex items-center justify-between gap-4 rounded-2xl border border-[#2c333c] bg-[#101214] p-6 transition-colors hover:border-[#f17c52]"
+              className="flex items-center justify-between gap-4 rounded-xl border border-[#2c333c] bg-[#101214] p-6 transition-colors hover:border-[#f17c52]"
             >
               <div className="flex items-start gap-4">
-                <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-[#242a31] text-[#f17c52]">
+                <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-[#242a31] text-[#f17c52]">
                   <Monitor className="size-6" aria-hidden="true" />
                 </span>
                 <span>
@@ -251,10 +251,10 @@ function ToolsPage() {
 
             <Link
               to="/ai-engineering"
-              className="flex items-center justify-between gap-4 rounded-2xl border border-[#7774ff]/45 bg-[#101214] p-6 transition-colors hover:border-[#7774ff]"
+              className="flex items-center justify-between gap-4 rounded-xl border border-[#7774ff]/45 bg-[#101214] p-6 transition-colors hover:border-[#7774ff]"
             >
               <div className="flex items-start gap-4">
-                <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-[#7774ff]/20 text-[#b7b5ff]">
+                <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-[#7774ff]/20 text-[#b7b5ff]">
                   <Sparkles className="size-6" aria-hidden="true" />
                 </span>
                 <span>

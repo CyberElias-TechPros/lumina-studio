@@ -103,7 +103,7 @@ export function BankTransferForm({
               type="button"
               onClick={() => void copyAccount()}
               aria-label="Copy account number"
-              className="text-primary hover:bg-primary/10 grid size-6 place-items-center rounded"
+              className="text-primary hover:bg-primary/10 grid size-6 place-items-center rounded-lg"
             >
               {copied ? (
                 <CheckCircle2 className="size-3.5" />

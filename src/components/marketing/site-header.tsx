@@ -168,7 +168,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-[70] w-full">
       <div className="container-page pt-3 pb-2 sm:pt-4">
-        <div className="cea-header-capsule relative flex h-14 items-center justify-between gap-3 rounded-2xl pr-2 pl-3 sm:h-16 sm:gap-6 sm:rounded-full sm:pr-3 sm:pl-4">
+        <div className="cea-header-capsule relative flex h-14 items-center justify-between gap-3 rounded-xl pr-2 pl-3 sm:h-16 sm:gap-6 sm:rounded-full sm:pr-3 sm:pl-4">
           <BrandMark />
           <nav className="hidden items-center gap-6 lg:flex xl:gap-7" aria-label="Primary">
             {nav.map((item) => {
@@ -291,7 +291,7 @@ export function SiteHeader() {
               to="/apply"
               onClick={() => setOpen(false)}
               style={{ animationDelay: "620ms" }}
-              className="cea-menu-link mt-5 inline-flex h-13 items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(180deg,#3f7dff,#1d5ae0)] text-base font-semibold text-white shadow-[0_14px_40px_-12px_rgb(47_107_255/0.85)]"
+              className="cea-menu-link mt-5 inline-flex h-13 items-center justify-center gap-2 rounded-xl bg-[linear-gradient(180deg,#3f7dff,#1d5ae0)] text-base font-semibold text-white shadow-[0_14px_40px_-12px_rgb(47_107_255/0.85)]"
             >
               Apply for admission <ArrowRight className="size-4" />
             </Link>

@@ -112,7 +112,7 @@ function ClientSupport() {
                 placeholder="Include relevant details"
                 maxLength={1000}
                 rows={4}
-                className="border-input bg-background placeholder:text-muted-foreground focus-visible:ring-ring w-full rounded-md border px-3 py-2 text-sm outline-none focus-visible:ring-1"
+                className="border-input bg-background placeholder:text-muted-foreground focus-visible:ring-ring w-full rounded-lg border px-3 py-2 text-sm outline-none focus-visible:ring-1"
               />
             </div>
             {create.error && (

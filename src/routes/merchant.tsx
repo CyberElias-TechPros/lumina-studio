@@ -75,7 +75,7 @@ function CopyButton({ value }: { value: string }) {
           );
         }
       }}
-      className="border-border text-muted-foreground hover:text-foreground hover:bg-muted grid size-8 place-items-center rounded-md border transition-colors"
+      className="border-border text-muted-foreground hover:text-foreground hover:bg-muted grid size-8 place-items-center rounded-lg border transition-colors"
       aria-label={`Copy ${value}`}
     >
       {copied ? <CheckCircle2 className="text-success size-4" /> : <Copy className="size-4" />}
@@ -96,13 +96,13 @@ function MerchantPage() {
             href="https://merchants.google.com/mc/overview?a=656455813"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium"
           >
             Open Merchant Center <ExternalLink className="size-4" />
           </a>
           <Link
             to="/shop"
-            className="border-border hover:bg-muted inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-medium"
+            className="border-border hover:bg-muted inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-medium"
           >
             <ShoppingBag className="size-4" /> See the shop
           </Link>

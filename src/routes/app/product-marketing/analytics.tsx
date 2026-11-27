@@ -159,7 +159,7 @@ function PerformanceAnalytics() {
                 <div key={i} className="flex h-full flex-col justify-end gap-1.5">
                   <div
                     className={cn(
-                      "rounded-t-md",
+                      "rounded-t-lg",
                       i === 5 ? "bg-gradient-brand shadow-glow" : "bg-primary/30",
                     )}
                     style={{ height: `${h}%` }}

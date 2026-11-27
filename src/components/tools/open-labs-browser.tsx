@@ -65,7 +65,7 @@ export function OpenLabsBrowser() {
   return (
     <div className="space-y-6">
       {/* Filter + search */}
-      <div className="border-foreground/10 bg-card flex flex-col gap-4 rounded-2xl border p-5">
+      <div className="border-foreground/10 bg-card flex flex-col gap-4 rounded-xl border p-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="relative min-w-[240px] flex-1">
             <Search
@@ -122,7 +122,7 @@ export function OpenLabsBrowser() {
 
       {/* Active opt-in sandboxed iframe drawer */}
       {activeEmbed && activeEmbed.embedUrl && (
-        <div className="border-primary/40 bg-card overflow-hidden rounded-2xl border shadow-lg">
+        <div className="border-primary/40 bg-card overflow-hidden rounded-xl border shadow-lg">
           <div className="border-foreground/10 bg-muted/50 flex flex-wrap items-center justify-between gap-3 border-b px-4 py-3">
             <div>
               <p className="text-primary font-mono text-[10px] tracking-[0.2em] uppercase">
@@ -168,7 +168,7 @@ export function OpenLabsBrowser() {
           return (
             <li
               key={item.id}
-              className="border-foreground/10 bg-card flex flex-col justify-between rounded-2xl border p-5"
+              className="border-foreground/10 bg-card flex flex-col justify-between rounded-xl border p-5"
             >
               <div>
                 <div className="flex flex-wrap items-center justify-between gap-2">

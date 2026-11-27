@@ -127,7 +127,7 @@ export function estimatePrice(p: PricingInputs): PriceEstimate {
   const base = BigInt(p.supplierCostKobo) + BigInt(p.extraCostKobo) + BigInt(p.fixedFeeKobo);
   const variable = BigInt(p.feeBps + p.riskBps);
   // Per-component ceiling can consume up to two extra kobo. Reserve those
-  // before solving so the final rounded price never slips below either floor.
+  // before solving so the final rounded-lg price never slips below either floor.
   const buffer = 2n;
   const byMargin = ceilDiv((base + buffer) * B, B - variable - BigInt(p.targetMarginBps));
   const byMinimum = ceilDiv((base + buffer + BigInt(p.minProfitKobo)) * B, B - variable);

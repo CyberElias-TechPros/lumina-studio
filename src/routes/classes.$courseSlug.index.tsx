@@ -252,7 +252,7 @@ function CoursePage() {
                 The deliverable
               </h3>
               <Reveal>
-                <div className="border-primary/25 bg-primary/[0.04] mt-5 rounded-[14px] border p-6">
+                <div className="border-primary/25 bg-primary/[0.04] mt-5 rounded-lg-[14px] border p-6">
                   <p className="font-label text-primary text-[10px] tracking-[0.16em] uppercase">
                     Certificate requirement
                   </p>
@@ -270,7 +270,10 @@ function CoursePage() {
               </h3>
               <div className="mt-6 grid gap-4 sm:grid-cols-3">
                 {achievementLevels.map((level) => (
-                  <div key={level.name} className="border-foreground/12 rounded-[12px] border p-5">
+                  <div
+                    key={level.name}
+                    className="border-foreground/12 rounded-lg-[12px] border p-5"
+                  >
                     <p className="font-label text-primary text-[10px] tracking-[0.14em] uppercase">
                       Level {level.level}
                     </p>
@@ -284,7 +287,7 @@ function CoursePage() {
             </div>
 
             <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
-              <div className="border-foreground/12 bg-card/60 rounded-[14px] border p-6 backdrop-blur-md">
+              <div className="border-foreground/12 bg-card/60 rounded-lg-[14px] border p-6 backdrop-blur-md">
                 <h3 className="font-label text-foreground/60 flex items-center gap-2 text-[10px] tracking-[0.16em] uppercase">
                   <Users className="size-3.5" /> Who this is for
                 </h3>
@@ -297,7 +300,7 @@ function CoursePage() {
                 </ul>
               </div>
 
-              <div className="border-foreground/12 bg-card/60 rounded-[14px] border p-6 backdrop-blur-md">
+              <div className="border-foreground/12 bg-card/60 rounded-lg-[14px] border p-6 backdrop-blur-md">
                 <h3 className="font-label text-foreground/60 flex items-center gap-2 text-[10px] tracking-[0.16em] uppercase">
                   <Laptop className="size-3.5" /> What you need
                 </h3>
@@ -310,7 +313,7 @@ function CoursePage() {
                 </ul>
               </div>
 
-              <div className="border-foreground/12 bg-card/60 rounded-[14px] border p-6 backdrop-blur-md">
+              <div className="border-foreground/12 bg-card/60 rounded-lg-[14px] border p-6 backdrop-blur-md">
                 <h3 className="font-label text-foreground/60 flex items-center gap-2 text-[10px] tracking-[0.16em] uppercase">
                   <FileText className="size-3.5" /> At a glance
                 </h3>
@@ -412,7 +415,7 @@ function CoursePage() {
                             <Link
                               to="/classes/$courseSlug/$sessionSlug"
                               params={{ courseSlug: course.slug, sessionSlug: session.slug }}
-                              className="group border-foreground/12 hover:border-primary/35 bg-card/70 flex h-full flex-col rounded-[12px] border p-5 backdrop-blur-md transition-all duration-400 hover:-translate-y-0.5"
+                              className="group border-foreground/12 hover:border-primary/35 bg-card/70 flex h-full flex-col rounded-lg-[12px] border p-5 backdrop-blur-md transition-all duration-400 hover:-translate-y-0.5"
                             >
                               <div className="flex items-start justify-between gap-4">
                                 <span className="font-label text-primary text-[10px] tracking-[0.14em] uppercase">
@@ -503,7 +506,7 @@ function CoursePage() {
                   key={other.slug}
                   to="/classes/$courseSlug"
                   params={{ courseSlug: other.slug }}
-                  className="group border-foreground/12 hover:border-primary/35 bg-card/70 flex flex-col overflow-hidden rounded-[12px] border transition-all duration-400 hover:-translate-y-1"
+                  className="group border-foreground/12 hover:border-primary/35 bg-card/70 flex flex-col overflow-hidden rounded-lg-[12px] border transition-all duration-400 hover:-translate-y-1"
                 >
                   <div className="bg-muted aspect-[16/9]">
                     <CourseCover slug={other.slug} />

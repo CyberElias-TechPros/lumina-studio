@@ -120,7 +120,7 @@ export function PortalPage({ config }: { config: PortalConfig }) {
       </section>
 
       {unauthenticated ? (
-        <div className="cea-panel flex flex-col items-start gap-3 rounded-2xl p-6">
+        <div className="cea-panel flex flex-col items-start gap-3 rounded-xl p-6">
           <p className="cea-kicker">Locked workspace</p>
           <p className="font-display text-2xl font-semibold tracking-tight">
             Sign in to open your portal
@@ -153,7 +153,7 @@ export function PortalPage({ config }: { config: PortalConfig }) {
               ))}
             </div>
           ) : summary.isError ? (
-            <div className="cea-panel flex items-center justify-between gap-3 rounded-2xl p-5">
+            <div className="cea-panel flex items-center justify-between gap-3 rounded-xl p-5">
               <p className="text-sm">We couldn't load live figures right now.</p>
               <Button variant="outline" size="sm" onClick={() => void summary.refetch()}>
                 <RefreshCw className="mr-1.5 size-3.5" /> Retry
@@ -176,7 +176,7 @@ export function PortalPage({ config }: { config: PortalConfig }) {
           )}
 
           <div className="mt-5 grid gap-5 lg:grid-cols-5">
-            <div className="cea-panel rounded-2xl p-5 lg:col-span-3">
+            <div className="cea-panel rounded-xl p-5 lg:col-span-3">
               <p className="cea-kicker mb-4 flex items-center justify-between border-b pb-3">
                 Modules
                 <span className="text-muted-foreground/70 font-mono text-[9px] tracking-[0.2em] normal-case">
@@ -202,7 +202,7 @@ export function PortalPage({ config }: { config: PortalConfig }) {
               </div>
             </div>
 
-            <div className="cea-panel rounded-2xl p-5 lg:col-span-2">
+            <div className="cea-panel rounded-xl p-5 lg:col-span-2">
               <p className="cea-kicker mb-4 flex items-center gap-2 border-b pb-3">
                 <Bell className="text-primary-glow size-3.5" aria-hidden="true" /> Recent activity
               </p>

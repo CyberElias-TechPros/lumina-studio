@@ -58,7 +58,7 @@ function AdPlacements() {
                 to serve, so the unit collapses rather than leaving an empty box. Consent must also
                 be granted, and the ngadverts script only loads after that. To see the reserved
                 space anyway, add{" "}
-                <code className="bg-background rounded px-1.5 py-0.5 font-mono text-xs">
+                <code className="bg-background rounded-lg px-1.5 py-0.5 font-mono text-xs">
                   ?adpreview=1
                 </code>{" "}
                 to any eligible page — it draws the box without requesting an ad or setting a

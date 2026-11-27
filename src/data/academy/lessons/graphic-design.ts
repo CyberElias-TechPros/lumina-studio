@@ -616,7 +616,7 @@ export const graphicDesignLessonsA: Record<string, SessionLecture> = {
       {
         heading: "Elements, text, uploads and backgrounds",
         body: [
-          "The **Elements** panel holds shapes, lines, frames, grids, stickers, illustrations, photos and videos. The two you will use most are **frames** and **grids**: drop a frame onto the canvas, then drag any photo into it and the photo is masked to the frame's shape — this is how you get a circular portrait or a rounded image without any editing skill. **Lines** with adjustable weight and style are how you create dividers and structure, and they are used far less than they should be.",
+          "The **Elements** panel holds shapes, lines, frames, grids, stickers, illustrations, photos and videos. The two you will use most are **frames** and **grids**: drop a frame onto the canvas, then drag any photo into it and the photo is masked to the frame's shape — this is how you get a circular portrait or a rounded-lg image without any editing skill. **Lines** with adjustable weight and style are how you create dividers and structure, and they are used far less than they should be.",
           "**Text** has three entry points — a heading, a subheading and body text preset — plus the ability to add a plain text box. The presets apply a size and font, which you should immediately replace with your own scale. Right-click any text and choose 'Copy style' then paste it onto other text to propagate formatting consistently, which is much faster than setting each box separately. **Uploads** is where your own images go; drag them straight onto the canvas or into a frame. Note that Canva has a built-in Background Remover, which is genuinely useful for product shots but is a paid feature on the free tier.",
           "**Backgrounds** can be a solid colour, a gradient, a photo or a pattern. The professional default is a solid colour or a very subtle gradient, because a busy background competes with everything above it. If you must use a photo background, place a semi-transparent rectangle over it and reduce its opacity so text becomes readable — this single technique fixes most unreadable photo-background designs.",
         ],
@@ -685,7 +685,7 @@ export const graphicDesignLessonsA: Record<string, SessionLecture> = {
         {
           step: "Add structure with lines and shapes",
           detail:
-            "Add a weighted divider line and a rounded rectangle behind the call to action. Show how two simple elements create deliberate structure.",
+            "Add a weighted divider line and a rounded-lg rectangle behind the call to action. Show how two simple elements create deliberate structure.",
         },
         {
           step: "Align precisely",
@@ -778,7 +778,7 @@ export const graphicDesignLessonsA: Record<string, SessionLecture> = {
       {
         term: "Frame",
         meaning:
-          "A shape that masks any image dragged into it — the fastest way to get clean circular or rounded images.",
+          "A shape that masks any image dragged into it — the fastest way to get clean circular or rounded-lg images.",
       },
       {
         term: "Smart guides",

@@ -106,7 +106,7 @@ function CourseCard({ course, index }: { course: ResolvedCourse; index: number }
         to="/classes/$courseSlug"
         params={{ courseSlug: course.slug }}
         className={cn(
-          "cea-course-card group border-foreground/12 bg-card flex h-full flex-col overflow-hidden rounded-2xl border shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md",
+          "cea-course-card group border-foreground/12 bg-card flex h-full flex-col overflow-hidden rounded-xl border shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md",
           family.accentBar,
         )}
       >
@@ -265,7 +265,7 @@ function HowWeTeach() {
               </ol>
             </Reveal>
             <Reveal delay={0.2}>
-              <figure className="border-foreground/12 mt-8 overflow-hidden rounded-[14px] border">
+              <figure className="border-foreground/12 mt-8 overflow-hidden rounded-lg-[14px] border">
                 <CampusImg id="lab-3" className="aspect-[16/10]" />
               </figure>
               <ul className="text-foreground/75 mt-8 space-y-3 text-sm">
@@ -288,7 +288,7 @@ function HowWeTeach() {
           <div className="space-y-4">
             {achievementLevels.map((level, i) => (
               <Reveal key={level.name} delay={i * 0.08}>
-                <div className="border-foreground/12 bg-card/60 rounded-[14px] border p-6 backdrop-blur-md">
+                <div className="border-foreground/12 bg-card/60 rounded-lg-[14px] border p-6 backdrop-blur-md">
                   <div className="flex items-center gap-4">
                     <span className="text-muted-foreground font-display text-4xl leading-none font-light tabular-nums">
                       {level.level}
@@ -511,10 +511,7 @@ function Classes() {
               </Link>
             </div>
           </div>
-          <div
-            data-hero-art
-            className="rounded-3xl border border-[#2c333c] bg-[#181c20] p-7 sm:p-9"
-          >
+          <div data-hero-art className="rounded-xl border border-[#2c333c] bg-[#181c20] p-7 sm:p-9">
             <div className="flex items-center justify-between gap-4">
               <span className="font-mono text-xs font-semibold tracking-[0.14em] text-[#d6fe52] uppercase">
                 Made for real work
@@ -561,7 +558,7 @@ function Classes() {
                 Switch back to Discover cards
               </button>
             </div>
-            <div className="border-border bg-card mt-7 overflow-x-auto rounded-2xl border">
+            <div className="border-border bg-card mt-7 overflow-x-auto rounded-xl border">
               <table className="w-full min-w-[44rem] border-collapse text-left text-sm">
                 <thead className="border-border bg-muted/50 border-b">
                   <tr>
@@ -701,7 +698,7 @@ function Classes() {
         <div className="container-page py-10">
           <Link
             to="/open-curriculum"
-            className="group border-foreground/12 bg-muted/35 hover:border-primary/50 flex flex-col gap-3 rounded-2xl border p-6 transition-colors sm:flex-row sm:items-center sm:justify-between sm:p-7"
+            className="group border-foreground/12 bg-muted/35 hover:border-primary/50 flex flex-col gap-3 rounded-xl border p-6 transition-colors sm:flex-row sm:items-center sm:justify-between sm:p-7"
           >
             <span>
               <span className="text-primary text-[10px] font-semibold tracking-[0.18em] uppercase">

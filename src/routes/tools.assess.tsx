@@ -50,7 +50,7 @@ function AssessPage() {
         <AssessStudio />
 
         <div className="mx-auto mt-14 grid max-w-5xl gap-8 md:grid-cols-2">
-          <div className="border-foreground/10 bg-card rounded-2xl border p-6">
+          <div className="border-foreground/10 bg-card rounded-xl border p-6">
             <Eyebrow>
               <CheckCircle2 className="size-3.5" aria-hidden="true" /> Choosing your starting level
             </Eyebrow>
@@ -90,7 +90,7 @@ function AssessPage() {
             </div>
           </div>
 
-          <div className="border-foreground/10 bg-card rounded-2xl border p-6">
+          <div className="border-foreground/10 bg-card rounded-xl border p-6">
             <Eyebrow>
               <Clock className="size-3.5" aria-hidden="true" /> Study Mode vs Exam Mode
             </Eyebrow>

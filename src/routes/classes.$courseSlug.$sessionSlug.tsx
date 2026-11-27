@@ -404,7 +404,7 @@ function SessionPage() {
         {lecture.learningPath && (
           <section id="path" className="mt-14 scroll-mt-28">
             <SectionLabel icon={GraduationCap}>Where this fits</SectionLabel>
-            <div className="border-foreground/12 mt-6 rounded-[14px] border p-6">
+            <div className="border-foreground/12 mt-6 rounded-lg-[14px] border p-6">
               <p className="text-foreground/85 text-[16px] leading-relaxed">
                 <RichText text={lecture.learningPath.fits} />
               </p>
@@ -498,7 +498,7 @@ function SessionPage() {
                   {block.body.map((paragraph, i) => (
                     <p
                       key={`${block.heading}-${i}`}
-                      className="text-foreground/80 text-[16.5px] leading-[1.75] text-pretty [&_strong]:text-foreground [&_strong]:font-semibold [&_a]:text-primary [&_a]:font-semibold [&_a]:underline [&_a]:underline-offset-2 [&_code]:bg-muted [&_code]:rounded [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[0.88em]"
+                      className="text-foreground/80 text-[16.5px] leading-[1.75] text-pretty [&_strong]:text-foreground [&_strong]:font-semibold [&_a]:text-primary [&_a]:font-semibold [&_a]:underline [&_a]:underline-offset-2 [&_code]:bg-muted [&_code]:rounded-lg [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[0.88em]"
                       dangerouslySetInnerHTML={{ __html: renderInline(paragraph) }}
                     />
                   ))}
@@ -507,7 +507,7 @@ function SessionPage() {
                   <LectureCodeBlock key={`${block.heading}-code-${i}`} sample={sample} />
                 ))}
                 {block.remember && (
-                  <p className="border-primary/30 bg-primary/[0.04] text-foreground/85 mt-4 rounded-r-[10px] border-l-2 px-4 py-3 text-[15.5px] leading-relaxed">
+                  <p className="border-primary/30 bg-primary/[0.04] text-foreground/85 mt-4 rounded-r-lg-[10px] border-l-2 px-4 py-3 text-[15.5px] leading-relaxed">
                     <RichText text={block.remember} />
                   </p>
                 )}
@@ -529,7 +529,7 @@ function SessionPage() {
             {lecture.demonstration.steps.map((step, i) => (
               <li
                 key={step.step}
-                className="border-foreground/12 bg-card/60 rounded-[12px] border p-5"
+                className="border-foreground/12 bg-card/60 rounded-lg-[12px] border p-5"
               >
                 <div className="flex items-baseline gap-3">
                   <span className="font-display text-primary text-sm font-bold tabular-nums">
@@ -537,7 +537,7 @@ function SessionPage() {
                   </span>
                   <h3 className="font-display text-[17px] leading-snug font-bold">{step.step}</h3>
                 </div>
-                <p className="text-foreground/75 mt-2.5 text-[15px] leading-relaxed [&_strong]:text-foreground [&_strong]:font-semibold [&_code]:bg-muted [&_code]:rounded [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[0.88em]">
+                <p className="text-foreground/75 mt-2.5 text-[15px] leading-relaxed [&_strong]:text-foreground [&_strong]:font-semibold [&_code]:bg-muted [&_code]:rounded-lg [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[0.88em]">
                   <RichText text={step.detail} />
                 </p>
               </li>
@@ -548,7 +548,7 @@ function SessionPage() {
         {/* Practice */}
         <section id="practice" className="mt-14 scroll-mt-28">
           <SectionLabel icon={NotebookPen}>Guided practice</SectionLabel>
-          <div className="border-primary/25 bg-primary/[0.04] mt-6 rounded-[14px] border p-6">
+          <div className="border-primary/25 bg-primary/[0.04] mt-6 rounded-lg-[14px] border p-6">
             <h3 className="font-display text-xl font-bold tracking-tight">
               {lecture.practice.title}
             </h3>
@@ -590,7 +590,7 @@ function SessionPage() {
               {lecture.exercises.map((exercise) => (
                 <article
                   key={exercise.title}
-                  className="border-foreground/12 rounded-[12px] border p-5"
+                  className="border-foreground/12 rounded-lg-[12px] border p-5"
                 >
                   <p className="font-label text-primary text-[10px] tracking-[0.16em] uppercase">
                     {exercise.kind}
@@ -628,7 +628,10 @@ function SessionPage() {
           <SectionLabel icon={AlertTriangle}>Common mistakes and how to fix them</SectionLabel>
           <div className="mt-7 space-y-4">
             {lecture.pitfalls.map((pitfall) => (
-              <div key={pitfall.problem} className="border-foreground/12 rounded-[12px] border p-5">
+              <div
+                key={pitfall.problem}
+                className="border-foreground/12 rounded-lg-[12px] border p-5"
+              >
                 <p className="text-foreground font-semibold text-[15.5px]">{pitfall.problem}</p>
                 <p className="text-foreground/75 mt-2 text-[15px] leading-relaxed">
                   <span className="text-primary font-semibold">Fix: </span>
@@ -651,7 +654,7 @@ function SessionPage() {
               {lecture.troubleshooting.map((item) => (
                 <article
                   key={item.symptom}
-                  className="border-foreground/12 rounded-[12px] border p-5"
+                  className="border-foreground/12 rounded-lg-[12px] border p-5"
                 >
                   <h3 className="font-display text-[17px] leading-snug font-bold">
                     {item.symptom}
@@ -719,7 +722,7 @@ function SessionPage() {
           <SectionLabel icon={ListChecks}>Key terms</SectionLabel>
           <dl className="mt-7 grid gap-4 sm:grid-cols-2">
             {lecture.vocabulary.map((entry) => (
-              <div key={entry.term} className="border-foreground/12 rounded-[12px] border p-4">
+              <div key={entry.term} className="border-foreground/12 rounded-lg-[12px] border p-4">
                 <dt className="font-display text-[15px] font-bold">{entry.term}</dt>
                 <dd className="text-foreground/75 mt-1.5 text-[13.5px] leading-relaxed">
                   {entry.meaning}
@@ -734,7 +737,7 @@ function SessionPage() {
           <SectionLabel icon={ClipboardList}>Homework before the next session</SectionLabel>
           <div className="mt-7 space-y-4">
             {lecture.homework.map((item) => (
-              <div key={item.task} className="border-foreground/12 rounded-[12px] border p-5">
+              <div key={item.task} className="border-foreground/12 rounded-lg-[12px] border p-5">
                 <p className="font-display text-[16px] font-bold">{item.task}</p>
                 <p className="text-foreground/75 mt-2 text-[15px] leading-relaxed">{item.detail}</p>
               </div>
@@ -858,7 +861,7 @@ function SessionPage() {
             <Link
               to="/classes/$courseSlug/$sessionSlug"
               params={{ courseSlug: course.slug, sessionSlug: prev.slug }}
-              className="group border-foreground/12 hover:border-primary/35 rounded-[12px] border p-5 transition-colors"
+              className="group border-foreground/12 hover:border-primary/35 rounded-lg-[12px] border p-5 transition-colors"
             >
               <span className="text-muted-foreground flex items-center gap-1.5 text-xs font-semibold">
                 <ArrowLeft className="size-3.5" /> Previous session
@@ -874,7 +877,7 @@ function SessionPage() {
             <Link
               to="/classes/$courseSlug/$sessionSlug"
               params={{ courseSlug: course.slug, sessionSlug: next.slug }}
-              className="group border-foreground/12 hover:border-primary/35 rounded-[12px] border p-5 text-right transition-colors"
+              className="group border-foreground/12 hover:border-primary/35 rounded-lg-[12px] border p-5 text-right transition-colors"
             >
               <span className="text-muted-foreground flex items-center justify-end gap-1.5 text-xs font-semibold">
                 Next session <ArrowRight className="size-3.5" />
@@ -887,7 +890,7 @@ function SessionPage() {
             <Link
               to="/classes/$courseSlug"
               params={{ courseSlug: course.slug }}
-              className="group border-foreground/12 hover:border-primary/35 rounded-[12px] border p-5 text-right transition-colors"
+              className="group border-foreground/12 hover:border-primary/35 rounded-lg-[12px] border p-5 text-right transition-colors"
             >
               <span className="text-muted-foreground flex items-center justify-end gap-1.5 text-xs font-semibold">
                 Course complete <ArrowRight className="size-3.5" />
@@ -900,7 +903,7 @@ function SessionPage() {
         </nav>
 
         {/* Course CTA */}
-        <div className="border-foreground/12 bg-card/60 mt-10 rounded-[14px] border p-6 backdrop-blur-md">
+        <div className="border-foreground/12 bg-card/60 mt-10 rounded-lg-[14px] border p-6 backdrop-blur-md">
           <p className="font-label text-primary text-[10px] tracking-[0.16em] uppercase">
             This session is part of
           </p>
@@ -967,7 +970,7 @@ function LectureCodeBlock({
   sample: { filename?: string; language: string; source: string; caption?: string };
 }) {
   return (
-    <figure className="border-foreground/12 mt-5 overflow-hidden rounded-[12px] border">
+    <figure className="border-foreground/12 mt-5 overflow-hidden rounded-lg-[12px] border">
       <figcaption className="border-foreground/10 bg-muted/40 flex flex-wrap items-baseline justify-between gap-2 border-b px-4 py-2">
         <span className="text-foreground font-mono text-[13px] font-semibold">
           {sample.filename ?? sample.language}
@@ -1003,7 +1006,7 @@ function LectureFigures({
       {matched.map((figure) => (
         <figure
           key={figure.id}
-          className="border-foreground/12 overflow-hidden rounded-[12px] border"
+          className="border-foreground/12 overflow-hidden rounded-lg-[12px] border"
         >
           <img src={figure.src} alt={figure.alt} className="h-auto w-full" loading="lazy" />
           <figcaption className="text-muted-foreground px-4 py-3 text-sm leading-relaxed">

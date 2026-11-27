@@ -168,7 +168,7 @@ function OpenCurriculumPage() {
           {curriculumLevels.map((level) => (
             <div
               key={level.id}
-              className="border-foreground/10 bg-card flex flex-col rounded-2xl border p-6"
+              className="border-foreground/10 bg-card flex flex-col rounded-xl border p-6"
             >
               <p className="font-mono text-[10px] tracking-[0.24em] text-primary uppercase">
                 {level.short}
@@ -209,7 +209,7 @@ function OpenCurriculumPage() {
               return (
                 <li
                   key={department.slug}
-                  className="border-foreground/10 bg-card flex flex-col rounded-2xl border p-5"
+                  className="border-foreground/10 bg-card flex flex-col rounded-xl border p-5"
                 >
                   <div className="flex items-baseline justify-between gap-3">
                     <span className="font-mono text-[10px] tracking-[0.24em] text-muted-foreground/70">
@@ -284,7 +284,7 @@ function OpenCurriculumPage() {
               return (
                 <li
                   key={item.courseSlug}
-                  className="border-white/10 bg-white/[0.04] flex items-start gap-4 rounded-2xl border p-4 backdrop-blur-sm"
+                  className="border-white/10 bg-white/[0.04] flex items-start gap-4 rounded-xl border p-4 backdrop-blur-sm"
                 >
                   <span className="font-display w-9 shrink-0 text-2xl font-semibold text-[#5b9dff] tabular-nums">
                     {String(item.priority).padStart(2, "0")}
@@ -352,7 +352,7 @@ function OpenCurriculumPage() {
             Licence-honest, by construction.
           </h2>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
-            <div className="border-foreground/10 bg-card rounded-2xl border p-6">
+            <div className="border-foreground/10 bg-card rounded-xl border p-6">
               <p className="font-mono text-[10px] tracking-[0.24em] text-emerald-600 uppercase dark:text-emerald-400">
                 Green — adapt in-app
               </p>
@@ -369,7 +369,7 @@ function OpenCurriculumPage() {
                 . Share-alike (CC-BY-SA) is treated as link-only in practice.
               </p>
             </div>
-            <div className="border-foreground/10 bg-card rounded-2xl border p-6">
+            <div className="border-foreground/10 bg-card rounded-xl border p-6">
               <p className="font-mono text-[10px] tracking-[0.24em] text-amber-700 uppercase dark:text-amber-400">
                 Amber — teach around it
               </p>
@@ -382,7 +382,7 @@ function OpenCurriculumPage() {
                 feedback, demo day — and says so plainly on every listing.
               </p>
             </div>
-            <div className="border-foreground/10 bg-card rounded-2xl border p-6">
+            <div className="border-foreground/10 bg-card rounded-xl border p-6">
               <p className="font-mono text-[10px] tracking-[0.24em] text-rose-600 uppercase dark:text-rose-400">
                 Red — hands off
               </p>
@@ -396,7 +396,7 @@ function OpenCurriculumPage() {
               </p>
             </div>
           </div>
-          <div className="border-foreground/10 bg-muted/35 mt-6 rounded-2xl border p-6 sm:p-8">
+          <div className="border-foreground/10 bg-muted/35 mt-6 rounded-xl border p-6 sm:p-8">
             <div className="flex flex-wrap items-center gap-3">
               <Github className="text-primary size-5" aria-hidden="true" />
               <h3 className="font-display text-lg font-semibold">Verified, and dated</h3>

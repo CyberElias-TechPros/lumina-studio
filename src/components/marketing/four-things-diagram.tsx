@@ -57,7 +57,7 @@ export function FourThingsDiagram({
   return (
     <figure
       className={cn(
-        "cea-blueprint-grid border-border bg-card overflow-hidden rounded-2xl border p-5 sm:p-7",
+        "cea-blueprint-grid border-border bg-card overflow-hidden rounded-xl border p-5 sm:p-7",
         className,
       )}
     >

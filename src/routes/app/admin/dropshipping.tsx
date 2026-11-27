@@ -179,7 +179,7 @@ function DropshippingReview() {
                   aria-label="Filter gadget orders by status"
                   value={orderStatusFilter}
                   onChange={(e) => setOrderStatusFilter(e.target.value)}
-                  className="bg-background border-input h-9 rounded-md border px-3 text-xs font-semibold"
+                  className="bg-background border-input h-9 rounded-lg border px-3 text-xs font-semibold"
                 >
                   <option value="">All statuses</option>
                   <option value="pending_confirmation">Pending confirmation</option>
@@ -287,7 +287,7 @@ function DropshippingReview() {
               maxLength={1000000}
               value={text}
               onChange={(e) => setText(e.target.value)}
-              className="border-input bg-background min-h-36 w-full rounded-md border p-3 text-sm"
+              className="border-input bg-background min-h-36 w-full rounded-lg border p-3 text-sm"
               placeholder="Paste a markdown-rendered listing snapshot here"
             />
             <div className="flex flex-wrap gap-2">
@@ -448,7 +448,7 @@ function DropshippingReview() {
                   return (
                     <div
                       key={`${item.imageUrl}-${index}`}
-                      className="space-y-2 rounded-md border p-4 text-sm"
+                      className="space-y-2 rounded-lg border p-4 text-sm"
                     >
                       <h3 className="font-semibold">{item.title}</h3>
                       <p>
@@ -506,7 +506,7 @@ function DropshippingReview() {
                             </p>
                           )}
                           {offer && (
-                            <div className="space-y-2 rounded-md bg-muted/40 p-3">
+                            <div className="space-y-2 rounded-lg bg-muted/40 p-3">
                               <p>
                                 Normal offer floor: <strong>{money(offer.normalFloorKobo)}</strong>{" "}
                                 ({normalMargin}% estimated net margin or minimum profit, whichever

@@ -206,7 +206,7 @@ function Contact() {
                 />
               </div>
               {error && (
-                <p className="text-error bg-error/10 rounded-md px-3 py-2 text-sm">{error}</p>
+                <p className="text-error bg-error/10 rounded-lg px-3 py-2 text-sm">{error}</p>
               )}
               <turnstile.Widget />
               <Button type="submit" className="w-full" disabled={sending || !turnstile.ready}>

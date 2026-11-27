@@ -142,7 +142,7 @@ export function CloudExplainer() {
   return (
     <div className="space-y-5">
       {/* ── The plain answer ──────────────────────────────────────────── */}
-      <section className="border-foreground/10 bg-card overflow-hidden rounded-2xl border">
+      <section className="border-foreground/10 bg-card overflow-hidden rounded-xl border">
         <div className="border-foreground/10 border-b px-5 py-3.5">
           <p className="text-muted-foreground font-mono text-[9px] tracking-[0.24em] uppercase">
             What the cloud is, in one paragraph
@@ -192,7 +192,7 @@ export function CloudExplainer() {
       </section>
 
       {/* ── Where your own files actually are ─────────────────────────── */}
-      <section className="border-foreground/10 bg-card overflow-hidden rounded-2xl border">
+      <section className="border-foreground/10 bg-card overflow-hidden rounded-xl border">
         <div className="border-foreground/10 border-b px-5 py-3.5">
           <p className="text-muted-foreground font-mono text-[9px] tracking-[0.24em] uppercase">
             Where the things on your phone actually live
@@ -242,7 +242,7 @@ export function CloudExplainer() {
       </section>
 
       {/* ── What happens when… ────────────────────────────────────────── */}
-      <section className="border-foreground/10 bg-card overflow-hidden rounded-2xl border">
+      <section className="border-foreground/10 bg-card overflow-hidden rounded-xl border">
         <div className="border-foreground/10 border-b px-5 py-3.5">
           <p className="text-muted-foreground font-mono text-[9px] tracking-[0.24em] uppercase">
             What happens when…
@@ -271,7 +271,7 @@ export function CloudExplainer() {
       </section>
 
       {/* ── Bundle maths ─────────────────────────────────────────────── */}
-      <section className="border-foreground/10 bg-card overflow-hidden rounded-2xl border">
+      <section className="border-foreground/10 bg-card overflow-hidden rounded-xl border">
         <div className="border-foreground/10 flex flex-wrap items-center justify-between gap-2 border-b px-5 py-3.5">
           <p className="text-muted-foreground font-mono text-[9px] tracking-[0.24em] uppercase">
             What your data bundle buys
@@ -283,7 +283,7 @@ export function CloudExplainer() {
                 type="button"
                 onClick={() => setBundle(value)}
                 className={cn(
-                  "cursor-pointer rounded-md px-2 py-1 font-mono text-[10px] transition-colors",
+                  "cursor-pointer rounded-lg px-2 py-1 font-mono text-[10px] transition-colors",
                   bundle === value
                     ? "bg-primary/12 text-primary"
                     : "text-muted-foreground hover:text-foreground",

@@ -116,7 +116,7 @@ export function CookieConsent() {
       aria-describedby="consent-body"
     >
       <div className="container-page">
-        <div className="bg-card shadow-elevated border-foreground/12 rounded-2xl border">
+        <div className="bg-card shadow-elevated border-foreground/12 rounded-xl border">
           <div className="p-5 sm:p-6">
             <div className="flex items-start gap-3">
               <span className="bg-primary/10 text-primary mt-0.5 hidden size-9 shrink-0 place-items-center rounded-lg sm:grid">

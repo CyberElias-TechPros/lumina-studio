@@ -89,7 +89,7 @@ export function CurriculumDirectory({ courses, departments }: Props) {
   return (
     <div>
       {/* ── Controls ─────────────────────────────────────────────────── */}
-      <div className="border-foreground/10 bg-card rounded-2xl border p-4 sm:p-5">
+      <div className="border-foreground/10 bg-card rounded-xl border p-4 sm:p-5">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
           <label className="relative flex-1">
             <Search
@@ -186,7 +186,7 @@ export function CurriculumDirectory({ courses, departments }: Props) {
         {shown.map((course) => (
           <li
             key={course.slug}
-            className="border-foreground/10 bg-card flex h-full flex-col rounded-2xl border p-5"
+            className="border-foreground/10 bg-card flex h-full flex-col rounded-xl border p-5"
           >
             <div className="flex flex-wrap items-center gap-2">
               <span className="text-muted-foreground font-mono text-[9px] tracking-[0.2em] uppercase">
@@ -295,7 +295,7 @@ export function CurriculumDirectory({ courses, departments }: Props) {
       </ul>
 
       {filtered.length === 0 && (
-        <p className="border-foreground/10 bg-muted/30 mt-6 rounded-2xl border p-8 text-center text-sm">
+        <p className="border-foreground/10 bg-muted/30 mt-6 rounded-xl border p-8 text-center text-sm">
           Nothing matches that search. Try a broader skill — e.g. “python”, “network”, “security”,
           “design”.
         </p>

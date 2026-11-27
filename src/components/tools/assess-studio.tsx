@@ -434,7 +434,7 @@ export function AssessStudio() {
       </div>
 
       {/* Assessment Card */}
-      <div className="border-foreground/12 bg-card mx-auto max-w-3xl rounded-2xl border p-6 sm:p-8">
+      <div className="border-foreground/12 bg-card mx-auto max-w-3xl rounded-xl border p-6 sm:p-8">
         {!finished ? (
           <div className="space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-foreground/10 pb-4">

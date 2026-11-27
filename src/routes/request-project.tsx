@@ -84,7 +84,7 @@ function RequestProjectPage() {
         description="Share the essentials. We will review the goal, budget range and timeline, then follow up using the contact details you provide. You do not need a finished specification."
       />
       <section className="container-page grid gap-8 py-10 md:grid-cols-[minmax(0,1fr)_19rem] md:py-14">
-        <div className="border-border bg-card rounded-2xl border p-5 shadow-sm sm:p-8">
+        <div className="border-border bg-card rounded-xl border p-5 shadow-sm sm:p-8">
           {reference ? (
             <div className="flex min-h-[420px] flex-col items-center justify-center text-center">
               <span className="bg-success/10 text-success grid size-14 place-items-center rounded-full">
@@ -282,7 +282,7 @@ function RequestProjectPage() {
               </div>
               <turnstile.Widget />
               {error && (
-                <p role="alert" className="text-error bg-error/10 rounded-md px-3 py-2 text-sm">
+                <p role="alert" className="text-error bg-error/10 rounded-lg px-3 py-2 text-sm">
                   {error}
                 </p>
               )}
@@ -302,7 +302,7 @@ function RequestProjectPage() {
           )}
         </div>
         <aside className="space-y-4">
-          <div className="bg-muted/40 rounded-2xl border p-5">
+          <div className="bg-muted/40 rounded-xl border p-5">
             <h2 className="font-display font-semibold">What happens next?</h2>
             <ol className="text-muted-foreground mt-3 space-y-3 text-sm leading-relaxed">
               <li>
@@ -319,7 +319,7 @@ function RequestProjectPage() {
               </li>
             </ol>
           </div>
-          <div className="rounded-2xl border p-5">
+          <div className="rounded-xl border p-5">
             <p className="text-muted-foreground text-sm leading-relaxed">
               Not sure whether your idea is a website, an app or something else? Choose “Other” or
               “Technical discovery” and describe the outcome you want.

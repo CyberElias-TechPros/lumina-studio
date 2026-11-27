@@ -214,7 +214,7 @@ export function ChatWidget() {
           aria-modal="false"
           aria-label="CEA assistant"
           className={cn(
-            "bg-card fixed right-4 bottom-20 z-[80] flex w-[min(92vw,26rem)] flex-col overflow-hidden rounded-2xl border shadow-2xl",
+            "bg-card fixed right-4 bottom-20 z-[80] flex w-[min(92vw,26rem)] flex-col overflow-hidden rounded-xl border shadow-2xl",
             "max-h-[calc(100dvh-7rem)] sm:max-h-[min(65vh,34rem)] sm:right-6 sm:bottom-36",
           )}
         >
@@ -343,10 +343,10 @@ function Bubble({ role, children }: { role: "user" | "assistant"; children: Reac
     <div className={cn("flex", isUser && "justify-end")}>
       <p
         className={cn(
-          "max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed whitespace-pre-wrap",
+          "max-w-[85%] rounded-xl px-3.5 py-2.5 text-sm leading-relaxed whitespace-pre-wrap",
           isUser
-            ? "bg-primary text-primary-foreground rounded-br-sm"
-            : "bg-muted text-foreground rounded-bl-sm",
+            ? "bg-primary text-primary-foreground rounded-br-md"
+            : "bg-muted text-foreground rounded-bl-md",
         )}
       >
         {children}

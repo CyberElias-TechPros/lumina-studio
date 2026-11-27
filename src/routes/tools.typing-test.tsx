@@ -68,7 +68,7 @@ function TypingTestPage() {
                 "Professional speed. You out-type most of the workforce. Keep the accuracy above 95%.",
               ],
             ].map(([range, advice]) => (
-              <div key={range} className="border-foreground/10 bg-card rounded-2xl border p-5">
+              <div key={range} className="border-foreground/10 bg-card rounded-xl border p-5">
                 <p className="font-display text-lg font-semibold tracking-tight tabular-nums">
                   {range}
                 </p>
@@ -87,7 +87,7 @@ function TypingTestPage() {
             course — two sessions a week, teacher in the room, at 24 Ebony Road.
           </p>
 
-          <div className="border-foreground/10 bg-card mt-8 grid gap-6 rounded-2xl border p-6 sm:grid-cols-2">
+          <div className="border-foreground/10 bg-card mt-8 grid gap-6 rounded-xl border p-6 sm:grid-cols-2">
             <div>
               <h2 className="font-display text-lg font-semibold">
                 Why accuracy beats raw speed in Nigerian offices

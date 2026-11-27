@@ -192,7 +192,7 @@ function SecurityPage() {
                             setCopied(rc);
                             setTimeout(() => setCopied(null), 1500);
                           }}
-                          className="rounded-md bg-muted px-2 py-1 font-mono text-[11px]"
+                          className="rounded-lg bg-muted px-2 py-1 font-mono text-[11px]"
                           title="Click to copy"
                         >
                           {copied === rc ? "Copied ✓" : rc}

@@ -281,7 +281,7 @@ export function SqlDataLab() {
       {tab === "sql" ? (
         <div className="grid gap-6 lg:grid-cols-[260px_minmax(0,1fr)]">
           {/* Schema Sidebar */}
-          <aside className="border-foreground/10 bg-card space-y-4 rounded-2xl border p-4">
+          <aside className="border-foreground/10 bg-card space-y-4 rounded-xl border p-4">
             <div>
               <p className="font-mono text-[10px] tracking-[0.2em] text-primary uppercase">
                 Sample Database
@@ -350,7 +350,7 @@ export function SqlDataLab() {
               ))}
             </div>
 
-            <div className="border-foreground/10 bg-card rounded-2xl border p-5">
+            <div className="border-foreground/10 bg-card rounded-xl border p-5">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
                   <p className="text-primary font-mono text-[10px] tracking-[0.2em] uppercase">
@@ -394,13 +394,13 @@ export function SqlDataLab() {
                   onChange={(e) => setSql(e.target.value)}
                   rows={5}
                   spellCheck={false}
-                  className="w-full resize-y bg-transparent p-4 font-mono text-[13px] leading-6 text-sky-100 focus:outline-none"
+                  className="w-full resize-y bg-transparent p-4 font-mono text-[13px] leading-6 text-sky-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/50 focus-visible:ring-inset"
                 />
               </div>
             </div>
 
             {/* Output */}
-            <div className="border-foreground/10 bg-card rounded-2xl border p-5">
+            <div className="border-foreground/10 bg-card rounded-xl border p-5">
               {!result.ok ? (
                 <div className="rounded-xl border border-rose-500/30 bg-rose-500/10 p-4 text-sm">
                   <p className="font-semibold text-rose-700 dark:text-rose-300">
@@ -496,7 +496,7 @@ export function SqlDataLab() {
         </div>
       ) : (
         <div className="grid gap-6 lg:grid-cols-2">
-          <div className="border-foreground/10 bg-card space-y-4 rounded-2xl border p-5">
+          <div className="border-foreground/10 bg-card space-y-4 rounded-xl border p-5">
             <div>
               <p className="text-primary font-mono text-[10px] tracking-[0.2em] uppercase">
                 CSV Data Cleaning Lab
@@ -534,7 +534,7 @@ export function SqlDataLab() {
             </div>
           </div>
 
-          <div className="border-foreground/10 bg-card space-y-4 rounded-2xl border p-5">
+          <div className="border-foreground/10 bg-card space-y-4 rounded-xl border p-5">
             <p className="text-primary font-mono text-[10px] tracking-[0.2em] uppercase">
               Quality Report
             </p>

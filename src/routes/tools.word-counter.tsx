@@ -69,7 +69,7 @@ function WordCounterPage() {
               field our teachers ask for, without opening Word.
             </li>
           </ul>
-          <div className="border-foreground/10 bg-card mt-8 grid gap-6 rounded-2xl border p-6 sm:grid-cols-2">
+          <div className="border-foreground/10 bg-card mt-8 grid gap-6 rounded-xl border p-6 sm:grid-cols-2">
             <div>
               <h2 className="font-display text-lg font-semibold">
                 How to trim a bloated proposal or cover letter

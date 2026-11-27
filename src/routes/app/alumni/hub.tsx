@@ -137,7 +137,7 @@ function AlumniHub() {
           <Link
             key={t.to}
             to={t.to}
-            className="group bg-card shadow-soft hover:shadow-elevated flex h-full flex-col rounded-2xl border p-5 transition-all hover:-translate-y-0.5"
+            className="group bg-card shadow-soft hover:shadow-elevated flex h-full flex-col rounded-xl border p-5 transition-all hover:-translate-y-0.5"
           >
             <div className="flex items-start justify-between">
               <span className={cn("grid size-10 place-items-center rounded-xl", t.tone)}>

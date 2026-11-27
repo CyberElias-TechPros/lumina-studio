@@ -213,7 +213,7 @@ function LearningHub() {
                   key={c.slug}
                   to="/app/learn/$courseId"
                   params={{ courseId: c.slug }}
-                  className="group bg-card shadow-soft hover:shadow-elevated flex h-full flex-col overflow-hidden rounded-2xl border transition-all hover:-translate-y-0.5"
+                  className="group bg-card shadow-soft hover:shadow-elevated flex h-full flex-col overflow-hidden rounded-xl border transition-all hover:-translate-y-0.5"
                 >
                   <div className={cn("relative h-24", c.tone)}>
                     <div className="absolute inset-0 bg-gradient-to-tr from-black/30 to-transparent" />

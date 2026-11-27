@@ -61,7 +61,7 @@ function ReceptionistDirectory() {
       }
     >
       <form
-        className="bg-card shadow-soft flex flex-wrap items-center gap-2 rounded-2xl border p-3"
+        className="bg-card shadow-soft flex flex-wrap items-center gap-2 rounded-xl border p-3"
         onSubmit={(event) => event.preventDefault()}
       >
         <div className="bg-muted flex min-w-0 flex-1 items-center gap-2 rounded-xl px-3 py-2">

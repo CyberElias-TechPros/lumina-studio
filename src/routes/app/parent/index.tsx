@@ -154,7 +154,7 @@ function ParentDashboard() {
                       <div
                         key={c.studentId}
                         className={cn(
-                          "rounded-2xl p-5 text-white",
+                          "rounded-xl p-5 text-white",
                           i % 2 ? "bg-gradient-services" : "bg-gradient-learning",
                         )}
                       >

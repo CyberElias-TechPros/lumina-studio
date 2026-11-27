@@ -92,7 +92,7 @@ export function LookingFor() {
               <Link
                 to={door.to}
                 data-lift
-                className="border-border bg-card cea-picker-item group flex h-full flex-col justify-between gap-6 rounded-2xl border p-5 hover:border-[var(--cea-lime)]"
+                className="border-border bg-card cea-picker-item group flex h-full flex-col justify-between gap-6 rounded-xl border p-5 hover:border-[var(--cea-lime)]"
               >
                 <Icon className="size-[18px] shrink-0" aria-hidden="true" />
                 <span>

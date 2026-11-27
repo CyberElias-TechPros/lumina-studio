@@ -86,7 +86,7 @@ function PartnerApplicationPage() {
         description="Share who you are, what your organisation can contribute and the outcome you would like to explore together. Applications are reviewed by the academy team; submission is not automatic approval."
       />
       <section className="container-page grid gap-8 py-10 md:grid-cols-[minmax(0,1fr)_18rem] md:py-14">
-        <div className="border-border bg-card rounded-2xl border p-5 shadow-sm sm:p-8">
+        <div className="border-border bg-card rounded-xl border p-5 shadow-sm sm:p-8">
           {reference ? (
             <div className="flex min-h-[420px] flex-col items-center justify-center text-center">
               <span className="bg-success/10 text-success grid size-14 place-items-center rounded-full">
@@ -284,7 +284,7 @@ function PartnerApplicationPage() {
               </div>
               <turnstile.Widget />
               {error && (
-                <p role="alert" className="text-error bg-error/10 rounded-md px-3 py-2 text-sm">
+                <p role="alert" className="text-error bg-error/10 rounded-lg px-3 py-2 text-sm">
                   {error}
                 </p>
               )}
@@ -304,7 +304,7 @@ function PartnerApplicationPage() {
           )}
         </div>
         <aside className="space-y-4">
-          <div className="bg-muted/40 rounded-2xl border p-5">
+          <div className="bg-muted/40 rounded-xl border p-5">
             <h2 className="font-display font-semibold">Review process</h2>
             <ol className="text-muted-foreground mt-3 space-y-3 text-sm leading-relaxed">
               <li>
@@ -321,7 +321,7 @@ function PartnerApplicationPage() {
               </li>
             </ol>
           </div>
-          <div className="rounded-2xl border p-5">
+          <div className="rounded-xl border p-5">
             <p className="text-muted-foreground text-sm leading-relaxed">
               Please do not include confidential, financial-account or special-category personal
               data in this form.

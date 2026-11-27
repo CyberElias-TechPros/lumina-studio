@@ -338,7 +338,7 @@ function IdiceOpportunity() {
             </li>
             <li>
               In the box <strong>“If others, please specify”</strong>, type{" "}
-              <strong className="bg-primary/15 rounded px-1.5 py-0.5 font-mono tracking-wide">
+              <strong className="bg-primary/15 rounded-lg px-1.5 py-0.5 font-mono tracking-wide">
                 CYBER ELIAS ACADEMY
               </strong>
               .

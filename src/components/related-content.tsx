@@ -127,7 +127,7 @@ export function RelatedContent({ currentSlug, currentType, className, maxItems =
                 href={item.href}
                 className="group bg-card border-border hover:border-primary/40 flex items-start gap-3 rounded-lg border p-4"
               >
-                <span className="bg-primary/10 text-primary grid size-8 shrink-0 place-items-center rounded-md">
+                <span className="bg-primary/10 text-primary grid size-8 shrink-0 place-items-center rounded-lg">
                   <Icon className="size-4" />
                 </span>
                 <div className="min-w-0 flex-1">

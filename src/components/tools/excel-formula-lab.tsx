@@ -330,7 +330,7 @@ export function ExcelFormulaLab() {
       </div>
 
       {/* Task brief */}
-      <div className="border-foreground/10 bg-card rounded-2xl border p-5">
+      <div className="border-foreground/10 bg-card rounded-xl border p-5">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <p className="text-primary font-mono text-[10px] tracking-[0.2em] uppercase">
@@ -368,7 +368,7 @@ export function ExcelFormulaLab() {
       </div>
 
       {/* Formula Bar + Grid */}
-      <div className="border-foreground/12 bg-card overflow-hidden rounded-2xl border">
+      <div className="border-foreground/12 bg-card overflow-hidden rounded-xl border">
         <div className="border-foreground/10 bg-muted/40 flex flex-wrap items-center gap-3 border-b px-4 py-2.5">
           <span className="inline-flex items-center gap-1.5 rounded-lg bg-primary/10 px-2.5 py-1 font-mono text-xs font-bold text-primary">
             <Table className="size-3.5" aria-hidden="true" /> {selectedCell}

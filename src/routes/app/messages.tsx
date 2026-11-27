@@ -114,7 +114,7 @@ function MessagesPage() {
                 <select
                   value={recipientId}
                   onChange={(e) => setRecipientId(e.target.value)}
-                  className="bg-background border-input h-10 w-full rounded-md border px-3 text-sm"
+                  className="bg-background border-input h-10 w-full rounded-lg border px-3 text-sm"
                 >
                   <option value="">Academy Support / Admissions Desk</option>
                   {contacts.map((contact) => (
@@ -140,7 +140,7 @@ function MessagesPage() {
                   onChange={(e) => setInitialBody(e.target.value)}
                   rows={3}
                   placeholder="Write your message…"
-                  className="bg-background border-input w-full rounded-md border p-3 text-sm"
+                  className="bg-background border-input w-full rounded-lg border p-3 text-sm"
                   required
                 />
               </label>

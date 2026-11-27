@@ -114,7 +114,7 @@ function Card({
   return (
     <div className="border-foreground/10 bg-card rounded-xl border p-4">
       <div className="text-muted-foreground flex items-center gap-2">
-        <span className="grid size-7 place-items-center rounded-md bg-foreground/5">{icon}</span>
+        <span className="grid size-7 place-items-center rounded-lg bg-foreground/5">{icon}</span>
         <p className="font-mono text-[9px] tracking-[0.2em] uppercase">{label}</p>
       </div>
       <p className="font-display mt-2 text-lg font-semibold tracking-tight">{value}</p>
@@ -164,7 +164,7 @@ export function DataSizeConverter() {
   return (
     <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
       {/* ── Input + ladder ─────────────────────────────────────────────── */}
-      <section className="border-foreground/10 bg-card overflow-hidden rounded-2xl border">
+      <section className="border-foreground/10 bg-card overflow-hidden rounded-xl border">
         <div className="border-foreground/10 border-b px-5 py-3.5">
           <p className="text-muted-foreground font-mono text-[9px] tracking-[0.24em] uppercase">
             Type any size — 500 MB, 1.5 GB, 250 KB
@@ -309,7 +309,7 @@ export function DataSizeConverter() {
 
       {/* ── Answers in real things + decimal vs binary ──────────────────── */}
       <div className="space-y-5">
-        <section className="border-foreground/10 bg-card overflow-hidden rounded-2xl border">
+        <section className="border-foreground/10 bg-card overflow-hidden rounded-xl border">
           <div className="border-foreground/10 border-b px-5 py-3.5">
             <p className="text-muted-foreground font-mono text-[9px] tracking-[0.24em] uppercase">
               What that actually holds
@@ -359,7 +359,7 @@ export function DataSizeConverter() {
           )}
         </section>
 
-        <section className="border-foreground/10 bg-card overflow-hidden rounded-2xl border">
+        <section className="border-foreground/10 bg-card overflow-hidden rounded-xl border">
           <div className="border-foreground/10 flex items-center justify-between gap-3 border-b px-5 py-3.5">
             <p className="text-muted-foreground font-mono text-[9px] tracking-[0.24em] uppercase">
               Why your 16 GB phone shows 14 GB
@@ -408,7 +408,7 @@ export function DataSizeConverter() {
           </div>
         </section>
 
-        <section className="border-foreground/10 bg-primary/5 rounded-2xl border p-5">
+        <section className="border-foreground/10 bg-primary/5 rounded-xl border p-5">
           <p className="text-primary font-mono text-[9px] tracking-[0.22em] uppercase">
             The one-line answer
           </p>

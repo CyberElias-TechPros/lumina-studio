@@ -86,13 +86,13 @@ function NotFoundPage() {
         <div className="mt-7 flex flex-wrap justify-center gap-3">
           <Link
             to="/"
-            className="bg-primary text-primary-foreground inline-flex h-10 items-center justify-center rounded-md px-6 text-sm font-medium"
+            className="bg-primary text-primary-foreground inline-flex h-10 items-center justify-center rounded-lg px-6 text-sm font-medium"
           >
             Go home
           </Link>
           <Link
             to="/classes"
-            className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-6 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+            className="inline-flex h-10 items-center justify-center rounded-lg border border-input bg-background px-6 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
             View courses
           </Link>

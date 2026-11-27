@@ -122,7 +122,7 @@ function UserFlows() {
                     <div className="space-y-1.5">
                       {f.list.map((s, i) => (
                         <div key={s} className="flex items-center gap-2">
-                          <span className="bg-muted text-muted-foreground grid size-5 shrink-0 place-items-center rounded-md text-[10px] font-extrabold">
+                          <span className="bg-muted text-muted-foreground grid size-5 shrink-0 place-items-center rounded-lg text-[10px] font-extrabold">
                             {i + 1}
                           </span>
                           <span className="text-xs font-semibold">{s}</span>

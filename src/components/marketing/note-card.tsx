@@ -24,7 +24,7 @@ export function NoteCard({ post, className }: { post: BlogPost; className?: stri
           loading="lazy"
           className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
         />
-        <span className="bg-background/90 text-foreground absolute top-3 left-3 rounded-md px-2.5 py-1 text-xs font-semibold shadow-sm backdrop-blur">
+        <span className="bg-background/90 text-foreground absolute top-3 left-3 rounded-lg px-2.5 py-1 text-xs font-semibold shadow-sm backdrop-blur">
           Lesson {post.order}
         </span>
       </div>

@@ -70,7 +70,7 @@ function AlumniStories() {
     >
       <Card className="bg-gradient-brand shadow-glow relative overflow-hidden border-0 text-white">
         <CardContent className="flex flex-wrap items-center gap-6 p-6 sm:p-8">
-          <span className="bg-white/15 grid size-14 shrink-0 place-items-center rounded-2xl">
+          <span className="bg-white/15 grid size-14 shrink-0 place-items-center rounded-xl">
             <Quote className="size-6" />
           </span>
           <div className="min-w-0 flex-1">

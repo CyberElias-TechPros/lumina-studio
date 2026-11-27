@@ -241,7 +241,7 @@ function ParentStudentOverview() {
                     key={s.to}
                     to={s.to}
                     params={{ studentId }}
-                    className="group bg-card shadow-soft hover:shadow-elevated flex flex-col rounded-2xl border p-5 transition-all hover:-translate-y-0.5"
+                    className="group bg-card shadow-soft hover:shadow-elevated flex flex-col rounded-xl border p-5 transition-all hover:-translate-y-0.5"
                   >
                     <span className={cn("grid size-10 place-items-center rounded-xl", s.tone)}>
                       <s.icon className="size-5" />

@@ -193,7 +193,7 @@ function Blog() {
                 type="button"
                 onClick={() => changeQuery("")}
                 aria-label="Clear search"
-                className="text-muted-foreground hover:bg-muted hover:text-foreground absolute top-1/2 right-3 grid size-8 -translate-y-1/2 place-items-center rounded-md"
+                className="text-muted-foreground hover:bg-muted hover:text-foreground absolute top-1/2 right-3 grid size-8 -translate-y-1/2 place-items-center rounded-lg"
               >
                 <X className="size-4" />
               </button>
@@ -299,7 +299,7 @@ function Blog() {
                   setSort(e.target.value as NotesSort);
                   setPage(1);
                 }}
-                className="border-input bg-background focus-visible:ring-ring h-9 rounded-md border px-3 text-sm focus-visible:ring-2 focus-visible:outline-none"
+                className="border-input bg-background focus-visible:ring-ring h-9 rounded-lg border px-3 text-sm focus-visible:ring-2 focus-visible:outline-none"
               >
                 {NOTES_SORT_OPTIONS.map((o) => (
                   <option key={o.value} value={o.value}>
@@ -539,7 +539,7 @@ function Pagination({
                 aria-current={item === current ? "page" : undefined}
                 aria-label={`Page ${item}`}
                 className={cn(
-                  "grid size-9 place-items-center rounded-md text-sm tabular-nums transition-colors",
+                  "grid size-9 place-items-center rounded-lg text-sm tabular-nums transition-colors",
                   item === current
                     ? "bg-primary text-primary-foreground font-semibold"
                     : "hover:bg-muted text-foreground",

@@ -202,7 +202,7 @@ function AiEngineeringPage() {
               <Link
                 key={route.id}
                 to={route.startingHref}
-                className="card-lift border-foreground/10 bg-card group flex flex-col rounded-2xl border p-6"
+                className="card-lift border-foreground/10 bg-card group flex flex-col rounded-xl border p-6"
               >
                 <p className="text-muted-foreground/70 font-mono text-[10px] tracking-[0.24em] uppercase">
                   Route {String(index + 1).padStart(2, "0")}
@@ -244,7 +244,7 @@ function AiEngineeringPage() {
               <li key={lesson.title}>
                 <Link
                   to={lesson.href}
-                  className="card-lift border-foreground/10 bg-card group flex h-full flex-col rounded-2xl border p-5"
+                  className="card-lift border-foreground/10 bg-card group flex h-full flex-col rounded-xl border p-5"
                 >
                   <div className="flex items-center justify-between gap-3">
                     <p className="text-muted-foreground font-mono text-[8px] tracking-[0.2em] uppercase">
@@ -305,7 +305,7 @@ function AiEngineeringPage() {
           >
             Twenty phases. {totalLessons} lessons. Zero tuition.
           </h2>
-          <ol className="border-foreground/10 mt-10 divide-y divide-foreground/8 overflow-hidden rounded-2xl border">
+          <ol className="border-foreground/10 mt-10 divide-y divide-foreground/8 overflow-hidden rounded-xl border">
             {aiPhases.map((phase) => (
               <li key={phase.id}>
                 <Link
@@ -349,7 +349,7 @@ function AiEngineeringPage() {
                 href={route.learnHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="card-lift border-foreground/10 bg-card group flex flex-col rounded-2xl border p-6"
+                className="card-lift border-foreground/10 bg-card group flex flex-col rounded-xl border p-6"
               >
                 <div className="flex items-start justify-between gap-4">
                   <h3 className="font-display text-xl font-semibold leading-snug tracking-tight">
@@ -425,7 +425,7 @@ function AiEngineeringPage() {
             ].map(([index, title, body]) => (
               <li
                 key={index}
-                className="border-white/10 bg-white/[0.04] rounded-2xl border p-5 backdrop-blur-sm"
+                className="border-white/10 bg-white/[0.04] rounded-xl border p-5 backdrop-blur-sm"
               >
                 <p className="font-mono text-[10px] tracking-[0.24em] text-[#5b9dff]">{index}</p>
                 <h3 className="mt-3 text-base leading-snug font-semibold text-white">{title}</h3>
@@ -439,7 +439,7 @@ function AiEngineeringPage() {
       {/* ── Licence & attribution ──────────────────────────────────────── */}
       <section className="border-border border-t py-12" aria-labelledby="ai-license">
         <div className="container-page">
-          <div className="border-foreground/10 bg-muted/35 rounded-2xl border p-6 sm:p-8">
+          <div className="border-foreground/10 bg-muted/35 rounded-xl border p-6 sm:p-8">
             <div className="flex flex-wrap items-center gap-3">
               <Github className="text-primary size-5" aria-hidden="true" />
               <h2 id="ai-license" className="font-display text-lg font-semibold">

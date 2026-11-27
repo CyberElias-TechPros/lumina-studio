@@ -224,7 +224,7 @@ async function AiLessonPage({ params }: { params: LessonParams }) {
 
         {/* Attribution — the licence requires it; we make it a feature */}
         <aside
-          className="border-foreground/12 bg-muted/35 mt-12 rounded-2xl border p-5 text-sm leading-relaxed sm:p-6"
+          className="border-foreground/12 bg-muted/35 mt-12 rounded-xl border p-5 text-sm leading-relaxed sm:p-6"
           aria-label="About this lesson"
         >
           <div className="flex items-center gap-2">
@@ -280,7 +280,7 @@ async function AiLessonPage({ params }: { params: LessonParams }) {
             <Link
               to="/ai-engineering/$phase/$lesson"
               params={{ phase: neighbors.previous.phase, lesson: neighbors.previous.lesson }}
-              className="group border-foreground/12 hover:border-primary/50 rounded-2xl border p-4 transition-colors"
+              className="group border-foreground/12 hover:border-primary/50 rounded-xl border p-4 transition-colors"
             >
               <span className="text-muted-foreground flex items-center gap-1.5 font-mono text-[10px] tracking-[0.2em] uppercase">
                 <ChevronLeft
@@ -300,7 +300,7 @@ async function AiLessonPage({ params }: { params: LessonParams }) {
             <Link
               to="/ai-engineering/$phase/$lesson"
               params={{ phase: neighbors.next.phase, lesson: neighbors.next.lesson }}
-              className="group border-foreground/12 hover:border-primary/50 rounded-2xl border p-4 text-right transition-colors sm:justify-self-end sm:w-full"
+              className="group border-foreground/12 hover:border-primary/50 rounded-xl border p-4 text-right transition-colors sm:justify-self-end sm:w-full"
             >
               <span className="text-muted-foreground flex items-center gap-1.5 justify-end font-mono text-[10px] tracking-[0.2em] uppercase">
                 Next

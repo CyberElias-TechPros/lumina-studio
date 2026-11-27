@@ -144,7 +144,7 @@ function LiveClasses() {
                 <select
                   value={status}
                   onChange={(e) => setStatus(e.target.value as "scheduled" | "live")}
-                  className="bg-background border-input h-10 w-full rounded-md border px-3 text-sm"
+                  className="bg-background border-input h-10 w-full rounded-lg border px-3 text-sm"
                 >
                   <option value="scheduled">Scheduled</option>
                   <option value="live">Live now</option>

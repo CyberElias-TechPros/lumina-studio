@@ -133,7 +133,7 @@ export function ColorContrast() {
   return (
     <div className="grid gap-5 lg:grid-cols-2">
       {/* ── Contrast checker ─────────────────────────────────────────── */}
-      <section className="border-foreground/10 bg-card overflow-hidden rounded-2xl border">
+      <section className="border-foreground/10 bg-card overflow-hidden rounded-xl border">
         <div className="border-foreground/10 flex items-center justify-between gap-3 border-b px-5 py-3.5">
           <p className="font-mono text-[9px] tracking-[0.24em] text-muted-foreground uppercase">
             WCAG contrast checker
@@ -244,7 +244,7 @@ export function ColorContrast() {
       </section>
 
       {/* ── Palette harmony ───────────────────────────────────────────── */}
-      <section className="border-foreground/10 bg-card overflow-hidden rounded-2xl border">
+      <section className="border-foreground/10 bg-card overflow-hidden rounded-xl border">
         <div className="border-foreground/10 border-b px-5 py-3.5">
           <p className="font-mono text-[9px] tracking-[0.24em] text-muted-foreground uppercase">
             Palette harmony — click any chip to copy
@@ -292,7 +292,7 @@ export function ColorContrast() {
                     className="border-foreground/10 relative flex h-24 items-end overflow-hidden rounded-xl border p-2 transition-transform group-hover:-translate-y-0.5"
                     style={{ background: hex }}
                   >
-                    <span className="grid size-7 place-items-center rounded-md bg-black/35 text-white opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100">
+                    <span className="grid size-7 place-items-center rounded-lg bg-black/35 text-white opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100">
                       {copied === hex ? (
                         <Check className="size-4" strokeWidth={3} />
                       ) : (
