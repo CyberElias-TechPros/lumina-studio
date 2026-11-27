@@ -29,6 +29,21 @@ export const CHANGELOG_STARTED = "2026-10-26";
 
 export const changelog: ChangeEntry[] = [
   {
+    date: "2026-11-26",
+    kind: "correction",
+    title: "Ranked pages stopped redirecting readers away",
+    detail:
+      "Search Console showed 506 impressions and zero clicks across twenty-nine glossary URLs, including a page ranking second for its term and another ranking fourth. The cause was a redirect: every term went to a course list, whatever it was about. Each term now goes to the article that answers it. Five new articles cover the questions the export showed we were appearing for and not answering: what a SOC room is, where files go when they are in the cloud, what KB and GB stand for, how to type the naira sign, and what agile actually means. One page was retitled because its title did not contain the words the query uses.",
+    affected: [
+      { label: "What a SOC room is", href: "/blog/what-a-soc-room-is" },
+      { label: "Where your files actually are", href: "/blog/where-your-files-actually-are" },
+      { label: "What KB, MB and GB stand for", href: "/blog/what-kb-mb-gb-stand-for" },
+      { label: "How to type the naira sign", href: "/blog/how-to-type-the-naira-sign" },
+      { label: "What agile methodology means", href: "/blog/what-agile-methodology-means" },
+      { label: "Zero Trust, without the vendor slides", href: "/blog/zero-trust-in-plain-words" },
+    ],
+  },
+  {
     date: "2026-11-25",
     kind: "published",
     title: "Two new explainers: what an AI agent is, and the cybersecurity jobs",

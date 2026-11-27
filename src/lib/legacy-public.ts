@@ -12,3 +12,11 @@ export type SchoolDest = "/classes" | "/about" | "/contact" | "/visit" | "/admis
 export function redirectPublic(to: SchoolDest): never {
   throw redirect({ to, replace: true, code: 301 });
 }
+
+export {
+  GLOSSARY_DESTINATIONS,
+  GLOSSARY_DESTINATIONS_TODO,
+  GLOSSARY_FALLBACK,
+  glossaryDestination,
+  isGlossaryRouteRendered,
+} from "@/data/glossary-destinations";

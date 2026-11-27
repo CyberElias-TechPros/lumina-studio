@@ -23,6 +23,36 @@
       "permanent": true
     },
     {
+      "source": "/glossary/zero-trust",
+      "destination": "/blog/zero-trust-in-plain-words",
+      "permanent": true
+    },
+    {
+      "source": "/glossary/vulnerability-assessment",
+      "destination": "/blog/what-a-vulnerability-assessment-is",
+      "permanent": true
+    },
+    {
+      "source": "/glossary/digital-signature",
+      "destination": "/blog/signed-or-just-a-picture",
+      "permanent": true
+    },
+    {
+      "source": "/glossary/pki",
+      "destination": "/blog/digital-vs-electronic-signature",
+      "permanent": true
+    },
+    {
+      "source": "/glossary/siem",
+      "destination": "/blog/the-soc-room",
+      "permanent": true
+    },
+    {
+      "source": "/glossary/soc",
+      "destination": "/blog/the-soc-room",
+      "permanent": true
+    },
+    {
       "source": "/glossary/:path*",
       "destination": "/classes",
       "permanent": true
