@@ -73,15 +73,35 @@ function findGetPageHeadInput(node) {
 
 function extractHeadMetadata(options) {
   const head = property(options, "head");
-  if (!head) return { title: undefined, description: undefined, type: undefined, image: undefined };
+  if (!head)
+    return {
+      title: undefined,
+      description: undefined,
+      type: undefined,
+      image: undefined,
+      noIndex: undefined,
+    };
 
   const input = findGetPageHeadInput(head);
   if (input) {
+    // `noIndex: true` is a literal boolean property, so it can be read statically
+    // without evaluating the route module. It has to be carried through the
+    // manifest: a route that declares itself noindex and then gets rendered by
+    // the metadata adapter with `index, follow` is a silent bug that only shows
+    // up when the page starts appearing in search results.
+    const noIndexProp = property(input, "noIndex");
+    const noIndex =
+      noIndexProp && noIndexProp.kind === ts.SyntaxKind.TrueKeyword
+        ? true
+        : noIndexProp && noIndexProp.kind === ts.SyntaxKind.FalseKeyword
+          ? false
+          : undefined;
     return {
       title: staticString(property(input, "title")),
       description: staticString(property(input, "description")),
       type: staticString(property(input, "type")),
       image: staticString(property(input, "image")),
+      noIndex,
     };
   }
 
@@ -249,6 +269,7 @@ const manifestBody = routes
       `description: ${route.description ? quote(route.description) : "null"}`,
       `type: ${route.type ? quote(route.type) : "null"}`,
       `image: ${route.image ? quote(route.image) : "null"}`,
+      `noIndex: ${route.noIndex === true}`,
     ];
     return `  { ${fields.join(", ")} },`;
   })
@@ -265,6 +286,8 @@ export type RouteManifestEntry = {
   description: string | null;
   type: string | null;
   image: string | null;
+  /** Declared by the route's own head(); the adapter must honour it. */
+  noIndex: boolean;
 };
 
 export const routeManifest: RouteManifestEntry[] = [

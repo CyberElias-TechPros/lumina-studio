@@ -29,6 +29,19 @@ export const CHANGELOG_STARTED = "2026-10-26";
 
 export const changelog: ChangeEntry[] = [
   {
+    date: "2026-11-27",
+    kind: "published",
+    title: "Four doors on the front page, and a hero that moves",
+    detail:
+      "The homepage now opens with a row of four plain intentions — a course and its fee, some advice, a tool to try now, or an answer to a specific question — placed before any scrolling content, because that is where a first-time visitor decides whether the site has what they came for. The hero gained a slow constellation field drawn in a 2D canvas, headings that rise into place word by word, and buttons that lean toward a fine pointer. None of it hides content before the script runs, all of it is disabled when a visitor asks for reduced motion, and the page is fully readable with JavaScript switched off. Separately, seven routes that declared themselves non-indexable were being served as indexable because the metadata layer ignored the declaration; that is fixed.",
+    affected: [
+      { label: "The centre", href: "/" },
+      { label: "Every course and fee", href: "/classes" },
+      { label: "Find a starting point", href: "/learning-trail" },
+      { label: "Practice labs", href: "/tools" },
+    ],
+  },
+  {
     date: "2026-11-26",
     kind: "correction",
     title: "Ranked pages stopped redirecting readers away",
