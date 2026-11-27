@@ -695,6 +695,123 @@ export function scheduledDemand(): TrendSignal[] {
 }
 
 /**
+ * The nine AI content clusters, and why each exists.
+ *
+ * Source: `docs/ai-content-plan-90-topics-2026-09.md`. Recorded here rather than
+ * only in the document because the document cannot enforce anything, and this
+ * can — a test checks that every cluster names a page that genuinely serves the
+ * intent, and that nothing claims a volume.
+ *
+ * The hiring figures below are year-over-year growth in job postings (Dice 2026,
+ * ~7M US postings). They are demand *evidence*, not search volume, and the
+ * difference is the whole reason this file exists.
+ */
+export type AiCluster = {
+  id: string;
+  label: string;
+  /** Why this cluster is worth writing, in one measurable claim. */
+  evidence: string;
+  /** ISO date of the evidence. */
+  evidenceDate: string;
+  /** Which existing surface feeds it, so nothing is written into a vacuum. */
+  feedsFrom: string;
+  /** Position in the publishing order and the reason for it. */
+  wave: 1 | 2 | 3 | 4;
+};
+
+export const AI_CLUSTERS: readonly AiCluster[] = [
+  {
+    id: "free-ai-tools",
+    label: "Free AI tools",
+    evidence:
+      "Zapier free is 100 tasks/month across 5 Zaps; Make free is 1,000 operations/month; n8n Community is unlimited self-hosted on a $6-20/month VPS. Stating the limit is the differentiator, because no competing list does.",
+    evidenceDate: "2026-10-25",
+    feedsFrom: "/classes/ai-productivity",
+    wave: 1,
+  },
+  {
+    id: "ai-fundamentals",
+    label: "AI fundamentals",
+    evidence:
+      "AI skills required in 75% of tech job postings in June 2026, up from 15% in January 2024. The beginner question is now a mainstream one.",
+    evidenceDate: "2026-07-15",
+    feedsFrom: "/ai-engineering",
+    wave: 1,
+  },
+  {
+    id: "ai-automation",
+    label: "AI automation",
+    evidence:
+      "Free tiers are genuinely usable for small business volumes: under 500 automations a month fits Zapier or Make. Converts to course enquiries because it describes a business outcome.",
+    evidenceDate: "2026-10-25",
+    feedsFrom: "/classes/digital-productivity",
+    wave: 2,
+  },
+  {
+    id: "ai-workflows",
+    label: "AI workflows",
+    evidence:
+      "Employers now hire for workflow design rather than prompting: the ability to build repeatable multi-step systems. Prompt engineering postings still grew 253% YoY, so the skill did not die, it moved.",
+    evidenceDate: "2026-07-15",
+    feedsFrom: "/classes/ai-productivity",
+    wave: 2,
+  },
+  {
+    id: "ai-skills",
+    label: "AI skills and careers",
+    evidence:
+      "Agentic AI +587%, AI agents +503%, vector databases +353%, RAG +275%, prompt engineering +253% YoY in job postings.",
+    evidenceDate: "2026-07-15",
+    feedsFrom: "/blog/cybersecurity-jobs-and-what-they-pay",
+    wave: 3,
+  },
+  {
+    id: "content-ai",
+    label: "Content creation with AI",
+    evidence:
+      "63% of marketing teams use AI video generation; 82% of that use is social content. The quality question, not the tool list, is the durable angle.",
+    evidenceDate: "2026-08-24",
+    feedsFrom: "/classes/content-creation",
+    wave: 3,
+  },
+  {
+    id: "emerging",
+    label: "Emerging this period",
+    evidence:
+      "Prompt injection reported as the fastest-growing AI risk term (~13x). MCP named across the 2026 tooling landscape with almost no plain-English coverage.",
+    evidenceDate: "2026-08-22",
+    feedsFrom: "/ai-engineering/13-tools-and-protocols",
+    wave: 3,
+  },
+  {
+    id: "code-to-video",
+    label: "Code to video",
+    evidence:
+      "Programmatic video (Remotion, ngram, CoAnimator) is a developer workflow, not a consumer tool. Sora's consumer app was discontinued in April 2026, which invalidates most existing guides.",
+    evidenceDate: "2026-08-22",
+    feedsFrom: "/ai-engineering/12-multimodal-ai",
+    wave: 4,
+  },
+  {
+    id: "ai-models",
+    label: "Models",
+    evidence:
+      "Model choice now turns on cost and latency, not reputation: reasoning modes are slower and dearer, and most tasks do not need them. A capability split survives a release; a ranking does not.",
+    evidenceDate: "2026-08-24",
+    feedsFrom: "/ai-engineering/11-llm-engineering",
+    wave: 4,
+  },
+];
+
+/** Clusters in publishing order: highest intent and widest audience first. */
+export function clustersByWave(): Array<{ wave: number; clusters: AiCluster[] }> {
+  return [1, 2, 3, 4].map((wave) => ({
+    wave,
+    clusters: AI_CLUSTERS.filter((cluster) => cluster.wave === wave),
+  }));
+}
+
+/**
  * The rule that keeps this honest.
  *
  * Two of the five classes exist precisely so that a spike is never mistaken for

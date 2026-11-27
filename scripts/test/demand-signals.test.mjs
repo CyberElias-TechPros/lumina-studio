@@ -366,3 +366,48 @@ test("the trend caveat still says where the data came from", () => {
   assert.match(TREND_CAVEAT, /not from the Google Trends interface/i);
   assert.match(TREND_CAVEAT, /direction, not a volume/i);
 });
+
+/* ------------------------------------------------------------------ *
+ * AI content clusters
+ * ------------------------------------------------------------------ */
+
+const { AI_CLUSTERS, clustersByWave } = await import("../../src/data/editorial/demand-signals.ts");
+
+test("every cluster carries dated evidence, not a volume claim", () => {
+  for (const cluster of AI_CLUSTERS) {
+    assert.match(cluster.evidenceDate, /^\d{4}-\d{2}-\d{2}$/, `${cluster.id}: needs a date`);
+    assert.ok(cluster.evidence.length > 50, `${cluster.id}: needs the measurement itself`);
+    // The rule that killed the earlier plan: a search volume nobody verified.
+    assert.ok(
+      !/searches?\s*(per|\/)\s*month|monthly searches|\d+\s*searches/i.test(cluster.evidence),
+      `${cluster.id}: quotes a search volume, which cannot be verified here`,
+    );
+  }
+});
+
+test("every cluster points at something that already exists", () => {
+  // A cluster fed by nothing is a plan to write into a vacuum. Each must name a
+  // surface the site already has.
+  for (const cluster of AI_CLUSTERS) {
+    assert.match(cluster.feedsFrom, /^\//, `${cluster.id}: feedsFrom must be a real path`);
+  }
+});
+
+test("the four publishing waves are populated and ordered", () => {
+  const waves = clustersByWave();
+  assert.equal(waves.length, 4);
+  for (const { wave, clusters } of waves) {
+    assert.ok(clusters.length > 0, `wave ${wave} is empty`);
+  }
+  const total = waves.reduce((n, w) => n + w.clusters.length, 0);
+  assert.equal(total, AI_CLUSTERS.length, "every cluster belongs to exactly one wave");
+});
+
+test("the discontinued-tool fact stays recorded", () => {
+  // Sora's consumer app was discontinued in April 2026. Most "best AI video"
+  // guides still recommend it. If this note is ever removed, someone will write
+  // a tutorial for a product that no longer exists.
+  const video = AI_CLUSTERS.find((c) => c.id === "code-to-video");
+  assert.ok(video, "the code-to-video cluster must stay, precisely because it is awkward");
+  assert.match(video.evidence, /discontinued/i);
+});
