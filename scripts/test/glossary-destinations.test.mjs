@@ -48,7 +48,10 @@ function routeFileFor(path) {
 test("the two rankings that were being thrown away now go somewhere real", () => {
   // 172 impressions at position 2.04, and 189 at 4.13. Both used to 301 to a
   // course list. If either regresses to the fallback, the bug is back.
-  assert.equal(glossaryDestination("vulnerability-assessment"), "/blog/what-a-vulnerability-assessment-is");
+  assert.equal(
+    glossaryDestination("vulnerability-assessment"),
+    "/blog/what-a-vulnerability-assessment-is",
+  );
   assert.equal(glossaryDestination("zero-trust"), "/blog/zero-trust-in-plain-words");
   assert.equal(glossaryDestination("digital-signature"), "/blog/signed-or-just-a-picture");
 });
@@ -122,6 +125,10 @@ test("only terms with a destination would be rendered", () => {
   // Nothing renders today; a rendered term would need a real page component,
   // which this route does not have.
   for (const slug of Object.keys(GLOSSARY_DESTINATIONS)) {
-    assert.equal(isGlossaryRouteRendered(slug), false, `${slug} cannot render: route has no component`);
+    assert.equal(
+      isGlossaryRouteRendered(slug),
+      false,
+      `${slug} cannot render: route has no component`,
+    );
   }
 });

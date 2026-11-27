@@ -184,10 +184,7 @@ test("glossary URLs still redirect, but no longer into a dead end", () => {
     /glossaryDestination/,
     "term pages must route by term, not blanket to /classes",
   );
-  assert.ok(
-    !/redirectPublic\(/.test(term),
-    "a blanket redirectPublic is the defect this replaced",
-  );
+  assert.ok(!/redirectPublic\(/.test(term), "a blanket redirectPublic is the defect this replaced");
 });
 
 /* ------------------------------------------------------------------ *

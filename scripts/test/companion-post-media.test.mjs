@@ -27,7 +27,10 @@ test("every companion post states a quick answer and a recovery step", () => {
   // Both are published standards in this repo, and both are the first things
   // to rot when an article is written quickly.
   for (const post of companionPosts) {
-    assert.ok(post.quickAnswer && post.quickAnswer.length > 80, `${post.slug}: needs a real quickAnswer`);
+    assert.ok(
+      post.quickAnswer && post.quickAnswer.length > 80,
+      `${post.slug}: needs a real quickAnswer`,
+    );
     const text = JSON.stringify(post.body ?? []);
     assert.match(text, /if this went wrong/i, `${post.slug}: needs a recovery paragraph`);
   }
