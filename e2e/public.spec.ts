@@ -5,7 +5,7 @@ test.describe("Public marketing + application journey", () => {
   test("home page loads with core navigation", async ({ page }) => {
     await page.goto("/");
     await expect(
-      page.getByRole("heading", { name: /the future is built by those who learn to create it/i }),
+      page.getByRole("heading", { name: /your next skill changes everything/i }),
     ).toBeVisible();
     await expect(page.getByRole("link", { name: /^courses$/i }).first()).toBeVisible();
     await expect(page.getByRole("link", { name: /^apply$/i }).first()).toBeVisible();
@@ -50,7 +50,7 @@ test.describe("Public marketing + application journey", () => {
     await expect(page.locator("#core-office-data")).toBeVisible();
 
     await page.goto("/classes/microsoft-office");
-    const facts = page.getByLabel("Course facts");
+    const facts = page.getByLabel("Course fee receipt");
     await expect(facts).toContainText("₦30,000");
     await expect(facts).toContainText("3 weeks");
     await expect(facts).toContainText("What you need");
@@ -66,7 +66,7 @@ test.describe("Public marketing + application journey", () => {
       const page = await context.newPage();
       await page.goto("/classes/microsoft-office");
       await expect(page.getByRole("heading", { level: 1, name: "Microsoft Office" })).toBeVisible();
-      await expect(page.getByLabel("Course facts")).toContainText("₦30,000");
+      await expect(page.getByLabel("Course fee receipt")).toContainText("₦30,000");
     } finally {
       await context.close();
     }
@@ -98,7 +98,7 @@ test.describe("Public marketing + application journey", () => {
 
   test("classes list + detail pages load", async ({ page }) => {
     await page.goto("/classes");
-    await expect(page).toHaveTitle(/Practical Digital Skills/);
+    await expect(page).toHaveTitle(/IT Courses List/);
 
     await page.goto("/classes/web-development");
     await expect(page).toHaveTitle(/Web Development/);
