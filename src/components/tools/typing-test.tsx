@@ -601,7 +601,7 @@ export function TypingTest() {
   return (
     <div
       ref={rootRef}
-      className="border-white/12 relative overflow-hidden rounded-2xl border bg-[#070d1d] text-[#eef2fb] shadow-[0_24px_70px_-32px_rgba(0,0,0,0.8)]"
+      className="border-white/12 relative overflow-hidden rounded-xl border bg-[#070d1d] text-[#eef2fb] shadow-[0_24px_70px_-32px_rgba(0,0,0,0.8)]"
     >
       {/* Time progress hairline */}
       <div aria-hidden="true" className="absolute inset-x-0 top-0 h-0.5 bg-white/5">
@@ -807,7 +807,7 @@ export function TypingTest() {
                         <span
                           key={charIndex}
                           className={cn(
-                            "rounded-sm transition-colors",
+                            "rounded-md transition-colors",
                             !typed && "text-[#4b5b7d]",
                             correct && "text-[#eef2fb]",
                             wrong && "bg-[#f87171]/15 text-[#f87171]",
@@ -924,7 +924,7 @@ function DonePanel({
           ].map(({ label, value, icon: Icon }) => (
             <div
               key={label + value}
-              className="border-white/8 rounded-2xl border bg-white/[0.03] px-4 py-4 text-center"
+              className="border-white/8 rounded-xl border bg-white/[0.03] px-4 py-4 text-center"
             >
               <Icon className="mx-auto size-4 text-[#5b9dff]" aria-hidden="true" />
               <dt className="mt-2 font-mono text-[8px] tracking-[0.22em] text-[#7d94b5] uppercase">

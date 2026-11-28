@@ -306,7 +306,7 @@ function AdminUsers() {
                   id="invite-student"
                   value={inviteStudentId}
                   onChange={(event) => setInviteStudentId(event.target.value)}
-                  className="border-input bg-background w-full rounded-md border px-3 py-2 text-sm"
+                  className="border-input bg-background w-full rounded-lg border px-3 py-2 text-sm"
                 >
                   <option value="">Select a student</option>
                   {activeStudents.map((account) => (
@@ -324,7 +324,7 @@ function AdminUsers() {
                   id="invite-guardian"
                   value={inviteGuardianId}
                   onChange={(event) => setInviteGuardianId(event.target.value)}
-                  className="border-input bg-background w-full rounded-md border px-3 py-2 text-sm"
+                  className="border-input bg-background w-full rounded-lg border px-3 py-2 text-sm"
                 >
                   <option value="">Select a parent</option>
                   {activeParents.map((account) => (
@@ -421,7 +421,7 @@ function ProvisionDialog({
           <select
             value={roleKey}
             onChange={(e) => setRoleKey(e.target.value)}
-            className="border-input bg-background w-full rounded-md border px-3 py-2 text-sm"
+            className="border-input bg-background w-full rounded-lg border px-3 py-2 text-sm"
           >
             {ROLES.map((r) => (
               <option key={r} value={r}>
@@ -479,7 +479,7 @@ function ManageUserDialog({
             <select
               value={role}
               onChange={(e) => setRole(e.target.value)}
-              className="border-input bg-background w-full rounded-md border px-3 py-2 text-sm"
+              className="border-input bg-background w-full rounded-lg border px-3 py-2 text-sm"
             >
               {ROLES.map((r) => (
                 <option key={r} value={r}>
@@ -493,7 +493,7 @@ function ManageUserDialog({
             <select
               value={status}
               onChange={(e) => setStatus(e.target.value)}
-              className="border-input bg-background w-full rounded-md border px-3 py-2 text-sm"
+              className="border-input bg-background w-full rounded-lg border px-3 py-2 text-sm"
             >
               {STATUSES.map((s) => (
                 <option key={s} value={s}>

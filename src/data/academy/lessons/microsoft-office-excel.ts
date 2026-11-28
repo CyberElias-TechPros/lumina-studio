@@ -32,7 +32,7 @@ export const microsoftOfficeExcelLessons: Record<string, SessionLecture> = {
         heading: "Formatting: number formats, borders and dimensions",
         body: [
           "Number formatting changes how a value **displays** without changing what it **is**. The same number 45000 can show as 45000, 45,000, ₦45,000, 45000.00 or 4.5E+04 depending on format. Home → Number Format dropdown gives you General, Number, Currency, Accounting, Date, Percentage and Text. Use Accounting for financial columns because it aligns the currency symbol at the left of the cell and negatives in brackets, which is what Nigerian financial statements use. Use Percentage when the underlying value is a decimal (0.15 displays as 15%).",
-          "The trap: formatting does not change the stored value. If a cell holds 45000.678 and you format it to zero decimals, it displays 45001 but any formula using it still uses 45000.678. When displayed totals do not add up to the sum of displayed rows, this is almost always why. Use ROUND() in the formula when the rounded value is the real business value.",
+          "The trap: formatting does not change the stored value. If a cell holds 45000.678 and you format it to zero decimals, it displays 45001 but any formula using it still uses 45000.678. When displayed totals do not add up to the sum of displayed rows, this is almost always why. Use ROUND() in the formula when the rounded-lg value is the real business value.",
           "Then the visual layer: **borders** (Home → Borders) draw lines around cells — Excel's faint gridlines never print, so if you want lines on paper you must add borders. **Column width** is adjusted by double-clicking the boundary between column headers to auto-fit, or dragging it manually. **Row height** works the same way. **Wrap Text** makes long content flow onto multiple lines within its cell, and after enabling it you usually need to auto-fit the row height. Finally, **Freeze Panes** (View → Freeze Panes) locks your header row and first column in place so a long list stays readable as you scroll — set this on every table longer than a screen.",
         ],
       },
@@ -130,7 +130,7 @@ export const microsoftOfficeExcelLessons: Record<string, SessionLecture> = {
       },
       {
         problem: "Your displayed total does not equal the sum of the displayed rows",
-        fix: "Display rounding. The cells hold decimals but show whole numbers. Use =ROUND(value, 2) in the formula if the rounded figure is the true business value.",
+        fix: "Display rounding. The cells hold decimals but show whole numbers. Use =ROUND(value, 2) in the formula if the rounded-lg figure is the true business value.",
       },
       {
         problem: "Sorting scrambles your data",

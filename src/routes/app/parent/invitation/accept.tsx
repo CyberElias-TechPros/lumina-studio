@@ -76,7 +76,7 @@ function ParentInvitationAccept() {
           <CardContent className="p-8">
             {!token && (
               <div className="text-center">
-                <span className="bg-warning/10 text-warning mx-auto grid size-12 place-items-center rounded-2xl">
+                <span className="bg-warning/10 text-warning mx-auto grid size-12 place-items-center rounded-xl">
                   <ShieldAlert className="size-6" />
                 </span>
                 <p className="font-display mt-5 text-lg font-extrabold">No invitation link found</p>
@@ -99,7 +99,7 @@ function ParentInvitationAccept() {
 
             {token && invitation.isError && (
               <div className="text-center">
-                <span className="bg-error/10 text-error mx-auto grid size-12 place-items-center rounded-2xl">
+                <span className="bg-error/10 text-error mx-auto grid size-12 place-items-center rounded-xl">
                   <ShieldAlert className="size-6" />
                 </span>
                 <p className="font-display mt-5 text-lg font-extrabold">This link didn't work</p>
@@ -121,7 +121,7 @@ function ParentInvitationAccept() {
                 <div className="text-center">
                   <span
                     className={cn(
-                      "mx-auto grid size-12 place-items-center rounded-2xl",
+                      "mx-auto grid size-12 place-items-center rounded-xl",
                       invitation.data.status === "accepted"
                         ? "bg-success/10 text-success"
                         : "bg-muted text-muted-foreground",
@@ -157,7 +157,7 @@ function ParentInvitationAccept() {
                 <>
                   {accept.isSuccess ? (
                     <div className="text-center">
-                      <span className="bg-success/10 text-success mx-auto grid size-12 place-items-center rounded-2xl">
+                      <span className="bg-success/10 text-success mx-auto grid size-12 place-items-center rounded-xl">
                         <BadgeCheck className="size-6" />
                       </span>
                       <p className="font-display mt-5 text-xl font-extrabold">
@@ -174,7 +174,7 @@ function ParentInvitationAccept() {
                     </div>
                   ) : (
                     <>
-                      <span className="bg-success/10 text-success grid size-12 place-items-center rounded-2xl">
+                      <span className="bg-success/10 text-success grid size-12 place-items-center rounded-xl">
                         <BadgeCheck className="size-6" />
                       </span>
                       <p className="font-display mt-5 text-xl font-extrabold">

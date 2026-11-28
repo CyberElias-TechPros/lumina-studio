@@ -102,7 +102,7 @@ function ServicesPage() {
               </Link>
             </div>
           </div>
-          <div className="rounded-2xl border border-[#2c333c] bg-[#181c20] p-6">
+          <div className="rounded-xl border border-[#2c333c] bg-[#181c20] p-6">
             <p className="font-mono text-xs font-semibold tracking-[0.16em] text-[#d6fe52] uppercase">
               Studio Standard
             </p>
@@ -133,7 +133,7 @@ function ServicesPage() {
           {territories.map((t) => (
             <article
               key={t.code}
-              className="border-border bg-card flex h-full flex-col justify-between rounded-2xl border p-6 sm:p-8"
+              className="border-border bg-card flex h-full flex-col justify-between rounded-xl border p-6 sm:p-8"
             >
               <div>
                 <div className="flex items-center justify-between gap-3">
@@ -210,7 +210,7 @@ function ServicesPage() {
       </section>
 
       <section className="container-page py-12">
-        <div className="border-border bg-card flex flex-col gap-4 rounded-2xl border p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+        <div className="border-border bg-card flex flex-col gap-4 rounded-xl border p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
           <div>
             <h2 className="font-display text-lg font-semibold">
               Looking for a training or education partnership?

@@ -62,7 +62,7 @@ function EmployerBrand() {
         <Card className="bg-card shadow-soft border">
           <CardContent className="p-6">
             <div className="flex flex-wrap items-center gap-4">
-              <span className="bg-primary/10 text-primary grid size-14 place-items-center rounded-2xl">
+              <span className="bg-primary/10 text-primary grid size-14 place-items-center rounded-xl">
                 <Building2 className="size-7" />
               </span>
               <div>

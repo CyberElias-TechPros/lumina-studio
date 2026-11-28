@@ -241,7 +241,7 @@ function ProductPage() {
             {others.map((o) => (
               <Card key={o.id} className="border-card shadow-soft">
                 <CardContent className="flex items-center gap-5 p-5">
-                  <div className="bg-muted size-20 shrink-0 overflow-hidden rounded-md">
+                  <div className="bg-muted size-20 shrink-0 overflow-hidden rounded-lg">
                     <img src={o.image} alt={o.imageAlt} className="size-full object-cover" />
                   </div>
                   <div className="flex-1">

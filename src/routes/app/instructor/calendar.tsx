@@ -140,7 +140,7 @@ function InstructorCalendar() {
                                   <span
                                     key={e.id}
                                     className={cn(
-                                      "block truncate rounded-md px-1.5 py-0.5 text-[10px] font-bold",
+                                      "block truncate rounded-lg px-1.5 py-0.5 text-[10px] font-bold",
                                       kindTone[e.kind],
                                     )}
                                   >

@@ -128,7 +128,7 @@ export function PasswordStrength() {
   };
 
   return (
-    <div className="border-foreground/10 bg-card overflow-hidden rounded-2xl border">
+    <div className="border-foreground/10 bg-card overflow-hidden rounded-xl border">
       <div className="border-foreground/10 border-b px-4 py-3 sm:px-6">
         <p className="text-muted-foreground font-mono text-[9px] tracking-[0.24em] uppercase">
           Checked locally — your password never leaves this page
@@ -149,7 +149,7 @@ export function PasswordStrength() {
               autoComplete="new-password"
               spellCheck={false}
               autoCapitalize="off"
-              className="border-foreground/12 bg-foreground/[0.03] placeholder:text-muted-foreground/60 h-14 w-full rounded-2xl border pr-14 pl-4 font-mono text-base tracking-wide outline-none transition-shadow focus:ring-2 focus:ring-[color-mix(in_oklab,var(--primary-glow)_55%,transparent)]"
+              className="border-foreground/12 bg-foreground/[0.03] placeholder:text-muted-foreground/60 h-14 w-full rounded-xl border pr-14 pl-4 font-mono text-base tracking-wide outline-none transition-shadow focus:ring-2 focus:ring-[color-mix(in_oklab,var(--primary-glow)_55%,transparent)]"
             />
             <button
               type="button"
@@ -163,7 +163,7 @@ export function PasswordStrength() {
           <button
             type="button"
             onClick={generate}
-            className="border-foreground/15 bg-foreground/[0.04] hover:bg-foreground/[0.08] inline-flex h-14 cursor-pointer items-center justify-center gap-2 rounded-2xl border px-5 text-sm font-semibold transition-colors"
+            className="border-foreground/15 bg-foreground/[0.04] hover:bg-foreground/[0.08] inline-flex h-14 cursor-pointer items-center justify-center gap-2 rounded-xl border px-5 text-sm font-semibold transition-colors"
           >
             <Dices className="size-4.5" />
             Generate strong

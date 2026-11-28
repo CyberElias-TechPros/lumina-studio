@@ -73,7 +73,7 @@ export function LabProgressControl({ activitiesComplete }: { activitiesComplete:
   return (
     <section
       aria-label="Save lab progress"
-      className="border-border bg-card rounded-2xl border p-5 sm:p-7"
+      className="border-border bg-card rounded-xl border p-5 sm:p-7"
     >
       <h2 className="font-display text-xl font-semibold">Keep your place, if you want</h2>
       <p className="text-muted-foreground mt-2 text-sm leading-relaxed">

@@ -177,7 +177,7 @@ function AssessmentPlayer() {
           const question = questions[currentQuestion % questionCount]!;
           return (
             <>
-              <div className="bg-warning/10 text-warning mb-5 flex flex-wrap items-center gap-3 rounded-2xl border border-warning/20 p-4 text-sm">
+              <div className="bg-warning/10 text-warning mb-5 flex flex-wrap items-center gap-3 rounded-xl border border-warning/20 p-4 text-sm">
                 <MonitorUp className="size-4 shrink-0" />
                 <p className="flex-1 text-xs font-semibold">
                   Proctoring active: tab-lock on, webcam sampling every 30s, clipboard and paste
@@ -312,13 +312,13 @@ function AssessmentPlayer() {
                       </div>
                       <div className="mt-4 flex flex-wrap gap-3 border-t pt-3 text-[11px] font-semibold">
                         <span className="flex items-center gap-1.5">
-                          <span className="bg-primary size-2.5 rounded-sm" /> Current
+                          <span className="bg-primary size-2.5 rounded-md" /> Current
                         </span>
                         <span className="flex items-center gap-1.5">
-                          <span className="bg-success/60 size-2.5 rounded-sm" /> Answered
+                          <span className="bg-success/60 size-2.5 rounded-md" /> Answered
                         </span>
                         <span className="flex items-center gap-1.5">
-                          <span className="bg-muted size-2.5 rounded-sm" /> Unanswered
+                          <span className="bg-muted size-2.5 rounded-md" /> Unanswered
                         </span>
                       </div>
                     </CardContent>

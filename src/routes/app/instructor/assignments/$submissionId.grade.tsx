@@ -103,7 +103,7 @@ function GradeForm({ submission: s }: { submission: InstructorSubmission }) {
                 value={score}
                 onChange={(e) => setScore(e.target.value)}
                 disabled={grade.isPending}
-                className="mt-2 block w-full rounded border p-3"
+                className="mt-2 block w-full rounded-lg border p-3"
               />
             </label>
             <label className="block">
@@ -114,7 +114,7 @@ function GradeForm({ submission: s }: { submission: InstructorSubmission }) {
                 rows={7}
                 onChange={(e) => setFeedback(e.target.value)}
                 disabled={grade.isPending}
-                className="mt-2 block w-full rounded border p-3"
+                className="mt-2 block w-full rounded-lg border p-3"
               />
             </label>
             <p className="text-sm text-muted-foreground">

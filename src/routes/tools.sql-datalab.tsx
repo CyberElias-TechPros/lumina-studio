@@ -50,7 +50,7 @@ function SqlDataLabPage() {
         <SqlDataLab />
 
         <div className="mx-auto mt-14 grid max-w-5xl gap-8 md:grid-cols-2">
-          <div className="border-foreground/10 bg-card rounded-2xl border p-6">
+          <div className="border-foreground/10 bg-card rounded-xl border p-6">
             <Eyebrow>
               <Database className="size-3.5" aria-hidden="true" /> How SQL actually reads your query
             </Eyebrow>
@@ -80,7 +80,7 @@ function SqlDataLabPage() {
             </div>
           </div>
 
-          <div className="border-foreground/10 bg-card rounded-2xl border p-6">
+          <div className="border-foreground/10 bg-card rounded-xl border p-6">
             <Eyebrow>
               <FileSpreadsheet className="size-3.5" aria-hidden="true" /> If it goes wrong
             </Eyebrow>

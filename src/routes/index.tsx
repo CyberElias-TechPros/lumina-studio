@@ -332,7 +332,7 @@ function Home() {
                   to="/classes/$courseSlug"
                   params={{ courseSlug: course.slug }}
                   className={cn(
-                    "border-border bg-card hover:border-foreground/45 group flex h-full flex-col overflow-hidden rounded-2xl border shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md",
+                    "border-border bg-card hover:border-foreground/45 group flex h-full flex-col overflow-hidden rounded-xl border shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md",
                     family.accentBar,
                   )}
                 >
@@ -380,7 +380,7 @@ function Home() {
 
         {/* Signature Printed Fee Receipt showcase */}
         {courses[0] && (
-          <div className="border-border bg-muted/45 mt-12 grid items-center gap-8 rounded-3xl border p-6 sm:p-8 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="border-border bg-muted/45 mt-12 grid items-center gap-8 rounded-xl border p-6 sm:p-8 lg:grid-cols-[1.05fr_0.95fr]">
             <div>
               <p className="font-mono text-xs font-semibold tracking-wider uppercase">
                 Transparent pricing promise
@@ -459,7 +459,7 @@ function Home() {
               <li key={lab.to}>
                 <Link
                   to={lab.to}
-                  className="group flex h-full flex-col justify-between rounded-2xl border border-[#3a424d] bg-[#101214] p-5 transition-colors hover:border-[#d6fe52]"
+                  className="group flex h-full flex-col justify-between rounded-xl border border-[#3a424d] bg-[#101214] p-5 transition-colors hover:border-[#d6fe52]"
                 >
                   <div>
                     <div className="flex items-center justify-between">
@@ -483,7 +483,7 @@ function Home() {
             ))}
           </ul>
 
-          <div className="mt-10 grid items-center gap-8 rounded-3xl border border-[#3a424d] bg-[#101214] p-6 sm:p-8 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="mt-10 grid items-center gap-8 rounded-xl border border-[#3a424d] bg-[#101214] p-6 sm:p-8 lg:grid-cols-[0.85fr_1.15fr]">
             <div>
               <p className="font-mono text-xs font-semibold tracking-wider text-[#f17c52] uppercase">
                 Absolute Beginners
@@ -513,7 +513,7 @@ function Home() {
       <section className="border-border border-b py-14 md:py-20">
         <div className="container-page">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-            <figure className="border-border overflow-hidden rounded-2xl border bg-card">
+            <figure className="border-border overflow-hidden rounded-xl border bg-card">
               <CampusImg id="lab-1" eager className="aspect-[4/3] w-full object-cover" />
               <figcaption className="border-border flex flex-wrap items-center justify-between gap-2 border-t px-4 py-3 text-xs text-muted-foreground">
                 <span>Classroom session at 24 Ebony Road, Port Harcourt</span>
@@ -548,7 +548,7 @@ function Home() {
           {/* Founder + Who it is for */}
           <div className="border-border mt-14 grid gap-8 border-t pt-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
-              <FounderPhoto className="size-28 shrink-0 rounded-2xl md:size-36" />
+              <FounderPhoto className="size-28 shrink-0 rounded-xl md:size-36" />
               <div>
                 <p className="font-mono text-xs font-semibold tracking-wider text-[#d4572c] uppercase">
                   Founder &amp; Lead Educator
@@ -587,7 +587,7 @@ function Home() {
                   body: "Invoices, flyers, clean web presence, and PC care.",
                 },
               ].map((item) => (
-                <li key={item.title} className="border-border bg-card rounded-2xl border p-4">
+                <li key={item.title} className="border-border bg-card rounded-xl border p-4">
                   <item.icon className="size-5 text-[#d4572c]" aria-hidden="true" />
                   <h4 className="font-display mt-3 text-sm font-semibold">{item.title}</h4>
                   <p className="text-muted-foreground mt-1.5 text-xs leading-relaxed">
@@ -632,7 +632,7 @@ function Home() {
                 <Link
                   to="/blog/$slug"
                   params={{ slug: post.slug }}
-                  className="border-border bg-card hover:border-foreground/45 group flex h-full flex-col overflow-hidden rounded-2xl border shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+                  className="border-border bg-card hover:border-foreground/45 group flex h-full flex-col overflow-hidden rounded-xl border shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
                 >
                   <div className="bg-muted relative aspect-[16/9] overflow-hidden">
                     <img
@@ -641,7 +641,7 @@ function Home() {
                       loading="lazy"
                       className="size-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
                     />
-                    <span className="border-border bg-background/95 text-foreground absolute bottom-3 left-3 rounded-md border px-2.5 py-1 font-mono text-xs font-semibold shadow-sm">
+                    <span className="border-border bg-background/95 text-foreground absolute bottom-3 left-3 rounded-lg border px-2.5 py-1 font-mono text-xs font-semibold shadow-sm">
                       Lesson {String(post.order).padStart(2, "0")} · {readingTimeLabel(post.body)}
                     </span>
                   </div>
@@ -698,7 +698,7 @@ function Home() {
                 <Link
                   key={item.title}
                   to="/services"
-                  className="rounded-2xl border border-[#2c333c] bg-[#181c20] p-5 transition-colors hover:border-[#7774ff]"
+                  className="rounded-xl border border-[#2c333c] bg-[#181c20] p-5 transition-colors hover:border-[#7774ff]"
                 >
                   <item.icon className="size-5 text-[#7774ff]" aria-hidden="true" />
                   <h3 className="font-display mt-4 text-lg font-semibold text-[#f4f1e9]">
@@ -714,7 +714,7 @@ function Home() {
 
       {/* ── Visit the campus + SSR Questions ────────────────────────────── */}
       <section className="container-page py-14 md:py-20">
-        <div className="border-border bg-card grid overflow-hidden rounded-3xl border lg:grid-cols-2">
+        <div className="border-border bg-card grid overflow-hidden rounded-xl border lg:grid-cols-2">
           <div className="flex flex-col justify-center p-6 sm:p-10">
             <Eyebrow>Visit the centre</Eyebrow>
             <h2 className="font-display mt-4 text-3xl leading-[1.06] font-semibold tracking-[-0.035em] text-balance sm:text-4xl">
@@ -763,7 +763,7 @@ function Home() {
           </div>
           <figure className="bg-muted relative min-h-64">
             <CampusImg id="lab-2" className="absolute inset-0 size-full object-cover" />
-            <figcaption className="border-border bg-background/95 text-foreground absolute bottom-4 left-4 rounded-md border px-3 py-1.5 text-xs font-medium shadow-sm">
+            <figcaption className="border-border bg-background/95 text-foreground absolute bottom-4 left-4 rounded-lg border px-3 py-1.5 text-xs font-medium shadow-sm">
               Practice desks at 24 Ebony Road
             </figcaption>
           </figure>
@@ -848,7 +848,7 @@ function Home() {
                 key={opt.title}
                 to={opt.to}
                 className={cn(
-                  "flex flex-col justify-between rounded-2xl border bg-[#101214] p-6 transition-colors",
+                  "flex flex-col justify-between rounded-xl border bg-[#101214] p-6 transition-colors",
                   opt.accent,
                 )}
               >

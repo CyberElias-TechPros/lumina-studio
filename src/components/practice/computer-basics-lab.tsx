@@ -38,7 +38,7 @@ export function ComputerBasicsLab() {
 
   return (
     <section aria-label="Computer basics activities" className="space-y-6">
-      <div className="rounded-2xl bg-[#101f34] p-6 text-white">
+      <div className="rounded-xl bg-[#101f34] p-6 text-white">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <p className="text-xs font-semibold tracking-widest text-[#a4dce7] uppercase">
@@ -73,7 +73,7 @@ export function ComputerBasicsLab() {
 
       <section
         aria-labelledby="pointer-title"
-        className="border-border bg-card rounded-2xl border p-5 sm:p-7"
+        className="border-border bg-card rounded-xl border p-5 sm:p-7"
       >
         <p className="text-primary flex items-center gap-2 text-xs font-semibold tracking-widest uppercase">
           <MousePointer2 aria-hidden="true" className="size-4" /> Activity 01 · Point
@@ -108,7 +108,7 @@ export function ComputerBasicsLab() {
 
       <section
         aria-labelledby="typing-title"
-        className="border-border bg-card rounded-2xl border p-5 sm:p-7"
+        className="border-border bg-card rounded-xl border p-5 sm:p-7"
       >
         <p className="text-primary flex items-center gap-2 text-xs font-semibold tracking-widest uppercase">
           <Keyboard aria-hidden="true" className="size-4" /> Activity 02 · Type
@@ -156,7 +156,7 @@ export function ComputerBasicsLab() {
 
       <section
         aria-labelledby="saving-title"
-        className="border-border bg-card rounded-2xl border p-5 sm:p-7"
+        className="border-border bg-card rounded-xl border p-5 sm:p-7"
       >
         <p className="text-primary flex items-center gap-2 text-xs font-semibold tracking-widest uppercase">
           <FolderOpen aria-hidden="true" className="size-4" /> Activity 03 · Save
@@ -240,7 +240,7 @@ export function ComputerBasicsLab() {
       <button
         type="button"
         onClick={reset}
-        className="text-primary inline-flex min-h-11 items-center gap-2 rounded-md text-sm font-semibold hover:underline focus-visible:ring-2 focus-visible:ring-ring"
+        className="text-primary inline-flex min-h-11 items-center gap-2 rounded-lg text-sm font-semibold hover:underline focus-visible:ring-2 focus-visible:ring-ring"
       >
         <RotateCcw aria-hidden="true" className="size-4" /> Clear and start again
       </button>

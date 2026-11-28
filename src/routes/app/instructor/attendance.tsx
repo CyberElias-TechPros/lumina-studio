@@ -129,14 +129,14 @@ function AttendanceMarker() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="bg-gradient-ink relative mx-auto grid aspect-square w-44 place-items-center overflow-hidden rounded-2xl">
+              <div className="bg-gradient-ink relative mx-auto grid aspect-square w-44 place-items-center overflow-hidden rounded-xl">
                 <div className="absolute inset-0 opacity-25 [background-image:linear-gradient(white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] [background-size:24px_24px]" />
                 <div className="relative grid grid-cols-3 gap-1 p-4">
                   {Array.from({ length: 9 }).map((_, i) => (
                     <span
                       key={i}
                       className={cn(
-                        "size-4 rounded-[2px]",
+                        "size-4 rounded-lg-[2px]",
                         [0, 2, 6, 8].includes(i)
                           ? "bg-white"
                           : i % 2 === 0

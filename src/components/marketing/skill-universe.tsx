@@ -192,7 +192,7 @@ export function HeroSkillCore() {
   const style = ACCENT_STYLES[active.accent];
 
   return (
-    <div className="rounded-3xl border border-[#2c333c] bg-[#161a1f]/95 p-5 shadow-2xl sm:p-6">
+    <div className="rounded-xl border border-[#2c333c] bg-[#161a1f]/95 p-5 shadow-2xl sm:p-6">
       <div className="flex items-center justify-between gap-3 border-b border-[#242a31] pb-4">
         <div>
           <p className="font-mono text-xs font-semibold tracking-[0.14em] text-[#d6fe52] uppercase">
@@ -243,7 +243,7 @@ export function HeroSkillCore() {
 
       {/* Active world preview readout */}
       <div
-        className={cn("mt-5 rounded-2xl border bg-[#101214] p-5 transition-colors", style.border)}
+        className={cn("mt-5 rounded-xl border bg-[#101214] p-5 transition-colors", style.border)}
       >
         <div className="flex flex-wrap items-center justify-between gap-2">
           <span
@@ -266,7 +266,7 @@ export function HeroSkillCore() {
           {active.skills.map((skill) => (
             <span
               key={skill}
-              className="rounded-md border border-[#242a31] bg-[#181c20] px-2.5 py-1 text-xs text-[#d6dce4]"
+              className="rounded-lg border border-[#242a31] bg-[#181c20] px-2.5 py-1 text-xs text-[#d6dce4]"
             >
               {skill}
             </span>
@@ -311,7 +311,7 @@ export function SkillUniverseExplorer() {
               type="button"
               onClick={() => setSelectedId(world.id)}
               className={cn(
-                "flex min-h-[58px] items-center justify-between gap-3 rounded-2xl border px-4 py-3 text-left transition-all",
+                "flex min-h-[58px] items-center justify-between gap-3 rounded-xl border px-4 py-3 text-left transition-all",
                 isSelected
                   ? "border-[#d6fe52]/60 bg-[#242a31] text-white"
                   : "border-[#242a31] bg-[#161a1f] text-[#b4bac4] hover:border-[#3a424d] hover:text-white",
@@ -338,7 +338,7 @@ export function SkillUniverseExplorer() {
         })}
       </div>
 
-      <div className={cn("rounded-3xl border bg-[#161a1f] p-6 sm:p-8", style.border)}>
+      <div className={cn("rounded-xl border bg-[#161a1f] p-6 sm:p-8", style.border)}>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <span
             className={cn(
@@ -378,7 +378,7 @@ export function SkillUniverseExplorer() {
               {active.tools.map((t) => (
                 <span
                   key={t}
-                  className="rounded-md border border-[#2c333c] bg-[#101214] px-2.5 py-1 font-mono text-xs text-[#d6dce4]"
+                  className="rounded-lg border border-[#2c333c] bg-[#101214] px-2.5 py-1 font-mono text-xs text-[#d6dce4]"
                 >
                   {t}
                 </span>

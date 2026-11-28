@@ -160,7 +160,7 @@ function VerifyEmailPage() {
                     . If you need a code, request one below. Codes expire in 10 minutes.
                   </p>
                   {devCode && (
-                    <p className="bg-muted mt-3 rounded-md px-3 py-2 text-center text-xs">
+                    <p className="bg-muted mt-3 rounded-lg px-3 py-2 text-center text-xs">
                       Development code: <strong>{devCode}</strong>
                     </p>
                   )}

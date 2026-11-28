@@ -107,7 +107,7 @@ export function LibraryBrowser({ items, sourceName, canAccessProtected }: Librar
             <button
               type="button"
               onClick={() => toggle(path)}
-              className="hover:bg-muted grid size-6 shrink-0 place-items-center rounded-md"
+              className="hover:bg-muted grid size-6 shrink-0 place-items-center rounded-lg"
               aria-label={open ? "Collapse folder" : "Expand folder"}
             >
               <ChevronRight
@@ -282,7 +282,7 @@ export function LibraryBrowser({ items, sourceName, canAccessProtected }: Librar
                       <button
                         type="button"
                         onClick={() => toggle(path)}
-                        className="hover:bg-muted grid size-6 shrink-0 place-items-center rounded-md"
+                        className="hover:bg-muted grid size-6 shrink-0 place-items-center rounded-lg"
                         aria-label="Expand folder"
                       >
                         <ChevronRight

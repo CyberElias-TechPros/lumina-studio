@@ -49,7 +49,7 @@ export function MentoringRequests({ direction }: { direction: "incoming" | "outg
           </p>
         )}
         {query.data?.items.map((r) => (
-          <div key={r.id} className="space-y-2 rounded-md border p-3">
+          <div key={r.id} className="space-y-2 rounded-lg border p-3">
             <p className="text-sm font-semibold">
               {direction === "incoming" ? r.learnerName : r.mentorName} · {r.status}
             </p>

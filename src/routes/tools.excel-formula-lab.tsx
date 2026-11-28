@@ -50,7 +50,7 @@ function ExcelFormulaLabPage() {
         <ExcelFormulaLab />
 
         <div className="mx-auto mt-14 grid max-w-5xl gap-8 md:grid-cols-2">
-          <div className="border-foreground/10 bg-card rounded-2xl border p-6">
+          <div className="border-foreground/10 bg-card rounded-xl border p-6">
             <Eyebrow>
               <Table className="size-3.5" aria-hidden="true" /> Five formulas employers test first
             </Eyebrow>
@@ -79,7 +79,7 @@ function ExcelFormulaLabPage() {
             </div>
           </div>
 
-          <div className="border-foreground/10 bg-card rounded-2xl border p-6">
+          <div className="border-foreground/10 bg-card rounded-xl border p-6">
             <Eyebrow>
               <AlertTriangle className="size-3.5" aria-hidden="true" /> If it goes wrong
             </Eyebrow>

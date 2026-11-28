@@ -292,7 +292,7 @@ export function SecurityAssessmentBuilder() {
                 <span className="text-sm font-medium">{f.label}</span>
                 <span
                   className={cn(
-                    "rounded px-1.5 py-0.5 text-[10px] font-bold text-white uppercase",
+                    "rounded-lg px-1.5 py-0.5 text-[10px] font-bold text-white uppercase",
                     SEVERITY_BANDS[f.severity].colour,
                   )}
                 >

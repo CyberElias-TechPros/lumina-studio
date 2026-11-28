@@ -69,7 +69,7 @@ export function LessonQuiz({
 
   return (
     <section
-      className="border-foreground/10 bg-card overflow-hidden rounded-2xl border"
+      className="border-foreground/10 bg-card overflow-hidden rounded-xl border"
       aria-label={`${title} — ${total} questions`}
     >
       {/* header */}

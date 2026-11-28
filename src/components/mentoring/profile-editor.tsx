@@ -103,7 +103,7 @@ export function MentoringProfileEditor() {
         </label>
         <textarea
           id="mentor-bio"
-          className="border-input bg-background min-h-24 w-full rounded-md border px-3 py-2 text-sm"
+          className="border-input bg-background min-h-24 w-full rounded-lg border px-3 py-2 text-sm"
           maxLength={1000}
           disabled={busy}
           value={bio}

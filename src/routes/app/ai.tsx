@@ -253,7 +253,7 @@ function GeneratePanel() {
                 type="button"
                 onClick={() => setKind(option)}
                 className={cn(
-                  "rounded-md px-3 py-1.5 text-xs font-bold capitalize transition-colors",
+                  "rounded-lg px-3 py-1.5 text-xs font-bold capitalize transition-colors",
                   kind === option
                     ? "bg-card text-primary shadow-sm"
                     : "text-muted-foreground hover:text-foreground",
@@ -329,7 +329,7 @@ function QuizContent({ content }: { content: unknown }) {
               <p
                 key={optionIndex}
                 className={cn(
-                  "rounded-md border px-2.5 py-1.5 text-[11px] font-semibold",
+                  "rounded-lg border px-2.5 py-1.5 text-[11px] font-semibold",
                   optionIndex === question.answerIndex
                     ? "border-success/50 bg-success/10 text-success"
                     : "bg-muted/50 text-muted-foreground",
@@ -378,7 +378,7 @@ function ModelPicker({
         ))}
       </select>
       {selected && (
-        <span className="text-success bg-success/10 rounded px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide">
+        <span className="text-success bg-success/10 rounded-lg px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide">
           Free
         </span>
       )}

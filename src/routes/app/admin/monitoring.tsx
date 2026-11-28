@@ -72,9 +72,9 @@ function AdminMonitoring() {
           {Array.from({ length: 4 }).map((_, i) => (
             <Card key={i} className="bg-card shadow-soft border">
               <CardContent className="p-5">
-                <div className="bg-muted h-3 w-20 animate-pulse rounded" />
-                <div className="bg-muted mt-4 h-8 w-16 animate-pulse rounded" />
-                <div className="bg-muted mt-2 h-3 w-24 animate-pulse rounded" />
+                <div className="bg-muted h-3 w-20 animate-pulse rounded-lg" />
+                <div className="bg-muted mt-4 h-8 w-16 animate-pulse rounded-lg" />
+                <div className="bg-muted mt-2 h-3 w-24 animate-pulse rounded-lg" />
               </CardContent>
             </Card>
           ))}

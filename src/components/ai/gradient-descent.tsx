@@ -133,7 +133,7 @@ export function GradientDescentLab() {
   }, [points, epoch]);
 
   return (
-    <div className="border-white/12 overflow-hidden rounded-2xl border bg-[#070d1d] text-[#eef2fb] shadow-[0_24px_70px_-32px_rgba(0,0,0,0.8)]">
+    <div className="border-white/12 overflow-hidden rounded-xl border bg-[#070d1d] text-[#eef2fb] shadow-[0_24px_70px_-32px_rgba(0,0,0,0.8)]">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/8 px-5 py-3.5">
         <div className="flex items-center gap-2.5">
           <span className="size-2 rounded-full bg-[#f87171]" aria-hidden="true" />

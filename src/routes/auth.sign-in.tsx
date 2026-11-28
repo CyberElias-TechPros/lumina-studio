@@ -147,7 +147,7 @@ function SignInPage() {
             <Link
               to="/"
               aria-label="Cyber Elias Academy — home"
-              className="cea-auth-logo mx-auto grid size-12 place-items-center rounded-2xl text-white"
+              className="cea-auth-logo mx-auto grid size-12 place-items-center rounded-xl text-white"
             >
               <span className="font-display text-sm font-semibold">CE</span>
             </Link>
@@ -168,7 +168,7 @@ function SignInPage() {
             </div>
           ) : null}
 
-          <div className="cea-auth-card border-border bg-card rounded-2xl border p-6 sm:p-8">
+          <div className="cea-auth-card border-border bg-card rounded-xl border p-6 sm:p-8">
             {sent ? (
               <div className="text-center" role="status" aria-live="polite">
                 <span className="bg-success/10 text-success mx-auto grid size-12 place-items-center rounded-full">

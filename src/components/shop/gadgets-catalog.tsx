@@ -367,7 +367,7 @@ export function GadgetsCatalog({ includeDigital = false }: { includeDigital?: bo
                     Quantity{" "}
                     <select
                       aria-label={`Quantity for ${item?.title ?? "unavailable item"}`}
-                      className="bg-background ml-2 rounded-md border p-2"
+                      className="bg-background ml-2 rounded-lg border p-2"
                       value={quantity}
                       onChange={(event) =>
                         setBasket((prev) =>
@@ -594,7 +594,7 @@ export function GadgetsCatalog({ includeDigital = false }: { includeDigital?: bo
           <select
             value={category}
             onChange={(event) => setCategory(event.target.value)}
-            className="bg-background mt-2 block w-full rounded-md border p-2"
+            className="bg-background mt-2 block w-full rounded-lg border p-2"
           >
             <option value="all">All {includeDigital ? "products" : "gadgets"}</option>
             {includeDigital && <option value="digital">Digital products</option>}
@@ -610,7 +610,7 @@ export function GadgetsCatalog({ includeDigital = false }: { includeDigital?: bo
           <select
             value={condition}
             onChange={(event) => setCondition(event.target.value)}
-            className="bg-background mt-2 block w-full rounded-md border p-2"
+            className="bg-background mt-2 block w-full rounded-lg border p-2"
           >
             <option value="all">All conditions</option>
             <option value="new">New</option>
@@ -622,7 +622,7 @@ export function GadgetsCatalog({ includeDigital = false }: { includeDigital?: bo
           <select
             value={sort}
             onChange={(event) => setSort(event.target.value as SortOrder)}
-            className="bg-background mt-2 block w-full rounded-md border p-2"
+            className="bg-background mt-2 block w-full rounded-lg border p-2"
           >
             <option value="featured">Featured</option>
             <option value="name">Name A–Z</option>

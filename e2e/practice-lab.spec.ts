@@ -72,10 +72,11 @@ test("lab is discoverable from home and Notes and provides a no-JS reading alter
   baseURL,
 }) => {
   await page.goto("/");
-  await expect(page.getByRole("link", { name: "Try the Computer Basics Lab" })).toHaveAttribute(
-    "href",
-    "/practice/computer-basics",
-  );
+  // The homepage offers the lab as "Open Computer Basics Lab"; the blog index
+  // as "Try the Computer Basics Lab". Same destination, different promise, so
+  // match the link by where it goes rather than by a word either page may
+  // legitimately change.
+  await expect(page.locator('a[href="/practice/computer-basics"]').first()).toBeVisible();
   await page.goto("/blog");
   await expect(page.getByRole("link", { name: "Try the Computer Basics Lab" })).toHaveAttribute(
     "href",

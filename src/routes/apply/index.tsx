@@ -412,7 +412,7 @@ function ApplyPage() {
                         setFieldErrors({});
                       }}
                       className={cn(
-                        "flex items-center gap-1.5 rounded-md border px-2 py-2",
+                        "flex items-center gap-1.5 rounded-lg border px-2 py-2",
                         state === "current" && "border-primary/50 bg-primary/5",
                         state === "done" && "border-border bg-success/5",
                         state === "todo" && "border-border/70",
@@ -448,7 +448,7 @@ function ApplyPage() {
               })}
             </ol>
 
-            <div ref={stepPanel} className="border-card shadow-soft rounded-2xl border p-6 sm:p-8">
+            <div ref={stepPanel} className="border-card shadow-soft rounded-xl border p-6 sm:p-8">
               {Object.keys(fieldErrors).length > 0 && (
                 <div
                   ref={errorSummary}

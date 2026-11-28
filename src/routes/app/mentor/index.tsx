@@ -44,7 +44,7 @@ const menteeTone = ["bg-gradient-learning", "bg-gradient-erp", "bg-gradient-serv
 
 function MenteeRow({ m, tone }: { m: MntMentee; tone: string }) {
   return (
-    <div className={cn("rounded-2xl p-4 text-white", tone)}>
+    <div className={cn("rounded-xl p-4 text-white", tone)}>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <p className="font-display text-sm font-extrabold">{m.name}</p>

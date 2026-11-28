@@ -557,7 +557,7 @@ export function CodeStudio() {
       </div>
 
       {/* Active task banner */}
-      <div className="border-foreground/10 bg-card rounded-2xl border p-5">
+      <div className="border-foreground/10 bg-card rounded-xl border p-5">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="max-w-3xl">
             <p className="text-primary font-mono text-[10px] tracking-[0.2em] uppercase">
@@ -600,7 +600,7 @@ export function CodeStudio() {
       {/* Main workspace: Editor + Isolated Preview */}
       <div className="grid gap-5 lg:grid-cols-2">
         {/* Left: Code Editor */}
-        <div className="border-foreground/12 bg-card flex flex-col overflow-hidden rounded-2xl border">
+        <div className="border-foreground/12 bg-card flex flex-col overflow-hidden rounded-xl border">
           <div className="border-foreground/10 bg-muted/40 flex items-center justify-between border-b px-3 py-2">
             <div className="flex gap-1" role="tablist" aria-label="Editor file tabs">
               {(["html", "css", "js"] as TabId[]).map((t) => (
@@ -648,7 +648,7 @@ export function CodeStudio() {
               }
             }}
             spellCheck={false}
-            className="bg-[#0b1220] text-[#e2e8f0] min-h-[340px] w-full flex-1 resize-y p-4 font-mono text-[13px] leading-6 focus:outline-none"
+            className="bg-[#0b1220] text-[#e2e8f0] min-h-[340px] w-full flex-1 resize-y p-4 font-mono text-[13px] leading-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/50 focus-visible:ring-inset"
           />
 
           {/* Console output */}
@@ -690,7 +690,7 @@ export function CodeStudio() {
 
         {/* Right: Sandboxed Live Preview + Automated Checks */}
         <div className="flex flex-col gap-4">
-          <div className="border-foreground/12 bg-card flex flex-1 flex-col overflow-hidden rounded-2xl border">
+          <div className="border-foreground/12 bg-card flex flex-1 flex-col overflow-hidden rounded-xl border">
             <div className="border-foreground/10 bg-muted/40 flex items-center justify-between border-b px-3 py-2">
               <span className="inline-flex items-center gap-1.5 font-mono text-[11px] font-medium">
                 <Code2 className="text-primary size-3.5" aria-hidden="true" /> Isolated Preview
@@ -710,7 +710,7 @@ export function CodeStudio() {
                     aria-label={`${vp.label} viewport`}
                     onClick={() => setViewport(vp.id)}
                     className={cn(
-                      "cursor-pointer rounded-md p-1.5 transition-colors",
+                      "cursor-pointer rounded-lg p-1.5 transition-colors",
                       viewport === vp.id
                         ? "bg-primary text-primary-foreground"
                         : "text-muted-foreground hover:text-foreground",
@@ -736,7 +736,7 @@ export function CodeStudio() {
           </div>
 
           {checkResults.length > 0 && (
-            <div className="border-foreground/10 bg-card rounded-2xl border p-4">
+            <div className="border-foreground/10 bg-card rounded-xl border p-4">
               <p className="font-mono text-[10px] tracking-[0.2em] text-primary uppercase">
                 Automated Check ({checkResults.filter((c) => c.passed).length}/{checkResults.length}
                 )

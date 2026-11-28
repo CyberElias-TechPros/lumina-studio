@@ -88,7 +88,7 @@ export function MentoringReview() {
         </label>
         <select
           id="mentoring-review-account"
-          className="border-input bg-background w-full rounded-md border px-3 py-2 text-sm"
+          className="border-input bg-background w-full rounded-lg border px-3 py-2 text-sm"
           disabled={busy}
           value={userId}
           onChange={(e) => {
@@ -191,7 +191,7 @@ export function MentoringReview() {
           </Button>
         </div>
         {selected && (
-          <div className="space-y-3 rounded-md border p-4">
+          <div className="space-y-3 rounded-lg border p-4">
             <p className="font-semibold text-sm">
               Mentor profile:{" "}
               {selected.visible

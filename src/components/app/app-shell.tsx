@@ -1242,7 +1242,7 @@ export function AppShell({
       <div className="cea-workspace bg-muted/30 flex min-h-screen">
         <a
           href="#app-main"
-          className="bg-primary text-primary-foreground focus-visible:ring-ring fixed top-3 left-1/2 z-[100] -translate-x-1/2 -translate-y-28 rounded-md px-4 py-2 text-sm font-medium transition-transform focus-visible:translate-y-0 focus-visible:ring-2"
+          className="bg-primary text-primary-foreground focus-visible:ring-ring fixed top-3 left-1/2 z-[100] -translate-x-1/2 -translate-y-28 rounded-lg px-4 py-2 text-sm font-medium transition-transform focus-visible:translate-y-0 focus-visible:ring-2"
         >
           Skip to main content
         </a>
@@ -1394,7 +1394,7 @@ export function AppShell({
             )}
             {accessDenied ? (
               <div className="mx-auto flex min-h-[420px] max-w-xl flex-col items-center justify-center text-center">
-                <span className="bg-error/10 text-error grid size-14 place-items-center rounded-2xl">
+                <span className="bg-error/10 text-error grid size-14 place-items-center rounded-xl">
                   <ShieldCheck className="size-7" aria-hidden="true" />
                 </span>
                 <h2 className="font-display mt-5 text-xl font-extrabold">

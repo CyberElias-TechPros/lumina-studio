@@ -71,7 +71,7 @@ function PasswordStrengthPage() {
               banking, Paystack/Stripe dashboards and the school portal.
             </li>
           </ol>
-          <div className="border-foreground/10 bg-card mt-8 grid gap-6 rounded-2xl border p-6 sm:grid-cols-2">
+          <div className="border-foreground/10 bg-card mt-8 grid gap-6 rounded-xl border p-6 sm:grid-cols-2">
             <div>
               <h2 className="font-display text-lg font-semibold">
                 Why four random words beat one &ldquo;clever&rdquo; substitution

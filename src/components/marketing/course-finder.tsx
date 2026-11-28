@@ -292,7 +292,7 @@ export function CourseFinder({ id = "course-finder" }: { id?: string }) {
                 and compare their fees and requirements.
               </p>
             )}
-            <div className="mt-8 overflow-hidden rounded-2xl bg-[#101f34] p-5 text-white sm:p-6">
+            <div className="mt-8 overflow-hidden rounded-xl bg-[#101f34] p-5 text-white sm:p-6">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <p className="text-xs font-semibold tracking-[0.14em] uppercase text-[#a4dce7]">
@@ -413,7 +413,7 @@ export function CourseFinder({ id = "course-finder" }: { id?: string }) {
                   <br />
                   {question.legend}
                 </legend>
-                <div className="mt-4 grid gap-4 rounded-2xl border border-border bg-card p-4 sm:grid-cols-[10rem_1fr] sm:p-5">
+                <div className="mt-4 grid gap-4 rounded-xl border border-border bg-card p-4 sm:grid-cols-[10rem_1fr] sm:p-5">
                   <div
                     aria-hidden="true"
                     className="relative flex min-h-28 items-center justify-center overflow-hidden rounded-xl bg-[#e8f2f7] text-[#194587] dark:bg-[#263b4e] dark:text-[#b6d7ff]"
@@ -422,7 +422,7 @@ export function CourseFinder({ id = "course-finder" }: { id?: string }) {
                       SCENARIO 0{index + 1}
                     </span>
                     <span className="absolute -right-5 -bottom-8 size-28 rounded-full border-[18px] border-current opacity-[0.07]" />
-                    <span className="relative mt-4 grid size-16 place-items-center rounded-2xl border border-current/15 bg-white/70 shadow-sm dark:bg-black/20">
+                    <span className="relative mt-4 grid size-16 place-items-center rounded-xl border border-current/15 bg-white/70 shadow-sm dark:bg-black/20">
                       {question.key === "typing" ? (
                         <FileText className="size-8" strokeWidth={1.4} />
                       ) : (
@@ -481,7 +481,7 @@ export function CourseFinder({ id = "course-finder" }: { id?: string }) {
           <aside
             id={`${id}-results`}
             aria-label="Course recommendation"
-            className="border-border bg-background scroll-mt-24 rounded-2xl border p-5 md:p-6"
+            className="border-border bg-background scroll-mt-24 rounded-xl border p-5 md:p-6"
           >
             <p className="sr-only" aria-live="polite">
               {recommendations.length
@@ -501,7 +501,7 @@ export function CourseFinder({ id = "course-finder" }: { id?: string }) {
                 <button
                   type="button"
                   onClick={reset}
-                  className="text-muted-foreground hover:text-foreground inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-md px-2 text-xs font-medium focus-visible:ring-2 focus-visible:ring-ring"
+                  className="text-muted-foreground hover:text-foreground inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-lg px-2 text-xs font-medium focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   <RotateCcw aria-hidden="true" className="size-3.5" /> Start over
                 </button>
@@ -555,7 +555,7 @@ export function CourseFinder({ id = "course-finder" }: { id?: string }) {
               <div className="border-border bg-muted/30 mt-5 rounded-xl border border-dashed p-6">
                 <span
                   aria-hidden="true"
-                  className="bg-primary/10 text-primary mb-4 grid size-12 place-items-center rounded-2xl"
+                  className="bg-primary/10 text-primary mb-4 grid size-12 place-items-center rounded-xl"
                 >
                   <CircleHelp className="size-6" />
                 </span>

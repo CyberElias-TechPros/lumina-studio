@@ -138,7 +138,7 @@ function ParentStudentGrades() {
                           {c.units} {c.units === 1 ? "unit" : "units"} · {trendLabel(c.trend)}
                         </p>
                       </div>
-                      <span className="bg-success/10 text-success rounded-md px-2 py-0.5 text-xs font-bold">
+                      <span className="bg-success/10 text-success rounded-lg px-2 py-0.5 text-xs font-bold">
                         {c.pct}%
                       </span>
                       <Progress value={c.pct} className="h-1.5 w-24" />

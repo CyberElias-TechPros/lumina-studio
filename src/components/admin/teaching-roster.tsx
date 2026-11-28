@@ -34,7 +34,7 @@ export function TeachingRoster() {
   });
   const people = accounts.data?.pages.flatMap((page) => page.items) ?? [];
   const courseItems = courses.data?.pages.flatMap((page) => page.items) ?? [];
-  const selectClass = "border-input bg-background w-full rounded-md border px-3 py-2 text-sm";
+  const selectClass = "border-input bg-background w-full rounded-lg border px-3 py-2 text-sm";
   const clear = () => {
     setConfirmed(false);
     update.reset();

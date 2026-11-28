@@ -291,7 +291,7 @@ export function TiltCard({
       {glare && (
         <motion.span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 rounded-2xl"
+          className="pointer-events-none absolute inset-0 rounded-xl"
           style={{ background: glareBg, opacity: hovered ? 1 : 0 }}
           initial={false}
           animate={{ opacity: hovered ? 1 : 0 }}
@@ -950,7 +950,7 @@ export function StickyShowcase({
       <div className="grid gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
         <div className="relative hidden lg:sticky lg:top-0 lg:block lg:h-screen lg:self-start">
           <div className="flex h-full flex-col justify-center py-10">
-            <div className="panel relative aspect-[4/3.2] max-h-[52vh] overflow-hidden rounded-[2px]">
+            <div className="panel relative aspect-[4/3.2] max-h-[52vh] overflow-hidden rounded-lg-[2px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={active}

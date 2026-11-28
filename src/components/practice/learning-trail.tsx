@@ -25,7 +25,7 @@ export function LearningTrail({ lessons }: { lessons: { slug: string; title: str
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,0.8fr)] lg:items-start">
       <div>
-        <div className="rounded-2xl bg-[#101f34] p-6 text-white">
+        <div className="rounded-xl bg-[#101f34] p-6 text-white">
           <p className="text-xs font-semibold tracking-widest text-[#a4dce7] uppercase">
             Your beginner trail
           </p>
@@ -51,7 +51,7 @@ export function LearningTrail({ lessons }: { lessons: { slug: string; title: str
           </div>
         </div>
         <section
-          className="border-border bg-card mt-6 rounded-2xl border p-5 sm:p-7"
+          className="border-border bg-card mt-6 rounded-xl border p-5 sm:p-7"
           aria-labelledby="continue-title"
         >
           <p className="text-primary text-xs font-semibold tracking-widest uppercase">
@@ -124,7 +124,7 @@ export function LearningTrail({ lessons }: { lessons: { slug: string; title: str
         </section>
       </div>
       <aside className="space-y-5">
-        <section className="border-border bg-card rounded-2xl border p-6">
+        <section className="border-border bg-card rounded-xl border p-6">
           <h2 className="font-display text-xl font-semibold">Your bookmarks</h2>
           {bookmarks.length ? (
             <ul className="mt-3 space-y-2">
@@ -145,7 +145,7 @@ export function LearningTrail({ lessons }: { lessons: { slug: string; title: str
             </p>
           )}
         </section>
-        <section className="border-border bg-card rounded-2xl border p-6">
+        <section className="border-border bg-card rounded-xl border p-6">
           <h2 className="font-display text-xl font-semibold">Computer Basics Lab</h2>
           <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
             {progress.labCompleted
@@ -159,7 +159,7 @@ export function LearningTrail({ lessons }: { lessons: { slug: string; title: str
             Open the lab <ArrowRight aria-hidden="true" className="size-4" />
           </Link>
         </section>
-        <section className="border-border bg-muted/30 rounded-2xl border p-6">
+        <section className="border-border bg-muted/30 rounded-xl border p-6">
           <h2 className="font-display text-xl font-semibold">Your privacy</h2>
           <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
             Progress is optional and stays in this browser on this device. We save only your

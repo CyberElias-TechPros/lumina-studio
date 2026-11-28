@@ -20,7 +20,7 @@ export function LessonChallengeCard({
   return (
     <section
       aria-labelledby="lesson-practice-heading"
-      className="border-primary/25 bg-primary/5 mt-12 rounded-2xl border p-5 sm:p-7"
+      className="border-primary/25 bg-primary/5 mt-12 rounded-xl border p-5 sm:p-7"
     >
       <p className="text-primary flex items-center gap-2 text-xs font-semibold tracking-widest uppercase">
         <Lightbulb aria-hidden="true" className="size-4" /> Try what you learned

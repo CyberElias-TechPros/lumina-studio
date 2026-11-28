@@ -52,7 +52,7 @@ function About() {
               </Link>
             </div>
           </div>
-          <figure className="border-border bg-card overflow-hidden rounded-2xl border">
+          <figure className="border-border bg-card overflow-hidden rounded-xl border">
             <CampusImg id="lab-1" eager className="aspect-[16/10]" />
             <figcaption className="text-muted-foreground px-4 py-3 text-xs">
               The classroom at 24 Ebony Road, Off Rumuola Road, Port Harcourt
@@ -66,7 +66,7 @@ function About() {
       {/* Chapters 02 & 03 — The Problem & The Mission */}
       <section className="border-b border-[#2c333c] bg-[#101214] py-16 text-[#f4f1e9] md:py-20">
         <div className="container-page grid gap-10 md:grid-cols-2 md:gap-16">
-          <div className="rounded-2xl border border-[#242a31] bg-[#181c20] p-7">
+          <div className="rounded-xl border border-[#242a31] bg-[#181c20] p-7">
             <p className="font-mono text-xs font-semibold tracking-[0.14em] text-[#f17c52] uppercase">
               02 — The problem
             </p>
@@ -79,7 +79,7 @@ function About() {
               than doing.
             </p>
           </div>
-          <div className="rounded-2xl border border-[#d6fe52]/35 bg-[#181c20] p-7">
+          <div className="rounded-xl border border-[#d6fe52]/35 bg-[#181c20] p-7">
             <p className="font-mono text-xs font-semibold tracking-[0.14em] text-[#d6fe52] uppercase">
               03 — The mission
             </p>
@@ -111,7 +111,7 @@ function About() {
           </p>
           <ol className="mt-8 grid gap-3 sm:grid-cols-3 lg:grid-cols-6">
             {teachingLoop.map((step, i) => (
-              <li key={step} className="border-border bg-card rounded-2xl border p-4">
+              <li key={step} className="border-border bg-card rounded-xl border p-4">
                 <span className="font-mono text-xs font-bold text-[#d4572c]">0{i + 1}</span>
                 <p className="font-display mt-2 text-base font-semibold">{step}</p>
               </li>
@@ -124,7 +124,7 @@ function About() {
       <section className="border-border bg-muted/35 border-b py-16 md:py-20">
         <div className="container-page grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
-            <FounderPhoto className="size-32 shrink-0 rounded-2xl md:size-40" />
+            <FounderPhoto className="size-32 shrink-0 rounded-xl md:size-40" />
             <div>
               <p className="font-mono text-xs font-semibold tracking-[0.14em] text-[#d4572c] uppercase">
                 05 — The people
@@ -144,7 +144,7 @@ function About() {
             </div>
           </div>
 
-          <figure className="border-border bg-card overflow-hidden rounded-2xl border">
+          <figure className="border-border bg-card overflow-hidden rounded-xl border">
             <CampusImg id="lab-2" className="aspect-[4/3]" />
             <figcaption className="text-muted-foreground border-t border-border px-4 py-2.5 text-xs">
               24 Ebony Road, Off Rumuola Road · +234 905 862 8386 · help@cea.ng

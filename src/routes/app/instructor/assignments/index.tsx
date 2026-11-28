@@ -306,7 +306,7 @@ function PublishAssignmentForm() {
           </p>
         )}
         {pendingReference && (
-          <div className="space-y-2 rounded-md border p-3 text-sm">
+          <div className="space-y-2 rounded-lg border p-3 text-sm">
             <p>
               A publication needs confirmation. The retry reference is stored in this browser tab,
               not the assignment content. Re-enter the exact details to retry safely, or check its
@@ -435,7 +435,7 @@ function PublishAssignmentForm() {
               required
               value={courseSlug}
               onChange={(e) => setCourseSlug(e.target.value)}
-              className="border-input bg-background w-full rounded-md border px-3 py-2 text-sm"
+              className="border-input bg-background w-full rounded-lg border px-3 py-2 text-sm"
             >
               <option value="">Select course</option>
               {courses.data.items.map((course) => (
@@ -463,7 +463,7 @@ function PublishAssignmentForm() {
               maxLength={10000}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="border-input bg-background min-h-24 w-full rounded-md border px-3 py-2 text-sm"
+              className="border-input bg-background min-h-24 w-full rounded-lg border px-3 py-2 text-sm"
             />
             <label className="block text-sm font-semibold" htmlFor="publish-deadline">
               Deadline (your local time)

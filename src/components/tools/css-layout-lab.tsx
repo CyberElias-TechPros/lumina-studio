@@ -312,7 +312,7 @@ export function CssLayoutLab() {
       {mode === "playground" ? (
         <div className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.2fr)]">
           {/* Controls */}
-          <div className="border-foreground/10 bg-card space-y-5 rounded-2xl border p-5">
+          <div className="border-foreground/10 bg-card space-y-5 rounded-xl border p-5">
             <div>
               <p className="font-mono text-[10px] tracking-[0.2em] text-primary uppercase">
                 1. Layout Engine
@@ -503,7 +503,7 @@ export function CssLayoutLab() {
           </div>
 
           {/* Live stage */}
-          <div className="border-foreground/10 bg-card flex flex-col rounded-2xl border p-5">
+          <div className="border-foreground/10 bg-card flex flex-col rounded-xl border p-5">
             <p className="font-mono text-[10px] tracking-[0.2em] text-primary uppercase">
               Live Stage
             </p>
@@ -569,7 +569,7 @@ export function CssLayoutLab() {
           </div>
 
           <div className="grid gap-6 lg:grid-cols-2">
-            <div className="border-foreground/10 bg-card space-y-4 rounded-2xl border p-5">
+            <div className="border-foreground/10 bg-card space-y-4 rounded-xl border p-5">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <p className="text-primary font-mono text-[10px] tracking-[0.2em] uppercase">
@@ -595,7 +595,7 @@ export function CssLayoutLab() {
                   onChange={(e) => setPuzzleCss(e.target.value)}
                   rows={6}
                   spellCheck={false}
-                  className="my-1 w-full resize-none bg-transparent pl-3 font-mono text-[13px] leading-6 text-sky-200 focus:outline-none"
+                  className="my-1 w-full resize-none bg-transparent pl-3 font-mono text-[13px] leading-6 text-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-inset"
                 />
                 <p className="text-slate-400">&#125;</p>
               </div>
@@ -634,7 +634,7 @@ export function CssLayoutLab() {
               </ul>
             </div>
 
-            <div className="border-foreground/10 bg-card flex flex-col rounded-2xl border p-5">
+            <div className="border-foreground/10 bg-card flex flex-col rounded-xl border p-5">
               <div className="flex items-center justify-between">
                 <span className="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-[0.2em] text-primary uppercase">
                   <LayoutGrid className="size-3.5" /> Puzzle Canvas

@@ -54,7 +54,7 @@ function ComputerBasicsPage() {
       <div className="container-page grid max-w-6xl gap-10 py-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,0.8fr)] lg:items-start">
         <ComputerBasicsLab />
         <aside
-          className="border-border bg-card rounded-2xl border p-6"
+          className="border-border bg-card rounded-xl border p-6"
           aria-labelledby="lab-lessons"
         >
           <p className="text-primary text-xs font-semibold tracking-widest uppercase">

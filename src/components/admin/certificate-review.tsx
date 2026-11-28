@@ -60,7 +60,7 @@ export function CertificateReview() {
   };
   const people = accounts.data?.pages.flatMap((page) => page.items) ?? [];
   const courseItems = courses.data?.pages.flatMap((page) => page.items) ?? [];
-  const selectClass = "border-input bg-background w-full rounded-md border px-3 py-2 text-sm";
+  const selectClass = "border-input bg-background w-full rounded-lg border px-3 py-2 text-sm";
   return (
     <Card className="bg-card mt-5 border shadow-soft">
       <CardContent className="space-y-4 p-5">
@@ -158,7 +158,7 @@ export function CertificateReview() {
               </p>
             )}
             {records.data.items.map((record) => (
-              <div key={record.id} className="rounded-md border p-3 text-sm">
+              <div key={record.id} className="rounded-lg border p-3 text-sm">
                 <p className="font-semibold">
                   {record.title} ·{" "}
                   {record.status === "legacy"
@@ -199,7 +199,7 @@ export function CertificateReview() {
           </div>
         )}
         {selectedRevocation && (
-          <div className="space-y-2 rounded-md border p-3">
+          <div className="space-y-2 rounded-lg border p-3">
             <p className="text-sm font-semibold">Revoking {selectedRevocation.title}</p>
             <p className="text-muted-foreground break-all font-mono text-xs">
               {selectedRevocation.code}

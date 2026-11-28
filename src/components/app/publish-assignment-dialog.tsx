@@ -111,7 +111,7 @@ export function PublishAssignmentDialog() {
               <Label htmlFor="pa-course">Course</Label>
               <select
                 id="pa-course"
-                className="border-input bg-background h-9 rounded-md border px-3 text-sm"
+                className="border-input bg-background h-9 rounded-lg border px-3 text-sm"
                 value={form.courseSlug}
                 onChange={(e) => set("courseSlug", e.target.value)}
                 aria-invalid={Boolean(errors.courseSlug)}

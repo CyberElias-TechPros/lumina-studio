@@ -78,7 +78,7 @@ export function GlobalSearchTrigger({ className }: { className?: string }) {
       >
         <Search className="size-3.5" aria-hidden="true" />
         <span className="hidden sm:inline">Search</span>
-        <kbd className="border-border bg-background text-muted-foreground hidden rounded px-1.5 py-0.5 font-mono text-[10px] sm:inline">
+        <kbd className="border-border bg-background text-muted-foreground hidden rounded-lg px-1.5 py-0.5 font-mono text-[10px] sm:inline">
           ⌘K
         </kbd>
       </button>
@@ -187,7 +187,7 @@ function GlobalSearchModal({ onClose }: { onClose: () => void }) {
       onClick={onClose}
     >
       <div
-        className="w-full max-w-2xl overflow-hidden rounded-2xl border border-[#2c333c] bg-[#101214] text-[#f4f1e9] shadow-2xl"
+        className="w-full max-w-2xl overflow-hidden rounded-xl border border-[#2c333c] bg-[#101214] text-[#f4f1e9] shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center gap-3 border-b border-[#2c333c] px-4 py-3.5">
@@ -198,7 +198,7 @@ function GlobalSearchModal({ onClose }: { onClose: () => void }) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="What do you want to learn, practise, or build?"
-            className="w-full bg-transparent text-sm text-[#f4f1e9] placeholder:text-[#9ea7b4] focus:outline-none sm:text-base"
+            className="w-full bg-transparent text-sm text-[#f4f1e9] placeholder:text-[#9ea7b4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d6fe52] focus-visible:ring-inset sm:text-base"
           />
           <button
             type="button"

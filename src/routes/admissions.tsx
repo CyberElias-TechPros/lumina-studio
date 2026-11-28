@@ -100,7 +100,7 @@ function Admissions() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-[#F4F1E9]/15 bg-[#161A1F] p-6 sm:p-7">
+          <div className="rounded-xl border border-[#F4F1E9]/15 bg-[#161A1F] p-6 sm:p-7">
             <p className="font-mono text-[11px] font-semibold tracking-[0.2em] text-[#F17C52] uppercase">
               Protection Promise
             </p>
@@ -138,7 +138,7 @@ function Admissions() {
               Every cohort has a verified timetable and clear equipment checklist. Unscheduled
               courses collect interest only until seats open.
             </p>
-            <figure className="border-border mt-8 overflow-hidden rounded-2xl border bg-card">
+            <figure className="border-border mt-8 overflow-hidden rounded-xl border bg-card">
               <CampusImg id="lab-3" className="aspect-[16/10]" />
               <figcaption className="text-muted-foreground flex items-center justify-between px-4 py-2.5 text-xs">
                 <span>Practical session at 24 Ebony Road, Port Harcourt</span>
@@ -153,7 +153,7 @@ function Admissions() {
             {steps.map((s) => (
               <li
                 key={s.n}
-                className="border-border bg-card group rounded-2xl border p-6 transition-colors hover:border-primary/40 sm:p-7"
+                className="border-border bg-card group rounded-xl border p-6 transition-colors hover:border-primary/40 sm:p-7"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="font-mono text-sm font-bold tracking-wider text-primary">
@@ -184,7 +184,7 @@ function Admissions() {
       {/* 3. ACTION STRIP: TRACK, PAY, OR VISIT */}
       <section className="border-border bg-muted/40 border-y">
         <div className="container-page grid gap-6 py-16 md:grid-cols-3 md:py-20">
-          <div className="bg-card border-border rounded-2xl border p-6">
+          <div className="bg-card border-border rounded-xl border p-6">
             <Search className="text-primary size-5" />
             <h2 className="font-display mt-4 text-xl font-semibold">Already applied?</h2>
             <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
@@ -196,7 +196,7 @@ function Admissions() {
             </Button>
           </div>
 
-          <div className="bg-card border-border rounded-2xl border p-6">
+          <div className="bg-card border-border rounded-xl border p-6">
             <CreditCard className="text-primary size-5" />
             <h2 className="font-display mt-4 text-xl font-semibold">Fees & payments</h2>
             <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
@@ -207,7 +207,7 @@ function Admissions() {
             </Button>
           </div>
 
-          <div className="bg-card border-border rounded-2xl border p-6">
+          <div className="bg-card border-border rounded-xl border p-6">
             <MapPin className="text-primary size-5" />
             <h2 className="font-display mt-4 text-xl font-semibold">Visit before enrolling</h2>
             <p className="text-muted-foreground mt-2 text-sm leading-relaxed">

@@ -258,7 +258,7 @@ function CalendarPage() {
                         key={l.kind}
                         className="flex items-center gap-1.5 text-[11px] font-semibold"
                       >
-                        <span className={cn("size-2.5 rounded-sm", kindTone[l.kind])} /> {l.label}
+                        <span className={cn("size-2.5 rounded-md", kindTone[l.kind])} /> {l.label}
                       </span>
                     ))}
                   </div>

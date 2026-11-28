@@ -187,10 +187,10 @@ function ClassContent({ classId, session }: { classId: string; session: LiveClas
   return (
     <div className="grid gap-5 xl:grid-cols-[1.6fr_1fr]">
       <div className="space-y-5">
-        <div className="bg-gradient-ink relative overflow-hidden rounded-2xl border">
+        <div className="bg-gradient-ink relative overflow-hidden rounded-xl border">
           <div className="aspect-video grid place-items-center p-6">
             <div className="max-w-md text-center">
-              <span className="bg-ink-foreground/10 mx-auto grid size-16 place-items-center rounded-2xl">
+              <span className="bg-ink-foreground/10 mx-auto grid size-16 place-items-center rounded-xl">
                 <Video className="text-ink-foreground size-8" />
               </span>
               {session.meetingUrl ? (
@@ -436,7 +436,7 @@ function PollsPanel({
               onChange={(e) => setOptionsText(e.target.value)}
               rows={3}
               placeholder="One option per line"
-              className="bg-background border-input w-full rounded-md border p-2 text-xs"
+              className="bg-background border-input w-full rounded-lg border p-2 text-xs"
               required
             />
             {createPoll.isError && (

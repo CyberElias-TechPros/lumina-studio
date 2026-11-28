@@ -49,7 +49,7 @@ export function PromptLab() {
   };
 
   return (
-    <div className="border-foreground/10 bg-card divide-y divide-foreground/8 overflow-hidden rounded-2xl border">
+    <div className="border-foreground/10 bg-card divide-y divide-foreground/8 overflow-hidden rounded-xl border">
       {PAIRS.map((pair, index) => (
         <div
           key={pair.label}

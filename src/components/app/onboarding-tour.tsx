@@ -217,7 +217,7 @@ export function OnboardingTour() {
         }}
       >
         <DialogContent
-          className="fixed z-[120] w-[calc(100vw-2rem)] max-w-80 gap-0 rounded-2xl p-5 shadow-elevated [&>button:last-child]:hidden"
+          className="fixed z-[120] w-[calc(100vw-2rem)] max-w-80 gap-0 rounded-xl p-5 shadow-elevated [&>button:last-child]:hidden"
           style={cardStyle}
           onEscapeKeyDown={finish}
         >

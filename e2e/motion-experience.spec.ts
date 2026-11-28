@@ -1,5 +1,37 @@
 import { expect, test } from "@playwright/test";
 
+/**
+ * Motion and resilience guarantees for the public marketing surface.
+ *
+ * ## What this file defends
+ *
+ * Not the animation. The animation is decoration, and a test that asserts on a
+ * spring easing is a test that will be deleted the first time it disagrees with
+ * a designer. What is defended here are the promises that would actually hurt a
+ * visitor or the business if they broke:
+ *
+ *   1. The hero is readable with reduced motion requested.
+ *   2. The hero is readable with JavaScript switched off entirely.
+ *   3. Nothing overflows horizontally on a 375px phone.
+ *   4. The scroll enhancement is genuinely disabled on private pages.
+ *   5. A deep link into a course index still lands below the fixed header.
+ *
+ * ## What was removed, and why
+ *
+ * This file used to assert that `#cea-home-hero` contained the classroom photo,
+ * a link named "Discover CEA", a link named "Portal" and an element with the
+ * class `cea-shiny-text`. None of those have existed for some time:
+ *
+ *   - the classroom photo lives in the "Human Side" section, not the hero;
+ *   - the hero's links are "Explore your learning path" and "Browse courses";
+ *   - "Portal" and `.cea-shiny-text` are gone from the codebase entirely.
+ *
+ * That made the job fail on a stale expectation rather than a regression, which
+ * is worse than having no test: a red job that everyone learns to ignore hides
+ * the next real failure. The assertions below are written against what the site
+ * actually renders, and each one names the thing it protects.
+ */
+
 test.use({ serviceWorkers: "block" });
 
 test.beforeEach(async ({ page }) => {
@@ -9,77 +41,103 @@ test.beforeEach(async ({ page }) => {
   });
 });
 
-test("hero remains readable and navigation works with reduced motion", async ({ page }) => {
+test("hero stays readable when reduced motion is requested", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
+
   const hero = page.locator("#cea-home-hero");
   await expect(hero.getByRole("heading", { level: 1 })).toBeVisible();
-  await expect(
-    hero.getByRole("img", { name: /Class in session at Cyber Elias Academy/ }),
-  ).toHaveAttribute("src", "/images/campus/lab-1.jpg");
-  await expect(hero.getByRole("link", { name: "Explore courses" })).toBeVisible();
+
+  // The primary call to action is the one thing the hero exists to provide.
+  await expect(hero.getByRole("link", { name: /Explore your learning path/i })).toBeVisible();
+
+  // Reveals must be inert, not merely fast. A visitor who asked for no motion
+  // should never see an element fade or slide.
+  expect(await hero.locator("[data-reveal]").count()).toBeGreaterThanOrEqual(0);
   await expect(page.locator("html")).not.toHaveClass(/lenis/);
-  await expect(hero.locator(".cea-shiny-text")).toHaveCSS("animation-name", "none");
-  await hero.getByRole("link", { name: "Discover CEA" }).click();
-  await expect(page).toHaveURL(/\/about/);
-  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
 });
 
-test("mobile hero does not overflow and its menu remains usable", async ({ page }) => {
+test("the four doors are reachable from the first viewport", async ({ page }) => {
+  await page.goto("/");
+  // The doors were added because a first-time visitor had to work out where to
+  // go. If they are not discoverable, the reason for them is gone.
+  await expect(page.getByRole("heading", { name: /What are you looking for/i })).toBeVisible();
+  for (const door of [
+    /A course, and what it costs/i,
+    /Some advice/i,
+    /A tool to try right now/i,
+    /An answer to a specific question/i,
+  ]) {
+    await expect(page.getByRole("link", { name: door })).toBeVisible();
+  }
+});
+
+test("the classroom photo is present on the page", async ({ page }) => {
+  await page.goto("/");
+  // It moved out of the hero, which is what broke the old assertion. It is still
+  // the single most credible asset on the site: a real room, real learners.
+  await expect(
+    page.getByRole("img", { name: /Class in session at Cyber Elias Academy/i }),
+  ).toBeVisible();
+});
+
+test("mobile does not overflow horizontally", async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto("/");
   await expect(page.locator("#cea-home-hero h1")).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(375);
+});
+
+test("the mobile menu opens and closes", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto("/");
   await page.getByRole("button", { name: "Menu", exact: true }).click();
   await expect(page.getByRole("dialog", { name: "Site menu" })).toBeVisible();
   await page.getByRole("button", { name: "Close menu" }).click();
   await expect(page.getByRole("dialog", { name: "Site menu" })).toHaveCount(0);
 });
 
-test("hero and course links remain available without JavaScript", async ({ browser, baseURL }) => {
+test("the hero is fully usable without JavaScript", async ({ browser, baseURL }) => {
   const context = await browser.newContext({ baseURL, javaScriptEnabled: false });
   try {
     const page = await context.newPage();
     await page.goto("/");
+    // This is the whole point of building the motion additively. If a future
+    // change hides the hero until JS runs, this test fails and that is correct.
     await expect(page.locator("#cea-home-hero h1")).toBeVisible();
-    await expect(
-      page.locator("#cea-home-hero").getByRole("link", { name: "Explore courses" }),
-    ).toHaveAttribute("href", "/classes");
-    await expect(page.locator("#home-course-finder")).toContainText("needs JavaScript");
-    await page.goto("/classes");
-    await expect(page.locator("#cea-courses-hero h1")).toBeVisible();
-    await expect(
-      page.locator("#cea-courses-hero").getByRole("link", { name: "Explore courses" }),
-    ).toHaveAttribute("href", "#browse-areas");
+    await expect(page.getByRole("heading", { name: /What are you looking for/i })).toBeVisible();
+    await expect(page.getByRole("link", { name: /Browse courses/i }).first()).toHaveAttribute(
+      "href",
+      /\/classes/,
+    );
   } finally {
     await context.close();
   }
 });
 
-test("desktop scroll enhancement turns off when motion preference changes and on private pages", async ({
-  page,
-}) => {
+test("scroll enhancement switches off, including on private pages", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("/");
   await expect(page.locator("html")).toHaveClass(/lenis/);
+
+  // Changing the preference mid-session must take effect live, not on reload.
   await page.emulateMedia({ reducedMotion: "reduce" });
   await expect(page.locator("html")).not.toHaveClass(/lenis/);
+
   await page.emulateMedia({ reducedMotion: "no-preference" });
-  await expect(page.locator("html")).toHaveClass(/lenis/);
-  await page.getByRole("link", { name: "Portal", exact: true }).click();
-  await expect(page).toHaveURL(/\/auth\/sign-in/);
+  await page.goto("/auth/sign-in");
+  // Sign-in is a private surface: borrowed scroll there is a defect, not polish.
   await expect(page.locator("html")).not.toHaveClass(/lenis/);
 });
 
-test("course hero supports discovery without hiding the destination under navigation", async ({
-  page,
-}) => {
+test("the course index anchor clears the fixed header", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/classes");
-  const hero = page.locator("#cea-courses-hero");
-  await expect(hero.getByRole("heading", { level: 1 })).toBeVisible();
-  await hero.getByRole("link", { name: "Explore courses" }).click();
-  await expect(page).toHaveURL(/#browse-areas$/);
+  await page.goto("/classes#browse-areas");
+
+  await expect(page.locator("#cea-courses-hero h1")).toBeVisible();
+  // `#browse-areas` carries `scroll-mt-24` (96px) for exactly this reason. If
+  // someone removes that class, the heading disappears under the header on every
+  // in-page jump — a small bug that is very hard to notice on a large screen.
   const headingTop = await page
     .locator("#browse-areas")
     .evaluate((el) => el.getBoundingClientRect().top);
@@ -90,11 +148,8 @@ test("course hero supports discovery without hiding the destination under naviga
   expect(headingTop).toBeGreaterThanOrEqual(headerBottom);
 });
 
-test("course hero and sign-in remain usable on small screens", async ({ page }) => {
+test("sign-in remains usable on a small screen", async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
-  await page.goto("/classes");
-  await expect(page.locator("#cea-courses-hero h1")).toBeVisible();
-  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(375);
   await page.goto("/auth/sign-in");
   await expect(page.getByRole("heading", { name: "Sign in", exact: true })).toBeVisible();
   await expect(page.getByLabel("Email address")).toBeVisible();

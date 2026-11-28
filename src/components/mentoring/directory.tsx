@@ -65,7 +65,7 @@ export function MentoringDirectory() {
           )}
           <div className="grid gap-3 sm:grid-cols-2">
             {directory.data?.items.map((p) => (
-              <div key={p.id} className="space-y-2 rounded-md border p-4">
+              <div key={p.id} className="space-y-2 rounded-lg border p-4">
                 <p className="font-semibold">{p.name}</p>
                 <p className="text-sm">{p.focus}</p>
                 <p className="text-muted-foreground whitespace-pre-wrap text-sm">{p.bio}</p>
@@ -86,7 +86,7 @@ export function MentoringDirectory() {
           </div>
           {selected && (
             <form
-              className="space-y-3 rounded-md border p-4"
+              className="space-y-3 rounded-lg border p-4"
               onSubmit={(e) => {
                 e.preventDefault();
                 if (goal.trim().length >= 3)
@@ -110,7 +110,7 @@ export function MentoringDirectory() {
                 disabled={send.isPending}
                 value={goal}
                 onChange={(e) => setGoal(e.target.value)}
-                className="border-input bg-background min-h-24 w-full rounded-md border px-3 py-2 text-sm"
+                className="border-input bg-background min-h-24 w-full rounded-lg border px-3 py-2 text-sm"
               />
               <div className="flex gap-2">
                 <Button type="submit" disabled={send.isPending}>

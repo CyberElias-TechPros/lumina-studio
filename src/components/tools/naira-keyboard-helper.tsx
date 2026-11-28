@@ -304,7 +304,7 @@ export function NairaKeyboardHelper() {
   return (
     <div className="space-y-5">
       {/* ── Copy-ready characters ─────────────────────────────────────── */}
-      <section className="border-foreground/10 bg-card overflow-hidden rounded-2xl border">
+      <section className="border-foreground/10 bg-card overflow-hidden rounded-xl border">
         <div className="border-foreground/10 flex flex-wrap items-center justify-between gap-2 border-b px-5 py-3.5">
           <p className="text-muted-foreground font-mono text-[9px] tracking-[0.24em] uppercase">
             Tap any character to copy it
@@ -346,7 +346,7 @@ export function NairaKeyboardHelper() {
       </section>
 
       {/* ── Methods ───────────────────────────────────────────────────── */}
-      <section className="border-foreground/10 bg-card overflow-hidden rounded-2xl border">
+      <section className="border-foreground/10 bg-card overflow-hidden rounded-xl border">
         <div className="border-foreground/10 border-b px-5 py-3.5">
           <p className="text-muted-foreground font-mono text-[9px] tracking-[0.24em] uppercase">
             Every working way to type ₦
@@ -356,7 +356,7 @@ export function NairaKeyboardHelper() {
           {METHODS.map((method, index) => (
             <details key={method.id} className="group" open={index === 0}>
               <summary className="hover:bg-foreground/[0.03] flex cursor-pointer list-none items-start gap-3 px-5 py-4">
-                <span className="bg-foreground/[0.06] text-muted-foreground font-mono mt-0.5 grid size-6 shrink-0 place-items-center rounded-md text-[10px] font-semibold">
+                <span className="bg-foreground/[0.06] text-muted-foreground font-mono mt-0.5 grid size-6 shrink-0 place-items-center rounded-lg text-[10px] font-semibold">
                   {index + 1}
                 </span>
                 <span className="min-w-0 flex-1">
@@ -390,7 +390,7 @@ export function NairaKeyboardHelper() {
       </section>
 
       {/* ── Naira in words ────────────────────────────────────────────── */}
-      <section className="border-foreground/10 bg-card overflow-hidden rounded-2xl border">
+      <section className="border-foreground/10 bg-card overflow-hidden rounded-xl border">
         <div className="border-foreground/10 border-b px-5 py-3.5">
           <p className="text-muted-foreground font-mono text-[9px] tracking-[0.24em] uppercase">
             Write an amount in words — for cheques, invoices and bank forms
@@ -499,7 +499,7 @@ export function NairaKeyboardHelper() {
       </section>
 
       {/* ── Practice box ──────────────────────────────────────────────── */}
-      <section className="border-foreground/10 bg-primary/5 rounded-2xl border p-5">
+      <section className="border-foreground/10 bg-primary/5 rounded-xl border p-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <p className="text-primary font-mono text-[9px] tracking-[0.22em] uppercase">

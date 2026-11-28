@@ -165,7 +165,7 @@ function AssignmentWork({ assignment: a }: { assignment: StudentAssignment }) {
                   rows={8}
                   disabled={submit.isPending || uploading}
                   placeholder="Write your solution summary or paste a repository URL…"
-                  className="mt-2 block w-full rounded border p-3 font-normal"
+                  className="mt-2 block w-full rounded-lg border p-3 font-normal"
                 />
               </label>
 
