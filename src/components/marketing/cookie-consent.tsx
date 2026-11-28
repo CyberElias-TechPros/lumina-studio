@@ -109,14 +109,24 @@ export function CookieConsent() {
 
   return (
     <div
-      className="fixed inset-x-0 bottom-0 z-[100] p-3 sm:p-6"
+      /* pointer-events-none on the wrapper, pointer-events-auto on the card:
+         the banner is a full-width fixed strip, so without this it swallows
+         clicks on every control sitting in the bottom band of the viewport.
+         That is not theoretical — it timed out three E2E specs on the
+         instructor and admin screens before it was found.
+
+         z-40, below shadcn Dialog at z-50. A consent prompt must never sit on
+         top of the thing the visitor is trying to operate, and at z-[100] it
+         did: the instructor "Return grade to student" button and the admin
+         review form were both unreachable behind it. */
+      className="pointer-events-none fixed inset-x-0 bottom-0 z-40 p-3 sm:p-6"
       role="dialog"
       aria-modal="false"
       aria-labelledby="consent-title"
       aria-describedby="consent-body"
     >
       <div className="container-page">
-        <div className="bg-card shadow-elevated border-foreground/12 rounded-xl border">
+        <div className="bg-card shadow-elevated border-foreground/12 pointer-events-auto rounded-xl border">
           <div className="p-5 sm:p-6">
             <div className="flex items-start gap-3">
               <span className="bg-primary/10 text-primary mt-0.5 hidden size-9 shrink-0 place-items-center rounded-lg sm:grid">

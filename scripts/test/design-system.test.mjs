@@ -122,3 +122,37 @@ test("editorial headings use the display face; UI labels do not", () => {
   }
   assert.deepEqual(drift, [], `page headings missing font-display: ${drift.join(" | ")}`);
 });
+
+test("a fixed overlay never blocks the page it floats over", () => {
+  // The consent banner is a full-width `fixed` strip. Without pointer-events
+  // management it swallows clicks on every control in the bottom band of the
+  // viewport — which timed out three E2E specs on the instructor and admin
+  // screens before anyone traced the cause to a cookie prompt.
+  //
+  // The rule has to be that the *strip itself* is pointer-events-none.
+  // Putting pointer-events-auto on a child is necessary but NOT sufficient:
+  // the wrapper's own box still captures clicks across the full width, so the
+  // page underneath stays unreachable. An earlier version of this test
+  // accepted the child alone and passed against a deliberately broken banner.
+  const offenders = [];
+  for (const f of files) {
+    const src = read(f);
+    for (const m of src.matchAll(/className="([^"]*)"/g)) {
+      const cls = m[1];
+      const isStrip = /\bfixed\b/.test(cls) && /\binset-x-0\b/.test(cls);
+      if (!isStrip) continue;
+      // A strip that ignores pointer events itself is fine.
+      if (/\bpointer-events-none\b/.test(cls)) continue;
+      // A full-screen modal or splash is *meant* to block while it is up, so
+      // it opts out by declaring itself modal or hidden.
+      const before = src.slice(Math.max(0, m.index - 400), m.index);
+      if (/aria-hidden|aria-modal="true"/.test(before + cls)) continue;
+      offenders.push(f.replace(`${root}/`, ""));
+    }
+  }
+  assert.deepEqual(
+    [...new Set(offenders)],
+    [],
+    "full-width fixed strips must be pointer-events-none and delegate to a child",
+  );
+});

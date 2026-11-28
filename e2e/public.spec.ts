@@ -53,7 +53,10 @@ test.describe("Public marketing + application journey", () => {
     const facts = page.getByLabel("Course fee receipt");
     await expect(facts).toContainText("₦30,000");
     await expect(facts).toContainText("3 weeks");
-    await expect(facts).toContainText("What you need");
+    // The receipt reworded this heading to "You bring". Assert the heading that
+    // is actually rendered — the earlier value appeared elsewhere on the page,
+    // outside the receipt region, which is why a grep found it and CI did not.
+    await expect(facts).toContainText("You bring");
     await expect(page.getByRole("link", { name: "Apply for this course" }).first()).toHaveAttribute(
       "href",
       /\/apply\?program=microsoft-office/,
