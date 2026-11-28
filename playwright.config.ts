@@ -12,8 +12,14 @@ export default defineConfig({
   expect: { timeout: 20_000 },
   retries: process.env.CI ? 1 : 0,
   reporter: [["list"]],
+  // Consent is decided once, for every spec. Nineteen specs import
+  // "@playwright/test" directly and never pick up the dismissConsent fixture
+  // in e2e/helpers.ts, so the fallback cookie banner mounted over the bottom
+  // band of the page and blocked real controls. See e2e/consent-state.ts.
+  globalSetup: "./e2e/consent-state.ts",
   use: {
     baseURL,
+    storageState: "e2e/.consent-state.json",
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
     launchOptions: process.env.E2E_CHROMIUM_PATH
